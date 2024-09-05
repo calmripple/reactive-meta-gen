@@ -2,9 +2,6 @@
   "activationEvents": [
     "*"
   ],
-  "engines": {
-    "vscode": "^1.67.0"
-  },
   "categories": [
     "Other"
   ],
@@ -29,14 +26,15 @@
     "configuration": [
       {
         "properties": {
-          "ww_should_not_show_up": {
-            "default": true,
-            "description": "Enabled project-config inline annotations"
+          "project-config.fileNestingUpdater.upstreamBranch": {
+            "default": "main",
+            "description": "The branch name of upstream repo",
+            "type": "string"
           },
-          "xxx": {
-            "default": true,
-            "description": "Enabled project-config inline annotations",
-            "type": "boolean"
+          "project-config.fileNestingUpdater.upstreamRepo": {
+            "default": "antfu/vscode-file-nesting-config",
+            "description": "The upstream repo you want to update from",
+            "type": "string"
           },
           "project-config.test.annotations": {
             "default": true,
@@ -52,15 +50,14 @@
             ],
             "type": "string"
           },
-          "project-config.fileNestingUpdater.upstreamRepo": {
-            "type": "string",
-            "description": "The upstream repo you want to update from",
-            "default": "antfu/vscode-file-nesting-config"
+          "ww_should_not_show_up": {
+            "default": true,
+            "description": "Enabled project-config inline annotations"
           },
-          "project-config.fileNestingUpdater.upstreamBranch": {
-            "type": "string",
-            "description": "The branch name of upstream repo",
-            "default": "main"
+          "xxx": {
+            "default": true,
+            "description": "Enabled project-config inline annotations",
+            "type": "boolean"
           }
         },
         "title": "Config 1",
@@ -68,12 +65,12 @@
       },
       {
         "properties": {
-          "yyyy": {
+          "project-config2.test.annotations": {
             "default": true,
             "description": "Enabled project-config inline annotations",
             "type": "boolean"
           },
-          "project-config2.test.annotations": {
+          "yyyy": {
             "default": true,
             "description": "Enabled project-config inline annotations",
             "type": "boolean"
@@ -86,6 +83,9 @@
   },
   "description": "Export current settings to workspace config file ",
   "displayName": "Project Config Updater",
+  "engines": {
+    "vscode": "^1.67.0"
+  },
   "icon": "res/logo.png",
   "license": "MIT",
   "main": "./dist/index.cjs",
@@ -98,6 +98,6 @@
     "type": "git",
     "url": "https://github.com/open-dmsrs/vscode-project-config-updater"
   },
-  "version": "1.1.2",
-  "type": "module"
+  "type": "module",
+  "version": "1.1.2"
 }

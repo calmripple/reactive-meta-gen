@@ -12,11 +12,11 @@
 
 | Key                                                | Description                                     | Type        | Default                              |
 | -------------------------------------------------- | ----------------------------------------------- | ----------- | ------------------------------------ |
-| `ww_should_not_show_up`                            | Enabled project-config inline annotations       | `undefined` | `true`                               |
-| `xxx`                                              | Enabled project-config inline annotations       | `boolean`   | `true`                               |
+| `project-config.fileNestingUpdater.upstreamBranch` | The branch name of upstream repo                | `string`    | `"main"`                             |
+| `project-config.fileNestingUpdater.upstreamRepo`   | The upstream repo you want to update from       | `string`    | `"antfu/vscode-file-nesting-config"` |
 | `project-config.test.annotations`                  | Enabled project-config inline annotations       | `boolean`   | `true`                               |
 | `project-config.test.position`                     | Position the icon before or after the icon name | `string`    | `"before"`                           |
-| `project-config.fileNestingUpdater.upstreamRepo`   | The upstream repo you want to update from       | `string`    | `"antfu/vscode-file-nesting-config"` |
-| `project-config.fileNestingUpdater.upstreamBranch` | The branch name of upstream repo                | `string`    | `"main"`                             |
-| `yyyy`                                             | Enabled project-config inline annotations       | `boolean`   | `true`                               |
+| `ww_should_not_show_up`                            | Enabled project-config inline annotations       | `undefined` | `true`                               |
+| `xxx`                                              | Enabled project-config inline annotations       | `boolean`   | `true`                               |
 | `project-config2.test.annotations`                 | Enabled project-config inline annotations       | `boolean`   | `true`                               |
+| `yyyy`                                             | Enabled project-config inline annotations       | `boolean`   | `true`                               |
