@@ -10,3 +10,8 @@ logs
 node_modules
 temp
 generated-meta.ts
+fixtures/i18n-ally
+fixtures/vscode-iconify
+fixtures/smart-clicks
+fixtures/vscode-which-key
+fixtures/vscode-iconify-fork

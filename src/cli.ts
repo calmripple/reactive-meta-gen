@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import cac from 'cac'
@@ -32,6 +31,7 @@ cli.command('[input]', 'Generate TypeScript files from package.json')
         .replace(/<!-- configs -->[\s\S]*<!-- configs -->/, `<!-- configs -->\n\n${markdown.configsTable}\n\n<!-- configs -->`)
 
       if (raw === content && !raw.includes('<!-- commands -->') && !raw.includes('<!-- configs -->')) {
+        // eslint-disable-next-line no-console
         console.log('Add `<!-- commands --><!-- commands -->` and `<!-- configs --><!-- configs -->` to your README.md to insert commands and configurations table')
       }
       else {

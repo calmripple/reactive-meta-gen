@@ -1,9 +1,27 @@
 {
-  "activationEvents": [
-    "*"
-  ],
+  "publisher": "cnjimbo",
+  "name": "project-config",
+  "displayName": "Project Config Updater",
+  "type": "module",
+  "version": "1.1.2",
+  "private": true,
+  "description": "Export current settings to workspace config file ",
+  "license": "MIT",
+  "repository": {
+    "directory": "extension",
+    "type": "git",
+    "url": "https://github.com/open-dmsrs/vscode-project-config-updater"
+  },
   "categories": [
     "Other"
+  ],
+  "main": "./dist/index.cjs",
+  "icon": "res/logo.png",
+  "engines": {
+    "vscode": "^1.67.0"
+  },
+  "activationEvents": [
+    "*"
   ],
   "contributes": {
     "commands": [
@@ -81,23 +99,5 @@
       }
     ]
   },
-  "description": "Export current settings to workspace config file ",
-  "displayName": "Project Config Updater",
-  "engines": {
-    "vscode": "^1.67.0"
-  },
-  "icon": "res/logo.png",
-  "license": "MIT",
-  "main": "./dist/index.cjs",
-  "name": "project-config",
-  "preview": true,
-  "private": true,
-  "publisher": "cnjimbo",
-  "repository": {
-    "directory": "extension",
-    "type": "git",
-    "url": "https://github.com/open-dmsrs/vscode-project-config-updater"
-  },
-  "type": "module",
-  "version": "1.1.2"
+  "preview": true
 }
