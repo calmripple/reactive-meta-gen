@@ -54,11 +54,7 @@ export const commands = {
 } satisfies Record<string, CommandKey>
 
 /**
- * Type union of all configs
- */
-
-/**
- * Config keys of `sample`
+ * Config keys of `configuration of sample`
  */
 export interface Sample {
   /**
@@ -169,15 +165,15 @@ export interface Sample {
 }
 
 /**
- * Scoped defaults of `sample`
+ * Scoped defaults of `configuration of sample`
  */
 const _sample = {
 /**
- * scope: `sample`
+ * scope: `configuration of sample`
  */
   scope: "sample",
 /**
- * Keys' defaults of `sample`
+ * Keys' defaults of `configuration of sample`
  */
   defaults: {
     "inplace": true,
@@ -199,7 +195,7 @@ const _sample = {
 }
 
 /**
- * Reactive ConfigObject of `sample`
+ * Reactive ConfigObject of `configuration of sample`
  * @example
  * let configValue = sampleConfigObject.inplace //get value 
  * sampleConfigObject.inplace = true // set value
@@ -210,7 +206,7 @@ export const sampleConfigObject = defineConfigObject<Sample>(
   _sample.defaults
 )
 /**
- * Reactive ToConfigRefs of `sample`
+ * Reactive ToConfigRefs of `configuration of sample`
  * @example
  * let configValue:boolean =sampleConfigs.inplace.value //get value 
  * sampleConfigs.inplace.value = true // set value

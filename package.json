@@ -1,5 +1,5 @@
 {
-  "name": "reactive-meta-gen-test",
+  "name": "reactive-meta-gen",
   "type": "module",
   "version": "0.0.7",
   "packageManager": "pnpm@9.9.0",

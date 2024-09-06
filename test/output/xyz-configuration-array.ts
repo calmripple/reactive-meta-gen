@@ -54,11 +54,13 @@ export const commands = {
 } satisfies Record<string, CommandKey>
 
 /**
- * Type union of all configs
+ * Type union of Deprecated all configs
  */
+export type DeprecatedConfigKey = 
+  | "ww_should_not_show_up"
 
 /**
- * Config keys of `project-config`
+ * Config keys of `configuration of project-config`
  */
 export interface ProjectConfig {
   /**
@@ -92,15 +94,15 @@ export interface ProjectConfig {
 }
 
 /**
- * Scoped defaults of `project-config`
+ * Scoped defaults of `configuration of project-config`
  */
 const _projectConfig = {
 /**
- * scope: `project-config`
+ * scope: `configuration of project-config`
  */
   scope: "project-config",
 /**
- * Keys' defaults of `project-config`
+ * Keys' defaults of `configuration of project-config`
  */
   defaults: {
     "fileNestingUpdater.upstreamBranch": "main",
@@ -111,7 +113,7 @@ const _projectConfig = {
 }
 
 /**
- * Reactive ConfigObject of `project-config`
+ * Reactive ConfigObject of `configuration of project-config`
  * @example
  * let configValue = projectConfigConfigObject.fileNestingUpdater.upstreamBranch //get value 
  * projectConfigConfigObject.fileNestingUpdater.upstreamBranch = true // set value
@@ -122,7 +124,7 @@ export const projectConfigConfigObject = defineConfigObject<ProjectConfig>(
   _projectConfig.defaults
 )
 /**
- * Reactive ToConfigRefs of `project-config`
+ * Reactive ToConfigRefs of `configuration of project-config`
  * @example
  * let configValue:string =projectConfigConfigs.fileNestingUpdater.upstreamBranch.value //get value 
  * projectConfigConfigs.fileNestingUpdater.upstreamBranch.value = "main" // set value
@@ -135,7 +137,7 @@ export const projectConfigConfigs = defineConfigs<ProjectConfig>(
 )
 
 /**
- * Config keys of `project-config.fileNestingUpdater`
+ * Config keys of `configuration of project-config.fileNestingUpdater`
  */
 export interface FileNestingUpdater {
   /**
@@ -155,15 +157,15 @@ export interface FileNestingUpdater {
 }
 
 /**
- * Scoped defaults of `project-config.fileNestingUpdater`
+ * Scoped defaults of `configuration of project-config.fileNestingUpdater`
  */
 const _fileNestingUpdater = {
 /**
- * scope: `project-config.fileNestingUpdater`
+ * scope: `configuration of project-config.fileNestingUpdater`
  */
   scope: "project-config.fileNestingUpdater",
 /**
- * Keys' defaults of `project-config.fileNestingUpdater`
+ * Keys' defaults of `configuration of project-config.fileNestingUpdater`
  */
   defaults: {
     "upstreamBranch": "main",
@@ -172,7 +174,7 @@ const _fileNestingUpdater = {
 }
 
 /**
- * Reactive ConfigObject of `project-config.fileNestingUpdater`
+ * Reactive ConfigObject of `configuration of project-config.fileNestingUpdater`
  * @example
  * let configValue = fileNestingUpdaterConfigObject.upstreamBranch //get value 
  * fileNestingUpdaterConfigObject.upstreamBranch = true // set value
@@ -183,7 +185,7 @@ export const fileNestingUpdaterConfigObject = defineConfigObject<FileNestingUpda
   _fileNestingUpdater.defaults
 )
 /**
- * Reactive ToConfigRefs of `project-config.fileNestingUpdater`
+ * Reactive ToConfigRefs of `configuration of project-config.fileNestingUpdater`
  * @example
  * let configValue:string =fileNestingUpdaterConfigs.upstreamBranch.value //get value 
  * fileNestingUpdaterConfigs.upstreamBranch.value = "main" // set value
@@ -196,7 +198,7 @@ export const fileNestingUpdaterConfigs = defineConfigs<FileNestingUpdater>(
 )
 
 /**
- * Config keys of `project-config.test`
+ * Config keys of `configuration of project-config.test`
  */
 export interface Test {
   /**
@@ -216,15 +218,15 @@ export interface Test {
 }
 
 /**
- * Scoped defaults of `project-config.test`
+ * Scoped defaults of `configuration of project-config.test`
  */
 const _test = {
 /**
- * scope: `project-config.test`
+ * scope: `configuration of project-config.test`
  */
   scope: "project-config.test",
 /**
- * Keys' defaults of `project-config.test`
+ * Keys' defaults of `configuration of project-config.test`
  */
   defaults: {
     "annotations": true,
@@ -233,7 +235,7 @@ const _test = {
 }
 
 /**
- * Reactive ConfigObject of `project-config.test`
+ * Reactive ConfigObject of `configuration of project-config.test`
  * @example
  * let configValue = testConfigObject.annotations //get value 
  * testConfigObject.annotations = true // set value
@@ -244,7 +246,7 @@ export const testConfigObject = defineConfigObject<Test>(
   _test.defaults
 )
 /**
- * Reactive ToConfigRefs of `project-config.test`
+ * Reactive ToConfigRefs of `configuration of project-config.test`
  * @example
  * let configValue:boolean =testConfigs.annotations.value //get value 
  * testConfigs.annotations.value = true // set value
@@ -257,7 +259,7 @@ export const testConfigs = defineConfigs<Test>(
 )
 
 /**
- * Config keys of `root of configuration`
+ * Config keys of `configuration of root`
  */
 export interface Root {
   /**
@@ -277,15 +279,15 @@ export interface Root {
 }
 
 /**
- * Scoped defaults of `root of configuration`
+ * Scoped defaults of `configuration of root`
  */
 const _root = {
 /**
- * scope: `root of configuration`
+ * scope: `configuration of root`
  */
   scope: "",
 /**
- * Keys' defaults of `root of configuration`
+ * Keys' defaults of `configuration of root`
  */
   defaults: {
     "xxx": true,
@@ -294,7 +296,7 @@ const _root = {
 }
 
 /**
- * Reactive ConfigObject of `root of configuration`
+ * Reactive ConfigObject of `configuration of root`
  * @example
  * let configValue = rootConfigObject.xxx //get value 
  * rootConfigObject.xxx = true // set value
@@ -305,7 +307,7 @@ export const rootConfigObject = defineConfigObject<Root>(
   _root.defaults
 )
 /**
- * Reactive ToConfigRefs of `root of configuration`
+ * Reactive ToConfigRefs of `configuration of root`
  * @example
  * let configValue:boolean =rootConfigs.xxx.value //get value 
  * rootConfigs.xxx.value = true // set value
@@ -318,7 +320,7 @@ export const rootConfigs = defineConfigs<Root>(
 )
 
 /**
- * Config keys of `project-config2`
+ * Config keys of `configuration of project-config2`
  */
 export interface ProjectConfig2 {
   /**
@@ -331,15 +333,15 @@ export interface ProjectConfig2 {
 }
 
 /**
- * Scoped defaults of `project-config2`
+ * Scoped defaults of `configuration of project-config2`
  */
 const _projectConfig2 = {
 /**
- * scope: `project-config2`
+ * scope: `configuration of project-config2`
  */
   scope: "project-config2",
 /**
- * Keys' defaults of `project-config2`
+ * Keys' defaults of `configuration of project-config2`
  */
   defaults: {
     "test.annotations": true,
@@ -347,7 +349,7 @@ const _projectConfig2 = {
 }
 
 /**
- * Reactive ConfigObject of `project-config2`
+ * Reactive ConfigObject of `configuration of project-config2`
  * @example
  * let configValue = projectConfig2ConfigObject.test.annotations //get value 
  * projectConfig2ConfigObject.test.annotations = true // set value
@@ -358,7 +360,7 @@ export const projectConfig2ConfigObject = defineConfigObject<ProjectConfig2>(
   _projectConfig2.defaults
 )
 /**
- * Reactive ToConfigRefs of `project-config2`
+ * Reactive ToConfigRefs of `configuration of project-config2`
  * @example
  * let configValue:boolean =projectConfig2Configs.test.annotations.value //get value 
  * projectConfig2Configs.test.annotations.value = true // set value
@@ -371,7 +373,7 @@ export const projectConfig2Configs = defineConfigs<ProjectConfig2>(
 )
 
 /**
- * Config keys of `project-config2.test`
+ * Config keys of `configuration of project-config2.test`
  */
 export interface ProjectConfig2Test {
   /**
@@ -384,15 +386,15 @@ export interface ProjectConfig2Test {
 }
 
 /**
- * Scoped defaults of `project-config2.test`
+ * Scoped defaults of `configuration of project-config2.test`
  */
 const _projectConfig2Test = {
 /**
- * scope: `project-config2.test`
+ * scope: `configuration of project-config2.test`
  */
   scope: "project-config2.test",
 /**
- * Keys' defaults of `project-config2.test`
+ * Keys' defaults of `configuration of project-config2.test`
  */
   defaults: {
     "annotations": true,
@@ -400,7 +402,7 @@ const _projectConfig2Test = {
 }
 
 /**
- * Reactive ConfigObject of `project-config2.test`
+ * Reactive ConfigObject of `configuration of project-config2.test`
  * @example
  * let configValue = projectConfig2TestConfigObject.annotations //get value 
  * projectConfig2TestConfigObject.annotations = true // set value
@@ -411,7 +413,7 @@ export const projectConfig2TestConfigObject = defineConfigObject<ProjectConfig2T
   _projectConfig2Test.defaults
 )
 /**
- * Reactive ToConfigRefs of `project-config2.test`
+ * Reactive ToConfigRefs of `configuration of project-config2.test`
  * @example
  * let configValue:boolean =projectConfig2TestConfigs.annotations.value //get value 
  * projectConfig2TestConfigs.annotations.value = true // set value

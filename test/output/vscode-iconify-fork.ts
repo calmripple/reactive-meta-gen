@@ -54,11 +54,7 @@ export const commands = {
 } satisfies Record<string, CommandKey>
 
 /**
- * Type union of all configs
- */
-
-/**
- * Config keys of `iconify`
+ * Config keys of `configuration of iconify`
  */
 export interface Iconify {
   /**
@@ -169,15 +165,15 @@ export interface Iconify {
 }
 
 /**
- * Scoped defaults of `iconify`
+ * Scoped defaults of `configuration of iconify`
  */
 const _iconify = {
 /**
- * scope: `iconify`
+ * scope: `configuration of iconify`
  */
   scope: "iconify",
 /**
- * Keys' defaults of `iconify`
+ * Keys' defaults of `configuration of iconify`
  */
   defaults: {
     "inplace": true,
@@ -199,7 +195,7 @@ const _iconify = {
 }
 
 /**
- * Reactive ConfigObject of `iconify`
+ * Reactive ConfigObject of `configuration of iconify`
  * @example
  * let configValue = iconifyConfigObject.inplace //get value 
  * iconifyConfigObject.inplace = true // set value
@@ -210,7 +206,7 @@ export const iconifyConfigObject = defineConfigObject<Iconify>(
   _iconify.defaults
 )
 /**
- * Reactive ToConfigRefs of `iconify`
+ * Reactive ToConfigRefs of `configuration of iconify`
  * @example
  * let configValue:boolean =iconifyConfigs.inplace.value //get value 
  * iconifyConfigs.inplace.value = true // set value

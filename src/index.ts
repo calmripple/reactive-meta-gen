@@ -188,24 +188,67 @@ useCommand(commands.${convertCase(name)}, async () => {
   )
 
   // ========== Configs ==========
+  function addOrUpdate(target: Map<string, [string, ConfigurationProperty][]>, scope: string, value: [string, ConfigurationProperty]) {
+    const properties = target.get(scope)
+    if (properties) {
+      properties.push(value)
+    } else {
+      target.set(scope, [value])
+    }
+    return target
+  }
   const configsObject = getConfigObject(packageJson)
+  const deprecatedConfigurationKeys = new Array<string>()
+  const configKeys = new Array<string>()
+  const scopeConfigurationKeyProperty = Object.entries(configsObject).reduce((acc, [fullKey, value]) => {
+    if (isProperty(value)) {
+      configKeys.push(fullKey)
+      const parts = fullKey.split('.')
+      if (parts.length > 1) {
+        const scopeParts = parts.slice(0, -1)
+        for (let i = 0; i < scopeParts.length; i++) {
+          let scope = (scopeParts.slice(0, i + 1).join('.'))
+          addOrUpdate(acc, scope, [fullKey, value])
+        }
+      }
+      else {
+        let scope = ('')
+        addOrUpdate(acc, scope, [fullKey, value])
+      }
+    } else {
+      deprecatedConfigurationKeys.push(fullKey)
+    }
+    return acc
+  }, new Map<string, [string, ConfigurationProperty][]>())
 
-  lines.push(
-    '',
-    ...commentBlock('Type union of all configs'),
-  )
-  if (!Object.keys(configsObject).length) {
-    lines.push('export type ConfigKey = never')
-  }
-  else {
-    // lines.push(
-    //   'export type ConfigKey = ',
-    //   ...Object.keys(configsObject).map(c =>
-    //     `  | "${c}"`,
-    //   ),
-    // )
-  }
+  // lines.push(
+  //   '',
+  //   ...commentBlock('Type union of all configs'),
+  // )
+  // if (!configKeys.length) {
+  //   lines.push('export type ConfigKey = never')
+  // }
+  // else {
+  //   lines.push(
+  //     'export type ConfigKey = ',
+  //     ...configKeys.map(c =>
+  //       `  | "${c}"`,
+  //     ),
+  //   )
+  // }
 
+  if (deprecatedConfigurationKeys.length) {
+    lines.push(
+      '',
+      ...commentBlock('Type union of Deprecated all configs'),
+    )
+    lines.push(
+      'export type DeprecatedConfigKey = ',
+      ...deprecatedConfigurationKeys.map(c =>
+        `  | "${c}"`,
+      ),
+    )
+  }
   // lines.push(
   //   '',
   //   'export interface ConfigKeyTypeMap {',
@@ -263,33 +306,6 @@ useCommand(commands.${convertCase(name)}, async () => {
   //   '}',
   // )
 
-  const scopeKeys = Array.from(Object.entries(configsObject).reduce((acc, [curr, value]) => {
-    if (isProperty(value)) {
-      const parts = curr.split('.')
-      if (parts.length > 1) {
-        const scopeParts = parts.slice(0, -1)
-        for (let i = 0; i < scopeParts.length; i++) {
-          acc.add(scopeParts.slice(0, i + 1).join('.'))
-        }
-      }
-      else {
-        acc.add('')
-      }
-    }
-    return acc
-  }, new Set<string>()))
-
-  const scopeConfigurationPairs = scopeKeys.reduce((acc, scope) => {
-    const conf = Object.entries(configsObject)
-      .filter(([key, value]) => isProperty(value) && (key.startsWith(`${scope}.`) || (scope === '' && !key.includes('.'))))
-
-    if (!conf || conf.length === 0) {
-      console.warn('scope:', scope, 'no found any properties')
-    }
-    acc.set(scope, conf)
-    return acc
-  }, new Map<string, [string, ConfigurationProperty][]>())
-
   function generateScopedDts(lines: string[], scopedConfigs: [string, ConfigurationProperty][], scope: string) {
     const scopeWithDot = `${scope}.`
     function removeScope(name: string) {
@@ -300,16 +316,16 @@ useCommand(commands.${convertCase(name)}, async () => {
     }
 
     let varName = 'root'
-    let scopeComment = scope
+    let scopeComment = `configuration of ${scope}`
     if (scope) {
       varName = `${convertCase(withoutExtensionPrefix(scope))}`
     }
     else {
-      const varNames = scopeKeys.map(scopeKey => `${convertCase(withoutExtensionPrefix(scopeKey))}`)
-      while (varNames.includes(varName)) {
+
+      while (scopeConfigurationKeyProperty.has(varName)) {
         varName = `root${upperFirst(varName)}`
       }
-      scopeComment = 'root of configuration'
+      scopeComment = 'configuration of root'
     }
     const interfaceName = `${upperFirst(varName)}`
 
@@ -416,7 +432,7 @@ useCommand(commands.${convertCase(name)}, async () => {
   //   .filter(([key]) => key.startsWith(extensionScopeWithDot))
   // genBase(lines, scopedConfigs, extensionScope)
 
-  scopeConfigurationPairs.forEach((keyPropList, scope) => {
+  scopeConfigurationKeyProperty.forEach((keyPropList, scope) => {
     generateScopedDts(lines, keyPropList, scope)
   })
   // ========== Namespace ==========
