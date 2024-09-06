@@ -1,7 +1,7 @@
 {
   "name": "reactive-meta-gen",
   "type": "module",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "packageManager": "pnpm@9.9.0",
   "description": "Generate TypeScript meta with `reactive-vscode` info for VS Code extension from package.json",
   "author": "calmripple <ripple@dmsrs.xyz>",
@@ -42,7 +42,7 @@
     "dev": "unbuild --stub",
     "lint": "eslint . --fix-dry-run",
     "prepublishOnly": "nr build",
-    "release": "bumpp && npm publish",
+    "release": "bumpp && npm publish --registry=https://registry.npmjs.org",
     "start": "esno src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
