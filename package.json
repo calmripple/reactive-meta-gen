@@ -32,7 +32,9 @@
       ]
     }
   },
-  "bin": "./bin.mjs",
+  "bin": {
+    "reactive-meta-gen": "bin.mjs"
+  },
   "files": [
     "bin.mjs",
     "dist"
