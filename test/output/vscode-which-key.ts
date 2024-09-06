@@ -34,7 +34,7 @@ export const commands = {
 } satisfies Record<string, CommandKey>
 
 /**
- * Config keys of `configuration of whichkey`
+ * Config keys of `whichkey`
  */
 export interface Whichkey {
   /**
@@ -96,15 +96,15 @@ export interface Whichkey {
 }
 
 /**
- * Scoped defaults of `configuration of whichkey`
+ * Scoped defaults of `whichkey`
  */
 const _whichkey = {
 /**
- * scope: `configuration of whichkey`
+ * scope: `whichkey`
  */
   scope: "whichkey",
 /**
- * Keys' defaults of `configuration of whichkey`
+ * Keys' defaults of `whichkey`
  */
   defaults: {
     "transient": {"error":{"title":"Error transient","bindings":[{"key":"N","name":"Previous error","command":"editor.action.marker.prev"},{"key":"n","name":"Next error","command":"editor.action.marker.next"},{"key":"p","name":"Previous error","command":"editor.action.marker.prev"}]},"symbol":{"title":"Highlight symbol transient","bindings":[{"key":"p","name":"Previous occurrence","command":"editor.action.wordHighlight.prev"},{"key":"N","name":"Previous occurrence","command":"editor.action.wordHighlight.prev"},{"key":"n","name":"Next occurrence","command":"editor.action.wordHighlight.next"},{"key":"/","name":"Search in a project with a selection","commands":["editor.action.addSelectionToNextFindMatch","workbench.action.findInFiles"]}]},"lineMoving":{"title":"Line moving transient","bindings":[{"key":"J","name":"Move lines down","command":"editor.action.moveLinesDownAction"},{"key":"K","name":"Move lines up","command":"editor.action.moveLinesUpAction"}]},"frameZooming":{"title":"Frame zooming transient","bindings":[{"key":"=","name":"Zoom in","command":"workbench.action.zoomIn"},{"key":"+","name":"Zoom in","command":"workbench.action.zoomIn"},{"key":"-","name":"Zoom out","command":"workbench.action.zoomOut"},{"key":"0","name":"Reset zoom","command":"workbench.action.zoomReset"}]},"fontZooming":{"title":"Front zooming transient","bindings":[{"key":"=","name":"Zoom in","command":"editor.action.fontZoomIn"},{"key":"+","name":"Zoom in","command":"editor.action.fontZoomIn"},{"key":"-","name":"Zoom out","command":"editor.action.fontZoomOut"},{"key":"0","name":"Reset zoom","command":"editor.action.fontZoomReset"}]},"imageZooming":{"title":"Image zooming transient","bindings":[{"key":"=","name":"Zoom in","command":"imagePreview.zoomIn"},{"key":"+","name":"Zoom in","command":"imagePreview.zoomIn"},{"key":"-","name":"Zoom out","command":"imagePreview.zoomOut"}]},"smartExpand":{"title":"Smart expand transient","bindings":[{"key":"v","name":"Grow selection","command":"editor.action.smartSelect.grow"},{"key":"V","name":"Shrink selection","command":"editor.action.smartSelect.shrink"}]}},
@@ -119,7 +119,7 @@ const _whichkey = {
 }
 
 /**
- * Reactive ConfigObject of `configuration of whichkey`
+ * Reactive ConfigObject of `whichkey`
  * @example
  * let configValue = whichkeyConfigObject.transient //get value 
  * whichkeyConfigObject.transient = true // set value
@@ -130,7 +130,7 @@ export const whichkeyConfigObject = defineConfigObject<Whichkey>(
   _whichkey.defaults
 )
 /**
- * Reactive ToConfigRefs of `configuration of whichkey`
+ * Reactive ToConfigRefs of `whichkey`
  * @example
  * let configValue:object =whichkeyConfigs.transient.value //get value 
  * whichkeyConfigs.transient.value = {"error":{"title":"Error transient","bindings":[{"key":"N","name":"Previous error","command":"editor.action.marker.prev"},{"key":"n","name":"Next error","command":"editor.action.marker.next"},{"key":"p","name":"Previous error","command":"editor.action.marker.prev"}]},"symbol":{"title":"Highlight symbol transient","bindings":[{"key":"p","name":"Previous occurrence","command":"editor.action.wordHighlight.prev"},{"key":"N","name":"Previous occurrence","command":"editor.action.wordHighlight.prev"},{"key":"n","name":"Next occurrence","command":"editor.action.wordHighlight.next"},{"key":"/","name":"Search in a project with a selection","commands":["editor.action.addSelectionToNextFindMatch","workbench.action.findInFiles"]}]},"lineMoving":{"title":"Line moving transient","bindings":[{"key":"J","name":"Move lines down","command":"editor.action.moveLinesDownAction"},{"key":"K","name":"Move lines up","command":"editor.action.moveLinesUpAction"}]},"frameZooming":{"title":"Frame zooming transient","bindings":[{"key":"=","name":"Zoom in","command":"workbench.action.zoomIn"},{"key":"+","name":"Zoom in","command":"workbench.action.zoomIn"},{"key":"-","name":"Zoom out","command":"workbench.action.zoomOut"},{"key":"0","name":"Reset zoom","command":"workbench.action.zoomReset"}]},"fontZooming":{"title":"Front zooming transient","bindings":[{"key":"=","name":"Zoom in","command":"editor.action.fontZoomIn"},{"key":"+","name":"Zoom in","command":"editor.action.fontZoomIn"},{"key":"-","name":"Zoom out","command":"editor.action.fontZoomOut"},{"key":"0","name":"Reset zoom","command":"editor.action.fontZoomReset"}]},"imageZooming":{"title":"Image zooming transient","bindings":[{"key":"=","name":"Zoom in","command":"imagePreview.zoomIn"},{"key":"+","name":"Zoom in","command":"imagePreview.zoomIn"},{"key":"-","name":"Zoom out","command":"imagePreview.zoomOut"}]},"smartExpand":{"title":"Smart expand transient","bindings":[{"key":"v","name":"Grow selection","command":"editor.action.smartSelect.grow"},{"key":"V","name":"Shrink selection","command":"editor.action.smartSelect.shrink"}]}} // set value

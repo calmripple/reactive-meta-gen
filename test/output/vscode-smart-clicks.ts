@@ -34,7 +34,7 @@ export const commands = {
 } satisfies Record<string, CommandKey>
 
 /**
- * Config keys of `configuration of smartClicks`
+ * Config keys of `smartClicks`
  */
 export interface SmartClicks {
   /**
@@ -68,15 +68,15 @@ export interface SmartClicks {
 }
 
 /**
- * Scoped defaults of `configuration of smartClicks`
+ * Scoped defaults of `smartClicks`
  */
 const _smartClicks = {
 /**
- * scope: `configuration of smartClicks`
+ * scope: `smartClicks`
  */
   scope: "smartClicks",
 /**
- * Keys' defaults of `configuration of smartClicks`
+ * Keys' defaults of `smartClicks`
  */
   defaults: {
     "clicksInterval": 600,
@@ -87,7 +87,7 @@ const _smartClicks = {
 }
 
 /**
- * Reactive ConfigObject of `configuration of smartClicks`
+ * Reactive ConfigObject of `smartClicks`
  * @example
  * let configValue = smartClicksConfigObject.clicksInterval //get value 
  * smartClicksConfigObject.clicksInterval = true // set value
@@ -98,7 +98,7 @@ export const smartClicksConfigObject = defineConfigObject<SmartClicks>(
   _smartClicks.defaults
 )
 /**
- * Reactive ToConfigRefs of `configuration of smartClicks`
+ * Reactive ToConfigRefs of `smartClicks`
  * @example
  * let configValue:number =smartClicksConfigs.clicksInterval.value //get value 
  * smartClicksConfigs.clicksInterval.value = 600 // set value

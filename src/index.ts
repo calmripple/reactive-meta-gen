@@ -373,16 +373,16 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
     }
 
     let varName = 'root'
-    let scopeComment = `configuration of ${scope}`
+    let scopeComment 
     if (scope) {
       varName = `${convertCamelCase(withoutExtensionPrefix(scope))}`
+      scopeComment = `${scope}`
     }
     else {
-
       while (config.scopedActivedConfigs.has(varName)) {
         varName = `root${upperFirst(varName)}`
       }
-      scopeComment = 'configuration of root'
+      scopeComment = `virtual(Keys in the root)`
     }
     const interfaceName = `${upperFirst(varName)}`
 
