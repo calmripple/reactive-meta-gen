@@ -447,7 +447,6 @@ export const commands = {
  * Type union of Deprecated all configs
  */
 export type DeprecatedConfigKey = 
-  | "i18n-ally.localesPaths"
   | "i18n-ally.derivedKeyRules"
   | "i18n-ally.filenameMatchRegex"
   | "i18n-ally.fileNamespace"
@@ -487,6 +486,13 @@ export interface I18nAlly {
    * @type `boolean`
    */
   "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @key `i18n-ally.localesPaths`
+   * @default `undefined`
+   * @type `string,array`
+   */
+  "localesPaths": (string | string[] | undefined),
   /**
    * %config.encoding%
    * @key `i18n-ally.encoding`
@@ -1049,6 +1055,7 @@ const _i18nAlly = {
   defaults: {
     "disabled": false,
     "autoDetection": true,
+    "localesPaths": undefined,
     "encoding": "utf-8",
     "sourceLanguage": undefined,
     "displayLanguage": undefined,

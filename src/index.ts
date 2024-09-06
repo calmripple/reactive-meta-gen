@@ -1,5 +1,4 @@
-import { camelCase, upperFirst } from 'scule'
-import { assign, isArray } from 'radash'
+import { assign, isArray, memo, camel } from 'radash'
 
 const forwardKeys = [
   'publisher',
@@ -31,7 +30,7 @@ export interface GenerateOptions {
 
 export interface ConfigurationProperty {
   type: string
-  default: any
+  default?: any
   description?: string
   enum?: any[]
   enumDescriptions?: string[]
@@ -42,29 +41,94 @@ export interface ConfigurationProperty {
   typeDescription?: string
   typeLabel?: string
   typeHint?: string
-  typeHintLabel?: string
+  typeHintLabel?: string,
+  properties?: Record<string, ConfigurationProperty>,
+  items?: ConfigurationProperty,
+  scope?: string,
+  additionalProperties?: boolean,
+  defaultSnippets?: any[],
+  allOf?: ConfigurationProperty[],
+  anyOf?: ConfigurationProperty[],
+  oneOf?: ConfigurationProperty[],
+  allErrors?: boolean,
+  allowComments?: boolean,
+  allowTrailingCommas?: boolean,
+  patternProperties?: Record<string, ConfigurationProperty>,
+  pattern?: string,
 }
 
 function isProperty(propterty: any): propterty is ConfigurationProperty {
-  const ret = Object.hasOwn(propterty, 'type') && (typeof propterty.type) === 'string'
+  const typeName = typeof propterty?.type
+  const ret = (typeName === 'string' || typeName === 'object')
   return ret
 }
 
-function convertCase(input: string) {
+const convertCamelCase = memo(function (input: string) {
   if (input.match(/^[a-z0-9$]*$/i) && !input.match(/^\d/)) // Valid JS identifier, keep as-is
     return input
-  return camelCase(input)
-}
+  return camel(input)
+})
 
-function getConfigObject(packageJson: any): Record<string, ConfigurationProperty> {
+const upperFirst = memo(function <S extends string>(str: S): Capitalize<S> {
+  return (str ? str[0].toUpperCase() + str.slice(1) : "") as Capitalize<S>;
+})
+
+const getConfigObject = memo(function (packageJson: any): Record<string, ConfigurationProperty> {
   const conf = packageJson.contributes?.configuration
   return (isArray(conf)
     ? conf.reduce((acc, cur) => assign(acc, cur), {}).properties
     : packageJson.contributes?.configuration?.properties
   ) || {}
-}
+})
+
+const getConfigInfo = memo(
+  function (packageJson: any) {
+    const deprecatedConfigs = new Map<string, ConfigurationProperty>()
+    const deprecatedKeys = new Array<string>()
+    const activedConfigs = new Map<string, ConfigurationProperty>()
+    const activedKeys = new Array<string>()
+    function addOrUpdate(target: Map<string, [string, ConfigurationProperty][]>, scope: string, value: [string, ConfigurationProperty]) {
+      const properties = target.get(scope)
+      if (properties) {
+        properties.push(value)
+      } else {
+        target.set(scope, [value])
+      }
+      return target
+    }
+    const scopedActivedConfigs = Object.entries(getConfigObject(packageJson)).reduce((acc, [fullKey, value]) => {
+      if (isProperty(value)) {
+        activedConfigs.set(fullKey, value)
+        activedKeys.push(fullKey)
+        const parts = fullKey.split('.')
+        if (parts.length > 1) {
+          const scopeParts = parts.slice(0, -1)
+          for (let i = 0; i < scopeParts.length; i++) {
+            let scope = (scopeParts.slice(0, i + 1).join('.'))
+            addOrUpdate(acc, scope, [fullKey, value])
+          }
+        }
+        else {
+          let scope = ('')
+          addOrUpdate(acc, scope, [fullKey, value])
+        }
+      } else {
+        deprecatedConfigs.set(fullKey, value)
+        deprecatedKeys.push(fullKey)
+      }
+      return acc
+    }, new Map<string, [string, ConfigurationProperty][]>())
+    return {
+      deprecatedConfigs,
+      deprecatedKeys,
+      activedConfigs,
+      activedKeys,
+      scopedActivedConfigs,
+    }
+  })
 
 export function generateMarkdown(packageJson: any) {
+  const config = getConfigInfo(packageJson)
   const MAX_TABLE_COL_CHAR = 150
 
   let commandsTable = [
@@ -91,12 +155,10 @@ export function generateMarkdown(packageJson: any) {
     commandsTable = []
   }
 
-  const configsObject = getConfigObject(packageJson)
-
-  if (Object.keys(configsObject).length) {
+  if (config.activedKeys.length) {
     configsTable.push(
-      ...Object.entries(configsObject)
-        .map(([key, value]: any) => {
+      ...[...config.activedConfigs.entries()]
+        .map(([key, value]) => {
           const defaultVal = defaultValFromSchema(value) || ''
           return [
             `\`${key}\``,
@@ -118,6 +180,7 @@ export function generateMarkdown(packageJson: any) {
 }
 
 export function generateDTS(packageJson: any, options: GenerateOptions = {}) {
+  const config = getConfigInfo(packageJson)
   let {
     header = true,
     namespace = false,
@@ -178,48 +241,16 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}) {
         return [
           ...commentBlock(`${c.title}\n@value \`${c.command}\`
 @example
-useCommand(commands.${convertCase(name)}, async () => {
+useCommand(commands.${convertCamelCase(name)}, async () => {
   //do actions or update config 
 })`, 2),
-          `  ${convertCase(name)}: ${JSON.stringify(c.command)},`,
+          `  ${convertCamelCase(name)}: ${JSON.stringify(c.command)},`,
         ]
       }),
     '} satisfies Record<string, CommandKey>',
   )
 
   // ========== Configs ==========
-  function addOrUpdate(target: Map<string, [string, ConfigurationProperty][]>, scope: string, value: [string, ConfigurationProperty]) {
-    const properties = target.get(scope)
-    if (properties) {
-      properties.push(value)
-    } else {
-      target.set(scope, [value])
-    }
-    return target
-  }
-  const configsObject = getConfigObject(packageJson)
-  const deprecatedConfigurationKeys = new Array<string>()
-  const configKeys = new Array<string>()
-  const scopeConfigurationKeyProperty = Object.entries(configsObject).reduce((acc, [fullKey, value]) => {
-    if (isProperty(value)) {
-      configKeys.push(fullKey)
-      const parts = fullKey.split('.')
-      if (parts.length > 1) {
-        const scopeParts = parts.slice(0, -1)
-        for (let i = 0; i < scopeParts.length; i++) {
-          let scope = (scopeParts.slice(0, i + 1).join('.'))
-          addOrUpdate(acc, scope, [fullKey, value])
-        }
-      }
-      else {
-        let scope = ('')
-        addOrUpdate(acc, scope, [fullKey, value])
-      }
-    } else {
-      deprecatedConfigurationKeys.push(fullKey)
-    }
-    return acc
-  }, new Map<string, [string, ConfigurationProperty][]>())
 
   // lines.push(
   //   '',
@@ -237,14 +268,14 @@ useCommand(commands.${convertCase(name)}, async () => {
   //   )
   // }
 
-  if (deprecatedConfigurationKeys.length) {
+  if (config.deprecatedKeys.length) {
     lines.push(
       '',
       ...commentBlock('Type union of Deprecated all configs'),
     )
     lines.push(
       'export type DeprecatedConfigKey = ',
-      ...deprecatedConfigurationKeys.map(c =>
+      ...config.deprecatedKeys.map(c =>
         `  | "${c}"`,
       ),
     )
@@ -318,11 +349,11 @@ useCommand(commands.${convertCase(name)}, async () => {
     let varName = 'root'
     let scopeComment = `configuration of ${scope}`
     if (scope) {
-      varName = `${convertCase(withoutExtensionPrefix(scope))}`
+      varName = `${convertCamelCase(withoutExtensionPrefix(scope))}`
     }
     else {
 
-      while (scopeConfigurationKeyProperty.has(varName)) {
+      while (config.scopedActivedConfigs.has(varName)) {
         varName = `root${upperFirst(varName)}`
       }
       scopeComment = 'configuration of root'
@@ -395,8 +426,13 @@ useCommand(commands.${convertCase(name)}, async () => {
     )
   }
 
+  config.scopedActivedConfigs.forEach((keyPropList, scope) => {
+    generateScopedDts(lines, keyPropList, scope)
+  })
+
   // for complatibility of pre version
-  function _genBase(lines: string[], scopedConfigs: [string, ConfigurationProperty][], scope: string) {
+  /*
+  function genBase(lines: string[], scopedConfigs: [string, ConfigurationProperty][], scope: string) {
     const scopeWithDot = `${scope}.`
 
     function removeScope(name: string) {
@@ -428,13 +464,11 @@ useCommand(commands.${convertCase(name)}, async () => {
     )
   }
   // for complatibility of pre version
-  // const scopedConfigs = Object.entries(configsObject)
-  //   .filter(([key]) => key.startsWith(extensionScopeWithDot))
-  // genBase(lines, scopedConfigs, extensionScope)
+  const scopedConfigs = Object.entries(configsObject)
+    .filter(([key]) => key.startsWith(extensionScopeWithDot))
+  genBase(lines, scopedConfigs, extensionScope)
+*/
 
-  scopeConfigurationKeyProperty.forEach((keyPropList, scope) => {
-    generateScopedDts(lines, keyPropList, scope)
-  })
   // ========== Namespace ==========
 
   if (namespace) {
@@ -553,7 +587,7 @@ function typeFromSchema(schema: any, isSubType = false): string {
     return `(${types.join(' | ')})`
 }
 
-export function defaultValFromSchema(schema: any): string | undefined {
+export function defaultValFromSchema(schema: ConfigurationProperty): string | undefined {
   if (schema.type !== 'object')
     return JSON.stringify(schema.default)
 
@@ -561,7 +595,7 @@ export function defaultValFromSchema(schema: any): string | undefined {
     return JSON.stringify(schema.default)
 
   if ('properties' in schema) {
-    const keyValues = Object.entries(schema.properties).map(([key, value]): string => {
+    const keyValues = Object.entries(schema.properties ?? {}).map(([key, value]): string => {
       return `${JSON.stringify(key)}: ${defaultValFromSchema(value)}`
     })
 
