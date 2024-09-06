@@ -29,6 +29,7 @@ cli.command('[input]', 'Generate TypeScript files from package.json')
       const content = raw
         .replace(/<!-- commands -->[\s\S]*<!-- commands -->/, `<!-- commands -->\n\n${markdown.commandsTable}\n\n<!-- commands -->`)
         .replace(/<!-- configs -->[\s\S]*<!-- configs -->/, `<!-- configs -->\n\n${markdown.configsTable}\n\n<!-- configs -->`)
+        .replace(/<!-- configsJson -->[\s\S]*<!-- configsJson -->/, `<!-- configsJson -->\n\n${markdown.configsJson}\n\n<!-- configsJson -->`)
 
       if (raw === content && !raw.includes('<!-- commands -->') && !raw.includes('<!-- configs -->')) {
         // eslint-disable-next-line no-console

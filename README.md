@@ -316,7 +316,7 @@ For a full example, check [this file](./test/sampleCase.ts)
 
 ## Generate Docs
 
-Add comments `<!-- commands -->` and `<!-- configs -->` as the slots in your README.md:
+Add comments `<!-- commands -->` and `<!-- configs -->` and `<!-- configsJson -->` as the slots in your README.md:
 
 ```md
 # Your Extension
@@ -330,6 +330,11 @@ Add comments `<!-- commands -->` and `<!-- configs -->` as the slots in your REA
 
 <!-- configs -->
 <!-- configs -->
+
+## Configurations Json
+
+<!-- configsJson -->
+<!-- configsJson -->
 ```
 
 They will be replaced with the generated tables when you run `npx reactive-meta-gen`.

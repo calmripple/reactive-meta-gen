@@ -8,6 +8,35 @@
 | `project-config.remove-watch-dir` | Project Config Updater: remove watch dir  |
 | `project-config.add-watch-dir`    | Project Config Updater: add watch dir     |
 
+## Configuration Json
+
+```json
+{
+  //`string`, The branch name of upstream repo 
+  "project-config.fileNestingUpdater.upstreamBranch": "main",
+
+  //`string`, The upstream repo you want to update from 
+  "project-config.fileNestingUpdater.upstreamRepo": "antfu/vscode-file-nesting-config",
+
+  //`boolean`, Enabled project-config inline annotations 
+  "project-config.test.annotations": true,
+
+  //("after" | "before")
+  //Position the icon before or after the icon name
+  "project-config.test.position": "before",
+
+  //`boolean`, Enabled project-config inline annotations 
+  "xxx": true,
+
+  //`boolean`, Enabled project-config inline annotations 
+  "project-config2.test.annotations": true,
+
+  //`boolean`, Enabled project-config inline annotations 
+  "yyyy": true,
+
+}
+```
+
 ## Configuration
 
 | Key                                                | Description                                     | Type      | Default                              |

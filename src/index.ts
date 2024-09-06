@@ -139,6 +139,7 @@ export function generateMarkdown(packageJson: any) {
     ['Key', 'Description', 'Type', 'Default'],
   ]
 
+  let configsJson: string[] = []
   if (packageJson.contributes?.commands.length) {
     commandsTable.push(
       ...packageJson.contributes.commands.map((c: any) => {
@@ -162,12 +163,36 @@ export function generateMarkdown(packageJson: any) {
           const defaultVal = defaultValFromSchema(value) || ''
           return [
             `\`${key}\``,
-            value?.description || '',
+            value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(",") ?? '',
             `\`${String(value.type)}\``,
             defaultVal.length < MAX_TABLE_COL_CHAR ? `\`${defaultVal}\`` : 'See package.json',
           ]
         }),
     )
+    configsJson.push(
+      String("```json"),
+      `{`,
+      ...[...config.activedConfigs.entries()]
+        .flatMap(([key, value]) => {
+          const defaultVal = defaultValFromSchema(value) || ''
+          const type = typeFromSchema(value)
+          if (type?.length > 10) {
+            return [
+              `  //${type}`,
+              `  //${value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(",") ?? ''}`,
+              `  "${key}": ${defaultVal.length < MAX_TABLE_COL_CHAR ? `${defaultVal}` : 'See package.json'},`,
+              ''
+            ]
+          } else {
+            return [
+              `  //\`${type}\`, ${value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(",") ?? ''} `,
+              `  "${key}": ${defaultVal.length < MAX_TABLE_COL_CHAR ? `${defaultVal}` : 'See package.json'},`,
+              ''
+            ]
+          }
+        }),
+      `}`,
+      String("```"))
   }
   else {
     configsTable = []
@@ -176,6 +201,7 @@ export function generateMarkdown(packageJson: any) {
   return {
     commandsTable: formatTable(commandsTable),
     configsTable: formatTable(configsTable),
+    configsJson: configsJson.join('\n'),
   }
 }
 
@@ -512,6 +538,28 @@ export function generate(packageJson: any, options: GenerateOptions = {}) {
   }
 }
 
+function jsonObject(props?: [comment: string, key: string, value: string][], padding = 0): string[] {
+  const indent = ' '.repeat(padding)
+  return props?.flatMap(([comment, key, value]) => {
+    return [`//${comment}`,
+    `${indent}${key}: ${value}`]
+  }).map(l => `  ${indent}${l}`) ?? []
+}
+function jsonBlock(text: string, padding = 0): string[] {
+  const indent = ' '.repeat(padding)
+  if (!text) {
+    return []
+  }
+
+  const _text = text
+
+  return [
+    `${indent}{`,
+    ..._text.split(/\n/g).map(l => `${indent} * ${l}`),
+    `${indent}}`,
+  ]
+}
+
 function commentBlock(text?: string, padding = 0): string[] {
   const indent = ' '.repeat(padding)
   if (!text) {
@@ -528,7 +576,7 @@ function commentBlock(text?: string, padding = 0): string[] {
   ]
 }
 
-function typeFromSchema(schema: any, isSubType = false): string {
+function typeFromSchema(schema: ConfigurationProperty, isSubType = false): string {
   if (!schema)
     return 'unknown'
 
