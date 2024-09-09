@@ -19,6 +19,8 @@ export type CommandKey =
   | "project-config.manualUpdate"
   | "project-config.remove-watch-dir"
   | "project-config.add-watch-dir"
+  | "extension.emeraldwalk.enableRunOnSave"
+  | "extension.emeraldwalk.disableRunOnSave"
 
 /**
  * Commands map registed by `cnjimbo.project-config`
@@ -51,6 +53,24 @@ export const commands = {
    * })
    */
   addWatchDir: "project-config.add-watch-dir",
+  /**
+   * Run On Save: Enable
+   * @value `extension.emeraldwalk.enableRunOnSave`
+   * @example
+   * useCommand(commands.extensionEmeraldwalkEnableRunOnSave, async () => {
+   *   //do actions or update config 
+   * })
+   */
+  extensionEmeraldwalkEnableRunOnSave: "extension.emeraldwalk.enableRunOnSave",
+  /**
+   * Run On Save: Disable
+   * @value `extension.emeraldwalk.disableRunOnSave`
+   * @example
+   * useCommand(commands.extensionEmeraldwalkDisableRunOnSave, async () => {
+   *   //do actions or update config 
+   * })
+   */
+  extensionEmeraldwalkDisableRunOnSave: "extension.emeraldwalk.disableRunOnSave",
 } satisfies Record<string, CommandKey>
 
 /**
@@ -269,13 +289,6 @@ export interface Root {
    * @type `boolean`
    */
   "xxx": boolean,
-  /**
-   * Enabled project-config inline annotations
-   * @key `yyyy`
-   * @default `true`
-   * @type `boolean`
-   */
-  "yyyy": boolean,
 }
 
 /**
@@ -291,7 +304,6 @@ const _root = {
  */
   defaults: {
     "xxx": true,
-    "yyyy": true,
   } satisfies Root,
 }
 
@@ -320,107 +332,54 @@ export const rootConfigs = defineConfigs<Root>(
 )
 
 /**
- * Config keys of `project-config2`
+ * Config keys of `emeraldwalk`
  */
-export interface ProjectConfig2 {
+export interface Emeraldwalk {
   /**
-   * Enabled project-config inline annotations
-   * @key `project-config2.test.annotations`
-   * @default `true`
-   * @type `boolean`
+   * 
+   * @key `emeraldwalk.runonsave`
+   * @default `{ "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": [] }`
+   * @type `object`
    */
-  "test.annotations": boolean,
+  "runonsave": { 'autoClearConsole': boolean; 'shell': string; 'delimiters': string[]; 'delimiters1': unknown[]; 'commands': { 'match': string; 'notMatch': string; 'cmd': string; 'isAsync': boolean }[] },
 }
 
 /**
- * Scoped defaults of `project-config2`
+ * Scoped defaults of `emeraldwalk`
  */
-const _projectConfig2 = {
+const _emeraldwalk = {
 /**
- * scope: `project-config2`
+ * scope: `emeraldwalk`
  */
-  scope: "project-config2",
+  scope: "emeraldwalk",
 /**
- * Keys' defaults of `project-config2`
+ * Keys' defaults of `emeraldwalk`
  */
   defaults: {
-    "test.annotations": true,
-  } satisfies ProjectConfig2,
+    "runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": [] },
+  } satisfies Emeraldwalk,
 }
 
 /**
- * Reactive ConfigObject of `project-config2`
+ * Reactive ConfigObject of `emeraldwalk`
  * @example
- * let configValue = projectConfig2ConfigObject.test.annotations //get value 
- * projectConfig2ConfigObject.test.annotations = true // set value
- * projectConfig2ConfigObject.$update("test.annotations", !configValue, ConfigurationTarget.Workspace, true)
+ * let configValue = emeraldwalkConfigObject.runonsave //get value 
+ * emeraldwalkConfigObject.runonsave = true // set value
+ * emeraldwalkConfigObject.$update("runonsave", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const projectConfig2ConfigObject = defineConfigObject<ProjectConfig2>(
-  _projectConfig2.scope,
-  _projectConfig2.defaults
+export const emeraldwalkConfigObject = defineConfigObject<Emeraldwalk>(
+  _emeraldwalk.scope,
+  _emeraldwalk.defaults
 )
 /**
- * Reactive ToConfigRefs of `project-config2`
+ * Reactive ToConfigRefs of `emeraldwalk`
  * @example
- * let configValue:boolean =projectConfig2Configs.test.annotations.value //get value 
- * projectConfig2Configs.test.annotations.value = true // set value
+ * let configValue:object =emeraldwalkConfigs.runonsave.value //get value 
+ * emeraldwalkConfigs.runonsave.value = { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": [] } // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * projectConfig2Configs.test.annotations.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * emeraldwalkConfigs.runonsave.update(true, ConfigurationTarget.WorkspaceFolder, true)
  */
-export const projectConfig2Configs = defineConfigs<ProjectConfig2>(
-  _projectConfig2.scope,
-  _projectConfig2.defaults
-)
-
-/**
- * Config keys of `project-config2.test`
- */
-export interface ProjectConfig2Test {
-  /**
-   * Enabled project-config inline annotations
-   * @key `project-config2.test.annotations`
-   * @default `true`
-   * @type `boolean`
-   */
-  "annotations": boolean,
-}
-
-/**
- * Scoped defaults of `project-config2.test`
- */
-const _projectConfig2Test = {
-/**
- * scope: `project-config2.test`
- */
-  scope: "project-config2.test",
-/**
- * Keys' defaults of `project-config2.test`
- */
-  defaults: {
-    "annotations": true,
-  } satisfies ProjectConfig2Test,
-}
-
-/**
- * Reactive ConfigObject of `project-config2.test`
- * @example
- * let configValue = projectConfig2TestConfigObject.annotations //get value 
- * projectConfig2TestConfigObject.annotations = true // set value
- * projectConfig2TestConfigObject.$update("annotations", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const projectConfig2TestConfigObject = defineConfigObject<ProjectConfig2Test>(
-  _projectConfig2Test.scope,
-  _projectConfig2Test.defaults
-)
-/**
- * Reactive ToConfigRefs of `project-config2.test`
- * @example
- * let configValue:boolean =projectConfig2TestConfigs.annotations.value //get value 
- * projectConfig2TestConfigs.annotations.value = true // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * projectConfig2TestConfigs.annotations.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const projectConfig2TestConfigs = defineConfigs<ProjectConfig2Test>(
-  _projectConfig2Test.scope,
-  _projectConfig2Test.defaults
+export const emeraldwalkConfigs = defineConfigs<Emeraldwalk>(
+  _emeraldwalk.scope,
+  _emeraldwalk.defaults
 )

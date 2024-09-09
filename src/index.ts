@@ -44,6 +44,7 @@ export interface ConfigurationProperty {
   typeHintLabel?: string,
   properties?: Record<string, ConfigurationProperty>,
   items?: ConfigurationProperty,
+  item?: ConfigurationProperty,
   scope?: string,
   additionalProperties?: boolean,
   defaultSnippets?: any[],
@@ -373,7 +374,7 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
     }
 
     let varName = 'root'
-    let scopeComment 
+    let scopeComment
     if (scope) {
       varName = `${convertCamelCase(withoutExtensionPrefix(scope))}`
       scopeComment = `${scope}`
@@ -402,7 +403,7 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
               `@default \`${defaultValue}\``,
               `@type \`${value.type}\``,
             ].join('\n'), 2),
-            `  ${JSON.stringify(removeScope(key))}: ${typeFromSchema(value)},`,
+            `  ${JSON.stringify(removeScope(key))}${defaultValue === undefined ? "?" : ""}: ${typeFromSchema(value)},`,
           ]
         }),
       '}',
@@ -636,11 +637,31 @@ function typeFromSchema(schema: ConfigurationProperty, isSubType = false): strin
 }
 
 export function defaultValFromSchema(schema: ConfigurationProperty): string | undefined {
-  if (schema.type !== 'object')
-    return JSON.stringify(schema.default)
+  // if (schema.type !== 'object')
+  //   return JSON.stringify(schema.default)
 
   if ('default' in schema)
     return JSON.stringify(schema.default)
+
+  if (schema.type === 'array') {
+    // if (schema.item) {
+    //   return `${JSON.stringify(schema.item.type)}[]`
+    // }
+    // if (schema.items) {
+    //   if (schema.items.properties) {
+    //     if (schema.items.type === "object") {
+    //       const keyValues = Object.entries(schema.items.properties).map(([key, value]): string => {
+    //         return `${JSON.stringify(key)}: ${defaultValFromSchema(value)}`
+    //       })
+    //       return `{ ${keyValues.join(', ')} }[]`
+    //     }
+
+    //   } else if (schema.items.type) {
+    //     return `${schema.items.type}[]`
+    //   }
+    // }
+    return '[]'
+  }
 
   if ('properties' in schema) {
     const keyValues = Object.entries(schema.properties ?? {}).map(([key, value]): string => {
@@ -649,8 +670,11 @@ export function defaultValFromSchema(schema: ConfigurationProperty): string | un
 
     return `{ ${keyValues.join(', ')} }`
   }
-
-  return '{}'
+  if (schema.type === 'object') {
+    return '{}'
+  }
+  // console.log(schema)
+  return undefined
 }
 
 export function formatTable(table: string[][]) {

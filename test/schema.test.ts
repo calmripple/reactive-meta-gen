@@ -63,6 +63,6 @@ describe('schema -> default value', () => {
         },
       },
     }))
-      .toEqual('{ "foo": { "baz": "the baz", "qux": 0, "arr": undefined }, "bar": false }')
+      .toEqual('{ "foo": { "baz": "the baz", "qux": 0, "arr": [] }, "bar": false }')
   })
 })
