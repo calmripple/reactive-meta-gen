@@ -1,8 +1,10 @@
 import fs from 'node:fs/promises'
+import { existsSync } from 'node:fs'
 import path from 'node:path'
 import cac from 'cac'
 import { version } from '../package.json'
 import { generate } from '.'
+import { execSync } from 'node:child_process';
 
 const cli = cac()
   .version(version)
@@ -20,9 +22,13 @@ cli.command('[input]', 'Generate TypeScript files from package.json')
       namespace: options.namespace === 'false' ? false : options.namespace,
       extensionScope: options.scope,
     })
-    const outputDir = path.dirname(options.output)
-    await fs.mkdir(outputDir, { recursive: true })
-    await fs.writeFile(options.output, dts, 'utf-8')
+    if (existsSync(options.output) && await fs.readFile(options.output, 'utf-8') === dts) {
+      console.log(`No changes of '${input}','${options.output}' is up to date.`)
+    } else {
+      const outputDir = path.dirname(options.output)
+      await fs.mkdir(outputDir, { recursive: true })
+      await fs.writeFile(options.output, dts, 'utf-8')
+    }
 
     if (options.readme && options.readme !== 'false') {
       const raw = await fs.readFile(options.readme, 'utf-8')
@@ -30,7 +36,7 @@ cli.command('[input]', 'Generate TypeScript files from package.json')
         .replace(/<!-- commands -->[\s\S]*<!-- commands -->/, `<!-- commands -->\n\n${markdown.commandsTable}\n\n<!-- commands -->`)
         .replace(/<!-- configs -->[\s\S]*<!-- configs -->/, `<!-- configs -->\n\n${markdown.configsTable}\n\n<!-- configs -->`)
         .replace(/<!-- configsJson -->[\s\S]*<!-- configsJson -->/, `<!-- configsJson -->\n\n${markdown.configsJson}\n\n<!-- configsJson -->`)
-      
+
       if (raw === content && !raw.includes('<!-- commands -->') && !raw.includes('<!-- configs -->') && !raw.includes('<!-- configsJson -->')) {
         // eslint-disable-next-line no-console
         console.log('Add `<!-- commands --><!-- commands -->` and `<!-- configs --><!-- configs -->`  and `<!-- configsJson --><!-- configsJson -->` to your README.md to insert commands and configurations table')
