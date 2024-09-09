@@ -1,5 +1,5 @@
 import { assign, isArray, memo, camel } from 'radash'
-
+import { compile } from 'json-schema-to-typescript'
 const forwardKeys = [
   'publisher',
   'name',
@@ -57,7 +57,11 @@ export interface ConfigurationProperty {
   patternProperties?: Record<string, ConfigurationProperty>,
   pattern?: string,
 }
-
+export interface ConfigurationObject {
+  title: string,
+  type: string | string[]
+  properties: Record<string, ConfigurationProperty>
+}
 function isProperty(propterty: any): propterty is ConfigurationProperty {
   const typeName = typeof propterty?.type
   const ret = (typeName === 'string' || typeName === 'object')
@@ -74,12 +78,9 @@ const upperFirst = memo(function <S extends string>(str: S): Capitalize<S> {
   return (str ? str[0].toUpperCase() + str.slice(1) : "") as Capitalize<S>;
 })
 
-const getConfigObject = memo(function (packageJson: any): Record<string, ConfigurationProperty> {
+const getConfigObject = memo(function (packageJson: any): ConfigurationObject[] {
   const conf = packageJson.contributes?.configuration
-  return (isArray(conf)
-    ? conf.reduce((acc, cur) => assign(acc, cur), {}).properties
-    : packageJson.contributes?.configuration?.properties
-  ) || {}
+  return (isArray(conf) ? [...conf] : [packageJson.contributes?.configuration as ConfigurationObject])
 })
 
 const getConfigInfo = memo(
@@ -307,62 +308,6 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
       ),
     )
   }
-  // lines.push(
-  //   '',
-  //   'export interface ConfigKeyTypeMap {',
-  //   ...Object.entries(configsObject)
-  //     .flatMap(([key, value]: any) => {
-  //       return [
-  //         `  ${JSON.stringify(key)}: ${typeFromSchema(value)},`,
-  //       ]
-  //     }),
-  //   '}',
-  // )
-
-  // lines.push(
-  //   '',
-  //   'export interface ConfigShorthandMap {',
-  //   ...Object.entries(configsObject)
-  //     .flatMap(([key]: any) => {
-  //       return [
-  //         `  ${convertCase(withoutExtensionPrefix(key))}: ${JSON.stringify(key)},`,
-  //       ]
-  //     }),
-  //   '}',
-  // )
-
-  // lines.push(
-  //   '',
-  //   `export interface ConfigItem<T extends keyof ConfigKeyTypeMap> {`,
-  //   `  key: T,`,
-  //   `  default: ConfigKeyTypeMap[T],`,
-  //   `}`,
-  //   '',
-  // )
-
-  // lines.push(
-  //   '',
-  //   ...commentBlock(`Configs map registed by \`${extensionId}\``),
-  //   'export const configs = {',
-  //   ...Object.entries(configsObject)
-  //     .flatMap(([key, value]: any) => {
-  //       const name = withoutExtensionPrefix(key)
-  //       const defaultValue = defaultValFromSchema(value)
-  //       return [
-  //         ...commentBlock([
-  //           value.description,
-  //           `@key \`${key}\``,
-  //           `@default \`${defaultValue}\``,
-  //           `@type \`${value.type}\``,
-  //         ].join('\n'), 2),
-  //         `  ${convertCase(name)}: {`,
-  //         `    key: "${key}",`,
-  //         `    default: ${defaultValue},`,
-  //         `  } as ConfigItem<"${key}">,`,
-  //       ]
-  //     }),
-  //   '}',
-  // )
 
   function generateScopedDts(lines: string[], scopedConfigs: [string, ConfigurationProperty][], scope: string) {
     const scopeWithDot = `${scope}.`

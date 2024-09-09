@@ -54,166 +54,159 @@ export const commands = {
 } satisfies Record<string, CommandKey>
 
 /**
- * Config keys of `sample`
+ * Config keys of `virtual(Keys in the root)`
  */
-export interface Sample {
+export interface Root {
   /**
-   * Use icon graph to replace the icon name.
-   * @key `sample.inplace`
-   * @default `true`
-   * @type `boolean`
-   */
-  "inplace": boolean,
-  /**
-   * Enabled sample inline annotations
-   * @key `sample.annotations`
-   * @default `true`
-   * @type `boolean`
-   */
-  "annotations": boolean,
-  /**
-   * Position the icon before or after the icon name
-   * @key `sample.position`
-   * @default `"before"`
-   * @type `string`
-   */
-  "position": ("before" | "after"),
-  /**
-   * Icon color hex for inline displaying
-   * @key `sample.color`
-   * @default `"auto"`
-   * @type `string`
-   */
-  "color": string,
-  /**
-   * Delimiters for separating between collection id and icon id
-   * @key `sample.delimiters`
-   * @default `[":","--","-","/"]`
-   * @type `array`
-   */
-  "delimiters": (string | undefined)[],
-  /**
-   * Prefixes for matching
-   * @key `sample.prefixes`
-   * @default `["","i-","~icons/"]`
-   * @type `array`
-   */
-  "prefixes": (string | undefined)[],
-  /**
-   * Suffixes for matching
-   * @key `sample.suffixes`
-   * @default `["","i-"]`
-   * @type `array`
-   */
-  "suffixes": (string | undefined)[],
-  /**
-   * Array of language IDs to enable annotations
-   * @key `sample.languageIds`
-   * @default `["javascript","javascriptreact","typescript","typescriptreact","vue","svelte","html","pug","json","yaml"]`
-   * @type `array`
-   */
-  "languageIds": (string | undefined)[],
-  /**
-   * Collection IDs to be included for detection
-   * @key `sample.includes`
-   * @default `null`
-   * @type `array`
-   */
-  "includes": ("academicons" | "akar-icons" | "ant-design" | "arcticons" | "basil" | "bi" | "bitcoin-icons" | "bpmn" | "brandico" | "bx" | "bxl" | "bxs" | "bytesize" | "carbon" | "cbi" | "charm" | "ci" | "cib" | "cif" | "cil" | "circle-flags" | "circum" | "clarity" | "codicon" | "covid" | "cryptocurrency" | "cryptocurrency-color" | "dashicons" | "devicon" | "devicon-plain" | "ei" | "el" | "emojione" | "emojione-monotone" | "emojione-v1" | "entypo" | "entypo-social" | "eos-icons" | "ep" | "et" | "eva" | "f7" | "fa" | "fa-brands" | "fa-regular" | "fa-solid" | "fa6-brands" | "fa6-regular" | "fa6-solid" | "fad" | "fe" | "feather" | "file-icons" | "flag" | "flagpack" | "flat-color-icons" | "flat-ui" | "flowbite" | "fluent" | "fluent-emoji" | "fluent-emoji-flat" | "fluent-emoji-high-contrast" | "fluent-mdl2" | "fontelico" | "fontisto" | "formkit" | "foundation" | "fxemoji" | "gala" | "game-icons" | "geo" | "gg" | "gis" | "gravity-ui" | "gridicons" | "grommet-icons" | "guidance" | "healthicons" | "heroicons" | "heroicons-outline" | "heroicons-solid" | "humbleicons" | "ic" | "icomoon-free" | "icon-park" | "icon-park-outline" | "icon-park-solid" | "icon-park-twotone" | "iconamoon" | "iconoir" | "icons8" | "il" | "ion" | "iwwa" | "jam" | "la" | "lets-icons" | "line-md" | "logos" | "ls" | "lucide" | "mage" | "majesticons" | "maki" | "map" | "marketeq" | "material-symbols" | "material-symbols-light" | "mdi" | "mdi-light" | "medical-icon" | "memory" | "meteocons" | "mi" | "mingcute" | "mono-icons" | "mynaui" | "nimbus" | "nonicons" | "noto" | "noto-v1" | "octicon" | "oi" | "ooui" | "openmoji" | "oui" | "pajamas" | "pepicons" | "pepicons-pencil" | "pepicons-pop" | "pepicons-print" | "ph" | "pixelarticons" | "prime" | "ps" | "quill" | "radix-icons" | "raphael" | "ri" | "si-glyph" | "simple-icons" | "simple-line-icons" | "skill-icons" | "solar" | "streamline" | "streamline-emojis" | "subway" | "svg-spinners" | "system-uicons" | "tabler" | "tdesign" | "teenyicons" | "token" | "token-branded" | "topcoat" | "twemoji" | "typcn" | "uil" | "uim" | "uis" | "uit" | "uiw" | "unjs" | "vaadin" | "vs" | "vscode-icons" | "websymbol" | "whh" | "wi" | "wpf" | "zmdi" | "zondicons" | undefined)[],
-  /**
-   * Collection IDs to be excluded for detection
-   * @key `sample.excludes`
-   * @default `null`
-   * @type `array`
-   */
-  "excludes": ("academicons" | "akar-icons" | "ant-design" | "arcticons" | "basil" | "bi" | "bitcoin-icons" | "bpmn" | "brandico" | "bx" | "bxl" | "bxs" | "bytesize" | "carbon" | "cbi" | "charm" | "ci" | "cib" | "cif" | "cil" | "circle-flags" | "circum" | "clarity" | "codicon" | "covid" | "cryptocurrency" | "cryptocurrency-color" | "dashicons" | "devicon" | "devicon-plain" | "ei" | "el" | "emojione" | "emojione-monotone" | "emojione-v1" | "entypo" | "entypo-social" | "eos-icons" | "ep" | "et" | "eva" | "f7" | "fa" | "fa-brands" | "fa-regular" | "fa-solid" | "fa6-brands" | "fa6-regular" | "fa6-solid" | "fad" | "fe" | "feather" | "file-icons" | "flag" | "flagpack" | "flat-color-icons" | "flat-ui" | "flowbite" | "fluent" | "fluent-emoji" | "fluent-emoji-flat" | "fluent-emoji-high-contrast" | "fluent-mdl2" | "fontelico" | "fontisto" | "formkit" | "foundation" | "fxemoji" | "gala" | "game-icons" | "geo" | "gg" | "gis" | "gravity-ui" | "gridicons" | "grommet-icons" | "guidance" | "healthicons" | "heroicons" | "heroicons-outline" | "heroicons-solid" | "humbleicons" | "ic" | "icomoon-free" | "icon-park" | "icon-park-outline" | "icon-park-solid" | "icon-park-twotone" | "iconamoon" | "iconoir" | "icons8" | "il" | "ion" | "iwwa" | "jam" | "la" | "lets-icons" | "line-md" | "logos" | "ls" | "lucide" | "mage" | "majesticons" | "maki" | "map" | "marketeq" | "material-symbols" | "material-symbols-light" | "mdi" | "mdi-light" | "medical-icon" | "memory" | "meteocons" | "mi" | "mingcute" | "mono-icons" | "mynaui" | "nimbus" | "nonicons" | "noto" | "noto-v1" | "octicon" | "oi" | "ooui" | "openmoji" | "oui" | "pajamas" | "pepicons" | "pepicons-pencil" | "pepicons-pop" | "pepicons-print" | "ph" | "pixelarticons" | "prime" | "ps" | "quill" | "radix-icons" | "raphael" | "ri" | "si-glyph" | "simple-icons" | "simple-line-icons" | "skill-icons" | "solar" | "streamline" | "streamline-emojis" | "subway" | "svg-spinners" | "system-uicons" | "tabler" | "tdesign" | "teenyicons" | "token" | "token-branded" | "topcoat" | "twemoji" | "typcn" | "uil" | "uim" | "uis" | "uit" | "uiw" | "unjs" | "vaadin" | "vs" | "vscode-icons" | "websymbol" | "whh" | "wi" | "wpf" | "zmdi" | "zondicons" | undefined)[],
-  /**
-   * CDN entry of sample icon-sets
-   * @key `sample.cdnEntry`
-   * @default `"https://icones.js.org/collections"`
-   * @type `string`
-   */
-  "cdnEntry": string,
-  /**
-   * JSON paths for custom collection
-   * @key `sample.customCollectionJsonPaths`
-   * @default `[]`
-   * @type `array`
-   */
-  "customCollectionJsonPaths": (string | undefined)[],
-  /**
-   * Collection IDs Map for collection name alias, e.g. { 'mc': 'mingcute' }
-   * @key `sample.customCollectionIdsMap`
-   * @default `{}`
+   * 
+   * @key `0`
+   * @default `{ "sample.inplace": true, "sample.annotations": true, "sample.position": "before", "sample.color": "auto", "sample.delimiters": [":","--","-","/"], "sample.prefixes": ["","i-","~icons/"], "sample.suffixes": ["","i-"], "sample.languageIds": ["javascript","javascriptreact","typescript","typescriptreact","vue","svelte","html","pug","json","yaml"], "sample.includes": null, "sample.excludes": null, "sample.cdnEntry": "https://icones.js.org/collections", "sample.customCollectionJsonPaths": [], "sample.customCollectionIdsMap": {}, "sample.customAliasesJsonPaths": [], "sample.customAliasesOnly": false }`
    * @type `object`
    */
-  "customCollectionIdsMap": Record<string, unknown>,
-  /**
-   * JSON paths for custom aliases
-   * @key `sample.customAliasesJsonPaths`
-   * @default `[]`
-   * @type `array`
-   */
-  "customAliasesJsonPaths": (string | undefined)[],
-  /**
-   * Only use the icon aliases. Non aliased icons will be ignored.
-   * @key `sample.customAliasesOnly`
-   * @default `false`
-   * @type `boolean`
-   */
-  "customAliasesOnly": boolean,
+  "0": { 
+    /**
+     * Use icon graph to replace the icon name.
+     * @key `sample.inplace`
+     * @default `true`
+     * @type `boolean`
+     */
+    'sample.inplace': boolean
+    /**
+     * Enabled sample inline annotations
+     * @key `sample.annotations`
+     * @default `true`
+     * @type `boolean`
+     */
+    'sample.annotations': boolean
+    /**
+     * Position the icon before or after the icon name
+     * @key `sample.position`
+     * @default `"before"`
+     * @type `string`
+     */
+    'sample.position': ("before" | "after")
+    /**
+     * Icon color hex for inline displaying
+     * @key `sample.color`
+     * @default `"auto"`
+     * @type `string`
+     */
+    'sample.color': string
+    /**
+     * Delimiters for separating between collection id and icon id
+     * @key `sample.delimiters`
+     * @default `[":","--","-","/"]`
+     * @type `array`
+     */
+    'sample.delimiters': (string | undefined)[]
+    /**
+     * Prefixes for matching
+     * @key `sample.prefixes`
+     * @default `["","i-","~icons/"]`
+     * @type `array`
+     */
+    'sample.prefixes': (string | undefined)[]
+    /**
+     * Suffixes for matching
+     * @key `sample.suffixes`
+     * @default `["","i-"]`
+     * @type `array`
+     */
+    'sample.suffixes': (string | undefined)[]
+    /**
+     * Array of language IDs to enable annotations
+     * @key `sample.languageIds`
+     * @default `["javascript","javascriptreact","typescript","typescriptreact","vue","svelte","html","pug","json","yaml"]`
+     * @type `array`
+     */
+    'sample.languageIds': (string | undefined)[]
+    /**
+     * Collection IDs to be included for detection
+     * @key `sample.includes`
+     * @default `null`
+     * @type `array`
+     */
+    'sample.includes': (("academicons" | "akar-icons" | "ant-design" | "arcticons" | "basil" | "bi" | "bitcoin-icons" | "bpmn" | "brandico" | "bx" | "bxl" | "bxs" | "bytesize" | "carbon" | "cbi" | "charm" | "ci" | "cib" | "cif" | "cil" | "circle-flags" | "circum" | "clarity" | "codicon" | "covid" | "cryptocurrency" | "cryptocurrency-color" | "dashicons" | "devicon" | "devicon-plain" | "ei" | "el" | "emojione" | "emojione-monotone" | "emojione-v1" | "entypo" | "entypo-social" | "eos-icons" | "ep" | "et" | "eva" | "f7" | "fa" | "fa-brands" | "fa-regular" | "fa-solid" | "fa6-brands" | "fa6-regular" | "fa6-solid" | "fad" | "fe" | "feather" | "file-icons" | "flag" | "flagpack" | "flat-color-icons" | "flat-ui" | "flowbite" | "fluent" | "fluent-emoji" | "fluent-emoji-flat" | "fluent-emoji-high-contrast" | "fluent-mdl2" | "fontelico" | "fontisto" | "formkit" | "foundation" | "fxemoji" | "gala" | "game-icons" | "geo" | "gg" | "gis" | "gravity-ui" | "gridicons" | "grommet-icons" | "guidance" | "healthicons" | "heroicons" | "heroicons-outline" | "heroicons-solid" | "humbleicons" | "ic" | "icomoon-free" | "icon-park" | "icon-park-outline" | "icon-park-solid" | "icon-park-twotone" | "iconamoon" | "iconoir" | "icons8" | "il" | "ion" | "iwwa" | "jam" | "la" | "lets-icons" | "line-md" | "logos" | "ls" | "lucide" | "mage" | "majesticons" | "maki" | "map" | "marketeq" | "material-symbols" | "material-symbols-light" | "mdi" | "mdi-light" | "medical-icon" | "memory" | "meteocons" | "mi" | "mingcute" | "mono-icons" | "mynaui" | "nimbus" | "nonicons" | "noto" | "noto-v1" | "octicon" | "oi" | "ooui" | "openmoji" | "oui" | "pajamas" | "pepicons" | "pepicons-pencil" | "pepicons-pop" | "pepicons-print" | "ph" | "pixelarticons" | "prime" | "ps" | "quill" | "radix-icons" | "raphael" | "ri" | "si-glyph" | "simple-icons" | "simple-line-icons" | "skill-icons" | "solar" | "streamline" | "streamline-emojis" | "subway" | "svg-spinners" | "system-uicons" | "tabler" | "tdesign" | "teenyicons" | "token" | "token-branded" | "topcoat" | "twemoji" | "typcn" | "uil" | "uim" | "uis" | "uit" | "uiw" | "unjs" | "vaadin" | "vs" | "vscode-icons" | "websymbol" | "whh" | "wi" | "wpf" | "zmdi" | "zondicons" | undefined)[] | null)
+    /**
+     * Collection IDs to be excluded for detection
+     * @key `sample.excludes`
+     * @default `null`
+     * @type `array`
+     */
+    'sample.excludes': (("academicons" | "akar-icons" | "ant-design" | "arcticons" | "basil" | "bi" | "bitcoin-icons" | "bpmn" | "brandico" | "bx" | "bxl" | "bxs" | "bytesize" | "carbon" | "cbi" | "charm" | "ci" | "cib" | "cif" | "cil" | "circle-flags" | "circum" | "clarity" | "codicon" | "covid" | "cryptocurrency" | "cryptocurrency-color" | "dashicons" | "devicon" | "devicon-plain" | "ei" | "el" | "emojione" | "emojione-monotone" | "emojione-v1" | "entypo" | "entypo-social" | "eos-icons" | "ep" | "et" | "eva" | "f7" | "fa" | "fa-brands" | "fa-regular" | "fa-solid" | "fa6-brands" | "fa6-regular" | "fa6-solid" | "fad" | "fe" | "feather" | "file-icons" | "flag" | "flagpack" | "flat-color-icons" | "flat-ui" | "flowbite" | "fluent" | "fluent-emoji" | "fluent-emoji-flat" | "fluent-emoji-high-contrast" | "fluent-mdl2" | "fontelico" | "fontisto" | "formkit" | "foundation" | "fxemoji" | "gala" | "game-icons" | "geo" | "gg" | "gis" | "gravity-ui" | "gridicons" | "grommet-icons" | "guidance" | "healthicons" | "heroicons" | "heroicons-outline" | "heroicons-solid" | "humbleicons" | "ic" | "icomoon-free" | "icon-park" | "icon-park-outline" | "icon-park-solid" | "icon-park-twotone" | "iconamoon" | "iconoir" | "icons8" | "il" | "ion" | "iwwa" | "jam" | "la" | "lets-icons" | "line-md" | "logos" | "ls" | "lucide" | "mage" | "majesticons" | "maki" | "map" | "marketeq" | "material-symbols" | "material-symbols-light" | "mdi" | "mdi-light" | "medical-icon" | "memory" | "meteocons" | "mi" | "mingcute" | "mono-icons" | "mynaui" | "nimbus" | "nonicons" | "noto" | "noto-v1" | "octicon" | "oi" | "ooui" | "openmoji" | "oui" | "pajamas" | "pepicons" | "pepicons-pencil" | "pepicons-pop" | "pepicons-print" | "ph" | "pixelarticons" | "prime" | "ps" | "quill" | "radix-icons" | "raphael" | "ri" | "si-glyph" | "simple-icons" | "simple-line-icons" | "skill-icons" | "solar" | "streamline" | "streamline-emojis" | "subway" | "svg-spinners" | "system-uicons" | "tabler" | "tdesign" | "teenyicons" | "token" | "token-branded" | "topcoat" | "twemoji" | "typcn" | "uil" | "uim" | "uis" | "uit" | "uiw" | "unjs" | "vaadin" | "vs" | "vscode-icons" | "websymbol" | "whh" | "wi" | "wpf" | "zmdi" | "zondicons" | undefined)[] | null)
+    /**
+     * CDN entry of sample icon-sets
+     * @key `sample.cdnEntry`
+     * @default `"https://icones.js.org/collections"`
+     * @type `string`
+     */
+    'sample.cdnEntry': string
+    /**
+     * JSON paths for custom collection
+     * @key `sample.customCollectionJsonPaths`
+     * @default `[]`
+     * @type `array`
+     */
+    'sample.customCollectionJsonPaths': (string | undefined)[]
+    /**
+     * Collection IDs Map for collection name alias, e.g. { 'mc': 'mingcute' }
+     * @key `sample.customCollectionIdsMap`
+     * @default `{}`
+     * @type `object`
+     */
+    'sample.customCollectionIdsMap': Record<string, unknown>
+    /**
+     * JSON paths for custom aliases
+     * @key `sample.customAliasesJsonPaths`
+     * @default `[]`
+     * @type `array`
+     */
+    'sample.customAliasesJsonPaths': (string | undefined)[]
+    /**
+     * Only use the icon aliases. Non aliased icons will be ignored.
+     * @key `sample.customAliasesOnly`
+     * @default `false`
+     * @type `boolean`
+     */
+    'sample.customAliasesOnly': boolean },
 }
 
 /**
- * Scoped defaults of `sample`
+ * Scoped defaults of `virtual(Keys in the root)`
  */
-const _sample = {
+const _root = {
 /**
- * scope: `sample`
+ * scope: `virtual(Keys in the root)`
  */
-  scope: "sample",
+  scope: "",
 /**
- * Keys' defaults of `sample`
+ * Keys' defaults of `virtual(Keys in the root)`
  */
   defaults: {
-    "inplace": true,
-    "annotations": true,
-    "position": "before",
-    "color": "auto",
-    "delimiters": [":","--","-","/"],
-    "prefixes": ["","i-","~icons/"],
-    "suffixes": ["","i-"],
-    "languageIds": ["javascript","javascriptreact","typescript","typescriptreact","vue","svelte","html","pug","json","yaml"],
-    "includes": null,
-    "excludes": null,
-    "cdnEntry": "https://icones.js.org/collections",
-    "customCollectionJsonPaths": [],
-    "customCollectionIdsMap": {},
-    "customAliasesJsonPaths": [],
-    "customAliasesOnly": false,
-  } satisfies Sample,
+    "0": { "sample.inplace": true, "sample.annotations": true, "sample.position": "before", "sample.color": "auto", "sample.delimiters": [":","--","-","/"], "sample.prefixes": ["","i-","~icons/"], "sample.suffixes": ["","i-"], "sample.languageIds": ["javascript","javascriptreact","typescript","typescriptreact","vue","svelte","html","pug","json","yaml"], "sample.includes": null, "sample.excludes": null, "sample.cdnEntry": "https://icones.js.org/collections", "sample.customCollectionJsonPaths": [], "sample.customCollectionIdsMap": {}, "sample.customAliasesJsonPaths": [], "sample.customAliasesOnly": false },
+  } satisfies Root,
 }
 
 /**
- * Reactive ConfigObject of `sample`
+ * Reactive ConfigObject of `virtual(Keys in the root)`
  * @example
- * let configValue = sampleConfigObject.inplace //get value 
- * sampleConfigObject.inplace = true // set value
- * sampleConfigObject.$update("inplace", !configValue, ConfigurationTarget.Workspace, true)
+ * let configValue = rootConfigObject.0 //get value 
+ * rootConfigObject.0 = true // set value
+ * rootConfigObject.$update("0", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const sampleConfigObject = defineConfigObject<Sample>(
-  _sample.scope,
-  _sample.defaults
+export const rootConfigObject = defineConfigObject<Root>(
+  _root.scope,
+  _root.defaults
 )
 /**
- * Reactive ToConfigRefs of `sample`
+ * Reactive ToConfigRefs of `virtual(Keys in the root)`
  * @example
- * let configValue:boolean =sampleConfigs.inplace.value //get value 
- * sampleConfigs.inplace.value = true // set value
+ * let configValue:object =rootConfigs.0.value //get value 
+ * rootConfigs.0.value = { "sample.inplace": true, "sample.annotations": true, "sample.position": "before", "sample.color": "auto", "sample.delimiters": [":","--","-","/"], "sample.prefixes": ["","i-","~icons/"], "sample.suffixes": ["","i-"], "sample.languageIds": ["javascript","javascriptreact","typescript","typescriptreact","vue","svelte","html","pug","json","yaml"], "sample.includes": null, "sample.excludes": null, "sample.cdnEntry": "https://icones.js.org/collections", "sample.customCollectionJsonPaths": [], "sample.customCollectionIdsMap": {}, "sample.customAliasesJsonPaths": [], "sample.customAliasesOnly": false } // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * sampleConfigs.inplace.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * rootConfigs.0.update(true, ConfigurationTarget.WorkspaceFolder, true)
  */
-export const sampleConfigs = defineConfigs<Sample>(
-  _sample.scope,
-  _sample.defaults
+export const rootConfigs = defineConfigs<Root>(
+  _root.scope,
+  _root.defaults
 )
