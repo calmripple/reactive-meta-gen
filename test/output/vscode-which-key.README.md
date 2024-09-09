@@ -33,9 +33,8 @@
   //`unknown[]`, The bindings of the which key menu 
   "whichkey.bindings": See package.json,
 
-  //(unknown[] | undefined)
-  //Overrides bindings of the (default) which key
-  "whichkey.bindingOverrides": [],
+  //`unknown[]`, Overrides bindings of the (default) which key 
+  "whichkey.bindingOverrides": ,
 
 }
 ```
@@ -51,4 +50,4 @@
 | `whichkey.useFullWidthCharacters` | Controls whether to use full width characters as key in the which-key menu. | `boolean` | `false`          |
 | `whichkey.sortOrder`              | Controls the sorting order of the which-key menu items.                     | `string`  | `"none"`         |
 | `whichkey.bindings`               | The bindings of the which key menu                                          | `array`   | See package.json |
-| `whichkey.bindingOverrides`       | Overrides bindings of the (default) which key                               | `array`   | `[]`             |
+| `whichkey.bindingOverrides`       | Overrides bindings of the (default) which key                               | `array`   | ``               |

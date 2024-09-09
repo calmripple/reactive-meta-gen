@@ -338,10 +338,78 @@ export interface Emeraldwalk {
   /**
    * 
    * @key `emeraldwalk.runonsave`
-   * @default `{ "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": [] }`
+   * @default `{ "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined }`
    * @type `object`
    */
-  "runonsave": { 'autoClearConsole': boolean; 'shell': string; 'delimiters': string[]; 'delimiters1': unknown[]; 'commands': { 'match': string; 'notMatch': string; 'cmd': string; 'isAsync': boolean }[] },
+  "runonsave": { 
+    /**
+     * Automatically clear the console on each save before running commands.
+     * @key `autoClearConsole`
+     * @default `false`
+     * @type `boolean`
+     */
+    'autoClearConsole': boolean
+    /**
+     * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
+     * @key `shell`
+     * @default `undefined`
+     * @type `string`
+     */
+    'shell'?: (string | undefined)
+    /**
+     * Delimiters for separating between collection id and icon id
+     * @key `delimiters`
+     * @default `[":","--","-","/"]`
+     * @type `array`
+     */
+    'delimiters': (string | undefined)[]
+    /**
+     * Delimiters for separating between collection id and icon id
+     * @key `delimiters1`
+     * @default `[":","--","-","/"]`
+     * @type `array`
+     */
+    'delimiters1': (string | undefined)[]
+    /**
+     * 
+     * @key `commands`
+     * @default `undefined`
+     * @type `array`
+     */
+    'commands'?: ({ 
+    /**
+     * Regex for matching files to run commands on 
+     * 
+     * NOTE: This is a regex and not a file path spce, so backslashes have to be escaped. They also have to be escaped in json strings, so you may have to double escape them in certain cases such as targetting contents of folders.
+     * 
+     * e.g.
+     * "match": "some\\\\directory\\\\.*"
+     * @key `match`
+     * @default `".*"`
+     * @type `string`
+     */
+    'match': string
+    /**
+     * Regex for matching files *not* to run commands on.
+     * @key `notMatch`
+     * @default `".*"`
+     * @type `string`
+     */
+    'notMatch': string
+    /**
+     * Command to execute on save.
+     * @key `cmd`
+     * @default `"echo ${file}"`
+     * @type `string`
+     */
+    'cmd': string
+    /**
+     * Run command asynchronously.
+     * @key `isAsync`
+     * @default `false`
+     * @type `boolean`
+     */
+    'isAsync': boolean }[] | undefined) },
 }
 
 /**
@@ -356,7 +424,7 @@ const _emeraldwalk = {
  * Keys' defaults of `emeraldwalk`
  */
   defaults: {
-    "runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": [] },
+    "runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined },
   } satisfies Emeraldwalk,
 }
 
@@ -375,7 +443,7 @@ export const emeraldwalkConfigObject = defineConfigObject<Emeraldwalk>(
  * Reactive ToConfigRefs of `emeraldwalk`
  * @example
  * let configValue:object =emeraldwalkConfigs.runonsave.value //get value 
- * emeraldwalkConfigs.runonsave.value = { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": [] } // set value
+ * emeraldwalkConfigs.runonsave.value = { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined } // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * emeraldwalkConfigs.runonsave.update(true, ConfigurationTarget.WorkspaceFolder, true)
  */

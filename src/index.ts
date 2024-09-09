@@ -29,7 +29,7 @@ export interface GenerateOptions {
 }
 
 export interface ConfigurationProperty {
-  type: string
+  type: string | string[]
   default?: any
   description?: string
   enum?: any[]
@@ -539,28 +539,6 @@ export function generate(packageJson: any, options: GenerateOptions = {}) {
   }
 }
 
-function jsonObject(props?: [comment: string, key: string, value: string][], padding = 0): string[] {
-  const indent = ' '.repeat(padding)
-  return props?.flatMap(([comment, key, value]) => {
-    return [`//${comment}`,
-    `${indent}${key}: ${value}`]
-  }).map(l => `  ${indent}${l}`) ?? []
-}
-function jsonBlock(text: string, padding = 0): string[] {
-  const indent = ' '.repeat(padding)
-  if (!text) {
-    return []
-  }
-
-  const _text = text
-
-  return [
-    `${indent}{`,
-    ..._text.split(/\n/g).map(l => `${indent} * ${l}`),
-    `${indent}}`,
-  ]
-}
-
 function commentBlock(text?: string, padding = 0): string[] {
   const indent = ' '.repeat(padding)
   if (!text) {
@@ -577,7 +555,7 @@ function commentBlock(text?: string, padding = 0): string[] {
   ]
 }
 
-function typeFromSchema(schema: ConfigurationProperty, isSubType = false): string {
+function typeFromSchema(schema: ConfigurationProperty, subIndent = 0): string {
   if (!schema)
     return 'unknown'
 
@@ -601,18 +579,31 @@ function typeFromSchema(schema: ConfigurationProperty, isSubType = false): strin
         break
       case 'array':
         if (schema.items) {
-          types.push(`${typeFromSchema(schema.items, true)}[]`)
+          types.push(`${typeFromSchema(schema.items, subIndent + 2)}[]`)
+          break
+        } else if (schema.item) {
+          types.push(`${typeFromSchema(schema.item, subIndent + 2)}[]`)
           break
         }
         types.push('unknown[]')
         break
       case 'object':
         if (schema.properties) {
-          const propertyKeyValues = Object.entries(schema.properties).map(([key, value]) => {
-            return `'${key}': ${typeFromSchema(value, true)}`
+          const propertyKeyValues = Object.entries(schema.properties).flatMap(([key, value]) => {
+            const defaultValue = defaultValFromSchema(value)
+
+            return [
+              ...commentBlock([
+                value.description ?? value.markdownDescription,
+                `@key \`${key}\``,
+                `@default \`${defaultValue}\``,
+                `@type \`${value.type}\``,
+              ].join('\n'), 2),
+              `  '${key}'${defaultValue != undefined ? "" : "?"}: ${typeFromSchema(value, subIndent + 2)}`
+            ]
           })
 
-          types.push(`{ ${propertyKeyValues.join('; ')} }`)
+          types.push(`{ \n  ${propertyKeyValues.join('\n  ')} }`)
 
           break
         }
@@ -623,7 +614,7 @@ function typeFromSchema(schema: ConfigurationProperty, isSubType = false): strin
     }
   }
 
-  if (!isSubType && schema.type !== 'object') {
+  if (subIndent != 0 && schema.type !== 'object') {
     if (!('default' in schema) || schema.default === undefined)
       types.push('undefined')
     else if (schema.default === null)
@@ -660,18 +651,16 @@ export function defaultValFromSchema(schema: ConfigurationProperty): string | un
     //     return `${schema.items.type}[]`
     //   }
     // }
-    return '[]'
+    return undefined
   }
 
-  if ('properties' in schema) {
-    const keyValues = Object.entries(schema.properties ?? {}).map(([key, value]): string => {
+
+  if (schema.type === 'object' && schema.properties) {
+    const keyValues = Object.entries(schema.properties).map(([key, value]): string => {
       return `${JSON.stringify(key)}: ${defaultValFromSchema(value)}`
     })
 
     return `{ ${keyValues.join(', ')} }`
-  }
-  if (schema.type === 'object') {
-    return '{}'
   }
   // console.log(schema)
   return undefined
