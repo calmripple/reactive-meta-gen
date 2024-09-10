@@ -176,23 +176,23 @@ const _projectConfig = {
 /**
  * Reactive ConfigObject of `project-config`
  * @example
- * let configValue = projectConfigConfigObject.fileNestingUpdater.upstreamBranch //get value 
- * projectConfigConfigObject.fileNestingUpdater.upstreamBranch = true // set value
- * projectConfigConfigObject.$update("fileNestingUpdater.upstreamBranch", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectsProjectConfig.fileNestingUpdater.upstreamBranch //get value 
+ * useConfigObjectsProjectConfig.fileNestingUpdater.upstreamBranch = true // set value
+ * useConfigObjectsProjectConfig.$update("fileNestingUpdater.upstreamBranch", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const projectConfigConfigObject = defineConfigObject<ProjectConfig>(
+export const useConfigObjectsProjectConfig = defineConfigObject<ProjectConfig>(
   _projectConfig.scope,
   _projectConfig.defaults
 )
 /**
  * Reactive ToConfigRefs of `project-config`
  * @example
- * let configValue:string =projectConfigConfigs.fileNestingUpdater.upstreamBranch.value //get value 
- * projectConfigConfigs.fileNestingUpdater.upstreamBranch.value = "main" // set value
+ * let configValue:string =useConfigsProjectConfigConfigs.fileNestingUpdater.upstreamBranch.value //get value 
+ * useConfigsProjectConfig.fileNestingUpdater.upstreamBranch.value = "main" // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * projectConfigConfigs.fileNestingUpdater.upstreamBranch.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * useConfigsProjectConfig.fileNestingUpdater.upstreamBranch.update(true, ConfigurationTarget.WorkspaceFolder, true)
  */
-export const projectConfigConfigs = defineConfigs<ProjectConfig>(
+export const useConfigsProjectConfig = defineConfigs<ProjectConfig>(
   _projectConfig.scope,
   _projectConfig.defaults
 )
@@ -239,23 +239,23 @@ const _fileNestingUpdater = {
 /**
  * Reactive ConfigObject of `project-config.fileNestingUpdater`
  * @example
- * let configValue = fileNestingUpdaterConfigObject.upstreamBranch //get value 
- * fileNestingUpdaterConfigObject.upstreamBranch = true // set value
- * fileNestingUpdaterConfigObject.$update("upstreamBranch", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectsFileNestingUpdater.upstreamBranch //get value 
+ * useConfigObjectsFileNestingUpdater.upstreamBranch = true // set value
+ * useConfigObjectsFileNestingUpdater.$update("upstreamBranch", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const fileNestingUpdaterConfigObject = defineConfigObject<FileNestingUpdater>(
+export const useConfigObjectsFileNestingUpdater = defineConfigObject<FileNestingUpdater>(
   _fileNestingUpdater.scope,
   _fileNestingUpdater.defaults
 )
 /**
  * Reactive ToConfigRefs of `project-config.fileNestingUpdater`
  * @example
- * let configValue:string =fileNestingUpdaterConfigs.upstreamBranch.value //get value 
- * fileNestingUpdaterConfigs.upstreamBranch.value = "main" // set value
+ * let configValue:string =useConfigsFileNestingUpdaterConfigs.upstreamBranch.value //get value 
+ * useConfigsFileNestingUpdater.upstreamBranch.value = "main" // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * fileNestingUpdaterConfigs.upstreamBranch.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * useConfigsFileNestingUpdater.upstreamBranch.update(true, ConfigurationTarget.WorkspaceFolder, true)
  */
-export const fileNestingUpdaterConfigs = defineConfigs<FileNestingUpdater>(
+export const useConfigsFileNestingUpdater = defineConfigs<FileNestingUpdater>(
   _fileNestingUpdater.scope,
   _fileNestingUpdater.defaults
 )
@@ -302,23 +302,23 @@ const _test = {
 /**
  * Reactive ConfigObject of `project-config.test`
  * @example
- * let configValue = testConfigObject.annotations //get value 
- * testConfigObject.annotations = true // set value
- * testConfigObject.$update("annotations", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectsTest.annotations //get value 
+ * useConfigObjectsTest.annotations = true // set value
+ * useConfigObjectsTest.$update("annotations", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const testConfigObject = defineConfigObject<Test>(
+export const useConfigObjectsTest = defineConfigObject<Test>(
   _test.scope,
   _test.defaults
 )
 /**
  * Reactive ToConfigRefs of `project-config.test`
  * @example
- * let configValue:boolean =testConfigs.annotations.value //get value 
- * testConfigs.annotations.value = true // set value
+ * let configValue:boolean =useConfigsTestConfigs.annotations.value //get value 
+ * useConfigsTest.annotations.value = true // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * testConfigs.annotations.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * useConfigsTest.annotations.update(true, ConfigurationTarget.WorkspaceFolder, true)
  */
-export const testConfigs = defineConfigs<Test>(
+export const useConfigsTest = defineConfigs<Test>(
   _test.scope,
   _test.defaults
 )
@@ -356,23 +356,23 @@ const _root = {
 /**
  * Reactive ConfigObject of `virtual(Keys in the root)`
  * @example
- * let configValue = rootConfigObject.xxx //get value 
- * rootConfigObject.xxx = true // set value
- * rootConfigObject.$update("xxx", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectsRoot.xxx //get value 
+ * useConfigObjectsRoot.xxx = true // set value
+ * useConfigObjectsRoot.$update("xxx", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const rootConfigObject = defineConfigObject<Root>(
+export const useConfigObjectsRoot = defineConfigObject<Root>(
   _root.scope,
   _root.defaults
 )
 /**
  * Reactive ToConfigRefs of `virtual(Keys in the root)`
  * @example
- * let configValue:boolean =rootConfigs.xxx.value //get value 
- * rootConfigs.xxx.value = true // set value
+ * let configValue:boolean =useConfigsRootConfigs.xxx.value //get value 
+ * useConfigsRoot.xxx.value = true // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * rootConfigs.xxx.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * useConfigsRoot.xxx.update(true, ConfigurationTarget.WorkspaceFolder, true)
  */
-export const rootConfigs = defineConfigs<Root>(
+export const useConfigsRoot = defineConfigs<Root>(
   _root.scope,
   _root.defaults
 )
@@ -459,23 +459,23 @@ const _emeraldwalk = {
 /**
  * Reactive ConfigObject of `emeraldwalk`
  * @example
- * let configValue = emeraldwalkConfigObject.runonsave //get value 
- * emeraldwalkConfigObject.runonsave = true // set value
- * emeraldwalkConfigObject.$update("runonsave", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectsEmeraldwalk.runonsave //get value 
+ * useConfigObjectsEmeraldwalk.runonsave = true // set value
+ * useConfigObjectsEmeraldwalk.$update("runonsave", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const emeraldwalkConfigObject = defineConfigObject<Emeraldwalk>(
+export const useConfigObjectsEmeraldwalk = defineConfigObject<Emeraldwalk>(
   _emeraldwalk.scope,
   _emeraldwalk.defaults
 )
 /**
  * Reactive ToConfigRefs of `emeraldwalk`
  * @example
- * let configValue:object =emeraldwalkConfigs.runonsave.value //get value 
- * emeraldwalkConfigs.runonsave.value = { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined } // set value
+ * let configValue:object =useConfigsEmeraldwalkConfigs.runonsave.value //get value 
+ * useConfigsEmeraldwalk.runonsave.value = { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined } // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * emeraldwalkConfigs.runonsave.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * useConfigsEmeraldwalk.runonsave.update(true, ConfigurationTarget.WorkspaceFolder, true)
  */
-export const emeraldwalkConfigs = defineConfigs<Emeraldwalk>(
+export const useConfigsEmeraldwalk = defineConfigs<Emeraldwalk>(
   _emeraldwalk.scope,
   _emeraldwalk.defaults
 )

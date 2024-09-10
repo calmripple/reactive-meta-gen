@@ -219,23 +219,23 @@ const _smartClicks = {
 /**
  * Reactive ConfigObject of `smartClicks`
  * @example
- * let configValue = smartClicksConfigObject.clicksInterval //get value 
- * smartClicksConfigObject.clicksInterval = true // set value
- * smartClicksConfigObject.$update("clicksInterval", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectsSmartClicks.clicksInterval //get value 
+ * useConfigObjectsSmartClicks.clicksInterval = true // set value
+ * useConfigObjectsSmartClicks.$update("clicksInterval", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const smartClicksConfigObject = defineConfigObject<SmartClicks>(
+export const useConfigObjectsSmartClicks = defineConfigObject<SmartClicks>(
   _smartClicks.scope,
   _smartClicks.defaults
 )
 /**
  * Reactive ToConfigRefs of `smartClicks`
  * @example
- * let configValue:number =smartClicksConfigs.clicksInterval.value //get value 
- * smartClicksConfigs.clicksInterval.value = 600 // set value
+ * let configValue:number =useConfigsSmartClicksConfigs.clicksInterval.value //get value 
+ * useConfigsSmartClicks.clicksInterval.value = 600 // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * smartClicksConfigs.clicksInterval.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * useConfigsSmartClicks.clicksInterval.update(true, ConfigurationTarget.WorkspaceFolder, true)
  */
-export const smartClicksConfigs = defineConfigs<SmartClicks>(
+export const useConfigsSmartClicks = defineConfigs<SmartClicks>(
   _smartClicks.scope,
   _smartClicks.defaults
 )

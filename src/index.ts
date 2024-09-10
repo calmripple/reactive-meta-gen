@@ -378,20 +378,23 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
       return name
     }
 
-    let varName = 'root'
+    let _varName = 'root'
     let scopeComment
     if (scope) {
-      varName = `${convertCamelCase(withoutExtensionPrefix(scope))}`
+      _varName = `${convertCamelCase(withoutExtensionPrefix(scope))}`
       scopeComment = `${scope}`
     }
     else {
-      while (config.scopedActivedConfigs.has(varName)) {
-        varName = `root${upperFirst(varName)}`
+      while (config.scopedActivedConfigs.has(_varName)) {
+        _varName = `root${upperFirst(_varName)}`
       }
       scopeComment = `virtual(Keys in the root)`
     }
-    const interfaceName = `${upperFirst(varName)}`
-
+    const interfaceName = `${upperFirst(_varName)}`
+    const varName = {
+      useConfig: `useConfigs${interfaceName}`,
+      useConfigObject: `useConfigObjects${interfaceName}`
+    }
     const example = scopedConfigs[0]
     const exampleKey = removeScope(example[0])
     lines.push(
@@ -414,7 +417,7 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
       '}',
       '',
       ...commentBlock(`Scoped defaults of \`${scopeComment}\``),
-      `const _${varName} = {`,
+      `const _${_varName} = {`,
       ...commentBlock(`scope: \`${scopeComment}\``, 2),
       `  scope: ${JSON.stringify(scope)},`,
       ...commentBlock(`Keys' defaults of \`${scopeComment}\``, 2),
@@ -434,26 +437,26 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
       ...commentBlock([
         `Reactive ConfigObject of \`${scopeComment}\``,
         `@example`,
-        `let configValue = ${varName}ConfigObject.${exampleKey} //get value `,
-        `${varName}ConfigObject.${exampleKey} = true // set value`,
-        `${varName}ConfigObject.$update("${exampleKey}", !configValue, ConfigurationTarget.Workspace, true)`,
+        `const configValue = ${varName.useConfigObject}.${exampleKey} //get value `,
+        `${varName.useConfigObject}.${exampleKey} = true // set value`,
+        `${varName.useConfigObject}.$update("${exampleKey}", !configValue, ConfigurationTarget.Workspace, true)`,
       ].join('\n'),
       ),
-      `export const ${varName}ConfigObject = defineConfigObject<${interfaceName}>(`,
-      `  _${varName}.scope,`,
-      `  _${varName}.defaults`,
+      `export const ${varName.useConfigObject} = defineConfigObject<${interfaceName}>(`,
+      `  _${_varName}.scope,`,
+      `  _${_varName}.defaults`,
       `)`,
       ...commentBlock([
         `Reactive ToConfigRefs of \`${scopeComment}\``,
         `@example`,
-        `let configValue:${example[1].type} =${varName}Configs.${exampleKey}.value //get value `,
-        `${varName}Configs.${exampleKey}.value = ${defaultValFromSchema(example[1])} // set value`,
+        `let configValue:${example[1].type} =${varName.useConfig}Configs.${exampleKey}.value //get value `,
+        `${varName.useConfig}.${exampleKey}.value = ${defaultValFromSchema(example[1])} // set value`,
         `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
-        `${varName}Configs.${exampleKey}.update(true, ConfigurationTarget.WorkspaceFolder, true)`,
+        `${varName.useConfig}.${exampleKey}.update(true, ConfigurationTarget.WorkspaceFolder, true)`,
       ].join('\n')),
-      `export const ${varName}Configs = defineConfigs<${interfaceName}>(`,
-      `  _${varName}.scope,`,
-      `  _${varName}.defaults`,
+      `export const ${varName.useConfig} = defineConfigs<${interfaceName}>(`,
+      `  _${_varName}.scope,`,
+      `  _${_varName}.defaults`,
       `)`,
     )
   }
