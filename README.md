@@ -361,7 +361,7 @@ They will be replaced with the generated tables when you run `npx reactive-meta-
 [npm-downloads-href]: https://npmjs.com/package/reactive-meta-gen
 [bundle-src]: https://img.shields.io/bundlephobia/minzip/reactive-meta-gen?style=flat&colorA=080f12&colorB=1fa669&label=minzip
 [bundle-href]: https://bundlephobia.com/result?p=reactive-meta-gen
-[license-src]: https://img.shields.io/github/license/calmripple/reactive-meta-gen.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-src]: https://img.shields.io/npm/l/reactive-meta-gen?style=flat&colorA=080f12&colorB=1fa669
 [license-href]: https://github.com/calmripple/reactive-meta-gen/blob/main/LICENSE
 [jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
 [jsdocs-href]: https://www.jsdocs.io/package/reactive-meta-gen
