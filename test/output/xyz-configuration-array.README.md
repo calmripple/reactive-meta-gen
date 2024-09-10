@@ -14,75 +14,21 @@
 
 ```json
 {
-  //`string`, The branch name of upstream repo 
+  //The branch name of upstream repo
   "project-config.fileNestingUpdater.upstreamBranch": "main",
 
-  //`string`, The upstream repo you want to update from 
+  //The upstream repo you want to update from
   "project-config.fileNestingUpdater.upstreamRepo": "antfu/vscode-file-nesting-config",
 
-  //`boolean`, Enabled project-config inline annotations 
+  //Enabled project-config inline annotations
   "project-config.test.annotations": true,
 
-  //("after" | "before")
   //Position the icon before or after the icon name
   "project-config.test.position": "before",
 
-  //`boolean`, Enabled project-config inline annotations 
+  //Enabled project-config inline annotations
   "xxx": true,
 
-  //{
-      /**
-     * Automatically clear the console on each save before running commands.
-     * @default `false`
-     */
-    'autoClearConsole': boolean
-    /**
-     * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
-     * @default `undefined`
-     */
-    'shell'?: string
-    /**
-     * Delimiters for separating between collection id and icon id
-     * @default `[":","--","-","/"]`
-     */
-    'delimiters': string[]
-    /**
-     * Delimiters for separating between collection id and icon id
-     * @default `[":","--","-","/"]`
-     */
-    'delimiters1': string[]
-    /**
-     * 
-     * @default `undefined`
-     */
-    'commands'?: {
-              /**
-         * Regex for matching files to run commands on 
-         * 
-         * NOTE: This is a regex and not a file path spce, so backslashes have to be escaped. They also have to be escaped in json strings, so you may have to double escape them in certain cases such as targetting contents of folders.
-         * 
-         * e.g.
-         * "match": "some\\\\directory\\\\.*"
-         * @default `".*"`
-         */
-        'match': string
-        /**
-         * Regex for matching files *not* to run commands on.
-         * @default `".*"`
-         */
-        'notMatch': string
-        /**
-         * Command to execute on save.
-         * @default `"echo ${file}"`
-         */
-        'cmd': string
-        /**
-         * Run command asynchronously.
-         * @default `false`
-         */
-        'isAsync': boolean 
-      }[] 
-  }
   //
   "emeraldwalk.runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined },
 
