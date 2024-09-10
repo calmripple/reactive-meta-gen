@@ -3,7 +3,7 @@ import { defaultValFromSchema } from '../src'
 
 describe('schema -> default value', () => {
   it('object empty', () => {
-    expect(defaultValFromSchema({ type: 'object' })).toEqual('{}')
+    expect(defaultValFromSchema({ type: 'object' })).toEqual(undefined)
   })
 
   it('object only have default', () => {

@@ -10,30 +10,27 @@
 
 ```json
 {
-  //Record<string, unknown>
   //
   "whichkey.transient": See package.json,
 
-  //`number`, Delay (in milliseconds) for which-key menu to display. 
+  //Delay (in milliseconds) for which-key menu to display.
   "whichkey.delay": 0,
 
-  //`boolean`, Controls whether to show or hide icons in the which-key menu. 
+  //Controls whether to show or hide icons in the which-key menu.
   "whichkey.showIcons": true,
 
-  //`boolean`, Controls whether to show or hide buttons in the which-key menu. 
+  //Controls whether to show or hide buttons in the which-key menu.
   "whichkey.showButtons": true,
 
-  //`boolean`, Controls whether to use full width characters as key in the which-key menu. 
+  //Controls whether to use full width characters as key in the which-key menu.
   "whichkey.useFullWidthCharacters": false,
 
-  //("none" | "custom" | "customNonNumberFirst" | "typeThenCustom" | "alphabetically" | "nonNumberFirst")
   //Controls the sorting order of the which-key menu items.
   "whichkey.sortOrder": "none",
 
-  //`unknown[]`, The bindings of the which key menu 
+  //The bindings of the which key menu
   "whichkey.bindings": See package.json,
 
-  //(unknown[] | undefined)
   //Overrides bindings of the (default) which key
   "whichkey.bindingOverrides": ,
 

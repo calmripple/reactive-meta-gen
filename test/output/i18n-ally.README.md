@@ -51,290 +51,246 @@
 
 ```json
 {
-  //`boolean`, %config.disabled% 
+  //%config.disabled%
   "i18n-ally.disabled": false,
 
-  //`boolean`, %config.auto_detection% 
+  //%config.auto_detection%
   "i18n-ally.autoDetection": true,
 
-  //(string | string[] | undefined)
   //%config.locales_paths%
   "i18n-ally.localesPaths": ,
 
-  //`string`, %config.encoding% 
+  //%config.encoding%
   "i18n-ally.encoding": "utf-8",
 
-  //(string | undefined)
   //%config.source_language%
   "i18n-ally.sourceLanguage": ,
 
-  //(string | undefined)
   //%config.display_language%
   "i18n-ally.displayLanguage": ,
 
-  //(unknown[] | undefined)
   //%config.ignored_locales%
   "i18n-ally.ignoredLocales": ,
 
-  //("auto" | "nested" | "flat" | undefined)
   //%config.keystyle%
   "i18n-ally.keystyle": ,
 
-  //("auto" | "file" | "dir" | undefined)
   //%config.dir_structure%
   "i18n-ally.dirStructure": ,
 
-  //`boolean`, %config.annotations% 
+  //%config.annotations%
   "i18n-ally.annotations": true,
 
-  //`boolean`, %config.annotation_in_place% 
+  //%config.annotation_in_place%
   "i18n-ally.annotationInPlace": true,
 
-  //`number`, %config.annotation_max_length% 
+  //%config.annotation_max_length%
   "i18n-ally.annotationMaxLength": 40,
 
-  //`string`, %config.annotation_delimiter% 
+  //%config.annotation_delimiter%
   "i18n-ally.annotationDelimiter": "·",
 
-  //`boolean`, %config.include_subfolders% 
+  //%config.include_subfolders%
   "i18n-ally.includeSubfolders": true,
 
-  //`boolean`, %config.full_reload_on_changed% 
+  //%config.full_reload_on_changed%
   "i18n-ally.fullReloadOnChanged": false,
 
-  //`boolean`, %config.show_flags% 
+  //%config.show_flags%
   "i18n-ally.showFlags": true,
 
-  //(("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined)
   //%config.enabled_frameworks%
   "i18n-ally.enabledFrameworks": ,
 
-  //(("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined)
   //%config.enabled_parsers%
   "i18n-ally.enabledParsers": ,
 
-  //(string[] | undefined)
   //%config.keys_in_use%
   "i18n-ally.keysInUse": ,
 
-  //`boolean`, %config.sort_keys% 
+  //%config.sort_keys%
   "i18n-ally.sortKeys": false,
 
-  //("binary" | "locale")
   //%config.sort_compare%
   "i18n-ally.sortCompare": "binary",
 
-  //(string | undefined)
   //%config.sort_locale%
   "i18n-ally.sortLocale": ,
 
-  //`string`, %config.preferred_delimiter% 
+  //%config.preferred_delimiter%
   "i18n-ally.preferredDelimiter": "-",
 
-  //`boolean`, %config.readonly% 
+  //%config.readonly%
   "i18n-ally.readonly": false,
 
-  //`boolean`, %config.keep_fulfill% 
+  //%config.keep_fulfill%
   "i18n-ally.keepFulfilled": false,
 
-  //Record<string, unknown>
   //%config.locale_country_map%
   "i18n-ally.localeCountryMap": {},
 
-  //`number`, %config.indent% 
+  //%config.indent%
   "i18n-ally.indent": 2,
 
-  //`boolean`, %config.disable_path_parsing% 
+  //%config.disable_path_parsing%
   "i18n-ally.disablePathParsing": false,
 
-  //("space" | "tab")
   //%config.tab_style%
   "i18n-ally.tabStyle": "space",
 
-  //(boolean | undefined)
   //%config.namespace%
   "i18n-ally.namespace": ,
 
-  //(string | undefined)
   //%config.path_matcher%
   "i18n-ally.pathMatcher": ,
 
-  //("bcp47" | "legacy" | "none")
   //%config.language_tag_system%
   "i18n-ally.languageTagSystem": "bcp47",
 
-  //(unknown[] | undefined)
   //%config.ignore_files%
   "i18n-ally.ignoreFiles": ,
 
-  //`string`,  
+  //
   "i18n-ally.theme.annotation": "rgba(153, 153, 153, .8)",
 
-  //`string`,  
+  //
   "i18n-ally.theme.annotationMissing": "rgba(153, 153, 153, .3)",
 
-  //`string`,  
+  //
   "i18n-ally.theme.annotationBorder": "rgba(153, 153, 153, .2)",
 
-  //`string`,  
+  //
   "i18n-ally.theme.annotationMissingBorder": "rgba(153, 153, 153, .2)",
 
-  //(string | undefined)
   //%config.regex_key%
   "i18n-ally.regex.key": ,
 
-  //(string[] | undefined)
   //%config.regex_usage_match%
   "i18n-ally.regex.usageMatch": ,
 
-  //(string[] | undefined)
   //%config.regex_usage_match_append%
   "i18n-ally.regex.usageMatchAppend": ,
 
-  //({ 'source': ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text"); 'template': string; 'templates': string[]; 'include': string[]; 'exclude': string[] }[] | undefined)
   //%config.refactor_templates%
   "i18n-ally.refactor.templates": ,
 
-  //`boolean`, %config.translate_save_as_candidates% 
+  //%config.translate_save_as_candidates%
   "i18n-ally.translate.saveAsCandidates": false,
 
-  //`boolean`, %config.translate.fallbackToKey% 
+  //%config.translate.fallbackToKey%
   "i18n-ally.translate.fallbackToKey": false,
 
-  //("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[]
   //%config.translate.engines%
   "i18n-ally.translate.engines": ["google"],
 
-  //`number`, %config.translate.parallels% 
+  //%config.translate.parallels%
   "i18n-ally.translate.parallels": 5,
 
-  //`boolean`, %config.prompt_translating_source% 
+  //%config.prompt_translating_source%
   "i18n-ally.translate.promptSource": false,
 
-  //`boolean`, %config.translate_override_existing% 
+  //%config.translate_override_existing%
   "i18n-ally.translate.overrideExisting": false,
 
-  //(string | null)
   //%config.google_api_key%
   "i18n-ally.translate.google.apiKey": null,
 
-  //(string | null)
   //%config.deepl_api_key%
   "i18n-ally.translate.deepl.apiKey": null,
 
-  //(string | null)
   //%config.baidu_appid%
   "i18n-ally.translate.baidu.appid": null,
 
-  //(string | null)
   //%config.baidu_app_secret%
   "i18n-ally.translate.baidu.apiSecret": null,
 
-  //`boolean`, %config.deepl_log% 
+  //%config.deepl_log%
   "i18n-ally.translate.deepl.enableLog": false,
 
-  //`boolean`, %config.deepl_use_free_api_entry% 
+  //%config.deepl_use_free_api_entry%
   "i18n-ally.translate.deepl.useFreeApiEntry": false,
 
-  //`string`, %config.libretranslate_api_root% 
+  //%config.libretranslate_api_root%
   "i18n-ally.translate.libre.apiRoot": "http://localhost:5000",
 
-  //(string | null)
   //%config.openai_api_key%
   "i18n-ally.translate.openai.apiKey": null,
 
-  //`string`, %config.openai_api_root% 
+  //%config.openai_api_root%
   "i18n-ally.translate.openai.apiRoot": "https://api.openai.com",
 
-  //("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613")
   //%config.openai_api_model%
   "i18n-ally.translate.openai.apiModel": "gpt-3.5-turbo",
 
-  //(string[] | undefined)
   //%config.usage.scanning_ignore%
   "i18n-ally.usage.scanningIgnore": ,
 
-  //(string[] | null)
   //%config.derived_keys%
   "i18n-ally.usage.derivedKeyRules": null,
 
-  //`string`,  
+  //
   "i18n-ally.frameworks.ruby-rails.scopeRoot": "app/views",
 
-  //`string`,  
+  //
   "i18n-ally.parsers.typescript.tsNodePath": "node_modules/ts-node/dist/bin.js",
 
-  //Record<string, unknown>
   //
   "i18n-ally.parsers.typescript.compilerOptions": {},
 
-  //Record<string, unknown>
   //
   "i18n-ally.parsers.extendFileExtensions": {},
 
-  //`boolean`, %config.review_enabled% 
+  //%config.review_enabled%
   "i18n-ally.review.enabled": true,
 
-  //`boolean`, %config.review_gutters% 
+  //%config.review_gutters%
   "i18n-ally.review.gutters": true,
 
-  //(string | undefined)
   //%config.review_username%
   "i18n-ally.review.user.name": ,
 
-  //(string | undefined)
   //%config.review_email%
   "i18n-ally.review.user.email": ,
 
-  //`boolean`, %config.review_remove_on_resolved% 
+  //%config.review_remove_on_resolved%
   "i18n-ally.review.removeCommentOnResolved": false,
 
-  //`boolean`, %config.editor_prefer_editor% 
+  //%config.editor_prefer_editor%
   "i18n-ally.editor.preferEditor": false,
 
-  //("slug" | "random" | "empty" | "source")
   //%config.keygen_strategy%
   "i18n-ally.extract.keygenStrategy": "slug",
 
-  //("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS")
   //%config.keygen_style%
   "i18n-ally.extract.keygenStyle": "default",
 
-  //`string`, %config.key_prefix% 
+  //%config.key_prefix%
   "i18n-ally.extract.keyPrefix": "",
 
-  //(number | null)
   //%config.key_max_length%
   "i18n-ally.extract.keyMaxLength": null,
 
-  //("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous")
   //%config.target_picking_strategy%
   "i18n-ally.extract.targetPickingStrategy": "none",
 
-  //Record<string, unknown>
   //Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
   "i18n-ally.extract.parsers.html": {},
 
-  //Record<string, unknown>
   //Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
   "i18n-ally.extract.parsers.babel": {},
 
-  //`boolean`, Enables hard-coded strings detection automatically whenever opening a supported file 
+  //Enables hard-coded strings detection automatically whenever opening a supported file
   "i18n-ally.extract.autoDetect": false,
 
-  //(string[] | undefined)
   //Strings to be ignored on hard-coded strings detection
   "i18n-ally.extract.ignored": ,
 
-  //Record<string, unknown>
   //Strings to be ignored on hard-coded strings detection, by files
   "i18n-ally.extract.ignoredByFiles": {},
 
-  //Record<string, unknown>
   //
-  "i18n-ally.parserOptions": {},
+  "i18n-ally.parserOptions": ,
 
-  //(string | undefined)
   //%config.default_namespace%
   "i18n-ally.defaultNamespace": ,
 
@@ -424,5 +380,5 @@
 | `i18n-ally.extract.autoDetect`                 | Enables hard-coded strings detection automatically whenever opening a supported file                                                 | `boolean`      | `false`                              |
 | `i18n-ally.extract.ignored`                    | Strings to be ignored on hard-coded strings detection                                                                                | `array`        | ``                                   |
 | `i18n-ally.extract.ignoredByFiles`             | Strings to be ignored on hard-coded strings detection, by files                                                                      | `object`       | `{}`                                 |
-| `i18n-ally.parserOptions`                      |                                                                                                                                      | `object`       | `{}`                                 |
+| `i18n-ally.parserOptions`                      |                                                                                                                                      | `object`       | ``                                   |
 | `i18n-ally.defaultNamespace`                   | %config.default_namespace%                                                                                                           | `string`       | ``                                   |

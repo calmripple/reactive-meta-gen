@@ -39,6 +39,14 @@
         "category": "Project Config Updater",
         "command": "project-config.add-watch-dir",
         "title": "add watch dir"
+      },
+      {
+        "command": "extension.emeraldwalk.enableRunOnSave",
+        "title": "Run On Save: Enable"
+      },
+      {
+        "command": "extension.emeraldwalk.disableRunOnSave",
+        "title": "Run On Save: Disable"
       }
     ],
     "configuration": [
@@ -82,20 +90,81 @@
         "type": "object"
       },
       {
+        "title": "Run On Save command configuration.",
+        "type": "object",
         "properties": {
-          "project-config2.test.annotations": {
-            "default": true,
-            "description": "Enabled project-config inline annotations",
-            "type": "boolean"
-          },
-          "yyyy": {
-            "default": true,
-            "description": "Enabled project-config inline annotations",
-            "type": "boolean"
+          "emeraldwalk.runonsave": {
+            "required": [
+              "autoClearConsole"
+            ],
+            "type": "object",
+            "properties": {
+              "autoClearConsole": {
+                "type": "boolean",
+                "description": "Automatically clear the console on each save before running commands.",
+                "default": false
+              },
+              "shell": {
+                "type": "string",
+                "description": "Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell })."
+              },
+              "delimiters": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "default": [
+                  ":",
+                  "--",
+                  "-",
+                  "/"
+                ],
+                "description": "Delimiters for separating between collection id and icon id"
+              },
+              "delimiters1": {
+                "type": "array",
+                "item": {
+                  "type": "string"
+                },
+                "default": [
+                  ":",
+                  "--",
+                  "-",
+                  "/"
+                ],
+                "description": "Delimiters for separating between collection id and icon id"
+              },
+              "commands": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "match": {
+                      "type": "string",
+                      "description": "Regex for matching files to run commands on \n\nNOTE: This is a regex and not a file path spce, so backslashes have to be escaped. They also have to be escaped in json strings, so you may have to double escape them in certain cases such as targetting contents of folders.\n\ne.g.\n\"match\": \"some\\\\\\\\directory\\\\\\\\.*\"",
+                      "default": ".*"
+                    },
+                    "notMatch": {
+                      "type": "string",
+                      "description": "Regex for matching files *not* to run commands on.",
+                      "default": ".*"
+                    },
+                    "cmd": {
+                      "type": "string",
+                      "description": "Command to execute on save.",
+                      "default": "echo ${file}"
+                    },
+                    "isAsync": {
+                      "type": "boolean",
+                      "description": "Run command asynchronously.",
+                      "default": false
+                    }
+                  }
+                }
+              }
+            }
           }
-        },
-        "title": "Config 2",
-        "type": "object"
+        }
       }
     ]
   },

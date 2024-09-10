@@ -1,3 +1,4 @@
+import { linkSync } from 'node:fs'
 import { assign, isArray, memo, camel } from 'radash'
 
 const forwardKeys = [
@@ -29,7 +30,7 @@ export interface GenerateOptions {
 }
 
 export interface ConfigurationProperty {
-  type: string
+  type: string | string[]
   default?: any
   description?: string
   enum?: any[]
@@ -44,6 +45,7 @@ export interface ConfigurationProperty {
   typeHintLabel?: string,
   properties?: Record<string, ConfigurationProperty>,
   items?: ConfigurationProperty,
+  item?: ConfigurationProperty,
   scope?: string,
   additionalProperties?: boolean,
   defaultSnippets?: any[],
@@ -176,20 +178,13 @@ export function generateMarkdown(packageJson: any) {
         .flatMap(([key, value]) => {
           const defaultVal = defaultValFromSchema(value) || ''
           const type = typeFromSchema(value)
-          if (type?.length > 10) {
-            return [
-              `  //${type}`,
-              `  //${value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(",") ?? ''}`,
-              `  "${key}": ${defaultVal.length < MAX_TABLE_COL_CHAR ? `${defaultVal}` : 'See package.json'},`,
-              ''
-            ]
-          } else {
-            return [
-              `  //\`${type}\`, ${value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(",") ?? ''} `,
-              `  "${key}": ${defaultVal.length < MAX_TABLE_COL_CHAR ? `${defaultVal}` : 'See package.json'},`,
-              ''
-            ]
-          }
+          return [
+            // commentBlock([
+            `  //${value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(",") ?? ''}`,
+            // ].join('\n'), 2).join("\n"),
+            `  "${key}": ${defaultVal.length < MAX_TABLE_COL_CHAR ? `${defaultVal}` : 'See package.json'},`,
+            ''
+          ]
         }),
       `}`,
       String("```"))
@@ -216,7 +211,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}) {
   let lines: string[] = []
 
   lines.push('// Meta info')
-  lines.push('', `import { defineConfigObject, defineConfigs } from 'reactive-vscode'`, '')
+  lines.push('', `import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'`, '')
 
   for (const key of forwardKeys) {
     lines.push(`export const ${key} = ${packageJson[key] ? JSON.stringify(packageJson[key]) : 'undefined'}`)
@@ -275,6 +270,17 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
       }),
     '} satisfies Record<string, CommandKey>',
   )
+
+  lines.push(
+    ...(packageJson.contributes?.commands || [])
+      .flatMap((c: any) => {
+        const name = withoutExtensionPrefix(c.command)
+        return [...commentBlock(`${c.title}\n@value \`${c.command}\``, 0),
+        `export function useCommand${upperFirst(convertCamelCase(name))}(callback: (...args: any[]) => any) {
+  useCommand(commands.${convertCamelCase(name)}, callback)
+}` ]
+      }),
+    '')
 
   // ========== Configs ==========
 
@@ -372,20 +378,23 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
       return name
     }
 
-    let varName = 'root'
-    let scopeComment 
+    let _varName = 'root'
+    let scopeComment
     if (scope) {
-      varName = `${convertCamelCase(withoutExtensionPrefix(scope))}`
+      _varName = `${convertCamelCase(withoutExtensionPrefix(scope))}`
       scopeComment = `${scope}`
     }
     else {
-      while (config.scopedActivedConfigs.has(varName)) {
-        varName = `root${upperFirst(varName)}`
+      while (config.scopedActivedConfigs.has(_varName)) {
+        _varName = `root${upperFirst(_varName)}`
       }
       scopeComment = `virtual(Keys in the root)`
     }
-    const interfaceName = `${upperFirst(varName)}`
-
+    const interfaceName = `${upperFirst(_varName)}`
+    const varName = {
+      useConfig: `useConfigs${interfaceName}`,
+      useConfigObject: `useConfigObjects${interfaceName}`
+    }
     const example = scopedConfigs[0]
     const exampleKey = removeScope(example[0])
     lines.push(
@@ -398,27 +407,27 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
           return [
             ...commentBlock([
               value.description ?? value.markdownDescription,
-              `@key \`${key}\``,
-              `@default \`${defaultValue}\``,
-              `@type \`${value.type}\``,
+              // `@key \`${key}\``,
+              `@default ${defaultValue}`,
+              // `@type \`${value.type}\``,
             ].join('\n'), 2),
-            `  ${JSON.stringify(removeScope(key))}: ${typeFromSchema(value)},`,
+            `  ${JSON.stringify(removeScope(key))}${defaultValue === undefined ? "?" : ""}: ${typeFromSchema(value, false)},`,
           ]
         }),
       '}',
       '',
       ...commentBlock(`Scoped defaults of \`${scopeComment}\``),
-      `const _${varName} = {`,
-      ...commentBlock(`scope: \`${scopeComment}\``),
+      `const _${_varName} = {`,
+      ...commentBlock(`scope: \`${scopeComment}\``, 2),
       `  scope: ${JSON.stringify(scope)},`,
-      ...commentBlock(`Keys' defaults of \`${scopeComment}\``),
+      ...commentBlock(`Keys' defaults of \`${scopeComment}\``, 2),
       `  defaults: {`,
       ...scopedConfigs
         .flatMap(([key, value]) => {
           return [
-            // ...commentBlock([
-            //   value.description,
-            // ].join('\n'), 2),
+            ...commentBlock([
+              value.description,
+            ].join('\n'), 4),
             `    ${JSON.stringify(removeScope(key))}: ${defaultValFromSchema(value)},`,
           ]
         }),
@@ -428,26 +437,26 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
       ...commentBlock([
         `Reactive ConfigObject of \`${scopeComment}\``,
         `@example`,
-        `let configValue = ${varName}ConfigObject.${exampleKey} //get value `,
-        `${varName}ConfigObject.${exampleKey} = true // set value`,
-        `${varName}ConfigObject.$update("${exampleKey}", !configValue, ConfigurationTarget.Workspace, true)`,
+        `const configValue = ${varName.useConfigObject}.${exampleKey} //get value `,
+        `${varName.useConfigObject}.${exampleKey} = true // set value`,
+        `${varName.useConfigObject}.$update("${exampleKey}", !configValue, ConfigurationTarget.Workspace, true)`,
       ].join('\n'),
       ),
-      `export const ${varName}ConfigObject = defineConfigObject<${interfaceName}>(`,
-      `  _${varName}.scope,`,
-      `  _${varName}.defaults`,
+      `export const ${varName.useConfigObject} = defineConfigObject<${interfaceName}>(`,
+      `  _${_varName}.scope,`,
+      `  _${_varName}.defaults`,
       `)`,
       ...commentBlock([
         `Reactive ToConfigRefs of \`${scopeComment}\``,
         `@example`,
-        `let configValue:${example[1].type} =${varName}Configs.${exampleKey}.value //get value `,
-        `${varName}Configs.${exampleKey}.value = ${defaultValFromSchema(example[1])} // set value`,
+        `let configValue:${example[1].type} =${varName.useConfig}Configs.${exampleKey}.value //get value `,
+        `${varName.useConfig}.${exampleKey}.value = ${defaultValFromSchema(example[1])} // set value`,
         `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
-        `${varName}Configs.${exampleKey}.update(true, ConfigurationTarget.WorkspaceFolder, true)`,
+        `${varName.useConfig}.${exampleKey}.update(true, ConfigurationTarget.WorkspaceFolder, true)`,
       ].join('\n')),
-      `export const ${varName}Configs = defineConfigs<${interfaceName}>(`,
-      `  _${varName}.scope,`,
-      `  _${varName}.defaults`,
+      `export const ${varName.useConfig} = defineConfigs<${interfaceName}>(`,
+      `  _${_varName}.scope,`,
+      `  _${_varName}.defaults`,
       `)`,
     )
   }
@@ -519,6 +528,7 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
     }
     else {
       lines.unshift(
+        '/* eslint-disable */',
         '// This file is generated by `reactive-meta-gen`. Do not modify manually.',
         '// @see https://github.com/calmripple/reactive-meta-gen',
         '',
@@ -538,28 +548,6 @@ export function generate(packageJson: any, options: GenerateOptions = {}) {
   }
 }
 
-function jsonObject(props?: [comment: string, key: string, value: string][], padding = 0): string[] {
-  const indent = ' '.repeat(padding)
-  return props?.flatMap(([comment, key, value]) => {
-    return [`//${comment}`,
-    `${indent}${key}: ${value}`]
-  }).map(l => `  ${indent}${l}`) ?? []
-}
-function jsonBlock(text: string, padding = 0): string[] {
-  const indent = ' '.repeat(padding)
-  if (!text) {
-    return []
-  }
-
-  const _text = text
-
-  return [
-    `${indent}{`,
-    ..._text.split(/\n/g).map(l => `${indent} * ${l}`),
-    `${indent}}`,
-  ]
-}
-
 function commentBlock(text?: string, padding = 0): string[] {
   const indent = ' '.repeat(padding)
   if (!text) {
@@ -576,10 +564,10 @@ function commentBlock(text?: string, padding = 0): string[] {
   ]
 }
 
-function typeFromSchema(schema: ConfigurationProperty, isSubType = false): string {
+function typeFromSchema(schema: ConfigurationProperty, isSubType = false, subIndent = 2): string {
   if (!schema)
     return 'unknown'
-
+  const indent = ' '.repeat(subIndent)
   const schemaTypes = Array.isArray(schema.type) ? schema.type : [schema.type]
   const types: string[] = []
 
@@ -600,18 +588,32 @@ function typeFromSchema(schema: ConfigurationProperty, isSubType = false): strin
         break
       case 'array':
         if (schema.items) {
-          types.push(`${typeFromSchema(schema.items, true)}[]`)
+          types.push(`${typeFromSchema(schema.items, true, subIndent + 2)}[]`)
+          break
+        } else if (schema.item) {
+          types.push(`${typeFromSchema(schema.item, true, subIndent + 2)}[]`)
           break
         }
         types.push('unknown[]')
         break
       case 'object':
         if (schema.properties) {
-          const propertyKeyValues = Object.entries(schema.properties).map(([key, value]) => {
-            return `'${key}': ${typeFromSchema(value, true)}`
+          const propertyKeyValues = Object.entries(schema.properties).flatMap(([key, value]) => {
+            const defaultValue = defaultValFromSchema(value)
+            return [
+              ...commentBlock([
+                value.description ?? value.markdownDescription ?? value.enumDescriptions?.join('\n'),
+                // `@key \`${key}\``,
+                `@default \`${defaultValue}\``,
+                // `@type \`${value.type}\``,
+              ].join('\n'), subIndent),
+              `${indent}'${key}'${defaultValue != undefined ? "" : "?"}: ${typeFromSchema(value, true, subIndent + 2)}`
+            ]
           })
 
-          types.push(`{ ${propertyKeyValues.join('; ')} }`)
+          types.push(`{
+  ${indent}${propertyKeyValues.join('\n  ')} 
+${indent}}`)
 
           break
         }
@@ -636,21 +638,42 @@ function typeFromSchema(schema: ConfigurationProperty, isSubType = false): strin
 }
 
 export function defaultValFromSchema(schema: ConfigurationProperty): string | undefined {
-  if (schema.type !== 'object')
-    return JSON.stringify(schema.default)
+  // if (schema.type !== 'object')
+  //   return JSON.stringify(schema.default)
 
   if ('default' in schema)
     return JSON.stringify(schema.default)
 
-  if ('properties' in schema) {
-    const keyValues = Object.entries(schema.properties ?? {}).map(([key, value]): string => {
+  if (schema.type === 'array') {
+    // if (schema.item) {
+    //   return `${JSON.stringify(schema.item.type)}[]`
+    // }
+    // if (schema.items) {
+    //   if (schema.items.properties) {
+    //     if (schema.items.type === "object") {
+    //       const keyValues = Object.entries(schema.items.properties).map(([key, value]): string => {
+    //         return `${JSON.stringify(key)}: ${defaultValFromSchema(value)}`
+    //       })
+    //       return `{ ${keyValues.join(', ')} }[]`
+    //     }
+
+    //   } else if (schema.items.type) {
+    //     return `${schema.items.type}[]`
+    //   }
+    // }
+    return undefined
+  }
+
+
+  if (schema.type === 'object' && schema.properties) {
+    const keyValues = Object.entries(schema.properties).map(([key, value]): string => {
       return `${JSON.stringify(key)}: ${defaultValFromSchema(value)}`
     })
 
     return `{ ${keyValues.join(', ')} }`
   }
-
-  return '{}'
+  // console.log(schema)
+  return undefined
 }
 
 export function formatTable(table: string[][]) {
