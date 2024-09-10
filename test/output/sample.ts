@@ -235,18 +235,18 @@ const _sample = {
 /**
  * Reactive ConfigObject of `sample`
  * @example
- * const configValue = useConfigObjectsSample.inplace //get value 
- * useConfigObjectsSample.inplace = true // set value
- * useConfigObjectsSample.$update("inplace", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectSample.inplace //get value 
+ * useConfigObjectSample.inplace = true // set value
+ * useConfigObjectSample.$update("inplace", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsSample = defineConfigObject<Sample>(
+export const useConfigObjectSample = defineConfigObject<Sample>(
   _sample.scope,
   _sample.defaults
 )
 /**
  * Reactive ToConfigRefs of `sample`
  * @example
- * let configValue:boolean =useConfigsSampleConfigs.inplace.value //get value 
+ * const configValue:boolean =useConfigsSample.inplace.value //get value 
  * useConfigsSample.inplace.value = true // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsSample.inplace.update(true, ConfigurationTarget.WorkspaceFolder, true)

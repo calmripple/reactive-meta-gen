@@ -235,18 +235,18 @@ const _iconify = {
 /**
  * Reactive ConfigObject of `iconify`
  * @example
- * const configValue = useConfigObjectsIconify.inplace //get value 
- * useConfigObjectsIconify.inplace = true // set value
- * useConfigObjectsIconify.$update("inplace", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectIconify.inplace //get value 
+ * useConfigObjectIconify.inplace = true // set value
+ * useConfigObjectIconify.$update("inplace", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsIconify = defineConfigObject<Iconify>(
+export const useConfigObjectIconify = defineConfigObject<Iconify>(
   _iconify.scope,
   _iconify.defaults
 )
 /**
  * Reactive ToConfigRefs of `iconify`
  * @example
- * let configValue:boolean =useConfigsIconifyConfigs.inplace.value //get value 
+ * const configValue:boolean =useConfigsIconify.inplace.value //get value 
  * useConfigsIconify.inplace.value = true // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsIconify.inplace.update(true, ConfigurationTarget.WorkspaceFolder, true)

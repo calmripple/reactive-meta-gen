@@ -219,18 +219,18 @@ const _smartClicks = {
 /**
  * Reactive ConfigObject of `smartClicks`
  * @example
- * const configValue = useConfigObjectsSmartClicks.clicksInterval //get value 
- * useConfigObjectsSmartClicks.clicksInterval = true // set value
- * useConfigObjectsSmartClicks.$update("clicksInterval", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectSmartClicks.clicksInterval //get value 
+ * useConfigObjectSmartClicks.clicksInterval = true // set value
+ * useConfigObjectSmartClicks.$update("clicksInterval", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsSmartClicks = defineConfigObject<SmartClicks>(
+export const useConfigObjectSmartClicks = defineConfigObject<SmartClicks>(
   _smartClicks.scope,
   _smartClicks.defaults
 )
 /**
  * Reactive ToConfigRefs of `smartClicks`
  * @example
- * let configValue:number =useConfigsSmartClicksConfigs.clicksInterval.value //get value 
+ * const configValue:number =useConfigsSmartClicks.clicksInterval.value //get value 
  * useConfigsSmartClicks.clicksInterval.value = 600 // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsSmartClicks.clicksInterval.update(true, ConfigurationTarget.WorkspaceFolder, true)

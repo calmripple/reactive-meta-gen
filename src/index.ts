@@ -393,7 +393,7 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
     const interfaceName = `${upperFirst(_varName)}`
     const varName = {
       useConfig: `useConfigs${interfaceName}`,
-      useConfigObject: `useConfigObjects${interfaceName}`
+      useConfigObject: `useConfigObject${interfaceName}`
     }
     const example = scopedConfigs[0]
     const exampleKey = removeScope(example[0])
@@ -449,7 +449,7 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
       ...commentBlock([
         `Reactive ToConfigRefs of \`${scopeComment}\``,
         `@example`,
-        `let configValue:${example[1].type} =${varName.useConfig}Configs.${exampleKey}.value //get value `,
+        `const configValue:${example[1].type} =${varName.useConfig}.${exampleKey}.value //get value `,
         `${varName.useConfig}.${exampleKey}.value = ${defaultValFromSchema(example[1])} // set value`,
         `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
         `${varName.useConfig}.${exampleKey}.update(true, ConfigurationTarget.WorkspaceFolder, true)`,

@@ -1516,18 +1516,18 @@ const _i18nAlly = {
 /**
  * Reactive ConfigObject of `i18n-ally`
  * @example
- * const configValue = useConfigObjectsI18nAlly.disabled //get value 
- * useConfigObjectsI18nAlly.disabled = true // set value
- * useConfigObjectsI18nAlly.$update("disabled", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectI18nAlly.disabled //get value 
+ * useConfigObjectI18nAlly.disabled = true // set value
+ * useConfigObjectI18nAlly.$update("disabled", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsI18nAlly = defineConfigObject<I18nAlly>(
+export const useConfigObjectI18nAlly = defineConfigObject<I18nAlly>(
   _i18nAlly.scope,
   _i18nAlly.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally`
  * @example
- * let configValue:boolean =useConfigsI18nAllyConfigs.disabled.value //get value 
+ * const configValue:boolean =useConfigsI18nAlly.disabled.value //get value 
  * useConfigsI18nAlly.disabled.value = false // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsI18nAlly.disabled.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -1585,18 +1585,18 @@ const _theme = {
 /**
  * Reactive ConfigObject of `i18n-ally.theme`
  * @example
- * const configValue = useConfigObjectsTheme.annotation //get value 
- * useConfigObjectsTheme.annotation = true // set value
- * useConfigObjectsTheme.$update("annotation", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectTheme.annotation //get value 
+ * useConfigObjectTheme.annotation = true // set value
+ * useConfigObjectTheme.$update("annotation", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsTheme = defineConfigObject<Theme>(
+export const useConfigObjectTheme = defineConfigObject<Theme>(
   _theme.scope,
   _theme.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.theme`
  * @example
- * let configValue:string =useConfigsThemeConfigs.annotation.value //get value 
+ * const configValue:string =useConfigsTheme.annotation.value //get value 
  * useConfigsTheme.annotation.value = "rgba(153, 153, 153, .8)" // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsTheme.annotation.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -1657,18 +1657,18 @@ const _regex = {
 /**
  * Reactive ConfigObject of `i18n-ally.regex`
  * @example
- * const configValue = useConfigObjectsRegex.key //get value 
- * useConfigObjectsRegex.key = true // set value
- * useConfigObjectsRegex.$update("key", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectRegex.key //get value 
+ * useConfigObjectRegex.key = true // set value
+ * useConfigObjectRegex.$update("key", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsRegex = defineConfigObject<Regex>(
+export const useConfigObjectRegex = defineConfigObject<Regex>(
   _regex.scope,
   _regex.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.regex`
  * @example
- * let configValue:string =useConfigsRegexConfigs.key.value //get value 
+ * const configValue:string =useConfigsRegex.key.value //get value 
  * useConfigsRegex.key.value = undefined // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsRegex.key.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -1737,18 +1737,18 @@ const _refactor = {
 /**
  * Reactive ConfigObject of `i18n-ally.refactor`
  * @example
- * const configValue = useConfigObjectsRefactor.templates //get value 
- * useConfigObjectsRefactor.templates = true // set value
- * useConfigObjectsRefactor.$update("templates", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectRefactor.templates //get value 
+ * useConfigObjectRefactor.templates = true // set value
+ * useConfigObjectRefactor.$update("templates", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsRefactor = defineConfigObject<Refactor>(
+export const useConfigObjectRefactor = defineConfigObject<Refactor>(
   _refactor.scope,
   _refactor.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.refactor`
  * @example
- * let configValue:array =useConfigsRefactorConfigs.templates.value //get value 
+ * const configValue:array =useConfigsRefactor.templates.value //get value 
  * useConfigsRefactor.templates.value = undefined // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsRefactor.templates.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -1926,18 +1926,18 @@ const _translate = {
 /**
  * Reactive ConfigObject of `i18n-ally.translate`
  * @example
- * const configValue = useConfigObjectsTranslate.saveAsCandidates //get value 
- * useConfigObjectsTranslate.saveAsCandidates = true // set value
- * useConfigObjectsTranslate.$update("saveAsCandidates", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectTranslate.saveAsCandidates //get value 
+ * useConfigObjectTranslate.saveAsCandidates = true // set value
+ * useConfigObjectTranslate.$update("saveAsCandidates", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsTranslate = defineConfigObject<Translate>(
+export const useConfigObjectTranslate = defineConfigObject<Translate>(
   _translate.scope,
   _translate.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.translate`
  * @example
- * let configValue:boolean =useConfigsTranslateConfigs.saveAsCandidates.value //get value 
+ * const configValue:boolean =useConfigsTranslate.saveAsCandidates.value //get value 
  * useConfigsTranslate.saveAsCandidates.value = false // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsTranslate.saveAsCandidates.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -1980,18 +1980,18 @@ const _translateGoogle = {
 /**
  * Reactive ConfigObject of `i18n-ally.translate.google`
  * @example
- * const configValue = useConfigObjectsTranslateGoogle.apiKey //get value 
- * useConfigObjectsTranslateGoogle.apiKey = true // set value
- * useConfigObjectsTranslateGoogle.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectTranslateGoogle.apiKey //get value 
+ * useConfigObjectTranslateGoogle.apiKey = true // set value
+ * useConfigObjectTranslateGoogle.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsTranslateGoogle = defineConfigObject<TranslateGoogle>(
+export const useConfigObjectTranslateGoogle = defineConfigObject<TranslateGoogle>(
   _translateGoogle.scope,
   _translateGoogle.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.translate.google`
  * @example
- * let configValue:string =useConfigsTranslateGoogleConfigs.apiKey.value //get value 
+ * const configValue:string =useConfigsTranslateGoogle.apiKey.value //get value 
  * useConfigsTranslateGoogle.apiKey.value = null // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsTranslateGoogle.apiKey.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2052,18 +2052,18 @@ const _translateDeepl = {
 /**
  * Reactive ConfigObject of `i18n-ally.translate.deepl`
  * @example
- * const configValue = useConfigObjectsTranslateDeepl.apiKey //get value 
- * useConfigObjectsTranslateDeepl.apiKey = true // set value
- * useConfigObjectsTranslateDeepl.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectTranslateDeepl.apiKey //get value 
+ * useConfigObjectTranslateDeepl.apiKey = true // set value
+ * useConfigObjectTranslateDeepl.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsTranslateDeepl = defineConfigObject<TranslateDeepl>(
+export const useConfigObjectTranslateDeepl = defineConfigObject<TranslateDeepl>(
   _translateDeepl.scope,
   _translateDeepl.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.translate.deepl`
  * @example
- * let configValue:string =useConfigsTranslateDeeplConfigs.apiKey.value //get value 
+ * const configValue:string =useConfigsTranslateDeepl.apiKey.value //get value 
  * useConfigsTranslateDeepl.apiKey.value = null // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsTranslateDeepl.apiKey.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2115,18 +2115,18 @@ const _translateBaidu = {
 /**
  * Reactive ConfigObject of `i18n-ally.translate.baidu`
  * @example
- * const configValue = useConfigObjectsTranslateBaidu.appid //get value 
- * useConfigObjectsTranslateBaidu.appid = true // set value
- * useConfigObjectsTranslateBaidu.$update("appid", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectTranslateBaidu.appid //get value 
+ * useConfigObjectTranslateBaidu.appid = true // set value
+ * useConfigObjectTranslateBaidu.$update("appid", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsTranslateBaidu = defineConfigObject<TranslateBaidu>(
+export const useConfigObjectTranslateBaidu = defineConfigObject<TranslateBaidu>(
   _translateBaidu.scope,
   _translateBaidu.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.translate.baidu`
  * @example
- * let configValue:string =useConfigsTranslateBaiduConfigs.appid.value //get value 
+ * const configValue:string =useConfigsTranslateBaidu.appid.value //get value 
  * useConfigsTranslateBaidu.appid.value = null // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsTranslateBaidu.appid.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2169,18 +2169,18 @@ const _translateLibre = {
 /**
  * Reactive ConfigObject of `i18n-ally.translate.libre`
  * @example
- * const configValue = useConfigObjectsTranslateLibre.apiRoot //get value 
- * useConfigObjectsTranslateLibre.apiRoot = true // set value
- * useConfigObjectsTranslateLibre.$update("apiRoot", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectTranslateLibre.apiRoot //get value 
+ * useConfigObjectTranslateLibre.apiRoot = true // set value
+ * useConfigObjectTranslateLibre.$update("apiRoot", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsTranslateLibre = defineConfigObject<TranslateLibre>(
+export const useConfigObjectTranslateLibre = defineConfigObject<TranslateLibre>(
   _translateLibre.scope,
   _translateLibre.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.translate.libre`
  * @example
- * let configValue:string =useConfigsTranslateLibreConfigs.apiRoot.value //get value 
+ * const configValue:string =useConfigsTranslateLibre.apiRoot.value //get value 
  * useConfigsTranslateLibre.apiRoot.value = "http://localhost:5000" // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsTranslateLibre.apiRoot.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2241,18 +2241,18 @@ const _translateOpenai = {
 /**
  * Reactive ConfigObject of `i18n-ally.translate.openai`
  * @example
- * const configValue = useConfigObjectsTranslateOpenai.apiKey //get value 
- * useConfigObjectsTranslateOpenai.apiKey = true // set value
- * useConfigObjectsTranslateOpenai.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectTranslateOpenai.apiKey //get value 
+ * useConfigObjectTranslateOpenai.apiKey = true // set value
+ * useConfigObjectTranslateOpenai.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsTranslateOpenai = defineConfigObject<TranslateOpenai>(
+export const useConfigObjectTranslateOpenai = defineConfigObject<TranslateOpenai>(
   _translateOpenai.scope,
   _translateOpenai.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.translate.openai`
  * @example
- * let configValue:string =useConfigsTranslateOpenaiConfigs.apiKey.value //get value 
+ * const configValue:string =useConfigsTranslateOpenai.apiKey.value //get value 
  * useConfigsTranslateOpenai.apiKey.value = null // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsTranslateOpenai.apiKey.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2304,18 +2304,18 @@ const _usage = {
 /**
  * Reactive ConfigObject of `i18n-ally.usage`
  * @example
- * const configValue = useConfigObjectsUsage.scanningIgnore //get value 
- * useConfigObjectsUsage.scanningIgnore = true // set value
- * useConfigObjectsUsage.$update("scanningIgnore", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectUsage.scanningIgnore //get value 
+ * useConfigObjectUsage.scanningIgnore = true // set value
+ * useConfigObjectUsage.$update("scanningIgnore", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsUsage = defineConfigObject<Usage>(
+export const useConfigObjectUsage = defineConfigObject<Usage>(
   _usage.scope,
   _usage.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.usage`
  * @example
- * let configValue:array =useConfigsUsageConfigs.scanningIgnore.value //get value 
+ * const configValue:array =useConfigsUsage.scanningIgnore.value //get value 
  * useConfigsUsage.scanningIgnore.value = undefined // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsUsage.scanningIgnore.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2355,18 +2355,18 @@ const _frameworks = {
 /**
  * Reactive ConfigObject of `i18n-ally.frameworks`
  * @example
- * const configValue = useConfigObjectsFrameworks.ruby-rails.scopeRoot //get value 
- * useConfigObjectsFrameworks.ruby-rails.scopeRoot = true // set value
- * useConfigObjectsFrameworks.$update("ruby-rails.scopeRoot", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectFrameworks.ruby-rails.scopeRoot //get value 
+ * useConfigObjectFrameworks.ruby-rails.scopeRoot = true // set value
+ * useConfigObjectFrameworks.$update("ruby-rails.scopeRoot", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsFrameworks = defineConfigObject<Frameworks>(
+export const useConfigObjectFrameworks = defineConfigObject<Frameworks>(
   _frameworks.scope,
   _frameworks.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.frameworks`
  * @example
- * let configValue:string =useConfigsFrameworksConfigs.ruby-rails.scopeRoot.value //get value 
+ * const configValue:string =useConfigsFrameworks.ruby-rails.scopeRoot.value //get value 
  * useConfigsFrameworks.ruby-rails.scopeRoot.value = "app/views" // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsFrameworks.ruby-rails.scopeRoot.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2406,18 +2406,18 @@ const _frameworksRubyRails = {
 /**
  * Reactive ConfigObject of `i18n-ally.frameworks.ruby-rails`
  * @example
- * const configValue = useConfigObjectsFrameworksRubyRails.scopeRoot //get value 
- * useConfigObjectsFrameworksRubyRails.scopeRoot = true // set value
- * useConfigObjectsFrameworksRubyRails.$update("scopeRoot", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectFrameworksRubyRails.scopeRoot //get value 
+ * useConfigObjectFrameworksRubyRails.scopeRoot = true // set value
+ * useConfigObjectFrameworksRubyRails.$update("scopeRoot", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsFrameworksRubyRails = defineConfigObject<FrameworksRubyRails>(
+export const useConfigObjectFrameworksRubyRails = defineConfigObject<FrameworksRubyRails>(
   _frameworksRubyRails.scope,
   _frameworksRubyRails.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.frameworks.ruby-rails`
  * @example
- * let configValue:string =useConfigsFrameworksRubyRailsConfigs.scopeRoot.value //get value 
+ * const configValue:string =useConfigsFrameworksRubyRails.scopeRoot.value //get value 
  * useConfigsFrameworksRubyRails.scopeRoot.value = "app/views" // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsFrameworksRubyRails.scopeRoot.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2469,18 +2469,18 @@ const _parsers = {
 /**
  * Reactive ConfigObject of `i18n-ally.parsers`
  * @example
- * const configValue = useConfigObjectsParsers.typescript.tsNodePath //get value 
- * useConfigObjectsParsers.typescript.tsNodePath = true // set value
- * useConfigObjectsParsers.$update("typescript.tsNodePath", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectParsers.typescript.tsNodePath //get value 
+ * useConfigObjectParsers.typescript.tsNodePath = true // set value
+ * useConfigObjectParsers.$update("typescript.tsNodePath", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsParsers = defineConfigObject<Parsers>(
+export const useConfigObjectParsers = defineConfigObject<Parsers>(
   _parsers.scope,
   _parsers.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.parsers`
  * @example
- * let configValue:string =useConfigsParsersConfigs.typescript.tsNodePath.value //get value 
+ * const configValue:string =useConfigsParsers.typescript.tsNodePath.value //get value 
  * useConfigsParsers.typescript.tsNodePath.value = "node_modules/ts-node/dist/bin.js" // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsParsers.typescript.tsNodePath.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2526,18 +2526,18 @@ const _parsersTypescript = {
 /**
  * Reactive ConfigObject of `i18n-ally.parsers.typescript`
  * @example
- * const configValue = useConfigObjectsParsersTypescript.tsNodePath //get value 
- * useConfigObjectsParsersTypescript.tsNodePath = true // set value
- * useConfigObjectsParsersTypescript.$update("tsNodePath", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectParsersTypescript.tsNodePath //get value 
+ * useConfigObjectParsersTypescript.tsNodePath = true // set value
+ * useConfigObjectParsersTypescript.$update("tsNodePath", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsParsersTypescript = defineConfigObject<ParsersTypescript>(
+export const useConfigObjectParsersTypescript = defineConfigObject<ParsersTypescript>(
   _parsersTypescript.scope,
   _parsersTypescript.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.parsers.typescript`
  * @example
- * let configValue:string =useConfigsParsersTypescriptConfigs.tsNodePath.value //get value 
+ * const configValue:string =useConfigsParsersTypescript.tsNodePath.value //get value 
  * useConfigsParsersTypescript.tsNodePath.value = "node_modules/ts-node/dist/bin.js" // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsParsersTypescript.tsNodePath.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2616,18 +2616,18 @@ const _review = {
 /**
  * Reactive ConfigObject of `i18n-ally.review`
  * @example
- * const configValue = useConfigObjectsReview.enabled //get value 
- * useConfigObjectsReview.enabled = true // set value
- * useConfigObjectsReview.$update("enabled", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectReview.enabled //get value 
+ * useConfigObjectReview.enabled = true // set value
+ * useConfigObjectReview.$update("enabled", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsReview = defineConfigObject<Review>(
+export const useConfigObjectReview = defineConfigObject<Review>(
   _review.scope,
   _review.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.review`
  * @example
- * let configValue:boolean =useConfigsReviewConfigs.enabled.value //get value 
+ * const configValue:boolean =useConfigsReview.enabled.value //get value 
  * useConfigsReview.enabled.value = true // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsReview.enabled.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2679,18 +2679,18 @@ const _reviewUser = {
 /**
  * Reactive ConfigObject of `i18n-ally.review.user`
  * @example
- * const configValue = useConfigObjectsReviewUser.name //get value 
- * useConfigObjectsReviewUser.name = true // set value
- * useConfigObjectsReviewUser.$update("name", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectReviewUser.name //get value 
+ * useConfigObjectReviewUser.name = true // set value
+ * useConfigObjectReviewUser.$update("name", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsReviewUser = defineConfigObject<ReviewUser>(
+export const useConfigObjectReviewUser = defineConfigObject<ReviewUser>(
   _reviewUser.scope,
   _reviewUser.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.review.user`
  * @example
- * let configValue:string =useConfigsReviewUserConfigs.name.value //get value 
+ * const configValue:string =useConfigsReviewUser.name.value //get value 
  * useConfigsReviewUser.name.value = undefined // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsReviewUser.name.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2733,18 +2733,18 @@ const _editor = {
 /**
  * Reactive ConfigObject of `i18n-ally.editor`
  * @example
- * const configValue = useConfigObjectsEditor.preferEditor //get value 
- * useConfigObjectsEditor.preferEditor = true // set value
- * useConfigObjectsEditor.$update("preferEditor", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectEditor.preferEditor //get value 
+ * useConfigObjectEditor.preferEditor = true // set value
+ * useConfigObjectEditor.$update("preferEditor", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsEditor = defineConfigObject<Editor>(
+export const useConfigObjectEditor = defineConfigObject<Editor>(
   _editor.scope,
   _editor.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.editor`
  * @example
- * let configValue:boolean =useConfigsEditorConfigs.preferEditor.value //get value 
+ * const configValue:boolean =useConfigsEditor.preferEditor.value //get value 
  * useConfigsEditor.preferEditor.value = false // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsEditor.preferEditor.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2868,18 +2868,18 @@ const _extract = {
 /**
  * Reactive ConfigObject of `i18n-ally.extract`
  * @example
- * const configValue = useConfigObjectsExtract.keygenStrategy //get value 
- * useConfigObjectsExtract.keygenStrategy = true // set value
- * useConfigObjectsExtract.$update("keygenStrategy", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectExtract.keygenStrategy //get value 
+ * useConfigObjectExtract.keygenStrategy = true // set value
+ * useConfigObjectExtract.$update("keygenStrategy", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsExtract = defineConfigObject<Extract>(
+export const useConfigObjectExtract = defineConfigObject<Extract>(
   _extract.scope,
   _extract.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.extract`
  * @example
- * let configValue:string =useConfigsExtractConfigs.keygenStrategy.value //get value 
+ * const configValue:string =useConfigsExtract.keygenStrategy.value //get value 
  * useConfigsExtract.keygenStrategy.value = "slug" // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsExtract.keygenStrategy.update(true, ConfigurationTarget.WorkspaceFolder, true)
@@ -2931,18 +2931,18 @@ const _extractParsers = {
 /**
  * Reactive ConfigObject of `i18n-ally.extract.parsers`
  * @example
- * const configValue = useConfigObjectsExtractParsers.html //get value 
- * useConfigObjectsExtractParsers.html = true // set value
- * useConfigObjectsExtractParsers.$update("html", !configValue, ConfigurationTarget.Workspace, true)
+ * const configValue = useConfigObjectExtractParsers.html //get value 
+ * useConfigObjectExtractParsers.html = true // set value
+ * useConfigObjectExtractParsers.$update("html", !configValue, ConfigurationTarget.Workspace, true)
  */
-export const useConfigObjectsExtractParsers = defineConfigObject<ExtractParsers>(
+export const useConfigObjectExtractParsers = defineConfigObject<ExtractParsers>(
   _extractParsers.scope,
   _extractParsers.defaults
 )
 /**
  * Reactive ToConfigRefs of `i18n-ally.extract.parsers`
  * @example
- * let configValue:object =useConfigsExtractParsersConfigs.html.value //get value 
+ * const configValue:object =useConfigsExtractParsers.html.value //get value 
  * useConfigsExtractParsers.html.value = {} // set value
  * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
  * useConfigsExtractParsers.html.update(true, ConfigurationTarget.WorkspaceFolder, true)
