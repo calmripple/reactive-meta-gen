@@ -20,143 +20,123 @@
   //Array of language IDs to enable html smartClicks
   "smartClicks.htmlLanguageIds": ["html","vue","svelte"],
 
-  //{ 
-    /**
-     * Pair to inner content of brackets.
-     * 
-     * ```js
-     * ▽
-     * (foo, bar)
-     *  └──────┘
-     * ```
-     * @key `bracket-pair`
-     * @default `true`
-     * @type `boolean`
-     */
-    'bracket-pair': boolean
-    /**
-     * `-` to identifier.
-     * 
-     * ```css
-     *    ▽
-     * foo-bar
-     * └─────┘
-     * ```
-     * @key `dash`
-     * @default `true`
-     * @type `boolean`
-     */
-    'dash': boolean
-    /**
-     * `=` to HTML attribute.
-     * 
-     * ```html
-     *           ▽
-     * <div class="btn"></div>
-     *      └─────────┘
-     * ```
-     * @key `html-attr`
-     * @default `true`
-     * @type `boolean`
-     */
-    'html-attr': boolean
-    /**
-     * `<` to the entire element.
-     * 
-     * ```html
-     * ▽
-     * <div><div></div></div>
-     * └────────────────────┘
-     * ```
-     * @key `html-element`
-     * @default `true`
-     * @type `boolean`
-     */
-    'html-element': boolean
-    /**
-     * Open and close tags of a HTML element.
-     * 
-     * ```html
-     *  ▽
-     * <div><div></div></div>
-     *  └─┘              └─┘
-     * ```
-     * @key `html-tag-pair`
-     * @default `true`
-     * @type `boolean`
-     */
-    'html-tag-pair': boolean
-    /**
-     * `=>` to arrow function.
-     * 
-     * ```js
-     *        ▽
-     * (a, b) => a + b
-     * └─────────────┘
-     * ```
-     * @key `js-arrow-fn`
-     * @default `true`
-     * @type `boolean`
-     */
-    'js-arrow-fn': boolean
-    /**
-     * `=` to assignment.
-     * 
-     * ```js
-     *         ▽
-     * const a = []
-     * └──────────┘
-     * ```
-     * @key `js-assign`
-     * @default `true`
-     * @type `boolean`
-     */
-    'js-assign': boolean
-    /**
-     * Blocks like `if`, `for`, `while`, etc. in JavaScript.
-     * 
-     * ```js
-     * ▽
-     * function () {     }
-     * └─────────────────┘
-     * ```
-     * 
-     * ```js
-     * ▽
-     * import { ref } from 'vue'
-     * └───────────────────────┘
-     * ```
-     * @key `js-block`
-     * @default `false`
-     * @type `boolean`
-     */
-    'js-block': boolean
-    /**
-     * `:` to the value.
-     * 
-     * ```js
-     *      ▽
-     * { foo: { bar } }
-     *        └─────┘
-     * ```
-     * @key `js-colon`
-     * @default `true`
-     * @type `boolean`
-     */
-    'js-colon': boolean
-    /**
-     * Matches JSX elements' start and end tags.
-     * 
-     * ```jsx
-     *   ▽
-     * (<Flex.Item>Hi</Flex.Item>)
-     *   └───────┘     └───────┘
-     * ```
-     * @key `jsx-tag-pair`
-     * @default `true`
-     * @type `boolean`
-     */
-    'jsx-tag-pair': boolean }
+  //{
+/**
+   * Pair to inner content of brackets.
+   * 
+   * ```js
+   * ▽
+   * (foo, bar)
+   *  └──────┘
+   * ```
+   * @default `true`
+   */
+  'bracket-pair': boolean
+  /**
+   * `-` to identifier.
+   * 
+   * ```css
+   *    ▽
+   * foo-bar
+   * └─────┘
+   * ```
+   * @default `true`
+   */
+  'dash': boolean
+  /**
+   * `=` to HTML attribute.
+   * 
+   * ```html
+   *           ▽
+   * <div class="btn"></div>
+   *      └─────────┘
+   * ```
+   * @default `true`
+   */
+  'html-attr': boolean
+  /**
+   * `<` to the entire element.
+   * 
+   * ```html
+   * ▽
+   * <div><div></div></div>
+   * └────────────────────┘
+   * ```
+   * @default `true`
+   */
+  'html-element': boolean
+  /**
+   * Open and close tags of a HTML element.
+   * 
+   * ```html
+   *  ▽
+   * <div><div></div></div>
+   *  └─┘              └─┘
+   * ```
+   * @default `true`
+   */
+  'html-tag-pair': boolean
+  /**
+   * `=>` to arrow function.
+   * 
+   * ```js
+   *        ▽
+   * (a, b) => a + b
+   * └─────────────┘
+   * ```
+   * @default `true`
+   */
+  'js-arrow-fn': boolean
+  /**
+   * `=` to assignment.
+   * 
+   * ```js
+   *         ▽
+   * const a = []
+   * └──────────┘
+   * ```
+   * @default `true`
+   */
+  'js-assign': boolean
+  /**
+   * Blocks like `if`, `for`, `while`, etc. in JavaScript.
+   * 
+   * ```js
+   * ▽
+   * function () {     }
+   * └─────────────────┘
+   * ```
+   * 
+   * ```js
+   * ▽
+   * import { ref } from 'vue'
+   * └───────────────────────┘
+   * ```
+   * @default `false`
+   */
+  'js-block': boolean
+  /**
+   * `:` to the value.
+   * 
+   * ```js
+   *      ▽
+   * { foo: { bar } }
+   *        └─────┘
+   * ```
+   * @default `true`
+   */
+  'js-colon': boolean
+  /**
+   * Matches JSX elements' start and end tags.
+   * 
+   * ```jsx
+   *   ▽
+   * (<Flex.Item>Hi</Flex.Item>)
+   *   └───────┘     └───────┘
+   * ```
+   * @default `true`
+   */
+  'jsx-tag-pair': boolean }
   //Rule toggles
   "smartClicks.rules": See package.json,
 

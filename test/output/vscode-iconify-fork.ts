@@ -3,7 +3,7 @@
 
 // Meta info
 
-import { defineConfigObject, defineConfigs } from 'reactive-vscode'
+import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'
 
 export const publisher = "kvoon3"
 export const name = "iconify-fork"
@@ -52,6 +52,28 @@ export const commands = {
    */
   clearCache: "iconify.clear-cache",
 } satisfies Record<string, CommandKey>
+/**
+ * Toggle Annotations
+ * @value `iconify.toggle-annotations`
+ */
+export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
+  useCommand(commands.toggleAnnotations, callback)
+}
+/**
+ * Toggle In-place Mode
+ * @value `iconify.toggle-inplace`
+ */
+export function useCommandToggleInplace(callback: (...args: any[]) => any) {
+  useCommand(commands.toggleInplace, callback)
+}
+/**
+ * Clear icon cache
+ * @value `iconify.clear-cache`
+ */
+export function useCommandClearCache(callback: (...args: any[]) => any) {
+  useCommand(commands.clearCache, callback)
+}
+
 
 /**
  * Config keys of `iconify`
@@ -59,107 +81,77 @@ export const commands = {
 export interface Iconify {
   /**
    * Use icon graph to replace the icon name.
-   * @key `iconify.inplace`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "inplace": boolean,
   /**
    * Enabled Iconify inline annotations
-   * @key `iconify.annotations`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "annotations": boolean,
   /**
    * Position the icon before or after the icon name
-   * @key `iconify.position`
-   * @default `"before"`
-   * @type `string`
+   * @default "before"
    */
   "position": ("before" | "after"),
   /**
    * Icon color hex for inline displaying
-   * @key `iconify.color`
-   * @default `"auto"`
-   * @type `string`
+   * @default "auto"
    */
   "color": string,
   /**
    * Delimiters for separating between collection id and icon id
-   * @key `iconify.delimiters`
-   * @default `[":","--","-","/"]`
-   * @type `array`
+   * @default [":","--","-","/"]
    */
   "delimiters": (string | undefined)[],
   /**
    * Prefixes for matching
-   * @key `iconify.prefixes`
-   * @default `["","i-","~icons/"]`
-   * @type `array`
+   * @default ["","i-","~icons/"]
    */
   "prefixes": (string | undefined)[],
   /**
    * Suffixes for matching
-   * @key `iconify.suffixes`
-   * @default `["","i-"]`
-   * @type `array`
+   * @default ["","i-"]
    */
   "suffixes": (string | undefined)[],
   /**
    * Array of language IDs to enable annotations
-   * @key `iconify.languageIds`
-   * @default `["javascript","javascriptreact","typescript","typescriptreact","vue","svelte","html","pug","json","yaml"]`
-   * @type `array`
+   * @default ["javascript","javascriptreact","typescript","typescriptreact","vue","svelte","html","pug","json","yaml"]
    */
   "languageIds": (string | undefined)[],
   /**
    * Collection IDs to be included for detection
-   * @key `iconify.includes`
-   * @default `null`
-   * @type `array`
+   * @default null
    */
   "includes": ("academicons" | "akar-icons" | "ant-design" | "arcticons" | "basil" | "bi" | "bitcoin-icons" | "bpmn" | "brandico" | "bx" | "bxl" | "bxs" | "bytesize" | "carbon" | "cbi" | "charm" | "ci" | "cib" | "cif" | "cil" | "circle-flags" | "circum" | "clarity" | "codicon" | "covid" | "cryptocurrency" | "cryptocurrency-color" | "dashicons" | "devicon" | "devicon-plain" | "ei" | "el" | "emojione" | "emojione-monotone" | "emojione-v1" | "entypo" | "entypo-social" | "eos-icons" | "ep" | "et" | "eva" | "f7" | "fa" | "fa-brands" | "fa-regular" | "fa-solid" | "fa6-brands" | "fa6-regular" | "fa6-solid" | "fad" | "fe" | "feather" | "file-icons" | "flag" | "flagpack" | "flat-color-icons" | "flat-ui" | "flowbite" | "fluent" | "fluent-emoji" | "fluent-emoji-flat" | "fluent-emoji-high-contrast" | "fluent-mdl2" | "fontelico" | "fontisto" | "formkit" | "foundation" | "fxemoji" | "gala" | "game-icons" | "geo" | "gg" | "gis" | "gravity-ui" | "gridicons" | "grommet-icons" | "guidance" | "healthicons" | "heroicons" | "heroicons-outline" | "heroicons-solid" | "humbleicons" | "ic" | "icomoon-free" | "icon-park" | "icon-park-outline" | "icon-park-solid" | "icon-park-twotone" | "iconamoon" | "iconoir" | "icons8" | "il" | "ion" | "iwwa" | "jam" | "la" | "lets-icons" | "line-md" | "logos" | "ls" | "lucide" | "mage" | "majesticons" | "maki" | "map" | "marketeq" | "material-symbols" | "material-symbols-light" | "mdi" | "mdi-light" | "medical-icon" | "memory" | "meteocons" | "mi" | "mingcute" | "mono-icons" | "mynaui" | "nimbus" | "nonicons" | "noto" | "noto-v1" | "octicon" | "oi" | "ooui" | "openmoji" | "oui" | "pajamas" | "pepicons" | "pepicons-pencil" | "pepicons-pop" | "pepicons-print" | "ph" | "pixelarticons" | "prime" | "ps" | "quill" | "radix-icons" | "raphael" | "ri" | "si-glyph" | "simple-icons" | "simple-line-icons" | "skill-icons" | "solar" | "streamline" | "streamline-emojis" | "subway" | "svg-spinners" | "system-uicons" | "tabler" | "tdesign" | "teenyicons" | "token" | "token-branded" | "topcoat" | "twemoji" | "typcn" | "uil" | "uim" | "uis" | "uit" | "uiw" | "unjs" | "vaadin" | "vs" | "vscode-icons" | "websymbol" | "whh" | "wi" | "wpf" | "zmdi" | "zondicons" | undefined)[],
   /**
    * Collection IDs to be excluded for detection
-   * @key `iconify.excludes`
-   * @default `null`
-   * @type `array`
+   * @default null
    */
   "excludes": ("academicons" | "akar-icons" | "ant-design" | "arcticons" | "basil" | "bi" | "bitcoin-icons" | "bpmn" | "brandico" | "bx" | "bxl" | "bxs" | "bytesize" | "carbon" | "cbi" | "charm" | "ci" | "cib" | "cif" | "cil" | "circle-flags" | "circum" | "clarity" | "codicon" | "covid" | "cryptocurrency" | "cryptocurrency-color" | "dashicons" | "devicon" | "devicon-plain" | "ei" | "el" | "emojione" | "emojione-monotone" | "emojione-v1" | "entypo" | "entypo-social" | "eos-icons" | "ep" | "et" | "eva" | "f7" | "fa" | "fa-brands" | "fa-regular" | "fa-solid" | "fa6-brands" | "fa6-regular" | "fa6-solid" | "fad" | "fe" | "feather" | "file-icons" | "flag" | "flagpack" | "flat-color-icons" | "flat-ui" | "flowbite" | "fluent" | "fluent-emoji" | "fluent-emoji-flat" | "fluent-emoji-high-contrast" | "fluent-mdl2" | "fontelico" | "fontisto" | "formkit" | "foundation" | "fxemoji" | "gala" | "game-icons" | "geo" | "gg" | "gis" | "gravity-ui" | "gridicons" | "grommet-icons" | "guidance" | "healthicons" | "heroicons" | "heroicons-outline" | "heroicons-solid" | "humbleicons" | "ic" | "icomoon-free" | "icon-park" | "icon-park-outline" | "icon-park-solid" | "icon-park-twotone" | "iconamoon" | "iconoir" | "icons8" | "il" | "ion" | "iwwa" | "jam" | "la" | "lets-icons" | "line-md" | "logos" | "ls" | "lucide" | "mage" | "majesticons" | "maki" | "map" | "marketeq" | "material-symbols" | "material-symbols-light" | "mdi" | "mdi-light" | "medical-icon" | "memory" | "meteocons" | "mi" | "mingcute" | "mono-icons" | "mynaui" | "nimbus" | "nonicons" | "noto" | "noto-v1" | "octicon" | "oi" | "ooui" | "openmoji" | "oui" | "pajamas" | "pepicons" | "pepicons-pencil" | "pepicons-pop" | "pepicons-print" | "ph" | "pixelarticons" | "prime" | "ps" | "quill" | "radix-icons" | "raphael" | "ri" | "si-glyph" | "simple-icons" | "simple-line-icons" | "skill-icons" | "solar" | "streamline" | "streamline-emojis" | "subway" | "svg-spinners" | "system-uicons" | "tabler" | "tdesign" | "teenyicons" | "token" | "token-branded" | "topcoat" | "twemoji" | "typcn" | "uil" | "uim" | "uis" | "uit" | "uiw" | "unjs" | "vaadin" | "vs" | "vscode-icons" | "websymbol" | "whh" | "wi" | "wpf" | "zmdi" | "zondicons" | undefined)[],
   /**
    * CDN entry of iconify icon-sets
-   * @key `iconify.cdnEntry`
-   * @default `"https://icones.js.org/collections"`
-   * @type `string`
+   * @default "https://icones.js.org/collections"
    */
   "cdnEntry": string,
   /**
    * JSON paths for custom collection
-   * @key `iconify.customCollectionJsonPaths`
-   * @default `[]`
-   * @type `array`
+   * @default []
    */
   "customCollectionJsonPaths": (string | undefined)[],
   /**
    * Collection IDs Map for collection name alias, e.g. { 'mc': 'mingcute' }
-   * @key `iconify.customCollectionIdsMap`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "customCollectionIdsMap": Record<string, unknown>,
   /**
    * JSON paths for custom aliases
-   * @key `iconify.customAliasesJsonPaths`
-   * @default `[]`
-   * @type `array`
+   * @default []
    */
   "customAliasesJsonPaths": (string | undefined)[],
   /**
    * Only use the icon aliases. Non aliased icons will be ignored.
-   * @key `iconify.customAliasesOnly`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "customAliasesOnly": boolean,
 }
@@ -168,28 +160,73 @@ export interface Iconify {
  * Scoped defaults of `iconify`
  */
 const _iconify = {
-/**
- * scope: `iconify`
- */
+  /**
+   * scope: `iconify`
+   */
   scope: "iconify",
-/**
- * Keys' defaults of `iconify`
- */
+  /**
+   * Keys' defaults of `iconify`
+   */
   defaults: {
+    /**
+     * Use icon graph to replace the icon name.
+     */
     "inplace": true,
+    /**
+     * Enabled Iconify inline annotations
+     */
     "annotations": true,
+    /**
+     * Position the icon before or after the icon name
+     */
     "position": "before",
+    /**
+     * Icon color hex for inline displaying
+     */
     "color": "auto",
+    /**
+     * Delimiters for separating between collection id and icon id
+     */
     "delimiters": [":","--","-","/"],
+    /**
+     * Prefixes for matching
+     */
     "prefixes": ["","i-","~icons/"],
+    /**
+     * Suffixes for matching
+     */
     "suffixes": ["","i-"],
+    /**
+     * Array of language IDs to enable annotations
+     */
     "languageIds": ["javascript","javascriptreact","typescript","typescriptreact","vue","svelte","html","pug","json","yaml"],
+    /**
+     * Collection IDs to be included for detection
+     */
     "includes": null,
+    /**
+     * Collection IDs to be excluded for detection
+     */
     "excludes": null,
+    /**
+     * CDN entry of iconify icon-sets
+     */
     "cdnEntry": "https://icones.js.org/collections",
+    /**
+     * JSON paths for custom collection
+     */
     "customCollectionJsonPaths": [],
+    /**
+     * Collection IDs Map for collection name alias, e.g. { 'mc': 'mingcute' }
+     */
     "customCollectionIdsMap": {},
+    /**
+     * JSON paths for custom aliases
+     */
     "customAliasesJsonPaths": [],
+    /**
+     * Only use the icon aliases. Non aliased icons will be ignored.
+     */
     "customAliasesOnly": false,
   } satisfies Iconify,
 }

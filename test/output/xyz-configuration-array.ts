@@ -3,7 +3,7 @@
 
 // Meta info
 
-import { defineConfigObject, defineConfigs } from 'reactive-vscode'
+import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'
 
 export const publisher = "cnjimbo"
 export const name = "project-config"
@@ -72,6 +72,42 @@ export const commands = {
    */
   extensionEmeraldwalkDisableRunOnSave: "extension.emeraldwalk.disableRunOnSave",
 } satisfies Record<string, CommandKey>
+/**
+ * Update config now
+ * @value `project-config.manualUpdate`
+ */
+export function useCommandManualUpdate(callback: (...args: any[]) => any) {
+  useCommand(commands.manualUpdate, callback)
+}
+/**
+ * remove watch dir
+ * @value `project-config.remove-watch-dir`
+ */
+export function useCommandRemoveWatchDir(callback: (...args: any[]) => any) {
+  useCommand(commands.removeWatchDir, callback)
+}
+/**
+ * add watch dir
+ * @value `project-config.add-watch-dir`
+ */
+export function useCommandAddWatchDir(callback: (...args: any[]) => any) {
+  useCommand(commands.addWatchDir, callback)
+}
+/**
+ * Run On Save: Enable
+ * @value `extension.emeraldwalk.enableRunOnSave`
+ */
+export function useCommandExtensionEmeraldwalkEnableRunOnSave(callback: (...args: any[]) => any) {
+  useCommand(commands.extensionEmeraldwalkEnableRunOnSave, callback)
+}
+/**
+ * Run On Save: Disable
+ * @value `extension.emeraldwalk.disableRunOnSave`
+ */
+export function useCommandExtensionEmeraldwalkDisableRunOnSave(callback: (...args: any[]) => any) {
+  useCommand(commands.extensionEmeraldwalkDisableRunOnSave, callback)
+}
+
 
 /**
  * Type union of Deprecated all configs
@@ -85,30 +121,22 @@ export type DeprecatedConfigKey =
 export interface ProjectConfig {
   /**
    * The branch name of upstream repo
-   * @key `project-config.fileNestingUpdater.upstreamBranch`
-   * @default `"main"`
-   * @type `string`
+   * @default "main"
    */
   "fileNestingUpdater.upstreamBranch": string,
   /**
    * The upstream repo you want to update from
-   * @key `project-config.fileNestingUpdater.upstreamRepo`
-   * @default `"antfu/vscode-file-nesting-config"`
-   * @type `string`
+   * @default "antfu/vscode-file-nesting-config"
    */
   "fileNestingUpdater.upstreamRepo": string,
   /**
    * Enabled project-config inline annotations
-   * @key `project-config.test.annotations`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "test.annotations": boolean,
   /**
    * Position the icon before or after the icon name
-   * @key `project-config.test.position`
-   * @default `"before"`
-   * @type `string`
+   * @default "before"
    */
   "test.position": ("after" | "before"),
 }
@@ -117,17 +145,29 @@ export interface ProjectConfig {
  * Scoped defaults of `project-config`
  */
 const _projectConfig = {
-/**
- * scope: `project-config`
- */
+  /**
+   * scope: `project-config`
+   */
   scope: "project-config",
-/**
- * Keys' defaults of `project-config`
- */
+  /**
+   * Keys' defaults of `project-config`
+   */
   defaults: {
+    /**
+     * The branch name of upstream repo
+     */
     "fileNestingUpdater.upstreamBranch": "main",
+    /**
+     * The upstream repo you want to update from
+     */
     "fileNestingUpdater.upstreamRepo": "antfu/vscode-file-nesting-config",
+    /**
+     * Enabled project-config inline annotations
+     */
     "test.annotations": true,
+    /**
+     * Position the icon before or after the icon name
+     */
     "test.position": "before",
   } satisfies ProjectConfig,
 }
@@ -162,16 +202,12 @@ export const projectConfigConfigs = defineConfigs<ProjectConfig>(
 export interface FileNestingUpdater {
   /**
    * The branch name of upstream repo
-   * @key `project-config.fileNestingUpdater.upstreamBranch`
-   * @default `"main"`
-   * @type `string`
+   * @default "main"
    */
   "upstreamBranch": string,
   /**
    * The upstream repo you want to update from
-   * @key `project-config.fileNestingUpdater.upstreamRepo`
-   * @default `"antfu/vscode-file-nesting-config"`
-   * @type `string`
+   * @default "antfu/vscode-file-nesting-config"
    */
   "upstreamRepo": string,
 }
@@ -180,15 +216,21 @@ export interface FileNestingUpdater {
  * Scoped defaults of `project-config.fileNestingUpdater`
  */
 const _fileNestingUpdater = {
-/**
- * scope: `project-config.fileNestingUpdater`
- */
+  /**
+   * scope: `project-config.fileNestingUpdater`
+   */
   scope: "project-config.fileNestingUpdater",
-/**
- * Keys' defaults of `project-config.fileNestingUpdater`
- */
+  /**
+   * Keys' defaults of `project-config.fileNestingUpdater`
+   */
   defaults: {
+    /**
+     * The branch name of upstream repo
+     */
     "upstreamBranch": "main",
+    /**
+     * The upstream repo you want to update from
+     */
     "upstreamRepo": "antfu/vscode-file-nesting-config",
   } satisfies FileNestingUpdater,
 }
@@ -223,16 +265,12 @@ export const fileNestingUpdaterConfigs = defineConfigs<FileNestingUpdater>(
 export interface Test {
   /**
    * Enabled project-config inline annotations
-   * @key `project-config.test.annotations`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "annotations": boolean,
   /**
    * Position the icon before or after the icon name
-   * @key `project-config.test.position`
-   * @default `"before"`
-   * @type `string`
+   * @default "before"
    */
   "position": ("after" | "before"),
 }
@@ -241,15 +279,21 @@ export interface Test {
  * Scoped defaults of `project-config.test`
  */
 const _test = {
-/**
- * scope: `project-config.test`
- */
+  /**
+   * scope: `project-config.test`
+   */
   scope: "project-config.test",
-/**
- * Keys' defaults of `project-config.test`
- */
+  /**
+   * Keys' defaults of `project-config.test`
+   */
   defaults: {
+    /**
+     * Enabled project-config inline annotations
+     */
     "annotations": true,
+    /**
+     * Position the icon before or after the icon name
+     */
     "position": "before",
   } satisfies Test,
 }
@@ -284,9 +328,7 @@ export const testConfigs = defineConfigs<Test>(
 export interface Root {
   /**
    * Enabled project-config inline annotations
-   * @key `xxx`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "xxx": boolean,
 }
@@ -295,14 +337,17 @@ export interface Root {
  * Scoped defaults of `virtual(Keys in the root)`
  */
 const _root = {
-/**
- * scope: `virtual(Keys in the root)`
- */
+  /**
+   * scope: `virtual(Keys in the root)`
+   */
   scope: "",
-/**
- * Keys' defaults of `virtual(Keys in the root)`
- */
+  /**
+   * Keys' defaults of `virtual(Keys in the root)`
+   */
   defaults: {
+    /**
+     * Enabled project-config inline annotations
+     */
     "xxx": true,
   } satisfies Root,
 }
@@ -337,92 +382,72 @@ export const rootConfigs = defineConfigs<Root>(
 export interface Emeraldwalk {
   /**
    * 
-   * @key `emeraldwalk.runonsave`
-   * @default `{ "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined }`
-   * @type `object`
+   * @default { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined }
    */
-  "runonsave": { 
-    /**
-     * Automatically clear the console on each save before running commands.
-     * @key `autoClearConsole`
-     * @default `false`
-     * @type `boolean`
-     */
-    'autoClearConsole': boolean
-    /**
-     * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
-     * @key `shell`
-     * @default `undefined`
-     * @type `string`
-     */
-    'shell'?: (string | undefined)
-    /**
-     * Delimiters for separating between collection id and icon id
-     * @key `delimiters`
-     * @default `[":","--","-","/"]`
-     * @type `array`
-     */
-    'delimiters': (string | undefined)[]
-    /**
-     * Delimiters for separating between collection id and icon id
-     * @key `delimiters1`
-     * @default `[":","--","-","/"]`
-     * @type `array`
-     */
-    'delimiters1': (string | undefined)[]
-    /**
-     * 
-     * @key `commands`
-     * @default `undefined`
-     * @type `array`
-     */
-    'commands'?: ({ 
-    /**
-     * Regex for matching files to run commands on 
-     * 
-     * NOTE: This is a regex and not a file path spce, so backslashes have to be escaped. They also have to be escaped in json strings, so you may have to double escape them in certain cases such as targetting contents of folders.
-     * 
-     * e.g.
-     * "match": "some\\\\directory\\\\.*"
-     * @key `match`
-     * @default `".*"`
-     * @type `string`
-     */
-    'match': string
-    /**
-     * Regex for matching files *not* to run commands on.
-     * @key `notMatch`
-     * @default `".*"`
-     * @type `string`
-     */
-    'notMatch': string
-    /**
-     * Command to execute on save.
-     * @key `cmd`
-     * @default `"echo ${file}"`
-     * @type `string`
-     */
-    'cmd': string
-    /**
-     * Run command asynchronously.
-     * @key `isAsync`
-     * @default `false`
-     * @type `boolean`
-     */
-    'isAsync': boolean }[] | undefined) },
+  "runonsave": {
+/**
+   * Automatically clear the console on each save before running commands.
+   * @default `false`
+   */
+  'autoClearConsole': boolean
+  /**
+   * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
+   * @default `undefined`
+   */
+  'shell'?: (string | undefined)
+  /**
+   * Delimiters for separating between collection id and icon id
+   * @default `[":","--","-","/"]`
+   */
+  'delimiters': (string | undefined)[]
+  /**
+   * Delimiters for separating between collection id and icon id
+   * @default `[":","--","-","/"]`
+   */
+  'delimiters1': (string | undefined)[]
+  /**
+   * 
+   * @default `undefined`
+   */
+  'commands'?: ({
+        /**
+       * Regex for matching files to run commands on 
+       * 
+       * NOTE: This is a regex and not a file path spce, so backslashes have to be escaped. They also have to be escaped in json strings, so you may have to double escape them in certain cases such as targetting contents of folders.
+       * 
+       * e.g.
+       * "match": "some\\\\directory\\\\.*"
+       * @default `".*"`
+       */
+      'match': string
+      /**
+       * Regex for matching files *not* to run commands on.
+       * @default `".*"`
+       */
+      'notMatch': string
+      /**
+       * Command to execute on save.
+       * @default `"echo ${file}"`
+       */
+      'cmd': string
+      /**
+       * Run command asynchronously.
+       * @default `false`
+       */
+      'isAsync': boolean }[] | undefined) },
 }
 
 /**
  * Scoped defaults of `emeraldwalk`
  */
 const _emeraldwalk = {
-/**
- * scope: `emeraldwalk`
- */
+  /**
+   * scope: `emeraldwalk`
+   */
   scope: "emeraldwalk",
-/**
- * Keys' defaults of `emeraldwalk`
- */
+  /**
+   * Keys' defaults of `emeraldwalk`
+   */
   defaults: {
     "runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined },
   } satisfies Emeraldwalk,

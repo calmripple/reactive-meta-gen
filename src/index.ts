@@ -1,3 +1,4 @@
+import { linkSync } from 'node:fs'
 import { assign, isArray, memo, camel } from 'radash'
 
 const forwardKeys = [
@@ -217,7 +218,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}) {
   let lines: string[] = []
 
   lines.push('// Meta info')
-  lines.push('', `import { defineConfigObject, defineConfigs } from 'reactive-vscode'`, '')
+  lines.push('', `import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'`, '')
 
   for (const key of forwardKeys) {
     lines.push(`export const ${key} = ${packageJson[key] ? JSON.stringify(packageJson[key]) : 'undefined'}`)
@@ -276,6 +277,17 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
       }),
     '} satisfies Record<string, CommandKey>',
   )
+
+  lines.push(
+    ...(packageJson.contributes?.commands || [])
+      .flatMap((c: any) => {
+        const name = withoutExtensionPrefix(c.command)
+        return [...commentBlock(`${c.title}\n@value \`${c.command}\``, 0),
+        `export function useCommand${upperFirst(convertCamelCase(name))}(callback: (...args: any[]) => any) {
+  useCommand(commands.${convertCamelCase(name)}, callback)
+}` ]
+      }),
+    '')
 
   // ========== Configs ==========
 
@@ -399,9 +411,9 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
           return [
             ...commentBlock([
               value.description ?? value.markdownDescription,
-              `@key \`${key}\``,
-              `@default \`${defaultValue}\``,
-              `@type \`${value.type}\``,
+              // `@key \`${key}\``,
+              `@default ${defaultValue}`,
+              // `@type \`${value.type}\``,
             ].join('\n'), 2),
             `  ${JSON.stringify(removeScope(key))}${defaultValue === undefined ? "?" : ""}: ${typeFromSchema(value)},`,
           ]
@@ -410,16 +422,16 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
       '',
       ...commentBlock(`Scoped defaults of \`${scopeComment}\``),
       `const _${varName} = {`,
-      ...commentBlock(`scope: \`${scopeComment}\``),
+      ...commentBlock(`scope: \`${scopeComment}\``, 2),
       `  scope: ${JSON.stringify(scope)},`,
-      ...commentBlock(`Keys' defaults of \`${scopeComment}\``),
+      ...commentBlock(`Keys' defaults of \`${scopeComment}\``, 2),
       `  defaults: {`,
       ...scopedConfigs
         .flatMap(([key, value]) => {
           return [
-            // ...commentBlock([
-            //   value.description,
-            // ].join('\n'), 2),
+            ...commentBlock([
+              value.description,
+            ].join('\n'), 4),
             `    ${JSON.stringify(removeScope(key))}: ${defaultValFromSchema(value)},`,
           ]
         }),
@@ -558,7 +570,7 @@ function commentBlock(text?: string, padding = 0): string[] {
 function typeFromSchema(schema: ConfigurationProperty, subIndent = 0): string {
   if (!schema)
     return 'unknown'
-
+  const indent = ' '.repeat(subIndent)
   const schemaTypes = Array.isArray(schema.type) ? schema.type : [schema.type]
   const types: string[] = []
 
@@ -594,16 +606,16 @@ function typeFromSchema(schema: ConfigurationProperty, subIndent = 0): string {
 
             return [
               ...commentBlock([
-                value.description ?? value.markdownDescription,
-                `@key \`${key}\``,
+                value.description ?? value.markdownDescription ?? value.enumDescriptions?.join('\n'),
+                // `@key \`${key}\``,
                 `@default \`${defaultValue}\``,
-                `@type \`${value.type}\``,
-              ].join('\n'), 2),
-              `  '${key}'${defaultValue != undefined ? "" : "?"}: ${typeFromSchema(value, subIndent + 2)}`
+                // `@type \`${value.type}\``,
+              ].join('\n'), subIndent),
+              `${indent}'${key}'${defaultValue != undefined ? "" : "?"}: ${typeFromSchema(value, subIndent + 2)}`
             ]
           })
 
-          types.push(`{ \n  ${propertyKeyValues.join('\n  ')} }`)
+          types.push(`{\n${indent}${propertyKeyValues.join('\n  ')} }`)
 
           break
         }

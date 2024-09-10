@@ -3,7 +3,7 @@
 
 // Meta info
 
-import { defineConfigObject, defineConfigs } from 'reactive-vscode'
+import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'
 
 export const publisher = "lokalise"
 export const name = "i18n-ally"
@@ -442,6 +442,301 @@ export const commands = {
    */
   extractEnableAutoDetect: "i18n-ally.extract-enable-auto-detect",
 } satisfies Record<string, CommandKey>
+/**
+ * %command.config_locales%
+ * @value `i18n-ally.config-locales`
+ */
+export function useCommandConfigLocales(callback: (...args: any[]) => any) {
+  useCommand(commands.configLocales, callback)
+}
+/**
+ * %command.config_locales_auto%
+ * @value `i18n-ally.config-locales-auto`
+ */
+export function useCommandConfigLocalesAuto(callback: (...args: any[]) => any) {
+  useCommand(commands.configLocalesAuto, callback)
+}
+/**
+ * %command.config_display_language%
+ * @value `i18n-ally.config-display-language`
+ */
+export function useCommandConfigDisplayLanguage(callback: (...args: any[]) => any) {
+  useCommand(commands.configDisplayLanguage, callback)
+}
+/**
+ * %command.config_source_language%
+ * @value `i18n-ally.config-source-language`
+ */
+export function useCommandConfigSourceLanguage(callback: (...args: any[]) => any) {
+  useCommand(commands.configSourceLanguage, callback)
+}
+/**
+ * %command.set_display_language%
+ * @value `i18n-ally.set-display-language`
+ */
+export function useCommandSetDisplayLanguage(callback: (...args: any[]) => any) {
+  useCommand(commands.setDisplayLanguage, callback)
+}
+/**
+ * %command.set_source_language%
+ * @value `i18n-ally.set-source-language`
+ */
+export function useCommandSetSourceLanguage(callback: (...args: any[]) => any) {
+  useCommand(commands.setSourceLanguage, callback)
+}
+/**
+ * %command.copy_key%
+ * @value `i18n-ally.copy-key`
+ */
+export function useCommandCopyKey(callback: (...args: any[]) => any) {
+  useCommand(commands.copyKey, callback)
+}
+/**
+ * %command.translate_key%
+ * @value `i18n-ally.translate-key`
+ */
+export function useCommandTranslateKey(callback: (...args: any[]) => any) {
+  useCommand(commands.translateKey, callback)
+}
+/**
+ * %command.edit_key%
+ * @value `i18n-ally.edit-key`
+ */
+export function useCommandEditKey(callback: (...args: any[]) => any) {
+  useCommand(commands.editKey, callback)
+}
+/**
+ * %command.open_key%
+ * @value `i18n-ally.open-key`
+ */
+export function useCommandOpenKey(callback: (...args: any[]) => any) {
+  useCommand(commands.openKey, callback)
+}
+/**
+ * %command.delete_key%
+ * @value `i18n-ally.delete-key`
+ */
+export function useCommandDeleteKey(callback: (...args: any[]) => any) {
+  useCommand(commands.deleteKey, callback)
+}
+/**
+ * %command.rename_key%
+ * @value `i18n-ally.rename-key`
+ */
+export function useCommandRenameKey(callback: (...args: any[]) => any) {
+  useCommand(commands.renameKey, callback)
+}
+/**
+ * %refactor.extract_text%
+ * @value `i18n-ally.extract-text`
+ */
+export function useCommandExtractText(callback: (...args: any[]) => any) {
+  useCommand(commands.extractText, callback)
+}
+/**
+ * Extract all hard-coded strings (experimental)
+ * @value `i18n-ally.extract-hard-strings-batch`
+ */
+export function useCommandExtractHardStringsBatch(callback: (...args: any[]) => any) {
+  useCommand(commands.extractHardStringsBatch, callback)
+}
+/**
+ * Detect hard-coded strings in current file (experimental)
+ * @value `i18n-ally.detect_hard_strings`
+ */
+export function useCommandDetectHardStrings(callback: (...args: any[]) => any) {
+  useCommand(commands.detectHardStrings, callback)
+}
+/**
+ * %command.open_url%
+ * @value `i18n-ally.open-url`
+ */
+export function useCommandOpenUrl(callback: (...args: any[]) => any) {
+  useCommand(commands.openUrl, callback)
+}
+/**
+ * %command.fulfill_keys%
+ * @value `i18n-ally.fulfill-keys`
+ */
+export function useCommandFulfillKeys(callback: (...args: any[]) => any) {
+  useCommand(commands.fulfillKeys, callback)
+}
+/**
+ * %command.refresh_usage%
+ * @value `i18n-ally.refresh-usage`
+ */
+export function useCommandRefreshUsage(callback: (...args: any[]) => any) {
+  useCommand(commands.refreshUsage, callback)
+}
+/**
+ * %feedback.support%
+ * @value `i18n-ally.support`
+ */
+export function useCommandSupport(callback: (...args: any[]) => any) {
+  useCommand(commands.support, callback)
+}
+/**
+ * %command.locale_visibility_show%
+ * @value `i18n-ally.locale-visibility-show`
+ */
+export function useCommandLocaleVisibilityShow(callback: (...args: any[]) => any) {
+  useCommand(commands.localeVisibilityShow, callback)
+}
+/**
+ * %command.locale_visibility_hide%
+ * @value `i18n-ally.locale-visibility-hide`
+ */
+export function useCommandLocaleVisibilityHide(callback: (...args: any[]) => any) {
+  useCommand(commands.localeVisibilityHide, callback)
+}
+/**
+ * %command.new_key%
+ * @value `i18n-ally.new-key`
+ */
+export function useCommandNewKey(callback: (...args: any[]) => any) {
+  useCommand(commands.newKey, callback)
+}
+/**
+ * %command.duplicate_key%
+ * @value `i18n-ally.duplicate-key`
+ */
+export function useCommandDuplicateKey(callback: (...args: any[]) => any) {
+  useCommand(commands.duplicateKey, callback)
+}
+/**
+ * %command.mark_key_as_in_use%
+ * @value `i18n-ally.mark-key-as-in-use`
+ */
+export function useCommandMarkKeyAsInUse(callback: (...args: any[]) => any) {
+  useCommand(commands.markKeyAsInUse, callback)
+}
+/**
+ * %command.open_in_editor%
+ * @value `i18n-ally.open-in-editor`
+ */
+export function useCommandOpenInEditor(callback: (...args: any[]) => any) {
+  useCommand(commands.openInEditor, callback)
+}
+/**
+ * %command.open_editor%
+ * @value `i18n-ally.open-editor`
+ */
+export function useCommandOpenEditor(callback: (...args: any[]) => any) {
+  useCommand(commands.openEditor, callback)
+}
+/**
+ * %review.leave_comment%
+ * @value `i18n-ally.review.comment`
+ */
+export function useCommandReviewComment(callback: (...args: any[]) => any) {
+  useCommand(commands.reviewComment, callback)
+}
+/**
+ * %review.approve%
+ * @value `i18n-ally.review.approve`
+ */
+export function useCommandReviewApprove(callback: (...args: any[]) => any) {
+  useCommand(commands.reviewApprove, callback)
+}
+/**
+ * %review.request_change%
+ * @value `i18n-ally.review.request-change`
+ */
+export function useCommandReviewRequestChange(callback: (...args: any[]) => any) {
+  useCommand(commands.reviewRequestChange, callback)
+}
+/**
+ * %review.edit%
+ * @value `i18n-ally.review.edit`
+ */
+export function useCommandReviewEdit(callback: (...args: any[]) => any) {
+  useCommand(commands.reviewEdit, callback)
+}
+/**
+ * %review.resolve%
+ * @value `i18n-ally.review.resolve`
+ */
+export function useCommandReviewResolve(callback: (...args: any[]) => any) {
+  useCommand(commands.reviewResolve, callback)
+}
+/**
+ * %review.resolve_all%
+ * @value `i18n-ally.review.resolve-thread`
+ */
+export function useCommandReviewResolveThread(callback: (...args: any[]) => any) {
+  useCommand(commands.reviewResolveThread, callback)
+}
+/**
+ * %review.apply_translation_candidate%
+ * @value `i18n-ally.review.apply-translation`
+ */
+export function useCommandReviewApplyTranslation(callback: (...args: any[]) => any) {
+  useCommand(commands.reviewApplyTranslation, callback)
+}
+/**
+ * %review.apply_suggestion%
+ * @value `i18n-ally.review.apply-suggestion`
+ */
+export function useCommandReviewApplySuggestion(callback: (...args: any[]) => any) {
+  useCommand(commands.reviewApplySuggestion, callback)
+}
+/**
+ * %command.insert_key%
+ * @value `i18n-ally.insert-key`
+ */
+export function useCommandInsertKey(callback: (...args: any[]) => any) {
+  useCommand(commands.insertKey, callback)
+}
+/**
+ * %command.deepl_usage%
+ * @value `i18n-ally.deepl-usage`
+ */
+export function useCommandDeeplUsage(callback: (...args: any[]) => any) {
+  useCommand(commands.deeplUsage, callback)
+}
+/**
+ * %command.go_to_range%
+ * @value `i18n-ally.go-to-range`
+ */
+export function useCommandGoToRange(callback: (...args: any[]) => any) {
+  useCommand(commands.goToRange, callback)
+}
+/**
+ * %command.go_to_next_usage%
+ * @value `i18n-ally.go-to-next-usage`
+ */
+export function useCommandGoToNextUsage(callback: (...args: any[]) => any) {
+  useCommand(commands.goToNextUsage, callback)
+}
+/**
+ * %command.go_to_prev_usage%
+ * @value `i18n-ally.go-to-prev-usage`
+ */
+export function useCommandGoToPrevUsage(callback: (...args: any[]) => any) {
+  useCommand(commands.goToPrevUsage, callback)
+}
+/**
+ * %command.show_docs%
+ * @value `i18n-ally.open-docs-hard-string`
+ */
+export function useCommandOpenDocsHardString(callback: (...args: any[]) => any) {
+  useCommand(commands.openDocsHardString, callback)
+}
+/**
+ * %command.extract.disable-auto-detect%
+ * @value `i18n-ally.extract-disable-auto-detect`
+ */
+export function useCommandExtractDisableAutoDetect(callback: (...args: any[]) => any) {
+  useCommand(commands.extractDisableAutoDetect, callback)
+}
+/**
+ * %command.extract.enable-auto-detect%
+ * @value `i18n-ally.extract-enable-auto-detect`
+ */
+export function useCommandExtractEnableAutoDetect(callback: (...args: any[]) => any) {
+  useCommand(commands.extractEnableAutoDetect, callback)
+}
+
 
 /**
  * Type union of Deprecated all configs
@@ -474,604 +769,432 @@ export type DeprecatedConfigKey =
 export interface I18nAlly {
   /**
    * %config.disabled%
-   * @key `i18n-ally.disabled`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "disabled": boolean,
   /**
    * %config.auto_detection%
-   * @key `i18n-ally.autoDetection`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "autoDetection": boolean,
   /**
    * %config.locales_paths%
-   * @key `i18n-ally.localesPaths`
-   * @default `undefined`
-   * @type `string,array`
+   * @default undefined
    */
   "localesPaths"?: (string | (string | undefined)[]),
   /**
    * %config.encoding%
-   * @key `i18n-ally.encoding`
-   * @default `"utf-8"`
-   * @type `string`
+   * @default "utf-8"
    */
   "encoding": string,
   /**
    * %config.source_language%
-   * @key `i18n-ally.sourceLanguage`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "sourceLanguage"?: string,
   /**
    * %config.display_language%
-   * @key `i18n-ally.displayLanguage`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "displayLanguage"?: string,
   /**
    * %config.ignored_locales%
-   * @key `i18n-ally.ignoredLocales`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "ignoredLocales"?: unknown[],
   /**
    * %config.keystyle%
-   * @key `i18n-ally.keystyle`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "keystyle"?: ("auto" | "nested" | "flat"),
   /**
    * %config.dir_structure%
-   * @key `i18n-ally.dirStructure`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "dirStructure"?: ("auto" | "file" | "dir"),
   /**
    * %config.annotations%
-   * @key `i18n-ally.annotations`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "annotations": boolean,
   /**
    * %config.annotation_in_place%
-   * @key `i18n-ally.annotationInPlace`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "annotationInPlace": boolean,
   /**
    * %config.annotation_max_length%
-   * @key `i18n-ally.annotationMaxLength`
-   * @default `40`
-   * @type `number`
+   * @default 40
    */
   "annotationMaxLength": number,
   /**
    * %config.annotation_delimiter%
-   * @key `i18n-ally.annotationDelimiter`
-   * @default `"·"`
-   * @type `string`
+   * @default "·"
    */
   "annotationDelimiter": string,
   /**
    * %config.include_subfolders%
-   * @key `i18n-ally.includeSubfolders`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "includeSubfolders": boolean,
   /**
    * %config.full_reload_on_changed%
-   * @key `i18n-ally.fullReloadOnChanged`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "fullReloadOnChanged": boolean,
   /**
    * %config.show_flags%
-   * @key `i18n-ally.showFlags`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "showFlags": boolean,
   /**
    * %config.enabled_frameworks%
-   * @key `i18n-ally.enabledFrameworks`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "enabledFrameworks"?: ("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international" | undefined)[],
   /**
    * %config.enabled_parsers%
-   * @key `i18n-ally.enabledParsers`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "enabledParsers"?: ("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl" | undefined)[],
   /**
    * %config.keys_in_use%
-   * @key `i18n-ally.keysInUse`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "keysInUse"?: (string | undefined)[],
   /**
    * %config.sort_keys%
-   * @key `i18n-ally.sortKeys`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "sortKeys": boolean,
   /**
    * %config.sort_compare%
-   * @key `i18n-ally.sortCompare`
-   * @default `"binary"`
-   * @type `string`
+   * @default "binary"
    */
   "sortCompare": ("binary" | "locale"),
   /**
    * %config.sort_locale%
-   * @key `i18n-ally.sortLocale`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "sortLocale"?: string,
   /**
    * %config.preferred_delimiter%
-   * @key `i18n-ally.preferredDelimiter`
-   * @default `"-"`
-   * @type `string`
+   * @default "-"
    */
   "preferredDelimiter": string,
   /**
    * %config.readonly%
-   * @key `i18n-ally.readonly`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "readonly": boolean,
   /**
    * %config.keep_fulfill%
-   * @key `i18n-ally.keepFulfilled`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "keepFulfilled": boolean,
   /**
    * %config.locale_country_map%
-   * @key `i18n-ally.localeCountryMap`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "localeCountryMap": Record<string, unknown>,
   /**
    * %config.indent%
-   * @key `i18n-ally.indent`
-   * @default `2`
-   * @type `number`
+   * @default 2
    */
   "indent": number,
   /**
    * %config.disable_path_parsing%
-   * @key `i18n-ally.disablePathParsing`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "disablePathParsing": boolean,
   /**
    * %config.tab_style%
-   * @key `i18n-ally.tabStyle`
-   * @default `"space"`
-   * @type `string`
+   * @default "space"
    */
   "tabStyle": ("space" | "tab"),
   /**
    * %config.namespace%
-   * @key `i18n-ally.namespace`
-   * @default `undefined`
-   * @type `boolean`
+   * @default undefined
    */
   "namespace"?: boolean,
   /**
    * %config.path_matcher%
-   * @key `i18n-ally.pathMatcher`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "pathMatcher"?: string,
   /**
    * %config.language_tag_system%
-   * @key `i18n-ally.languageTagSystem`
-   * @default `"bcp47"`
-   * @type `string`
+   * @default "bcp47"
    */
   "languageTagSystem": ("bcp47" | "legacy" | "none"),
   /**
    * %config.ignore_files%
-   * @key `i18n-ally.ignoreFiles`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "ignoreFiles"?: (string | undefined)[],
   /**
    * 
-   * @key `i18n-ally.theme.annotation`
-   * @default `"rgba(153, 153, 153, .8)"`
-   * @type `string`
+   * @default "rgba(153, 153, 153, .8)"
    */
   "theme.annotation": string,
   /**
    * 
-   * @key `i18n-ally.theme.annotationMissing`
-   * @default `"rgba(153, 153, 153, .3)"`
-   * @type `string`
+   * @default "rgba(153, 153, 153, .3)"
    */
   "theme.annotationMissing": string,
   /**
    * 
-   * @key `i18n-ally.theme.annotationBorder`
-   * @default `"rgba(153, 153, 153, .2)"`
-   * @type `string`
+   * @default "rgba(153, 153, 153, .2)"
    */
   "theme.annotationBorder": string,
   /**
    * 
-   * @key `i18n-ally.theme.annotationMissingBorder`
-   * @default `"rgba(153, 153, 153, .2)"`
-   * @type `string`
+   * @default "rgba(153, 153, 153, .2)"
    */
   "theme.annotationMissingBorder": string,
   /**
    * %config.regex_key%
-   * @key `i18n-ally.regex.key`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "regex.key"?: string,
   /**
    * %config.regex_usage_match%
-   * @key `i18n-ally.regex.usageMatch`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "regex.usageMatch"?: (string | undefined)[],
   /**
    * %config.regex_usage_match_append%
-   * @key `i18n-ally.regex.usageMatchAppend`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "regex.usageMatchAppend"?: (string | undefined)[],
   /**
    * %config.refactor_templates%
-   * @key `i18n-ally.refactor.templates`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
-  "refactor.templates"?: { 
+  "refactor.templates"?: {
     /**
      * 
-     * @key `source`
      * @default `undefined`
-     * @type `string`
      */
     'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text" | undefined)
     /**
      * 
-     * @key `template`
      * @default `undefined`
-     * @type `string`
      */
     'template'?: (string | undefined)
     /**
      * 
-     * @key `templates`
      * @default `undefined`
-     * @type `array`
      */
     'templates'?: ((string | undefined)[] | undefined)
     /**
      * 
-     * @key `include`
      * @default `undefined`
-     * @type `array`
      */
     'include'?: ((string | undefined)[] | undefined)
     /**
      * 
-     * @key `exclude`
      * @default `undefined`
-     * @type `array`
      */
     'exclude'?: ((string | undefined)[] | undefined) }[],
   /**
    * %config.translate_save_as_candidates%
-   * @key `i18n-ally.translate.saveAsCandidates`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "translate.saveAsCandidates": boolean,
   /**
    * %config.translate.fallbackToKey%
-   * @key `i18n-ally.translate.fallbackToKey`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "translate.fallbackToKey": boolean,
   /**
    * %config.translate.engines%
-   * @key `i18n-ally.translate.engines`
-   * @default `["google"]`
-   * @type `array`
+   * @default ["google"]
    */
   "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai" | undefined)[],
   /**
    * %config.translate.parallels%
-   * @key `i18n-ally.translate.parallels`
-   * @default `5`
-   * @type `number`
+   * @default 5
    */
   "translate.parallels": number,
   /**
    * %config.prompt_translating_source%
-   * @key `i18n-ally.translate.promptSource`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "translate.promptSource": boolean,
   /**
    * %config.translate_override_existing%
-   * @key `i18n-ally.translate.overrideExisting`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "translate.overrideExisting": boolean,
   /**
    * %config.google_api_key%
-   * @key `i18n-ally.translate.google.apiKey`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "translate.google.apiKey": string,
   /**
    * %config.deepl_api_key%
-   * @key `i18n-ally.translate.deepl.apiKey`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "translate.deepl.apiKey": string,
   /**
    * %config.baidu_appid%
-   * @key `i18n-ally.translate.baidu.appid`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "translate.baidu.appid": string,
   /**
    * %config.baidu_app_secret%
-   * @key `i18n-ally.translate.baidu.apiSecret`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "translate.baidu.apiSecret": string,
   /**
    * %config.deepl_log%
-   * @key `i18n-ally.translate.deepl.enableLog`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "translate.deepl.enableLog": boolean,
   /**
    * %config.deepl_use_free_api_entry%
-   * @key `i18n-ally.translate.deepl.useFreeApiEntry`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "translate.deepl.useFreeApiEntry": boolean,
   /**
    * %config.libretranslate_api_root%
-   * @key `i18n-ally.translate.libre.apiRoot`
-   * @default `"http://localhost:5000"`
-   * @type `string`
+   * @default "http://localhost:5000"
    */
   "translate.libre.apiRoot": string,
   /**
    * %config.openai_api_key%
-   * @key `i18n-ally.translate.openai.apiKey`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "translate.openai.apiKey": string,
   /**
    * %config.openai_api_root%
-   * @key `i18n-ally.translate.openai.apiRoot`
-   * @default `"https://api.openai.com"`
-   * @type `string`
+   * @default "https://api.openai.com"
    */
   "translate.openai.apiRoot": string,
   /**
    * %config.openai_api_model%
-   * @key `i18n-ally.translate.openai.apiModel`
-   * @default `"gpt-3.5-turbo"`
-   * @type `string`
+   * @default "gpt-3.5-turbo"
    */
   "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
   /**
    * %config.usage.scanning_ignore%
-   * @key `i18n-ally.usage.scanningIgnore`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "usage.scanningIgnore"?: (string | undefined)[],
   /**
    * %config.derived_keys%
-   * @key `i18n-ally.usage.derivedKeyRules`
-   * @default `null`
-   * @type `array`
+   * @default null
    */
   "usage.derivedKeyRules": (string | undefined)[],
   /**
    * 
-   * @key `i18n-ally.frameworks.ruby-rails.scopeRoot`
-   * @default `"app/views"`
-   * @type `string`
+   * @default "app/views"
    */
   "frameworks.ruby-rails.scopeRoot": string,
   /**
    * 
-   * @key `i18n-ally.parsers.typescript.tsNodePath`
-   * @default `"node_modules/ts-node/dist/bin.js"`
-   * @type `string`
+   * @default "node_modules/ts-node/dist/bin.js"
    */
   "parsers.typescript.tsNodePath": string,
   /**
    * 
-   * @key `i18n-ally.parsers.typescript.compilerOptions`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "parsers.typescript.compilerOptions": Record<string, unknown>,
   /**
    * 
-   * @key `i18n-ally.parsers.extendFileExtensions`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "parsers.extendFileExtensions": Record<string, unknown>,
   /**
    * %config.review_enabled%
-   * @key `i18n-ally.review.enabled`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "review.enabled": boolean,
   /**
    * %config.review_gutters%
-   * @key `i18n-ally.review.gutters`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "review.gutters": boolean,
   /**
    * %config.review_username%
-   * @key `i18n-ally.review.user.name`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "review.user.name"?: string,
   /**
    * %config.review_email%
-   * @key `i18n-ally.review.user.email`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "review.user.email"?: string,
   /**
    * %config.review_remove_on_resolved%
-   * @key `i18n-ally.review.removeCommentOnResolved`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "review.removeCommentOnResolved": boolean,
   /**
    * %config.editor_prefer_editor%
-   * @key `i18n-ally.editor.preferEditor`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "editor.preferEditor": boolean,
   /**
    * %config.keygen_strategy%
-   * @key `i18n-ally.extract.keygenStrategy`
-   * @default `"slug"`
-   * @type `string`
+   * @default "slug"
    */
   "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
   /**
    * %config.keygen_style%
-   * @key `i18n-ally.extract.keygenStyle`
-   * @default `"default"`
-   * @type `string`
+   * @default "default"
    */
   "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
   /**
    * %config.key_prefix%
-   * @key `i18n-ally.extract.keyPrefix`
-   * @default `""`
-   * @type `string`
+   * @default ""
    */
   "extract.keyPrefix": string,
   /**
    * %config.key_max_length%
-   * @key `i18n-ally.extract.keyMaxLength`
-   * @default `null`
-   * @type `number`
+   * @default null
    */
   "extract.keyMaxLength": number,
   /**
    * %config.target_picking_strategy%
-   * @key `i18n-ally.extract.targetPickingStrategy`
-   * @default `"none"`
-   * @type `string`
+   * @default "none"
    */
   "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
   /**
    * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-   * @key `i18n-ally.extract.parsers.html`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "extract.parsers.html": Record<string, unknown>,
   /**
    * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-   * @key `i18n-ally.extract.parsers.babel`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "extract.parsers.babel": Record<string, unknown>,
   /**
    * Enables hard-coded strings detection automatically whenever opening a supported file
-   * @key `i18n-ally.extract.autoDetect`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "extract.autoDetect": boolean,
   /**
    * Strings to be ignored on hard-coded strings detection
-   * @key `i18n-ally.extract.ignored`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "extract.ignored"?: (string | undefined)[],
   /**
    * Strings to be ignored on hard-coded strings detection, by files
-   * @key `i18n-ally.extract.ignoredByFiles`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "extract.ignoredByFiles": Record<string, unknown>,
   /**
    * 
-   * @key `i18n-ally.parserOptions`
-   * @default `undefined`
-   * @type `object`
+   * @default undefined
    */
   "parserOptions"?: Record<string, unknown>,
   /**
    * %config.default_namespace%
-   * @key `i18n-ally.defaultNamespace`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "defaultNamespace"?: string,
 }
@@ -1080,94 +1203,310 @@ export interface I18nAlly {
  * Scoped defaults of `i18n-ally`
  */
 const _i18nAlly = {
-/**
- * scope: `i18n-ally`
- */
+  /**
+   * scope: `i18n-ally`
+   */
   scope: "i18n-ally",
-/**
- * Keys' defaults of `i18n-ally`
- */
+  /**
+   * Keys' defaults of `i18n-ally`
+   */
   defaults: {
+    /**
+     * %config.disabled%
+     */
     "disabled": false,
+    /**
+     * %config.auto_detection%
+     */
     "autoDetection": true,
+    /**
+     * %config.locales_paths%
+     */
     "localesPaths": undefined,
+    /**
+     * %config.encoding%
+     */
     "encoding": "utf-8",
+    /**
+     * %config.source_language%
+     */
     "sourceLanguage": undefined,
+    /**
+     * %config.display_language%
+     */
     "displayLanguage": undefined,
+    /**
+     * %config.ignored_locales%
+     */
     "ignoredLocales": undefined,
+    /**
+     * %config.keystyle%
+     */
     "keystyle": undefined,
+    /**
+     * %config.dir_structure%
+     */
     "dirStructure": undefined,
+    /**
+     * %config.annotations%
+     */
     "annotations": true,
+    /**
+     * %config.annotation_in_place%
+     */
     "annotationInPlace": true,
+    /**
+     * %config.annotation_max_length%
+     */
     "annotationMaxLength": 40,
+    /**
+     * %config.annotation_delimiter%
+     */
     "annotationDelimiter": "·",
+    /**
+     * %config.include_subfolders%
+     */
     "includeSubfolders": true,
+    /**
+     * %config.full_reload_on_changed%
+     */
     "fullReloadOnChanged": false,
+    /**
+     * %config.show_flags%
+     */
     "showFlags": true,
+    /**
+     * %config.enabled_frameworks%
+     */
     "enabledFrameworks": undefined,
+    /**
+     * %config.enabled_parsers%
+     */
     "enabledParsers": undefined,
+    /**
+     * %config.keys_in_use%
+     */
     "keysInUse": undefined,
+    /**
+     * %config.sort_keys%
+     */
     "sortKeys": false,
+    /**
+     * %config.sort_compare%
+     */
     "sortCompare": "binary",
+    /**
+     * %config.sort_locale%
+     */
     "sortLocale": undefined,
+    /**
+     * %config.preferred_delimiter%
+     */
     "preferredDelimiter": "-",
+    /**
+     * %config.readonly%
+     */
     "readonly": false,
+    /**
+     * %config.keep_fulfill%
+     */
     "keepFulfilled": false,
+    /**
+     * %config.locale_country_map%
+     */
     "localeCountryMap": {},
+    /**
+     * %config.indent%
+     */
     "indent": 2,
+    /**
+     * %config.disable_path_parsing%
+     */
     "disablePathParsing": false,
+    /**
+     * %config.tab_style%
+     */
     "tabStyle": "space",
+    /**
+     * %config.namespace%
+     */
     "namespace": undefined,
+    /**
+     * %config.path_matcher%
+     */
     "pathMatcher": undefined,
+    /**
+     * %config.language_tag_system%
+     */
     "languageTagSystem": "bcp47",
+    /**
+     * %config.ignore_files%
+     */
     "ignoreFiles": undefined,
     "theme.annotation": "rgba(153, 153, 153, .8)",
     "theme.annotationMissing": "rgba(153, 153, 153, .3)",
     "theme.annotationBorder": "rgba(153, 153, 153, .2)",
     "theme.annotationMissingBorder": "rgba(153, 153, 153, .2)",
+    /**
+     * %config.regex_key%
+     */
     "regex.key": undefined,
+    /**
+     * %config.regex_usage_match%
+     */
     "regex.usageMatch": undefined,
+    /**
+     * %config.regex_usage_match_append%
+     */
     "regex.usageMatchAppend": undefined,
+    /**
+     * %config.refactor_templates%
+     */
     "refactor.templates": undefined,
+    /**
+     * %config.translate_save_as_candidates%
+     */
     "translate.saveAsCandidates": false,
+    /**
+     * %config.translate.fallbackToKey%
+     */
     "translate.fallbackToKey": false,
+    /**
+     * %config.translate.engines%
+     */
     "translate.engines": ["google"],
+    /**
+     * %config.translate.parallels%
+     */
     "translate.parallels": 5,
+    /**
+     * %config.prompt_translating_source%
+     */
     "translate.promptSource": false,
+    /**
+     * %config.translate_override_existing%
+     */
     "translate.overrideExisting": false,
+    /**
+     * %config.google_api_key%
+     */
     "translate.google.apiKey": null,
+    /**
+     * %config.deepl_api_key%
+     */
     "translate.deepl.apiKey": null,
+    /**
+     * %config.baidu_appid%
+     */
     "translate.baidu.appid": null,
+    /**
+     * %config.baidu_app_secret%
+     */
     "translate.baidu.apiSecret": null,
+    /**
+     * %config.deepl_log%
+     */
     "translate.deepl.enableLog": false,
+    /**
+     * %config.deepl_use_free_api_entry%
+     */
     "translate.deepl.useFreeApiEntry": false,
+    /**
+     * %config.libretranslate_api_root%
+     */
     "translate.libre.apiRoot": "http://localhost:5000",
+    /**
+     * %config.openai_api_key%
+     */
     "translate.openai.apiKey": null,
+    /**
+     * %config.openai_api_root%
+     */
     "translate.openai.apiRoot": "https://api.openai.com",
+    /**
+     * %config.openai_api_model%
+     */
     "translate.openai.apiModel": "gpt-3.5-turbo",
+    /**
+     * %config.usage.scanning_ignore%
+     */
     "usage.scanningIgnore": undefined,
+    /**
+     * %config.derived_keys%
+     */
     "usage.derivedKeyRules": null,
     "frameworks.ruby-rails.scopeRoot": "app/views",
     "parsers.typescript.tsNodePath": "node_modules/ts-node/dist/bin.js",
     "parsers.typescript.compilerOptions": {},
     "parsers.extendFileExtensions": {},
+    /**
+     * %config.review_enabled%
+     */
     "review.enabled": true,
+    /**
+     * %config.review_gutters%
+     */
     "review.gutters": true,
+    /**
+     * %config.review_username%
+     */
     "review.user.name": undefined,
+    /**
+     * %config.review_email%
+     */
     "review.user.email": undefined,
+    /**
+     * %config.review_remove_on_resolved%
+     */
     "review.removeCommentOnResolved": false,
+    /**
+     * %config.editor_prefer_editor%
+     */
     "editor.preferEditor": false,
+    /**
+     * %config.keygen_strategy%
+     */
     "extract.keygenStrategy": "slug",
+    /**
+     * %config.keygen_style%
+     */
     "extract.keygenStyle": "default",
+    /**
+     * %config.key_prefix%
+     */
     "extract.keyPrefix": "",
+    /**
+     * %config.key_max_length%
+     */
     "extract.keyMaxLength": null,
+    /**
+     * %config.target_picking_strategy%
+     */
     "extract.targetPickingStrategy": "none",
+    /**
+     * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+     */
     "extract.parsers.html": {},
+    /**
+     * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+     */
     "extract.parsers.babel": {},
+    /**
+     * Enables hard-coded strings detection automatically whenever opening a supported file
+     */
     "extract.autoDetect": false,
+    /**
+     * Strings to be ignored on hard-coded strings detection
+     */
     "extract.ignored": undefined,
+    /**
+     * Strings to be ignored on hard-coded strings detection, by files
+     */
     "extract.ignoredByFiles": {},
     "parserOptions": undefined,
+    /**
+     * %config.default_namespace%
+     */
     "defaultNamespace": undefined,
   } satisfies I18nAlly,
 }
@@ -1202,30 +1541,22 @@ export const i18nAllyConfigs = defineConfigs<I18nAlly>(
 export interface Theme {
   /**
    * 
-   * @key `i18n-ally.theme.annotation`
-   * @default `"rgba(153, 153, 153, .8)"`
-   * @type `string`
+   * @default "rgba(153, 153, 153, .8)"
    */
   "annotation": string,
   /**
    * 
-   * @key `i18n-ally.theme.annotationMissing`
-   * @default `"rgba(153, 153, 153, .3)"`
-   * @type `string`
+   * @default "rgba(153, 153, 153, .3)"
    */
   "annotationMissing": string,
   /**
    * 
-   * @key `i18n-ally.theme.annotationBorder`
-   * @default `"rgba(153, 153, 153, .2)"`
-   * @type `string`
+   * @default "rgba(153, 153, 153, .2)"
    */
   "annotationBorder": string,
   /**
    * 
-   * @key `i18n-ally.theme.annotationMissingBorder`
-   * @default `"rgba(153, 153, 153, .2)"`
-   * @type `string`
+   * @default "rgba(153, 153, 153, .2)"
    */
   "annotationMissingBorder": string,
 }
@@ -1234,13 +1565,13 @@ export interface Theme {
  * Scoped defaults of `i18n-ally.theme`
  */
 const _theme = {
-/**
- * scope: `i18n-ally.theme`
- */
+  /**
+   * scope: `i18n-ally.theme`
+   */
   scope: "i18n-ally.theme",
-/**
- * Keys' defaults of `i18n-ally.theme`
- */
+  /**
+   * Keys' defaults of `i18n-ally.theme`
+   */
   defaults: {
     "annotation": "rgba(153, 153, 153, .8)",
     "annotationMissing": "rgba(153, 153, 153, .3)",
@@ -1279,23 +1610,17 @@ export const themeConfigs = defineConfigs<Theme>(
 export interface Regex {
   /**
    * %config.regex_key%
-   * @key `i18n-ally.regex.key`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "key"?: string,
   /**
    * %config.regex_usage_match%
-   * @key `i18n-ally.regex.usageMatch`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "usageMatch"?: (string | undefined)[],
   /**
    * %config.regex_usage_match_append%
-   * @key `i18n-ally.regex.usageMatchAppend`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "usageMatchAppend"?: (string | undefined)[],
 }
@@ -1304,16 +1629,25 @@ export interface Regex {
  * Scoped defaults of `i18n-ally.regex`
  */
 const _regex = {
-/**
- * scope: `i18n-ally.regex`
- */
+  /**
+   * scope: `i18n-ally.regex`
+   */
   scope: "i18n-ally.regex",
-/**
- * Keys' defaults of `i18n-ally.regex`
- */
+  /**
+   * Keys' defaults of `i18n-ally.regex`
+   */
   defaults: {
+    /**
+     * %config.regex_key%
+     */
     "key": undefined,
+    /**
+     * %config.regex_usage_match%
+     */
     "usageMatch": undefined,
+    /**
+     * %config.regex_usage_match_append%
+     */
     "usageMatchAppend": undefined,
   } satisfies Regex,
 }
@@ -1348,44 +1682,32 @@ export const regexConfigs = defineConfigs<Regex>(
 export interface Refactor {
   /**
    * %config.refactor_templates%
-   * @key `i18n-ally.refactor.templates`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
-  "templates"?: { 
+  "templates"?: {
     /**
      * 
-     * @key `source`
      * @default `undefined`
-     * @type `string`
      */
     'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text" | undefined)
     /**
      * 
-     * @key `template`
      * @default `undefined`
-     * @type `string`
      */
     'template'?: (string | undefined)
     /**
      * 
-     * @key `templates`
      * @default `undefined`
-     * @type `array`
      */
     'templates'?: ((string | undefined)[] | undefined)
     /**
      * 
-     * @key `include`
      * @default `undefined`
-     * @type `array`
      */
     'include'?: ((string | undefined)[] | undefined)
     /**
      * 
-     * @key `exclude`
      * @default `undefined`
-     * @type `array`
      */
     'exclude'?: ((string | undefined)[] | undefined) }[],
 }
@@ -1394,14 +1716,17 @@ export interface Refactor {
  * Scoped defaults of `i18n-ally.refactor`
  */
 const _refactor = {
-/**
- * scope: `i18n-ally.refactor`
- */
+  /**
+   * scope: `i18n-ally.refactor`
+   */
   scope: "i18n-ally.refactor",
-/**
- * Keys' defaults of `i18n-ally.refactor`
- */
+  /**
+   * Keys' defaults of `i18n-ally.refactor`
+   */
   defaults: {
+    /**
+     * %config.refactor_templates%
+     */
     "templates": undefined,
   } satisfies Refactor,
 }
@@ -1436,114 +1761,82 @@ export const refactorConfigs = defineConfigs<Refactor>(
 export interface Translate {
   /**
    * %config.translate_save_as_candidates%
-   * @key `i18n-ally.translate.saveAsCandidates`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "saveAsCandidates": boolean,
   /**
    * %config.translate.fallbackToKey%
-   * @key `i18n-ally.translate.fallbackToKey`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "fallbackToKey": boolean,
   /**
    * %config.translate.engines%
-   * @key `i18n-ally.translate.engines`
-   * @default `["google"]`
-   * @type `array`
+   * @default ["google"]
    */
   "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai" | undefined)[],
   /**
    * %config.translate.parallels%
-   * @key `i18n-ally.translate.parallels`
-   * @default `5`
-   * @type `number`
+   * @default 5
    */
   "parallels": number,
   /**
    * %config.prompt_translating_source%
-   * @key `i18n-ally.translate.promptSource`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "promptSource": boolean,
   /**
    * %config.translate_override_existing%
-   * @key `i18n-ally.translate.overrideExisting`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "overrideExisting": boolean,
   /**
    * %config.google_api_key%
-   * @key `i18n-ally.translate.google.apiKey`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "google.apiKey": string,
   /**
    * %config.deepl_api_key%
-   * @key `i18n-ally.translate.deepl.apiKey`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "deepl.apiKey": string,
   /**
    * %config.baidu_appid%
-   * @key `i18n-ally.translate.baidu.appid`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "baidu.appid": string,
   /**
    * %config.baidu_app_secret%
-   * @key `i18n-ally.translate.baidu.apiSecret`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "baidu.apiSecret": string,
   /**
    * %config.deepl_log%
-   * @key `i18n-ally.translate.deepl.enableLog`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "deepl.enableLog": boolean,
   /**
    * %config.deepl_use_free_api_entry%
-   * @key `i18n-ally.translate.deepl.useFreeApiEntry`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "deepl.useFreeApiEntry": boolean,
   /**
    * %config.libretranslate_api_root%
-   * @key `i18n-ally.translate.libre.apiRoot`
-   * @default `"http://localhost:5000"`
-   * @type `string`
+   * @default "http://localhost:5000"
    */
   "libre.apiRoot": string,
   /**
    * %config.openai_api_key%
-   * @key `i18n-ally.translate.openai.apiKey`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "openai.apiKey": string,
   /**
    * %config.openai_api_root%
-   * @key `i18n-ally.translate.openai.apiRoot`
-   * @default `"https://api.openai.com"`
-   * @type `string`
+   * @default "https://api.openai.com"
    */
   "openai.apiRoot": string,
   /**
    * %config.openai_api_model%
-   * @key `i18n-ally.translate.openai.apiModel`
-   * @default `"gpt-3.5-turbo"`
-   * @type `string`
+   * @default "gpt-3.5-turbo"
    */
   "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
 }
@@ -1552,29 +1845,77 @@ export interface Translate {
  * Scoped defaults of `i18n-ally.translate`
  */
 const _translate = {
-/**
- * scope: `i18n-ally.translate`
- */
+  /**
+   * scope: `i18n-ally.translate`
+   */
   scope: "i18n-ally.translate",
-/**
- * Keys' defaults of `i18n-ally.translate`
- */
+  /**
+   * Keys' defaults of `i18n-ally.translate`
+   */
   defaults: {
+    /**
+     * %config.translate_save_as_candidates%
+     */
     "saveAsCandidates": false,
+    /**
+     * %config.translate.fallbackToKey%
+     */
     "fallbackToKey": false,
+    /**
+     * %config.translate.engines%
+     */
     "engines": ["google"],
+    /**
+     * %config.translate.parallels%
+     */
     "parallels": 5,
+    /**
+     * %config.prompt_translating_source%
+     */
     "promptSource": false,
+    /**
+     * %config.translate_override_existing%
+     */
     "overrideExisting": false,
+    /**
+     * %config.google_api_key%
+     */
     "google.apiKey": null,
+    /**
+     * %config.deepl_api_key%
+     */
     "deepl.apiKey": null,
+    /**
+     * %config.baidu_appid%
+     */
     "baidu.appid": null,
+    /**
+     * %config.baidu_app_secret%
+     */
     "baidu.apiSecret": null,
+    /**
+     * %config.deepl_log%
+     */
     "deepl.enableLog": false,
+    /**
+     * %config.deepl_use_free_api_entry%
+     */
     "deepl.useFreeApiEntry": false,
+    /**
+     * %config.libretranslate_api_root%
+     */
     "libre.apiRoot": "http://localhost:5000",
+    /**
+     * %config.openai_api_key%
+     */
     "openai.apiKey": null,
+    /**
+     * %config.openai_api_root%
+     */
     "openai.apiRoot": "https://api.openai.com",
+    /**
+     * %config.openai_api_model%
+     */
     "openai.apiModel": "gpt-3.5-turbo",
   } satisfies Translate,
 }
@@ -1609,9 +1950,7 @@ export const translateConfigs = defineConfigs<Translate>(
 export interface TranslateGoogle {
   /**
    * %config.google_api_key%
-   * @key `i18n-ally.translate.google.apiKey`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "apiKey": string,
 }
@@ -1620,14 +1959,17 @@ export interface TranslateGoogle {
  * Scoped defaults of `i18n-ally.translate.google`
  */
 const _translateGoogle = {
-/**
- * scope: `i18n-ally.translate.google`
- */
+  /**
+   * scope: `i18n-ally.translate.google`
+   */
   scope: "i18n-ally.translate.google",
-/**
- * Keys' defaults of `i18n-ally.translate.google`
- */
+  /**
+   * Keys' defaults of `i18n-ally.translate.google`
+   */
   defaults: {
+    /**
+     * %config.google_api_key%
+     */
     "apiKey": null,
   } satisfies TranslateGoogle,
 }
@@ -1662,23 +2004,17 @@ export const translateGoogleConfigs = defineConfigs<TranslateGoogle>(
 export interface TranslateDeepl {
   /**
    * %config.deepl_api_key%
-   * @key `i18n-ally.translate.deepl.apiKey`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "apiKey": string,
   /**
    * %config.deepl_log%
-   * @key `i18n-ally.translate.deepl.enableLog`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "enableLog": boolean,
   /**
    * %config.deepl_use_free_api_entry%
-   * @key `i18n-ally.translate.deepl.useFreeApiEntry`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "useFreeApiEntry": boolean,
 }
@@ -1687,16 +2023,25 @@ export interface TranslateDeepl {
  * Scoped defaults of `i18n-ally.translate.deepl`
  */
 const _translateDeepl = {
-/**
- * scope: `i18n-ally.translate.deepl`
- */
+  /**
+   * scope: `i18n-ally.translate.deepl`
+   */
   scope: "i18n-ally.translate.deepl",
-/**
- * Keys' defaults of `i18n-ally.translate.deepl`
- */
+  /**
+   * Keys' defaults of `i18n-ally.translate.deepl`
+   */
   defaults: {
+    /**
+     * %config.deepl_api_key%
+     */
     "apiKey": null,
+    /**
+     * %config.deepl_log%
+     */
     "enableLog": false,
+    /**
+     * %config.deepl_use_free_api_entry%
+     */
     "useFreeApiEntry": false,
   } satisfies TranslateDeepl,
 }
@@ -1731,16 +2076,12 @@ export const translateDeeplConfigs = defineConfigs<TranslateDeepl>(
 export interface TranslateBaidu {
   /**
    * %config.baidu_appid%
-   * @key `i18n-ally.translate.baidu.appid`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "appid": string,
   /**
    * %config.baidu_app_secret%
-   * @key `i18n-ally.translate.baidu.apiSecret`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "apiSecret": string,
 }
@@ -1749,15 +2090,21 @@ export interface TranslateBaidu {
  * Scoped defaults of `i18n-ally.translate.baidu`
  */
 const _translateBaidu = {
-/**
- * scope: `i18n-ally.translate.baidu`
- */
+  /**
+   * scope: `i18n-ally.translate.baidu`
+   */
   scope: "i18n-ally.translate.baidu",
-/**
- * Keys' defaults of `i18n-ally.translate.baidu`
- */
+  /**
+   * Keys' defaults of `i18n-ally.translate.baidu`
+   */
   defaults: {
+    /**
+     * %config.baidu_appid%
+     */
     "appid": null,
+    /**
+     * %config.baidu_app_secret%
+     */
     "apiSecret": null,
   } satisfies TranslateBaidu,
 }
@@ -1792,9 +2139,7 @@ export const translateBaiduConfigs = defineConfigs<TranslateBaidu>(
 export interface TranslateLibre {
   /**
    * %config.libretranslate_api_root%
-   * @key `i18n-ally.translate.libre.apiRoot`
-   * @default `"http://localhost:5000"`
-   * @type `string`
+   * @default "http://localhost:5000"
    */
   "apiRoot": string,
 }
@@ -1803,14 +2148,17 @@ export interface TranslateLibre {
  * Scoped defaults of `i18n-ally.translate.libre`
  */
 const _translateLibre = {
-/**
- * scope: `i18n-ally.translate.libre`
- */
+  /**
+   * scope: `i18n-ally.translate.libre`
+   */
   scope: "i18n-ally.translate.libre",
-/**
- * Keys' defaults of `i18n-ally.translate.libre`
- */
+  /**
+   * Keys' defaults of `i18n-ally.translate.libre`
+   */
   defaults: {
+    /**
+     * %config.libretranslate_api_root%
+     */
     "apiRoot": "http://localhost:5000",
   } satisfies TranslateLibre,
 }
@@ -1845,23 +2193,17 @@ export const translateLibreConfigs = defineConfigs<TranslateLibre>(
 export interface TranslateOpenai {
   /**
    * %config.openai_api_key%
-   * @key `i18n-ally.translate.openai.apiKey`
-   * @default `null`
-   * @type `string`
+   * @default null
    */
   "apiKey": string,
   /**
    * %config.openai_api_root%
-   * @key `i18n-ally.translate.openai.apiRoot`
-   * @default `"https://api.openai.com"`
-   * @type `string`
+   * @default "https://api.openai.com"
    */
   "apiRoot": string,
   /**
    * %config.openai_api_model%
-   * @key `i18n-ally.translate.openai.apiModel`
-   * @default `"gpt-3.5-turbo"`
-   * @type `string`
+   * @default "gpt-3.5-turbo"
    */
   "apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
 }
@@ -1870,16 +2212,25 @@ export interface TranslateOpenai {
  * Scoped defaults of `i18n-ally.translate.openai`
  */
 const _translateOpenai = {
-/**
- * scope: `i18n-ally.translate.openai`
- */
+  /**
+   * scope: `i18n-ally.translate.openai`
+   */
   scope: "i18n-ally.translate.openai",
-/**
- * Keys' defaults of `i18n-ally.translate.openai`
- */
+  /**
+   * Keys' defaults of `i18n-ally.translate.openai`
+   */
   defaults: {
+    /**
+     * %config.openai_api_key%
+     */
     "apiKey": null,
+    /**
+     * %config.openai_api_root%
+     */
     "apiRoot": "https://api.openai.com",
+    /**
+     * %config.openai_api_model%
+     */
     "apiModel": "gpt-3.5-turbo",
   } satisfies TranslateOpenai,
 }
@@ -1914,16 +2265,12 @@ export const translateOpenaiConfigs = defineConfigs<TranslateOpenai>(
 export interface Usage {
   /**
    * %config.usage.scanning_ignore%
-   * @key `i18n-ally.usage.scanningIgnore`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "scanningIgnore"?: (string | undefined)[],
   /**
    * %config.derived_keys%
-   * @key `i18n-ally.usage.derivedKeyRules`
-   * @default `null`
-   * @type `array`
+   * @default null
    */
   "derivedKeyRules": (string | undefined)[],
 }
@@ -1932,15 +2279,21 @@ export interface Usage {
  * Scoped defaults of `i18n-ally.usage`
  */
 const _usage = {
-/**
- * scope: `i18n-ally.usage`
- */
+  /**
+   * scope: `i18n-ally.usage`
+   */
   scope: "i18n-ally.usage",
-/**
- * Keys' defaults of `i18n-ally.usage`
- */
+  /**
+   * Keys' defaults of `i18n-ally.usage`
+   */
   defaults: {
+    /**
+     * %config.usage.scanning_ignore%
+     */
     "scanningIgnore": undefined,
+    /**
+     * %config.derived_keys%
+     */
     "derivedKeyRules": null,
   } satisfies Usage,
 }
@@ -1975,9 +2328,7 @@ export const usageConfigs = defineConfigs<Usage>(
 export interface Frameworks {
   /**
    * 
-   * @key `i18n-ally.frameworks.ruby-rails.scopeRoot`
-   * @default `"app/views"`
-   * @type `string`
+   * @default "app/views"
    */
   "ruby-rails.scopeRoot": string,
 }
@@ -1986,13 +2337,13 @@ export interface Frameworks {
  * Scoped defaults of `i18n-ally.frameworks`
  */
 const _frameworks = {
-/**
- * scope: `i18n-ally.frameworks`
- */
+  /**
+   * scope: `i18n-ally.frameworks`
+   */
   scope: "i18n-ally.frameworks",
-/**
- * Keys' defaults of `i18n-ally.frameworks`
- */
+  /**
+   * Keys' defaults of `i18n-ally.frameworks`
+   */
   defaults: {
     "ruby-rails.scopeRoot": "app/views",
   } satisfies Frameworks,
@@ -2028,9 +2379,7 @@ export const frameworksConfigs = defineConfigs<Frameworks>(
 export interface FrameworksRubyRails {
   /**
    * 
-   * @key `i18n-ally.frameworks.ruby-rails.scopeRoot`
-   * @default `"app/views"`
-   * @type `string`
+   * @default "app/views"
    */
   "scopeRoot": string,
 }
@@ -2039,13 +2388,13 @@ export interface FrameworksRubyRails {
  * Scoped defaults of `i18n-ally.frameworks.ruby-rails`
  */
 const _frameworksRubyRails = {
-/**
- * scope: `i18n-ally.frameworks.ruby-rails`
- */
+  /**
+   * scope: `i18n-ally.frameworks.ruby-rails`
+   */
   scope: "i18n-ally.frameworks.ruby-rails",
-/**
- * Keys' defaults of `i18n-ally.frameworks.ruby-rails`
- */
+  /**
+   * Keys' defaults of `i18n-ally.frameworks.ruby-rails`
+   */
   defaults: {
     "scopeRoot": "app/views",
   } satisfies FrameworksRubyRails,
@@ -2081,23 +2430,17 @@ export const frameworksRubyRailsConfigs = defineConfigs<FrameworksRubyRails>(
 export interface Parsers {
   /**
    * 
-   * @key `i18n-ally.parsers.typescript.tsNodePath`
-   * @default `"node_modules/ts-node/dist/bin.js"`
-   * @type `string`
+   * @default "node_modules/ts-node/dist/bin.js"
    */
   "typescript.tsNodePath": string,
   /**
    * 
-   * @key `i18n-ally.parsers.typescript.compilerOptions`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "typescript.compilerOptions": Record<string, unknown>,
   /**
    * 
-   * @key `i18n-ally.parsers.extendFileExtensions`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "extendFileExtensions": Record<string, unknown>,
 }
@@ -2106,13 +2449,13 @@ export interface Parsers {
  * Scoped defaults of `i18n-ally.parsers`
  */
 const _parsers = {
-/**
- * scope: `i18n-ally.parsers`
- */
+  /**
+   * scope: `i18n-ally.parsers`
+   */
   scope: "i18n-ally.parsers",
-/**
- * Keys' defaults of `i18n-ally.parsers`
- */
+  /**
+   * Keys' defaults of `i18n-ally.parsers`
+   */
   defaults: {
     "typescript.tsNodePath": "node_modules/ts-node/dist/bin.js",
     "typescript.compilerOptions": {},
@@ -2150,16 +2493,12 @@ export const parsersConfigs = defineConfigs<Parsers>(
 export interface ParsersTypescript {
   /**
    * 
-   * @key `i18n-ally.parsers.typescript.tsNodePath`
-   * @default `"node_modules/ts-node/dist/bin.js"`
-   * @type `string`
+   * @default "node_modules/ts-node/dist/bin.js"
    */
   "tsNodePath": string,
   /**
    * 
-   * @key `i18n-ally.parsers.typescript.compilerOptions`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "compilerOptions": Record<string, unknown>,
 }
@@ -2168,13 +2507,13 @@ export interface ParsersTypescript {
  * Scoped defaults of `i18n-ally.parsers.typescript`
  */
 const _parsersTypescript = {
-/**
- * scope: `i18n-ally.parsers.typescript`
- */
+  /**
+   * scope: `i18n-ally.parsers.typescript`
+   */
   scope: "i18n-ally.parsers.typescript",
-/**
- * Keys' defaults of `i18n-ally.parsers.typescript`
- */
+  /**
+   * Keys' defaults of `i18n-ally.parsers.typescript`
+   */
   defaults: {
     "tsNodePath": "node_modules/ts-node/dist/bin.js",
     "compilerOptions": {},
@@ -2211,37 +2550,27 @@ export const parsersTypescriptConfigs = defineConfigs<ParsersTypescript>(
 export interface Review {
   /**
    * %config.review_enabled%
-   * @key `i18n-ally.review.enabled`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "enabled": boolean,
   /**
    * %config.review_gutters%
-   * @key `i18n-ally.review.gutters`
-   * @default `true`
-   * @type `boolean`
+   * @default true
    */
   "gutters": boolean,
   /**
    * %config.review_username%
-   * @key `i18n-ally.review.user.name`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "user.name"?: string,
   /**
    * %config.review_email%
-   * @key `i18n-ally.review.user.email`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "user.email"?: string,
   /**
    * %config.review_remove_on_resolved%
-   * @key `i18n-ally.review.removeCommentOnResolved`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "removeCommentOnResolved": boolean,
 }
@@ -2250,18 +2579,33 @@ export interface Review {
  * Scoped defaults of `i18n-ally.review`
  */
 const _review = {
-/**
- * scope: `i18n-ally.review`
- */
+  /**
+   * scope: `i18n-ally.review`
+   */
   scope: "i18n-ally.review",
-/**
- * Keys' defaults of `i18n-ally.review`
- */
+  /**
+   * Keys' defaults of `i18n-ally.review`
+   */
   defaults: {
+    /**
+     * %config.review_enabled%
+     */
     "enabled": true,
+    /**
+     * %config.review_gutters%
+     */
     "gutters": true,
+    /**
+     * %config.review_username%
+     */
     "user.name": undefined,
+    /**
+     * %config.review_email%
+     */
     "user.email": undefined,
+    /**
+     * %config.review_remove_on_resolved%
+     */
     "removeCommentOnResolved": false,
   } satisfies Review,
 }
@@ -2296,16 +2640,12 @@ export const reviewConfigs = defineConfigs<Review>(
 export interface ReviewUser {
   /**
    * %config.review_username%
-   * @key `i18n-ally.review.user.name`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "name"?: string,
   /**
    * %config.review_email%
-   * @key `i18n-ally.review.user.email`
-   * @default `undefined`
-   * @type `string`
+   * @default undefined
    */
   "email"?: string,
 }
@@ -2314,15 +2654,21 @@ export interface ReviewUser {
  * Scoped defaults of `i18n-ally.review.user`
  */
 const _reviewUser = {
-/**
- * scope: `i18n-ally.review.user`
- */
+  /**
+   * scope: `i18n-ally.review.user`
+   */
   scope: "i18n-ally.review.user",
-/**
- * Keys' defaults of `i18n-ally.review.user`
- */
+  /**
+   * Keys' defaults of `i18n-ally.review.user`
+   */
   defaults: {
+    /**
+     * %config.review_username%
+     */
     "name": undefined,
+    /**
+     * %config.review_email%
+     */
     "email": undefined,
   } satisfies ReviewUser,
 }
@@ -2357,9 +2703,7 @@ export const reviewUserConfigs = defineConfigs<ReviewUser>(
 export interface Editor {
   /**
    * %config.editor_prefer_editor%
-   * @key `i18n-ally.editor.preferEditor`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "preferEditor": boolean,
 }
@@ -2368,14 +2712,17 @@ export interface Editor {
  * Scoped defaults of `i18n-ally.editor`
  */
 const _editor = {
-/**
- * scope: `i18n-ally.editor`
- */
+  /**
+   * scope: `i18n-ally.editor`
+   */
   scope: "i18n-ally.editor",
-/**
- * Keys' defaults of `i18n-ally.editor`
- */
+  /**
+   * Keys' defaults of `i18n-ally.editor`
+   */
   defaults: {
+    /**
+     * %config.editor_prefer_editor%
+     */
     "preferEditor": false,
   } satisfies Editor,
 }
@@ -2410,72 +2757,52 @@ export const editorConfigs = defineConfigs<Editor>(
 export interface Extract {
   /**
    * %config.keygen_strategy%
-   * @key `i18n-ally.extract.keygenStrategy`
-   * @default `"slug"`
-   * @type `string`
+   * @default "slug"
    */
   "keygenStrategy": ("slug" | "random" | "empty" | "source"),
   /**
    * %config.keygen_style%
-   * @key `i18n-ally.extract.keygenStyle`
-   * @default `"default"`
-   * @type `string`
+   * @default "default"
    */
   "keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
   /**
    * %config.key_prefix%
-   * @key `i18n-ally.extract.keyPrefix`
-   * @default `""`
-   * @type `string`
+   * @default ""
    */
   "keyPrefix": string,
   /**
    * %config.key_max_length%
-   * @key `i18n-ally.extract.keyMaxLength`
-   * @default `null`
-   * @type `number`
+   * @default null
    */
   "keyMaxLength": number,
   /**
    * %config.target_picking_strategy%
-   * @key `i18n-ally.extract.targetPickingStrategy`
-   * @default `"none"`
-   * @type `string`
+   * @default "none"
    */
   "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
   /**
    * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-   * @key `i18n-ally.extract.parsers.html`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "parsers.html": Record<string, unknown>,
   /**
    * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-   * @key `i18n-ally.extract.parsers.babel`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "parsers.babel": Record<string, unknown>,
   /**
    * Enables hard-coded strings detection automatically whenever opening a supported file
-   * @key `i18n-ally.extract.autoDetect`
-   * @default `false`
-   * @type `boolean`
+   * @default false
    */
   "autoDetect": boolean,
   /**
    * Strings to be ignored on hard-coded strings detection
-   * @key `i18n-ally.extract.ignored`
-   * @default `undefined`
-   * @type `array`
+   * @default undefined
    */
   "ignored"?: (string | undefined)[],
   /**
    * Strings to be ignored on hard-coded strings detection, by files
-   * @key `i18n-ally.extract.ignoredByFiles`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "ignoredByFiles": Record<string, unknown>,
 }
@@ -2484,23 +2811,53 @@ export interface Extract {
  * Scoped defaults of `i18n-ally.extract`
  */
 const _extract = {
-/**
- * scope: `i18n-ally.extract`
- */
+  /**
+   * scope: `i18n-ally.extract`
+   */
   scope: "i18n-ally.extract",
-/**
- * Keys' defaults of `i18n-ally.extract`
- */
+  /**
+   * Keys' defaults of `i18n-ally.extract`
+   */
   defaults: {
+    /**
+     * %config.keygen_strategy%
+     */
     "keygenStrategy": "slug",
+    /**
+     * %config.keygen_style%
+     */
     "keygenStyle": "default",
+    /**
+     * %config.key_prefix%
+     */
     "keyPrefix": "",
+    /**
+     * %config.key_max_length%
+     */
     "keyMaxLength": null,
+    /**
+     * %config.target_picking_strategy%
+     */
     "targetPickingStrategy": "none",
+    /**
+     * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+     */
     "parsers.html": {},
+    /**
+     * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+     */
     "parsers.babel": {},
+    /**
+     * Enables hard-coded strings detection automatically whenever opening a supported file
+     */
     "autoDetect": false,
+    /**
+     * Strings to be ignored on hard-coded strings detection
+     */
     "ignored": undefined,
+    /**
+     * Strings to be ignored on hard-coded strings detection, by files
+     */
     "ignoredByFiles": {},
   } satisfies Extract,
 }
@@ -2535,16 +2892,12 @@ export const extractConfigs = defineConfigs<Extract>(
 export interface ExtractParsers {
   /**
    * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-   * @key `i18n-ally.extract.parsers.html`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "html": Record<string, unknown>,
   /**
    * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-   * @key `i18n-ally.extract.parsers.babel`
-   * @default `{}`
-   * @type `object`
+   * @default {}
    */
   "babel": Record<string, unknown>,
 }
@@ -2553,15 +2906,21 @@ export interface ExtractParsers {
  * Scoped defaults of `i18n-ally.extract.parsers`
  */
 const _extractParsers = {
-/**
- * scope: `i18n-ally.extract.parsers`
- */
+  /**
+   * scope: `i18n-ally.extract.parsers`
+   */
   scope: "i18n-ally.extract.parsers",
-/**
- * Keys' defaults of `i18n-ally.extract.parsers`
- */
+  /**
+   * Keys' defaults of `i18n-ally.extract.parsers`
+   */
   defaults: {
+    /**
+     * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+     */
     "html": {},
+    /**
+     * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+     */
     "babel": {},
   } satisfies ExtractParsers,
 }

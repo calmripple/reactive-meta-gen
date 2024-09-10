@@ -184,40 +184,30 @@
   //%config.regex_usage_match_append%
   "i18n-ally.regex.usageMatchAppend": ,
 
-  //{ 
+  //{
     /**
      * 
-     * @key `source`
      * @default `undefined`
-     * @type `string`
      */
     'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text" | undefined)
     /**
      * 
-     * @key `template`
      * @default `undefined`
-     * @type `string`
      */
     'template'?: (string | undefined)
     /**
      * 
-     * @key `templates`
      * @default `undefined`
-     * @type `array`
      */
     'templates'?: ((string | undefined)[] | undefined)
     /**
      * 
-     * @key `include`
      * @default `undefined`
-     * @type `array`
      */
     'include'?: ((string | undefined)[] | undefined)
     /**
      * 
-     * @key `exclude`
      * @default `undefined`
-     * @type `array`
      */
     'exclude'?: ((string | undefined)[] | undefined) }[]
   //%config.refactor_templates%
