@@ -781,7 +781,7 @@ export interface I18nAlly {
    * %config.locales_paths%
    * @default undefined
    */
-  "localesPaths"?: (string | (string | undefined)[]),
+  "localesPaths"?: (string | string[] | undefined),
   /**
    * %config.encoding%
    * @default "utf-8"
@@ -791,27 +791,27 @@ export interface I18nAlly {
    * %config.source_language%
    * @default undefined
    */
-  "sourceLanguage"?: string,
+  "sourceLanguage"?: (string | undefined),
   /**
    * %config.display_language%
    * @default undefined
    */
-  "displayLanguage"?: string,
+  "displayLanguage"?: (string | undefined),
   /**
    * %config.ignored_locales%
    * @default undefined
    */
-  "ignoredLocales"?: unknown[],
+  "ignoredLocales"?: (unknown[] | undefined),
   /**
    * %config.keystyle%
    * @default undefined
    */
-  "keystyle"?: ("auto" | "nested" | "flat"),
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
   /**
    * %config.dir_structure%
    * @default undefined
    */
-  "dirStructure"?: ("auto" | "file" | "dir"),
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
   /**
    * %config.annotations%
    * @default true
@@ -851,17 +851,17 @@ export interface I18nAlly {
    * %config.enabled_frameworks%
    * @default undefined
    */
-  "enabledFrameworks"?: ("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international" | undefined)[],
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
   /**
    * %config.enabled_parsers%
    * @default undefined
    */
-  "enabledParsers"?: ("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl" | undefined)[],
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
   /**
    * %config.keys_in_use%
    * @default undefined
    */
-  "keysInUse"?: (string | undefined)[],
+  "keysInUse"?: (string[] | undefined),
   /**
    * %config.sort_keys%
    * @default false
@@ -876,7 +876,7 @@ export interface I18nAlly {
    * %config.sort_locale%
    * @default undefined
    */
-  "sortLocale"?: string,
+  "sortLocale"?: (string | undefined),
   /**
    * %config.preferred_delimiter%
    * @default "-"
@@ -916,12 +916,12 @@ export interface I18nAlly {
    * %config.namespace%
    * @default undefined
    */
-  "namespace"?: boolean,
+  "namespace"?: (boolean | undefined),
   /**
    * %config.path_matcher%
    * @default undefined
    */
-  "pathMatcher"?: string,
+  "pathMatcher"?: (string | undefined),
   /**
    * %config.language_tag_system%
    * @default "bcp47"
@@ -931,7 +931,7 @@ export interface I18nAlly {
    * %config.ignore_files%
    * @default undefined
    */
-  "ignoreFiles"?: (string | undefined)[],
+  "ignoreFiles"?: (string[] | undefined),
   /**
    * 
    * @default "rgba(153, 153, 153, .8)"
@@ -956,47 +956,48 @@ export interface I18nAlly {
    * %config.regex_key%
    * @default undefined
    */
-  "regex.key"?: string,
+  "regex.key"?: (string | undefined),
   /**
    * %config.regex_usage_match%
    * @default undefined
    */
-  "regex.usageMatch"?: (string | undefined)[],
+  "regex.usageMatch"?: (string[] | undefined),
   /**
    * %config.regex_usage_match_append%
    * @default undefined
    */
-  "regex.usageMatchAppend"?: (string | undefined)[],
+  "regex.usageMatchAppend"?: (string[] | undefined),
   /**
    * %config.refactor_templates%
    * @default undefined
    */
-  "refactor.templates"?: {
-    /**
-     * 
-     * @default `undefined`
-     */
-    'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text" | undefined)
-    /**
-     * 
-     * @default `undefined`
-     */
-    'template'?: (string | undefined)
-    /**
-     * 
-     * @default `undefined`
-     */
-    'templates'?: ((string | undefined)[] | undefined)
-    /**
-     * 
-     * @default `undefined`
-     */
-    'include'?: ((string | undefined)[] | undefined)
-    /**
-     * 
-     * @default `undefined`
-     */
-    'exclude'?: ((string | undefined)[] | undefined) }[],
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
   /**
    * %config.translate_save_as_candidates%
    * @default false
@@ -1011,7 +1012,7 @@ export interface I18nAlly {
    * %config.translate.engines%
    * @default ["google"]
    */
-  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai" | undefined)[],
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
   /**
    * %config.translate.parallels%
    * @default 5
@@ -1031,22 +1032,22 @@ export interface I18nAlly {
    * %config.google_api_key%
    * @default null
    */
-  "translate.google.apiKey": string,
+  "translate.google.apiKey": (string | null),
   /**
    * %config.deepl_api_key%
    * @default null
    */
-  "translate.deepl.apiKey": string,
+  "translate.deepl.apiKey": (string | null),
   /**
    * %config.baidu_appid%
    * @default null
    */
-  "translate.baidu.appid": string,
+  "translate.baidu.appid": (string | null),
   /**
    * %config.baidu_app_secret%
    * @default null
    */
-  "translate.baidu.apiSecret": string,
+  "translate.baidu.apiSecret": (string | null),
   /**
    * %config.deepl_log%
    * @default false
@@ -1066,7 +1067,7 @@ export interface I18nAlly {
    * %config.openai_api_key%
    * @default null
    */
-  "translate.openai.apiKey": string,
+  "translate.openai.apiKey": (string | null),
   /**
    * %config.openai_api_root%
    * @default "https://api.openai.com"
@@ -1081,12 +1082,12 @@ export interface I18nAlly {
    * %config.usage.scanning_ignore%
    * @default undefined
    */
-  "usage.scanningIgnore"?: (string | undefined)[],
+  "usage.scanningIgnore"?: (string[] | undefined),
   /**
    * %config.derived_keys%
    * @default null
    */
-  "usage.derivedKeyRules": (string | undefined)[],
+  "usage.derivedKeyRules": (string[] | null),
   /**
    * 
    * @default "app/views"
@@ -1121,12 +1122,12 @@ export interface I18nAlly {
    * %config.review_username%
    * @default undefined
    */
-  "review.user.name"?: string,
+  "review.user.name"?: (string | undefined),
   /**
    * %config.review_email%
    * @default undefined
    */
-  "review.user.email"?: string,
+  "review.user.email"?: (string | undefined),
   /**
    * %config.review_remove_on_resolved%
    * @default false
@@ -1156,7 +1157,7 @@ export interface I18nAlly {
    * %config.key_max_length%
    * @default null
    */
-  "extract.keyMaxLength": number,
+  "extract.keyMaxLength": (number | null),
   /**
    * %config.target_picking_strategy%
    * @default "none"
@@ -1181,7 +1182,7 @@ export interface I18nAlly {
    * Strings to be ignored on hard-coded strings detection
    * @default undefined
    */
-  "extract.ignored"?: (string | undefined)[],
+  "extract.ignored"?: (string[] | undefined),
   /**
    * Strings to be ignored on hard-coded strings detection, by files
    * @default {}
@@ -1196,7 +1197,7 @@ export interface I18nAlly {
    * %config.default_namespace%
    * @default undefined
    */
-  "defaultNamespace"?: string,
+  "defaultNamespace"?: (string | undefined),
 }
 
 /**
@@ -1612,17 +1613,17 @@ export interface Regex {
    * %config.regex_key%
    * @default undefined
    */
-  "key"?: string,
+  "key"?: (string | undefined),
   /**
    * %config.regex_usage_match%
    * @default undefined
    */
-  "usageMatch"?: (string | undefined)[],
+  "usageMatch"?: (string[] | undefined),
   /**
    * %config.regex_usage_match_append%
    * @default undefined
    */
-  "usageMatchAppend"?: (string | undefined)[],
+  "usageMatchAppend"?: (string[] | undefined),
 }
 
 /**
@@ -1684,32 +1685,33 @@ export interface Refactor {
    * %config.refactor_templates%
    * @default undefined
    */
-  "templates"?: {
-    /**
-     * 
-     * @default `undefined`
-     */
-    'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text" | undefined)
-    /**
-     * 
-     * @default `undefined`
-     */
-    'template'?: (string | undefined)
-    /**
-     * 
-     * @default `undefined`
-     */
-    'templates'?: ((string | undefined)[] | undefined)
-    /**
-     * 
-     * @default `undefined`
-     */
-    'include'?: ((string | undefined)[] | undefined)
-    /**
-     * 
-     * @default `undefined`
-     */
-    'exclude'?: ((string | undefined)[] | undefined) }[],
+  "templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
 }
 
 /**
@@ -1773,7 +1775,7 @@ export interface Translate {
    * %config.translate.engines%
    * @default ["google"]
    */
-  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai" | undefined)[],
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
   /**
    * %config.translate.parallels%
    * @default 5
@@ -1793,22 +1795,22 @@ export interface Translate {
    * %config.google_api_key%
    * @default null
    */
-  "google.apiKey": string,
+  "google.apiKey": (string | null),
   /**
    * %config.deepl_api_key%
    * @default null
    */
-  "deepl.apiKey": string,
+  "deepl.apiKey": (string | null),
   /**
    * %config.baidu_appid%
    * @default null
    */
-  "baidu.appid": string,
+  "baidu.appid": (string | null),
   /**
    * %config.baidu_app_secret%
    * @default null
    */
-  "baidu.apiSecret": string,
+  "baidu.apiSecret": (string | null),
   /**
    * %config.deepl_log%
    * @default false
@@ -1828,7 +1830,7 @@ export interface Translate {
    * %config.openai_api_key%
    * @default null
    */
-  "openai.apiKey": string,
+  "openai.apiKey": (string | null),
   /**
    * %config.openai_api_root%
    * @default "https://api.openai.com"
@@ -1952,7 +1954,7 @@ export interface TranslateGoogle {
    * %config.google_api_key%
    * @default null
    */
-  "apiKey": string,
+  "apiKey": (string | null),
 }
 
 /**
@@ -2006,7 +2008,7 @@ export interface TranslateDeepl {
    * %config.deepl_api_key%
    * @default null
    */
-  "apiKey": string,
+  "apiKey": (string | null),
   /**
    * %config.deepl_log%
    * @default false
@@ -2078,12 +2080,12 @@ export interface TranslateBaidu {
    * %config.baidu_appid%
    * @default null
    */
-  "appid": string,
+  "appid": (string | null),
   /**
    * %config.baidu_app_secret%
    * @default null
    */
-  "apiSecret": string,
+  "apiSecret": (string | null),
 }
 
 /**
@@ -2195,7 +2197,7 @@ export interface TranslateOpenai {
    * %config.openai_api_key%
    * @default null
    */
-  "apiKey": string,
+  "apiKey": (string | null),
   /**
    * %config.openai_api_root%
    * @default "https://api.openai.com"
@@ -2267,12 +2269,12 @@ export interface Usage {
    * %config.usage.scanning_ignore%
    * @default undefined
    */
-  "scanningIgnore"?: (string | undefined)[],
+  "scanningIgnore"?: (string[] | undefined),
   /**
    * %config.derived_keys%
    * @default null
    */
-  "derivedKeyRules": (string | undefined)[],
+  "derivedKeyRules": (string[] | null),
 }
 
 /**
@@ -2562,12 +2564,12 @@ export interface Review {
    * %config.review_username%
    * @default undefined
    */
-  "user.name"?: string,
+  "user.name"?: (string | undefined),
   /**
    * %config.review_email%
    * @default undefined
    */
-  "user.email"?: string,
+  "user.email"?: (string | undefined),
   /**
    * %config.review_remove_on_resolved%
    * @default false
@@ -2642,12 +2644,12 @@ export interface ReviewUser {
    * %config.review_username%
    * @default undefined
    */
-  "name"?: string,
+  "name"?: (string | undefined),
   /**
    * %config.review_email%
    * @default undefined
    */
-  "email"?: string,
+  "email"?: (string | undefined),
 }
 
 /**
@@ -2774,7 +2776,7 @@ export interface Extract {
    * %config.key_max_length%
    * @default null
    */
-  "keyMaxLength": number,
+  "keyMaxLength": (number | null),
   /**
    * %config.target_picking_strategy%
    * @default "none"
@@ -2799,7 +2801,7 @@ export interface Extract {
    * Strings to be ignored on hard-coded strings detection
    * @default undefined
    */
-  "ignored"?: (string | undefined)[],
+  "ignored"?: (string[] | undefined),
   /**
    * Strings to be ignored on hard-coded strings detection, by files
    * @default {}

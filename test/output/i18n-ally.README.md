@@ -57,27 +57,30 @@
   //`boolean`, %config.auto_detection% 
   "i18n-ally.autoDetection": true,
 
-  //(string | (string | undefined)[])
+  //(string | string[] | undefined)
   //%config.locales_paths%
   "i18n-ally.localesPaths": ,
 
   //`string`, %config.encoding% 
   "i18n-ally.encoding": "utf-8",
 
-  //`string`, %config.source_language% 
+  //(string | undefined)
+  //%config.source_language%
   "i18n-ally.sourceLanguage": ,
 
-  //`string`, %config.display_language% 
+  //(string | undefined)
+  //%config.display_language%
   "i18n-ally.displayLanguage": ,
 
-  //`unknown[]`, %config.ignored_locales% 
+  //(unknown[] | undefined)
+  //%config.ignored_locales%
   "i18n-ally.ignoredLocales": ,
 
-  //("auto" | "nested" | "flat")
+  //("auto" | "nested" | "flat" | undefined)
   //%config.keystyle%
   "i18n-ally.keystyle": ,
 
-  //("auto" | "file" | "dir")
+  //("auto" | "file" | "dir" | undefined)
   //%config.dir_structure%
   "i18n-ally.dirStructure": ,
 
@@ -102,15 +105,15 @@
   //`boolean`, %config.show_flags% 
   "i18n-ally.showFlags": true,
 
-  //("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international" | undefined)[]
+  //(("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined)
   //%config.enabled_frameworks%
   "i18n-ally.enabledFrameworks": ,
 
-  //("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl" | undefined)[]
+  //(("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined)
   //%config.enabled_parsers%
   "i18n-ally.enabledParsers": ,
 
-  //(string | undefined)[]
+  //(string[] | undefined)
   //%config.keys_in_use%
   "i18n-ally.keysInUse": ,
 
@@ -121,7 +124,8 @@
   //%config.sort_compare%
   "i18n-ally.sortCompare": "binary",
 
-  //`string`, %config.sort_locale% 
+  //(string | undefined)
+  //%config.sort_locale%
   "i18n-ally.sortLocale": ,
 
   //`string`, %config.preferred_delimiter% 
@@ -147,17 +151,19 @@
   //%config.tab_style%
   "i18n-ally.tabStyle": "space",
 
-  //`boolean`, %config.namespace% 
+  //(boolean | undefined)
+  //%config.namespace%
   "i18n-ally.namespace": ,
 
-  //`string`, %config.path_matcher% 
+  //(string | undefined)
+  //%config.path_matcher%
   "i18n-ally.pathMatcher": ,
 
   //("bcp47" | "legacy" | "none")
   //%config.language_tag_system%
   "i18n-ally.languageTagSystem": "bcp47",
 
-  //(string | undefined)[]
+  //(string[] | undefined)
   //%config.ignore_files%
   "i18n-ally.ignoreFiles": ,
 
@@ -173,43 +179,45 @@
   //`string`,  
   "i18n-ally.theme.annotationMissingBorder": "rgba(153, 153, 153, .2)",
 
-  //`string`, %config.regex_key% 
+  //(string | undefined)
+  //%config.regex_key%
   "i18n-ally.regex.key": ,
 
-  //(string | undefined)[]
+  //(string[] | undefined)
   //%config.regex_usage_match%
   "i18n-ally.regex.usageMatch": ,
 
-  //(string | undefined)[]
+  //(string[] | undefined)
   //%config.regex_usage_match_append%
   "i18n-ally.regex.usageMatchAppend": ,
 
-  //{
-    /**
-     * 
-     * @default `undefined`
-     */
-    'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text" | undefined)
-    /**
-     * 
-     * @default `undefined`
-     */
-    'template'?: (string | undefined)
-    /**
-     * 
-     * @default `undefined`
-     */
-    'templates'?: ((string | undefined)[] | undefined)
-    /**
-     * 
-     * @default `undefined`
-     */
-    'include'?: ((string | undefined)[] | undefined)
-    /**
-     * 
-     * @default `undefined`
-     */
-    'exclude'?: ((string | undefined)[] | undefined) }[]
+  //({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined)
   //%config.refactor_templates%
   "i18n-ally.refactor.templates": ,
 
@@ -219,7 +227,7 @@
   //`boolean`, %config.translate.fallbackToKey% 
   "i18n-ally.translate.fallbackToKey": false,
 
-  //("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai" | undefined)[]
+  //("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[]
   //%config.translate.engines%
   "i18n-ally.translate.engines": ["google"],
 
@@ -232,16 +240,20 @@
   //`boolean`, %config.translate_override_existing% 
   "i18n-ally.translate.overrideExisting": false,
 
-  //`string`, %config.google_api_key% 
+  //(string | null)
+  //%config.google_api_key%
   "i18n-ally.translate.google.apiKey": null,
 
-  //`string`, %config.deepl_api_key% 
+  //(string | null)
+  //%config.deepl_api_key%
   "i18n-ally.translate.deepl.apiKey": null,
 
-  //`string`, %config.baidu_appid% 
+  //(string | null)
+  //%config.baidu_appid%
   "i18n-ally.translate.baidu.appid": null,
 
-  //`string`, %config.baidu_app_secret% 
+  //(string | null)
+  //%config.baidu_app_secret%
   "i18n-ally.translate.baidu.apiSecret": null,
 
   //`boolean`, %config.deepl_log% 
@@ -253,7 +265,8 @@
   //`string`, %config.libretranslate_api_root% 
   "i18n-ally.translate.libre.apiRoot": "http://localhost:5000",
 
-  //`string`, %config.openai_api_key% 
+  //(string | null)
+  //%config.openai_api_key%
   "i18n-ally.translate.openai.apiKey": null,
 
   //`string`, %config.openai_api_root% 
@@ -263,11 +276,11 @@
   //%config.openai_api_model%
   "i18n-ally.translate.openai.apiModel": "gpt-3.5-turbo",
 
-  //(string | undefined)[]
+  //(string[] | undefined)
   //%config.usage.scanning_ignore%
   "i18n-ally.usage.scanningIgnore": ,
 
-  //(string | undefined)[]
+  //(string[] | null)
   //%config.derived_keys%
   "i18n-ally.usage.derivedKeyRules": null,
 
@@ -291,10 +304,12 @@
   //`boolean`, %config.review_gutters% 
   "i18n-ally.review.gutters": true,
 
-  //`string`, %config.review_username% 
+  //(string | undefined)
+  //%config.review_username%
   "i18n-ally.review.user.name": ,
 
-  //`string`, %config.review_email% 
+  //(string | undefined)
+  //%config.review_email%
   "i18n-ally.review.user.email": ,
 
   //`boolean`, %config.review_remove_on_resolved% 
@@ -314,7 +329,8 @@
   //`string`, %config.key_prefix% 
   "i18n-ally.extract.keyPrefix": "",
 
-  //`number`, %config.key_max_length% 
+  //(number | null)
+  //%config.key_max_length%
   "i18n-ally.extract.keyMaxLength": null,
 
   //("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous")
@@ -332,7 +348,7 @@
   //`boolean`, Enables hard-coded strings detection automatically whenever opening a supported file 
   "i18n-ally.extract.autoDetect": false,
 
-  //(string | undefined)[]
+  //(string[] | undefined)
   //Strings to be ignored on hard-coded strings detection
   "i18n-ally.extract.ignored": ,
 
@@ -344,7 +360,8 @@
   //
   "i18n-ally.parserOptions": ,
 
-  //`string`, %config.default_namespace% 
+  //(string | undefined)
+  //%config.default_namespace%
   "i18n-ally.defaultNamespace": ,
 
 }

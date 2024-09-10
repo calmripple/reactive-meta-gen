@@ -415,7 +415,7 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
               `@default ${defaultValue}`,
               // `@type \`${value.type}\``,
             ].join('\n'), 2),
-            `  ${JSON.stringify(removeScope(key))}${defaultValue === undefined ? "?" : ""}: ${typeFromSchema(value)},`,
+            `  ${JSON.stringify(removeScope(key))}${defaultValue === undefined ? "?" : ""}: ${typeFromSchema(value, false)},`,
           ]
         }),
       '}',
@@ -567,7 +567,7 @@ function commentBlock(text?: string, padding = 0): string[] {
   ]
 }
 
-function typeFromSchema(schema: ConfigurationProperty, subIndent = 0): string {
+function typeFromSchema(schema: ConfigurationProperty, isSubType = false, subIndent = 2): string {
   if (!schema)
     return 'unknown'
   const indent = ' '.repeat(subIndent)
@@ -591,10 +591,10 @@ function typeFromSchema(schema: ConfigurationProperty, subIndent = 0): string {
         break
       case 'array':
         if (schema.items) {
-          types.push(`${typeFromSchema(schema.items, subIndent + 2)}[]`)
+          types.push(`${typeFromSchema(schema.items, true, subIndent + 2)}[]`)
           break
         } else if (schema.item) {
-          types.push(`${typeFromSchema(schema.item, subIndent + 2)}[]`)
+          types.push(`${typeFromSchema(schema.item, true, subIndent + 2)}[]`)
           break
         }
         types.push('unknown[]')
@@ -603,7 +603,6 @@ function typeFromSchema(schema: ConfigurationProperty, subIndent = 0): string {
         if (schema.properties) {
           const propertyKeyValues = Object.entries(schema.properties).flatMap(([key, value]) => {
             const defaultValue = defaultValFromSchema(value)
-
             return [
               ...commentBlock([
                 value.description ?? value.markdownDescription ?? value.enumDescriptions?.join('\n'),
@@ -611,11 +610,13 @@ function typeFromSchema(schema: ConfigurationProperty, subIndent = 0): string {
                 `@default \`${defaultValue}\``,
                 // `@type \`${value.type}\``,
               ].join('\n'), subIndent),
-              `${indent}'${key}'${defaultValue != undefined ? "" : "?"}: ${typeFromSchema(value, subIndent + 2)}`
+              `${indent}'${key}'${defaultValue != undefined ? "" : "?"}: ${typeFromSchema(value, true, subIndent + 2)}`
             ]
           })
 
-          types.push(`{\n${indent}${propertyKeyValues.join('\n  ')} }`)
+          types.push(`{
+  ${indent}${propertyKeyValues.join('\n  ')} 
+${indent}}`)
 
           break
         }
@@ -626,7 +627,7 @@ function typeFromSchema(schema: ConfigurationProperty, subIndent = 0): string {
     }
   }
 
-  if (subIndent != 0 && schema.type !== 'object') {
+  if (!isSubType && schema.type !== 'object') {
     if (!('default' in schema) || schema.default === undefined)
       types.push('undefined')
     else if (schema.default === null)

@@ -84,7 +84,7 @@ export interface Whichkey {
    * Overrides bindings of the (default) which key
    * @default undefined
    */
-  "bindingOverrides"?: unknown[],
+  "bindingOverrides"?: (unknown[] | undefined),
 }
 
 /**

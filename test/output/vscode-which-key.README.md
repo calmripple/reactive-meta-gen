@@ -33,7 +33,8 @@
   //`unknown[]`, The bindings of the which key menu 
   "whichkey.bindings": See package.json,
 
-  //`unknown[]`, Overrides bindings of the (default) which key 
+  //(unknown[] | undefined)
+  //Overrides bindings of the (default) which key
   "whichkey.bindingOverrides": ,
 
 }
