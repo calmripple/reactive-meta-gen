@@ -477,37 +477,41 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
   //   generateSectionDts(lines, fullKeyAndProperties, section)
   // })
 
+  const sectionTypeMap: string[] = []
+  const sectionDefault: string[] = []
+  
   config.sectionActivedConfigs.forEach((sectionConfigs, section) => {
+
+    function removeSection(name: string) {
+      const sectionWithDot = `${section}.`
+      if (name.startsWith(sectionWithDot)) {
+        return name.slice(sectionWithDot.length)
+      }
+      return name
+    }
+
+    let _varSection = 'root'
+    let sectionComment
+    if (section) {
+      _varSection = `${convertCamelCase(section)}`
+      sectionComment = `${section}`
+    }
+    else {
+      while (config.sectionActivedConfigs.has(_varSection)) {
+        _varSection = `root${upperFirst(_varSection)}`
+      }
+      sectionComment = `virtual(Keys in the root)`
+    }
+    const interfaceName = `${upperFirst(_varSection)}`
+    const varName = {
+      useConfig: `useConfigs${interfaceName}`,
+      useConfigObject: `useConfigObject${interfaceName}`
+    }
+    const example = sectionConfigs[0]
+    const exampleKey = removeSection(example[0])
 
     sectionConfigs.forEach(([key, value]) => {
 
-      function removeSection(name: string) {
-        const sectionWithDot = `${section}.`
-        if (name.startsWith(sectionWithDot)) {
-          return name.slice(sectionWithDot.length)
-        }
-        return name
-      }
-
-      let _varSection = 'root'
-      let sectionComment
-      if (section) {
-        _varSection = `${convertCamelCase(section)}`
-        sectionComment = `${section}`
-      }
-      else {
-        while (config.sectionActivedConfigs.has(_varSection)) {
-          _varSection = `root${upperFirst(_varSection)}`
-        }
-        sectionComment = `virtual(Keys in the root)`
-      }
-      const interfaceName = `${upperFirst(_varSection)}`
-      const varName = {
-        useConfig: `useConfigs${interfaceName}`,
-        useConfigObject: `useConfigObject${interfaceName}`
-      }
-      const example = sectionConfigs[0]
-      const exampleKey = removeSection(example[0])
       lines.push(
         ``,
         ...commentBlock(`Config keys of \`${sectionComment}\``),
