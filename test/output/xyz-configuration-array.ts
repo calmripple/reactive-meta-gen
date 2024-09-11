@@ -23,90 +23,48 @@ export type CommandKey =
   | "extension.emeraldwalk.enableRunOnSave"
   | "extension.emeraldwalk.disableRunOnSave"
 
-/**
- * Commands map registed by `cnjimbo.project-config`
- */
-export const commands = {
-  /**
-   * Update config now
-   * @value `project-config.manualUpdate`
-   * @example
-   * useCommand(commands.manualUpdate, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  manualUpdate: "project-config.manualUpdate",
-  /**
-   * remove watch dir
-   * @value `project-config.remove-watch-dir`
-   * @example
-   * useCommand(commands.removeWatchDir, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  removeWatchDir: "project-config.remove-watch-dir",
-  /**
-   * add watch dir
-   * @value `project-config.add-watch-dir`
-   * @example
-   * useCommand(commands.addWatchDir, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  addWatchDir: "project-config.add-watch-dir",
-  /**
-   * Run On Save: Enable
-   * @value `extension.emeraldwalk.enableRunOnSave`
-   * @example
-   * useCommand(commands.extensionEmeraldwalkEnableRunOnSave, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  extensionEmeraldwalkEnableRunOnSave: "extension.emeraldwalk.enableRunOnSave",
-  /**
-   * Run On Save: Disable
-   * @value `extension.emeraldwalk.disableRunOnSave`
-   * @example
-   * useCommand(commands.extensionEmeraldwalkDisableRunOnSave, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  extensionEmeraldwalkDisableRunOnSave: "extension.emeraldwalk.disableRunOnSave",
-} satisfies Record<string, CommandKey>
+export function useCommandKey(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+  return useCommand(commandFullKey, callback)
+}
+
 /**
  * Update config now
  * @value `project-config.manualUpdate`
  */
 export function useCommandManualUpdate(callback: (...args: any[]) => any) {
-  useCommand(commands.manualUpdate, callback)
+  return useCommandKey("project-config.manualUpdate", callback)
 }
+
 /**
  * remove watch dir
  * @value `project-config.remove-watch-dir`
  */
 export function useCommandRemoveWatchDir(callback: (...args: any[]) => any) {
-  useCommand(commands.removeWatchDir, callback)
+  return useCommandKey("project-config.remove-watch-dir", callback)
 }
+
 /**
  * add watch dir
  * @value `project-config.add-watch-dir`
  */
 export function useCommandAddWatchDir(callback: (...args: any[]) => any) {
-  useCommand(commands.addWatchDir, callback)
+  return useCommandKey("project-config.add-watch-dir", callback)
 }
+
 /**
  * Run On Save: Enable
  * @value `extension.emeraldwalk.enableRunOnSave`
  */
 export function useCommandExtensionEmeraldwalkEnableRunOnSave(callback: (...args: any[]) => any) {
-  useCommand(commands.extensionEmeraldwalkEnableRunOnSave, callback)
+  return useCommandKey("extension.emeraldwalk.enableRunOnSave", callback)
 }
+
 /**
  * Run On Save: Disable
  * @value `extension.emeraldwalk.disableRunOnSave`
  */
 export function useCommandExtensionEmeraldwalkDisableRunOnSave(callback: (...args: any[]) => any) {
-  useCommand(commands.extensionEmeraldwalkDisableRunOnSave, callback)
+  return useCommandKey("extension.emeraldwalk.disableRunOnSave", callback)
 }
 
 
@@ -117,192 +75,69 @@ export type DeprecatedConfigKey =
   | "ww_should_not_show_up"
 
 /**
- * Config keys of `project-config`
+ * Section Type of `project-config`
  */
 export interface ProjectConfig {
   /**
    * The branch name of upstream repo
-   * @default "main"
    */
   "fileNestingUpdater.upstreamBranch": string,
   /**
    * The upstream repo you want to update from
-   * @default "antfu/vscode-file-nesting-config"
    */
   "fileNestingUpdater.upstreamRepo": string,
   /**
    * Enabled project-config inline annotations
-   * @default true
    */
   "test.annotations": boolean,
   /**
    * Position the icon before or after the icon name
-   * @default "before"
    */
   "test.position": ("after" | "before"),
 }
 
 /**
- * Config keys of `project-config`
- */
-export interface ProjectConfig {
-  /**
-   * The branch name of upstream repo
-   * @default "main"
-   */
-  "fileNestingUpdater.upstreamBranch": string,
-  /**
-   * The upstream repo you want to update from
-   * @default "antfu/vscode-file-nesting-config"
-   */
-  "fileNestingUpdater.upstreamRepo": string,
-  /**
-   * Enabled project-config inline annotations
-   * @default true
-   */
-  "test.annotations": boolean,
-  /**
-   * Position the icon before or after the icon name
-   * @default "before"
-   */
-  "test.position": ("after" | "before"),
-}
-
-/**
- * Config keys of `project-config`
- */
-export interface ProjectConfig {
-  /**
-   * The branch name of upstream repo
-   * @default "main"
-   */
-  "fileNestingUpdater.upstreamBranch": string,
-  /**
-   * The upstream repo you want to update from
-   * @default "antfu/vscode-file-nesting-config"
-   */
-  "fileNestingUpdater.upstreamRepo": string,
-  /**
-   * Enabled project-config inline annotations
-   * @default true
-   */
-  "test.annotations": boolean,
-  /**
-   * Position the icon before or after the icon name
-   * @default "before"
-   */
-  "test.position": ("after" | "before"),
-}
-
-/**
- * Config keys of `project-config`
- */
-export interface ProjectConfig {
-  /**
-   * The branch name of upstream repo
-   * @default "main"
-   */
-  "fileNestingUpdater.upstreamBranch": string,
-  /**
-   * The upstream repo you want to update from
-   * @default "antfu/vscode-file-nesting-config"
-   */
-  "fileNestingUpdater.upstreamRepo": string,
-  /**
-   * Enabled project-config inline annotations
-   * @default true
-   */
-  "test.annotations": boolean,
-  /**
-   * Position the icon before or after the icon name
-   * @default "before"
-   */
-  "test.position": ("after" | "before"),
-}
-
-/**
- * Config keys of `project-config.fileNestingUpdater`
+ * Section Type of `project-config.fileNestingUpdater`
  */
 export interface ProjectConfigFileNestingUpdater {
   /**
    * The branch name of upstream repo
-   * @default "main"
    */
   "upstreamBranch": string,
   /**
    * The upstream repo you want to update from
-   * @default "antfu/vscode-file-nesting-config"
    */
   "upstreamRepo": string,
 }
 
 /**
- * Config keys of `project-config.fileNestingUpdater`
- */
-export interface ProjectConfigFileNestingUpdater {
-  /**
-   * The branch name of upstream repo
-   * @default "main"
-   */
-  "upstreamBranch": string,
-  /**
-   * The upstream repo you want to update from
-   * @default "antfu/vscode-file-nesting-config"
-   */
-  "upstreamRepo": string,
-}
-
-/**
- * Config keys of `project-config.test`
+ * Section Type of `project-config.test`
  */
 export interface ProjectConfigTest {
   /**
    * Enabled project-config inline annotations
-   * @default true
    */
   "annotations": boolean,
   /**
    * Position the icon before or after the icon name
-   * @default "before"
    */
   "position": ("after" | "before"),
 }
 
 /**
- * Config keys of `project-config.test`
- */
-export interface ProjectConfigTest {
-  /**
-   * Enabled project-config inline annotations
-   * @default true
-   */
-  "annotations": boolean,
-  /**
-   * Position the icon before or after the icon name
-   * @default "before"
-   */
-  "position": ("after" | "before"),
-}
-
-/**
- * Config keys of `virtual(Keys in the root)`
+ * Section Type of `virtual(Keys in the root)`
  */
 export interface Root {
   /**
    * Enabled project-config inline annotations
-   * @default true
    */
   "xxx": boolean,
 }
 
 /**
- * Config keys of `emeraldwalk`
+ * Section Type of `emeraldwalk`
  */
 export interface Emeraldwalk {
-  /**
-   * 
-   * @default { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined }
-   */
   "runonsave": {
       /**
      * Automatically clear the console on each save before running commands.
@@ -357,3 +192,157 @@ export interface Emeraldwalk {
       }[] 
   },
 }
+const projectConfigConfig = {
+
+  "project-config": {
+    /**
+     * The branch name of upstream repo
+     */
+    "fileNestingUpdater.upstreamBranch": "main",
+    /**
+     * The upstream repo you want to update from
+     */
+    "fileNestingUpdater.upstreamRepo": "antfu/vscode-file-nesting-config",
+    /**
+     * Enabled project-config inline annotations
+     */
+    "test.annotations": true,
+    /**
+     * Position the icon before or after the icon name
+     */
+    "test.position": "before",
+  } satisfies ProjectConfig,
+
+
+  "project-config.fileNestingUpdater": {
+    /**
+     * The branch name of upstream repo
+     */
+    "upstreamBranch": "main",
+    /**
+     * The upstream repo you want to update from
+     */
+    "upstreamRepo": "antfu/vscode-file-nesting-config",
+  } satisfies ProjectConfigFileNestingUpdater,
+
+
+  "project-config.test": {
+    /**
+     * Enabled project-config inline annotations
+     */
+    "annotations": true,
+    /**
+     * Position the icon before or after the icon name
+     */
+    "position": "before",
+  } satisfies ProjectConfigTest,
+
+
+  "": {
+    /**
+     * Enabled project-config inline annotations
+     */
+    "xxx": true,
+  } satisfies Root,
+
+
+  "emeraldwalk": {
+    "runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined },
+  } satisfies Emeraldwalk,
+
+}
+export type ConfigKey = "project-config" | "project-config.fileNestingUpdater" | "project-config.test" | "" | "emeraldwalk"
+
+export function useConfig<K extends ConfigKey>(section: K) {
+  return defineConfigs<typeof projectConfigConfig[K]>(section, projectConfigConfig[section])
+}
+
+export function useConfigObject<K extends ConfigKey>(section: K) {
+  return defineConfigObject<typeof projectConfigConfig[K]>(section, projectConfigConfig[section])
+}
+    
+/**
+ * ConfigObject of `project-config`
+ * @example
+ * const configValue = configObjectProjectConfig.fileNestingUpdater.upstreamBranch //get value 
+ * configObjectProjectConfig.fileNestingUpdater.upstreamBranch = true // set value
+ * configObjectProjectConfig.$update("fileNestingUpdater.upstreamBranch", !configValue, ConfigurationTarget.Workspace, true)
+ */
+export const configObjectProjectConfig = useConfigObject("project-config")
+/**
+ * ToConfigRefs of `project-config`
+ * @example
+ * const configValue:string =configProjectConfig.fileNestingUpdater.upstreamBranch.value //get value 
+ * configProjectConfig.fileNestingUpdater.upstreamBranch.value = "main" // set value
+ * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
+ * configProjectConfig.fileNestingUpdater.upstreamBranch.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ */
+export const configProjectConfig = useConfig("project-config")
+/**
+ * ConfigObject of `project-config.fileNestingUpdater`
+ * @example
+ * const configValue = configObjectProjectConfigFileNestingUpdater.upstreamBranch //get value 
+ * configObjectProjectConfigFileNestingUpdater.upstreamBranch = true // set value
+ * configObjectProjectConfigFileNestingUpdater.$update("upstreamBranch", !configValue, ConfigurationTarget.Workspace, true)
+ */
+export const configObjectProjectConfigFileNestingUpdater = useConfigObject("project-config.fileNestingUpdater")
+/**
+ * ToConfigRefs of `project-config.fileNestingUpdater`
+ * @example
+ * const configValue:string =configProjectConfigFileNestingUpdater.upstreamBranch.value //get value 
+ * configProjectConfigFileNestingUpdater.upstreamBranch.value = "main" // set value
+ * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
+ * configProjectConfigFileNestingUpdater.upstreamBranch.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ */
+export const configProjectConfigFileNestingUpdater = useConfig("project-config.fileNestingUpdater")
+/**
+ * ConfigObject of `project-config.test`
+ * @example
+ * const configValue = configObjectProjectConfigTest.annotations //get value 
+ * configObjectProjectConfigTest.annotations = true // set value
+ * configObjectProjectConfigTest.$update("annotations", !configValue, ConfigurationTarget.Workspace, true)
+ */
+export const configObjectProjectConfigTest = useConfigObject("project-config.test")
+/**
+ * ToConfigRefs of `project-config.test`
+ * @example
+ * const configValue:boolean =configProjectConfigTest.annotations.value //get value 
+ * configProjectConfigTest.annotations.value = true // set value
+ * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
+ * configProjectConfigTest.annotations.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ */
+export const configProjectConfigTest = useConfig("project-config.test")
+/**
+ * ConfigObject of `virtual(Keys in the root)`
+ * @example
+ * const configValue = configObjectRoot.xxx //get value 
+ * configObjectRoot.xxx = true // set value
+ * configObjectRoot.$update("xxx", !configValue, ConfigurationTarget.Workspace, true)
+ */
+export const configObjectRoot = useConfigObject("")
+/**
+ * ToConfigRefs of `virtual(Keys in the root)`
+ * @example
+ * const configValue:boolean =configRoot.xxx.value //get value 
+ * configRoot.xxx.value = true // set value
+ * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
+ * configRoot.xxx.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ */
+export const configRoot = useConfig("")
+/**
+ * ConfigObject of `emeraldwalk`
+ * @example
+ * const configValue = configObjectEmeraldwalk.runonsave //get value 
+ * configObjectEmeraldwalk.runonsave = true // set value
+ * configObjectEmeraldwalk.$update("runonsave", !configValue, ConfigurationTarget.Workspace, true)
+ */
+export const configObjectEmeraldwalk = useConfigObject("emeraldwalk")
+/**
+ * ToConfigRefs of `emeraldwalk`
+ * @example
+ * const configValue:object =configEmeraldwalk.runonsave.value //get value 
+ * configEmeraldwalk.runonsave.value = { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined } // set value
+ * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
+ * configEmeraldwalk.runonsave.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ */
+export const configEmeraldwalk = useConfig("emeraldwalk")

@@ -19,51 +19,37 @@ export const extensionId = `${publisher}.${name}`
 export type CommandKey = 
   | "smartClicks.trigger"
 
-/**
- * Commands map registed by `antfu.smart-clicks`
- */
-export const commands = {
-  /**
-   * Smart Clicks: Trigger
-   * @value `smartClicks.trigger`
-   * @example
-   * useCommand(commands.trigger, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  trigger: "smartClicks.trigger",
-} satisfies Record<string, CommandKey>
+export function useCommandKey(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+  return useCommand(commandFullKey, callback)
+}
+
 /**
  * Smart Clicks: Trigger
  * @value `smartClicks.trigger`
  */
 export function useCommandTrigger(callback: (...args: any[]) => any) {
-  useCommand(commands.trigger, callback)
+  return useCommandKey("smartClicks.trigger", callback)
 }
 
 
 /**
- * Config keys of `smartClicks`
+ * Section Type of `smartClicks`
  */
 export interface SmartClicks {
   /**
    * The interval between clicks in milliseconds.
-   * @default 600
    */
   "clicksInterval": number,
   /**
    * The delay after triggering the selection. To prevent conflicting with normal selection.
-   * @default 150
    */
   "triggerDelay": number,
   /**
    * Array of language IDs to enable html smartClicks
-   * @default ["html","vue","svelte"]
    */
   "htmlLanguageIds": string[],
   /**
    * Rule toggles
-   * @default { "bracket-pair": true, "dash": true, "html-attr": true, "html-element": true, "html-tag-pair": true, "js-arrow-fn": true, "js-assign": true, "js-block": false, "js-colon": true, "jsx-tag-pair": true }
    */
   "rules": {
       /**
@@ -184,432 +170,52 @@ export interface SmartClicks {
     'jsx-tag-pair': boolean 
   },
 }
+const smartClicksConfig = {
 
-/**
- * Config keys of `smartClicks`
- */
-export interface SmartClicks {
-  /**
-   * The interval between clicks in milliseconds.
-   * @default 600
-   */
-  "clicksInterval": number,
-  /**
-   * The delay after triggering the selection. To prevent conflicting with normal selection.
-   * @default 150
-   */
-  "triggerDelay": number,
-  /**
-   * Array of language IDs to enable html smartClicks
-   * @default ["html","vue","svelte"]
-   */
-  "htmlLanguageIds": string[],
-  /**
-   * Rule toggles
-   * @default { "bracket-pair": true, "dash": true, "html-attr": true, "html-element": true, "html-tag-pair": true, "js-arrow-fn": true, "js-assign": true, "js-block": false, "js-colon": true, "jsx-tag-pair": true }
-   */
-  "rules": {
-      /**
-     * Pair to inner content of brackets.
-     * 
-     * ```js
-     * ▽
-     * (foo, bar)
-     *  └──────┘
-     * ```
-     * @default `true`
-     */
-    'bracket-pair': boolean
+  "smartClicks": {
     /**
-     * `-` to identifier.
-     * 
-     * ```css
-     *    ▽
-     * foo-bar
-     * └─────┘
-     * ```
-     * @default `true`
+     * The interval between clicks in milliseconds.
      */
-    'dash': boolean
+    "clicksInterval": 600,
     /**
-     * `=` to HTML attribute.
-     * 
-     * ```html
-     *           ▽
-     * <div class="btn"></div>
-     *      └─────────┘
-     * ```
-     * @default `true`
+     * The delay after triggering the selection. To prevent conflicting with normal selection.
      */
-    'html-attr': boolean
+    "triggerDelay": 150,
     /**
-     * `<` to the entire element.
-     * 
-     * ```html
-     * ▽
-     * <div><div></div></div>
-     * └────────────────────┘
-     * ```
-     * @default `true`
+     * Array of language IDs to enable html smartClicks
      */
-    'html-element': boolean
+    "htmlLanguageIds": ["html","vue","svelte"],
     /**
-     * Open and close tags of a HTML element.
-     * 
-     * ```html
-     *  ▽
-     * <div><div></div></div>
-     *  └─┘              └─┘
-     * ```
-     * @default `true`
+     * Rule toggles
      */
-    'html-tag-pair': boolean
-    /**
-     * `=>` to arrow function.
-     * 
-     * ```js
-     *        ▽
-     * (a, b) => a + b
-     * └─────────────┘
-     * ```
-     * @default `true`
-     */
-    'js-arrow-fn': boolean
-    /**
-     * `=` to assignment.
-     * 
-     * ```js
-     *         ▽
-     * const a = []
-     * └──────────┘
-     * ```
-     * @default `true`
-     */
-    'js-assign': boolean
-    /**
-     * Blocks like `if`, `for`, `while`, etc. in JavaScript.
-     * 
-     * ```js
-     * ▽
-     * function () {     }
-     * └─────────────────┘
-     * ```
-     * 
-     * ```js
-     * ▽
-     * import { ref } from 'vue'
-     * └───────────────────────┘
-     * ```
-     * @default `false`
-     */
-    'js-block': boolean
-    /**
-     * `:` to the value.
-     * 
-     * ```js
-     *      ▽
-     * { foo: { bar } }
-     *        └─────┘
-     * ```
-     * @default `true`
-     */
-    'js-colon': boolean
-    /**
-     * Matches JSX elements' start and end tags.
-     * 
-     * ```jsx
-     *   ▽
-     * (<Flex.Item>Hi</Flex.Item>)
-     *   └───────┘     └───────┘
-     * ```
-     * @default `true`
-     */
-    'jsx-tag-pair': boolean 
-  },
+    "rules": { "bracket-pair": true, "dash": true, "html-attr": true, "html-element": true, "html-tag-pair": true, "js-arrow-fn": true, "js-assign": true, "js-block": false, "js-colon": true, "jsx-tag-pair": true },
+  } satisfies SmartClicks,
+
+}
+export type ConfigKey = "smartClicks"
+
+export function useConfig<K extends ConfigKey>(section: K) {
+  return defineConfigs<typeof smartClicksConfig[K]>(section, smartClicksConfig[section])
 }
 
-/**
- * Config keys of `smartClicks`
- */
-export interface SmartClicks {
-  /**
-   * The interval between clicks in milliseconds.
-   * @default 600
-   */
-  "clicksInterval": number,
-  /**
-   * The delay after triggering the selection. To prevent conflicting with normal selection.
-   * @default 150
-   */
-  "triggerDelay": number,
-  /**
-   * Array of language IDs to enable html smartClicks
-   * @default ["html","vue","svelte"]
-   */
-  "htmlLanguageIds": string[],
-  /**
-   * Rule toggles
-   * @default { "bracket-pair": true, "dash": true, "html-attr": true, "html-element": true, "html-tag-pair": true, "js-arrow-fn": true, "js-assign": true, "js-block": false, "js-colon": true, "jsx-tag-pair": true }
-   */
-  "rules": {
-      /**
-     * Pair to inner content of brackets.
-     * 
-     * ```js
-     * ▽
-     * (foo, bar)
-     *  └──────┘
-     * ```
-     * @default `true`
-     */
-    'bracket-pair': boolean
-    /**
-     * `-` to identifier.
-     * 
-     * ```css
-     *    ▽
-     * foo-bar
-     * └─────┘
-     * ```
-     * @default `true`
-     */
-    'dash': boolean
-    /**
-     * `=` to HTML attribute.
-     * 
-     * ```html
-     *           ▽
-     * <div class="btn"></div>
-     *      └─────────┘
-     * ```
-     * @default `true`
-     */
-    'html-attr': boolean
-    /**
-     * `<` to the entire element.
-     * 
-     * ```html
-     * ▽
-     * <div><div></div></div>
-     * └────────────────────┘
-     * ```
-     * @default `true`
-     */
-    'html-element': boolean
-    /**
-     * Open and close tags of a HTML element.
-     * 
-     * ```html
-     *  ▽
-     * <div><div></div></div>
-     *  └─┘              └─┘
-     * ```
-     * @default `true`
-     */
-    'html-tag-pair': boolean
-    /**
-     * `=>` to arrow function.
-     * 
-     * ```js
-     *        ▽
-     * (a, b) => a + b
-     * └─────────────┘
-     * ```
-     * @default `true`
-     */
-    'js-arrow-fn': boolean
-    /**
-     * `=` to assignment.
-     * 
-     * ```js
-     *         ▽
-     * const a = []
-     * └──────────┘
-     * ```
-     * @default `true`
-     */
-    'js-assign': boolean
-    /**
-     * Blocks like `if`, `for`, `while`, etc. in JavaScript.
-     * 
-     * ```js
-     * ▽
-     * function () {     }
-     * └─────────────────┘
-     * ```
-     * 
-     * ```js
-     * ▽
-     * import { ref } from 'vue'
-     * └───────────────────────┘
-     * ```
-     * @default `false`
-     */
-    'js-block': boolean
-    /**
-     * `:` to the value.
-     * 
-     * ```js
-     *      ▽
-     * { foo: { bar } }
-     *        └─────┘
-     * ```
-     * @default `true`
-     */
-    'js-colon': boolean
-    /**
-     * Matches JSX elements' start and end tags.
-     * 
-     * ```jsx
-     *   ▽
-     * (<Flex.Item>Hi</Flex.Item>)
-     *   └───────┘     └───────┘
-     * ```
-     * @default `true`
-     */
-    'jsx-tag-pair': boolean 
-  },
+export function useConfigObject<K extends ConfigKey>(section: K) {
+  return defineConfigObject<typeof smartClicksConfig[K]>(section, smartClicksConfig[section])
 }
-
+    
 /**
- * Config keys of `smartClicks`
+ * ConfigObject of `smartClicks`
+ * @example
+ * const configValue = configObjectSmartClicks.clicksInterval //get value 
+ * configObjectSmartClicks.clicksInterval = true // set value
+ * configObjectSmartClicks.$update("clicksInterval", !configValue, ConfigurationTarget.Workspace, true)
  */
-export interface SmartClicks {
-  /**
-   * The interval between clicks in milliseconds.
-   * @default 600
-   */
-  "clicksInterval": number,
-  /**
-   * The delay after triggering the selection. To prevent conflicting with normal selection.
-   * @default 150
-   */
-  "triggerDelay": number,
-  /**
-   * Array of language IDs to enable html smartClicks
-   * @default ["html","vue","svelte"]
-   */
-  "htmlLanguageIds": string[],
-  /**
-   * Rule toggles
-   * @default { "bracket-pair": true, "dash": true, "html-attr": true, "html-element": true, "html-tag-pair": true, "js-arrow-fn": true, "js-assign": true, "js-block": false, "js-colon": true, "jsx-tag-pair": true }
-   */
-  "rules": {
-      /**
-     * Pair to inner content of brackets.
-     * 
-     * ```js
-     * ▽
-     * (foo, bar)
-     *  └──────┘
-     * ```
-     * @default `true`
-     */
-    'bracket-pair': boolean
-    /**
-     * `-` to identifier.
-     * 
-     * ```css
-     *    ▽
-     * foo-bar
-     * └─────┘
-     * ```
-     * @default `true`
-     */
-    'dash': boolean
-    /**
-     * `=` to HTML attribute.
-     * 
-     * ```html
-     *           ▽
-     * <div class="btn"></div>
-     *      └─────────┘
-     * ```
-     * @default `true`
-     */
-    'html-attr': boolean
-    /**
-     * `<` to the entire element.
-     * 
-     * ```html
-     * ▽
-     * <div><div></div></div>
-     * └────────────────────┘
-     * ```
-     * @default `true`
-     */
-    'html-element': boolean
-    /**
-     * Open and close tags of a HTML element.
-     * 
-     * ```html
-     *  ▽
-     * <div><div></div></div>
-     *  └─┘              └─┘
-     * ```
-     * @default `true`
-     */
-    'html-tag-pair': boolean
-    /**
-     * `=>` to arrow function.
-     * 
-     * ```js
-     *        ▽
-     * (a, b) => a + b
-     * └─────────────┘
-     * ```
-     * @default `true`
-     */
-    'js-arrow-fn': boolean
-    /**
-     * `=` to assignment.
-     * 
-     * ```js
-     *         ▽
-     * const a = []
-     * └──────────┘
-     * ```
-     * @default `true`
-     */
-    'js-assign': boolean
-    /**
-     * Blocks like `if`, `for`, `while`, etc. in JavaScript.
-     * 
-     * ```js
-     * ▽
-     * function () {     }
-     * └─────────────────┘
-     * ```
-     * 
-     * ```js
-     * ▽
-     * import { ref } from 'vue'
-     * └───────────────────────┘
-     * ```
-     * @default `false`
-     */
-    'js-block': boolean
-    /**
-     * `:` to the value.
-     * 
-     * ```js
-     *      ▽
-     * { foo: { bar } }
-     *        └─────┘
-     * ```
-     * @default `true`
-     */
-    'js-colon': boolean
-    /**
-     * Matches JSX elements' start and end tags.
-     * 
-     * ```jsx
-     *   ▽
-     * (<Flex.Item>Hi</Flex.Item>)
-     *   └───────┘     └───────┘
-     * ```
-     * @default `true`
-     */
-    'jsx-tag-pair': boolean 
-  },
-}
+export const configObjectSmartClicks = useConfigObject("smartClicks")
+/**
+ * ToConfigRefs of `smartClicks`
+ * @example
+ * const configValue:number =configSmartClicks.clicksInterval.value //get value 
+ * configSmartClicks.clicksInterval.value = 600 // set value
+ * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
+ * configSmartClicks.clicksInterval.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ */
+export const configSmartClicks = useConfig("smartClicks")

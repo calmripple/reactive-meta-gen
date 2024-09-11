@@ -24,7 +24,7 @@ export default antfu(
     // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
     ignores: [
       '**/fixtures',
-      'src/*.ts',
+      // 'src/*.ts',
       '**/eslint.config.js',
     ],
   },
@@ -33,7 +33,9 @@ export default antfu(
       'no-console': 'off',
       'import/order': 'off',
       'import/newline-after-import': 'off',
-      'sort-imports': 'off'
+      'sort-imports': 'off',
+      'ts/explicit-function-retrun-type': 'off',
+      "@typescript-eslint/explicit-function-return-type": "off"
     },
   }
 )

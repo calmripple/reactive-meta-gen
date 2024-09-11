@@ -41,21 +41,21 @@ export interface ConfigurationProperty {
   typeDescription?: string
   typeLabel?: string
   typeHint?: string
-  typeHintLabel?: string,
-  properties?: Record<string, ConfigurationProperty>,
-  items?: ConfigurationProperty,
-  item?: ConfigurationProperty,
-  section?: string,
-  additionalProperties?: boolean,
-  defaultSnippets?: any[],
-  allOf?: ConfigurationProperty[],
-  anyOf?: ConfigurationProperty[],
-  oneOf?: ConfigurationProperty[],
-  allErrors?: boolean,
-  allowComments?: boolean,
-  allowTrailingCommas?: boolean,
-  patternProperties?: Record<string, ConfigurationProperty>,
-  pattern?: string,
+  typeHintLabel?: string
+  properties?: Record<string, ConfigurationProperty>
+  items?: ConfigurationProperty
+  item?: ConfigurationProperty
+  section?: string
+  additionalProperties?: boolean
+  defaultSnippets?: any[]
+  allOf?: ConfigurationProperty[]
+  anyOf?: ConfigurationProperty[]
+  oneOf?: ConfigurationProperty[]
+  allErrors?: boolean
+  allowComments?: boolean
+  allowTrailingCommas?: boolean
+  patternProperties?: Record<string, ConfigurationProperty>
+  pattern?: string
 }
 
 function isProperty(propterty: any): propterty is ConfigurationProperty {
@@ -64,17 +64,17 @@ function isProperty(propterty: any): propterty is ConfigurationProperty {
   return ret
 }
 
-const convertCamelCase = memo(function (input: string) {
+const convertCamelCase = memo((input: string) => {
   if (input.match(/^[a-z0-9$]*$/i) && !input.match(/^\d/)) // Valid JS identifier, keep as-is
     return input
   return camel(input)
 })
 
-const upperFirst = memo(function <S extends string>(str: S): Capitalize<S> {
-  return (str ? str[0].toUpperCase() + str.slice(1) : "") as Capitalize<S>;
+const upperFirst = memo(<S extends string>(str: S): Capitalize<S> => {
+  return (str ? str[0].toUpperCase() + str.slice(1) : '') as Capitalize<S>
 })
 
-const getConfigObject = memo(function (packageJson: any): Record<string, ConfigurationProperty> {
+const getConfigObject = memo((packageJson: any): Record<string, ConfigurationProperty> => {
   const conf = packageJson.contributes?.configuration
   return (isArray(conf)
     ? conf.reduce((acc, cur) => assign(acc, cur), {}).properties
@@ -83,16 +83,17 @@ const getConfigObject = memo(function (packageJson: any): Record<string, Configu
 })
 
 const getConfigInfo = memo(
-  function (packageJson: any) {
+  (packageJson: any) => {
     const deprecatedConfigs = new Map<string, ConfigurationProperty>()
     const deprecatedKeys = new Array<string>()
     const activedConfigs = new Map<string, ConfigurationProperty>()
     const activedKeys = new Array<string>()
-    function addOrUpdate(target: Map<string, [string, ConfigurationProperty][]>, section: string, value: [string, ConfigurationProperty]) {
+    function addOrUpdate(target: Map<string, [string, ConfigurationProperty][]>, section: string, value: [string, ConfigurationProperty]): Map<string, [string, ConfigurationProperty][]> {
       const properties = target.get(section)
       if (properties) {
         properties.push(value)
-      } else {
+      }
+      else {
         target.set(section, [value])
       }
       return target
@@ -105,15 +106,16 @@ const getConfigInfo = memo(
         if (parts.length > 1) {
           const sectionParts = parts.slice(0, -1)
           for (let i = 0; i < sectionParts.length; i++) {
-            let section = (sectionParts.slice(0, i + 1).join('.'))
+            const section = (sectionParts.slice(0, i + 1).join('.'))
             addOrUpdate(acc, section, [fullKey, value])
           }
         }
         else {
-          let section = ('')
+          const section = ('')
           addOrUpdate(acc, section, [fullKey, value])
         }
-      } else {
+      }
+      else {
         deprecatedConfigs.set(fullKey, value)
         deprecatedKeys.push(fullKey)
       }
@@ -126,9 +128,10 @@ const getConfigInfo = memo(
       activedKeys,
       sectionActivedConfigs,
     }
-  })
+  },
+)
 
-export function generateMarkdown(packageJson: any) {
+export function generateMarkdown(packageJson: any): { commandsTable: string, configsTable: string, configsJson: string } {
   const config = getConfigInfo(packageJson)
   const MAX_TABLE_COL_CHAR = 150
 
@@ -140,7 +143,7 @@ export function generateMarkdown(packageJson: any) {
     ['Key', 'Description', 'Type', 'Default'],
   ]
 
-  let configsJson: string[] = []
+  const configsJson: string[] = []
   if (packageJson.contributes?.commands.length) {
     commandsTable.push(
       ...packageJson.contributes.commands.map((c: any) => {
@@ -164,29 +167,30 @@ export function generateMarkdown(packageJson: any) {
           const defaultVal = defaultValFromSchema(value) || ''
           return [
             `\`${key}\``,
-            value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(",") ?? '',
+            value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(',') ?? '',
             `\`${String(value.type)}\``,
             defaultVal.length < MAX_TABLE_COL_CHAR ? `\`${defaultVal}\`` : 'See package.json',
           ]
         }),
     )
     configsJson.push(
-      String("```json"),
+      String('```json'),
       `{`,
       ...[...config.activedConfigs.entries()]
         .flatMap(([key, value]) => {
           const defaultVal = defaultValFromSchema(value) || ''
-          const type = typeFromSchema(value)
+          const _type = typeFromSchema(value)
           return [
             // commentBlock([
-            `  //${value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(",") ?? ''}`,
+            `  //${value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(',') ?? ''}`,
             // ].join('\n'), 2).join("\n"),
             `  "${key}": ${defaultVal.length < MAX_TABLE_COL_CHAR ? `${defaultVal}` : 'See package.json'},`,
-            ''
+            '',
           ]
         }),
       `}`,
-      String("```"))
+      String('```'),
+    )
   }
   else {
     configsTable = []
@@ -199,7 +203,7 @@ export function generateMarkdown(packageJson: any) {
   }
 }
 
-export function generateDTS(packageJson: any, options: GenerateOptions = {}) {
+export function generateDTS(packageJson: any, options: GenerateOptions = {}): string {
   const config = getConfigInfo(packageJson)
   let {
     header = true,
@@ -226,7 +230,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}) {
   const _publisher = packageJson.publisher
   const _name = packageJson.name
 
-  function withoutExtensionPrefix(name: string) {
+  function withoutExtensionPrefix(name: string): string {
     if (name.startsWith(extensionSectionWithDot)) {
       return name.slice(extensionSectionWithDot.length)
     }
@@ -251,53 +255,26 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}) {
     )
   }
 
+  lines.push(`
+export function useCommandKey(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+  return useCommand(commandFullKey, callback)
+}`,
+  )
   lines.push(
-    '',
-    ...commentBlock(`Commands map registed by \`${extensionId}\``),
-    'export const commands = {',
     ...(packageJson.contributes?.commands || [])
       .flatMap((c: any) => {
         const name = withoutExtensionPrefix(c.command)
         return [
-          ...commentBlock(`${c.title}\n@value \`${c.command}\`
-@example
-useCommand(commands.${convertCamelCase(name)}, async () => {
-  //do actions or update config 
-})`, 2),
-          `  ${convertCamelCase(name)}: ${JSON.stringify(c.command)},`,
+          ``,
+          ...commentBlock(`${c.title}\n@value \`${c.command}\``, 0),
+          `export function useCommand${upperFirst(convertCamelCase(name))}(callback: (...args: any[]) => any) {`,
+          `  return useCommandKey(${JSON.stringify(c.command)}, callback)`,
+          `}`,
         ]
       }),
-    '} satisfies Record<string, CommandKey>',
+    '',
   )
-
-  lines.push(
-    ...(packageJson.contributes?.commands || [])
-      .flatMap((c: any) => {
-        const name = withoutExtensionPrefix(c.command)
-        return [...commentBlock(`${c.title}\n@value \`${c.command}\``, 0),
-        `export function useCommand${upperFirst(convertCamelCase(name))}(callback: (...args: any[]) => any) {
-  useCommand(commands.${convertCamelCase(name)}, callback)
-}` ]
-      }),
-    '')
-
   // ========== Configs ==========
-
-  // lines.push(
-  //   '',
-  //   ...commentBlock('Type union of all configs'),
-  // )
-  // if (!configKeys.length) {
-  //   lines.push('export type ConfigKey = never')
-  // }
-  // else {
-  //   lines.push(
-  //     'export type ConfigKey = ',
-  //     ...configKeys.map(c =>
-  //       `  | "${c}"`,
-  //     ),
-  //   )
-  // }
 
   if (config.deprecatedKeys.length) {
     lines.push(
@@ -312,177 +289,11 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
     )
   }
 
-  // lines.push(
-  //   '',
-  //   'export interface ConfigKeyTypeMap {',
-  //   ...[...config.activedConfigs.entries()]
-  //     .flatMap(([key, value]) => {
-  //       return [
-  //         `  ${JSON.stringify(key)}: ${typeFromSchema(value)},`,
-  //       ]
-  //     }),
-  //   '}',
-  // )
-
-  // lines.push(
-  //   '',
-  //   'export interface ConfigShorthandMap {',
-  //   ...[...config.activedConfigs.entries()]
-  //     .flatMap(([key]: any) => {
-  //       return [
-  //         `  ${convertCamelCase(withoutExtensionPrefix(key))}: ${JSON.stringify(key)},`,
-  //       ]
-  //     }),
-  //   '}',
-  // )
-
-  // lines.push(
-  //   '',
-  //   `export interface ConfigItem<T extends keyof ConfigKeyTypeMap> {`,
-  //   `  key: T,`,
-  //   `  default: ConfigKeyTypeMap[T],`,
-  //   `}`,
-  //   '',
-  // )
-
-
-  // lines.push(
-  //   '',
-  //   ...commentBlock(`Configs map registed by \`${extensionId}\``),
-  //   'export const configs = {',
-  //   ...[...config.sectionActivedConfigs.entries()]
-  //     .flatMap(([section, fullKeyValue]) => {
-
-  //       return [
-  //         `${JSON.stringify(section)}: {`,
-  //         ...fullKeyValue.flatMap(([fullKey, value]) => {
-  //           const name = withoutExtensionPrefix(fullKey)
-  //           const defaultValue = defaultValFromSchema(value)
-  //           return [
-  //             ...commentBlock([
-  //               value.description,
-  //               `@key \`${fullKey}\``,
-  //               // `@default \`${defaultValue}\``,
-  //               `@type \`${value.type}\``,
-  //             ].join('\n'), 2),
-  //             `  ${convertCamelCase(name)}: {`,
-  //             `    key: "${fullKey}",`,
-  //             `    default: ${defaultValue},`,
-  //             `  } as ConfigItem<"${fullKey}">,`,
-  //           ]
-  //         }),
-  //         `},`
-  //       ]
-  //     }),
-  //   '}',
-  // )
-
-  function generateSectionDts(lines: string[], sectionConfigs: [string, ConfigurationProperty][], section: string) {
-
-    function removeSection(name: string) {
-      const sectionWithDot = `${section}.`
-      if (name.startsWith(sectionWithDot)) {
-        return name.slice(sectionWithDot.length)
-      }
-      return name
-    }
-
-    let _varName = 'root'
-    let sectionComment
-    if (section) {
-      _varName = `${convertCamelCase(section)}`
-      sectionComment = `${section}`
-    }
-    else {
-      while (config.sectionActivedConfigs.has(_varName)) {
-        _varName = `root${upperFirst(_varName)}`
-      }
-      sectionComment = `virtual(Keys in the root)`
-    }
-    const interfaceName = `${upperFirst(_varName)}`
-    const varName = {
-      useConfig: `useConfigs${interfaceName}`,
-      useConfigObject: `useConfigObject${interfaceName}`
-    }
-    const example = sectionConfigs[0]
-    const exampleKey = removeSection(example[0])
-    lines.push(
-      ``,
-      ...commentBlock(`Config keys of \`${sectionComment}\``),
-      `export interface ${interfaceName} {`,
-      ...sectionConfigs
-        .flatMap(([key, value]) => {
-          const defaultValue = defaultValFromSchema(value)
-          return [
-            ...commentBlock([
-              value.description ?? value.markdownDescription,
-              // `@key \`${key}\``,
-              `@default ${defaultValue}`,
-              // `@type \`${value.type}\``,
-            ].join('\n'), 2),
-            `  ${JSON.stringify(removeSection(key))}${defaultValue === undefined ? "?" : ""}: ${typeFromSchema(value, false)},`,
-          ]
-        }),
-      '}',
-
-      // '',
-      // ...commentBlock(`Section defaults of \`${sectionComment}\``),
-      // `export const _${_varName} = {`,
-      // // ...commentBlock(`section: \`${sectionComment}\``, 2),
-      // // `  section: ${JSON.stringify(section)},`,
-      // ...commentBlock(`Keys' defaults of \`${sectionComment}\``, 2),
-      // `  ${JSON.stringify(section)}: {`,
-      // ...sectionConfigs
-      //   .flatMap(([key, value]) => {
-      //     return [
-      //       ...commentBlock([
-      //         value.description,
-      //       ].join('\n'), 4),
-      //       `    ${JSON.stringify(removeSection(key))}: ${defaultValFromSchema(value)},`,
-      //     ]
-      //   }),
-      // `  } satisfies ${interfaceName},`,
-      // `}`,
-      // '',
-
-
-      // ...commentBlock([
-      //   `Reactive ConfigObject of \`${sectionComment}\``,
-      //   `@example`,
-      //   `const configValue = ${varName.useConfigObject}.${exampleKey} //get value `,
-      //   `${varName.useConfigObject}.${exampleKey} = true // set value`,
-      //   `${varName.useConfigObject}.$update("${exampleKey}", !configValue, ConfigurationTarget.Workspace, true)`,
-      // ].join('\n'),
-      // ),
-      //       `export const ${varName.useConfigObject} = defineConfigObject<${interfaceName}>(`,
-      // `  _${_varName}.section,`,
-      // `  _${_varName}.defaults`,
-      // `)`,
-      // ...commentBlock([
-      //   `Reactive ToConfigRefs of \`${sectionComment}\``,
-      //   `@example`,
-      //   `const configValue:${example[1].type} =${varName.useConfig}.${exampleKey}.value //get value `,
-      //   `${varName.useConfig}.${exampleKey}.value = ${defaultValFromSchema(example[1])} // set value`,
-      //   `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
-      //   `${varName.useConfig}.${exampleKey}.update(true, ConfigurationTarget.WorkspaceFolder, true)`,
-      // ].join('\n')),
-      // `export const ${varName.useConfig} = defineConfigs<${interfaceName}>(`,
-      // `  _${_varName}.section,`,
-      // `  _${_varName}.defaults`,
-      // `)`,
-    )
-  }
-
-  // config.sectionActivedConfigs.forEach((fullKeyAndProperties, section) => {
-  //   generateSectionDts(lines, fullKeyAndProperties, section)
-  // })
-
-  const sectionTypeMap: string[] = []
   const sectionDefault: string[] = []
-  
-  config.sectionActivedConfigs.forEach((sectionConfigs, section) => {
-
-    function removeSection(name: string) {
+  const sectionExports: string[] = []
+  // 遍历所有section
+  config.sectionActivedConfigs.forEach((sectionConfig, section) => {
+    function removeSection(name: string): string {
       const sectionWithDot = `${section}.`
       if (name.startsWith(sectionWithDot)) {
         return name.slice(sectionWithDot.length)
@@ -490,70 +301,105 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
       return name
     }
 
-    let _varSection = 'root'
+    let sectionVar = 'root'
     let sectionComment
     if (section) {
-      _varSection = `${convertCamelCase(section)}`
+      sectionVar = `${convertCamelCase(section)}`
       sectionComment = `${section}`
     }
     else {
-      while (config.sectionActivedConfigs.has(_varSection)) {
-        _varSection = `root${upperFirst(_varSection)}`
+      while (config.sectionActivedConfigs.has(sectionVar)) {
+        sectionVar = `root${upperFirst(sectionVar)}`
       }
       sectionComment = `virtual(Keys in the root)`
     }
-    const interfaceName = `${upperFirst(_varSection)}`
+    const interfaceName = `${upperFirst(sectionVar)}`
     const varName = {
-      useConfig: `useConfigs${interfaceName}`,
-      useConfigObject: `useConfigObject${interfaceName}`
+      useConfig: `config${interfaceName}`,
+      useConfigObject: `configObject${interfaceName}`,
     }
-    const example = sectionConfigs[0]
+    const example = sectionConfig[0]
     const exampleKey = removeSection(example[0])
+    // section 默认值
+    sectionDefault.push(
+      '',
+      // ...commentBlock(`Section defaults of \`${sectionComment}\``, 2),
+      `  ${JSON.stringify(section)}: {`,
+    )
 
-    sectionConfigs.forEach(([key, value]) => {
-
+    // section 导出对象
+    sectionExports.push(
+      ...commentBlock([
+        `ConfigObject of \`${sectionComment}\``,
+        `@example`,
+        `const configValue = ${varName.useConfigObject}.${exampleKey} //get value `,
+        `${varName.useConfigObject}.${exampleKey} = true // set value`,
+        `${varName.useConfigObject}.$update("${exampleKey}", !configValue, ConfigurationTarget.Workspace, true)`,
+      ].join('\n'),
+      ),
+      `export const ${varName.useConfigObject} = useConfigObject("${section}")`,
+      ...commentBlock([
+        `ToConfigRefs of \`${sectionComment}\``,
+        `@example`,
+        `const configValue:${example[1].type} =${varName.useConfig}.${exampleKey}.value //get value `,
+        `${varName.useConfig}.${exampleKey}.value = ${defaultValFromSchema(example[1])} // set value`,
+        `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
+        `${varName.useConfig}.${exampleKey}.update(true, ConfigurationTarget.WorkspaceFolder, true)`,
+      ].join('\n')),
+      `export const ${varName.useConfig} = useConfig("${section}")`,
+    )
+    // section 类型生成开始
+    lines.push(``, ...commentBlock(`Section Type of \`${sectionComment}\``), `export interface ${interfaceName} {`)
+    // 遍历section 下所有 短key的默认值
+    sectionConfig.forEach(([fullKey, value]) => {
+      const defaultValue = defaultValFromSchema(value)
+      // 生成当前section所有key类型
       lines.push(
-        ``,
-        ...commentBlock(`Config keys of \`${sectionComment}\``),
-        `export interface ${interfaceName} {`,
-        ...sectionConfigs
-          .flatMap(([key, value]) => {
-            const defaultValue = defaultValFromSchema(value)
-            return [
-              ...commentBlock([
-                value.description ?? value.markdownDescription,
-                // `@key \`${key}\``,
-                `@default ${defaultValue}`,
-                // `@type \`${value.type}\``,
-              ].join('\n'), 2),
-              `  ${JSON.stringify(removeSection(key))}${defaultValue === undefined ? "?" : ""}: ${typeFromSchema(value, false)},`,
-            ]
-          }),
-        '}',
-
-        // '',
-        // ...commentBlock(`Section defaults of \`${sectionComment}\``),
-        // `export const _${_varName} = {`,
-        // // ...commentBlock(`section: \`${sectionComment}\``, 2),
-        // // `  section: ${JSON.stringify(section)},`,
-        // ...commentBlock(`Keys' defaults of \`${sectionComment}\``, 2),
-        // `  ${JSON.stringify(section)}: {`,
-        // ...sectionConfigs
-        //   .flatMap(([key, value]) => {
-        //     return [
-        //       ...commentBlock([
-        //         value.description,
-        //       ].join('\n'), 4),
-        //       `    ${JSON.stringify(removeSection(key))}: ${defaultValFromSchema(value)},`,
-        //     ]
-        //   }),
-        // `  } satisfies ${interfaceName},`,
-        // `}`,
-        // '',
+        ...commentBlock([
+          value.description ?? value.markdownDescription,
+          // `@key \`${key}\``,
+          // `@default ${defaultValue}`,
+          // `@type \`${value.type}\``,
+        ].join('\n'), 2),
+        `  ${JSON.stringify(removeSection(fullKey))}${defaultValue === undefined ? '?' : ''}: ${typeFromSchema(value, false)},`,
       )
-
+      // 当前section下所有key的默认值
+      sectionDefault.push(
+        ...commentBlock([
+          value.description,
+        ].join('\n'), 4),
+        `    ${JSON.stringify(removeSection(fullKey))}: ${defaultValFromSchema(value)},`,
+      )
     })
+    // section 类型结束
+    lines.push('}')
+
+    // sectionTypeMap.push(` ${JSON.stringify(section)}: ${interfaceName}`)
+    sectionDefault.push(
+      `  } satisfies ${interfaceName},`,
+      '',
+    )
   })
+
+  const configVar = `${convertCamelCase(_name)}Config`
+  const sectionNames = [...config.sectionActivedConfigs.keys()]
+  lines.push(
+    `const ${configVar} = {`,
+    ...sectionDefault,
+    `}`,
+    // `export type ConfigKey = keyof typeof ${configVar}`,
+    `export type ConfigKey = ${sectionNames.map(v => `"${v}"`).join(' | ')}`,
+    `
+export function useConfig<K extends ConfigKey>(section: K) {
+  return defineConfigs<typeof ${configVar}[K]>(section, ${configVar}[section])
+}
+
+export function useConfigObject<K extends ConfigKey>(section: K) {
+  return defineConfigObject<typeof ${configVar}[K]>(section, ${configVar}[section])
+}
+    `,
+    ...sectionExports,
+  )
 
   // ========== Namespace ==========
 
@@ -592,7 +438,14 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
   return lines.join('\n')
 }
 
-export function generate(packageJson: any, options: GenerateOptions = {}) {
+export function generate(packageJson: any, options: GenerateOptions = {}): {
+  dts: string
+  markdown: {
+    commandsTable: string
+    configsTable: string
+    configsJson: string
+  }
+} {
   return {
     dts: generateDTS(packageJson, options),
     markdown: generateMarkdown(packageJson),
@@ -641,7 +494,8 @@ function typeFromSchema(schema: ConfigurationProperty, isSubType = false, subInd
         if (schema.items) {
           types.push(`${typeFromSchema(schema.items, true, subIndent + 2)}[]`)
           break
-        } else if (schema.item) {
+        }
+        else if (schema.item) {
           types.push(`${typeFromSchema(schema.item, true, subIndent + 2)}[]`)
           break
         }
@@ -658,7 +512,7 @@ function typeFromSchema(schema: ConfigurationProperty, isSubType = false, subInd
                 `@default \`${defaultValue}\``,
                 // `@type \`${value.type}\``,
               ].join('\n'), subIndent),
-              `${indent}'${key}'${defaultValue != undefined ? "" : "?"}: ${typeFromSchema(value, true, subIndent + 2)}`
+              `${indent}'${key}'${defaultValue !== undefined ? '' : '?'}: ${typeFromSchema(value, true, subIndent + 2)}`,
             ]
           })
 
@@ -715,7 +569,6 @@ export function defaultValFromSchema(schema: ConfigurationProperty): string | un
     return undefined
   }
 
-
   if (schema.type === 'object' && schema.properties) {
     const keyValues = Object.entries(schema.properties).map(([key, value]): string => {
       return `${JSON.stringify(key)}: ${defaultValFromSchema(value)}`
@@ -727,7 +580,7 @@ export function defaultValFromSchema(schema: ConfigurationProperty): string | un
   return undefined
 }
 
-export function formatTable(table: string[][]) {
+export function formatTable(table: string[][]): string {
   if (!table.length)
     return '**No data**'
 
