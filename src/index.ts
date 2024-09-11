@@ -1,4 +1,3 @@
-import { linkSync } from 'node:fs'
 import { assign, isArray, memo, camel } from 'radash'
 
 const forwardKeys = [
@@ -20,13 +19,13 @@ export interface GenerateOptions {
    */
   namespace?: string | boolean
   /**
-   * The package scope for commands and configs.
+   * The package section for commands and configs.
    *
    * Default to the package name.
    *
    * Useful when your extension name has different prefix from the package name.
    */
-  extensionScope?: string
+  extensionSection?: string
 }
 
 export interface ConfigurationProperty {
@@ -46,7 +45,7 @@ export interface ConfigurationProperty {
   properties?: Record<string, ConfigurationProperty>,
   items?: ConfigurationProperty,
   item?: ConfigurationProperty,
-  scope?: string,
+  section?: string,
   additionalProperties?: boolean,
   defaultSnippets?: any[],
   allOf?: ConfigurationProperty[],
@@ -89,30 +88,30 @@ const getConfigInfo = memo(
     const deprecatedKeys = new Array<string>()
     const activedConfigs = new Map<string, ConfigurationProperty>()
     const activedKeys = new Array<string>()
-    function addOrUpdate(target: Map<string, [string, ConfigurationProperty][]>, scope: string, value: [string, ConfigurationProperty]) {
-      const properties = target.get(scope)
+    function addOrUpdate(target: Map<string, [string, ConfigurationProperty][]>, section: string, value: [string, ConfigurationProperty]) {
+      const properties = target.get(section)
       if (properties) {
         properties.push(value)
       } else {
-        target.set(scope, [value])
+        target.set(section, [value])
       }
       return target
     }
-    const scopedActivedConfigs = Object.entries(getConfigObject(packageJson)).reduce((acc, [fullKey, value]) => {
+    const sectionActivedConfigs = Object.entries(getConfigObject(packageJson)).reduce((acc, [fullKey, value]) => {
       if (isProperty(value)) {
         activedConfigs.set(fullKey, value)
         activedKeys.push(fullKey)
         const parts = fullKey.split('.')
         if (parts.length > 1) {
-          const scopeParts = parts.slice(0, -1)
-          for (let i = 0; i < scopeParts.length; i++) {
-            let scope = (scopeParts.slice(0, i + 1).join('.'))
-            addOrUpdate(acc, scope, [fullKey, value])
+          const sectionParts = parts.slice(0, -1)
+          for (let i = 0; i < sectionParts.length; i++) {
+            let section = (sectionParts.slice(0, i + 1).join('.'))
+            addOrUpdate(acc, section, [fullKey, value])
           }
         }
         else {
-          let scope = ('')
-          addOrUpdate(acc, scope, [fullKey, value])
+          let section = ('')
+          addOrUpdate(acc, section, [fullKey, value])
         }
       } else {
         deprecatedConfigs.set(fullKey, value)
@@ -125,7 +124,7 @@ const getConfigInfo = memo(
       deprecatedKeys,
       activedConfigs,
       activedKeys,
-      scopedActivedConfigs,
+      sectionActivedConfigs,
     }
   })
 
@@ -205,7 +204,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}) {
   let {
     header = true,
     namespace = false,
-    extensionScope = packageJson.name,
+    extensionSection = packageJson.name,
   } = options
 
   let lines: string[] = []
@@ -222,14 +221,14 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}) {
     'export const extensionId = `${publisher}.${name}`',
   )
 
-  const extensionScopeWithDot = `${extensionScope}.`
+  const extensionSectionWithDot = `${extensionSection}.`
   const extensionId = `${packageJson.publisher}.${packageJson.name}`
   const _publisher = packageJson.publisher
   const _name = packageJson.name
 
   function withoutExtensionPrefix(name: string) {
-    if (name.startsWith(extensionScopeWithDot)) {
-      return name.slice(extensionScopeWithDot.length)
+    if (name.startsWith(extensionSectionWithDot)) {
+      return name.slice(extensionSectionWithDot.length)
     }
     return name
   }
@@ -312,11 +311,12 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
       ),
     )
   }
+
   // lines.push(
   //   '',
   //   'export interface ConfigKeyTypeMap {',
-  //   ...Object.entries(configsObject)
-  //     .flatMap(([key, value]: any) => {
+  //   ...[...config.activedConfigs.entries()]
+  //     .flatMap(([key, value]) => {
   //       return [
   //         `  ${JSON.stringify(key)}: ${typeFromSchema(value)},`,
   //       ]
@@ -327,10 +327,10 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
   // lines.push(
   //   '',
   //   'export interface ConfigShorthandMap {',
-  //   ...Object.entries(configsObject)
+  //   ...[...config.activedConfigs.entries()]
   //     .flatMap(([key]: any) => {
   //       return [
-  //         `  ${convertCase(withoutExtensionPrefix(key))}: ${JSON.stringify(key)},`,
+  //         `  ${convertCamelCase(withoutExtensionPrefix(key))}: ${JSON.stringify(key)},`,
   //       ]
   //     }),
   //   '}',
@@ -345,63 +345,72 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
   //   '',
   // )
 
+
   // lines.push(
   //   '',
   //   ...commentBlock(`Configs map registed by \`${extensionId}\``),
   //   'export const configs = {',
-  //   ...Object.entries(configsObject)
-  //     .flatMap(([key, value]: any) => {
-  //       const name = withoutExtensionPrefix(key)
-  //       const defaultValue = defaultValFromSchema(value)
+  //   ...[...config.sectionActivedConfigs.entries()]
+  //     .flatMap(([section, fullKeyValue]) => {
+
   //       return [
-  //         ...commentBlock([
-  //           value.description,
-  //           `@key \`${key}\``,
-  //           `@default \`${defaultValue}\``,
-  //           `@type \`${value.type}\``,
-  //         ].join('\n'), 2),
-  //         `  ${convertCase(name)}: {`,
-  //         `    key: "${key}",`,
-  //         `    default: ${defaultValue},`,
-  //         `  } as ConfigItem<"${key}">,`,
+  //         `${JSON.stringify(section)}: {`,
+  //         ...fullKeyValue.flatMap(([fullKey, value]) => {
+  //           const name = withoutExtensionPrefix(fullKey)
+  //           const defaultValue = defaultValFromSchema(value)
+  //           return [
+  //             ...commentBlock([
+  //               value.description,
+  //               `@key \`${fullKey}\``,
+  //               // `@default \`${defaultValue}\``,
+  //               `@type \`${value.type}\``,
+  //             ].join('\n'), 2),
+  //             `  ${convertCamelCase(name)}: {`,
+  //             `    key: "${fullKey}",`,
+  //             `    default: ${defaultValue},`,
+  //             `  } as ConfigItem<"${fullKey}">,`,
+  //           ]
+  //         }),
+  //         `},`
   //       ]
   //     }),
   //   '}',
   // )
 
-  function generateScopedDts(lines: string[], scopedConfigs: [string, ConfigurationProperty][], scope: string) {
-    const scopeWithDot = `${scope}.`
-    function removeScope(name: string) {
-      if (name.startsWith(scopeWithDot)) {
-        return name.slice(scopeWithDot.length)
+  function generateSectionDts(lines: string[], sectionConfigs: [string, ConfigurationProperty][], section: string) {
+
+    function removeSection(name: string) {
+      const sectionWithDot = `${section}.`
+      if (name.startsWith(sectionWithDot)) {
+        return name.slice(sectionWithDot.length)
       }
       return name
     }
 
     let _varName = 'root'
-    let scopeComment
-    if (scope) {
-      _varName = `${convertCamelCase(withoutExtensionPrefix(scope))}`
-      scopeComment = `${scope}`
+    let sectionComment
+    if (section) {
+      _varName = `${convertCamelCase(section)}`
+      sectionComment = `${section}`
     }
     else {
-      while (config.scopedActivedConfigs.has(_varName)) {
+      while (config.sectionActivedConfigs.has(_varName)) {
         _varName = `root${upperFirst(_varName)}`
       }
-      scopeComment = `virtual(Keys in the root)`
+      sectionComment = `virtual(Keys in the root)`
     }
     const interfaceName = `${upperFirst(_varName)}`
     const varName = {
       useConfig: `useConfigs${interfaceName}`,
       useConfigObject: `useConfigObject${interfaceName}`
     }
-    const example = scopedConfigs[0]
-    const exampleKey = removeScope(example[0])
+    const example = sectionConfigs[0]
+    const exampleKey = removeSection(example[0])
     lines.push(
       ``,
-      ...commentBlock(`Config keys of \`${scopeComment}\``),
+      ...commentBlock(`Config keys of \`${sectionComment}\``),
       `export interface ${interfaceName} {`,
-      ...scopedConfigs
+      ...sectionConfigs
         .flatMap(([key, value]) => {
           const defaultValue = defaultValFromSchema(value)
           return [
@@ -411,98 +420,136 @@ useCommand(commands.${convertCamelCase(name)}, async () => {
               `@default ${defaultValue}`,
               // `@type \`${value.type}\``,
             ].join('\n'), 2),
-            `  ${JSON.stringify(removeScope(key))}${defaultValue === undefined ? "?" : ""}: ${typeFromSchema(value, false)},`,
+            `  ${JSON.stringify(removeSection(key))}${defaultValue === undefined ? "?" : ""}: ${typeFromSchema(value, false)},`,
           ]
         }),
       '}',
-      '',
-      ...commentBlock(`Scoped defaults of \`${scopeComment}\``),
-      `const _${_varName} = {`,
-      ...commentBlock(`scope: \`${scopeComment}\``, 2),
-      `  scope: ${JSON.stringify(scope)},`,
-      ...commentBlock(`Keys' defaults of \`${scopeComment}\``, 2),
-      `  defaults: {`,
-      ...scopedConfigs
-        .flatMap(([key, value]) => {
-          return [
-            ...commentBlock([
-              value.description,
-            ].join('\n'), 4),
-            `    ${JSON.stringify(removeScope(key))}: ${defaultValFromSchema(value)},`,
-          ]
-        }),
-      `  } satisfies ${interfaceName},`,
-      `}`,
-      '',
-      ...commentBlock([
-        `Reactive ConfigObject of \`${scopeComment}\``,
-        `@example`,
-        `const configValue = ${varName.useConfigObject}.${exampleKey} //get value `,
-        `${varName.useConfigObject}.${exampleKey} = true // set value`,
-        `${varName.useConfigObject}.$update("${exampleKey}", !configValue, ConfigurationTarget.Workspace, true)`,
-      ].join('\n'),
-      ),
-      `export const ${varName.useConfigObject} = defineConfigObject<${interfaceName}>(`,
-      `  _${_varName}.scope,`,
-      `  _${_varName}.defaults`,
-      `)`,
-      ...commentBlock([
-        `Reactive ToConfigRefs of \`${scopeComment}\``,
-        `@example`,
-        `const configValue:${example[1].type} =${varName.useConfig}.${exampleKey}.value //get value `,
-        `${varName.useConfig}.${exampleKey}.value = ${defaultValFromSchema(example[1])} // set value`,
-        `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
-        `${varName.useConfig}.${exampleKey}.update(true, ConfigurationTarget.WorkspaceFolder, true)`,
-      ].join('\n')),
-      `export const ${varName.useConfig} = defineConfigs<${interfaceName}>(`,
-      `  _${_varName}.scope,`,
-      `  _${_varName}.defaults`,
-      `)`,
+
+      // '',
+      // ...commentBlock(`Section defaults of \`${sectionComment}\``),
+      // `export const _${_varName} = {`,
+      // // ...commentBlock(`section: \`${sectionComment}\``, 2),
+      // // `  section: ${JSON.stringify(section)},`,
+      // ...commentBlock(`Keys' defaults of \`${sectionComment}\``, 2),
+      // `  ${JSON.stringify(section)}: {`,
+      // ...sectionConfigs
+      //   .flatMap(([key, value]) => {
+      //     return [
+      //       ...commentBlock([
+      //         value.description,
+      //       ].join('\n'), 4),
+      //       `    ${JSON.stringify(removeSection(key))}: ${defaultValFromSchema(value)},`,
+      //     ]
+      //   }),
+      // `  } satisfies ${interfaceName},`,
+      // `}`,
+      // '',
+
+
+      // ...commentBlock([
+      //   `Reactive ConfigObject of \`${sectionComment}\``,
+      //   `@example`,
+      //   `const configValue = ${varName.useConfigObject}.${exampleKey} //get value `,
+      //   `${varName.useConfigObject}.${exampleKey} = true // set value`,
+      //   `${varName.useConfigObject}.$update("${exampleKey}", !configValue, ConfigurationTarget.Workspace, true)`,
+      // ].join('\n'),
+      // ),
+      //       `export const ${varName.useConfigObject} = defineConfigObject<${interfaceName}>(`,
+      // `  _${_varName}.section,`,
+      // `  _${_varName}.defaults`,
+      // `)`,
+      // ...commentBlock([
+      //   `Reactive ToConfigRefs of \`${sectionComment}\``,
+      //   `@example`,
+      //   `const configValue:${example[1].type} =${varName.useConfig}.${exampleKey}.value //get value `,
+      //   `${varName.useConfig}.${exampleKey}.value = ${defaultValFromSchema(example[1])} // set value`,
+      //   `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
+      //   `${varName.useConfig}.${exampleKey}.update(true, ConfigurationTarget.WorkspaceFolder, true)`,
+      // ].join('\n')),
+      // `export const ${varName.useConfig} = defineConfigs<${interfaceName}>(`,
+      // `  _${_varName}.section,`,
+      // `  _${_varName}.defaults`,
+      // `)`,
     )
   }
 
-  config.scopedActivedConfigs.forEach((keyPropList, scope) => {
-    generateScopedDts(lines, keyPropList, scope)
-  })
+  // config.sectionActivedConfigs.forEach((fullKeyAndProperties, section) => {
+  //   generateSectionDts(lines, fullKeyAndProperties, section)
+  // })
 
-  // for complatibility of pre version
-  /*
-  function genBase(lines: string[], scopedConfigs: [string, ConfigurationProperty][], scope: string) {
-    const scopeWithDot = `${scope}.`
+  config.sectionActivedConfigs.forEach((sectionConfigs, section) => {
 
-    function removeScope(name: string) {
-      if (name.startsWith(scopeWithDot)) {
-        return name.slice(scopeWithDot.length)
+    sectionConfigs.forEach(([key, value]) => {
+
+      function removeSection(name: string) {
+        const sectionWithDot = `${section}.`
+        if (name.startsWith(sectionWithDot)) {
+          return name.slice(sectionWithDot.length)
+        }
+        return name
       }
-      return name
-    }
 
-    lines.push(
-      ``,
-      `export interface ScopedConfigKeyTypeMap {`,
-      ...scopedConfigs
-        .map(([key, value]) => {
-          return `  ${JSON.stringify(removeScope(key))}: ${typeFromSchema(value)},`
-        }),
-      '}',
-      '',
-      `export const scopedConfigs = {`,
-      `  scope: ${JSON.stringify(scope)},`,
-      `  defaults: {`,
-      ...scopedConfigs
-        .map(([key, value]: any) => {
-          return `    ${JSON.stringify(removeScope(key))}: ${defaultValFromSchema(value)},`
-        }),
-      `  } satisfies ScopedConfigKeyTypeMap,`,
-      `}`,
-      '',
-    )
-  }
-  // for complatibility of pre version
-  const scopedConfigs = Object.entries(configsObject)
-    .filter(([key]) => key.startsWith(extensionScopeWithDot))
-  genBase(lines, scopedConfigs, extensionScope)
-*/
+      let _varSection = 'root'
+      let sectionComment
+      if (section) {
+        _varSection = `${convertCamelCase(section)}`
+        sectionComment = `${section}`
+      }
+      else {
+        while (config.sectionActivedConfigs.has(_varSection)) {
+          _varSection = `root${upperFirst(_varSection)}`
+        }
+        sectionComment = `virtual(Keys in the root)`
+      }
+      const interfaceName = `${upperFirst(_varSection)}`
+      const varName = {
+        useConfig: `useConfigs${interfaceName}`,
+        useConfigObject: `useConfigObject${interfaceName}`
+      }
+      const example = sectionConfigs[0]
+      const exampleKey = removeSection(example[0])
+      lines.push(
+        ``,
+        ...commentBlock(`Config keys of \`${sectionComment}\``),
+        `export interface ${interfaceName} {`,
+        ...sectionConfigs
+          .flatMap(([key, value]) => {
+            const defaultValue = defaultValFromSchema(value)
+            return [
+              ...commentBlock([
+                value.description ?? value.markdownDescription,
+                // `@key \`${key}\``,
+                `@default ${defaultValue}`,
+                // `@type \`${value.type}\``,
+              ].join('\n'), 2),
+              `  ${JSON.stringify(removeSection(key))}${defaultValue === undefined ? "?" : ""}: ${typeFromSchema(value, false)},`,
+            ]
+          }),
+        '}',
+
+        // '',
+        // ...commentBlock(`Section defaults of \`${sectionComment}\``),
+        // `export const _${_varName} = {`,
+        // // ...commentBlock(`section: \`${sectionComment}\``, 2),
+        // // `  section: ${JSON.stringify(section)},`,
+        // ...commentBlock(`Keys' defaults of \`${sectionComment}\``, 2),
+        // `  ${JSON.stringify(section)}: {`,
+        // ...sectionConfigs
+        //   .flatMap(([key, value]) => {
+        //     return [
+        //       ...commentBlock([
+        //         value.description,
+        //       ].join('\n'), 4),
+        //       `    ${JSON.stringify(removeSection(key))}: ${defaultValFromSchema(value)},`,
+        //     ]
+        //   }),
+        // `  } satisfies ${interfaceName},`,
+        // `}`,
+        // '',
+      )
+
+    })
+  })
 
   // ========== Namespace ==========
 

@@ -1202,345 +1202,34969 @@ export interface I18nAlly {
 }
 
 /**
- * Scoped defaults of `i18n-ally`
+ * Config keys of `i18n-ally`
  */
-const _i18nAlly = {
+export interface I18nAlly {
   /**
-   * scope: `i18n-ally`
+   * %config.disabled%
+   * @default false
    */
-  scope: "i18n-ally",
+  "disabled": boolean,
   /**
-   * Keys' defaults of `i18n-ally`
+   * %config.auto_detection%
+   * @default true
    */
-  defaults: {
-    /**
-     * %config.disabled%
-     */
-    "disabled": false,
-    /**
-     * %config.auto_detection%
-     */
-    "autoDetection": true,
-    /**
-     * %config.locales_paths%
-     */
-    "localesPaths": undefined,
-    /**
-     * %config.encoding%
-     */
-    "encoding": "utf-8",
-    /**
-     * %config.source_language%
-     */
-    "sourceLanguage": undefined,
-    /**
-     * %config.display_language%
-     */
-    "displayLanguage": undefined,
-    /**
-     * %config.ignored_locales%
-     */
-    "ignoredLocales": undefined,
-    /**
-     * %config.keystyle%
-     */
-    "keystyle": undefined,
-    /**
-     * %config.dir_structure%
-     */
-    "dirStructure": undefined,
-    /**
-     * %config.annotations%
-     */
-    "annotations": true,
-    /**
-     * %config.annotation_in_place%
-     */
-    "annotationInPlace": true,
-    /**
-     * %config.annotation_max_length%
-     */
-    "annotationMaxLength": 40,
-    /**
-     * %config.annotation_delimiter%
-     */
-    "annotationDelimiter": "·",
-    /**
-     * %config.include_subfolders%
-     */
-    "includeSubfolders": true,
-    /**
-     * %config.full_reload_on_changed%
-     */
-    "fullReloadOnChanged": false,
-    /**
-     * %config.show_flags%
-     */
-    "showFlags": true,
-    /**
-     * %config.enabled_frameworks%
-     */
-    "enabledFrameworks": undefined,
-    /**
-     * %config.enabled_parsers%
-     */
-    "enabledParsers": undefined,
-    /**
-     * %config.keys_in_use%
-     */
-    "keysInUse": undefined,
-    /**
-     * %config.sort_keys%
-     */
-    "sortKeys": false,
-    /**
-     * %config.sort_compare%
-     */
-    "sortCompare": "binary",
-    /**
-     * %config.sort_locale%
-     */
-    "sortLocale": undefined,
-    /**
-     * %config.preferred_delimiter%
-     */
-    "preferredDelimiter": "-",
-    /**
-     * %config.readonly%
-     */
-    "readonly": false,
-    /**
-     * %config.keep_fulfill%
-     */
-    "keepFulfilled": false,
-    /**
-     * %config.locale_country_map%
-     */
-    "localeCountryMap": {},
-    /**
-     * %config.indent%
-     */
-    "indent": 2,
-    /**
-     * %config.disable_path_parsing%
-     */
-    "disablePathParsing": false,
-    /**
-     * %config.tab_style%
-     */
-    "tabStyle": "space",
-    /**
-     * %config.namespace%
-     */
-    "namespace": undefined,
-    /**
-     * %config.path_matcher%
-     */
-    "pathMatcher": undefined,
-    /**
-     * %config.language_tag_system%
-     */
-    "languageTagSystem": "bcp47",
-    /**
-     * %config.ignore_files%
-     */
-    "ignoreFiles": undefined,
-    "theme.annotation": "rgba(153, 153, 153, .8)",
-    "theme.annotationMissing": "rgba(153, 153, 153, .3)",
-    "theme.annotationBorder": "rgba(153, 153, 153, .2)",
-    "theme.annotationMissingBorder": "rgba(153, 153, 153, .2)",
-    /**
-     * %config.regex_key%
-     */
-    "regex.key": undefined,
-    /**
-     * %config.regex_usage_match%
-     */
-    "regex.usageMatch": undefined,
-    /**
-     * %config.regex_usage_match_append%
-     */
-    "regex.usageMatchAppend": undefined,
-    /**
-     * %config.refactor_templates%
-     */
-    "refactor.templates": undefined,
-    /**
-     * %config.translate_save_as_candidates%
-     */
-    "translate.saveAsCandidates": false,
-    /**
-     * %config.translate.fallbackToKey%
-     */
-    "translate.fallbackToKey": false,
-    /**
-     * %config.translate.engines%
-     */
-    "translate.engines": ["google"],
-    /**
-     * %config.translate.parallels%
-     */
-    "translate.parallels": 5,
-    /**
-     * %config.prompt_translating_source%
-     */
-    "translate.promptSource": false,
-    /**
-     * %config.translate_override_existing%
-     */
-    "translate.overrideExisting": false,
-    /**
-     * %config.google_api_key%
-     */
-    "translate.google.apiKey": null,
-    /**
-     * %config.deepl_api_key%
-     */
-    "translate.deepl.apiKey": null,
-    /**
-     * %config.baidu_appid%
-     */
-    "translate.baidu.appid": null,
-    /**
-     * %config.baidu_app_secret%
-     */
-    "translate.baidu.apiSecret": null,
-    /**
-     * %config.deepl_log%
-     */
-    "translate.deepl.enableLog": false,
-    /**
-     * %config.deepl_use_free_api_entry%
-     */
-    "translate.deepl.useFreeApiEntry": false,
-    /**
-     * %config.libretranslate_api_root%
-     */
-    "translate.libre.apiRoot": "http://localhost:5000",
-    /**
-     * %config.openai_api_key%
-     */
-    "translate.openai.apiKey": null,
-    /**
-     * %config.openai_api_root%
-     */
-    "translate.openai.apiRoot": "https://api.openai.com",
-    /**
-     * %config.openai_api_model%
-     */
-    "translate.openai.apiModel": "gpt-3.5-turbo",
-    /**
-     * %config.usage.scanning_ignore%
-     */
-    "usage.scanningIgnore": undefined,
-    /**
-     * %config.derived_keys%
-     */
-    "usage.derivedKeyRules": null,
-    "frameworks.ruby-rails.scopeRoot": "app/views",
-    "parsers.typescript.tsNodePath": "node_modules/ts-node/dist/bin.js",
-    "parsers.typescript.compilerOptions": {},
-    "parsers.extendFileExtensions": {},
-    /**
-     * %config.review_enabled%
-     */
-    "review.enabled": true,
-    /**
-     * %config.review_gutters%
-     */
-    "review.gutters": true,
-    /**
-     * %config.review_username%
-     */
-    "review.user.name": undefined,
-    /**
-     * %config.review_email%
-     */
-    "review.user.email": undefined,
-    /**
-     * %config.review_remove_on_resolved%
-     */
-    "review.removeCommentOnResolved": false,
-    /**
-     * %config.editor_prefer_editor%
-     */
-    "editor.preferEditor": false,
-    /**
-     * %config.keygen_strategy%
-     */
-    "extract.keygenStrategy": "slug",
-    /**
-     * %config.keygen_style%
-     */
-    "extract.keygenStyle": "default",
-    /**
-     * %config.key_prefix%
-     */
-    "extract.keyPrefix": "",
-    /**
-     * %config.key_max_length%
-     */
-    "extract.keyMaxLength": null,
-    /**
-     * %config.target_picking_strategy%
-     */
-    "extract.targetPickingStrategy": "none",
-    /**
-     * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-     */
-    "extract.parsers.html": {},
-    /**
-     * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-     */
-    "extract.parsers.babel": {},
-    /**
-     * Enables hard-coded strings detection automatically whenever opening a supported file
-     */
-    "extract.autoDetect": false,
-    /**
-     * Strings to be ignored on hard-coded strings detection
-     */
-    "extract.ignored": undefined,
-    /**
-     * Strings to be ignored on hard-coded strings detection, by files
-     */
-    "extract.ignoredByFiles": {},
-    "parserOptions": undefined,
-    /**
-     * %config.default_namespace%
-     */
-    "defaultNamespace": undefined,
-  } satisfies I18nAlly,
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
 }
 
 /**
- * Reactive ConfigObject of `i18n-ally`
- * @example
- * const configValue = useConfigObjectI18nAlly.disabled //get value 
- * useConfigObjectI18nAlly.disabled = true // set value
- * useConfigObjectI18nAlly.$update("disabled", !configValue, ConfigurationTarget.Workspace, true)
+ * Config keys of `i18n-ally`
  */
-export const useConfigObjectI18nAlly = defineConfigObject<I18nAlly>(
-  _i18nAlly.scope,
-  _i18nAlly.defaults
-)
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
 /**
- * Reactive ToConfigRefs of `i18n-ally`
- * @example
- * const configValue:boolean =useConfigsI18nAlly.disabled.value //get value 
- * useConfigsI18nAlly.disabled.value = false // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsI18nAlly.disabled.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * Config keys of `i18n-ally`
  */
-export const useConfigsI18nAlly = defineConfigs<I18nAlly>(
-  _i18nAlly.scope,
-  _i18nAlly.defaults
-)
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
+
+/**
+ * Config keys of `i18n-ally`
+ */
+export interface I18nAlly {
+  /**
+   * %config.disabled%
+   * @default false
+   */
+  "disabled": boolean,
+  /**
+   * %config.auto_detection%
+   * @default true
+   */
+  "autoDetection": boolean,
+  /**
+   * %config.locales_paths%
+   * @default undefined
+   */
+  "localesPaths"?: (string | string[] | undefined),
+  /**
+   * %config.encoding%
+   * @default "utf-8"
+   */
+  "encoding": string,
+  /**
+   * %config.source_language%
+   * @default undefined
+   */
+  "sourceLanguage"?: (string | undefined),
+  /**
+   * %config.display_language%
+   * @default undefined
+   */
+  "displayLanguage"?: (string | undefined),
+  /**
+   * %config.ignored_locales%
+   * @default undefined
+   */
+  "ignoredLocales"?: (unknown[] | undefined),
+  /**
+   * %config.keystyle%
+   * @default undefined
+   */
+  "keystyle"?: ("auto" | "nested" | "flat" | undefined),
+  /**
+   * %config.dir_structure%
+   * @default undefined
+   */
+  "dirStructure"?: ("auto" | "file" | "dir" | undefined),
+  /**
+   * %config.annotations%
+   * @default true
+   */
+  "annotations": boolean,
+  /**
+   * %config.annotation_in_place%
+   * @default true
+   */
+  "annotationInPlace": boolean,
+  /**
+   * %config.annotation_max_length%
+   * @default 40
+   */
+  "annotationMaxLength": number,
+  /**
+   * %config.annotation_delimiter%
+   * @default "·"
+   */
+  "annotationDelimiter": string,
+  /**
+   * %config.include_subfolders%
+   * @default true
+   */
+  "includeSubfolders": boolean,
+  /**
+   * %config.full_reload_on_changed%
+   * @default false
+   */
+  "fullReloadOnChanged": boolean,
+  /**
+   * %config.show_flags%
+   * @default true
+   */
+  "showFlags": boolean,
+  /**
+   * %config.enabled_frameworks%
+   * @default undefined
+   */
+  "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
+  /**
+   * %config.enabled_parsers%
+   * @default undefined
+   */
+  "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
+  /**
+   * %config.keys_in_use%
+   * @default undefined
+   */
+  "keysInUse"?: (string[] | undefined),
+  /**
+   * %config.sort_keys%
+   * @default false
+   */
+  "sortKeys": boolean,
+  /**
+   * %config.sort_compare%
+   * @default "binary"
+   */
+  "sortCompare": ("binary" | "locale"),
+  /**
+   * %config.sort_locale%
+   * @default undefined
+   */
+  "sortLocale"?: (string | undefined),
+  /**
+   * %config.preferred_delimiter%
+   * @default "-"
+   */
+  "preferredDelimiter": string,
+  /**
+   * %config.readonly%
+   * @default false
+   */
+  "readonly": boolean,
+  /**
+   * %config.keep_fulfill%
+   * @default false
+   */
+  "keepFulfilled": boolean,
+  /**
+   * %config.locale_country_map%
+   * @default {}
+   */
+  "localeCountryMap": Record<string, unknown>,
+  /**
+   * %config.indent%
+   * @default 2
+   */
+  "indent": number,
+  /**
+   * %config.disable_path_parsing%
+   * @default false
+   */
+  "disablePathParsing": boolean,
+  /**
+   * %config.tab_style%
+   * @default "space"
+   */
+  "tabStyle": ("space" | "tab"),
+  /**
+   * %config.namespace%
+   * @default undefined
+   */
+  "namespace"?: (boolean | undefined),
+  /**
+   * %config.path_matcher%
+   * @default undefined
+   */
+  "pathMatcher"?: (string | undefined),
+  /**
+   * %config.language_tag_system%
+   * @default "bcp47"
+   */
+  "languageTagSystem": ("bcp47" | "legacy" | "none"),
+  /**
+   * %config.ignore_files%
+   * @default undefined
+   */
+  "ignoreFiles"?: (string[] | undefined),
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "theme.annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "theme.annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "theme.annotationMissingBorder": string,
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "regex.key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "regex.usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "regex.usageMatchAppend"?: (string[] | undefined),
+  /**
+   * %config.refactor_templates%
+   * @default undefined
+   */
+  "refactor.templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "translate.saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "translate.fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "translate.parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "translate.promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "translate.overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "translate.google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "translate.deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "translate.baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "translate.baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "translate.deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "translate.deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "translate.libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "translate.openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "translate.openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+  /**
+   * %config.usage.scanning_ignore%
+   * @default undefined
+   */
+  "usage.scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   * @default null
+   */
+  "usage.derivedKeyRules": (string[] | null),
+  /**
+   * 
+   * @default "app/views"
+   */
+  "frameworks.ruby-rails.scopeRoot": string,
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "parsers.typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "parsers.extendFileExtensions": Record<string, unknown>,
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "review.enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "review.gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "review.user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "review.user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "review.removeCommentOnResolved": boolean,
+  /**
+   * %config.editor_prefer_editor%
+   * @default false
+   */
+  "editor.preferEditor": boolean,
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "extract.keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "extract.keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "extract.parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "extract.autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "extract.ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "extract.ignoredByFiles": Record<string, unknown>,
+  /**
+   * 
+   * @default undefined
+   */
+  "parserOptions"?: Record<string, unknown>,
+  /**
+   * %config.default_namespace%
+   * @default undefined
+   */
+  "defaultNamespace"?: (string | undefined),
+}
 
 /**
  * Config keys of `i18n-ally.theme`
  */
-export interface Theme {
+export interface I18nAllyTheme {
   /**
    * 
    * @default "rgba(153, 153, 153, .8)"
@@ -1564,52 +36188,87 @@ export interface Theme {
 }
 
 /**
- * Scoped defaults of `i18n-ally.theme`
+ * Config keys of `i18n-ally.theme`
  */
-const _theme = {
+export interface I18nAllyTheme {
   /**
-   * scope: `i18n-ally.theme`
+   * 
+   * @default "rgba(153, 153, 153, .8)"
    */
-  scope: "i18n-ally.theme",
+  "annotation": string,
   /**
-   * Keys' defaults of `i18n-ally.theme`
+   * 
+   * @default "rgba(153, 153, 153, .3)"
    */
-  defaults: {
-    "annotation": "rgba(153, 153, 153, .8)",
-    "annotationMissing": "rgba(153, 153, 153, .3)",
-    "annotationBorder": "rgba(153, 153, 153, .2)",
-    "annotationMissingBorder": "rgba(153, 153, 153, .2)",
-  } satisfies Theme,
+  "annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "annotationMissingBorder": string,
 }
 
 /**
- * Reactive ConfigObject of `i18n-ally.theme`
- * @example
- * const configValue = useConfigObjectTheme.annotation //get value 
- * useConfigObjectTheme.annotation = true // set value
- * useConfigObjectTheme.$update("annotation", !configValue, ConfigurationTarget.Workspace, true)
+ * Config keys of `i18n-ally.theme`
  */
-export const useConfigObjectTheme = defineConfigObject<Theme>(
-  _theme.scope,
-  _theme.defaults
-)
+export interface I18nAllyTheme {
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "annotationMissingBorder": string,
+}
+
 /**
- * Reactive ToConfigRefs of `i18n-ally.theme`
- * @example
- * const configValue:string =useConfigsTheme.annotation.value //get value 
- * useConfigsTheme.annotation.value = "rgba(153, 153, 153, .8)" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTheme.annotation.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * Config keys of `i18n-ally.theme`
  */
-export const useConfigsTheme = defineConfigs<Theme>(
-  _theme.scope,
-  _theme.defaults
-)
+export interface I18nAllyTheme {
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .8)"
+   */
+  "annotation": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .3)"
+   */
+  "annotationMissing": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "annotationBorder": string,
+  /**
+   * 
+   * @default "rgba(153, 153, 153, .2)"
+   */
+  "annotationMissingBorder": string,
+}
 
 /**
  * Config keys of `i18n-ally.regex`
  */
-export interface Regex {
+export interface I18nAllyRegex {
   /**
    * %config.regex_key%
    * @default undefined
@@ -1628,60 +36287,51 @@ export interface Regex {
 }
 
 /**
- * Scoped defaults of `i18n-ally.regex`
+ * Config keys of `i18n-ally.regex`
  */
-const _regex = {
+export interface I18nAllyRegex {
   /**
-   * scope: `i18n-ally.regex`
+   * %config.regex_key%
+   * @default undefined
    */
-  scope: "i18n-ally.regex",
+  "key"?: (string | undefined),
   /**
-   * Keys' defaults of `i18n-ally.regex`
+   * %config.regex_usage_match%
+   * @default undefined
    */
-  defaults: {
-    /**
-     * %config.regex_key%
-     */
-    "key": undefined,
-    /**
-     * %config.regex_usage_match%
-     */
-    "usageMatch": undefined,
-    /**
-     * %config.regex_usage_match_append%
-     */
-    "usageMatchAppend": undefined,
-  } satisfies Regex,
+  "usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "usageMatchAppend"?: (string[] | undefined),
 }
 
 /**
- * Reactive ConfigObject of `i18n-ally.regex`
- * @example
- * const configValue = useConfigObjectRegex.key //get value 
- * useConfigObjectRegex.key = true // set value
- * useConfigObjectRegex.$update("key", !configValue, ConfigurationTarget.Workspace, true)
+ * Config keys of `i18n-ally.regex`
  */
-export const useConfigObjectRegex = defineConfigObject<Regex>(
-  _regex.scope,
-  _regex.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.regex`
- * @example
- * const configValue:string =useConfigsRegex.key.value //get value 
- * useConfigsRegex.key.value = undefined // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsRegex.key.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsRegex = defineConfigs<Regex>(
-  _regex.scope,
-  _regex.defaults
-)
+export interface I18nAllyRegex {
+  /**
+   * %config.regex_key%
+   * @default undefined
+   */
+  "key"?: (string | undefined),
+  /**
+   * %config.regex_usage_match%
+   * @default undefined
+   */
+  "usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   * @default undefined
+   */
+  "usageMatchAppend"?: (string[] | undefined),
+}
 
 /**
  * Config keys of `i18n-ally.refactor`
  */
-export interface Refactor {
+export interface I18nAllyRefactor {
   /**
    * %config.refactor_templates%
    * @default undefined
@@ -1716,52 +36366,9 @@ export interface Refactor {
 }
 
 /**
- * Scoped defaults of `i18n-ally.refactor`
- */
-const _refactor = {
-  /**
-   * scope: `i18n-ally.refactor`
-   */
-  scope: "i18n-ally.refactor",
-  /**
-   * Keys' defaults of `i18n-ally.refactor`
-   */
-  defaults: {
-    /**
-     * %config.refactor_templates%
-     */
-    "templates": undefined,
-  } satisfies Refactor,
-}
-
-/**
- * Reactive ConfigObject of `i18n-ally.refactor`
- * @example
- * const configValue = useConfigObjectRefactor.templates //get value 
- * useConfigObjectRefactor.templates = true // set value
- * useConfigObjectRefactor.$update("templates", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectRefactor = defineConfigObject<Refactor>(
-  _refactor.scope,
-  _refactor.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.refactor`
- * @example
- * const configValue:array =useConfigsRefactor.templates.value //get value 
- * useConfigsRefactor.templates.value = undefined // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsRefactor.templates.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsRefactor = defineConfigs<Refactor>(
-  _refactor.scope,
-  _refactor.defaults
-)
-
-/**
  * Config keys of `i18n-ally.translate`
  */
-export interface Translate {
+export interface I18nAllyTranslate {
   /**
    * %config.translate_save_as_candidates%
    * @default false
@@ -1845,112 +36452,1299 @@ export interface Translate {
 }
 
 /**
- * Scoped defaults of `i18n-ally.translate`
+ * Config keys of `i18n-ally.translate`
  */
-const _translate = {
+export interface I18nAllyTranslate {
   /**
-   * scope: `i18n-ally.translate`
+   * %config.translate_save_as_candidates%
+   * @default false
    */
-  scope: "i18n-ally.translate",
+  "saveAsCandidates": boolean,
   /**
-   * Keys' defaults of `i18n-ally.translate`
+   * %config.translate.fallbackToKey%
+   * @default false
    */
-  defaults: {
-    /**
-     * %config.translate_save_as_candidates%
-     */
-    "saveAsCandidates": false,
-    /**
-     * %config.translate.fallbackToKey%
-     */
-    "fallbackToKey": false,
-    /**
-     * %config.translate.engines%
-     */
-    "engines": ["google"],
-    /**
-     * %config.translate.parallels%
-     */
-    "parallels": 5,
-    /**
-     * %config.prompt_translating_source%
-     */
-    "promptSource": false,
-    /**
-     * %config.translate_override_existing%
-     */
-    "overrideExisting": false,
-    /**
-     * %config.google_api_key%
-     */
-    "google.apiKey": null,
-    /**
-     * %config.deepl_api_key%
-     */
-    "deepl.apiKey": null,
-    /**
-     * %config.baidu_appid%
-     */
-    "baidu.appid": null,
-    /**
-     * %config.baidu_app_secret%
-     */
-    "baidu.apiSecret": null,
-    /**
-     * %config.deepl_log%
-     */
-    "deepl.enableLog": false,
-    /**
-     * %config.deepl_use_free_api_entry%
-     */
-    "deepl.useFreeApiEntry": false,
-    /**
-     * %config.libretranslate_api_root%
-     */
-    "libre.apiRoot": "http://localhost:5000",
-    /**
-     * %config.openai_api_key%
-     */
-    "openai.apiKey": null,
-    /**
-     * %config.openai_api_root%
-     */
-    "openai.apiRoot": "https://api.openai.com",
-    /**
-     * %config.openai_api_model%
-     */
-    "openai.apiModel": "gpt-3.5-turbo",
-  } satisfies Translate,
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
 }
 
 /**
- * Reactive ConfigObject of `i18n-ally.translate`
- * @example
- * const configValue = useConfigObjectTranslate.saveAsCandidates //get value 
- * useConfigObjectTranslate.saveAsCandidates = true // set value
- * useConfigObjectTranslate.$update("saveAsCandidates", !configValue, ConfigurationTarget.Workspace, true)
+ * Config keys of `i18n-ally.translate`
  */
-export const useConfigObjectTranslate = defineConfigObject<Translate>(
-  _translate.scope,
-  _translate.defaults
-)
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
 /**
- * Reactive ToConfigRefs of `i18n-ally.translate`
- * @example
- * const configValue:boolean =useConfigsTranslate.saveAsCandidates.value //get value 
- * useConfigsTranslate.saveAsCandidates.value = false // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTranslate.saveAsCandidates.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * Config keys of `i18n-ally.translate`
  */
-export const useConfigsTranslate = defineConfigs<Translate>(
-  _translate.scope,
-  _translate.defaults
-)
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Config keys of `i18n-ally.translate`
+ */
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Config keys of `i18n-ally.translate`
+ */
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Config keys of `i18n-ally.translate`
+ */
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Config keys of `i18n-ally.translate`
+ */
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Config keys of `i18n-ally.translate`
+ */
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Config keys of `i18n-ally.translate`
+ */
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Config keys of `i18n-ally.translate`
+ */
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Config keys of `i18n-ally.translate`
+ */
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Config keys of `i18n-ally.translate`
+ */
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Config keys of `i18n-ally.translate`
+ */
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Config keys of `i18n-ally.translate`
+ */
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Config keys of `i18n-ally.translate`
+ */
+export interface I18nAllyTranslate {
+  /**
+   * %config.translate_save_as_candidates%
+   * @default false
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   * @default false
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   * @default ["google"]
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   * @default 5
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   * @default false
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   * @default false
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   * @default null
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   * @default null
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   * @default null
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   * @default "http://localhost:5000"
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
 
 /**
  * Config keys of `i18n-ally.translate.google`
  */
-export interface TranslateGoogle {
+export interface I18nAllyTranslateGoogle {
   /**
    * %config.google_api_key%
    * @default null
@@ -1959,52 +37753,9 @@ export interface TranslateGoogle {
 }
 
 /**
- * Scoped defaults of `i18n-ally.translate.google`
- */
-const _translateGoogle = {
-  /**
-   * scope: `i18n-ally.translate.google`
-   */
-  scope: "i18n-ally.translate.google",
-  /**
-   * Keys' defaults of `i18n-ally.translate.google`
-   */
-  defaults: {
-    /**
-     * %config.google_api_key%
-     */
-    "apiKey": null,
-  } satisfies TranslateGoogle,
-}
-
-/**
- * Reactive ConfigObject of `i18n-ally.translate.google`
- * @example
- * const configValue = useConfigObjectTranslateGoogle.apiKey //get value 
- * useConfigObjectTranslateGoogle.apiKey = true // set value
- * useConfigObjectTranslateGoogle.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectTranslateGoogle = defineConfigObject<TranslateGoogle>(
-  _translateGoogle.scope,
-  _translateGoogle.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.translate.google`
- * @example
- * const configValue:string =useConfigsTranslateGoogle.apiKey.value //get value 
- * useConfigsTranslateGoogle.apiKey.value = null // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTranslateGoogle.apiKey.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTranslateGoogle = defineConfigs<TranslateGoogle>(
-  _translateGoogle.scope,
-  _translateGoogle.defaults
-)
-
-/**
  * Config keys of `i18n-ally.translate.deepl`
  */
-export interface TranslateDeepl {
+export interface I18nAllyTranslateDeepl {
   /**
    * %config.deepl_api_key%
    * @default null
@@ -2023,60 +37774,51 @@ export interface TranslateDeepl {
 }
 
 /**
- * Scoped defaults of `i18n-ally.translate.deepl`
+ * Config keys of `i18n-ally.translate.deepl`
  */
-const _translateDeepl = {
+export interface I18nAllyTranslateDeepl {
   /**
-   * scope: `i18n-ally.translate.deepl`
+   * %config.deepl_api_key%
+   * @default null
    */
-  scope: "i18n-ally.translate.deepl",
+  "apiKey": (string | null),
   /**
-   * Keys' defaults of `i18n-ally.translate.deepl`
+   * %config.deepl_log%
+   * @default false
    */
-  defaults: {
-    /**
-     * %config.deepl_api_key%
-     */
-    "apiKey": null,
-    /**
-     * %config.deepl_log%
-     */
-    "enableLog": false,
-    /**
-     * %config.deepl_use_free_api_entry%
-     */
-    "useFreeApiEntry": false,
-  } satisfies TranslateDeepl,
+  "enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "useFreeApiEntry": boolean,
 }
 
 /**
- * Reactive ConfigObject of `i18n-ally.translate.deepl`
- * @example
- * const configValue = useConfigObjectTranslateDeepl.apiKey //get value 
- * useConfigObjectTranslateDeepl.apiKey = true // set value
- * useConfigObjectTranslateDeepl.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
+ * Config keys of `i18n-ally.translate.deepl`
  */
-export const useConfigObjectTranslateDeepl = defineConfigObject<TranslateDeepl>(
-  _translateDeepl.scope,
-  _translateDeepl.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.translate.deepl`
- * @example
- * const configValue:string =useConfigsTranslateDeepl.apiKey.value //get value 
- * useConfigsTranslateDeepl.apiKey.value = null // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTranslateDeepl.apiKey.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTranslateDeepl = defineConfigs<TranslateDeepl>(
-  _translateDeepl.scope,
-  _translateDeepl.defaults
-)
+export interface I18nAllyTranslateDeepl {
+  /**
+   * %config.deepl_api_key%
+   * @default null
+   */
+  "apiKey": (string | null),
+  /**
+   * %config.deepl_log%
+   * @default false
+   */
+  "enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   * @default false
+   */
+  "useFreeApiEntry": boolean,
+}
 
 /**
  * Config keys of `i18n-ally.translate.baidu`
  */
-export interface TranslateBaidu {
+export interface I18nAllyTranslateBaidu {
   /**
    * %config.baidu_appid%
    * @default null
@@ -2090,56 +37832,25 @@ export interface TranslateBaidu {
 }
 
 /**
- * Scoped defaults of `i18n-ally.translate.baidu`
+ * Config keys of `i18n-ally.translate.baidu`
  */
-const _translateBaidu = {
+export interface I18nAllyTranslateBaidu {
   /**
-   * scope: `i18n-ally.translate.baidu`
+   * %config.baidu_appid%
+   * @default null
    */
-  scope: "i18n-ally.translate.baidu",
+  "appid": (string | null),
   /**
-   * Keys' defaults of `i18n-ally.translate.baidu`
+   * %config.baidu_app_secret%
+   * @default null
    */
-  defaults: {
-    /**
-     * %config.baidu_appid%
-     */
-    "appid": null,
-    /**
-     * %config.baidu_app_secret%
-     */
-    "apiSecret": null,
-  } satisfies TranslateBaidu,
+  "apiSecret": (string | null),
 }
-
-/**
- * Reactive ConfigObject of `i18n-ally.translate.baidu`
- * @example
- * const configValue = useConfigObjectTranslateBaidu.appid //get value 
- * useConfigObjectTranslateBaidu.appid = true // set value
- * useConfigObjectTranslateBaidu.$update("appid", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectTranslateBaidu = defineConfigObject<TranslateBaidu>(
-  _translateBaidu.scope,
-  _translateBaidu.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.translate.baidu`
- * @example
- * const configValue:string =useConfigsTranslateBaidu.appid.value //get value 
- * useConfigsTranslateBaidu.appid.value = null // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTranslateBaidu.appid.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTranslateBaidu = defineConfigs<TranslateBaidu>(
-  _translateBaidu.scope,
-  _translateBaidu.defaults
-)
 
 /**
  * Config keys of `i18n-ally.translate.libre`
  */
-export interface TranslateLibre {
+export interface I18nAllyTranslateLibre {
   /**
    * %config.libretranslate_api_root%
    * @default "http://localhost:5000"
@@ -2148,52 +37859,9 @@ export interface TranslateLibre {
 }
 
 /**
- * Scoped defaults of `i18n-ally.translate.libre`
- */
-const _translateLibre = {
-  /**
-   * scope: `i18n-ally.translate.libre`
-   */
-  scope: "i18n-ally.translate.libre",
-  /**
-   * Keys' defaults of `i18n-ally.translate.libre`
-   */
-  defaults: {
-    /**
-     * %config.libretranslate_api_root%
-     */
-    "apiRoot": "http://localhost:5000",
-  } satisfies TranslateLibre,
-}
-
-/**
- * Reactive ConfigObject of `i18n-ally.translate.libre`
- * @example
- * const configValue = useConfigObjectTranslateLibre.apiRoot //get value 
- * useConfigObjectTranslateLibre.apiRoot = true // set value
- * useConfigObjectTranslateLibre.$update("apiRoot", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectTranslateLibre = defineConfigObject<TranslateLibre>(
-  _translateLibre.scope,
-  _translateLibre.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.translate.libre`
- * @example
- * const configValue:string =useConfigsTranslateLibre.apiRoot.value //get value 
- * useConfigsTranslateLibre.apiRoot.value = "http://localhost:5000" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTranslateLibre.apiRoot.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTranslateLibre = defineConfigs<TranslateLibre>(
-  _translateLibre.scope,
-  _translateLibre.defaults
-)
-
-/**
  * Config keys of `i18n-ally.translate.openai`
  */
-export interface TranslateOpenai {
+export interface I18nAllyTranslateOpenai {
   /**
    * %config.openai_api_key%
    * @default null
@@ -2212,60 +37880,51 @@ export interface TranslateOpenai {
 }
 
 /**
- * Scoped defaults of `i18n-ally.translate.openai`
+ * Config keys of `i18n-ally.translate.openai`
  */
-const _translateOpenai = {
+export interface I18nAllyTranslateOpenai {
   /**
-   * scope: `i18n-ally.translate.openai`
+   * %config.openai_api_key%
+   * @default null
    */
-  scope: "i18n-ally.translate.openai",
+  "apiKey": (string | null),
   /**
-   * Keys' defaults of `i18n-ally.translate.openai`
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
    */
-  defaults: {
-    /**
-     * %config.openai_api_key%
-     */
-    "apiKey": null,
-    /**
-     * %config.openai_api_root%
-     */
-    "apiRoot": "https://api.openai.com",
-    /**
-     * %config.openai_api_model%
-     */
-    "apiModel": "gpt-3.5-turbo",
-  } satisfies TranslateOpenai,
+  "apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
 }
 
 /**
- * Reactive ConfigObject of `i18n-ally.translate.openai`
- * @example
- * const configValue = useConfigObjectTranslateOpenai.apiKey //get value 
- * useConfigObjectTranslateOpenai.apiKey = true // set value
- * useConfigObjectTranslateOpenai.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
+ * Config keys of `i18n-ally.translate.openai`
  */
-export const useConfigObjectTranslateOpenai = defineConfigObject<TranslateOpenai>(
-  _translateOpenai.scope,
-  _translateOpenai.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.translate.openai`
- * @example
- * const configValue:string =useConfigsTranslateOpenai.apiKey.value //get value 
- * useConfigsTranslateOpenai.apiKey.value = null // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTranslateOpenai.apiKey.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTranslateOpenai = defineConfigs<TranslateOpenai>(
-  _translateOpenai.scope,
-  _translateOpenai.defaults
-)
+export interface I18nAllyTranslateOpenai {
+  /**
+   * %config.openai_api_key%
+   * @default null
+   */
+  "apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   * @default "https://api.openai.com"
+   */
+  "apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   * @default "gpt-3.5-turbo"
+   */
+  "apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
 
 /**
  * Config keys of `i18n-ally.usage`
  */
-export interface Usage {
+export interface I18nAllyUsage {
   /**
    * %config.usage.scanning_ignore%
    * @default undefined
@@ -2279,56 +37938,25 @@ export interface Usage {
 }
 
 /**
- * Scoped defaults of `i18n-ally.usage`
+ * Config keys of `i18n-ally.usage`
  */
-const _usage = {
+export interface I18nAllyUsage {
   /**
-   * scope: `i18n-ally.usage`
+   * %config.usage.scanning_ignore%
+   * @default undefined
    */
-  scope: "i18n-ally.usage",
+  "scanningIgnore"?: (string[] | undefined),
   /**
-   * Keys' defaults of `i18n-ally.usage`
+   * %config.derived_keys%
+   * @default null
    */
-  defaults: {
-    /**
-     * %config.usage.scanning_ignore%
-     */
-    "scanningIgnore": undefined,
-    /**
-     * %config.derived_keys%
-     */
-    "derivedKeyRules": null,
-  } satisfies Usage,
+  "derivedKeyRules": (string[] | null),
 }
-
-/**
- * Reactive ConfigObject of `i18n-ally.usage`
- * @example
- * const configValue = useConfigObjectUsage.scanningIgnore //get value 
- * useConfigObjectUsage.scanningIgnore = true // set value
- * useConfigObjectUsage.$update("scanningIgnore", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectUsage = defineConfigObject<Usage>(
-  _usage.scope,
-  _usage.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.usage`
- * @example
- * const configValue:array =useConfigsUsage.scanningIgnore.value //get value 
- * useConfigsUsage.scanningIgnore.value = undefined // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsUsage.scanningIgnore.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsUsage = defineConfigs<Usage>(
-  _usage.scope,
-  _usage.defaults
-)
 
 /**
  * Config keys of `i18n-ally.frameworks`
  */
-export interface Frameworks {
+export interface I18nAllyFrameworks {
   /**
    * 
    * @default "app/views"
@@ -2337,49 +37965,9 @@ export interface Frameworks {
 }
 
 /**
- * Scoped defaults of `i18n-ally.frameworks`
- */
-const _frameworks = {
-  /**
-   * scope: `i18n-ally.frameworks`
-   */
-  scope: "i18n-ally.frameworks",
-  /**
-   * Keys' defaults of `i18n-ally.frameworks`
-   */
-  defaults: {
-    "ruby-rails.scopeRoot": "app/views",
-  } satisfies Frameworks,
-}
-
-/**
- * Reactive ConfigObject of `i18n-ally.frameworks`
- * @example
- * const configValue = useConfigObjectFrameworks.ruby-rails.scopeRoot //get value 
- * useConfigObjectFrameworks.ruby-rails.scopeRoot = true // set value
- * useConfigObjectFrameworks.$update("ruby-rails.scopeRoot", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectFrameworks = defineConfigObject<Frameworks>(
-  _frameworks.scope,
-  _frameworks.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.frameworks`
- * @example
- * const configValue:string =useConfigsFrameworks.ruby-rails.scopeRoot.value //get value 
- * useConfigsFrameworks.ruby-rails.scopeRoot.value = "app/views" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsFrameworks.ruby-rails.scopeRoot.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsFrameworks = defineConfigs<Frameworks>(
-  _frameworks.scope,
-  _frameworks.defaults
-)
-
-/**
  * Config keys of `i18n-ally.frameworks.ruby-rails`
  */
-export interface FrameworksRubyRails {
+export interface I18nAllyFrameworksRubyRails {
   /**
    * 
    * @default "app/views"
@@ -2388,49 +37976,9 @@ export interface FrameworksRubyRails {
 }
 
 /**
- * Scoped defaults of `i18n-ally.frameworks.ruby-rails`
- */
-const _frameworksRubyRails = {
-  /**
-   * scope: `i18n-ally.frameworks.ruby-rails`
-   */
-  scope: "i18n-ally.frameworks.ruby-rails",
-  /**
-   * Keys' defaults of `i18n-ally.frameworks.ruby-rails`
-   */
-  defaults: {
-    "scopeRoot": "app/views",
-  } satisfies FrameworksRubyRails,
-}
-
-/**
- * Reactive ConfigObject of `i18n-ally.frameworks.ruby-rails`
- * @example
- * const configValue = useConfigObjectFrameworksRubyRails.scopeRoot //get value 
- * useConfigObjectFrameworksRubyRails.scopeRoot = true // set value
- * useConfigObjectFrameworksRubyRails.$update("scopeRoot", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectFrameworksRubyRails = defineConfigObject<FrameworksRubyRails>(
-  _frameworksRubyRails.scope,
-  _frameworksRubyRails.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.frameworks.ruby-rails`
- * @example
- * const configValue:string =useConfigsFrameworksRubyRails.scopeRoot.value //get value 
- * useConfigsFrameworksRubyRails.scopeRoot.value = "app/views" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsFrameworksRubyRails.scopeRoot.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsFrameworksRubyRails = defineConfigs<FrameworksRubyRails>(
-  _frameworksRubyRails.scope,
-  _frameworksRubyRails.defaults
-)
-
-/**
  * Config keys of `i18n-ally.parsers`
  */
-export interface Parsers {
+export interface I18nAllyParsers {
   /**
    * 
    * @default "node_modules/ts-node/dist/bin.js"
@@ -2449,51 +37997,51 @@ export interface Parsers {
 }
 
 /**
- * Scoped defaults of `i18n-ally.parsers`
+ * Config keys of `i18n-ally.parsers`
  */
-const _parsers = {
+export interface I18nAllyParsers {
   /**
-   * scope: `i18n-ally.parsers`
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
    */
-  scope: "i18n-ally.parsers",
+  "typescript.tsNodePath": string,
   /**
-   * Keys' defaults of `i18n-ally.parsers`
+   * 
+   * @default {}
    */
-  defaults: {
-    "typescript.tsNodePath": "node_modules/ts-node/dist/bin.js",
-    "typescript.compilerOptions": {},
-    "extendFileExtensions": {},
-  } satisfies Parsers,
+  "typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "extendFileExtensions": Record<string, unknown>,
 }
 
 /**
- * Reactive ConfigObject of `i18n-ally.parsers`
- * @example
- * const configValue = useConfigObjectParsers.typescript.tsNodePath //get value 
- * useConfigObjectParsers.typescript.tsNodePath = true // set value
- * useConfigObjectParsers.$update("typescript.tsNodePath", !configValue, ConfigurationTarget.Workspace, true)
+ * Config keys of `i18n-ally.parsers`
  */
-export const useConfigObjectParsers = defineConfigObject<Parsers>(
-  _parsers.scope,
-  _parsers.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.parsers`
- * @example
- * const configValue:string =useConfigsParsers.typescript.tsNodePath.value //get value 
- * useConfigsParsers.typescript.tsNodePath.value = "node_modules/ts-node/dist/bin.js" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsParsers.typescript.tsNodePath.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsParsers = defineConfigs<Parsers>(
-  _parsers.scope,
-  _parsers.defaults
-)
+export interface I18nAllyParsers {
+  /**
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
+   */
+  "typescript.tsNodePath": string,
+  /**
+   * 
+   * @default {}
+   */
+  "typescript.compilerOptions": Record<string, unknown>,
+  /**
+   * 
+   * @default {}
+   */
+  "extendFileExtensions": Record<string, unknown>,
+}
 
 /**
  * Config keys of `i18n-ally.parsers.typescript`
  */
-export interface ParsersTypescript {
+export interface I18nAllyParsersTypescript {
   /**
    * 
    * @default "node_modules/ts-node/dist/bin.js"
@@ -2507,50 +38055,25 @@ export interface ParsersTypescript {
 }
 
 /**
- * Scoped defaults of `i18n-ally.parsers.typescript`
+ * Config keys of `i18n-ally.parsers.typescript`
  */
-const _parsersTypescript = {
+export interface I18nAllyParsersTypescript {
   /**
-   * scope: `i18n-ally.parsers.typescript`
+   * 
+   * @default "node_modules/ts-node/dist/bin.js"
    */
-  scope: "i18n-ally.parsers.typescript",
+  "tsNodePath": string,
   /**
-   * Keys' defaults of `i18n-ally.parsers.typescript`
+   * 
+   * @default {}
    */
-  defaults: {
-    "tsNodePath": "node_modules/ts-node/dist/bin.js",
-    "compilerOptions": {},
-  } satisfies ParsersTypescript,
+  "compilerOptions": Record<string, unknown>,
 }
-
-/**
- * Reactive ConfigObject of `i18n-ally.parsers.typescript`
- * @example
- * const configValue = useConfigObjectParsersTypescript.tsNodePath //get value 
- * useConfigObjectParsersTypescript.tsNodePath = true // set value
- * useConfigObjectParsersTypescript.$update("tsNodePath", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectParsersTypescript = defineConfigObject<ParsersTypescript>(
-  _parsersTypescript.scope,
-  _parsersTypescript.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.parsers.typescript`
- * @example
- * const configValue:string =useConfigsParsersTypescript.tsNodePath.value //get value 
- * useConfigsParsersTypescript.tsNodePath.value = "node_modules/ts-node/dist/bin.js" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsParsersTypescript.tsNodePath.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsParsersTypescript = defineConfigs<ParsersTypescript>(
-  _parsersTypescript.scope,
-  _parsersTypescript.defaults
-)
 
 /**
  * Config keys of `i18n-ally.review`
  */
-export interface Review {
+export interface I18nAllyReview {
   /**
    * %config.review_enabled%
    * @default true
@@ -2579,68 +38102,133 @@ export interface Review {
 }
 
 /**
- * Scoped defaults of `i18n-ally.review`
+ * Config keys of `i18n-ally.review`
  */
-const _review = {
+export interface I18nAllyReview {
   /**
-   * scope: `i18n-ally.review`
+   * %config.review_enabled%
+   * @default true
    */
-  scope: "i18n-ally.review",
+  "enabled": boolean,
   /**
-   * Keys' defaults of `i18n-ally.review`
+   * %config.review_gutters%
+   * @default true
    */
-  defaults: {
-    /**
-     * %config.review_enabled%
-     */
-    "enabled": true,
-    /**
-     * %config.review_gutters%
-     */
-    "gutters": true,
-    /**
-     * %config.review_username%
-     */
-    "user.name": undefined,
-    /**
-     * %config.review_email%
-     */
-    "user.email": undefined,
-    /**
-     * %config.review_remove_on_resolved%
-     */
-    "removeCommentOnResolved": false,
-  } satisfies Review,
+  "gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "removeCommentOnResolved": boolean,
 }
 
 /**
- * Reactive ConfigObject of `i18n-ally.review`
- * @example
- * const configValue = useConfigObjectReview.enabled //get value 
- * useConfigObjectReview.enabled = true // set value
- * useConfigObjectReview.$update("enabled", !configValue, ConfigurationTarget.Workspace, true)
+ * Config keys of `i18n-ally.review`
  */
-export const useConfigObjectReview = defineConfigObject<Review>(
-  _review.scope,
-  _review.defaults
-)
+export interface I18nAllyReview {
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "removeCommentOnResolved": boolean,
+}
+
 /**
- * Reactive ToConfigRefs of `i18n-ally.review`
- * @example
- * const configValue:boolean =useConfigsReview.enabled.value //get value 
- * useConfigsReview.enabled.value = true // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsReview.enabled.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * Config keys of `i18n-ally.review`
  */
-export const useConfigsReview = defineConfigs<Review>(
-  _review.scope,
-  _review.defaults
-)
+export interface I18nAllyReview {
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "removeCommentOnResolved": boolean,
+}
+
+/**
+ * Config keys of `i18n-ally.review`
+ */
+export interface I18nAllyReview {
+  /**
+   * %config.review_enabled%
+   * @default true
+   */
+  "enabled": boolean,
+  /**
+   * %config.review_gutters%
+   * @default true
+   */
+  "gutters": boolean,
+  /**
+   * %config.review_username%
+   * @default undefined
+   */
+  "user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   * @default undefined
+   */
+  "user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   * @default false
+   */
+  "removeCommentOnResolved": boolean,
+}
 
 /**
  * Config keys of `i18n-ally.review.user`
  */
-export interface ReviewUser {
+export interface I18nAllyReviewUser {
   /**
    * %config.review_username%
    * @default undefined
@@ -2654,56 +38242,25 @@ export interface ReviewUser {
 }
 
 /**
- * Scoped defaults of `i18n-ally.review.user`
+ * Config keys of `i18n-ally.review.user`
  */
-const _reviewUser = {
+export interface I18nAllyReviewUser {
   /**
-   * scope: `i18n-ally.review.user`
+   * %config.review_username%
+   * @default undefined
    */
-  scope: "i18n-ally.review.user",
+  "name"?: (string | undefined),
   /**
-   * Keys' defaults of `i18n-ally.review.user`
+   * %config.review_email%
+   * @default undefined
    */
-  defaults: {
-    /**
-     * %config.review_username%
-     */
-    "name": undefined,
-    /**
-     * %config.review_email%
-     */
-    "email": undefined,
-  } satisfies ReviewUser,
+  "email"?: (string | undefined),
 }
-
-/**
- * Reactive ConfigObject of `i18n-ally.review.user`
- * @example
- * const configValue = useConfigObjectReviewUser.name //get value 
- * useConfigObjectReviewUser.name = true // set value
- * useConfigObjectReviewUser.$update("name", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectReviewUser = defineConfigObject<ReviewUser>(
-  _reviewUser.scope,
-  _reviewUser.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.review.user`
- * @example
- * const configValue:string =useConfigsReviewUser.name.value //get value 
- * useConfigsReviewUser.name.value = undefined // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsReviewUser.name.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsReviewUser = defineConfigs<ReviewUser>(
-  _reviewUser.scope,
-  _reviewUser.defaults
-)
 
 /**
  * Config keys of `i18n-ally.editor`
  */
-export interface Editor {
+export interface I18nAllyEditor {
   /**
    * %config.editor_prefer_editor%
    * @default false
@@ -2712,52 +38269,9 @@ export interface Editor {
 }
 
 /**
- * Scoped defaults of `i18n-ally.editor`
- */
-const _editor = {
-  /**
-   * scope: `i18n-ally.editor`
-   */
-  scope: "i18n-ally.editor",
-  /**
-   * Keys' defaults of `i18n-ally.editor`
-   */
-  defaults: {
-    /**
-     * %config.editor_prefer_editor%
-     */
-    "preferEditor": false,
-  } satisfies Editor,
-}
-
-/**
- * Reactive ConfigObject of `i18n-ally.editor`
- * @example
- * const configValue = useConfigObjectEditor.preferEditor //get value 
- * useConfigObjectEditor.preferEditor = true // set value
- * useConfigObjectEditor.$update("preferEditor", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectEditor = defineConfigObject<Editor>(
-  _editor.scope,
-  _editor.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.editor`
- * @example
- * const configValue:boolean =useConfigsEditor.preferEditor.value //get value 
- * useConfigsEditor.preferEditor.value = false // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsEditor.preferEditor.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsEditor = defineConfigs<Editor>(
-  _editor.scope,
-  _editor.defaults
-)
-
-/**
  * Config keys of `i18n-ally.extract`
  */
-export interface Extract {
+export interface I18nAllyExtract {
   /**
    * %config.keygen_strategy%
    * @default "slug"
@@ -2811,88 +38325,513 @@ export interface Extract {
 }
 
 /**
- * Scoped defaults of `i18n-ally.extract`
+ * Config keys of `i18n-ally.extract`
  */
-const _extract = {
+export interface I18nAllyExtract {
   /**
-   * scope: `i18n-ally.extract`
+   * %config.keygen_strategy%
+   * @default "slug"
    */
-  scope: "i18n-ally.extract",
+  "keygenStrategy": ("slug" | "random" | "empty" | "source"),
   /**
-   * Keys' defaults of `i18n-ally.extract`
+   * %config.keygen_style%
+   * @default "default"
    */
-  defaults: {
-    /**
-     * %config.keygen_strategy%
-     */
-    "keygenStrategy": "slug",
-    /**
-     * %config.keygen_style%
-     */
-    "keygenStyle": "default",
-    /**
-     * %config.key_prefix%
-     */
-    "keyPrefix": "",
-    /**
-     * %config.key_max_length%
-     */
-    "keyMaxLength": null,
-    /**
-     * %config.target_picking_strategy%
-     */
-    "targetPickingStrategy": "none",
-    /**
-     * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-     */
-    "parsers.html": {},
-    /**
-     * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-     */
-    "parsers.babel": {},
-    /**
-     * Enables hard-coded strings detection automatically whenever opening a supported file
-     */
-    "autoDetect": false,
-    /**
-     * Strings to be ignored on hard-coded strings detection
-     */
-    "ignored": undefined,
-    /**
-     * Strings to be ignored on hard-coded strings detection, by files
-     */
-    "ignoredByFiles": {},
-  } satisfies Extract,
+  "keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "ignoredByFiles": Record<string, unknown>,
 }
 
 /**
- * Reactive ConfigObject of `i18n-ally.extract`
- * @example
- * const configValue = useConfigObjectExtract.keygenStrategy //get value 
- * useConfigObjectExtract.keygenStrategy = true // set value
- * useConfigObjectExtract.$update("keygenStrategy", !configValue, ConfigurationTarget.Workspace, true)
+ * Config keys of `i18n-ally.extract`
  */
-export const useConfigObjectExtract = defineConfigObject<Extract>(
-  _extract.scope,
-  _extract.defaults
-)
+export interface I18nAllyExtract {
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "ignoredByFiles": Record<string, unknown>,
+}
+
 /**
- * Reactive ToConfigRefs of `i18n-ally.extract`
- * @example
- * const configValue:string =useConfigsExtract.keygenStrategy.value //get value 
- * useConfigsExtract.keygenStrategy.value = "slug" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsExtract.keygenStrategy.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * Config keys of `i18n-ally.extract`
  */
-export const useConfigsExtract = defineConfigs<Extract>(
-  _extract.scope,
-  _extract.defaults
-)
+export interface I18nAllyExtract {
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "ignoredByFiles": Record<string, unknown>,
+}
+
+/**
+ * Config keys of `i18n-ally.extract`
+ */
+export interface I18nAllyExtract {
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "ignoredByFiles": Record<string, unknown>,
+}
+
+/**
+ * Config keys of `i18n-ally.extract`
+ */
+export interface I18nAllyExtract {
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "ignoredByFiles": Record<string, unknown>,
+}
+
+/**
+ * Config keys of `i18n-ally.extract`
+ */
+export interface I18nAllyExtract {
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "ignoredByFiles": Record<string, unknown>,
+}
+
+/**
+ * Config keys of `i18n-ally.extract`
+ */
+export interface I18nAllyExtract {
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "ignoredByFiles": Record<string, unknown>,
+}
+
+/**
+ * Config keys of `i18n-ally.extract`
+ */
+export interface I18nAllyExtract {
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "ignoredByFiles": Record<string, unknown>,
+}
+
+/**
+ * Config keys of `i18n-ally.extract`
+ */
+export interface I18nAllyExtract {
+  /**
+   * %config.keygen_strategy%
+   * @default "slug"
+   */
+  "keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   * @default "default"
+   */
+  "keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   * @default ""
+   */
+  "keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   * @default null
+   */
+  "keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   * @default "none"
+   */
+  "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
+   */
+  "parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   * @default false
+   */
+  "autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   * @default undefined
+   */
+  "ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   * @default {}
+   */
+  "ignoredByFiles": Record<string, unknown>,
+}
 
 /**
  * Config keys of `i18n-ally.extract.parsers`
  */
-export interface ExtractParsers {
+export interface I18nAllyExtractParsers {
   /**
    * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
    * @default {}
@@ -2906,48 +38845,17 @@ export interface ExtractParsers {
 }
 
 /**
- * Scoped defaults of `i18n-ally.extract.parsers`
+ * Config keys of `i18n-ally.extract.parsers`
  */
-const _extractParsers = {
+export interface I18nAllyExtractParsers {
   /**
-   * scope: `i18n-ally.extract.parsers`
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
    */
-  scope: "i18n-ally.extract.parsers",
+  "html": Record<string, unknown>,
   /**
-   * Keys' defaults of `i18n-ally.extract.parsers`
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   * @default {}
    */
-  defaults: {
-    /**
-     * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-     */
-    "html": {},
-    /**
-     * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-     */
-    "babel": {},
-  } satisfies ExtractParsers,
+  "babel": Record<string, unknown>,
 }
-
-/**
- * Reactive ConfigObject of `i18n-ally.extract.parsers`
- * @example
- * const configValue = useConfigObjectExtractParsers.html //get value 
- * useConfigObjectExtractParsers.html = true // set value
- * useConfigObjectExtractParsers.$update("html", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectExtractParsers = defineConfigObject<ExtractParsers>(
-  _extractParsers.scope,
-  _extractParsers.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.extract.parsers`
- * @example
- * const configValue:object =useConfigsExtractParsers.html.value //get value 
- * useConfigsExtractParsers.html.value = {} // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsExtractParsers.html.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsExtractParsers = defineConfigs<ExtractParsers>(
-  _extractParsers.scope,
-  _extractParsers.defaults
-)

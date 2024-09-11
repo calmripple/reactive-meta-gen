@@ -13,18 +13,18 @@ describe('fixtures', async () => {
     it(basename(dir), async () => {
       const json = JSON.parse(await fs.readFile(`${dir}/package.json`, 'utf-8'))
 
-      let extensionScope: string | undefined
+      let extensionSection: string | undefined
 
       try {
         if (dir.includes('vscode-iconify-fork'))
-          return extensionScope = 'iconify'
+          return extensionSection = 'iconify'
 
         if (dir.includes('vscode-smart-clicks'))
-          return extensionScope = 'smartClicks'
+          return extensionSection = 'smartClicks'
       }
       finally {
-        const { dts, markdown } = generate(json, { extensionScope })
-        // await fs.writeFile(`./test/output/${basename(dir)}.ts`, dts)
+        const { dts, markdown } = generate(json, { extensionSection })
+        await fs.writeFile(`./test/output/${basename(dir)}.ts`, dts)
         await expect(dts).toMatchFileSnapshot(`./output/${basename(dir)}.ts`)
 
         const readmeLines = [

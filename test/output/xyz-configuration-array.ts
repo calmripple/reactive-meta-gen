@@ -143,64 +143,87 @@ export interface ProjectConfig {
 }
 
 /**
- * Scoped defaults of `project-config`
+ * Config keys of `project-config`
  */
-const _projectConfig = {
+export interface ProjectConfig {
   /**
-   * scope: `project-config`
+   * The branch name of upstream repo
+   * @default "main"
    */
-  scope: "project-config",
+  "fileNestingUpdater.upstreamBranch": string,
   /**
-   * Keys' defaults of `project-config`
+   * The upstream repo you want to update from
+   * @default "antfu/vscode-file-nesting-config"
    */
-  defaults: {
-    /**
-     * The branch name of upstream repo
-     */
-    "fileNestingUpdater.upstreamBranch": "main",
-    /**
-     * The upstream repo you want to update from
-     */
-    "fileNestingUpdater.upstreamRepo": "antfu/vscode-file-nesting-config",
-    /**
-     * Enabled project-config inline annotations
-     */
-    "test.annotations": true,
-    /**
-     * Position the icon before or after the icon name
-     */
-    "test.position": "before",
-  } satisfies ProjectConfig,
+  "fileNestingUpdater.upstreamRepo": string,
+  /**
+   * Enabled project-config inline annotations
+   * @default true
+   */
+  "test.annotations": boolean,
+  /**
+   * Position the icon before or after the icon name
+   * @default "before"
+   */
+  "test.position": ("after" | "before"),
 }
 
 /**
- * Reactive ConfigObject of `project-config`
- * @example
- * const configValue = useConfigObjectProjectConfig.fileNestingUpdater.upstreamBranch //get value 
- * useConfigObjectProjectConfig.fileNestingUpdater.upstreamBranch = true // set value
- * useConfigObjectProjectConfig.$update("fileNestingUpdater.upstreamBranch", !configValue, ConfigurationTarget.Workspace, true)
+ * Config keys of `project-config`
  */
-export const useConfigObjectProjectConfig = defineConfigObject<ProjectConfig>(
-  _projectConfig.scope,
-  _projectConfig.defaults
-)
+export interface ProjectConfig {
+  /**
+   * The branch name of upstream repo
+   * @default "main"
+   */
+  "fileNestingUpdater.upstreamBranch": string,
+  /**
+   * The upstream repo you want to update from
+   * @default "antfu/vscode-file-nesting-config"
+   */
+  "fileNestingUpdater.upstreamRepo": string,
+  /**
+   * Enabled project-config inline annotations
+   * @default true
+   */
+  "test.annotations": boolean,
+  /**
+   * Position the icon before or after the icon name
+   * @default "before"
+   */
+  "test.position": ("after" | "before"),
+}
+
 /**
- * Reactive ToConfigRefs of `project-config`
- * @example
- * const configValue:string =useConfigsProjectConfig.fileNestingUpdater.upstreamBranch.value //get value 
- * useConfigsProjectConfig.fileNestingUpdater.upstreamBranch.value = "main" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsProjectConfig.fileNestingUpdater.upstreamBranch.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * Config keys of `project-config`
  */
-export const useConfigsProjectConfig = defineConfigs<ProjectConfig>(
-  _projectConfig.scope,
-  _projectConfig.defaults
-)
+export interface ProjectConfig {
+  /**
+   * The branch name of upstream repo
+   * @default "main"
+   */
+  "fileNestingUpdater.upstreamBranch": string,
+  /**
+   * The upstream repo you want to update from
+   * @default "antfu/vscode-file-nesting-config"
+   */
+  "fileNestingUpdater.upstreamRepo": string,
+  /**
+   * Enabled project-config inline annotations
+   * @default true
+   */
+  "test.annotations": boolean,
+  /**
+   * Position the icon before or after the icon name
+   * @default "before"
+   */
+  "test.position": ("after" | "before"),
+}
 
 /**
  * Config keys of `project-config.fileNestingUpdater`
  */
-export interface FileNestingUpdater {
+export interface ProjectConfigFileNestingUpdater {
   /**
    * The branch name of upstream repo
    * @default "main"
@@ -214,56 +237,25 @@ export interface FileNestingUpdater {
 }
 
 /**
- * Scoped defaults of `project-config.fileNestingUpdater`
+ * Config keys of `project-config.fileNestingUpdater`
  */
-const _fileNestingUpdater = {
+export interface ProjectConfigFileNestingUpdater {
   /**
-   * scope: `project-config.fileNestingUpdater`
+   * The branch name of upstream repo
+   * @default "main"
    */
-  scope: "project-config.fileNestingUpdater",
+  "upstreamBranch": string,
   /**
-   * Keys' defaults of `project-config.fileNestingUpdater`
+   * The upstream repo you want to update from
+   * @default "antfu/vscode-file-nesting-config"
    */
-  defaults: {
-    /**
-     * The branch name of upstream repo
-     */
-    "upstreamBranch": "main",
-    /**
-     * The upstream repo you want to update from
-     */
-    "upstreamRepo": "antfu/vscode-file-nesting-config",
-  } satisfies FileNestingUpdater,
+  "upstreamRepo": string,
 }
-
-/**
- * Reactive ConfigObject of `project-config.fileNestingUpdater`
- * @example
- * const configValue = useConfigObjectFileNestingUpdater.upstreamBranch //get value 
- * useConfigObjectFileNestingUpdater.upstreamBranch = true // set value
- * useConfigObjectFileNestingUpdater.$update("upstreamBranch", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectFileNestingUpdater = defineConfigObject<FileNestingUpdater>(
-  _fileNestingUpdater.scope,
-  _fileNestingUpdater.defaults
-)
-/**
- * Reactive ToConfigRefs of `project-config.fileNestingUpdater`
- * @example
- * const configValue:string =useConfigsFileNestingUpdater.upstreamBranch.value //get value 
- * useConfigsFileNestingUpdater.upstreamBranch.value = "main" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsFileNestingUpdater.upstreamBranch.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsFileNestingUpdater = defineConfigs<FileNestingUpdater>(
-  _fileNestingUpdater.scope,
-  _fileNestingUpdater.defaults
-)
 
 /**
  * Config keys of `project-config.test`
  */
-export interface Test {
+export interface ProjectConfigTest {
   /**
    * Enabled project-config inline annotations
    * @default true
@@ -277,51 +269,20 @@ export interface Test {
 }
 
 /**
- * Scoped defaults of `project-config.test`
+ * Config keys of `project-config.test`
  */
-const _test = {
+export interface ProjectConfigTest {
   /**
-   * scope: `project-config.test`
+   * Enabled project-config inline annotations
+   * @default true
    */
-  scope: "project-config.test",
+  "annotations": boolean,
   /**
-   * Keys' defaults of `project-config.test`
+   * Position the icon before or after the icon name
+   * @default "before"
    */
-  defaults: {
-    /**
-     * Enabled project-config inline annotations
-     */
-    "annotations": true,
-    /**
-     * Position the icon before or after the icon name
-     */
-    "position": "before",
-  } satisfies Test,
+  "position": ("after" | "before"),
 }
-
-/**
- * Reactive ConfigObject of `project-config.test`
- * @example
- * const configValue = useConfigObjectTest.annotations //get value 
- * useConfigObjectTest.annotations = true // set value
- * useConfigObjectTest.$update("annotations", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectTest = defineConfigObject<Test>(
-  _test.scope,
-  _test.defaults
-)
-/**
- * Reactive ToConfigRefs of `project-config.test`
- * @example
- * const configValue:boolean =useConfigsTest.annotations.value //get value 
- * useConfigsTest.annotations.value = true // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTest.annotations.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTest = defineConfigs<Test>(
-  _test.scope,
-  _test.defaults
-)
 
 /**
  * Config keys of `virtual(Keys in the root)`
@@ -333,49 +294,6 @@ export interface Root {
    */
   "xxx": boolean,
 }
-
-/**
- * Scoped defaults of `virtual(Keys in the root)`
- */
-const _root = {
-  /**
-   * scope: `virtual(Keys in the root)`
-   */
-  scope: "",
-  /**
-   * Keys' defaults of `virtual(Keys in the root)`
-   */
-  defaults: {
-    /**
-     * Enabled project-config inline annotations
-     */
-    "xxx": true,
-  } satisfies Root,
-}
-
-/**
- * Reactive ConfigObject of `virtual(Keys in the root)`
- * @example
- * const configValue = useConfigObjectRoot.xxx //get value 
- * useConfigObjectRoot.xxx = true // set value
- * useConfigObjectRoot.$update("xxx", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectRoot = defineConfigObject<Root>(
-  _root.scope,
-  _root.defaults
-)
-/**
- * Reactive ToConfigRefs of `virtual(Keys in the root)`
- * @example
- * const configValue:boolean =useConfigsRoot.xxx.value //get value 
- * useConfigsRoot.xxx.value = true // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsRoot.xxx.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsRoot = defineConfigs<Root>(
-  _root.scope,
-  _root.defaults
-)
 
 /**
  * Config keys of `emeraldwalk`
@@ -439,43 +357,3 @@ export interface Emeraldwalk {
       }[] 
   },
 }
-
-/**
- * Scoped defaults of `emeraldwalk`
- */
-const _emeraldwalk = {
-  /**
-   * scope: `emeraldwalk`
-   */
-  scope: "emeraldwalk",
-  /**
-   * Keys' defaults of `emeraldwalk`
-   */
-  defaults: {
-    "runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined },
-  } satisfies Emeraldwalk,
-}
-
-/**
- * Reactive ConfigObject of `emeraldwalk`
- * @example
- * const configValue = useConfigObjectEmeraldwalk.runonsave //get value 
- * useConfigObjectEmeraldwalk.runonsave = true // set value
- * useConfigObjectEmeraldwalk.$update("runonsave", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectEmeraldwalk = defineConfigObject<Emeraldwalk>(
-  _emeraldwalk.scope,
-  _emeraldwalk.defaults
-)
-/**
- * Reactive ToConfigRefs of `emeraldwalk`
- * @example
- * const configValue:object =useConfigsEmeraldwalk.runonsave.value //get value 
- * useConfigsEmeraldwalk.runonsave.value = { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined } // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsEmeraldwalk.runonsave.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsEmeraldwalk = defineConfigs<Emeraldwalk>(
-  _emeraldwalk.scope,
-  _emeraldwalk.defaults
-)
