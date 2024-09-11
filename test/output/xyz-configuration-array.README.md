@@ -4,6 +4,8 @@
 
 | Command                                  | Title                                     |
 | ---------------------------------------- | ----------------------------------------- |
+| `base`                                   | Project Config Updater: Update config now |
+| `manualUpdate`                           | Project Config Updater: Update config now |
 | `project-config.manualUpdate`            | Project Config Updater: Update config now |
 | `project-config.remove-watch-dir`        | Project Config Updater: remove watch dir  |
 | `project-config.add-watch-dir`           | Project Config Updater: add watch dir     |

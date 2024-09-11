@@ -21,7 +21,7 @@ export type CommandKey =
   | "iconify.toggle-inplace"
   | "iconify.clear-cache"
 
-export function useCommandKey(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
 }
 
@@ -30,7 +30,7 @@ export function useCommandKey(commandFullKey: CommandKey, callback: (...args: an
  * @value `iconify.toggle-annotations`
  */
 export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
-  return useCommandKey("iconify.toggle-annotations", callback)
+  return useCommandBase("iconify.toggle-annotations", callback)
 }
 
 /**
@@ -38,7 +38,7 @@ export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
  * @value `iconify.toggle-inplace`
  */
 export function useCommandToggleInplace(callback: (...args: any[]) => any) {
-  return useCommandKey("iconify.toggle-inplace", callback)
+  return useCommandBase("iconify.toggle-inplace", callback)
 }
 
 /**
@@ -46,7 +46,7 @@ export function useCommandToggleInplace(callback: (...args: any[]) => any) {
  * @value `iconify.clear-cache`
  */
 export function useCommandClearCache(callback: (...args: any[]) => any) {
-  return useCommandKey("iconify.clear-cache", callback)
+  return useCommandBase("iconify.clear-cache", callback)
 }
 
 
@@ -115,8 +115,12 @@ export interface Iconify {
    */
   "customAliasesOnly": boolean,
 }
+
 const iconifyConfig = {
 
+  /**
+   * Section defaults of `iconify`
+   */
   "iconify": {
     /**
      * Use icon graph to replace the icon name.
@@ -194,17 +198,14 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
 /**
  * ConfigObject of `iconify`
  * @example
- * const configValue = configObjectIconify.inplace //get value 
- * configObjectIconify.inplace = true // set value
- * configObjectIconify.$update("inplace", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectIconify.inplace //get value 
+ * configObjectIconify.$update("inplace", oldVal) //update value
  */
 export const configObjectIconify = useConfigObject("iconify")
 /**
  * ToConfigRefs of `iconify`
  * @example
- * const configValue:boolean =configIconify.inplace.value //get value 
- * configIconify.inplace.value = true // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configIconify.inplace.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:boolean =configIconify.inplace.value //get value 
+ * configIconify.inplace.update(oldVal) //update value
  */
 export const configIconify = useConfig("iconify")

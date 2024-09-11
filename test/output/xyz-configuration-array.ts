@@ -17,14 +17,32 @@ export const extensionId = `${publisher}.${name}`
  * Type union of all commands
  */
 export type CommandKey = 
+  | "base"
+  | "manualUpdate"
   | "project-config.manualUpdate"
   | "project-config.remove-watch-dir"
   | "project-config.add-watch-dir"
   | "extension.emeraldwalk.enableRunOnSave"
   | "extension.emeraldwalk.disableRunOnSave"
 
-export function useCommandKey(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+export function useCommandBaseBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
+}
+
+/**
+ * Update config now
+ * @value `base`
+ */
+export function useCommandBase(callback: (...args: any[]) => any) {
+  return useCommandBaseBase("base", callback)
+}
+
+/**
+ * Update config now
+ * @value `manualUpdate`
+ */
+export function useCommandManualUpdate(callback: (...args: any[]) => any) {
+  return useCommandBaseBase("manualUpdate", callback)
 }
 
 /**
@@ -32,7 +50,7 @@ export function useCommandKey(commandFullKey: CommandKey, callback: (...args: an
  * @value `project-config.manualUpdate`
  */
 export function useCommandManualUpdate(callback: (...args: any[]) => any) {
-  return useCommandKey("project-config.manualUpdate", callback)
+  return useCommandBaseBase("project-config.manualUpdate", callback)
 }
 
 /**
@@ -40,7 +58,7 @@ export function useCommandManualUpdate(callback: (...args: any[]) => any) {
  * @value `project-config.remove-watch-dir`
  */
 export function useCommandRemoveWatchDir(callback: (...args: any[]) => any) {
-  return useCommandKey("project-config.remove-watch-dir", callback)
+  return useCommandBaseBase("project-config.remove-watch-dir", callback)
 }
 
 /**
@@ -48,7 +66,7 @@ export function useCommandRemoveWatchDir(callback: (...args: any[]) => any) {
  * @value `project-config.add-watch-dir`
  */
 export function useCommandAddWatchDir(callback: (...args: any[]) => any) {
-  return useCommandKey("project-config.add-watch-dir", callback)
+  return useCommandBaseBase("project-config.add-watch-dir", callback)
 }
 
 /**
@@ -56,7 +74,7 @@ export function useCommandAddWatchDir(callback: (...args: any[]) => any) {
  * @value `extension.emeraldwalk.enableRunOnSave`
  */
 export function useCommandExtensionEmeraldwalkEnableRunOnSave(callback: (...args: any[]) => any) {
-  return useCommandKey("extension.emeraldwalk.enableRunOnSave", callback)
+  return useCommandBaseBase("extension.emeraldwalk.enableRunOnSave", callback)
 }
 
 /**
@@ -64,7 +82,7 @@ export function useCommandExtensionEmeraldwalkEnableRunOnSave(callback: (...args
  * @value `extension.emeraldwalk.disableRunOnSave`
  */
 export function useCommandExtensionEmeraldwalkDisableRunOnSave(callback: (...args: any[]) => any) {
-  return useCommandKey("extension.emeraldwalk.disableRunOnSave", callback)
+  return useCommandBaseBase("extension.emeraldwalk.disableRunOnSave", callback)
 }
 
 
@@ -99,7 +117,7 @@ export interface ProjectConfig {
 /**
  * Section Type of `project-config.fileNestingUpdater`
  */
-export interface ProjectConfigFileNestingUpdater {
+export interface FileNestingUpdater {
   /**
    * The branch name of upstream repo
    */
@@ -113,7 +131,7 @@ export interface ProjectConfigFileNestingUpdater {
 /**
  * Section Type of `project-config.test`
  */
-export interface ProjectConfigTest {
+export interface Test {
   /**
    * Enabled project-config inline annotations
    */
@@ -192,8 +210,12 @@ export interface Emeraldwalk {
       }[] 
   },
 }
+
 const projectConfigConfig = {
 
+  /**
+   * Section defaults of `project-config`
+   */
   "project-config": {
     /**
      * The branch name of upstream repo
@@ -214,6 +236,9 @@ const projectConfigConfig = {
   } satisfies ProjectConfig,
 
 
+  /**
+   * Section defaults of `project-config.fileNestingUpdater`
+   */
   "project-config.fileNestingUpdater": {
     /**
      * The branch name of upstream repo
@@ -223,9 +248,12 @@ const projectConfigConfig = {
      * The upstream repo you want to update from
      */
     "upstreamRepo": "antfu/vscode-file-nesting-config",
-  } satisfies ProjectConfigFileNestingUpdater,
+  } satisfies FileNestingUpdater,
 
 
+  /**
+   * Section defaults of `project-config.test`
+   */
   "project-config.test": {
     /**
      * Enabled project-config inline annotations
@@ -235,9 +263,12 @@ const projectConfigConfig = {
      * Position the icon before or after the icon name
      */
     "position": "before",
-  } satisfies ProjectConfigTest,
+  } satisfies Test,
 
 
+  /**
+   * Section defaults of `virtual(Keys in the root)`
+   */
   "": {
     /**
      * Enabled project-config inline annotations
@@ -246,6 +277,9 @@ const projectConfigConfig = {
   } satisfies Root,
 
 
+  /**
+   * Section defaults of `emeraldwalk`
+   */
   "emeraldwalk": {
     "runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined },
   } satisfies Emeraldwalk,
@@ -264,85 +298,70 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
 /**
  * ConfigObject of `project-config`
  * @example
- * const configValue = configObjectProjectConfig.fileNestingUpdater.upstreamBranch //get value 
- * configObjectProjectConfig.fileNestingUpdater.upstreamBranch = true // set value
- * configObjectProjectConfig.$update("fileNestingUpdater.upstreamBranch", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectProjectConfig.fileNestingUpdater.upstreamBranch //get value 
+ * configObjectProjectConfig.$update("fileNestingUpdater.upstreamBranch", oldVal) //update value
  */
 export const configObjectProjectConfig = useConfigObject("project-config")
 /**
  * ToConfigRefs of `project-config`
  * @example
- * const configValue:string =configProjectConfig.fileNestingUpdater.upstreamBranch.value //get value 
- * configProjectConfig.fileNestingUpdater.upstreamBranch.value = "main" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configProjectConfig.fileNestingUpdater.upstreamBranch.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configProjectConfig.fileNestingUpdater.upstreamBranch.value //get value 
+ * configProjectConfig.fileNestingUpdater.upstreamBranch.update(oldVal) //update value
  */
 export const configProjectConfig = useConfig("project-config")
 /**
  * ConfigObject of `project-config.fileNestingUpdater`
  * @example
- * const configValue = configObjectProjectConfigFileNestingUpdater.upstreamBranch //get value 
- * configObjectProjectConfigFileNestingUpdater.upstreamBranch = true // set value
- * configObjectProjectConfigFileNestingUpdater.$update("upstreamBranch", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectFileNestingUpdater.upstreamBranch //get value 
+ * configObjectFileNestingUpdater.$update("upstreamBranch", oldVal) //update value
  */
-export const configObjectProjectConfigFileNestingUpdater = useConfigObject("project-config.fileNestingUpdater")
+export const configObjectFileNestingUpdater = useConfigObject("project-config.fileNestingUpdater")
 /**
  * ToConfigRefs of `project-config.fileNestingUpdater`
  * @example
- * const configValue:string =configProjectConfigFileNestingUpdater.upstreamBranch.value //get value 
- * configProjectConfigFileNestingUpdater.upstreamBranch.value = "main" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configProjectConfigFileNestingUpdater.upstreamBranch.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configFileNestingUpdater.upstreamBranch.value //get value 
+ * configFileNestingUpdater.upstreamBranch.update(oldVal) //update value
  */
-export const configProjectConfigFileNestingUpdater = useConfig("project-config.fileNestingUpdater")
+export const configFileNestingUpdater = useConfig("project-config.fileNestingUpdater")
 /**
  * ConfigObject of `project-config.test`
  * @example
- * const configValue = configObjectProjectConfigTest.annotations //get value 
- * configObjectProjectConfigTest.annotations = true // set value
- * configObjectProjectConfigTest.$update("annotations", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectTest.annotations //get value 
+ * configObjectTest.$update("annotations", oldVal) //update value
  */
-export const configObjectProjectConfigTest = useConfigObject("project-config.test")
+export const configObjectTest = useConfigObject("project-config.test")
 /**
  * ToConfigRefs of `project-config.test`
  * @example
- * const configValue:boolean =configProjectConfigTest.annotations.value //get value 
- * configProjectConfigTest.annotations.value = true // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configProjectConfigTest.annotations.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:boolean =configTest.annotations.value //get value 
+ * configTest.annotations.update(oldVal) //update value
  */
-export const configProjectConfigTest = useConfig("project-config.test")
+export const configTest = useConfig("project-config.test")
 /**
  * ConfigObject of `virtual(Keys in the root)`
  * @example
- * const configValue = configObjectRoot.xxx //get value 
- * configObjectRoot.xxx = true // set value
- * configObjectRoot.$update("xxx", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectRoot.xxx //get value 
+ * configObjectRoot.$update("xxx", oldVal) //update value
  */
 export const configObjectRoot = useConfigObject("")
 /**
  * ToConfigRefs of `virtual(Keys in the root)`
  * @example
- * const configValue:boolean =configRoot.xxx.value //get value 
- * configRoot.xxx.value = true // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configRoot.xxx.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:boolean =configRoot.xxx.value //get value 
+ * configRoot.xxx.update(oldVal) //update value
  */
 export const configRoot = useConfig("")
 /**
  * ConfigObject of `emeraldwalk`
  * @example
- * const configValue = configObjectEmeraldwalk.runonsave //get value 
- * configObjectEmeraldwalk.runonsave = true // set value
- * configObjectEmeraldwalk.$update("runonsave", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectEmeraldwalk.runonsave //get value 
+ * configObjectEmeraldwalk.$update("runonsave", oldVal) //update value
  */
 export const configObjectEmeraldwalk = useConfigObject("emeraldwalk")
 /**
  * ToConfigRefs of `emeraldwalk`
  * @example
- * const configValue:object =configEmeraldwalk.runonsave.value //get value 
- * configEmeraldwalk.runonsave.value = { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined } // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configEmeraldwalk.runonsave.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:object =configEmeraldwalk.runonsave.value //get value 
+ * configEmeraldwalk.runonsave.update(oldVal) //update value
  */
 export const configEmeraldwalk = useConfig("emeraldwalk")

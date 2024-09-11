@@ -8,56 +8,6 @@ const forwardKeys = [
   'description',
 ]
 
-export interface GenerateOptions {
-  /**
-   * The header of the generated file
-   */
-  header?: string | boolean
-  /**
-   * Use namespace for generated types
-   * @default false
-   */
-  namespace?: string | boolean
-  /**
-   * The package section for commands and configs.
-   *
-   * Default to the package name.
-   *
-   * Useful when your extension name has different prefix from the package name.
-   */
-  extensionSection?: string
-}
-
-export interface ConfigurationProperty {
-  type: string | string[]
-  default?: any
-  description?: string
-  enum?: any[]
-  enumDescriptions?: string[]
-  markdownEnumDescriptions?: string[]
-  markdownDescription?: string
-  markdownDeprecationMessage?: string
-  deprecationMessage?: string
-  typeDescription?: string
-  typeLabel?: string
-  typeHint?: string
-  typeHintLabel?: string
-  properties?: Record<string, ConfigurationProperty>
-  items?: ConfigurationProperty
-  item?: ConfigurationProperty
-  section?: string
-  additionalProperties?: boolean
-  defaultSnippets?: any[]
-  allOf?: ConfigurationProperty[]
-  anyOf?: ConfigurationProperty[]
-  oneOf?: ConfigurationProperty[]
-  allErrors?: boolean
-  allowComments?: boolean
-  allowTrailingCommas?: boolean
-  patternProperties?: Record<string, ConfigurationProperty>
-  pattern?: string
-}
-
 function isProperty(propterty: any): propterty is ConfigurationProperty {
   const typeName = typeof propterty?.type
   const ret = (typeName === 'string' || typeName === 'object')
@@ -238,6 +188,12 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   }
 
   // ========== Commands ==========
+  const cmdFunctionNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
+    return {
+      funcName: `useCommand${upperFirst(convertCamelCase(withoutExtensionPrefix(c.command)))}`,
+      ...c,
+    }
+  })
 
   lines.push(
     '',
@@ -249,26 +205,31 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   else {
     lines.push(
       'export type CommandKey = ',
-      ...(packageJson.contributes?.commands || []).map((c: any) =>
+      ...cmdFunctionNames.map(c =>
         `  | ${JSON.stringify(c.command)}`,
       ),
     )
   }
 
+  let cmdBaseName = `useCommandBase`
+  while (cmdFunctionNames.findIndex(c => c.funcName === cmdBaseName) > -1) {
+    cmdBaseName = `${cmdBaseName}Base`
+  }
+
+  //
   lines.push(`
-export function useCommandKey(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+export function ${cmdBaseName}(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
 }`,
   )
   lines.push(
-    ...(packageJson.contributes?.commands || [])
-      .flatMap((c: any) => {
-        const name = withoutExtensionPrefix(c.command)
+    ...cmdFunctionNames
+      .flatMap((c) => {
         return [
           ``,
           ...commentBlock(`${c.title}\n@value \`${c.command}\``, 0),
-          `export function useCommand${upperFirst(convertCamelCase(name))}(callback: (...args: any[]) => any) {`,
-          `  return useCommandKey(${JSON.stringify(c.command)}, callback)`,
+          `export function ${c.funcName}(callback: (...args: any[]) => any) {`,
+          `  return ${cmdBaseName}(${JSON.stringify(c.command)}, callback)`,
           `}`,
         ]
       }),
@@ -304,7 +265,7 @@ export function useCommandKey(commandFullKey: CommandKey, callback: (...args: an
     let sectionVar = 'root'
     let sectionComment
     if (section) {
-      sectionVar = `${convertCamelCase(section)}`
+      sectionVar = `${convertCamelCase(withoutExtensionPrefix(section))}`
       sectionComment = `${section}`
     }
     else {
@@ -323,7 +284,7 @@ export function useCommandKey(commandFullKey: CommandKey, callback: (...args: an
     // section 默认值
     sectionDefault.push(
       '',
-      // ...commentBlock(`Section defaults of \`${sectionComment}\``, 2),
+      ...commentBlock(`Section defaults of \`${sectionComment}\``, 2),
       `  ${JSON.stringify(section)}: {`,
     )
 
@@ -332,19 +293,19 @@ export function useCommandKey(commandFullKey: CommandKey, callback: (...args: an
       ...commentBlock([
         `ConfigObject of \`${sectionComment}\``,
         `@example`,
-        `const configValue = ${varName.useConfigObject}.${exampleKey} //get value `,
-        `${varName.useConfigObject}.${exampleKey} = true // set value`,
-        `${varName.useConfigObject}.$update("${exampleKey}", !configValue, ConfigurationTarget.Workspace, true)`,
+        `const oldVal = ${varName.useConfigObject}.${exampleKey} //get value `,
+        // `${varName.useConfigObject}.${exampleKey} = oldVal // set value`,
+        `${varName.useConfigObject}.$update("${exampleKey}", oldVal) //update value`,
       ].join('\n'),
       ),
       `export const ${varName.useConfigObject} = useConfigObject("${section}")`,
       ...commentBlock([
         `ToConfigRefs of \`${sectionComment}\``,
         `@example`,
-        `const configValue:${example[1].type} =${varName.useConfig}.${exampleKey}.value //get value `,
-        `${varName.useConfig}.${exampleKey}.value = ${defaultValFromSchema(example[1])} // set value`,
-        `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
-        `${varName.useConfig}.${exampleKey}.update(true, ConfigurationTarget.WorkspaceFolder, true)`,
+        `const oldVal:${example[1].type} =${varName.useConfig}.${exampleKey}.value //get value `,
+        // `${varName.useConfig}.${exampleKey}.value = oldVal // set value`,
+        // `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
+        `${varName.useConfig}.${exampleKey}.update(oldVal) //update value`,
       ].join('\n')),
       `export const ${varName.useConfig} = useConfig("${section}")`,
     )
@@ -384,6 +345,7 @@ export function useCommandKey(commandFullKey: CommandKey, callback: (...args: an
   const configVar = `${convertCamelCase(_name)}Config`
   const sectionNames = [...config.sectionActivedConfigs.keys()]
   lines.push(
+    '',
     `const ${configVar} = {`,
     ...sectionDefault,
     `}`,

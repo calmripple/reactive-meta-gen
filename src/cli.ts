@@ -4,7 +4,6 @@ import path from 'node:path'
 import cac from 'cac'
 import { version } from '../package.json'
 import { generate } from '.'
-import { execSync } from 'node:child_process';
 
 const cli = cac()
   .version(version)
@@ -24,7 +23,8 @@ cli.command('[input]', 'Generate TypeScript files from package.json')
     })
     if (existsSync(options.output) && await fs.readFile(options.output, 'utf-8') === dts) {
       console.log(`No changes of '${input}','${options.output}' is up to date.`)
-    } else {
+    }
+    else {
       const outputDir = path.dirname(options.output)
       await fs.mkdir(outputDir, { recursive: true })
       await fs.writeFile(options.output, dts, 'utf-8')
@@ -38,7 +38,6 @@ cli.command('[input]', 'Generate TypeScript files from package.json')
         .replace(/<!-- configsJson -->[\s\S]*<!-- configsJson -->/, `<!-- configsJson -->\n\n${markdown.configsJson}\n\n<!-- configsJson -->`)
 
       if (raw === content && !raw.includes('<!-- commands -->') && !raw.includes('<!-- configs -->') && !raw.includes('<!-- configsJson -->')) {
-        // eslint-disable-next-line no-console
         console.log('Add `<!-- commands --><!-- commands -->` and `<!-- configs --><!-- configs -->`  and `<!-- configsJson --><!-- configsJson -->` to your README.md to insert commands and configurations table')
       }
       else {

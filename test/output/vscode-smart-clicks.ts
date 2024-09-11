@@ -19,7 +19,7 @@ export const extensionId = `${publisher}.${name}`
 export type CommandKey = 
   | "smartClicks.trigger"
 
-export function useCommandKey(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
 }
 
@@ -28,7 +28,7 @@ export function useCommandKey(commandFullKey: CommandKey, callback: (...args: an
  * @value `smartClicks.trigger`
  */
 export function useCommandTrigger(callback: (...args: any[]) => any) {
-  return useCommandKey("smartClicks.trigger", callback)
+  return useCommandBase("smartClicks.trigger", callback)
 }
 
 
@@ -170,8 +170,12 @@ export interface SmartClicks {
     'jsx-tag-pair': boolean 
   },
 }
+
 const smartClicksConfig = {
 
+  /**
+   * Section defaults of `smartClicks`
+   */
   "smartClicks": {
     /**
      * The interval between clicks in milliseconds.
@@ -205,17 +209,14 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
 /**
  * ConfigObject of `smartClicks`
  * @example
- * const configValue = configObjectSmartClicks.clicksInterval //get value 
- * configObjectSmartClicks.clicksInterval = true // set value
- * configObjectSmartClicks.$update("clicksInterval", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectSmartClicks.clicksInterval //get value 
+ * configObjectSmartClicks.$update("clicksInterval", oldVal) //update value
  */
 export const configObjectSmartClicks = useConfigObject("smartClicks")
 /**
  * ToConfigRefs of `smartClicks`
  * @example
- * const configValue:number =configSmartClicks.clicksInterval.value //get value 
- * configSmartClicks.clicksInterval.value = 600 // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configSmartClicks.clicksInterval.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:number =configSmartClicks.clicksInterval.value //get value 
+ * configSmartClicks.clicksInterval.update(oldVal) //update value
  */
 export const configSmartClicks = useConfig("smartClicks")

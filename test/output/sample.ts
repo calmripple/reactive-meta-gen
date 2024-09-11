@@ -21,7 +21,7 @@ export type CommandKey =
   | "sample.toggle-inplace"
   | "sample.clear-cache"
 
-export function useCommandKey(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
 }
 
@@ -30,7 +30,7 @@ export function useCommandKey(commandFullKey: CommandKey, callback: (...args: an
  * @value `sample.toggle-annotations`
  */
 export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
-  return useCommandKey("sample.toggle-annotations", callback)
+  return useCommandBase("sample.toggle-annotations", callback)
 }
 
 /**
@@ -38,7 +38,7 @@ export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
  * @value `sample.toggle-inplace`
  */
 export function useCommandToggleInplace(callback: (...args: any[]) => any) {
-  return useCommandKey("sample.toggle-inplace", callback)
+  return useCommandBase("sample.toggle-inplace", callback)
 }
 
 /**
@@ -46,7 +46,7 @@ export function useCommandToggleInplace(callback: (...args: any[]) => any) {
  * @value `sample.clear-cache`
  */
 export function useCommandClearCache(callback: (...args: any[]) => any) {
-  return useCommandKey("sample.clear-cache", callback)
+  return useCommandBase("sample.clear-cache", callback)
 }
 
 
@@ -115,8 +115,12 @@ export interface Sample {
    */
   "customAliasesOnly": boolean,
 }
+
 const sampleConfig = {
 
+  /**
+   * Section defaults of `sample`
+   */
   "sample": {
     /**
      * Use icon graph to replace the icon name.
@@ -194,17 +198,14 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
 /**
  * ConfigObject of `sample`
  * @example
- * const configValue = configObjectSample.inplace //get value 
- * configObjectSample.inplace = true // set value
- * configObjectSample.$update("inplace", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectSample.inplace //get value 
+ * configObjectSample.$update("inplace", oldVal) //update value
  */
 export const configObjectSample = useConfigObject("sample")
 /**
  * ToConfigRefs of `sample`
  * @example
- * const configValue:boolean =configSample.inplace.value //get value 
- * configSample.inplace.value = true // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configSample.inplace.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:boolean =configSample.inplace.value //get value 
+ * configSample.inplace.update(oldVal) //update value
  */
 export const configSample = useConfig("sample")

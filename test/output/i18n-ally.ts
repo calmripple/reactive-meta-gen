@@ -60,7 +60,7 @@ export type CommandKey =
   | "i18n-ally.extract-disable-auto-detect"
   | "i18n-ally.extract-enable-auto-detect"
 
-export function useCommandKey(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
 }
 
@@ -69,7 +69,7 @@ export function useCommandKey(commandFullKey: CommandKey, callback: (...args: an
  * @value `i18n-ally.config-locales`
  */
 export function useCommandConfigLocales(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.config-locales", callback)
+  return useCommandBase("i18n-ally.config-locales", callback)
 }
 
 /**
@@ -77,7 +77,7 @@ export function useCommandConfigLocales(callback: (...args: any[]) => any) {
  * @value `i18n-ally.config-locales-auto`
  */
 export function useCommandConfigLocalesAuto(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.config-locales-auto", callback)
+  return useCommandBase("i18n-ally.config-locales-auto", callback)
 }
 
 /**
@@ -85,7 +85,7 @@ export function useCommandConfigLocalesAuto(callback: (...args: any[]) => any) {
  * @value `i18n-ally.config-display-language`
  */
 export function useCommandConfigDisplayLanguage(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.config-display-language", callback)
+  return useCommandBase("i18n-ally.config-display-language", callback)
 }
 
 /**
@@ -93,7 +93,7 @@ export function useCommandConfigDisplayLanguage(callback: (...args: any[]) => an
  * @value `i18n-ally.config-source-language`
  */
 export function useCommandConfigSourceLanguage(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.config-source-language", callback)
+  return useCommandBase("i18n-ally.config-source-language", callback)
 }
 
 /**
@@ -101,7 +101,7 @@ export function useCommandConfigSourceLanguage(callback: (...args: any[]) => any
  * @value `i18n-ally.set-display-language`
  */
 export function useCommandSetDisplayLanguage(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.set-display-language", callback)
+  return useCommandBase("i18n-ally.set-display-language", callback)
 }
 
 /**
@@ -109,7 +109,7 @@ export function useCommandSetDisplayLanguage(callback: (...args: any[]) => any) 
  * @value `i18n-ally.set-source-language`
  */
 export function useCommandSetSourceLanguage(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.set-source-language", callback)
+  return useCommandBase("i18n-ally.set-source-language", callback)
 }
 
 /**
@@ -117,7 +117,7 @@ export function useCommandSetSourceLanguage(callback: (...args: any[]) => any) {
  * @value `i18n-ally.copy-key`
  */
 export function useCommandCopyKey(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.copy-key", callback)
+  return useCommandBase("i18n-ally.copy-key", callback)
 }
 
 /**
@@ -125,7 +125,7 @@ export function useCommandCopyKey(callback: (...args: any[]) => any) {
  * @value `i18n-ally.translate-key`
  */
 export function useCommandTranslateKey(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.translate-key", callback)
+  return useCommandBase("i18n-ally.translate-key", callback)
 }
 
 /**
@@ -133,7 +133,7 @@ export function useCommandTranslateKey(callback: (...args: any[]) => any) {
  * @value `i18n-ally.edit-key`
  */
 export function useCommandEditKey(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.edit-key", callback)
+  return useCommandBase("i18n-ally.edit-key", callback)
 }
 
 /**
@@ -141,7 +141,7 @@ export function useCommandEditKey(callback: (...args: any[]) => any) {
  * @value `i18n-ally.open-key`
  */
 export function useCommandOpenKey(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.open-key", callback)
+  return useCommandBase("i18n-ally.open-key", callback)
 }
 
 /**
@@ -149,7 +149,7 @@ export function useCommandOpenKey(callback: (...args: any[]) => any) {
  * @value `i18n-ally.delete-key`
  */
 export function useCommandDeleteKey(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.delete-key", callback)
+  return useCommandBase("i18n-ally.delete-key", callback)
 }
 
 /**
@@ -157,7 +157,7 @@ export function useCommandDeleteKey(callback: (...args: any[]) => any) {
  * @value `i18n-ally.rename-key`
  */
 export function useCommandRenameKey(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.rename-key", callback)
+  return useCommandBase("i18n-ally.rename-key", callback)
 }
 
 /**
@@ -165,7 +165,7 @@ export function useCommandRenameKey(callback: (...args: any[]) => any) {
  * @value `i18n-ally.extract-text`
  */
 export function useCommandExtractText(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.extract-text", callback)
+  return useCommandBase("i18n-ally.extract-text", callback)
 }
 
 /**
@@ -173,7 +173,7 @@ export function useCommandExtractText(callback: (...args: any[]) => any) {
  * @value `i18n-ally.extract-hard-strings-batch`
  */
 export function useCommandExtractHardStringsBatch(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.extract-hard-strings-batch", callback)
+  return useCommandBase("i18n-ally.extract-hard-strings-batch", callback)
 }
 
 /**
@@ -181,7 +181,7 @@ export function useCommandExtractHardStringsBatch(callback: (...args: any[]) => 
  * @value `i18n-ally.detect_hard_strings`
  */
 export function useCommandDetectHardStrings(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.detect_hard_strings", callback)
+  return useCommandBase("i18n-ally.detect_hard_strings", callback)
 }
 
 /**
@@ -189,7 +189,7 @@ export function useCommandDetectHardStrings(callback: (...args: any[]) => any) {
  * @value `i18n-ally.open-url`
  */
 export function useCommandOpenUrl(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.open-url", callback)
+  return useCommandBase("i18n-ally.open-url", callback)
 }
 
 /**
@@ -197,7 +197,7 @@ export function useCommandOpenUrl(callback: (...args: any[]) => any) {
  * @value `i18n-ally.fulfill-keys`
  */
 export function useCommandFulfillKeys(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.fulfill-keys", callback)
+  return useCommandBase("i18n-ally.fulfill-keys", callback)
 }
 
 /**
@@ -205,7 +205,7 @@ export function useCommandFulfillKeys(callback: (...args: any[]) => any) {
  * @value `i18n-ally.refresh-usage`
  */
 export function useCommandRefreshUsage(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.refresh-usage", callback)
+  return useCommandBase("i18n-ally.refresh-usage", callback)
 }
 
 /**
@@ -213,7 +213,7 @@ export function useCommandRefreshUsage(callback: (...args: any[]) => any) {
  * @value `i18n-ally.support`
  */
 export function useCommandSupport(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.support", callback)
+  return useCommandBase("i18n-ally.support", callback)
 }
 
 /**
@@ -221,7 +221,7 @@ export function useCommandSupport(callback: (...args: any[]) => any) {
  * @value `i18n-ally.locale-visibility-show`
  */
 export function useCommandLocaleVisibilityShow(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.locale-visibility-show", callback)
+  return useCommandBase("i18n-ally.locale-visibility-show", callback)
 }
 
 /**
@@ -229,7 +229,7 @@ export function useCommandLocaleVisibilityShow(callback: (...args: any[]) => any
  * @value `i18n-ally.locale-visibility-hide`
  */
 export function useCommandLocaleVisibilityHide(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.locale-visibility-hide", callback)
+  return useCommandBase("i18n-ally.locale-visibility-hide", callback)
 }
 
 /**
@@ -237,7 +237,7 @@ export function useCommandLocaleVisibilityHide(callback: (...args: any[]) => any
  * @value `i18n-ally.new-key`
  */
 export function useCommandNewKey(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.new-key", callback)
+  return useCommandBase("i18n-ally.new-key", callback)
 }
 
 /**
@@ -245,7 +245,7 @@ export function useCommandNewKey(callback: (...args: any[]) => any) {
  * @value `i18n-ally.duplicate-key`
  */
 export function useCommandDuplicateKey(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.duplicate-key", callback)
+  return useCommandBase("i18n-ally.duplicate-key", callback)
 }
 
 /**
@@ -253,7 +253,7 @@ export function useCommandDuplicateKey(callback: (...args: any[]) => any) {
  * @value `i18n-ally.mark-key-as-in-use`
  */
 export function useCommandMarkKeyAsInUse(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.mark-key-as-in-use", callback)
+  return useCommandBase("i18n-ally.mark-key-as-in-use", callback)
 }
 
 /**
@@ -261,7 +261,7 @@ export function useCommandMarkKeyAsInUse(callback: (...args: any[]) => any) {
  * @value `i18n-ally.open-in-editor`
  */
 export function useCommandOpenInEditor(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.open-in-editor", callback)
+  return useCommandBase("i18n-ally.open-in-editor", callback)
 }
 
 /**
@@ -269,7 +269,7 @@ export function useCommandOpenInEditor(callback: (...args: any[]) => any) {
  * @value `i18n-ally.open-editor`
  */
 export function useCommandOpenEditor(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.open-editor", callback)
+  return useCommandBase("i18n-ally.open-editor", callback)
 }
 
 /**
@@ -277,7 +277,7 @@ export function useCommandOpenEditor(callback: (...args: any[]) => any) {
  * @value `i18n-ally.review.comment`
  */
 export function useCommandReviewComment(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.review.comment", callback)
+  return useCommandBase("i18n-ally.review.comment", callback)
 }
 
 /**
@@ -285,7 +285,7 @@ export function useCommandReviewComment(callback: (...args: any[]) => any) {
  * @value `i18n-ally.review.approve`
  */
 export function useCommandReviewApprove(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.review.approve", callback)
+  return useCommandBase("i18n-ally.review.approve", callback)
 }
 
 /**
@@ -293,7 +293,7 @@ export function useCommandReviewApprove(callback: (...args: any[]) => any) {
  * @value `i18n-ally.review.request-change`
  */
 export function useCommandReviewRequestChange(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.review.request-change", callback)
+  return useCommandBase("i18n-ally.review.request-change", callback)
 }
 
 /**
@@ -301,7 +301,7 @@ export function useCommandReviewRequestChange(callback: (...args: any[]) => any)
  * @value `i18n-ally.review.edit`
  */
 export function useCommandReviewEdit(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.review.edit", callback)
+  return useCommandBase("i18n-ally.review.edit", callback)
 }
 
 /**
@@ -309,7 +309,7 @@ export function useCommandReviewEdit(callback: (...args: any[]) => any) {
  * @value `i18n-ally.review.resolve`
  */
 export function useCommandReviewResolve(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.review.resolve", callback)
+  return useCommandBase("i18n-ally.review.resolve", callback)
 }
 
 /**
@@ -317,7 +317,7 @@ export function useCommandReviewResolve(callback: (...args: any[]) => any) {
  * @value `i18n-ally.review.resolve-thread`
  */
 export function useCommandReviewResolveThread(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.review.resolve-thread", callback)
+  return useCommandBase("i18n-ally.review.resolve-thread", callback)
 }
 
 /**
@@ -325,7 +325,7 @@ export function useCommandReviewResolveThread(callback: (...args: any[]) => any)
  * @value `i18n-ally.review.apply-translation`
  */
 export function useCommandReviewApplyTranslation(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.review.apply-translation", callback)
+  return useCommandBase("i18n-ally.review.apply-translation", callback)
 }
 
 /**
@@ -333,7 +333,7 @@ export function useCommandReviewApplyTranslation(callback: (...args: any[]) => a
  * @value `i18n-ally.review.apply-suggestion`
  */
 export function useCommandReviewApplySuggestion(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.review.apply-suggestion", callback)
+  return useCommandBase("i18n-ally.review.apply-suggestion", callback)
 }
 
 /**
@@ -341,7 +341,7 @@ export function useCommandReviewApplySuggestion(callback: (...args: any[]) => an
  * @value `i18n-ally.insert-key`
  */
 export function useCommandInsertKey(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.insert-key", callback)
+  return useCommandBase("i18n-ally.insert-key", callback)
 }
 
 /**
@@ -349,7 +349,7 @@ export function useCommandInsertKey(callback: (...args: any[]) => any) {
  * @value `i18n-ally.deepl-usage`
  */
 export function useCommandDeeplUsage(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.deepl-usage", callback)
+  return useCommandBase("i18n-ally.deepl-usage", callback)
 }
 
 /**
@@ -357,7 +357,7 @@ export function useCommandDeeplUsage(callback: (...args: any[]) => any) {
  * @value `i18n-ally.go-to-range`
  */
 export function useCommandGoToRange(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.go-to-range", callback)
+  return useCommandBase("i18n-ally.go-to-range", callback)
 }
 
 /**
@@ -365,7 +365,7 @@ export function useCommandGoToRange(callback: (...args: any[]) => any) {
  * @value `i18n-ally.go-to-next-usage`
  */
 export function useCommandGoToNextUsage(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.go-to-next-usage", callback)
+  return useCommandBase("i18n-ally.go-to-next-usage", callback)
 }
 
 /**
@@ -373,7 +373,7 @@ export function useCommandGoToNextUsage(callback: (...args: any[]) => any) {
  * @value `i18n-ally.go-to-prev-usage`
  */
 export function useCommandGoToPrevUsage(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.go-to-prev-usage", callback)
+  return useCommandBase("i18n-ally.go-to-prev-usage", callback)
 }
 
 /**
@@ -381,7 +381,7 @@ export function useCommandGoToPrevUsage(callback: (...args: any[]) => any) {
  * @value `i18n-ally.open-docs-hard-string`
  */
 export function useCommandOpenDocsHardString(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.open-docs-hard-string", callback)
+  return useCommandBase("i18n-ally.open-docs-hard-string", callback)
 }
 
 /**
@@ -389,7 +389,7 @@ export function useCommandOpenDocsHardString(callback: (...args: any[]) => any) 
  * @value `i18n-ally.extract-disable-auto-detect`
  */
 export function useCommandExtractDisableAutoDetect(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.extract-disable-auto-detect", callback)
+  return useCommandBase("i18n-ally.extract-disable-auto-detect", callback)
 }
 
 /**
@@ -397,7 +397,7 @@ export function useCommandExtractDisableAutoDetect(callback: (...args: any[]) =>
  * @value `i18n-ally.extract-enable-auto-detect`
  */
 export function useCommandExtractEnableAutoDetect(callback: (...args: any[]) => any) {
-  return useCommandKey("i18n-ally.extract-enable-auto-detect", callback)
+  return useCommandBase("i18n-ally.extract-enable-auto-detect", callback)
 }
 
 
@@ -758,7 +758,7 @@ export interface I18nAlly {
 /**
  * Section Type of `i18n-ally.theme`
  */
-export interface I18nAllyTheme {
+export interface Theme {
   "annotation": string,
   "annotationMissing": string,
   "annotationBorder": string,
@@ -768,7 +768,7 @@ export interface I18nAllyTheme {
 /**
  * Section Type of `i18n-ally.regex`
  */
-export interface I18nAllyRegex {
+export interface Regex {
   /**
    * %config.regex_key%
    */
@@ -786,7 +786,7 @@ export interface I18nAllyRegex {
 /**
  * Section Type of `i18n-ally.refactor`
  */
-export interface I18nAllyRefactor {
+export interface Refactor {
   /**
    * %config.refactor_templates%
    */
@@ -822,7 +822,7 @@ export interface I18nAllyRefactor {
 /**
  * Section Type of `i18n-ally.translate`
  */
-export interface I18nAllyTranslate {
+export interface Translate {
   /**
    * %config.translate_save_as_candidates%
    */
@@ -892,7 +892,7 @@ export interface I18nAllyTranslate {
 /**
  * Section Type of `i18n-ally.translate.google`
  */
-export interface I18nAllyTranslateGoogle {
+export interface TranslateGoogle {
   /**
    * %config.google_api_key%
    */
@@ -902,7 +902,7 @@ export interface I18nAllyTranslateGoogle {
 /**
  * Section Type of `i18n-ally.translate.deepl`
  */
-export interface I18nAllyTranslateDeepl {
+export interface TranslateDeepl {
   /**
    * %config.deepl_api_key%
    */
@@ -920,7 +920,7 @@ export interface I18nAllyTranslateDeepl {
 /**
  * Section Type of `i18n-ally.translate.baidu`
  */
-export interface I18nAllyTranslateBaidu {
+export interface TranslateBaidu {
   /**
    * %config.baidu_appid%
    */
@@ -934,7 +934,7 @@ export interface I18nAllyTranslateBaidu {
 /**
  * Section Type of `i18n-ally.translate.libre`
  */
-export interface I18nAllyTranslateLibre {
+export interface TranslateLibre {
   /**
    * %config.libretranslate_api_root%
    */
@@ -944,7 +944,7 @@ export interface I18nAllyTranslateLibre {
 /**
  * Section Type of `i18n-ally.translate.openai`
  */
-export interface I18nAllyTranslateOpenai {
+export interface TranslateOpenai {
   /**
    * %config.openai_api_key%
    */
@@ -962,7 +962,7 @@ export interface I18nAllyTranslateOpenai {
 /**
  * Section Type of `i18n-ally.usage`
  */
-export interface I18nAllyUsage {
+export interface Usage {
   /**
    * %config.usage.scanning_ignore%
    */
@@ -976,21 +976,21 @@ export interface I18nAllyUsage {
 /**
  * Section Type of `i18n-ally.frameworks`
  */
-export interface I18nAllyFrameworks {
+export interface Frameworks {
   "ruby-rails.scopeRoot": string,
 }
 
 /**
  * Section Type of `i18n-ally.frameworks.ruby-rails`
  */
-export interface I18nAllyFrameworksRubyRails {
+export interface FrameworksRubyRails {
   "scopeRoot": string,
 }
 
 /**
  * Section Type of `i18n-ally.parsers`
  */
-export interface I18nAllyParsers {
+export interface Parsers {
   "typescript.tsNodePath": string,
   "typescript.compilerOptions": Record<string, unknown>,
   "extendFileExtensions": Record<string, unknown>,
@@ -999,7 +999,7 @@ export interface I18nAllyParsers {
 /**
  * Section Type of `i18n-ally.parsers.typescript`
  */
-export interface I18nAllyParsersTypescript {
+export interface ParsersTypescript {
   "tsNodePath": string,
   "compilerOptions": Record<string, unknown>,
 }
@@ -1007,7 +1007,7 @@ export interface I18nAllyParsersTypescript {
 /**
  * Section Type of `i18n-ally.review`
  */
-export interface I18nAllyReview {
+export interface Review {
   /**
    * %config.review_enabled%
    */
@@ -1033,7 +1033,7 @@ export interface I18nAllyReview {
 /**
  * Section Type of `i18n-ally.review.user`
  */
-export interface I18nAllyReviewUser {
+export interface ReviewUser {
   /**
    * %config.review_username%
    */
@@ -1047,7 +1047,7 @@ export interface I18nAllyReviewUser {
 /**
  * Section Type of `i18n-ally.editor`
  */
-export interface I18nAllyEditor {
+export interface Editor {
   /**
    * %config.editor_prefer_editor%
    */
@@ -1057,7 +1057,7 @@ export interface I18nAllyEditor {
 /**
  * Section Type of `i18n-ally.extract`
  */
-export interface I18nAllyExtract {
+export interface Extract {
   /**
    * %config.keygen_strategy%
    */
@@ -1103,7 +1103,7 @@ export interface I18nAllyExtract {
 /**
  * Section Type of `i18n-ally.extract.parsers`
  */
-export interface I18nAllyExtractParsers {
+export interface ExtractParsers {
   /**
    * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
    */
@@ -1113,8 +1113,12 @@ export interface I18nAllyExtractParsers {
    */
   "babel": Record<string, unknown>,
 }
+
 const i18nAllyConfig = {
 
+  /**
+   * Section defaults of `i18n-ally`
+   */
   "i18n-ally": {
     /**
      * %config.disabled%
@@ -1416,14 +1420,20 @@ const i18nAllyConfig = {
   } satisfies I18nAlly,
 
 
+  /**
+   * Section defaults of `i18n-ally.theme`
+   */
   "i18n-ally.theme": {
     "annotation": "rgba(153, 153, 153, .8)",
     "annotationMissing": "rgba(153, 153, 153, .3)",
     "annotationBorder": "rgba(153, 153, 153, .2)",
     "annotationMissingBorder": "rgba(153, 153, 153, .2)",
-  } satisfies I18nAllyTheme,
+  } satisfies Theme,
 
 
+  /**
+   * Section defaults of `i18n-ally.regex`
+   */
   "i18n-ally.regex": {
     /**
      * %config.regex_key%
@@ -1437,17 +1447,23 @@ const i18nAllyConfig = {
      * %config.regex_usage_match_append%
      */
     "usageMatchAppend": undefined,
-  } satisfies I18nAllyRegex,
+  } satisfies Regex,
 
 
+  /**
+   * Section defaults of `i18n-ally.refactor`
+   */
   "i18n-ally.refactor": {
     /**
      * %config.refactor_templates%
      */
     "templates": undefined,
-  } satisfies I18nAllyRefactor,
+  } satisfies Refactor,
 
 
+  /**
+   * Section defaults of `i18n-ally.translate`
+   */
   "i18n-ally.translate": {
     /**
      * %config.translate_save_as_candidates%
@@ -1513,17 +1529,23 @@ const i18nAllyConfig = {
      * %config.openai_api_model%
      */
     "openai.apiModel": "gpt-3.5-turbo",
-  } satisfies I18nAllyTranslate,
+  } satisfies Translate,
 
 
+  /**
+   * Section defaults of `i18n-ally.translate.google`
+   */
   "i18n-ally.translate.google": {
     /**
      * %config.google_api_key%
      */
     "apiKey": null,
-  } satisfies I18nAllyTranslateGoogle,
+  } satisfies TranslateGoogle,
 
 
+  /**
+   * Section defaults of `i18n-ally.translate.deepl`
+   */
   "i18n-ally.translate.deepl": {
     /**
      * %config.deepl_api_key%
@@ -1537,9 +1559,12 @@ const i18nAllyConfig = {
      * %config.deepl_use_free_api_entry%
      */
     "useFreeApiEntry": false,
-  } satisfies I18nAllyTranslateDeepl,
+  } satisfies TranslateDeepl,
 
 
+  /**
+   * Section defaults of `i18n-ally.translate.baidu`
+   */
   "i18n-ally.translate.baidu": {
     /**
      * %config.baidu_appid%
@@ -1549,17 +1574,23 @@ const i18nAllyConfig = {
      * %config.baidu_app_secret%
      */
     "apiSecret": null,
-  } satisfies I18nAllyTranslateBaidu,
+  } satisfies TranslateBaidu,
 
 
+  /**
+   * Section defaults of `i18n-ally.translate.libre`
+   */
   "i18n-ally.translate.libre": {
     /**
      * %config.libretranslate_api_root%
      */
     "apiRoot": "http://localhost:5000",
-  } satisfies I18nAllyTranslateLibre,
+  } satisfies TranslateLibre,
 
 
+  /**
+   * Section defaults of `i18n-ally.translate.openai`
+   */
   "i18n-ally.translate.openai": {
     /**
      * %config.openai_api_key%
@@ -1573,9 +1604,12 @@ const i18nAllyConfig = {
      * %config.openai_api_model%
      */
     "apiModel": "gpt-3.5-turbo",
-  } satisfies I18nAllyTranslateOpenai,
+  } satisfies TranslateOpenai,
 
 
+  /**
+   * Section defaults of `i18n-ally.usage`
+   */
   "i18n-ally.usage": {
     /**
      * %config.usage.scanning_ignore%
@@ -1585,32 +1619,47 @@ const i18nAllyConfig = {
      * %config.derived_keys%
      */
     "derivedKeyRules": null,
-  } satisfies I18nAllyUsage,
+  } satisfies Usage,
 
 
+  /**
+   * Section defaults of `i18n-ally.frameworks`
+   */
   "i18n-ally.frameworks": {
     "ruby-rails.scopeRoot": "app/views",
-  } satisfies I18nAllyFrameworks,
+  } satisfies Frameworks,
 
 
+  /**
+   * Section defaults of `i18n-ally.frameworks.ruby-rails`
+   */
   "i18n-ally.frameworks.ruby-rails": {
     "scopeRoot": "app/views",
-  } satisfies I18nAllyFrameworksRubyRails,
+  } satisfies FrameworksRubyRails,
 
 
+  /**
+   * Section defaults of `i18n-ally.parsers`
+   */
   "i18n-ally.parsers": {
     "typescript.tsNodePath": "node_modules/ts-node/dist/bin.js",
     "typescript.compilerOptions": {},
     "extendFileExtensions": {},
-  } satisfies I18nAllyParsers,
+  } satisfies Parsers,
 
 
+  /**
+   * Section defaults of `i18n-ally.parsers.typescript`
+   */
   "i18n-ally.parsers.typescript": {
     "tsNodePath": "node_modules/ts-node/dist/bin.js",
     "compilerOptions": {},
-  } satisfies I18nAllyParsersTypescript,
+  } satisfies ParsersTypescript,
 
 
+  /**
+   * Section defaults of `i18n-ally.review`
+   */
   "i18n-ally.review": {
     /**
      * %config.review_enabled%
@@ -1632,9 +1681,12 @@ const i18nAllyConfig = {
      * %config.review_remove_on_resolved%
      */
     "removeCommentOnResolved": false,
-  } satisfies I18nAllyReview,
+  } satisfies Review,
 
 
+  /**
+   * Section defaults of `i18n-ally.review.user`
+   */
   "i18n-ally.review.user": {
     /**
      * %config.review_username%
@@ -1644,17 +1696,23 @@ const i18nAllyConfig = {
      * %config.review_email%
      */
     "email": undefined,
-  } satisfies I18nAllyReviewUser,
+  } satisfies ReviewUser,
 
 
+  /**
+   * Section defaults of `i18n-ally.editor`
+   */
   "i18n-ally.editor": {
     /**
      * %config.editor_prefer_editor%
      */
     "preferEditor": false,
-  } satisfies I18nAllyEditor,
+  } satisfies Editor,
 
 
+  /**
+   * Section defaults of `i18n-ally.extract`
+   */
   "i18n-ally.extract": {
     /**
      * %config.keygen_strategy%
@@ -1696,9 +1754,12 @@ const i18nAllyConfig = {
      * Strings to be ignored on hard-coded strings detection, by files
      */
     "ignoredByFiles": {},
-  } satisfies I18nAllyExtract,
+  } satisfies Extract,
 
 
+  /**
+   * Section defaults of `i18n-ally.extract.parsers`
+   */
   "i18n-ally.extract.parsers": {
     /**
      * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
@@ -1708,7 +1769,7 @@ const i18nAllyConfig = {
      * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
      */
     "babel": {},
-  } satisfies I18nAllyExtractParsers,
+  } satisfies ExtractParsers,
 
 }
 export type ConfigKey = "i18n-ally" | "i18n-ally.theme" | "i18n-ally.regex" | "i18n-ally.refactor" | "i18n-ally.translate" | "i18n-ally.translate.google" | "i18n-ally.translate.deepl" | "i18n-ally.translate.baidu" | "i18n-ally.translate.libre" | "i18n-ally.translate.openai" | "i18n-ally.usage" | "i18n-ally.frameworks" | "i18n-ally.frameworks.ruby-rails" | "i18n-ally.parsers" | "i18n-ally.parsers.typescript" | "i18n-ally.review" | "i18n-ally.review.user" | "i18n-ally.editor" | "i18n-ally.extract" | "i18n-ally.extract.parsers"
@@ -1724,340 +1785,280 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
 /**
  * ConfigObject of `i18n-ally`
  * @example
- * const configValue = configObjectI18nAlly.disabled //get value 
- * configObjectI18nAlly.disabled = true // set value
- * configObjectI18nAlly.$update("disabled", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectI18nAlly.disabled //get value 
+ * configObjectI18nAlly.$update("disabled", oldVal) //update value
  */
 export const configObjectI18nAlly = useConfigObject("i18n-ally")
 /**
  * ToConfigRefs of `i18n-ally`
  * @example
- * const configValue:boolean =configI18nAlly.disabled.value //get value 
- * configI18nAlly.disabled.value = false // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAlly.disabled.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:boolean =configI18nAlly.disabled.value //get value 
+ * configI18nAlly.disabled.update(oldVal) //update value
  */
 export const configI18nAlly = useConfig("i18n-ally")
 /**
  * ConfigObject of `i18n-ally.theme`
  * @example
- * const configValue = configObjectI18nAllyTheme.annotation //get value 
- * configObjectI18nAllyTheme.annotation = true // set value
- * configObjectI18nAllyTheme.$update("annotation", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectTheme.annotation //get value 
+ * configObjectTheme.$update("annotation", oldVal) //update value
  */
-export const configObjectI18nAllyTheme = useConfigObject("i18n-ally.theme")
+export const configObjectTheme = useConfigObject("i18n-ally.theme")
 /**
  * ToConfigRefs of `i18n-ally.theme`
  * @example
- * const configValue:string =configI18nAllyTheme.annotation.value //get value 
- * configI18nAllyTheme.annotation.value = "rgba(153, 153, 153, .8)" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyTheme.annotation.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configTheme.annotation.value //get value 
+ * configTheme.annotation.update(oldVal) //update value
  */
-export const configI18nAllyTheme = useConfig("i18n-ally.theme")
+export const configTheme = useConfig("i18n-ally.theme")
 /**
  * ConfigObject of `i18n-ally.regex`
  * @example
- * const configValue = configObjectI18nAllyRegex.key //get value 
- * configObjectI18nAllyRegex.key = true // set value
- * configObjectI18nAllyRegex.$update("key", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectRegex.key //get value 
+ * configObjectRegex.$update("key", oldVal) //update value
  */
-export const configObjectI18nAllyRegex = useConfigObject("i18n-ally.regex")
+export const configObjectRegex = useConfigObject("i18n-ally.regex")
 /**
  * ToConfigRefs of `i18n-ally.regex`
  * @example
- * const configValue:string =configI18nAllyRegex.key.value //get value 
- * configI18nAllyRegex.key.value = undefined // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyRegex.key.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configRegex.key.value //get value 
+ * configRegex.key.update(oldVal) //update value
  */
-export const configI18nAllyRegex = useConfig("i18n-ally.regex")
+export const configRegex = useConfig("i18n-ally.regex")
 /**
  * ConfigObject of `i18n-ally.refactor`
  * @example
- * const configValue = configObjectI18nAllyRefactor.templates //get value 
- * configObjectI18nAllyRefactor.templates = true // set value
- * configObjectI18nAllyRefactor.$update("templates", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectRefactor.templates //get value 
+ * configObjectRefactor.$update("templates", oldVal) //update value
  */
-export const configObjectI18nAllyRefactor = useConfigObject("i18n-ally.refactor")
+export const configObjectRefactor = useConfigObject("i18n-ally.refactor")
 /**
  * ToConfigRefs of `i18n-ally.refactor`
  * @example
- * const configValue:array =configI18nAllyRefactor.templates.value //get value 
- * configI18nAllyRefactor.templates.value = undefined // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyRefactor.templates.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:array =configRefactor.templates.value //get value 
+ * configRefactor.templates.update(oldVal) //update value
  */
-export const configI18nAllyRefactor = useConfig("i18n-ally.refactor")
+export const configRefactor = useConfig("i18n-ally.refactor")
 /**
  * ConfigObject of `i18n-ally.translate`
  * @example
- * const configValue = configObjectI18nAllyTranslate.saveAsCandidates //get value 
- * configObjectI18nAllyTranslate.saveAsCandidates = true // set value
- * configObjectI18nAllyTranslate.$update("saveAsCandidates", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectTranslate.saveAsCandidates //get value 
+ * configObjectTranslate.$update("saveAsCandidates", oldVal) //update value
  */
-export const configObjectI18nAllyTranslate = useConfigObject("i18n-ally.translate")
+export const configObjectTranslate = useConfigObject("i18n-ally.translate")
 /**
  * ToConfigRefs of `i18n-ally.translate`
  * @example
- * const configValue:boolean =configI18nAllyTranslate.saveAsCandidates.value //get value 
- * configI18nAllyTranslate.saveAsCandidates.value = false // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyTranslate.saveAsCandidates.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:boolean =configTranslate.saveAsCandidates.value //get value 
+ * configTranslate.saveAsCandidates.update(oldVal) //update value
  */
-export const configI18nAllyTranslate = useConfig("i18n-ally.translate")
+export const configTranslate = useConfig("i18n-ally.translate")
 /**
  * ConfigObject of `i18n-ally.translate.google`
  * @example
- * const configValue = configObjectI18nAllyTranslateGoogle.apiKey //get value 
- * configObjectI18nAllyTranslateGoogle.apiKey = true // set value
- * configObjectI18nAllyTranslateGoogle.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectTranslateGoogle.apiKey //get value 
+ * configObjectTranslateGoogle.$update("apiKey", oldVal) //update value
  */
-export const configObjectI18nAllyTranslateGoogle = useConfigObject("i18n-ally.translate.google")
+export const configObjectTranslateGoogle = useConfigObject("i18n-ally.translate.google")
 /**
  * ToConfigRefs of `i18n-ally.translate.google`
  * @example
- * const configValue:string =configI18nAllyTranslateGoogle.apiKey.value //get value 
- * configI18nAllyTranslateGoogle.apiKey.value = null // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyTranslateGoogle.apiKey.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configTranslateGoogle.apiKey.value //get value 
+ * configTranslateGoogle.apiKey.update(oldVal) //update value
  */
-export const configI18nAllyTranslateGoogle = useConfig("i18n-ally.translate.google")
+export const configTranslateGoogle = useConfig("i18n-ally.translate.google")
 /**
  * ConfigObject of `i18n-ally.translate.deepl`
  * @example
- * const configValue = configObjectI18nAllyTranslateDeepl.apiKey //get value 
- * configObjectI18nAllyTranslateDeepl.apiKey = true // set value
- * configObjectI18nAllyTranslateDeepl.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectTranslateDeepl.apiKey //get value 
+ * configObjectTranslateDeepl.$update("apiKey", oldVal) //update value
  */
-export const configObjectI18nAllyTranslateDeepl = useConfigObject("i18n-ally.translate.deepl")
+export const configObjectTranslateDeepl = useConfigObject("i18n-ally.translate.deepl")
 /**
  * ToConfigRefs of `i18n-ally.translate.deepl`
  * @example
- * const configValue:string =configI18nAllyTranslateDeepl.apiKey.value //get value 
- * configI18nAllyTranslateDeepl.apiKey.value = null // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyTranslateDeepl.apiKey.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configTranslateDeepl.apiKey.value //get value 
+ * configTranslateDeepl.apiKey.update(oldVal) //update value
  */
-export const configI18nAllyTranslateDeepl = useConfig("i18n-ally.translate.deepl")
+export const configTranslateDeepl = useConfig("i18n-ally.translate.deepl")
 /**
  * ConfigObject of `i18n-ally.translate.baidu`
  * @example
- * const configValue = configObjectI18nAllyTranslateBaidu.appid //get value 
- * configObjectI18nAllyTranslateBaidu.appid = true // set value
- * configObjectI18nAllyTranslateBaidu.$update("appid", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectTranslateBaidu.appid //get value 
+ * configObjectTranslateBaidu.$update("appid", oldVal) //update value
  */
-export const configObjectI18nAllyTranslateBaidu = useConfigObject("i18n-ally.translate.baidu")
+export const configObjectTranslateBaidu = useConfigObject("i18n-ally.translate.baidu")
 /**
  * ToConfigRefs of `i18n-ally.translate.baidu`
  * @example
- * const configValue:string =configI18nAllyTranslateBaidu.appid.value //get value 
- * configI18nAllyTranslateBaidu.appid.value = null // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyTranslateBaidu.appid.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configTranslateBaidu.appid.value //get value 
+ * configTranslateBaidu.appid.update(oldVal) //update value
  */
-export const configI18nAllyTranslateBaidu = useConfig("i18n-ally.translate.baidu")
+export const configTranslateBaidu = useConfig("i18n-ally.translate.baidu")
 /**
  * ConfigObject of `i18n-ally.translate.libre`
  * @example
- * const configValue = configObjectI18nAllyTranslateLibre.apiRoot //get value 
- * configObjectI18nAllyTranslateLibre.apiRoot = true // set value
- * configObjectI18nAllyTranslateLibre.$update("apiRoot", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectTranslateLibre.apiRoot //get value 
+ * configObjectTranslateLibre.$update("apiRoot", oldVal) //update value
  */
-export const configObjectI18nAllyTranslateLibre = useConfigObject("i18n-ally.translate.libre")
+export const configObjectTranslateLibre = useConfigObject("i18n-ally.translate.libre")
 /**
  * ToConfigRefs of `i18n-ally.translate.libre`
  * @example
- * const configValue:string =configI18nAllyTranslateLibre.apiRoot.value //get value 
- * configI18nAllyTranslateLibre.apiRoot.value = "http://localhost:5000" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyTranslateLibre.apiRoot.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configTranslateLibre.apiRoot.value //get value 
+ * configTranslateLibre.apiRoot.update(oldVal) //update value
  */
-export const configI18nAllyTranslateLibre = useConfig("i18n-ally.translate.libre")
+export const configTranslateLibre = useConfig("i18n-ally.translate.libre")
 /**
  * ConfigObject of `i18n-ally.translate.openai`
  * @example
- * const configValue = configObjectI18nAllyTranslateOpenai.apiKey //get value 
- * configObjectI18nAllyTranslateOpenai.apiKey = true // set value
- * configObjectI18nAllyTranslateOpenai.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectTranslateOpenai.apiKey //get value 
+ * configObjectTranslateOpenai.$update("apiKey", oldVal) //update value
  */
-export const configObjectI18nAllyTranslateOpenai = useConfigObject("i18n-ally.translate.openai")
+export const configObjectTranslateOpenai = useConfigObject("i18n-ally.translate.openai")
 /**
  * ToConfigRefs of `i18n-ally.translate.openai`
  * @example
- * const configValue:string =configI18nAllyTranslateOpenai.apiKey.value //get value 
- * configI18nAllyTranslateOpenai.apiKey.value = null // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyTranslateOpenai.apiKey.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configTranslateOpenai.apiKey.value //get value 
+ * configTranslateOpenai.apiKey.update(oldVal) //update value
  */
-export const configI18nAllyTranslateOpenai = useConfig("i18n-ally.translate.openai")
+export const configTranslateOpenai = useConfig("i18n-ally.translate.openai")
 /**
  * ConfigObject of `i18n-ally.usage`
  * @example
- * const configValue = configObjectI18nAllyUsage.scanningIgnore //get value 
- * configObjectI18nAllyUsage.scanningIgnore = true // set value
- * configObjectI18nAllyUsage.$update("scanningIgnore", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectUsage.scanningIgnore //get value 
+ * configObjectUsage.$update("scanningIgnore", oldVal) //update value
  */
-export const configObjectI18nAllyUsage = useConfigObject("i18n-ally.usage")
+export const configObjectUsage = useConfigObject("i18n-ally.usage")
 /**
  * ToConfigRefs of `i18n-ally.usage`
  * @example
- * const configValue:array =configI18nAllyUsage.scanningIgnore.value //get value 
- * configI18nAllyUsage.scanningIgnore.value = undefined // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyUsage.scanningIgnore.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:array =configUsage.scanningIgnore.value //get value 
+ * configUsage.scanningIgnore.update(oldVal) //update value
  */
-export const configI18nAllyUsage = useConfig("i18n-ally.usage")
+export const configUsage = useConfig("i18n-ally.usage")
 /**
  * ConfigObject of `i18n-ally.frameworks`
  * @example
- * const configValue = configObjectI18nAllyFrameworks.ruby-rails.scopeRoot //get value 
- * configObjectI18nAllyFrameworks.ruby-rails.scopeRoot = true // set value
- * configObjectI18nAllyFrameworks.$update("ruby-rails.scopeRoot", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectFrameworks.ruby-rails.scopeRoot //get value 
+ * configObjectFrameworks.$update("ruby-rails.scopeRoot", oldVal) //update value
  */
-export const configObjectI18nAllyFrameworks = useConfigObject("i18n-ally.frameworks")
+export const configObjectFrameworks = useConfigObject("i18n-ally.frameworks")
 /**
  * ToConfigRefs of `i18n-ally.frameworks`
  * @example
- * const configValue:string =configI18nAllyFrameworks.ruby-rails.scopeRoot.value //get value 
- * configI18nAllyFrameworks.ruby-rails.scopeRoot.value = "app/views" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyFrameworks.ruby-rails.scopeRoot.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configFrameworks.ruby-rails.scopeRoot.value //get value 
+ * configFrameworks.ruby-rails.scopeRoot.update(oldVal) //update value
  */
-export const configI18nAllyFrameworks = useConfig("i18n-ally.frameworks")
+export const configFrameworks = useConfig("i18n-ally.frameworks")
 /**
  * ConfigObject of `i18n-ally.frameworks.ruby-rails`
  * @example
- * const configValue = configObjectI18nAllyFrameworksRubyRails.scopeRoot //get value 
- * configObjectI18nAllyFrameworksRubyRails.scopeRoot = true // set value
- * configObjectI18nAllyFrameworksRubyRails.$update("scopeRoot", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectFrameworksRubyRails.scopeRoot //get value 
+ * configObjectFrameworksRubyRails.$update("scopeRoot", oldVal) //update value
  */
-export const configObjectI18nAllyFrameworksRubyRails = useConfigObject("i18n-ally.frameworks.ruby-rails")
+export const configObjectFrameworksRubyRails = useConfigObject("i18n-ally.frameworks.ruby-rails")
 /**
  * ToConfigRefs of `i18n-ally.frameworks.ruby-rails`
  * @example
- * const configValue:string =configI18nAllyFrameworksRubyRails.scopeRoot.value //get value 
- * configI18nAllyFrameworksRubyRails.scopeRoot.value = "app/views" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyFrameworksRubyRails.scopeRoot.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configFrameworksRubyRails.scopeRoot.value //get value 
+ * configFrameworksRubyRails.scopeRoot.update(oldVal) //update value
  */
-export const configI18nAllyFrameworksRubyRails = useConfig("i18n-ally.frameworks.ruby-rails")
+export const configFrameworksRubyRails = useConfig("i18n-ally.frameworks.ruby-rails")
 /**
  * ConfigObject of `i18n-ally.parsers`
  * @example
- * const configValue = configObjectI18nAllyParsers.typescript.tsNodePath //get value 
- * configObjectI18nAllyParsers.typescript.tsNodePath = true // set value
- * configObjectI18nAllyParsers.$update("typescript.tsNodePath", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectParsers.typescript.tsNodePath //get value 
+ * configObjectParsers.$update("typescript.tsNodePath", oldVal) //update value
  */
-export const configObjectI18nAllyParsers = useConfigObject("i18n-ally.parsers")
+export const configObjectParsers = useConfigObject("i18n-ally.parsers")
 /**
  * ToConfigRefs of `i18n-ally.parsers`
  * @example
- * const configValue:string =configI18nAllyParsers.typescript.tsNodePath.value //get value 
- * configI18nAllyParsers.typescript.tsNodePath.value = "node_modules/ts-node/dist/bin.js" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyParsers.typescript.tsNodePath.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configParsers.typescript.tsNodePath.value //get value 
+ * configParsers.typescript.tsNodePath.update(oldVal) //update value
  */
-export const configI18nAllyParsers = useConfig("i18n-ally.parsers")
+export const configParsers = useConfig("i18n-ally.parsers")
 /**
  * ConfigObject of `i18n-ally.parsers.typescript`
  * @example
- * const configValue = configObjectI18nAllyParsersTypescript.tsNodePath //get value 
- * configObjectI18nAllyParsersTypescript.tsNodePath = true // set value
- * configObjectI18nAllyParsersTypescript.$update("tsNodePath", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectParsersTypescript.tsNodePath //get value 
+ * configObjectParsersTypescript.$update("tsNodePath", oldVal) //update value
  */
-export const configObjectI18nAllyParsersTypescript = useConfigObject("i18n-ally.parsers.typescript")
+export const configObjectParsersTypescript = useConfigObject("i18n-ally.parsers.typescript")
 /**
  * ToConfigRefs of `i18n-ally.parsers.typescript`
  * @example
- * const configValue:string =configI18nAllyParsersTypescript.tsNodePath.value //get value 
- * configI18nAllyParsersTypescript.tsNodePath.value = "node_modules/ts-node/dist/bin.js" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyParsersTypescript.tsNodePath.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configParsersTypescript.tsNodePath.value //get value 
+ * configParsersTypescript.tsNodePath.update(oldVal) //update value
  */
-export const configI18nAllyParsersTypescript = useConfig("i18n-ally.parsers.typescript")
+export const configParsersTypescript = useConfig("i18n-ally.parsers.typescript")
 /**
  * ConfigObject of `i18n-ally.review`
  * @example
- * const configValue = configObjectI18nAllyReview.enabled //get value 
- * configObjectI18nAllyReview.enabled = true // set value
- * configObjectI18nAllyReview.$update("enabled", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectReview.enabled //get value 
+ * configObjectReview.$update("enabled", oldVal) //update value
  */
-export const configObjectI18nAllyReview = useConfigObject("i18n-ally.review")
+export const configObjectReview = useConfigObject("i18n-ally.review")
 /**
  * ToConfigRefs of `i18n-ally.review`
  * @example
- * const configValue:boolean =configI18nAllyReview.enabled.value //get value 
- * configI18nAllyReview.enabled.value = true // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyReview.enabled.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:boolean =configReview.enabled.value //get value 
+ * configReview.enabled.update(oldVal) //update value
  */
-export const configI18nAllyReview = useConfig("i18n-ally.review")
+export const configReview = useConfig("i18n-ally.review")
 /**
  * ConfigObject of `i18n-ally.review.user`
  * @example
- * const configValue = configObjectI18nAllyReviewUser.name //get value 
- * configObjectI18nAllyReviewUser.name = true // set value
- * configObjectI18nAllyReviewUser.$update("name", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectReviewUser.name //get value 
+ * configObjectReviewUser.$update("name", oldVal) //update value
  */
-export const configObjectI18nAllyReviewUser = useConfigObject("i18n-ally.review.user")
+export const configObjectReviewUser = useConfigObject("i18n-ally.review.user")
 /**
  * ToConfigRefs of `i18n-ally.review.user`
  * @example
- * const configValue:string =configI18nAllyReviewUser.name.value //get value 
- * configI18nAllyReviewUser.name.value = undefined // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyReviewUser.name.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configReviewUser.name.value //get value 
+ * configReviewUser.name.update(oldVal) //update value
  */
-export const configI18nAllyReviewUser = useConfig("i18n-ally.review.user")
+export const configReviewUser = useConfig("i18n-ally.review.user")
 /**
  * ConfigObject of `i18n-ally.editor`
  * @example
- * const configValue = configObjectI18nAllyEditor.preferEditor //get value 
- * configObjectI18nAllyEditor.preferEditor = true // set value
- * configObjectI18nAllyEditor.$update("preferEditor", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectEditor.preferEditor //get value 
+ * configObjectEditor.$update("preferEditor", oldVal) //update value
  */
-export const configObjectI18nAllyEditor = useConfigObject("i18n-ally.editor")
+export const configObjectEditor = useConfigObject("i18n-ally.editor")
 /**
  * ToConfigRefs of `i18n-ally.editor`
  * @example
- * const configValue:boolean =configI18nAllyEditor.preferEditor.value //get value 
- * configI18nAllyEditor.preferEditor.value = false // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyEditor.preferEditor.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:boolean =configEditor.preferEditor.value //get value 
+ * configEditor.preferEditor.update(oldVal) //update value
  */
-export const configI18nAllyEditor = useConfig("i18n-ally.editor")
+export const configEditor = useConfig("i18n-ally.editor")
 /**
  * ConfigObject of `i18n-ally.extract`
  * @example
- * const configValue = configObjectI18nAllyExtract.keygenStrategy //get value 
- * configObjectI18nAllyExtract.keygenStrategy = true // set value
- * configObjectI18nAllyExtract.$update("keygenStrategy", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectExtract.keygenStrategy //get value 
+ * configObjectExtract.$update("keygenStrategy", oldVal) //update value
  */
-export const configObjectI18nAllyExtract = useConfigObject("i18n-ally.extract")
+export const configObjectExtract = useConfigObject("i18n-ally.extract")
 /**
  * ToConfigRefs of `i18n-ally.extract`
  * @example
- * const configValue:string =configI18nAllyExtract.keygenStrategy.value //get value 
- * configI18nAllyExtract.keygenStrategy.value = "slug" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyExtract.keygenStrategy.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configExtract.keygenStrategy.value //get value 
+ * configExtract.keygenStrategy.update(oldVal) //update value
  */
-export const configI18nAllyExtract = useConfig("i18n-ally.extract")
+export const configExtract = useConfig("i18n-ally.extract")
 /**
  * ConfigObject of `i18n-ally.extract.parsers`
  * @example
- * const configValue = configObjectI18nAllyExtractParsers.html //get value 
- * configObjectI18nAllyExtractParsers.html = true // set value
- * configObjectI18nAllyExtractParsers.$update("html", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectExtractParsers.html //get value 
+ * configObjectExtractParsers.$update("html", oldVal) //update value
  */
-export const configObjectI18nAllyExtractParsers = useConfigObject("i18n-ally.extract.parsers")
+export const configObjectExtractParsers = useConfigObject("i18n-ally.extract.parsers")
 /**
  * ToConfigRefs of `i18n-ally.extract.parsers`
  * @example
- * const configValue:object =configI18nAllyExtractParsers.html.value //get value 
- * configI18nAllyExtractParsers.html.value = {} // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * configI18nAllyExtractParsers.html.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:object =configExtractParsers.html.value //get value 
+ * configExtractParsers.html.update(oldVal) //update value
  */
-export const configI18nAllyExtractParsers = useConfig("i18n-ally.extract.parsers")
+export const configExtractParsers = useConfig("i18n-ally.extract.parsers")
