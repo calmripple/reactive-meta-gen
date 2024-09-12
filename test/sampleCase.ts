@@ -1,26 +1,24 @@
-import { defineExtension, useCommands, watchEffect } from 'reactive-vscode'
+import { defineExtension, watchEffect } from 'reactive-vscode'
 import { window } from 'vscode'
-import { commands, sampleConfigObject, sampleConfigs } from './output/sample'
+import { configObjectSample, configSample, useCommandToggleAnnotations } from './output/sample'
 
 const { activate, deactivate } = defineExtension(
   () => {
     watchEffect(() => {
       // watch value change
-      window.showInformationMessage(`sampleConfigs.annotations.value:${sampleConfigs.annotations.value}`)
+      window.showInformationMessage(`sampleConfigs.annotations.value:${configSample.annotations.value}`)
     })
-    useCommands({
-      [commands.toggleAnnotations]: async () => {
-        // update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
-        sampleConfigs.annotations.update(!sampleConfigs.annotations.value)
-      },
+    useCommandToggleAnnotations(async () => {
+      // update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
+      configSample.annotations.update(!configSample.annotations.value)
     })
 
     // another way to get the config value
-    const configValue = sampleConfigObject.inplace // get value
-    sampleConfigObject.inplace = true // set value
-    sampleConfigObject.$update('inplace', !configValue)
+    const configValue = configObjectSample.inplace // get value
+    configObjectSample.inplace = true // set value
+    configObjectSample.$update('inplace', !configValue)
 
-    window.showInformationMessage(`sampleConfigObject.inplace:${sampleConfigObject.inplace}`)
+    window.showInformationMessage(`sampleConfigObject.inplace:${configObjectSample.inplace}`)
   },
 )
 

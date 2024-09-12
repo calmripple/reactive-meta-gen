@@ -4,7 +4,7 @@
 
 // Meta info
 
-import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'
+import { defineConfigObject, defineConfigs, useCommand, useCommands } from 'reactive-vscode'
 
 export const publisher = "cnjimbo"
 export const name = "project-config"
@@ -29,6 +29,11 @@ export type CommandKey =
 export function useCommandBaseBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
 }
+
+export function useCommandsBaseBase(commands: Record<CommandKey, (...args: any[]) => any>): void {
+  return useCommands(commands)
+}
+
 
 /**
  * Update config now
@@ -242,7 +247,7 @@ const projectConfigConfig = {
      * Position the icon before or after the icon name
      */
     "test.position": "before",
-  } satisfies ProjectConfig,
+  } satisfies ProjectConfig as ProjectConfig,
 
 
   /**
@@ -257,7 +262,7 @@ const projectConfigConfig = {
      * The upstream repo you want to update from
      */
     "upstreamRepo": "antfu/vscode-file-nesting-config",
-  } satisfies FileNestingUpdater,
+  } satisfies FileNestingUpdater as FileNestingUpdater,
 
 
   /**
@@ -272,7 +277,7 @@ const projectConfigConfig = {
      * Position the icon before or after the icon name
      */
     "position": "before",
-  } satisfies Test,
+  } satisfies Test as Test,
 
 
   /**
@@ -283,7 +288,7 @@ const projectConfigConfig = {
      * Enabled project-config inline annotations
      */
     "xxx": true,
-  } satisfies Root,
+  } satisfies Root as Root,
 
 
   /**
@@ -291,7 +296,7 @@ const projectConfigConfig = {
    */
   "emeraldwalk": {
     "runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": undefined },
-  } satisfies Emeraldwalk,
+  } satisfies Emeraldwalk as Emeraldwalk,
 
 }
 export type ConfigKey = "project-config" | "project-config.fileNestingUpdater" | "project-config.test" | "" | "emeraldwalk"

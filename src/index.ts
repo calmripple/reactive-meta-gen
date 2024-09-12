@@ -95,7 +95,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   let lines: string[] = []
 
   lines.push('// Meta info')
-  lines.push('', `import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'`, '')
+  lines.push('', `import { defineConfigObject, defineConfigs, useCommand, useCommands } from 'reactive-vscode'`, '')
 
   for (const key of forwardKeys) {
     lines.push(`export const ${key} = ${packageJson[key] ? JSON.stringify(packageJson[key]) : 'undefined'}`)
@@ -166,7 +166,12 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   lines.push(`
 export function ${cmdFuncBaseName}(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
-}`)
+}
+
+export function ${cmdFuncBaseName.slice(0, 10)}s${cmdFuncBaseName.slice(10)}(commands: Record<CommandKey, (...args: any[]) => any>): void {
+  return useCommands(commands)
+}
+`)
 
   lines.push(
     ...cmdFunctionNames
@@ -284,7 +289,8 @@ export function ${cmdFuncBaseName}(commandFullKey: CommandKey, callback: (...arg
 
     // sectionTypeMap.push(` ${JSON.stringify(section)}: ${interfaceName}`)
     sectionDefault.push(
-      `  } satisfies ${interfaceName},`,
+      // `  } satisfies ${interfaceName},`,
+      `  } satisfies ${interfaceName} as ${interfaceName},`,
       '',
     )
   })

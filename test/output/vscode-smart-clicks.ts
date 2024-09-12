@@ -4,7 +4,7 @@
 
 // Meta info
 
-import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'
+import { defineConfigObject, defineConfigs, useCommand, useCommands } from 'reactive-vscode'
 
 export const publisher = "antfu"
 export const name = "smart-clicks"
@@ -22,6 +22,11 @@ export type CommandKey =
 export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
 }
+
+export function useCommandsBase(commands: Record<CommandKey, (...args: any[]) => any>): void {
+  return useCommands(commands)
+}
+
 
 /**
  * Smart Clicks: Trigger
@@ -193,7 +198,7 @@ const smartClicksConfig = {
      * Rule toggles
      */
     "rules": { "bracket-pair": true, "dash": true, "html-attr": true, "html-element": true, "html-tag-pair": true, "js-arrow-fn": true, "js-assign": true, "js-block": false, "js-colon": true, "jsx-tag-pair": true },
-  } satisfies SmartClicks,
+  } satisfies SmartClicks as SmartClicks,
 
 }
 export type ConfigKey = "smartClicks"

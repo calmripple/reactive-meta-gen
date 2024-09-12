@@ -4,7 +4,7 @@
 
 // Meta info
 
-import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'
+import { defineConfigObject, defineConfigs, useCommand, useCommands } from 'reactive-vscode'
 
 export const publisher = "lokalise"
 export const name = "i18n-ally"
@@ -63,6 +63,11 @@ export type CommandKey =
 export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
 }
+
+export function useCommandsBase(commands: Record<CommandKey, (...args: any[]) => any>): void {
+  return useCommands(commands)
+}
+
 
 /**
  * %command.config_locales%
@@ -1417,7 +1422,7 @@ const i18nAllyConfig = {
      * %config.default_namespace%
      */
     "defaultNamespace": undefined,
-  } satisfies I18nAlly,
+  } satisfies I18nAlly as I18nAlly,
 
 
   /**
@@ -1428,7 +1433,7 @@ const i18nAllyConfig = {
     "annotationMissing": "rgba(153, 153, 153, .3)",
     "annotationBorder": "rgba(153, 153, 153, .2)",
     "annotationMissingBorder": "rgba(153, 153, 153, .2)",
-  } satisfies Theme,
+  } satisfies Theme as Theme,
 
 
   /**
@@ -1447,7 +1452,7 @@ const i18nAllyConfig = {
      * %config.regex_usage_match_append%
      */
     "usageMatchAppend": undefined,
-  } satisfies Regex,
+  } satisfies Regex as Regex,
 
 
   /**
@@ -1458,7 +1463,7 @@ const i18nAllyConfig = {
      * %config.refactor_templates%
      */
     "templates": undefined,
-  } satisfies Refactor,
+  } satisfies Refactor as Refactor,
 
 
   /**
@@ -1529,7 +1534,7 @@ const i18nAllyConfig = {
      * %config.openai_api_model%
      */
     "openai.apiModel": "gpt-3.5-turbo",
-  } satisfies Translate,
+  } satisfies Translate as Translate,
 
 
   /**
@@ -1540,7 +1545,7 @@ const i18nAllyConfig = {
      * %config.google_api_key%
      */
     "apiKey": null,
-  } satisfies TranslateGoogle,
+  } satisfies TranslateGoogle as TranslateGoogle,
 
 
   /**
@@ -1559,7 +1564,7 @@ const i18nAllyConfig = {
      * %config.deepl_use_free_api_entry%
      */
     "useFreeApiEntry": false,
-  } satisfies TranslateDeepl,
+  } satisfies TranslateDeepl as TranslateDeepl,
 
 
   /**
@@ -1574,7 +1579,7 @@ const i18nAllyConfig = {
      * %config.baidu_app_secret%
      */
     "apiSecret": null,
-  } satisfies TranslateBaidu,
+  } satisfies TranslateBaidu as TranslateBaidu,
 
 
   /**
@@ -1585,7 +1590,7 @@ const i18nAllyConfig = {
      * %config.libretranslate_api_root%
      */
     "apiRoot": "http://localhost:5000",
-  } satisfies TranslateLibre,
+  } satisfies TranslateLibre as TranslateLibre,
 
 
   /**
@@ -1604,7 +1609,7 @@ const i18nAllyConfig = {
      * %config.openai_api_model%
      */
     "apiModel": "gpt-3.5-turbo",
-  } satisfies TranslateOpenai,
+  } satisfies TranslateOpenai as TranslateOpenai,
 
 
   /**
@@ -1619,7 +1624,7 @@ const i18nAllyConfig = {
      * %config.derived_keys%
      */
     "derivedKeyRules": null,
-  } satisfies Usage,
+  } satisfies Usage as Usage,
 
 
   /**
@@ -1627,7 +1632,7 @@ const i18nAllyConfig = {
    */
   "i18n-ally.frameworks": {
     "ruby-rails.scopeRoot": "app/views",
-  } satisfies Frameworks,
+  } satisfies Frameworks as Frameworks,
 
 
   /**
@@ -1635,7 +1640,7 @@ const i18nAllyConfig = {
    */
   "i18n-ally.frameworks.ruby-rails": {
     "scopeRoot": "app/views",
-  } satisfies FrameworksRubyRails,
+  } satisfies FrameworksRubyRails as FrameworksRubyRails,
 
 
   /**
@@ -1645,7 +1650,7 @@ const i18nAllyConfig = {
     "typescript.tsNodePath": "node_modules/ts-node/dist/bin.js",
     "typescript.compilerOptions": {},
     "extendFileExtensions": {},
-  } satisfies Parsers,
+  } satisfies Parsers as Parsers,
 
 
   /**
@@ -1654,7 +1659,7 @@ const i18nAllyConfig = {
   "i18n-ally.parsers.typescript": {
     "tsNodePath": "node_modules/ts-node/dist/bin.js",
     "compilerOptions": {},
-  } satisfies ParsersTypescript,
+  } satisfies ParsersTypescript as ParsersTypescript,
 
 
   /**
@@ -1681,7 +1686,7 @@ const i18nAllyConfig = {
      * %config.review_remove_on_resolved%
      */
     "removeCommentOnResolved": false,
-  } satisfies Review,
+  } satisfies Review as Review,
 
 
   /**
@@ -1696,7 +1701,7 @@ const i18nAllyConfig = {
      * %config.review_email%
      */
     "email": undefined,
-  } satisfies ReviewUser,
+  } satisfies ReviewUser as ReviewUser,
 
 
   /**
@@ -1707,7 +1712,7 @@ const i18nAllyConfig = {
      * %config.editor_prefer_editor%
      */
     "preferEditor": false,
-  } satisfies Editor,
+  } satisfies Editor as Editor,
 
 
   /**
@@ -1754,7 +1759,7 @@ const i18nAllyConfig = {
      * Strings to be ignored on hard-coded strings detection, by files
      */
     "ignoredByFiles": {},
-  } satisfies Extract,
+  } satisfies Extract as Extract,
 
 
   /**
@@ -1769,7 +1774,7 @@ const i18nAllyConfig = {
      * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
      */
     "babel": {},
-  } satisfies ExtractParsers,
+  } satisfies ExtractParsers as ExtractParsers,
 
 }
 export type ConfigKey = "i18n-ally" | "i18n-ally.theme" | "i18n-ally.regex" | "i18n-ally.refactor" | "i18n-ally.translate" | "i18n-ally.translate.google" | "i18n-ally.translate.deepl" | "i18n-ally.translate.baidu" | "i18n-ally.translate.libre" | "i18n-ally.translate.openai" | "i18n-ally.usage" | "i18n-ally.frameworks" | "i18n-ally.frameworks.ruby-rails" | "i18n-ally.parsers" | "i18n-ally.parsers.typescript" | "i18n-ally.review" | "i18n-ally.review.user" | "i18n-ally.editor" | "i18n-ally.extract" | "i18n-ally.extract.parsers"

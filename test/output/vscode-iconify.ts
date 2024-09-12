@@ -4,7 +4,7 @@
 
 // Meta info
 
-import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'
+import { defineConfigObject, defineConfigs, useCommand, useCommands } from 'reactive-vscode'
 
 export const publisher = "antfu"
 export const name = "iconify"
@@ -24,6 +24,11 @@ export type CommandKey =
 export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
 }
+
+export function useCommandsBase(commands: Record<CommandKey, (...args: any[]) => any>): void {
+  return useCommands(commands)
+}
+
 
 /**
  * Toggle Annotations
@@ -182,7 +187,7 @@ const iconifyConfig = {
      * Only use the icon aliases. Non aliased icons will be ignored.
      */
     "customAliasesOnly": false,
-  } satisfies Iconify,
+  } satisfies Iconify as Iconify,
 
 }
 export type ConfigKey = "iconify"
