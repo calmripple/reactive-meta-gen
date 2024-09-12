@@ -4,14 +4,14 @@
 
 // Meta info
 
-import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'
+import { defineConfigObject, defineConfigs, useCommand, useCommands } from 'reactive-vscode'
 
 export const publisher = "antfu"
 export const name = "smart-clicks"
 export const version = "0.2.1"
 export const displayName = "Smart Clicks"
 export const description = "Smart selection with double clicks"
-export const extensionId = `${publisher}.${name}`
+export const extensionId = "antfu.smart-clicks"
 
 /**
  * Type union of all commands
@@ -19,51 +19,42 @@ export const extensionId = `${publisher}.${name}`
 export type CommandKey = 
   | "smartClicks.trigger"
 
-/**
- * Commands map registed by `antfu.smart-clicks`
- */
-export const commands = {
-  /**
-   * Smart Clicks: Trigger
-   * @value `smartClicks.trigger`
-   * @example
-   * useCommand(commands.trigger, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  trigger: "smartClicks.trigger",
-} satisfies Record<string, CommandKey>
-/**
- * Smart Clicks: Trigger
- * @value `smartClicks.trigger`
- */
-export function useCommandTrigger(callback: (...args: any[]) => any) {
-  useCommand(commands.trigger, callback)
+export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+  return useCommand(commandFullKey, callback)
+}
+
+export function useCommandsBase(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
+  return useCommands(commands)
 }
 
 
 /**
- * Config keys of `smartClicks`
+ * Smart Clicks: Trigger
+ * @value `smartClicks.trigger` identifier of the command 
+ */
+export function useCommandTrigger(callback: (...args: any[]) => any) {
+  return useCommandBase("smartClicks.trigger", callback)
+}
+
+
+/**
+ * Section Type of `smartClicks`
  */
 export interface SmartClicks {
   /**
    * The interval between clicks in milliseconds.
-   * @default 600
    */
   "clicksInterval": number,
   /**
    * The delay after triggering the selection. To prevent conflicting with normal selection.
-   * @default 150
    */
   "triggerDelay": number,
   /**
    * Array of language IDs to enable html smartClicks
-   * @default ["html","vue","svelte"]
    */
   "htmlLanguageIds": string[],
   /**
    * Rule toggles
-   * @default { "bracket-pair": true, "dash": true, "html-attr": true, "html-element": true, "html-tag-pair": true, "js-arrow-fn": true, "js-assign": true, "js-block": false, "js-colon": true, "jsx-tag-pair": true }
    */
   "rules": {
       /**
@@ -185,18 +176,12 @@ export interface SmartClicks {
   },
 }
 
-/**
- * Scoped defaults of `smartClicks`
- */
-const _smartClicks = {
+const smartClicksConfig = {
+
   /**
-   * scope: `smartClicks`
+   * Section defaults of `smartClicks`
    */
-  scope: "smartClicks",
-  /**
-   * Keys' defaults of `smartClicks`
-   */
-  defaults: {
+  "smartClicks": {
     /**
      * The interval between clicks in milliseconds.
      */
@@ -213,29 +198,30 @@ const _smartClicks = {
      * Rule toggles
      */
     "rules": { "bracket-pair": true, "dash": true, "html-attr": true, "html-element": true, "html-tag-pair": true, "js-arrow-fn": true, "js-assign": true, "js-block": false, "js-colon": true, "jsx-tag-pair": true },
-  } satisfies SmartClicks,
+  } satisfies SmartClicks as SmartClicks,
+
+}
+export type ConfigKey = "smartClicks"
+
+export function useConfig<K extends ConfigKey>(section: K) {
+  return defineConfigs<typeof smartClicksConfig[K]>(section, smartClicksConfig[section])
 }
 
+export function useConfigObject<K extends ConfigKey>(section: K) {
+  return defineConfigObject<typeof smartClicksConfig[K]>(section, smartClicksConfig[section])
+}
+    
 /**
- * Reactive ConfigObject of `smartClicks`
+ * ConfigObject of `smartClicks`
  * @example
- * const configValue = useConfigObjectSmartClicks.clicksInterval //get value 
- * useConfigObjectSmartClicks.clicksInterval = true // set value
- * useConfigObjectSmartClicks.$update("clicksInterval", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectSmartClicks.clicksInterval //get value 
+ * configObjectSmartClicks.$update("clicksInterval", oldVal) //update value
  */
-export const useConfigObjectSmartClicks = defineConfigObject<SmartClicks>(
-  _smartClicks.scope,
-  _smartClicks.defaults
-)
+export const configObjectSmartClicks = useConfigObject("smartClicks")
 /**
- * Reactive ToConfigRefs of `smartClicks`
+ * ToConfigRefs of `smartClicks`
  * @example
- * const configValue:number =useConfigsSmartClicks.clicksInterval.value //get value 
- * useConfigsSmartClicks.clicksInterval.value = 600 // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsSmartClicks.clicksInterval.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:number =configSmartClicks.clicksInterval.value //get value 
+ * configSmartClicks.clicksInterval.update(oldVal) //update value
  */
-export const useConfigsSmartClicks = defineConfigs<SmartClicks>(
-  _smartClicks.scope,
-  _smartClicks.defaults
-)
+export const configSmartClicks = useConfig("smartClicks")

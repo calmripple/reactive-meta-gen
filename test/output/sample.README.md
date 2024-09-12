@@ -7,11 +7,15 @@
 | `sample.toggle-annotations` | sample: Toggle Annotations   |
 | `sample.toggle-inplace`     | sample: Toggle In-place Mode |
 | `sample.clear-cache`        | sample: Clear icon cache     |
+| `sample.update-date`        | sample: update current date  |
 
 ## Configuration Json
 
 ```json
 {
+  //Current time
+  "sample.date": "now",
+
   //Use icon graph to replace the icon name.
   "sample.inplace": true,
 
@@ -64,6 +68,7 @@
 
 | Key                                | Description                                                             | Type      | Default                                                                                                     |
 | ---------------------------------- | ----------------------------------------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------- |
+| `sample.date`                      | Current time                                                            | `string`  | `"now"`                                                                                                     |
 | `sample.inplace`                   | Use icon graph to replace the icon name.                                | `boolean` | `true`                                                                                                      |
 | `sample.annotations`               | Enabled sample inline annotations                                       | `boolean` | `true`                                                                                                      |
 | `sample.position`                  | Position the icon before or after the icon name                         | `string`  | `"before"`                                                                                                  |

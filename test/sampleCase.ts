@@ -1,27 +1,21 @@
-import { defineExtension, useCommands, watchEffect } from 'reactive-vscode'
+import { defineExtension, watchEffect } from 'reactive-vscode'
 import { window } from 'vscode'
-import { commands, sampleConfigObject, sampleConfigs } from './output/sample'
+import { configObjectSample, useCommandUpdateDate } from './output/sample'
 
-const { activate, deactivate } = defineExtension(
-  () => {
-    watchEffect(() => {
-      // watch value change
-      window.showInformationMessage(`sampleConfigs.annotations.value:${sampleConfigs.annotations.value}`)
-    })
-    useCommands({
-      [commands.toggleAnnotations]: async () => {
-        // update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
-        sampleConfigs.annotations.update(!sampleConfigs.annotations.value)
-      },
-    })
+const { activate, deactivate } = defineExtension(() => {
+  // another way to get the config value
+  const _configValue = configObjectSample.date // get value
 
-    // another way to get the config value
-    const configValue = sampleConfigObject.inplace // get value
-    sampleConfigObject.inplace = true // set value
-    sampleConfigObject.$update('inplace', !configValue)
+  watchEffect(() => {
+    // watch value change
+    window.showInformationMessage(`sampleConfigs.annotations.value:${configObjectSample.date}`)
+  })
 
-    window.showInformationMessage(`sampleConfigObject.inplace:${sampleConfigObject.inplace}`)
-  },
+  useCommandUpdateDate(async () => {
+    // update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
+    configObjectSample.$update('date', Date.now().toLocaleString())
+  })
+},
 )
 
 export { activate, deactivate }

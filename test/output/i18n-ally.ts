@@ -4,14 +4,14 @@
 
 // Meta info
 
-import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'
+import { defineConfigObject, defineConfigs, useCommand, useCommands } from 'reactive-vscode'
 
 export const publisher = "lokalise"
 export const name = "i18n-ally"
 export const version = "2.12.0"
 export const displayName = "i18n Ally"
 export const description = "🌍 All in one i18n extension for VS Code"
-export const extensionId = `${publisher}.${name}`
+export const extensionId = "lokalise.i18n-ally"
 
 /**
  * Type union of all commands
@@ -60,682 +60,349 @@ export type CommandKey =
   | "i18n-ally.extract-disable-auto-detect"
   | "i18n-ally.extract-enable-auto-detect"
 
-/**
- * Commands map registed by `lokalise.i18n-ally`
- */
-export const commands = {
-  /**
-   * %command.config_locales%
-   * @value `i18n-ally.config-locales`
-   * @example
-   * useCommand(commands.configLocales, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  configLocales: "i18n-ally.config-locales",
-  /**
-   * %command.config_locales_auto%
-   * @value `i18n-ally.config-locales-auto`
-   * @example
-   * useCommand(commands.configLocalesAuto, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  configLocalesAuto: "i18n-ally.config-locales-auto",
-  /**
-   * %command.config_display_language%
-   * @value `i18n-ally.config-display-language`
-   * @example
-   * useCommand(commands.configDisplayLanguage, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  configDisplayLanguage: "i18n-ally.config-display-language",
-  /**
-   * %command.config_source_language%
-   * @value `i18n-ally.config-source-language`
-   * @example
-   * useCommand(commands.configSourceLanguage, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  configSourceLanguage: "i18n-ally.config-source-language",
-  /**
-   * %command.set_display_language%
-   * @value `i18n-ally.set-display-language`
-   * @example
-   * useCommand(commands.setDisplayLanguage, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  setDisplayLanguage: "i18n-ally.set-display-language",
-  /**
-   * %command.set_source_language%
-   * @value `i18n-ally.set-source-language`
-   * @example
-   * useCommand(commands.setSourceLanguage, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  setSourceLanguage: "i18n-ally.set-source-language",
-  /**
-   * %command.copy_key%
-   * @value `i18n-ally.copy-key`
-   * @example
-   * useCommand(commands.copyKey, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  copyKey: "i18n-ally.copy-key",
-  /**
-   * %command.translate_key%
-   * @value `i18n-ally.translate-key`
-   * @example
-   * useCommand(commands.translateKey, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  translateKey: "i18n-ally.translate-key",
-  /**
-   * %command.edit_key%
-   * @value `i18n-ally.edit-key`
-   * @example
-   * useCommand(commands.editKey, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  editKey: "i18n-ally.edit-key",
-  /**
-   * %command.open_key%
-   * @value `i18n-ally.open-key`
-   * @example
-   * useCommand(commands.openKey, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  openKey: "i18n-ally.open-key",
-  /**
-   * %command.delete_key%
-   * @value `i18n-ally.delete-key`
-   * @example
-   * useCommand(commands.deleteKey, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  deleteKey: "i18n-ally.delete-key",
-  /**
-   * %command.rename_key%
-   * @value `i18n-ally.rename-key`
-   * @example
-   * useCommand(commands.renameKey, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  renameKey: "i18n-ally.rename-key",
-  /**
-   * %refactor.extract_text%
-   * @value `i18n-ally.extract-text`
-   * @example
-   * useCommand(commands.extractText, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  extractText: "i18n-ally.extract-text",
-  /**
-   * Extract all hard-coded strings (experimental)
-   * @value `i18n-ally.extract-hard-strings-batch`
-   * @example
-   * useCommand(commands.extractHardStringsBatch, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  extractHardStringsBatch: "i18n-ally.extract-hard-strings-batch",
-  /**
-   * Detect hard-coded strings in current file (experimental)
-   * @value `i18n-ally.detect_hard_strings`
-   * @example
-   * useCommand(commands.detectHardStrings, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  detectHardStrings: "i18n-ally.detect_hard_strings",
-  /**
-   * %command.open_url%
-   * @value `i18n-ally.open-url`
-   * @example
-   * useCommand(commands.openUrl, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  openUrl: "i18n-ally.open-url",
-  /**
-   * %command.fulfill_keys%
-   * @value `i18n-ally.fulfill-keys`
-   * @example
-   * useCommand(commands.fulfillKeys, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  fulfillKeys: "i18n-ally.fulfill-keys",
-  /**
-   * %command.refresh_usage%
-   * @value `i18n-ally.refresh-usage`
-   * @example
-   * useCommand(commands.refreshUsage, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  refreshUsage: "i18n-ally.refresh-usage",
-  /**
-   * %feedback.support%
-   * @value `i18n-ally.support`
-   * @example
-   * useCommand(commands.support, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  support: "i18n-ally.support",
-  /**
-   * %command.locale_visibility_show%
-   * @value `i18n-ally.locale-visibility-show`
-   * @example
-   * useCommand(commands.localeVisibilityShow, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  localeVisibilityShow: "i18n-ally.locale-visibility-show",
-  /**
-   * %command.locale_visibility_hide%
-   * @value `i18n-ally.locale-visibility-hide`
-   * @example
-   * useCommand(commands.localeVisibilityHide, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  localeVisibilityHide: "i18n-ally.locale-visibility-hide",
-  /**
-   * %command.new_key%
-   * @value `i18n-ally.new-key`
-   * @example
-   * useCommand(commands.newKey, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  newKey: "i18n-ally.new-key",
-  /**
-   * %command.duplicate_key%
-   * @value `i18n-ally.duplicate-key`
-   * @example
-   * useCommand(commands.duplicateKey, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  duplicateKey: "i18n-ally.duplicate-key",
-  /**
-   * %command.mark_key_as_in_use%
-   * @value `i18n-ally.mark-key-as-in-use`
-   * @example
-   * useCommand(commands.markKeyAsInUse, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  markKeyAsInUse: "i18n-ally.mark-key-as-in-use",
-  /**
-   * %command.open_in_editor%
-   * @value `i18n-ally.open-in-editor`
-   * @example
-   * useCommand(commands.openInEditor, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  openInEditor: "i18n-ally.open-in-editor",
-  /**
-   * %command.open_editor%
-   * @value `i18n-ally.open-editor`
-   * @example
-   * useCommand(commands.openEditor, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  openEditor: "i18n-ally.open-editor",
-  /**
-   * %review.leave_comment%
-   * @value `i18n-ally.review.comment`
-   * @example
-   * useCommand(commands.reviewComment, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  reviewComment: "i18n-ally.review.comment",
-  /**
-   * %review.approve%
-   * @value `i18n-ally.review.approve`
-   * @example
-   * useCommand(commands.reviewApprove, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  reviewApprove: "i18n-ally.review.approve",
-  /**
-   * %review.request_change%
-   * @value `i18n-ally.review.request-change`
-   * @example
-   * useCommand(commands.reviewRequestChange, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  reviewRequestChange: "i18n-ally.review.request-change",
-  /**
-   * %review.edit%
-   * @value `i18n-ally.review.edit`
-   * @example
-   * useCommand(commands.reviewEdit, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  reviewEdit: "i18n-ally.review.edit",
-  /**
-   * %review.resolve%
-   * @value `i18n-ally.review.resolve`
-   * @example
-   * useCommand(commands.reviewResolve, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  reviewResolve: "i18n-ally.review.resolve",
-  /**
-   * %review.resolve_all%
-   * @value `i18n-ally.review.resolve-thread`
-   * @example
-   * useCommand(commands.reviewResolveThread, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  reviewResolveThread: "i18n-ally.review.resolve-thread",
-  /**
-   * %review.apply_translation_candidate%
-   * @value `i18n-ally.review.apply-translation`
-   * @example
-   * useCommand(commands.reviewApplyTranslation, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  reviewApplyTranslation: "i18n-ally.review.apply-translation",
-  /**
-   * %review.apply_suggestion%
-   * @value `i18n-ally.review.apply-suggestion`
-   * @example
-   * useCommand(commands.reviewApplySuggestion, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  reviewApplySuggestion: "i18n-ally.review.apply-suggestion",
-  /**
-   * %command.insert_key%
-   * @value `i18n-ally.insert-key`
-   * @example
-   * useCommand(commands.insertKey, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  insertKey: "i18n-ally.insert-key",
-  /**
-   * %command.deepl_usage%
-   * @value `i18n-ally.deepl-usage`
-   * @example
-   * useCommand(commands.deeplUsage, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  deeplUsage: "i18n-ally.deepl-usage",
-  /**
-   * %command.go_to_range%
-   * @value `i18n-ally.go-to-range`
-   * @example
-   * useCommand(commands.goToRange, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  goToRange: "i18n-ally.go-to-range",
-  /**
-   * %command.go_to_next_usage%
-   * @value `i18n-ally.go-to-next-usage`
-   * @example
-   * useCommand(commands.goToNextUsage, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  goToNextUsage: "i18n-ally.go-to-next-usage",
-  /**
-   * %command.go_to_prev_usage%
-   * @value `i18n-ally.go-to-prev-usage`
-   * @example
-   * useCommand(commands.goToPrevUsage, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  goToPrevUsage: "i18n-ally.go-to-prev-usage",
-  /**
-   * %command.show_docs%
-   * @value `i18n-ally.open-docs-hard-string`
-   * @example
-   * useCommand(commands.openDocsHardString, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  openDocsHardString: "i18n-ally.open-docs-hard-string",
-  /**
-   * %command.extract.disable-auto-detect%
-   * @value `i18n-ally.extract-disable-auto-detect`
-   * @example
-   * useCommand(commands.extractDisableAutoDetect, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  extractDisableAutoDetect: "i18n-ally.extract-disable-auto-detect",
-  /**
-   * %command.extract.enable-auto-detect%
-   * @value `i18n-ally.extract-enable-auto-detect`
-   * @example
-   * useCommand(commands.extractEnableAutoDetect, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  extractEnableAutoDetect: "i18n-ally.extract-enable-auto-detect",
-} satisfies Record<string, CommandKey>
+export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+  return useCommand(commandFullKey, callback)
+}
+
+export function useCommandsBase(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
+  return useCommands(commands)
+}
+
+
 /**
  * %command.config_locales%
- * @value `i18n-ally.config-locales`
+ * @value `i18n-ally.config-locales` identifier of the command 
  */
 export function useCommandConfigLocales(callback: (...args: any[]) => any) {
-  useCommand(commands.configLocales, callback)
+  return useCommandBase("i18n-ally.config-locales", callback)
 }
+
 /**
  * %command.config_locales_auto%
- * @value `i18n-ally.config-locales-auto`
+ * @value `i18n-ally.config-locales-auto` identifier of the command 
  */
 export function useCommandConfigLocalesAuto(callback: (...args: any[]) => any) {
-  useCommand(commands.configLocalesAuto, callback)
+  return useCommandBase("i18n-ally.config-locales-auto", callback)
 }
+
 /**
  * %command.config_display_language%
- * @value `i18n-ally.config-display-language`
+ * @value `i18n-ally.config-display-language` identifier of the command 
  */
 export function useCommandConfigDisplayLanguage(callback: (...args: any[]) => any) {
-  useCommand(commands.configDisplayLanguage, callback)
+  return useCommandBase("i18n-ally.config-display-language", callback)
 }
+
 /**
  * %command.config_source_language%
- * @value `i18n-ally.config-source-language`
+ * @value `i18n-ally.config-source-language` identifier of the command 
  */
 export function useCommandConfigSourceLanguage(callback: (...args: any[]) => any) {
-  useCommand(commands.configSourceLanguage, callback)
+  return useCommandBase("i18n-ally.config-source-language", callback)
 }
+
 /**
  * %command.set_display_language%
- * @value `i18n-ally.set-display-language`
+ * @value `i18n-ally.set-display-language` identifier of the command 
  */
 export function useCommandSetDisplayLanguage(callback: (...args: any[]) => any) {
-  useCommand(commands.setDisplayLanguage, callback)
+  return useCommandBase("i18n-ally.set-display-language", callback)
 }
+
 /**
  * %command.set_source_language%
- * @value `i18n-ally.set-source-language`
+ * @value `i18n-ally.set-source-language` identifier of the command 
  */
 export function useCommandSetSourceLanguage(callback: (...args: any[]) => any) {
-  useCommand(commands.setSourceLanguage, callback)
+  return useCommandBase("i18n-ally.set-source-language", callback)
 }
+
 /**
  * %command.copy_key%
- * @value `i18n-ally.copy-key`
+ * @value `i18n-ally.copy-key` identifier of the command 
  */
 export function useCommandCopyKey(callback: (...args: any[]) => any) {
-  useCommand(commands.copyKey, callback)
+  return useCommandBase("i18n-ally.copy-key", callback)
 }
+
 /**
  * %command.translate_key%
- * @value `i18n-ally.translate-key`
+ * @value `i18n-ally.translate-key` identifier of the command 
  */
 export function useCommandTranslateKey(callback: (...args: any[]) => any) {
-  useCommand(commands.translateKey, callback)
+  return useCommandBase("i18n-ally.translate-key", callback)
 }
+
 /**
  * %command.edit_key%
- * @value `i18n-ally.edit-key`
+ * @value `i18n-ally.edit-key` identifier of the command 
  */
 export function useCommandEditKey(callback: (...args: any[]) => any) {
-  useCommand(commands.editKey, callback)
+  return useCommandBase("i18n-ally.edit-key", callback)
 }
+
 /**
  * %command.open_key%
- * @value `i18n-ally.open-key`
+ * @value `i18n-ally.open-key` identifier of the command 
  */
 export function useCommandOpenKey(callback: (...args: any[]) => any) {
-  useCommand(commands.openKey, callback)
+  return useCommandBase("i18n-ally.open-key", callback)
 }
+
 /**
  * %command.delete_key%
- * @value `i18n-ally.delete-key`
+ * @value `i18n-ally.delete-key` identifier of the command 
  */
 export function useCommandDeleteKey(callback: (...args: any[]) => any) {
-  useCommand(commands.deleteKey, callback)
+  return useCommandBase("i18n-ally.delete-key", callback)
 }
+
 /**
  * %command.rename_key%
- * @value `i18n-ally.rename-key`
+ * @value `i18n-ally.rename-key` identifier of the command 
  */
 export function useCommandRenameKey(callback: (...args: any[]) => any) {
-  useCommand(commands.renameKey, callback)
+  return useCommandBase("i18n-ally.rename-key", callback)
 }
+
 /**
  * %refactor.extract_text%
- * @value `i18n-ally.extract-text`
+ * @value `i18n-ally.extract-text` identifier of the command 
  */
 export function useCommandExtractText(callback: (...args: any[]) => any) {
-  useCommand(commands.extractText, callback)
+  return useCommandBase("i18n-ally.extract-text", callback)
 }
+
 /**
  * Extract all hard-coded strings (experimental)
- * @value `i18n-ally.extract-hard-strings-batch`
+ * @value `i18n-ally.extract-hard-strings-batch` identifier of the command 
  */
 export function useCommandExtractHardStringsBatch(callback: (...args: any[]) => any) {
-  useCommand(commands.extractHardStringsBatch, callback)
+  return useCommandBase("i18n-ally.extract-hard-strings-batch", callback)
 }
+
 /**
  * Detect hard-coded strings in current file (experimental)
- * @value `i18n-ally.detect_hard_strings`
+ * @value `i18n-ally.detect_hard_strings` identifier of the command 
  */
 export function useCommandDetectHardStrings(callback: (...args: any[]) => any) {
-  useCommand(commands.detectHardStrings, callback)
+  return useCommandBase("i18n-ally.detect_hard_strings", callback)
 }
+
 /**
  * %command.open_url%
- * @value `i18n-ally.open-url`
+ * @value `i18n-ally.open-url` identifier of the command 
  */
 export function useCommandOpenUrl(callback: (...args: any[]) => any) {
-  useCommand(commands.openUrl, callback)
+  return useCommandBase("i18n-ally.open-url", callback)
 }
+
 /**
  * %command.fulfill_keys%
- * @value `i18n-ally.fulfill-keys`
+ * @value `i18n-ally.fulfill-keys` identifier of the command 
  */
 export function useCommandFulfillKeys(callback: (...args: any[]) => any) {
-  useCommand(commands.fulfillKeys, callback)
+  return useCommandBase("i18n-ally.fulfill-keys", callback)
 }
+
 /**
  * %command.refresh_usage%
- * @value `i18n-ally.refresh-usage`
+ * @value `i18n-ally.refresh-usage` identifier of the command 
  */
 export function useCommandRefreshUsage(callback: (...args: any[]) => any) {
-  useCommand(commands.refreshUsage, callback)
+  return useCommandBase("i18n-ally.refresh-usage", callback)
 }
+
 /**
  * %feedback.support%
- * @value `i18n-ally.support`
+ * @value `i18n-ally.support` identifier of the command 
  */
 export function useCommandSupport(callback: (...args: any[]) => any) {
-  useCommand(commands.support, callback)
+  return useCommandBase("i18n-ally.support", callback)
 }
+
 /**
  * %command.locale_visibility_show%
- * @value `i18n-ally.locale-visibility-show`
+ * @value `i18n-ally.locale-visibility-show` identifier of the command 
  */
 export function useCommandLocaleVisibilityShow(callback: (...args: any[]) => any) {
-  useCommand(commands.localeVisibilityShow, callback)
+  return useCommandBase("i18n-ally.locale-visibility-show", callback)
 }
+
 /**
  * %command.locale_visibility_hide%
- * @value `i18n-ally.locale-visibility-hide`
+ * @value `i18n-ally.locale-visibility-hide` identifier of the command 
  */
 export function useCommandLocaleVisibilityHide(callback: (...args: any[]) => any) {
-  useCommand(commands.localeVisibilityHide, callback)
+  return useCommandBase("i18n-ally.locale-visibility-hide", callback)
 }
+
 /**
  * %command.new_key%
- * @value `i18n-ally.new-key`
+ * @value `i18n-ally.new-key` identifier of the command 
  */
 export function useCommandNewKey(callback: (...args: any[]) => any) {
-  useCommand(commands.newKey, callback)
+  return useCommandBase("i18n-ally.new-key", callback)
 }
+
 /**
  * %command.duplicate_key%
- * @value `i18n-ally.duplicate-key`
+ * @value `i18n-ally.duplicate-key` identifier of the command 
  */
 export function useCommandDuplicateKey(callback: (...args: any[]) => any) {
-  useCommand(commands.duplicateKey, callback)
+  return useCommandBase("i18n-ally.duplicate-key", callback)
 }
+
 /**
  * %command.mark_key_as_in_use%
- * @value `i18n-ally.mark-key-as-in-use`
+ * @value `i18n-ally.mark-key-as-in-use` identifier of the command 
  */
 export function useCommandMarkKeyAsInUse(callback: (...args: any[]) => any) {
-  useCommand(commands.markKeyAsInUse, callback)
+  return useCommandBase("i18n-ally.mark-key-as-in-use", callback)
 }
+
 /**
  * %command.open_in_editor%
- * @value `i18n-ally.open-in-editor`
+ * @value `i18n-ally.open-in-editor` identifier of the command 
  */
 export function useCommandOpenInEditor(callback: (...args: any[]) => any) {
-  useCommand(commands.openInEditor, callback)
+  return useCommandBase("i18n-ally.open-in-editor", callback)
 }
+
 /**
  * %command.open_editor%
- * @value `i18n-ally.open-editor`
+ * @value `i18n-ally.open-editor` identifier of the command 
  */
 export function useCommandOpenEditor(callback: (...args: any[]) => any) {
-  useCommand(commands.openEditor, callback)
+  return useCommandBase("i18n-ally.open-editor", callback)
 }
+
 /**
  * %review.leave_comment%
- * @value `i18n-ally.review.comment`
+ * @value `i18n-ally.review.comment` identifier of the command 
  */
 export function useCommandReviewComment(callback: (...args: any[]) => any) {
-  useCommand(commands.reviewComment, callback)
+  return useCommandBase("i18n-ally.review.comment", callback)
 }
+
 /**
  * %review.approve%
- * @value `i18n-ally.review.approve`
+ * @value `i18n-ally.review.approve` identifier of the command 
  */
 export function useCommandReviewApprove(callback: (...args: any[]) => any) {
-  useCommand(commands.reviewApprove, callback)
+  return useCommandBase("i18n-ally.review.approve", callback)
 }
+
 /**
  * %review.request_change%
- * @value `i18n-ally.review.request-change`
+ * @value `i18n-ally.review.request-change` identifier of the command 
  */
 export function useCommandReviewRequestChange(callback: (...args: any[]) => any) {
-  useCommand(commands.reviewRequestChange, callback)
+  return useCommandBase("i18n-ally.review.request-change", callback)
 }
+
 /**
  * %review.edit%
- * @value `i18n-ally.review.edit`
+ * @value `i18n-ally.review.edit` identifier of the command 
  */
 export function useCommandReviewEdit(callback: (...args: any[]) => any) {
-  useCommand(commands.reviewEdit, callback)
+  return useCommandBase("i18n-ally.review.edit", callback)
 }
+
 /**
  * %review.resolve%
- * @value `i18n-ally.review.resolve`
+ * @value `i18n-ally.review.resolve` identifier of the command 
  */
 export function useCommandReviewResolve(callback: (...args: any[]) => any) {
-  useCommand(commands.reviewResolve, callback)
+  return useCommandBase("i18n-ally.review.resolve", callback)
 }
+
 /**
  * %review.resolve_all%
- * @value `i18n-ally.review.resolve-thread`
+ * @value `i18n-ally.review.resolve-thread` identifier of the command 
  */
 export function useCommandReviewResolveThread(callback: (...args: any[]) => any) {
-  useCommand(commands.reviewResolveThread, callback)
+  return useCommandBase("i18n-ally.review.resolve-thread", callback)
 }
+
 /**
  * %review.apply_translation_candidate%
- * @value `i18n-ally.review.apply-translation`
+ * @value `i18n-ally.review.apply-translation` identifier of the command 
  */
 export function useCommandReviewApplyTranslation(callback: (...args: any[]) => any) {
-  useCommand(commands.reviewApplyTranslation, callback)
+  return useCommandBase("i18n-ally.review.apply-translation", callback)
 }
+
 /**
  * %review.apply_suggestion%
- * @value `i18n-ally.review.apply-suggestion`
+ * @value `i18n-ally.review.apply-suggestion` identifier of the command 
  */
 export function useCommandReviewApplySuggestion(callback: (...args: any[]) => any) {
-  useCommand(commands.reviewApplySuggestion, callback)
+  return useCommandBase("i18n-ally.review.apply-suggestion", callback)
 }
+
 /**
  * %command.insert_key%
- * @value `i18n-ally.insert-key`
+ * @value `i18n-ally.insert-key` identifier of the command 
  */
 export function useCommandInsertKey(callback: (...args: any[]) => any) {
-  useCommand(commands.insertKey, callback)
+  return useCommandBase("i18n-ally.insert-key", callback)
 }
+
 /**
  * %command.deepl_usage%
- * @value `i18n-ally.deepl-usage`
+ * @value `i18n-ally.deepl-usage` identifier of the command 
  */
 export function useCommandDeeplUsage(callback: (...args: any[]) => any) {
-  useCommand(commands.deeplUsage, callback)
+  return useCommandBase("i18n-ally.deepl-usage", callback)
 }
+
 /**
  * %command.go_to_range%
- * @value `i18n-ally.go-to-range`
+ * @value `i18n-ally.go-to-range` identifier of the command 
  */
 export function useCommandGoToRange(callback: (...args: any[]) => any) {
-  useCommand(commands.goToRange, callback)
+  return useCommandBase("i18n-ally.go-to-range", callback)
 }
+
 /**
  * %command.go_to_next_usage%
- * @value `i18n-ally.go-to-next-usage`
+ * @value `i18n-ally.go-to-next-usage` identifier of the command 
  */
 export function useCommandGoToNextUsage(callback: (...args: any[]) => any) {
-  useCommand(commands.goToNextUsage, callback)
+  return useCommandBase("i18n-ally.go-to-next-usage", callback)
 }
+
 /**
  * %command.go_to_prev_usage%
- * @value `i18n-ally.go-to-prev-usage`
+ * @value `i18n-ally.go-to-prev-usage` identifier of the command 
  */
 export function useCommandGoToPrevUsage(callback: (...args: any[]) => any) {
-  useCommand(commands.goToPrevUsage, callback)
+  return useCommandBase("i18n-ally.go-to-prev-usage", callback)
 }
+
 /**
  * %command.show_docs%
- * @value `i18n-ally.open-docs-hard-string`
+ * @value `i18n-ally.open-docs-hard-string` identifier of the command 
  */
 export function useCommandOpenDocsHardString(callback: (...args: any[]) => any) {
-  useCommand(commands.openDocsHardString, callback)
+  return useCommandBase("i18n-ally.open-docs-hard-string", callback)
 }
+
 /**
  * %command.extract.disable-auto-detect%
- * @value `i18n-ally.extract-disable-auto-detect`
+ * @value `i18n-ally.extract-disable-auto-detect` identifier of the command 
  */
 export function useCommandExtractDisableAutoDetect(callback: (...args: any[]) => any) {
-  useCommand(commands.extractDisableAutoDetect, callback)
+  return useCommandBase("i18n-ally.extract-disable-auto-detect", callback)
 }
+
 /**
  * %command.extract.enable-auto-detect%
- * @value `i18n-ally.extract-enable-auto-detect`
+ * @value `i18n-ally.extract-enable-auto-detect` identifier of the command 
  */
 export function useCommandExtractEnableAutoDetect(callback: (...args: any[]) => any) {
-  useCommand(commands.extractEnableAutoDetect, callback)
+  return useCommandBase("i18n-ally.extract-enable-auto-detect", callback)
 }
 
 
@@ -765,212 +432,159 @@ export type DeprecatedConfigKey =
   | "vue-i18n-ally.readonly"
 
 /**
- * Config keys of `i18n-ally`
+ * Section Type of `i18n-ally`
  */
 export interface I18nAlly {
   /**
    * %config.disabled%
-   * @default false
    */
   "disabled": boolean,
   /**
    * %config.auto_detection%
-   * @default true
    */
   "autoDetection": boolean,
   /**
    * %config.locales_paths%
-   * @default undefined
    */
   "localesPaths"?: (string | string[] | undefined),
   /**
    * %config.encoding%
-   * @default "utf-8"
    */
   "encoding": string,
   /**
    * %config.source_language%
-   * @default undefined
    */
   "sourceLanguage"?: (string | undefined),
   /**
    * %config.display_language%
-   * @default undefined
    */
   "displayLanguage"?: (string | undefined),
   /**
    * %config.ignored_locales%
-   * @default undefined
    */
   "ignoredLocales"?: (unknown[] | undefined),
   /**
    * %config.keystyle%
-   * @default undefined
    */
   "keystyle"?: ("auto" | "nested" | "flat" | undefined),
   /**
    * %config.dir_structure%
-   * @default undefined
    */
   "dirStructure"?: ("auto" | "file" | "dir" | undefined),
   /**
    * %config.annotations%
-   * @default true
    */
   "annotations": boolean,
   /**
    * %config.annotation_in_place%
-   * @default true
    */
   "annotationInPlace": boolean,
   /**
    * %config.annotation_max_length%
-   * @default 40
    */
   "annotationMaxLength": number,
   /**
    * %config.annotation_delimiter%
-   * @default "·"
    */
   "annotationDelimiter": string,
   /**
    * %config.include_subfolders%
-   * @default true
    */
   "includeSubfolders": boolean,
   /**
    * %config.full_reload_on_changed%
-   * @default false
    */
   "fullReloadOnChanged": boolean,
   /**
    * %config.show_flags%
-   * @default true
    */
   "showFlags": boolean,
   /**
    * %config.enabled_frameworks%
-   * @default undefined
    */
   "enabledFrameworks"?: (("vue" | "react" | "vscode" | "ngx-translate" | "i18next" | "react-i18next" | "i18next-shopify" | "i18n-tag" | "flutter" | "vue-sfc" | "ember" | "chrome-ext" | "ruby-rails" | "custom" | "laravel" | "transloco" | "svelte" | "globalize" | "ui5" | "next-translate" | "php-gettext" | "general" | "lingui" | "jekyll" | "fluent-vue" | "fluent-vue-sfc" | "next-intl" | "next-international")[] | undefined),
   /**
    * %config.enabled_parsers%
-   * @default undefined
    */
   "enabledParsers"?: (("js" | "ts" | "json" | "json5" | "yaml" | "ini" | "po" | "php" | "properties" | "ftl")[] | undefined),
   /**
    * %config.keys_in_use%
-   * @default undefined
    */
   "keysInUse"?: (string[] | undefined),
   /**
    * %config.sort_keys%
-   * @default false
    */
   "sortKeys": boolean,
   /**
    * %config.sort_compare%
-   * @default "binary"
    */
   "sortCompare": ("binary" | "locale"),
   /**
    * %config.sort_locale%
-   * @default undefined
    */
   "sortLocale"?: (string | undefined),
   /**
    * %config.preferred_delimiter%
-   * @default "-"
    */
   "preferredDelimiter": string,
   /**
    * %config.readonly%
-   * @default false
    */
   "readonly": boolean,
   /**
    * %config.keep_fulfill%
-   * @default false
    */
   "keepFulfilled": boolean,
   /**
    * %config.locale_country_map%
-   * @default {}
    */
   "localeCountryMap": Record<string, unknown>,
   /**
    * %config.indent%
-   * @default 2
    */
   "indent": number,
   /**
    * %config.disable_path_parsing%
-   * @default false
    */
   "disablePathParsing": boolean,
   /**
    * %config.tab_style%
-   * @default "space"
    */
   "tabStyle": ("space" | "tab"),
   /**
    * %config.namespace%
-   * @default undefined
    */
   "namespace"?: (boolean | undefined),
   /**
    * %config.path_matcher%
-   * @default undefined
    */
   "pathMatcher"?: (string | undefined),
   /**
    * %config.language_tag_system%
-   * @default "bcp47"
    */
   "languageTagSystem": ("bcp47" | "legacy" | "none"),
   /**
    * %config.ignore_files%
-   * @default undefined
    */
   "ignoreFiles"?: (string[] | undefined),
-  /**
-   * 
-   * @default "rgba(153, 153, 153, .8)"
-   */
   "theme.annotation": string,
-  /**
-   * 
-   * @default "rgba(153, 153, 153, .3)"
-   */
   "theme.annotationMissing": string,
-  /**
-   * 
-   * @default "rgba(153, 153, 153, .2)"
-   */
   "theme.annotationBorder": string,
-  /**
-   * 
-   * @default "rgba(153, 153, 153, .2)"
-   */
   "theme.annotationMissingBorder": string,
   /**
    * %config.regex_key%
-   * @default undefined
    */
   "regex.key"?: (string | undefined),
   /**
    * %config.regex_usage_match%
-   * @default undefined
    */
   "regex.usageMatch"?: (string[] | undefined),
   /**
    * %config.regex_usage_match_append%
-   * @default undefined
    */
   "regex.usageMatchAppend"?: (string[] | undefined),
   /**
    * %config.refactor_templates%
-   * @default undefined
    */
   "refactor.templates"?: ({
           /**
@@ -1001,218 +615,516 @@ export interface I18nAlly {
     }[] | undefined),
   /**
    * %config.translate_save_as_candidates%
-   * @default false
    */
   "translate.saveAsCandidates": boolean,
   /**
    * %config.translate.fallbackToKey%
-   * @default false
    */
   "translate.fallbackToKey": boolean,
   /**
    * %config.translate.engines%
-   * @default ["google"]
    */
   "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
   /**
    * %config.translate.parallels%
-   * @default 5
    */
   "translate.parallels": number,
   /**
    * %config.prompt_translating_source%
-   * @default false
    */
   "translate.promptSource": boolean,
   /**
    * %config.translate_override_existing%
-   * @default false
    */
   "translate.overrideExisting": boolean,
   /**
    * %config.google_api_key%
-   * @default null
    */
   "translate.google.apiKey": (string | null),
   /**
    * %config.deepl_api_key%
-   * @default null
    */
   "translate.deepl.apiKey": (string | null),
   /**
    * %config.baidu_appid%
-   * @default null
    */
   "translate.baidu.appid": (string | null),
   /**
    * %config.baidu_app_secret%
-   * @default null
    */
   "translate.baidu.apiSecret": (string | null),
   /**
    * %config.deepl_log%
-   * @default false
    */
   "translate.deepl.enableLog": boolean,
   /**
    * %config.deepl_use_free_api_entry%
-   * @default false
    */
   "translate.deepl.useFreeApiEntry": boolean,
   /**
    * %config.libretranslate_api_root%
-   * @default "http://localhost:5000"
    */
   "translate.libre.apiRoot": string,
   /**
    * %config.openai_api_key%
-   * @default null
    */
   "translate.openai.apiKey": (string | null),
   /**
    * %config.openai_api_root%
-   * @default "https://api.openai.com"
    */
   "translate.openai.apiRoot": string,
   /**
    * %config.openai_api_model%
-   * @default "gpt-3.5-turbo"
    */
   "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
   /**
    * %config.usage.scanning_ignore%
-   * @default undefined
    */
   "usage.scanningIgnore"?: (string[] | undefined),
   /**
    * %config.derived_keys%
-   * @default null
    */
   "usage.derivedKeyRules": (string[] | null),
-  /**
-   * 
-   * @default "app/views"
-   */
   "frameworks.ruby-rails.scopeRoot": string,
-  /**
-   * 
-   * @default "node_modules/ts-node/dist/bin.js"
-   */
   "parsers.typescript.tsNodePath": string,
-  /**
-   * 
-   * @default {}
-   */
   "parsers.typescript.compilerOptions": Record<string, unknown>,
-  /**
-   * 
-   * @default {}
-   */
   "parsers.extendFileExtensions": Record<string, unknown>,
   /**
    * %config.review_enabled%
-   * @default true
    */
   "review.enabled": boolean,
   /**
    * %config.review_gutters%
-   * @default true
    */
   "review.gutters": boolean,
   /**
    * %config.review_username%
-   * @default undefined
    */
   "review.user.name"?: (string | undefined),
   /**
    * %config.review_email%
-   * @default undefined
    */
   "review.user.email"?: (string | undefined),
   /**
    * %config.review_remove_on_resolved%
-   * @default false
    */
   "review.removeCommentOnResolved": boolean,
   /**
    * %config.editor_prefer_editor%
-   * @default false
    */
   "editor.preferEditor": boolean,
   /**
    * %config.keygen_strategy%
-   * @default "slug"
    */
   "extract.keygenStrategy": ("slug" | "random" | "empty" | "source"),
   /**
    * %config.keygen_style%
-   * @default "default"
    */
   "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
   /**
    * %config.key_prefix%
-   * @default ""
    */
   "extract.keyPrefix": string,
   /**
    * %config.key_max_length%
-   * @default null
    */
   "extract.keyMaxLength": (number | null),
   /**
    * %config.target_picking_strategy%
-   * @default "none"
    */
   "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
   /**
    * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-   * @default {}
    */
   "extract.parsers.html": Record<string, unknown>,
   /**
    * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-   * @default {}
    */
   "extract.parsers.babel": Record<string, unknown>,
   /**
    * Enables hard-coded strings detection automatically whenever opening a supported file
-   * @default false
    */
   "extract.autoDetect": boolean,
   /**
    * Strings to be ignored on hard-coded strings detection
-   * @default undefined
    */
   "extract.ignored"?: (string[] | undefined),
   /**
    * Strings to be ignored on hard-coded strings detection, by files
-   * @default {}
    */
   "extract.ignoredByFiles": Record<string, unknown>,
-  /**
-   * 
-   * @default undefined
-   */
   "parserOptions"?: Record<string, unknown>,
   /**
    * %config.default_namespace%
-   * @default undefined
    */
   "defaultNamespace"?: (string | undefined),
 }
 
 /**
- * Scoped defaults of `i18n-ally`
+ * Section Type of `i18n-ally.theme`
  */
-const _i18nAlly = {
+export interface Theme {
+  "annotation": string,
+  "annotationMissing": string,
+  "annotationBorder": string,
+  "annotationMissingBorder": string,
+}
+
+/**
+ * Section Type of `i18n-ally.regex`
+ */
+export interface Regex {
   /**
-   * scope: `i18n-ally`
+   * %config.regex_key%
    */
-  scope: "i18n-ally",
+  "key"?: (string | undefined),
   /**
-   * Keys' defaults of `i18n-ally`
+   * %config.regex_usage_match%
    */
-  defaults: {
+  "usageMatch"?: (string[] | undefined),
+  /**
+   * %config.regex_usage_match_append%
+   */
+  "usageMatchAppend"?: (string[] | undefined),
+}
+
+/**
+ * Section Type of `i18n-ally.refactor`
+ */
+export interface Refactor {
+  /**
+   * %config.refactor_templates%
+   */
+  "templates"?: ({
+          /**
+       * 
+       * @default `undefined`
+       */
+      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
+      /**
+       * 
+       * @default `undefined`
+       */
+      'template'?: string
+      /**
+       * 
+       * @default `undefined`
+       */
+      'templates'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'include'?: string[]
+      /**
+       * 
+       * @default `undefined`
+       */
+      'exclude'?: string[] 
+    }[] | undefined),
+}
+
+/**
+ * Section Type of `i18n-ally.translate`
+ */
+export interface Translate {
+  /**
+   * %config.translate_save_as_candidates%
+   */
+  "saveAsCandidates": boolean,
+  /**
+   * %config.translate.fallbackToKey%
+   */
+  "fallbackToKey": boolean,
+  /**
+   * %config.translate.engines%
+   */
+  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
+  /**
+   * %config.translate.parallels%
+   */
+  "parallels": number,
+  /**
+   * %config.prompt_translating_source%
+   */
+  "promptSource": boolean,
+  /**
+   * %config.translate_override_existing%
+   */
+  "overrideExisting": boolean,
+  /**
+   * %config.google_api_key%
+   */
+  "google.apiKey": (string | null),
+  /**
+   * %config.deepl_api_key%
+   */
+  "deepl.apiKey": (string | null),
+  /**
+   * %config.baidu_appid%
+   */
+  "baidu.appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   */
+  "baidu.apiSecret": (string | null),
+  /**
+   * %config.deepl_log%
+   */
+  "deepl.enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   */
+  "deepl.useFreeApiEntry": boolean,
+  /**
+   * %config.libretranslate_api_root%
+   */
+  "libre.apiRoot": string,
+  /**
+   * %config.openai_api_key%
+   */
+  "openai.apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   */
+  "openai.apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   */
+  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Section Type of `i18n-ally.translate.google`
+ */
+export interface TranslateGoogle {
+  /**
+   * %config.google_api_key%
+   */
+  "apiKey": (string | null),
+}
+
+/**
+ * Section Type of `i18n-ally.translate.deepl`
+ */
+export interface TranslateDeepl {
+  /**
+   * %config.deepl_api_key%
+   */
+  "apiKey": (string | null),
+  /**
+   * %config.deepl_log%
+   */
+  "enableLog": boolean,
+  /**
+   * %config.deepl_use_free_api_entry%
+   */
+  "useFreeApiEntry": boolean,
+}
+
+/**
+ * Section Type of `i18n-ally.translate.baidu`
+ */
+export interface TranslateBaidu {
+  /**
+   * %config.baidu_appid%
+   */
+  "appid": (string | null),
+  /**
+   * %config.baidu_app_secret%
+   */
+  "apiSecret": (string | null),
+}
+
+/**
+ * Section Type of `i18n-ally.translate.libre`
+ */
+export interface TranslateLibre {
+  /**
+   * %config.libretranslate_api_root%
+   */
+  "apiRoot": string,
+}
+
+/**
+ * Section Type of `i18n-ally.translate.openai`
+ */
+export interface TranslateOpenai {
+  /**
+   * %config.openai_api_key%
+   */
+  "apiKey": (string | null),
+  /**
+   * %config.openai_api_root%
+   */
+  "apiRoot": string,
+  /**
+   * %config.openai_api_model%
+   */
+  "apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
+}
+
+/**
+ * Section Type of `i18n-ally.usage`
+ */
+export interface Usage {
+  /**
+   * %config.usage.scanning_ignore%
+   */
+  "scanningIgnore"?: (string[] | undefined),
+  /**
+   * %config.derived_keys%
+   */
+  "derivedKeyRules": (string[] | null),
+}
+
+/**
+ * Section Type of `i18n-ally.frameworks`
+ */
+export interface Frameworks {
+  "ruby-rails.scopeRoot": string,
+}
+
+/**
+ * Section Type of `i18n-ally.frameworks.ruby-rails`
+ */
+export interface FrameworksRubyRails {
+  "scopeRoot": string,
+}
+
+/**
+ * Section Type of `i18n-ally.parsers`
+ */
+export interface Parsers {
+  "typescript.tsNodePath": string,
+  "typescript.compilerOptions": Record<string, unknown>,
+  "extendFileExtensions": Record<string, unknown>,
+}
+
+/**
+ * Section Type of `i18n-ally.parsers.typescript`
+ */
+export interface ParsersTypescript {
+  "tsNodePath": string,
+  "compilerOptions": Record<string, unknown>,
+}
+
+/**
+ * Section Type of `i18n-ally.review`
+ */
+export interface Review {
+  /**
+   * %config.review_enabled%
+   */
+  "enabled": boolean,
+  /**
+   * %config.review_gutters%
+   */
+  "gutters": boolean,
+  /**
+   * %config.review_username%
+   */
+  "user.name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   */
+  "user.email"?: (string | undefined),
+  /**
+   * %config.review_remove_on_resolved%
+   */
+  "removeCommentOnResolved": boolean,
+}
+
+/**
+ * Section Type of `i18n-ally.review.user`
+ */
+export interface ReviewUser {
+  /**
+   * %config.review_username%
+   */
+  "name"?: (string | undefined),
+  /**
+   * %config.review_email%
+   */
+  "email"?: (string | undefined),
+}
+
+/**
+ * Section Type of `i18n-ally.editor`
+ */
+export interface Editor {
+  /**
+   * %config.editor_prefer_editor%
+   */
+  "preferEditor": boolean,
+}
+
+/**
+ * Section Type of `i18n-ally.extract`
+ */
+export interface Extract {
+  /**
+   * %config.keygen_strategy%
+   */
+  "keygenStrategy": ("slug" | "random" | "empty" | "source"),
+  /**
+   * %config.keygen_style%
+   */
+  "keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
+  /**
+   * %config.key_prefix%
+   */
+  "keyPrefix": string,
+  /**
+   * %config.key_max_length%
+   */
+  "keyMaxLength": (number | null),
+  /**
+   * %config.target_picking_strategy%
+   */
+  "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   */
+  "parsers.html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   */
+  "parsers.babel": Record<string, unknown>,
+  /**
+   * Enables hard-coded strings detection automatically whenever opening a supported file
+   */
+  "autoDetect": boolean,
+  /**
+   * Strings to be ignored on hard-coded strings detection
+   */
+  "ignored"?: (string[] | undefined),
+  /**
+   * Strings to be ignored on hard-coded strings detection, by files
+   */
+  "ignoredByFiles": Record<string, unknown>,
+}
+
+/**
+ * Section Type of `i18n-ally.extract.parsers`
+ */
+export interface ExtractParsers {
+  /**
+   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   */
+  "html": Record<string, unknown>,
+  /**
+   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
+   */
+  "babel": Record<string, unknown>,
+}
+
+const i18nAllyConfig = {
+
+  /**
+   * Section defaults of `i18n-ally`
+   */
+  "i18n-ally": {
     /**
      * %config.disabled%
      */
@@ -1510,135 +1422,24 @@ const _i18nAlly = {
      * %config.default_namespace%
      */
     "defaultNamespace": undefined,
-  } satisfies I18nAlly,
-}
+  } satisfies I18nAlly as I18nAlly,
 
-/**
- * Reactive ConfigObject of `i18n-ally`
- * @example
- * const configValue = useConfigObjectI18nAlly.disabled //get value 
- * useConfigObjectI18nAlly.disabled = true // set value
- * useConfigObjectI18nAlly.$update("disabled", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectI18nAlly = defineConfigObject<I18nAlly>(
-  _i18nAlly.scope,
-  _i18nAlly.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally`
- * @example
- * const configValue:boolean =useConfigsI18nAlly.disabled.value //get value 
- * useConfigsI18nAlly.disabled.value = false // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsI18nAlly.disabled.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsI18nAlly = defineConfigs<I18nAlly>(
-  _i18nAlly.scope,
-  _i18nAlly.defaults
-)
 
-/**
- * Config keys of `i18n-ally.theme`
- */
-export interface Theme {
   /**
-   * 
-   * @default "rgba(153, 153, 153, .8)"
+   * Section defaults of `i18n-ally.theme`
    */
-  "annotation": string,
-  /**
-   * 
-   * @default "rgba(153, 153, 153, .3)"
-   */
-  "annotationMissing": string,
-  /**
-   * 
-   * @default "rgba(153, 153, 153, .2)"
-   */
-  "annotationBorder": string,
-  /**
-   * 
-   * @default "rgba(153, 153, 153, .2)"
-   */
-  "annotationMissingBorder": string,
-}
-
-/**
- * Scoped defaults of `i18n-ally.theme`
- */
-const _theme = {
-  /**
-   * scope: `i18n-ally.theme`
-   */
-  scope: "i18n-ally.theme",
-  /**
-   * Keys' defaults of `i18n-ally.theme`
-   */
-  defaults: {
+  "i18n-ally.theme": {
     "annotation": "rgba(153, 153, 153, .8)",
     "annotationMissing": "rgba(153, 153, 153, .3)",
     "annotationBorder": "rgba(153, 153, 153, .2)",
     "annotationMissingBorder": "rgba(153, 153, 153, .2)",
-  } satisfies Theme,
-}
+  } satisfies Theme as Theme,
 
-/**
- * Reactive ConfigObject of `i18n-ally.theme`
- * @example
- * const configValue = useConfigObjectTheme.annotation //get value 
- * useConfigObjectTheme.annotation = true // set value
- * useConfigObjectTheme.$update("annotation", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectTheme = defineConfigObject<Theme>(
-  _theme.scope,
-  _theme.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.theme`
- * @example
- * const configValue:string =useConfigsTheme.annotation.value //get value 
- * useConfigsTheme.annotation.value = "rgba(153, 153, 153, .8)" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTheme.annotation.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTheme = defineConfigs<Theme>(
-  _theme.scope,
-  _theme.defaults
-)
 
-/**
- * Config keys of `i18n-ally.regex`
- */
-export interface Regex {
   /**
-   * %config.regex_key%
-   * @default undefined
+   * Section defaults of `i18n-ally.regex`
    */
-  "key"?: (string | undefined),
-  /**
-   * %config.regex_usage_match%
-   * @default undefined
-   */
-  "usageMatch"?: (string[] | undefined),
-  /**
-   * %config.regex_usage_match_append%
-   * @default undefined
-   */
-  "usageMatchAppend"?: (string[] | undefined),
-}
-
-/**
- * Scoped defaults of `i18n-ally.regex`
- */
-const _regex = {
-  /**
-   * scope: `i18n-ally.regex`
-   */
-  scope: "i18n-ally.regex",
-  /**
-   * Keys' defaults of `i18n-ally.regex`
-   */
-  defaults: {
+  "i18n-ally.regex": {
     /**
      * %config.regex_key%
      */
@@ -1651,211 +1452,24 @@ const _regex = {
      * %config.regex_usage_match_append%
      */
     "usageMatchAppend": undefined,
-  } satisfies Regex,
-}
+  } satisfies Regex as Regex,
 
-/**
- * Reactive ConfigObject of `i18n-ally.regex`
- * @example
- * const configValue = useConfigObjectRegex.key //get value 
- * useConfigObjectRegex.key = true // set value
- * useConfigObjectRegex.$update("key", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectRegex = defineConfigObject<Regex>(
-  _regex.scope,
-  _regex.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.regex`
- * @example
- * const configValue:string =useConfigsRegex.key.value //get value 
- * useConfigsRegex.key.value = undefined // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsRegex.key.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsRegex = defineConfigs<Regex>(
-  _regex.scope,
-  _regex.defaults
-)
 
-/**
- * Config keys of `i18n-ally.refactor`
- */
-export interface Refactor {
   /**
-   * %config.refactor_templates%
-   * @default undefined
+   * Section defaults of `i18n-ally.refactor`
    */
-  "templates"?: ({
-          /**
-       * 
-       * @default `undefined`
-       */
-      'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text")
-      /**
-       * 
-       * @default `undefined`
-       */
-      'template'?: string
-      /**
-       * 
-       * @default `undefined`
-       */
-      'templates'?: string[]
-      /**
-       * 
-       * @default `undefined`
-       */
-      'include'?: string[]
-      /**
-       * 
-       * @default `undefined`
-       */
-      'exclude'?: string[] 
-    }[] | undefined),
-}
-
-/**
- * Scoped defaults of `i18n-ally.refactor`
- */
-const _refactor = {
-  /**
-   * scope: `i18n-ally.refactor`
-   */
-  scope: "i18n-ally.refactor",
-  /**
-   * Keys' defaults of `i18n-ally.refactor`
-   */
-  defaults: {
+  "i18n-ally.refactor": {
     /**
      * %config.refactor_templates%
      */
     "templates": undefined,
-  } satisfies Refactor,
-}
+  } satisfies Refactor as Refactor,
 
-/**
- * Reactive ConfigObject of `i18n-ally.refactor`
- * @example
- * const configValue = useConfigObjectRefactor.templates //get value 
- * useConfigObjectRefactor.templates = true // set value
- * useConfigObjectRefactor.$update("templates", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectRefactor = defineConfigObject<Refactor>(
-  _refactor.scope,
-  _refactor.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.refactor`
- * @example
- * const configValue:array =useConfigsRefactor.templates.value //get value 
- * useConfigsRefactor.templates.value = undefined // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsRefactor.templates.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsRefactor = defineConfigs<Refactor>(
-  _refactor.scope,
-  _refactor.defaults
-)
 
-/**
- * Config keys of `i18n-ally.translate`
- */
-export interface Translate {
   /**
-   * %config.translate_save_as_candidates%
-   * @default false
+   * Section defaults of `i18n-ally.translate`
    */
-  "saveAsCandidates": boolean,
-  /**
-   * %config.translate.fallbackToKey%
-   * @default false
-   */
-  "fallbackToKey": boolean,
-  /**
-   * %config.translate.engines%
-   * @default ["google"]
-   */
-  "engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[],
-  /**
-   * %config.translate.parallels%
-   * @default 5
-   */
-  "parallels": number,
-  /**
-   * %config.prompt_translating_source%
-   * @default false
-   */
-  "promptSource": boolean,
-  /**
-   * %config.translate_override_existing%
-   * @default false
-   */
-  "overrideExisting": boolean,
-  /**
-   * %config.google_api_key%
-   * @default null
-   */
-  "google.apiKey": (string | null),
-  /**
-   * %config.deepl_api_key%
-   * @default null
-   */
-  "deepl.apiKey": (string | null),
-  /**
-   * %config.baidu_appid%
-   * @default null
-   */
-  "baidu.appid": (string | null),
-  /**
-   * %config.baidu_app_secret%
-   * @default null
-   */
-  "baidu.apiSecret": (string | null),
-  /**
-   * %config.deepl_log%
-   * @default false
-   */
-  "deepl.enableLog": boolean,
-  /**
-   * %config.deepl_use_free_api_entry%
-   * @default false
-   */
-  "deepl.useFreeApiEntry": boolean,
-  /**
-   * %config.libretranslate_api_root%
-   * @default "http://localhost:5000"
-   */
-  "libre.apiRoot": string,
-  /**
-   * %config.openai_api_key%
-   * @default null
-   */
-  "openai.apiKey": (string | null),
-  /**
-   * %config.openai_api_root%
-   * @default "https://api.openai.com"
-   */
-  "openai.apiRoot": string,
-  /**
-   * %config.openai_api_model%
-   * @default "gpt-3.5-turbo"
-   */
-  "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
-}
-
-/**
- * Scoped defaults of `i18n-ally.translate`
- */
-const _translate = {
-  /**
-   * scope: `i18n-ally.translate`
-   */
-  scope: "i18n-ally.translate",
-  /**
-   * Keys' defaults of `i18n-ally.translate`
-   */
-  defaults: {
+  "i18n-ally.translate": {
     /**
      * %config.translate_save_as_candidates%
      */
@@ -1920,120 +1534,24 @@ const _translate = {
      * %config.openai_api_model%
      */
     "openai.apiModel": "gpt-3.5-turbo",
-  } satisfies Translate,
-}
+  } satisfies Translate as Translate,
 
-/**
- * Reactive ConfigObject of `i18n-ally.translate`
- * @example
- * const configValue = useConfigObjectTranslate.saveAsCandidates //get value 
- * useConfigObjectTranslate.saveAsCandidates = true // set value
- * useConfigObjectTranslate.$update("saveAsCandidates", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectTranslate = defineConfigObject<Translate>(
-  _translate.scope,
-  _translate.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.translate`
- * @example
- * const configValue:boolean =useConfigsTranslate.saveAsCandidates.value //get value 
- * useConfigsTranslate.saveAsCandidates.value = false // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTranslate.saveAsCandidates.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTranslate = defineConfigs<Translate>(
-  _translate.scope,
-  _translate.defaults
-)
 
-/**
- * Config keys of `i18n-ally.translate.google`
- */
-export interface TranslateGoogle {
   /**
-   * %config.google_api_key%
-   * @default null
+   * Section defaults of `i18n-ally.translate.google`
    */
-  "apiKey": (string | null),
-}
-
-/**
- * Scoped defaults of `i18n-ally.translate.google`
- */
-const _translateGoogle = {
-  /**
-   * scope: `i18n-ally.translate.google`
-   */
-  scope: "i18n-ally.translate.google",
-  /**
-   * Keys' defaults of `i18n-ally.translate.google`
-   */
-  defaults: {
+  "i18n-ally.translate.google": {
     /**
      * %config.google_api_key%
      */
     "apiKey": null,
-  } satisfies TranslateGoogle,
-}
+  } satisfies TranslateGoogle as TranslateGoogle,
 
-/**
- * Reactive ConfigObject of `i18n-ally.translate.google`
- * @example
- * const configValue = useConfigObjectTranslateGoogle.apiKey //get value 
- * useConfigObjectTranslateGoogle.apiKey = true // set value
- * useConfigObjectTranslateGoogle.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectTranslateGoogle = defineConfigObject<TranslateGoogle>(
-  _translateGoogle.scope,
-  _translateGoogle.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.translate.google`
- * @example
- * const configValue:string =useConfigsTranslateGoogle.apiKey.value //get value 
- * useConfigsTranslateGoogle.apiKey.value = null // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTranslateGoogle.apiKey.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTranslateGoogle = defineConfigs<TranslateGoogle>(
-  _translateGoogle.scope,
-  _translateGoogle.defaults
-)
 
-/**
- * Config keys of `i18n-ally.translate.deepl`
- */
-export interface TranslateDeepl {
   /**
-   * %config.deepl_api_key%
-   * @default null
+   * Section defaults of `i18n-ally.translate.deepl`
    */
-  "apiKey": (string | null),
-  /**
-   * %config.deepl_log%
-   * @default false
-   */
-  "enableLog": boolean,
-  /**
-   * %config.deepl_use_free_api_entry%
-   * @default false
-   */
-  "useFreeApiEntry": boolean,
-}
-
-/**
- * Scoped defaults of `i18n-ally.translate.deepl`
- */
-const _translateDeepl = {
-  /**
-   * scope: `i18n-ally.translate.deepl`
-   */
-  scope: "i18n-ally.translate.deepl",
-  /**
-   * Keys' defaults of `i18n-ally.translate.deepl`
-   */
-  defaults: {
+  "i18n-ally.translate.deepl": {
     /**
      * %config.deepl_api_key%
      */
@@ -2046,61 +1564,13 @@ const _translateDeepl = {
      * %config.deepl_use_free_api_entry%
      */
     "useFreeApiEntry": false,
-  } satisfies TranslateDeepl,
-}
+  } satisfies TranslateDeepl as TranslateDeepl,
 
-/**
- * Reactive ConfigObject of `i18n-ally.translate.deepl`
- * @example
- * const configValue = useConfigObjectTranslateDeepl.apiKey //get value 
- * useConfigObjectTranslateDeepl.apiKey = true // set value
- * useConfigObjectTranslateDeepl.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectTranslateDeepl = defineConfigObject<TranslateDeepl>(
-  _translateDeepl.scope,
-  _translateDeepl.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.translate.deepl`
- * @example
- * const configValue:string =useConfigsTranslateDeepl.apiKey.value //get value 
- * useConfigsTranslateDeepl.apiKey.value = null // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTranslateDeepl.apiKey.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTranslateDeepl = defineConfigs<TranslateDeepl>(
-  _translateDeepl.scope,
-  _translateDeepl.defaults
-)
 
-/**
- * Config keys of `i18n-ally.translate.baidu`
- */
-export interface TranslateBaidu {
   /**
-   * %config.baidu_appid%
-   * @default null
+   * Section defaults of `i18n-ally.translate.baidu`
    */
-  "appid": (string | null),
-  /**
-   * %config.baidu_app_secret%
-   * @default null
-   */
-  "apiSecret": (string | null),
-}
-
-/**
- * Scoped defaults of `i18n-ally.translate.baidu`
- */
-const _translateBaidu = {
-  /**
-   * scope: `i18n-ally.translate.baidu`
-   */
-  scope: "i18n-ally.translate.baidu",
-  /**
-   * Keys' defaults of `i18n-ally.translate.baidu`
-   */
-  defaults: {
+  "i18n-ally.translate.baidu": {
     /**
      * %config.baidu_appid%
      */
@@ -2109,120 +1579,24 @@ const _translateBaidu = {
      * %config.baidu_app_secret%
      */
     "apiSecret": null,
-  } satisfies TranslateBaidu,
-}
+  } satisfies TranslateBaidu as TranslateBaidu,
 
-/**
- * Reactive ConfigObject of `i18n-ally.translate.baidu`
- * @example
- * const configValue = useConfigObjectTranslateBaidu.appid //get value 
- * useConfigObjectTranslateBaidu.appid = true // set value
- * useConfigObjectTranslateBaidu.$update("appid", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectTranslateBaidu = defineConfigObject<TranslateBaidu>(
-  _translateBaidu.scope,
-  _translateBaidu.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.translate.baidu`
- * @example
- * const configValue:string =useConfigsTranslateBaidu.appid.value //get value 
- * useConfigsTranslateBaidu.appid.value = null // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTranslateBaidu.appid.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTranslateBaidu = defineConfigs<TranslateBaidu>(
-  _translateBaidu.scope,
-  _translateBaidu.defaults
-)
 
-/**
- * Config keys of `i18n-ally.translate.libre`
- */
-export interface TranslateLibre {
   /**
-   * %config.libretranslate_api_root%
-   * @default "http://localhost:5000"
+   * Section defaults of `i18n-ally.translate.libre`
    */
-  "apiRoot": string,
-}
-
-/**
- * Scoped defaults of `i18n-ally.translate.libre`
- */
-const _translateLibre = {
-  /**
-   * scope: `i18n-ally.translate.libre`
-   */
-  scope: "i18n-ally.translate.libre",
-  /**
-   * Keys' defaults of `i18n-ally.translate.libre`
-   */
-  defaults: {
+  "i18n-ally.translate.libre": {
     /**
      * %config.libretranslate_api_root%
      */
     "apiRoot": "http://localhost:5000",
-  } satisfies TranslateLibre,
-}
+  } satisfies TranslateLibre as TranslateLibre,
 
-/**
- * Reactive ConfigObject of `i18n-ally.translate.libre`
- * @example
- * const configValue = useConfigObjectTranslateLibre.apiRoot //get value 
- * useConfigObjectTranslateLibre.apiRoot = true // set value
- * useConfigObjectTranslateLibre.$update("apiRoot", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectTranslateLibre = defineConfigObject<TranslateLibre>(
-  _translateLibre.scope,
-  _translateLibre.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.translate.libre`
- * @example
- * const configValue:string =useConfigsTranslateLibre.apiRoot.value //get value 
- * useConfigsTranslateLibre.apiRoot.value = "http://localhost:5000" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTranslateLibre.apiRoot.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTranslateLibre = defineConfigs<TranslateLibre>(
-  _translateLibre.scope,
-  _translateLibre.defaults
-)
 
-/**
- * Config keys of `i18n-ally.translate.openai`
- */
-export interface TranslateOpenai {
   /**
-   * %config.openai_api_key%
-   * @default null
+   * Section defaults of `i18n-ally.translate.openai`
    */
-  "apiKey": (string | null),
-  /**
-   * %config.openai_api_root%
-   * @default "https://api.openai.com"
-   */
-  "apiRoot": string,
-  /**
-   * %config.openai_api_model%
-   * @default "gpt-3.5-turbo"
-   */
-  "apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613"),
-}
-
-/**
- * Scoped defaults of `i18n-ally.translate.openai`
- */
-const _translateOpenai = {
-  /**
-   * scope: `i18n-ally.translate.openai`
-   */
-  scope: "i18n-ally.translate.openai",
-  /**
-   * Keys' defaults of `i18n-ally.translate.openai`
-   */
-  defaults: {
+  "i18n-ally.translate.openai": {
     /**
      * %config.openai_api_key%
      */
@@ -2235,61 +1609,13 @@ const _translateOpenai = {
      * %config.openai_api_model%
      */
     "apiModel": "gpt-3.5-turbo",
-  } satisfies TranslateOpenai,
-}
+  } satisfies TranslateOpenai as TranslateOpenai,
 
-/**
- * Reactive ConfigObject of `i18n-ally.translate.openai`
- * @example
- * const configValue = useConfigObjectTranslateOpenai.apiKey //get value 
- * useConfigObjectTranslateOpenai.apiKey = true // set value
- * useConfigObjectTranslateOpenai.$update("apiKey", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectTranslateOpenai = defineConfigObject<TranslateOpenai>(
-  _translateOpenai.scope,
-  _translateOpenai.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.translate.openai`
- * @example
- * const configValue:string =useConfigsTranslateOpenai.apiKey.value //get value 
- * useConfigsTranslateOpenai.apiKey.value = null // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsTranslateOpenai.apiKey.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsTranslateOpenai = defineConfigs<TranslateOpenai>(
-  _translateOpenai.scope,
-  _translateOpenai.defaults
-)
 
-/**
- * Config keys of `i18n-ally.usage`
- */
-export interface Usage {
   /**
-   * %config.usage.scanning_ignore%
-   * @default undefined
+   * Section defaults of `i18n-ally.usage`
    */
-  "scanningIgnore"?: (string[] | undefined),
-  /**
-   * %config.derived_keys%
-   * @default null
-   */
-  "derivedKeyRules": (string[] | null),
-}
-
-/**
- * Scoped defaults of `i18n-ally.usage`
- */
-const _usage = {
-  /**
-   * scope: `i18n-ally.usage`
-   */
-  scope: "i18n-ally.usage",
-  /**
-   * Keys' defaults of `i18n-ally.usage`
-   */
-  defaults: {
+  "i18n-ally.usage": {
     /**
      * %config.usage.scanning_ignore%
      */
@@ -2298,298 +1624,48 @@ const _usage = {
      * %config.derived_keys%
      */
     "derivedKeyRules": null,
-  } satisfies Usage,
-}
+  } satisfies Usage as Usage,
 
-/**
- * Reactive ConfigObject of `i18n-ally.usage`
- * @example
- * const configValue = useConfigObjectUsage.scanningIgnore //get value 
- * useConfigObjectUsage.scanningIgnore = true // set value
- * useConfigObjectUsage.$update("scanningIgnore", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectUsage = defineConfigObject<Usage>(
-  _usage.scope,
-  _usage.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.usage`
- * @example
- * const configValue:array =useConfigsUsage.scanningIgnore.value //get value 
- * useConfigsUsage.scanningIgnore.value = undefined // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsUsage.scanningIgnore.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsUsage = defineConfigs<Usage>(
-  _usage.scope,
-  _usage.defaults
-)
 
-/**
- * Config keys of `i18n-ally.frameworks`
- */
-export interface Frameworks {
   /**
-   * 
-   * @default "app/views"
+   * Section defaults of `i18n-ally.frameworks`
    */
-  "ruby-rails.scopeRoot": string,
-}
-
-/**
- * Scoped defaults of `i18n-ally.frameworks`
- */
-const _frameworks = {
-  /**
-   * scope: `i18n-ally.frameworks`
-   */
-  scope: "i18n-ally.frameworks",
-  /**
-   * Keys' defaults of `i18n-ally.frameworks`
-   */
-  defaults: {
+  "i18n-ally.frameworks": {
     "ruby-rails.scopeRoot": "app/views",
-  } satisfies Frameworks,
-}
+  } satisfies Frameworks as Frameworks,
 
-/**
- * Reactive ConfigObject of `i18n-ally.frameworks`
- * @example
- * const configValue = useConfigObjectFrameworks.ruby-rails.scopeRoot //get value 
- * useConfigObjectFrameworks.ruby-rails.scopeRoot = true // set value
- * useConfigObjectFrameworks.$update("ruby-rails.scopeRoot", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectFrameworks = defineConfigObject<Frameworks>(
-  _frameworks.scope,
-  _frameworks.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.frameworks`
- * @example
- * const configValue:string =useConfigsFrameworks.ruby-rails.scopeRoot.value //get value 
- * useConfigsFrameworks.ruby-rails.scopeRoot.value = "app/views" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsFrameworks.ruby-rails.scopeRoot.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsFrameworks = defineConfigs<Frameworks>(
-  _frameworks.scope,
-  _frameworks.defaults
-)
 
-/**
- * Config keys of `i18n-ally.frameworks.ruby-rails`
- */
-export interface FrameworksRubyRails {
   /**
-   * 
-   * @default "app/views"
+   * Section defaults of `i18n-ally.frameworks.ruby-rails`
    */
-  "scopeRoot": string,
-}
-
-/**
- * Scoped defaults of `i18n-ally.frameworks.ruby-rails`
- */
-const _frameworksRubyRails = {
-  /**
-   * scope: `i18n-ally.frameworks.ruby-rails`
-   */
-  scope: "i18n-ally.frameworks.ruby-rails",
-  /**
-   * Keys' defaults of `i18n-ally.frameworks.ruby-rails`
-   */
-  defaults: {
+  "i18n-ally.frameworks.ruby-rails": {
     "scopeRoot": "app/views",
-  } satisfies FrameworksRubyRails,
-}
+  } satisfies FrameworksRubyRails as FrameworksRubyRails,
 
-/**
- * Reactive ConfigObject of `i18n-ally.frameworks.ruby-rails`
- * @example
- * const configValue = useConfigObjectFrameworksRubyRails.scopeRoot //get value 
- * useConfigObjectFrameworksRubyRails.scopeRoot = true // set value
- * useConfigObjectFrameworksRubyRails.$update("scopeRoot", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectFrameworksRubyRails = defineConfigObject<FrameworksRubyRails>(
-  _frameworksRubyRails.scope,
-  _frameworksRubyRails.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.frameworks.ruby-rails`
- * @example
- * const configValue:string =useConfigsFrameworksRubyRails.scopeRoot.value //get value 
- * useConfigsFrameworksRubyRails.scopeRoot.value = "app/views" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsFrameworksRubyRails.scopeRoot.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsFrameworksRubyRails = defineConfigs<FrameworksRubyRails>(
-  _frameworksRubyRails.scope,
-  _frameworksRubyRails.defaults
-)
 
-/**
- * Config keys of `i18n-ally.parsers`
- */
-export interface Parsers {
   /**
-   * 
-   * @default "node_modules/ts-node/dist/bin.js"
+   * Section defaults of `i18n-ally.parsers`
    */
-  "typescript.tsNodePath": string,
-  /**
-   * 
-   * @default {}
-   */
-  "typescript.compilerOptions": Record<string, unknown>,
-  /**
-   * 
-   * @default {}
-   */
-  "extendFileExtensions": Record<string, unknown>,
-}
-
-/**
- * Scoped defaults of `i18n-ally.parsers`
- */
-const _parsers = {
-  /**
-   * scope: `i18n-ally.parsers`
-   */
-  scope: "i18n-ally.parsers",
-  /**
-   * Keys' defaults of `i18n-ally.parsers`
-   */
-  defaults: {
+  "i18n-ally.parsers": {
     "typescript.tsNodePath": "node_modules/ts-node/dist/bin.js",
     "typescript.compilerOptions": {},
     "extendFileExtensions": {},
-  } satisfies Parsers,
-}
+  } satisfies Parsers as Parsers,
 
-/**
- * Reactive ConfigObject of `i18n-ally.parsers`
- * @example
- * const configValue = useConfigObjectParsers.typescript.tsNodePath //get value 
- * useConfigObjectParsers.typescript.tsNodePath = true // set value
- * useConfigObjectParsers.$update("typescript.tsNodePath", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectParsers = defineConfigObject<Parsers>(
-  _parsers.scope,
-  _parsers.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.parsers`
- * @example
- * const configValue:string =useConfigsParsers.typescript.tsNodePath.value //get value 
- * useConfigsParsers.typescript.tsNodePath.value = "node_modules/ts-node/dist/bin.js" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsParsers.typescript.tsNodePath.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsParsers = defineConfigs<Parsers>(
-  _parsers.scope,
-  _parsers.defaults
-)
 
-/**
- * Config keys of `i18n-ally.parsers.typescript`
- */
-export interface ParsersTypescript {
   /**
-   * 
-   * @default "node_modules/ts-node/dist/bin.js"
+   * Section defaults of `i18n-ally.parsers.typescript`
    */
-  "tsNodePath": string,
-  /**
-   * 
-   * @default {}
-   */
-  "compilerOptions": Record<string, unknown>,
-}
-
-/**
- * Scoped defaults of `i18n-ally.parsers.typescript`
- */
-const _parsersTypescript = {
-  /**
-   * scope: `i18n-ally.parsers.typescript`
-   */
-  scope: "i18n-ally.parsers.typescript",
-  /**
-   * Keys' defaults of `i18n-ally.parsers.typescript`
-   */
-  defaults: {
+  "i18n-ally.parsers.typescript": {
     "tsNodePath": "node_modules/ts-node/dist/bin.js",
     "compilerOptions": {},
-  } satisfies ParsersTypescript,
-}
+  } satisfies ParsersTypescript as ParsersTypescript,
 
-/**
- * Reactive ConfigObject of `i18n-ally.parsers.typescript`
- * @example
- * const configValue = useConfigObjectParsersTypescript.tsNodePath //get value 
- * useConfigObjectParsersTypescript.tsNodePath = true // set value
- * useConfigObjectParsersTypescript.$update("tsNodePath", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectParsersTypescript = defineConfigObject<ParsersTypescript>(
-  _parsersTypescript.scope,
-  _parsersTypescript.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.parsers.typescript`
- * @example
- * const configValue:string =useConfigsParsersTypescript.tsNodePath.value //get value 
- * useConfigsParsersTypescript.tsNodePath.value = "node_modules/ts-node/dist/bin.js" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsParsersTypescript.tsNodePath.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsParsersTypescript = defineConfigs<ParsersTypescript>(
-  _parsersTypescript.scope,
-  _parsersTypescript.defaults
-)
 
-/**
- * Config keys of `i18n-ally.review`
- */
-export interface Review {
   /**
-   * %config.review_enabled%
-   * @default true
+   * Section defaults of `i18n-ally.review`
    */
-  "enabled": boolean,
-  /**
-   * %config.review_gutters%
-   * @default true
-   */
-  "gutters": boolean,
-  /**
-   * %config.review_username%
-   * @default undefined
-   */
-  "user.name"?: (string | undefined),
-  /**
-   * %config.review_email%
-   * @default undefined
-   */
-  "user.email"?: (string | undefined),
-  /**
-   * %config.review_remove_on_resolved%
-   * @default false
-   */
-  "removeCommentOnResolved": boolean,
-}
-
-/**
- * Scoped defaults of `i18n-ally.review`
- */
-const _review = {
-  /**
-   * scope: `i18n-ally.review`
-   */
-  scope: "i18n-ally.review",
-  /**
-   * Keys' defaults of `i18n-ally.review`
-   */
-  defaults: {
+  "i18n-ally.review": {
     /**
      * %config.review_enabled%
      */
@@ -2610,61 +1686,13 @@ const _review = {
      * %config.review_remove_on_resolved%
      */
     "removeCommentOnResolved": false,
-  } satisfies Review,
-}
+  } satisfies Review as Review,
 
-/**
- * Reactive ConfigObject of `i18n-ally.review`
- * @example
- * const configValue = useConfigObjectReview.enabled //get value 
- * useConfigObjectReview.enabled = true // set value
- * useConfigObjectReview.$update("enabled", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectReview = defineConfigObject<Review>(
-  _review.scope,
-  _review.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.review`
- * @example
- * const configValue:boolean =useConfigsReview.enabled.value //get value 
- * useConfigsReview.enabled.value = true // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsReview.enabled.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsReview = defineConfigs<Review>(
-  _review.scope,
-  _review.defaults
-)
 
-/**
- * Config keys of `i18n-ally.review.user`
- */
-export interface ReviewUser {
   /**
-   * %config.review_username%
-   * @default undefined
+   * Section defaults of `i18n-ally.review.user`
    */
-  "name"?: (string | undefined),
-  /**
-   * %config.review_email%
-   * @default undefined
-   */
-  "email"?: (string | undefined),
-}
-
-/**
- * Scoped defaults of `i18n-ally.review.user`
- */
-const _reviewUser = {
-  /**
-   * scope: `i18n-ally.review.user`
-   */
-  scope: "i18n-ally.review.user",
-  /**
-   * Keys' defaults of `i18n-ally.review.user`
-   */
-  defaults: {
+  "i18n-ally.review.user": {
     /**
      * %config.review_username%
      */
@@ -2673,155 +1701,24 @@ const _reviewUser = {
      * %config.review_email%
      */
     "email": undefined,
-  } satisfies ReviewUser,
-}
+  } satisfies ReviewUser as ReviewUser,
 
-/**
- * Reactive ConfigObject of `i18n-ally.review.user`
- * @example
- * const configValue = useConfigObjectReviewUser.name //get value 
- * useConfigObjectReviewUser.name = true // set value
- * useConfigObjectReviewUser.$update("name", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectReviewUser = defineConfigObject<ReviewUser>(
-  _reviewUser.scope,
-  _reviewUser.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.review.user`
- * @example
- * const configValue:string =useConfigsReviewUser.name.value //get value 
- * useConfigsReviewUser.name.value = undefined // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsReviewUser.name.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsReviewUser = defineConfigs<ReviewUser>(
-  _reviewUser.scope,
-  _reviewUser.defaults
-)
 
-/**
- * Config keys of `i18n-ally.editor`
- */
-export interface Editor {
   /**
-   * %config.editor_prefer_editor%
-   * @default false
+   * Section defaults of `i18n-ally.editor`
    */
-  "preferEditor": boolean,
-}
-
-/**
- * Scoped defaults of `i18n-ally.editor`
- */
-const _editor = {
-  /**
-   * scope: `i18n-ally.editor`
-   */
-  scope: "i18n-ally.editor",
-  /**
-   * Keys' defaults of `i18n-ally.editor`
-   */
-  defaults: {
+  "i18n-ally.editor": {
     /**
      * %config.editor_prefer_editor%
      */
     "preferEditor": false,
-  } satisfies Editor,
-}
+  } satisfies Editor as Editor,
 
-/**
- * Reactive ConfigObject of `i18n-ally.editor`
- * @example
- * const configValue = useConfigObjectEditor.preferEditor //get value 
- * useConfigObjectEditor.preferEditor = true // set value
- * useConfigObjectEditor.$update("preferEditor", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectEditor = defineConfigObject<Editor>(
-  _editor.scope,
-  _editor.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.editor`
- * @example
- * const configValue:boolean =useConfigsEditor.preferEditor.value //get value 
- * useConfigsEditor.preferEditor.value = false // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsEditor.preferEditor.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsEditor = defineConfigs<Editor>(
-  _editor.scope,
-  _editor.defaults
-)
 
-/**
- * Config keys of `i18n-ally.extract`
- */
-export interface Extract {
   /**
-   * %config.keygen_strategy%
-   * @default "slug"
+   * Section defaults of `i18n-ally.extract`
    */
-  "keygenStrategy": ("slug" | "random" | "empty" | "source"),
-  /**
-   * %config.keygen_style%
-   * @default "default"
-   */
-  "keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS"),
-  /**
-   * %config.key_prefix%
-   * @default ""
-   */
-  "keyPrefix": string,
-  /**
-   * %config.key_max_length%
-   * @default null
-   */
-  "keyMaxLength": (number | null),
-  /**
-   * %config.target_picking_strategy%
-   * @default "none"
-   */
-  "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous"),
-  /**
-   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-   * @default {}
-   */
-  "parsers.html": Record<string, unknown>,
-  /**
-   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-   * @default {}
-   */
-  "parsers.babel": Record<string, unknown>,
-  /**
-   * Enables hard-coded strings detection automatically whenever opening a supported file
-   * @default false
-   */
-  "autoDetect": boolean,
-  /**
-   * Strings to be ignored on hard-coded strings detection
-   * @default undefined
-   */
-  "ignored"?: (string[] | undefined),
-  /**
-   * Strings to be ignored on hard-coded strings detection, by files
-   * @default {}
-   */
-  "ignoredByFiles": Record<string, unknown>,
-}
-
-/**
- * Scoped defaults of `i18n-ally.extract`
- */
-const _extract = {
-  /**
-   * scope: `i18n-ally.extract`
-   */
-  scope: "i18n-ally.extract",
-  /**
-   * Keys' defaults of `i18n-ally.extract`
-   */
-  defaults: {
+  "i18n-ally.extract": {
     /**
      * %config.keygen_strategy%
      */
@@ -2862,61 +1759,13 @@ const _extract = {
      * Strings to be ignored on hard-coded strings detection, by files
      */
     "ignoredByFiles": {},
-  } satisfies Extract,
-}
+  } satisfies Extract as Extract,
 
-/**
- * Reactive ConfigObject of `i18n-ally.extract`
- * @example
- * const configValue = useConfigObjectExtract.keygenStrategy //get value 
- * useConfigObjectExtract.keygenStrategy = true // set value
- * useConfigObjectExtract.$update("keygenStrategy", !configValue, ConfigurationTarget.Workspace, true)
- */
-export const useConfigObjectExtract = defineConfigObject<Extract>(
-  _extract.scope,
-  _extract.defaults
-)
-/**
- * Reactive ToConfigRefs of `i18n-ally.extract`
- * @example
- * const configValue:string =useConfigsExtract.keygenStrategy.value //get value 
- * useConfigsExtract.keygenStrategy.value = "slug" // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsExtract.keygenStrategy.update(true, ConfigurationTarget.WorkspaceFolder, true)
- */
-export const useConfigsExtract = defineConfigs<Extract>(
-  _extract.scope,
-  _extract.defaults
-)
 
-/**
- * Config keys of `i18n-ally.extract.parsers`
- */
-export interface ExtractParsers {
   /**
-   * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-   * @default {}
+   * Section defaults of `i18n-ally.extract.parsers`
    */
-  "html": Record<string, unknown>,
-  /**
-   * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-   * @default {}
-   */
-  "babel": Record<string, unknown>,
-}
-
-/**
- * Scoped defaults of `i18n-ally.extract.parsers`
- */
-const _extractParsers = {
-  /**
-   * scope: `i18n-ally.extract.parsers`
-   */
-  scope: "i18n-ally.extract.parsers",
-  /**
-   * Keys' defaults of `i18n-ally.extract.parsers`
-   */
-  defaults: {
+  "i18n-ally.extract.parsers": {
     /**
      * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
      */
@@ -2925,29 +1774,296 @@ const _extractParsers = {
      * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
      */
     "babel": {},
-  } satisfies ExtractParsers,
+  } satisfies ExtractParsers as ExtractParsers,
+
+}
+export type ConfigKey = "i18n-ally" | "i18n-ally.theme" | "i18n-ally.regex" | "i18n-ally.refactor" | "i18n-ally.translate" | "i18n-ally.translate.google" | "i18n-ally.translate.deepl" | "i18n-ally.translate.baidu" | "i18n-ally.translate.libre" | "i18n-ally.translate.openai" | "i18n-ally.usage" | "i18n-ally.frameworks" | "i18n-ally.frameworks.ruby-rails" | "i18n-ally.parsers" | "i18n-ally.parsers.typescript" | "i18n-ally.review" | "i18n-ally.review.user" | "i18n-ally.editor" | "i18n-ally.extract" | "i18n-ally.extract.parsers"
+
+export function useConfig<K extends ConfigKey>(section: K) {
+  return defineConfigs<typeof i18nAllyConfig[K]>(section, i18nAllyConfig[section])
 }
 
+export function useConfigObject<K extends ConfigKey>(section: K) {
+  return defineConfigObject<typeof i18nAllyConfig[K]>(section, i18nAllyConfig[section])
+}
+    
 /**
- * Reactive ConfigObject of `i18n-ally.extract.parsers`
+ * ConfigObject of `i18n-ally`
  * @example
- * const configValue = useConfigObjectExtractParsers.html //get value 
- * useConfigObjectExtractParsers.html = true // set value
- * useConfigObjectExtractParsers.$update("html", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectI18nAlly.disabled //get value 
+ * configObjectI18nAlly.$update("disabled", oldVal) //update value
  */
-export const useConfigObjectExtractParsers = defineConfigObject<ExtractParsers>(
-  _extractParsers.scope,
-  _extractParsers.defaults
-)
+export const configObjectI18nAlly = useConfigObject("i18n-ally")
 /**
- * Reactive ToConfigRefs of `i18n-ally.extract.parsers`
+ * ToConfigRefs of `i18n-ally`
  * @example
- * const configValue:object =useConfigsExtractParsers.html.value //get value 
- * useConfigsExtractParsers.html.value = {} // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsExtractParsers.html.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:boolean =configI18nAlly.disabled.value //get value 
+ * configI18nAlly.disabled.update(oldVal) //update value
  */
-export const useConfigsExtractParsers = defineConfigs<ExtractParsers>(
-  _extractParsers.scope,
-  _extractParsers.defaults
-)
+export const configI18nAlly = useConfig("i18n-ally")
+/**
+ * ConfigObject of `i18n-ally.theme`
+ * @example
+ * const oldVal = configObjectTheme.annotation //get value 
+ * configObjectTheme.$update("annotation", oldVal) //update value
+ */
+export const configObjectTheme = useConfigObject("i18n-ally.theme")
+/**
+ * ToConfigRefs of `i18n-ally.theme`
+ * @example
+ * const oldVal:string =configTheme.annotation.value //get value 
+ * configTheme.annotation.update(oldVal) //update value
+ */
+export const configTheme = useConfig("i18n-ally.theme")
+/**
+ * ConfigObject of `i18n-ally.regex`
+ * @example
+ * const oldVal = configObjectRegex.key //get value 
+ * configObjectRegex.$update("key", oldVal) //update value
+ */
+export const configObjectRegex = useConfigObject("i18n-ally.regex")
+/**
+ * ToConfigRefs of `i18n-ally.regex`
+ * @example
+ * const oldVal:string =configRegex.key.value //get value 
+ * configRegex.key.update(oldVal) //update value
+ */
+export const configRegex = useConfig("i18n-ally.regex")
+/**
+ * ConfigObject of `i18n-ally.refactor`
+ * @example
+ * const oldVal = configObjectRefactor.templates //get value 
+ * configObjectRefactor.$update("templates", oldVal) //update value
+ */
+export const configObjectRefactor = useConfigObject("i18n-ally.refactor")
+/**
+ * ToConfigRefs of `i18n-ally.refactor`
+ * @example
+ * const oldVal:array =configRefactor.templates.value //get value 
+ * configRefactor.templates.update(oldVal) //update value
+ */
+export const configRefactor = useConfig("i18n-ally.refactor")
+/**
+ * ConfigObject of `i18n-ally.translate`
+ * @example
+ * const oldVal = configObjectTranslate.saveAsCandidates //get value 
+ * configObjectTranslate.$update("saveAsCandidates", oldVal) //update value
+ */
+export const configObjectTranslate = useConfigObject("i18n-ally.translate")
+/**
+ * ToConfigRefs of `i18n-ally.translate`
+ * @example
+ * const oldVal:boolean =configTranslate.saveAsCandidates.value //get value 
+ * configTranslate.saveAsCandidates.update(oldVal) //update value
+ */
+export const configTranslate = useConfig("i18n-ally.translate")
+/**
+ * ConfigObject of `i18n-ally.translate.google`
+ * @example
+ * const oldVal = configObjectTranslateGoogle.apiKey //get value 
+ * configObjectTranslateGoogle.$update("apiKey", oldVal) //update value
+ */
+export const configObjectTranslateGoogle = useConfigObject("i18n-ally.translate.google")
+/**
+ * ToConfigRefs of `i18n-ally.translate.google`
+ * @example
+ * const oldVal:string =configTranslateGoogle.apiKey.value //get value 
+ * configTranslateGoogle.apiKey.update(oldVal) //update value
+ */
+export const configTranslateGoogle = useConfig("i18n-ally.translate.google")
+/**
+ * ConfigObject of `i18n-ally.translate.deepl`
+ * @example
+ * const oldVal = configObjectTranslateDeepl.apiKey //get value 
+ * configObjectTranslateDeepl.$update("apiKey", oldVal) //update value
+ */
+export const configObjectTranslateDeepl = useConfigObject("i18n-ally.translate.deepl")
+/**
+ * ToConfigRefs of `i18n-ally.translate.deepl`
+ * @example
+ * const oldVal:string =configTranslateDeepl.apiKey.value //get value 
+ * configTranslateDeepl.apiKey.update(oldVal) //update value
+ */
+export const configTranslateDeepl = useConfig("i18n-ally.translate.deepl")
+/**
+ * ConfigObject of `i18n-ally.translate.baidu`
+ * @example
+ * const oldVal = configObjectTranslateBaidu.appid //get value 
+ * configObjectTranslateBaidu.$update("appid", oldVal) //update value
+ */
+export const configObjectTranslateBaidu = useConfigObject("i18n-ally.translate.baidu")
+/**
+ * ToConfigRefs of `i18n-ally.translate.baidu`
+ * @example
+ * const oldVal:string =configTranslateBaidu.appid.value //get value 
+ * configTranslateBaidu.appid.update(oldVal) //update value
+ */
+export const configTranslateBaidu = useConfig("i18n-ally.translate.baidu")
+/**
+ * ConfigObject of `i18n-ally.translate.libre`
+ * @example
+ * const oldVal = configObjectTranslateLibre.apiRoot //get value 
+ * configObjectTranslateLibre.$update("apiRoot", oldVal) //update value
+ */
+export const configObjectTranslateLibre = useConfigObject("i18n-ally.translate.libre")
+/**
+ * ToConfigRefs of `i18n-ally.translate.libre`
+ * @example
+ * const oldVal:string =configTranslateLibre.apiRoot.value //get value 
+ * configTranslateLibre.apiRoot.update(oldVal) //update value
+ */
+export const configTranslateLibre = useConfig("i18n-ally.translate.libre")
+/**
+ * ConfigObject of `i18n-ally.translate.openai`
+ * @example
+ * const oldVal = configObjectTranslateOpenai.apiKey //get value 
+ * configObjectTranslateOpenai.$update("apiKey", oldVal) //update value
+ */
+export const configObjectTranslateOpenai = useConfigObject("i18n-ally.translate.openai")
+/**
+ * ToConfigRefs of `i18n-ally.translate.openai`
+ * @example
+ * const oldVal:string =configTranslateOpenai.apiKey.value //get value 
+ * configTranslateOpenai.apiKey.update(oldVal) //update value
+ */
+export const configTranslateOpenai = useConfig("i18n-ally.translate.openai")
+/**
+ * ConfigObject of `i18n-ally.usage`
+ * @example
+ * const oldVal = configObjectUsage.scanningIgnore //get value 
+ * configObjectUsage.$update("scanningIgnore", oldVal) //update value
+ */
+export const configObjectUsage = useConfigObject("i18n-ally.usage")
+/**
+ * ToConfigRefs of `i18n-ally.usage`
+ * @example
+ * const oldVal:array =configUsage.scanningIgnore.value //get value 
+ * configUsage.scanningIgnore.update(oldVal) //update value
+ */
+export const configUsage = useConfig("i18n-ally.usage")
+/**
+ * ConfigObject of `i18n-ally.frameworks`
+ * @example
+ * const oldVal = configObjectFrameworks.ruby-rails.scopeRoot //get value 
+ * configObjectFrameworks.$update("ruby-rails.scopeRoot", oldVal) //update value
+ */
+export const configObjectFrameworks = useConfigObject("i18n-ally.frameworks")
+/**
+ * ToConfigRefs of `i18n-ally.frameworks`
+ * @example
+ * const oldVal:string =configFrameworks.ruby-rails.scopeRoot.value //get value 
+ * configFrameworks.ruby-rails.scopeRoot.update(oldVal) //update value
+ */
+export const configFrameworks = useConfig("i18n-ally.frameworks")
+/**
+ * ConfigObject of `i18n-ally.frameworks.ruby-rails`
+ * @example
+ * const oldVal = configObjectFrameworksRubyRails.scopeRoot //get value 
+ * configObjectFrameworksRubyRails.$update("scopeRoot", oldVal) //update value
+ */
+export const configObjectFrameworksRubyRails = useConfigObject("i18n-ally.frameworks.ruby-rails")
+/**
+ * ToConfigRefs of `i18n-ally.frameworks.ruby-rails`
+ * @example
+ * const oldVal:string =configFrameworksRubyRails.scopeRoot.value //get value 
+ * configFrameworksRubyRails.scopeRoot.update(oldVal) //update value
+ */
+export const configFrameworksRubyRails = useConfig("i18n-ally.frameworks.ruby-rails")
+/**
+ * ConfigObject of `i18n-ally.parsers`
+ * @example
+ * const oldVal = configObjectParsers.typescript.tsNodePath //get value 
+ * configObjectParsers.$update("typescript.tsNodePath", oldVal) //update value
+ */
+export const configObjectParsers = useConfigObject("i18n-ally.parsers")
+/**
+ * ToConfigRefs of `i18n-ally.parsers`
+ * @example
+ * const oldVal:string =configParsers.typescript.tsNodePath.value //get value 
+ * configParsers.typescript.tsNodePath.update(oldVal) //update value
+ */
+export const configParsers = useConfig("i18n-ally.parsers")
+/**
+ * ConfigObject of `i18n-ally.parsers.typescript`
+ * @example
+ * const oldVal = configObjectParsersTypescript.tsNodePath //get value 
+ * configObjectParsersTypescript.$update("tsNodePath", oldVal) //update value
+ */
+export const configObjectParsersTypescript = useConfigObject("i18n-ally.parsers.typescript")
+/**
+ * ToConfigRefs of `i18n-ally.parsers.typescript`
+ * @example
+ * const oldVal:string =configParsersTypescript.tsNodePath.value //get value 
+ * configParsersTypescript.tsNodePath.update(oldVal) //update value
+ */
+export const configParsersTypescript = useConfig("i18n-ally.parsers.typescript")
+/**
+ * ConfigObject of `i18n-ally.review`
+ * @example
+ * const oldVal = configObjectReview.enabled //get value 
+ * configObjectReview.$update("enabled", oldVal) //update value
+ */
+export const configObjectReview = useConfigObject("i18n-ally.review")
+/**
+ * ToConfigRefs of `i18n-ally.review`
+ * @example
+ * const oldVal:boolean =configReview.enabled.value //get value 
+ * configReview.enabled.update(oldVal) //update value
+ */
+export const configReview = useConfig("i18n-ally.review")
+/**
+ * ConfigObject of `i18n-ally.review.user`
+ * @example
+ * const oldVal = configObjectReviewUser.name //get value 
+ * configObjectReviewUser.$update("name", oldVal) //update value
+ */
+export const configObjectReviewUser = useConfigObject("i18n-ally.review.user")
+/**
+ * ToConfigRefs of `i18n-ally.review.user`
+ * @example
+ * const oldVal:string =configReviewUser.name.value //get value 
+ * configReviewUser.name.update(oldVal) //update value
+ */
+export const configReviewUser = useConfig("i18n-ally.review.user")
+/**
+ * ConfigObject of `i18n-ally.editor`
+ * @example
+ * const oldVal = configObjectEditor.preferEditor //get value 
+ * configObjectEditor.$update("preferEditor", oldVal) //update value
+ */
+export const configObjectEditor = useConfigObject("i18n-ally.editor")
+/**
+ * ToConfigRefs of `i18n-ally.editor`
+ * @example
+ * const oldVal:boolean =configEditor.preferEditor.value //get value 
+ * configEditor.preferEditor.update(oldVal) //update value
+ */
+export const configEditor = useConfig("i18n-ally.editor")
+/**
+ * ConfigObject of `i18n-ally.extract`
+ * @example
+ * const oldVal = configObjectExtract.keygenStrategy //get value 
+ * configObjectExtract.$update("keygenStrategy", oldVal) //update value
+ */
+export const configObjectExtract = useConfigObject("i18n-ally.extract")
+/**
+ * ToConfigRefs of `i18n-ally.extract`
+ * @example
+ * const oldVal:string =configExtract.keygenStrategy.value //get value 
+ * configExtract.keygenStrategy.update(oldVal) //update value
+ */
+export const configExtract = useConfig("i18n-ally.extract")
+/**
+ * ConfigObject of `i18n-ally.extract.parsers`
+ * @example
+ * const oldVal = configObjectExtractParsers.html //get value 
+ * configObjectExtractParsers.$update("html", oldVal) //update value
+ */
+export const configObjectExtractParsers = useConfigObject("i18n-ally.extract.parsers")
+/**
+ * ToConfigRefs of `i18n-ally.extract.parsers`
+ * @example
+ * const oldVal:object =configExtractParsers.html.value //get value 
+ * configExtractParsers.html.update(oldVal) //update value
+ */
+export const configExtractParsers = useConfig("i18n-ally.extract.parsers")

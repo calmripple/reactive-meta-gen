@@ -71,12 +71,22 @@
         "command": "sample.clear-cache",
         "category": "sample",
         "title": "Clear icon cache"
+      },
+      {
+        "command": "sample.update-date",
+        "category": "sample",
+        "title": "update current date"
       }
     ],
     "configuration": {
       "type": "object",
       "title": "sample IntelliSense",
       "properties": {
+        "sample.date": {
+          "type": "string",
+          "default": "now",
+          "description": "Current time"
+        },
         "sample.inplace": {
           "type": "boolean",
           "default": true,

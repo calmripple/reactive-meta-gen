@@ -4,14 +4,14 @@
 
 // Meta info
 
-import { defineConfigObject, defineConfigs, useCommand } from 'reactive-vscode'
+import { defineConfigObject, defineConfigs, useCommand, useCommands } from 'reactive-vscode'
 
 export const publisher = "calmripple"
 export const name = "sample"
 export const version = "0.8.1"
 export const displayName = "sample IntelliSense"
 export const description = "Intelligent sample previewing and searching for VS Code"
-export const extensionId = `${publisher}.${name}`
+export const extensionId = "calmripple.sample"
 
 /**
  * Type union of all commands
@@ -20,155 +20,130 @@ export type CommandKey =
   | "sample.toggle-annotations"
   | "sample.toggle-inplace"
   | "sample.clear-cache"
+  | "sample.update-date"
 
-/**
- * Commands map registed by `calmripple.sample`
- */
-export const commands = {
-  /**
-   * Toggle Annotations
-   * @value `sample.toggle-annotations`
-   * @example
-   * useCommand(commands.toggleAnnotations, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  toggleAnnotations: "sample.toggle-annotations",
-  /**
-   * Toggle In-place Mode
-   * @value `sample.toggle-inplace`
-   * @example
-   * useCommand(commands.toggleInplace, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  toggleInplace: "sample.toggle-inplace",
-  /**
-   * Clear icon cache
-   * @value `sample.clear-cache`
-   * @example
-   * useCommand(commands.clearCache, async () => {
-   *   //do actions or update config 
-   * })
-   */
-  clearCache: "sample.clear-cache",
-} satisfies Record<string, CommandKey>
+export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+  return useCommand(commandFullKey, callback)
+}
+
+export function useCommandsBase(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
+  return useCommands(commands)
+}
+
+
 /**
  * Toggle Annotations
- * @value `sample.toggle-annotations`
+ * @value `sample.toggle-annotations` identifier of the command 
  */
 export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
-  useCommand(commands.toggleAnnotations, callback)
+  return useCommandBase("sample.toggle-annotations", callback)
 }
+
 /**
  * Toggle In-place Mode
- * @value `sample.toggle-inplace`
+ * @value `sample.toggle-inplace` identifier of the command 
  */
 export function useCommandToggleInplace(callback: (...args: any[]) => any) {
-  useCommand(commands.toggleInplace, callback)
+  return useCommandBase("sample.toggle-inplace", callback)
 }
+
 /**
  * Clear icon cache
- * @value `sample.clear-cache`
+ * @value `sample.clear-cache` identifier of the command 
  */
 export function useCommandClearCache(callback: (...args: any[]) => any) {
-  useCommand(commands.clearCache, callback)
+  return useCommandBase("sample.clear-cache", callback)
+}
+
+/**
+ * update current date
+ * @value `sample.update-date` identifier of the command 
+ */
+export function useCommandUpdateDate(callback: (...args: any[]) => any) {
+  return useCommandBase("sample.update-date", callback)
 }
 
 
 /**
- * Config keys of `sample`
+ * Section Type of `sample`
  */
 export interface Sample {
   /**
+   * Current time
+   */
+  "date": string,
+  /**
    * Use icon graph to replace the icon name.
-   * @default true
    */
   "inplace": boolean,
   /**
    * Enabled sample inline annotations
-   * @default true
    */
   "annotations": boolean,
   /**
    * Position the icon before or after the icon name
-   * @default "before"
    */
   "position": ("before" | "after"),
   /**
    * Icon color hex for inline displaying
-   * @default "auto"
    */
   "color": string,
   /**
    * Delimiters for separating between collection id and icon id
-   * @default [":","--","-","/"]
    */
   "delimiters": string[],
   /**
    * Prefixes for matching
-   * @default ["","i-","~icons/"]
    */
   "prefixes": string[],
   /**
    * Suffixes for matching
-   * @default ["","i-"]
    */
   "suffixes": string[],
   /**
    * Array of language IDs to enable annotations
-   * @default ["javascript","javascriptreact","typescript","typescriptreact","vue","svelte","html","pug","json","yaml"]
    */
   "languageIds": string[],
   /**
    * Collection IDs to be included for detection
-   * @default null
    */
   "includes": (("academicons" | "akar-icons" | "ant-design" | "arcticons" | "basil" | "bi" | "bitcoin-icons" | "bpmn" | "brandico" | "bx" | "bxl" | "bxs" | "bytesize" | "carbon" | "cbi" | "charm" | "ci" | "cib" | "cif" | "cil" | "circle-flags" | "circum" | "clarity" | "codicon" | "covid" | "cryptocurrency" | "cryptocurrency-color" | "dashicons" | "devicon" | "devicon-plain" | "ei" | "el" | "emojione" | "emojione-monotone" | "emojione-v1" | "entypo" | "entypo-social" | "eos-icons" | "ep" | "et" | "eva" | "f7" | "fa" | "fa-brands" | "fa-regular" | "fa-solid" | "fa6-brands" | "fa6-regular" | "fa6-solid" | "fad" | "fe" | "feather" | "file-icons" | "flag" | "flagpack" | "flat-color-icons" | "flat-ui" | "flowbite" | "fluent" | "fluent-emoji" | "fluent-emoji-flat" | "fluent-emoji-high-contrast" | "fluent-mdl2" | "fontelico" | "fontisto" | "formkit" | "foundation" | "fxemoji" | "gala" | "game-icons" | "geo" | "gg" | "gis" | "gravity-ui" | "gridicons" | "grommet-icons" | "guidance" | "healthicons" | "heroicons" | "heroicons-outline" | "heroicons-solid" | "humbleicons" | "ic" | "icomoon-free" | "icon-park" | "icon-park-outline" | "icon-park-solid" | "icon-park-twotone" | "iconamoon" | "iconoir" | "icons8" | "il" | "ion" | "iwwa" | "jam" | "la" | "lets-icons" | "line-md" | "logos" | "ls" | "lucide" | "mage" | "majesticons" | "maki" | "map" | "marketeq" | "material-symbols" | "material-symbols-light" | "mdi" | "mdi-light" | "medical-icon" | "memory" | "meteocons" | "mi" | "mingcute" | "mono-icons" | "mynaui" | "nimbus" | "nonicons" | "noto" | "noto-v1" | "octicon" | "oi" | "ooui" | "openmoji" | "oui" | "pajamas" | "pepicons" | "pepicons-pencil" | "pepicons-pop" | "pepicons-print" | "ph" | "pixelarticons" | "prime" | "ps" | "quill" | "radix-icons" | "raphael" | "ri" | "si-glyph" | "simple-icons" | "simple-line-icons" | "skill-icons" | "solar" | "streamline" | "streamline-emojis" | "subway" | "svg-spinners" | "system-uicons" | "tabler" | "tdesign" | "teenyicons" | "token" | "token-branded" | "topcoat" | "twemoji" | "typcn" | "uil" | "uim" | "uis" | "uit" | "uiw" | "unjs" | "vaadin" | "vs" | "vscode-icons" | "websymbol" | "whh" | "wi" | "wpf" | "zmdi" | "zondicons")[] | null),
   /**
    * Collection IDs to be excluded for detection
-   * @default null
    */
   "excludes": (("academicons" | "akar-icons" | "ant-design" | "arcticons" | "basil" | "bi" | "bitcoin-icons" | "bpmn" | "brandico" | "bx" | "bxl" | "bxs" | "bytesize" | "carbon" | "cbi" | "charm" | "ci" | "cib" | "cif" | "cil" | "circle-flags" | "circum" | "clarity" | "codicon" | "covid" | "cryptocurrency" | "cryptocurrency-color" | "dashicons" | "devicon" | "devicon-plain" | "ei" | "el" | "emojione" | "emojione-monotone" | "emojione-v1" | "entypo" | "entypo-social" | "eos-icons" | "ep" | "et" | "eva" | "f7" | "fa" | "fa-brands" | "fa-regular" | "fa-solid" | "fa6-brands" | "fa6-regular" | "fa6-solid" | "fad" | "fe" | "feather" | "file-icons" | "flag" | "flagpack" | "flat-color-icons" | "flat-ui" | "flowbite" | "fluent" | "fluent-emoji" | "fluent-emoji-flat" | "fluent-emoji-high-contrast" | "fluent-mdl2" | "fontelico" | "fontisto" | "formkit" | "foundation" | "fxemoji" | "gala" | "game-icons" | "geo" | "gg" | "gis" | "gravity-ui" | "gridicons" | "grommet-icons" | "guidance" | "healthicons" | "heroicons" | "heroicons-outline" | "heroicons-solid" | "humbleicons" | "ic" | "icomoon-free" | "icon-park" | "icon-park-outline" | "icon-park-solid" | "icon-park-twotone" | "iconamoon" | "iconoir" | "icons8" | "il" | "ion" | "iwwa" | "jam" | "la" | "lets-icons" | "line-md" | "logos" | "ls" | "lucide" | "mage" | "majesticons" | "maki" | "map" | "marketeq" | "material-symbols" | "material-symbols-light" | "mdi" | "mdi-light" | "medical-icon" | "memory" | "meteocons" | "mi" | "mingcute" | "mono-icons" | "mynaui" | "nimbus" | "nonicons" | "noto" | "noto-v1" | "octicon" | "oi" | "ooui" | "openmoji" | "oui" | "pajamas" | "pepicons" | "pepicons-pencil" | "pepicons-pop" | "pepicons-print" | "ph" | "pixelarticons" | "prime" | "ps" | "quill" | "radix-icons" | "raphael" | "ri" | "si-glyph" | "simple-icons" | "simple-line-icons" | "skill-icons" | "solar" | "streamline" | "streamline-emojis" | "subway" | "svg-spinners" | "system-uicons" | "tabler" | "tdesign" | "teenyicons" | "token" | "token-branded" | "topcoat" | "twemoji" | "typcn" | "uil" | "uim" | "uis" | "uit" | "uiw" | "unjs" | "vaadin" | "vs" | "vscode-icons" | "websymbol" | "whh" | "wi" | "wpf" | "zmdi" | "zondicons")[] | null),
   /**
    * CDN entry of sample icon-sets
-   * @default "https://icones.js.org/collections"
    */
   "cdnEntry": string,
   /**
    * JSON paths for custom collection
-   * @default []
    */
   "customCollectionJsonPaths": string[],
   /**
    * Collection IDs Map for collection name alias, e.g. { 'mc': 'mingcute' }
-   * @default {}
    */
   "customCollectionIdsMap": Record<string, unknown>,
   /**
    * JSON paths for custom aliases
-   * @default []
    */
   "customAliasesJsonPaths": string[],
   /**
    * Only use the icon aliases. Non aliased icons will be ignored.
-   * @default false
    */
   "customAliasesOnly": boolean,
 }
 
-/**
- * Scoped defaults of `sample`
- */
-const _sample = {
+const sampleConfig = {
+
   /**
-   * scope: `sample`
+   * Section defaults of `sample`
    */
-  scope: "sample",
-  /**
-   * Keys' defaults of `sample`
-   */
-  defaults: {
+  "sample": {
+    /**
+     * Current time
+     */
+    "date": "now",
     /**
      * Use icon graph to replace the icon name.
      */
@@ -229,29 +204,30 @@ const _sample = {
      * Only use the icon aliases. Non aliased icons will be ignored.
      */
     "customAliasesOnly": false,
-  } satisfies Sample,
+  } satisfies Sample as Sample,
+
+}
+export type ConfigKey = "sample"
+
+export function useConfig<K extends ConfigKey>(section: K) {
+  return defineConfigs<typeof sampleConfig[K]>(section, sampleConfig[section])
 }
 
+export function useConfigObject<K extends ConfigKey>(section: K) {
+  return defineConfigObject<typeof sampleConfig[K]>(section, sampleConfig[section])
+}
+    
 /**
- * Reactive ConfigObject of `sample`
+ * ConfigObject of `sample`
  * @example
- * const configValue = useConfigObjectSample.inplace //get value 
- * useConfigObjectSample.inplace = true // set value
- * useConfigObjectSample.$update("inplace", !configValue, ConfigurationTarget.Workspace, true)
+ * const oldVal = configObjectSample.date //get value 
+ * configObjectSample.$update("date", oldVal) //update value
  */
-export const useConfigObjectSample = defineConfigObject<Sample>(
-  _sample.scope,
-  _sample.defaults
-)
+export const configObjectSample = useConfigObject("sample")
 /**
- * Reactive ToConfigRefs of `sample`
+ * ToConfigRefs of `sample`
  * @example
- * const configValue:boolean =useConfigsSample.inplace.value //get value 
- * useConfigsSample.inplace.value = true // set value
- * //update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
- * useConfigsSample.inplace.update(true, ConfigurationTarget.WorkspaceFolder, true)
+ * const oldVal:string =configSample.date.value //get value 
+ * configSample.date.update(oldVal) //update value
  */
-export const useConfigsSample = defineConfigs<Sample>(
-  _sample.scope,
-  _sample.defaults
-)
+export const configSample = useConfig("sample")
