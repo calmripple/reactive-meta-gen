@@ -4,14 +4,6 @@ import {
   getConfigInfo,
 } from './util'
 
-const forwardKeys = [
-  'publisher',
-  'name',
-  'version',
-  'displayName',
-  'description',
-]
-
 export function generateMarkdown(packageJson: any): { commandsTable: string, configsTable: string, configsJson: string } {
   const config = getConfigInfo(packageJson)
   const MAX_TABLE_COL_CHAR = 150
@@ -85,6 +77,24 @@ export function generateMarkdown(packageJson: any): { commandsTable: string, con
 }
 
 export function generateDTS(packageJson: any, options: GenerateOptions = {}): string {
+  const signatures = new Set<string>()
+  function getSignature(signature: string, ...builders: ((sign: string, idx: number) => string)[]): string {
+    let i = 0
+    while (signatures.has(signature) && i < 100) {
+      if (builders.length > i) {
+        signature = builders[i](signature, i)
+      }
+      else {
+        signature = `${signature}_${i + 1}`
+      }
+      i++
+    }
+    signatures.add(signature)
+    return signature
+  }
+  function getSignatures(signatures: string[], ...builders: ((sign: string, idx: number) => string)[]): string[] {
+    return signatures.map(signature => getSignature(signature, ...builders))
+  }
   const config = getConfigInfo(packageJson)
   let {
     header = true,
@@ -96,20 +106,26 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
 
   lines.push('// Meta info')
   lines.push('', `import { defineConfigObject, defineConfigs, useCommand, useCommands } from 'reactive-vscode'`, '')
-
+  const forwardKeys = getSignatures([
+    'publisher',
+    'name',
+    'version',
+    'displayName',
+    'description',
+  ])
   for (const key of forwardKeys) {
     lines.push(`export const ${key} = ${packageJson[key] ? JSON.stringify(packageJson[key]) : 'undefined'}`)
   }
 
   lines.push(
-    // eslint-disable-next-line no-template-curly-in-string
-    'export const extensionId = `${publisher}.${name}`',
+
+    `export const ${getSignature('extensionId')} = "${packageJson.publisher}.${packageJson.name}"`,
   )
 
   const extensionSectionWithDot = `${extensionSection}.`
   const extensionId = `${packageJson.publisher}.${packageJson.name}`
-  const _publisher = packageJson.publisher
-  const _name = packageJson.name
+  // const _publisher = packageJson.publisher
+  const name = packageJson.name as string
 
   function withoutExtensionPrefix(name: string): string {
     if (name.startsWith(extensionSectionWithDot)) {
@@ -119,32 +135,32 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   }
 
   // ========== Commands ==========
+  const cmdFuncBaseName = getSignature(`useCommandBase`)
   const cmdFunctionNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
     return {
-      funcName: `useCommand${upperFirst(convertCamelCase(withoutExtensionPrefix(c.command)))}`,
+      funcName: getSignature(`useCommand${upperFirst(convertCamelCase(withoutExtensionPrefix(c.command)))}`, (_s, _i) => `useCommand${upperFirst(convertCamelCase(c.command))}`),
       ...c,
     }
   })
 
-  let cmdFuncBaseName = `useCommandBase`
-  function handleRepetitive() {
-    const funcNameCache = new Map<string, CommandType & { funcName: string }>()
-    for (const c of cmdFunctionNames) {
-      let i = 1
-      while (funcNameCache.has(c.funcName) && i++ < 20) {
-        const old = funcNameCache.get(c.funcName)
-        if (old)
-          old.funcName = `useCommand${upperFirst(convertCamelCase(old.command))}`
-        c.funcName = `useCommand${upperFirst(convertCamelCase(c.command))}`
-      }
-      funcNameCache.set(c.funcName, c)
-    }
+  // function handleRepetitive() {
+  //   const funcNameCache = new Map<string, CommandType & { funcName: string }>()
+  //   for (const c of cmdFunctionNames) {
+  //     let i = 1
+  //     while (funcNameCache.has(c.funcName) && i++ < 20) {
+  //       const old = funcNameCache.get(c.funcName)
+  //       if (old)
+  //         old.funcName = `useCommand${upperFirst(convertCamelCase(old.command))}`
+  //       c.funcName = `useCommand${upperFirst(convertCamelCase(c.command))}`
+  //     }
+  //     funcNameCache.set(c.funcName, c)
+  //   }
 
-    while (funcNameCache.has(cmdFuncBaseName)) {
-      cmdFuncBaseName = `${cmdFuncBaseName}Base`
-    }
-  }
-  handleRepetitive()
+  //   while (funcNameCache.has(cmdFuncBaseName)) {
+  //     cmdFuncBaseName = `${cmdFuncBaseName}Base`
+  //   }
+  // }
+  // handleRepetitive()
 
   lines.push(
     '',
@@ -155,7 +171,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   }
   else {
     lines.push(
-      'export type CommandKey = ',
+      `export type ${getSignature('CommandKey')} = `,
       ...cmdFunctionNames.map(c =>
         `  | ${JSON.stringify(c.command)}`,
       ),
@@ -168,7 +184,7 @@ export function ${cmdFuncBaseName}(commandFullKey: CommandKey, callback: (...arg
   return useCommand(commandFullKey, callback)
 }
 
-export function ${cmdFuncBaseName.slice(0, 10)}s${cmdFuncBaseName.slice(10)}(commands: Record<CommandKey, (...args: any[]) => any>): void {
+export function ${cmdFuncBaseName.slice(0, 10)}s${cmdFuncBaseName.slice(10)}(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
   return useCommands(commands)
 }
 `)
@@ -195,7 +211,7 @@ export function ${cmdFuncBaseName.slice(0, 10)}s${cmdFuncBaseName.slice(10)}(com
       ...commentBlock('Type union of Deprecated all configs'),
     )
     lines.push(
-      'export type DeprecatedConfigKey = ',
+      `export type ${getSignature('DeprecatedConfigKey')} = `,
       ...config.deprecatedKeys.map(c =>
         `  | "${c}"`,
       ),
@@ -214,22 +230,21 @@ export function ${cmdFuncBaseName.slice(0, 10)}s${cmdFuncBaseName.slice(10)}(com
       return name
     }
 
-    let sectionVar = 'root'
+    let sectionVar
     let sectionComment
     if (section) {
-      sectionVar = `${convertCamelCase(withoutExtensionPrefix(section))}`
+      sectionVar = getSignature(`${convertCamelCase(withoutExtensionPrefix(section))}`)
       sectionComment = `${section}`
     }
     else {
-      while (config.sectionActivedConfigs.has(sectionVar)) {
-        sectionVar = `root${upperFirst(sectionVar)}`
-      }
+      sectionVar = getSignature('root')
       sectionComment = `virtual(Keys in the root)`
     }
-    const interfaceName = `${upperFirst(sectionVar)}`
+
+    const interfaceName = getSignature(`${upperFirst(sectionVar)}`)
     const varName = {
-      useConfig: `config${interfaceName}`,
-      useConfigObject: `configObject${interfaceName}`,
+      useConfig: getSignature(`config${interfaceName}`),
+      useConfigObject: getSignature(`configObject${interfaceName}`),
     }
     const example = sectionConfig[0]
     const exampleKey = removeSection(example[0])
@@ -262,7 +277,8 @@ export function ${cmdFuncBaseName.slice(0, 10)}s${cmdFuncBaseName.slice(10)}(com
       `export const ${varName.useConfig} = useConfig("${section}")`,
     )
     // section 类型生成开始
-    lines.push(``, ...commentBlock(`Section Type of \`${sectionComment}\``), `export interface ${interfaceName} {`)
+    lines.push(``, ...commentBlock(`Section Type of \`${sectionComment}\``), `export interface ${interfaceName} {`,
+    )
     // 遍历section 下所有 短key的默认值
     sectionConfig.forEach(([fullKey, value]) => {
       const defaultValue = defaultValFromSchema(value)
@@ -295,7 +311,7 @@ export function ${cmdFuncBaseName.slice(0, 10)}s${cmdFuncBaseName.slice(10)}(com
     )
   })
 
-  const configVar = `${convertCamelCase(_name)}Config`
+  const configVar = getSignature(`${convertCamelCase(name)}Config`)
   const sectionNames = [...config.sectionActivedConfigs.keys()]
   lines.push(
     '',
@@ -303,13 +319,13 @@ export function ${cmdFuncBaseName.slice(0, 10)}s${cmdFuncBaseName.slice(10)}(com
     ...sectionDefault,
     `}`,
     // `export type ConfigKey = keyof typeof ${configVar}`,
-    `export type ConfigKey = ${sectionNames.map(v => `"${v}"`).join(' | ')}`,
+    `export type ${getSignature('ConfigKey')} = ${sectionNames.map(v => `"${v}"`).join(' | ')}`,
     `
-export function useConfig<K extends ConfigKey>(section: K) {
+export function ${getSignature('useConfig')}<K extends ConfigKey>(section: K) {
   return defineConfigs<typeof ${configVar}[K]>(section, ${configVar}[section])
 }
 
-export function useConfigObject<K extends ConfigKey>(section: K) {
+export function ${getSignature('useConfigObject')}<K extends ConfigKey>(section: K) {
   return defineConfigObject<typeof ${configVar}[K]>(section, ${configVar}[section])
 }
     `,

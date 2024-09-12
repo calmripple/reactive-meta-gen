@@ -11,7 +11,7 @@ export const name = "sample"
 export const version = "0.8.1"
 export const displayName = "sample IntelliSense"
 export const description = "Intelligent sample previewing and searching for VS Code"
-export const extensionId = `${publisher}.${name}`
+export const extensionId = "calmripple.sample"
 
 /**
  * Type union of all commands
@@ -26,7 +26,7 @@ export function useCommandBase(commandFullKey: CommandKey, callback: (...args: a
   return useCommand(commandFullKey, callback)
 }
 
-export function useCommandsBase(commands: Record<CommandKey, (...args: any[]) => any>): void {
+export function useCommandsBase(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
   return useCommands(commands)
 }
 

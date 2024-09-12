@@ -11,7 +11,7 @@ export const name = "smart-clicks"
 export const version = "0.2.1"
 export const displayName = "Smart Clicks"
 export const description = "Smart selection with double clicks"
-export const extensionId = `${publisher}.${name}`
+export const extensionId = "antfu.smart-clicks"
 
 /**
  * Type union of all commands
@@ -23,7 +23,7 @@ export function useCommandBase(commandFullKey: CommandKey, callback: (...args: a
   return useCommand(commandFullKey, callback)
 }
 
-export function useCommandsBase(commands: Record<CommandKey, (...args: any[]) => any>): void {
+export function useCommandsBase(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
   return useCommands(commands)
 }
 

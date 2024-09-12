@@ -11,7 +11,7 @@ export const name = "i18n-ally"
 export const version = "2.12.0"
 export const displayName = "i18n Ally"
 export const description = "🌍 All in one i18n extension for VS Code"
-export const extensionId = `${publisher}.${name}`
+export const extensionId = "lokalise.i18n-ally"
 
 /**
  * Type union of all commands
@@ -64,7 +64,7 @@ export function useCommandBase(commandFullKey: CommandKey, callback: (...args: a
   return useCommand(commandFullKey, callback)
 }
 
-export function useCommandsBase(commands: Record<CommandKey, (...args: any[]) => any>): void {
+export function useCommandsBase(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
   return useCommands(commands)
 }
 

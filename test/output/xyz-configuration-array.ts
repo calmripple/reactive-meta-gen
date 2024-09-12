@@ -11,7 +11,7 @@ export const name = "project-config"
 export const version = "1.1.2"
 export const displayName = "Project Config Updater"
 export const description = "Export current settings to workspace config file "
-export const extensionId = `${publisher}.${name}`
+export const extensionId = "cnjimbo.project-config"
 
 /**
  * Type union of all commands
@@ -26,11 +26,11 @@ export type CommandKey =
   | "extension.emeraldwalk.enableRunOnSave"
   | "extension.emeraldwalk.disableRunOnSave"
 
-export function useCommandBaseBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
 }
 
-export function useCommandsBaseBase(commands: Record<CommandKey, (...args: any[]) => any>): void {
+export function useCommandsBase(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
   return useCommands(commands)
 }
 
@@ -39,8 +39,8 @@ export function useCommandsBaseBase(commands: Record<CommandKey, (...args: any[]
  * Update config now
  * @value `base` identifier of the command 
  */
-export function useCommandBase(callback: (...args: any[]) => any) {
-  return useCommandBaseBase("base", callback)
+export function useCommandBase_2(callback: (...args: any[]) => any) {
+  return useCommandBase("base", callback)
 }
 
 /**
@@ -48,7 +48,7 @@ export function useCommandBase(callback: (...args: any[]) => any) {
  * @value `manualUpdate` identifier of the command 
  */
 export function useCommandManualUpdate(callback: (...args: any[]) => any) {
-  return useCommandBaseBase("manualUpdate", callback)
+  return useCommandBase("manualUpdate", callback)
 }
 
 /**
@@ -56,23 +56,23 @@ export function useCommandManualUpdate(callback: (...args: any[]) => any) {
  * @value `project-config.manualUpdate` identifier of the command 
  */
 export function useCommandProjectConfigManualUpdate(callback: (...args: any[]) => any) {
-  return useCommandBaseBase("project-config.manualUpdate", callback)
+  return useCommandBase("project-config.manualUpdate", callback)
 }
 
 /**
  * remove watch dir
  * @value `project-config.remove-watch-dir` identifier of the command 
  */
-export function useCommandProjectConfigRemoveWatchDir(callback: (...args: any[]) => any) {
-  return useCommandBaseBase("project-config.remove-watch-dir", callback)
+export function useCommandRemoveWatchDir(callback: (...args: any[]) => any) {
+  return useCommandBase("project-config.remove-watch-dir", callback)
 }
 
 /**
  * remove watch dir
  * @value `remove-watch-dir` identifier of the command 
  */
-export function useCommandRemoveWatchDir(callback: (...args: any[]) => any) {
-  return useCommandBaseBase("remove-watch-dir", callback)
+export function useCommandRemoveWatchDir_2(callback: (...args: any[]) => any) {
+  return useCommandBase("remove-watch-dir", callback)
 }
 
 /**
@@ -80,7 +80,7 @@ export function useCommandRemoveWatchDir(callback: (...args: any[]) => any) {
  * @value `project-config.add-watch-dir` identifier of the command 
  */
 export function useCommandAddWatchDir(callback: (...args: any[]) => any) {
-  return useCommandBaseBase("project-config.add-watch-dir", callback)
+  return useCommandBase("project-config.add-watch-dir", callback)
 }
 
 /**
@@ -88,7 +88,7 @@ export function useCommandAddWatchDir(callback: (...args: any[]) => any) {
  * @value `extension.emeraldwalk.enableRunOnSave` identifier of the command 
  */
 export function useCommandExtensionEmeraldwalkEnableRunOnSave(callback: (...args: any[]) => any) {
-  return useCommandBaseBase("extension.emeraldwalk.enableRunOnSave", callback)
+  return useCommandBase("extension.emeraldwalk.enableRunOnSave", callback)
 }
 
 /**
@@ -96,7 +96,7 @@ export function useCommandExtensionEmeraldwalkEnableRunOnSave(callback: (...args
  * @value `extension.emeraldwalk.disableRunOnSave` identifier of the command 
  */
 export function useCommandExtensionEmeraldwalkDisableRunOnSave(callback: (...args: any[]) => any) {
-  return useCommandBaseBase("extension.emeraldwalk.disableRunOnSave", callback)
+  return useCommandBase("extension.emeraldwalk.disableRunOnSave", callback)
 }
 
 
