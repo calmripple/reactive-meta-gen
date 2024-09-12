@@ -27,7 +27,7 @@ export function useCommandBase(commandFullKey: CommandKey, callback: (...args: a
 
 /**
  * Toggle Annotations
- * @value `iconify.toggle-annotations`
+ * @value `iconify.toggle-annotations` identifier of the command 
  */
 export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
   return useCommandBase("iconify.toggle-annotations", callback)
@@ -35,7 +35,7 @@ export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
 
 /**
  * Toggle In-place Mode
- * @value `iconify.toggle-inplace`
+ * @value `iconify.toggle-inplace` identifier of the command 
  */
 export function useCommandToggleInplace(callback: (...args: any[]) => any) {
   return useCommandBase("iconify.toggle-inplace", callback)
@@ -43,7 +43,7 @@ export function useCommandToggleInplace(callback: (...args: any[]) => any) {
 
 /**
  * Clear icon cache
- * @value `iconify.clear-cache`
+ * @value `iconify.clear-cache` identifier of the command 
  */
 export function useCommandClearCache(callback: (...args: any[]) => any) {
   return useCommandBase("iconify.clear-cache", callback)

@@ -25,7 +25,7 @@ export function useCommandBase(commandFullKey: CommandKey, callback: (...args: a
 
 /**
  * Show Menu
- * @value `whichkey.show`
+ * @value `whichkey.show` identifier of the command 
  */
 export function useCommandShow(callback: (...args: any[]) => any) {
   return useCommandBase("whichkey.show", callback)

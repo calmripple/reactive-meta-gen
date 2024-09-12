@@ -25,7 +25,7 @@ export function useCommandBase(commandFullKey: CommandKey, callback: (...args: a
 
 /**
  * Smart Clicks: Trigger
- * @value `smartClicks.trigger`
+ * @value `smartClicks.trigger` identifier of the command 
  */
 export function useCommandTrigger(callback: (...args: any[]) => any) {
   return useCommandBase("smartClicks.trigger", callback)

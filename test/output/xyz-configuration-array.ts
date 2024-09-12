@@ -21,6 +21,7 @@ export type CommandKey =
   | "manualUpdate"
   | "project-config.manualUpdate"
   | "project-config.remove-watch-dir"
+  | "remove-watch-dir"
   | "project-config.add-watch-dir"
   | "extension.emeraldwalk.enableRunOnSave"
   | "extension.emeraldwalk.disableRunOnSave"
@@ -31,7 +32,7 @@ export function useCommandBaseBase(commandFullKey: CommandKey, callback: (...arg
 
 /**
  * Update config now
- * @value `base`
+ * @value `base` identifier of the command 
  */
 export function useCommandBase(callback: (...args: any[]) => any) {
   return useCommandBaseBase("base", callback)
@@ -39,7 +40,7 @@ export function useCommandBase(callback: (...args: any[]) => any) {
 
 /**
  * Update config now
- * @value `manualUpdate`
+ * @value `manualUpdate` identifier of the command 
  */
 export function useCommandManualUpdate(callback: (...args: any[]) => any) {
   return useCommandBaseBase("manualUpdate", callback)
@@ -47,23 +48,31 @@ export function useCommandManualUpdate(callback: (...args: any[]) => any) {
 
 /**
  * Update config now
- * @value `project-config.manualUpdate`
+ * @value `project-config.manualUpdate` identifier of the command 
  */
-export function useCommandManualUpdate(callback: (...args: any[]) => any) {
+export function useCommandProjectConfigManualUpdate(callback: (...args: any[]) => any) {
   return useCommandBaseBase("project-config.manualUpdate", callback)
 }
 
 /**
  * remove watch dir
- * @value `project-config.remove-watch-dir`
+ * @value `project-config.remove-watch-dir` identifier of the command 
  */
-export function useCommandRemoveWatchDir(callback: (...args: any[]) => any) {
+export function useCommandProjectConfigRemoveWatchDir(callback: (...args: any[]) => any) {
   return useCommandBaseBase("project-config.remove-watch-dir", callback)
 }
 
 /**
+ * remove watch dir
+ * @value `remove-watch-dir` identifier of the command 
+ */
+export function useCommandRemoveWatchDir(callback: (...args: any[]) => any) {
+  return useCommandBaseBase("remove-watch-dir", callback)
+}
+
+/**
  * add watch dir
- * @value `project-config.add-watch-dir`
+ * @value `project-config.add-watch-dir` identifier of the command 
  */
 export function useCommandAddWatchDir(callback: (...args: any[]) => any) {
   return useCommandBaseBase("project-config.add-watch-dir", callback)
@@ -71,7 +80,7 @@ export function useCommandAddWatchDir(callback: (...args: any[]) => any) {
 
 /**
  * Run On Save: Enable
- * @value `extension.emeraldwalk.enableRunOnSave`
+ * @value `extension.emeraldwalk.enableRunOnSave` identifier of the command 
  */
 export function useCommandExtensionEmeraldwalkEnableRunOnSave(callback: (...args: any[]) => any) {
   return useCommandBaseBase("extension.emeraldwalk.enableRunOnSave", callback)
@@ -79,7 +88,7 @@ export function useCommandExtensionEmeraldwalkEnableRunOnSave(callback: (...args
 
 /**
  * Run On Save: Disable
- * @value `extension.emeraldwalk.disableRunOnSave`
+ * @value `extension.emeraldwalk.disableRunOnSave` identifier of the command 
  */
 export function useCommandExtensionEmeraldwalkDisableRunOnSave(callback: (...args: any[]) => any) {
   return useCommandBaseBase("extension.emeraldwalk.disableRunOnSave", callback)

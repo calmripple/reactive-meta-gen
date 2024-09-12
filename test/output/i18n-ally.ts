@@ -66,7 +66,7 @@ export function useCommandBase(commandFullKey: CommandKey, callback: (...args: a
 
 /**
  * %command.config_locales%
- * @value `i18n-ally.config-locales`
+ * @value `i18n-ally.config-locales` identifier of the command 
  */
 export function useCommandConfigLocales(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.config-locales", callback)
@@ -74,7 +74,7 @@ export function useCommandConfigLocales(callback: (...args: any[]) => any) {
 
 /**
  * %command.config_locales_auto%
- * @value `i18n-ally.config-locales-auto`
+ * @value `i18n-ally.config-locales-auto` identifier of the command 
  */
 export function useCommandConfigLocalesAuto(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.config-locales-auto", callback)
@@ -82,7 +82,7 @@ export function useCommandConfigLocalesAuto(callback: (...args: any[]) => any) {
 
 /**
  * %command.config_display_language%
- * @value `i18n-ally.config-display-language`
+ * @value `i18n-ally.config-display-language` identifier of the command 
  */
 export function useCommandConfigDisplayLanguage(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.config-display-language", callback)
@@ -90,7 +90,7 @@ export function useCommandConfigDisplayLanguage(callback: (...args: any[]) => an
 
 /**
  * %command.config_source_language%
- * @value `i18n-ally.config-source-language`
+ * @value `i18n-ally.config-source-language` identifier of the command 
  */
 export function useCommandConfigSourceLanguage(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.config-source-language", callback)
@@ -98,7 +98,7 @@ export function useCommandConfigSourceLanguage(callback: (...args: any[]) => any
 
 /**
  * %command.set_display_language%
- * @value `i18n-ally.set-display-language`
+ * @value `i18n-ally.set-display-language` identifier of the command 
  */
 export function useCommandSetDisplayLanguage(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.set-display-language", callback)
@@ -106,7 +106,7 @@ export function useCommandSetDisplayLanguage(callback: (...args: any[]) => any) 
 
 /**
  * %command.set_source_language%
- * @value `i18n-ally.set-source-language`
+ * @value `i18n-ally.set-source-language` identifier of the command 
  */
 export function useCommandSetSourceLanguage(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.set-source-language", callback)
@@ -114,7 +114,7 @@ export function useCommandSetSourceLanguage(callback: (...args: any[]) => any) {
 
 /**
  * %command.copy_key%
- * @value `i18n-ally.copy-key`
+ * @value `i18n-ally.copy-key` identifier of the command 
  */
 export function useCommandCopyKey(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.copy-key", callback)
@@ -122,7 +122,7 @@ export function useCommandCopyKey(callback: (...args: any[]) => any) {
 
 /**
  * %command.translate_key%
- * @value `i18n-ally.translate-key`
+ * @value `i18n-ally.translate-key` identifier of the command 
  */
 export function useCommandTranslateKey(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.translate-key", callback)
@@ -130,7 +130,7 @@ export function useCommandTranslateKey(callback: (...args: any[]) => any) {
 
 /**
  * %command.edit_key%
- * @value `i18n-ally.edit-key`
+ * @value `i18n-ally.edit-key` identifier of the command 
  */
 export function useCommandEditKey(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.edit-key", callback)
@@ -138,7 +138,7 @@ export function useCommandEditKey(callback: (...args: any[]) => any) {
 
 /**
  * %command.open_key%
- * @value `i18n-ally.open-key`
+ * @value `i18n-ally.open-key` identifier of the command 
  */
 export function useCommandOpenKey(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.open-key", callback)
@@ -146,7 +146,7 @@ export function useCommandOpenKey(callback: (...args: any[]) => any) {
 
 /**
  * %command.delete_key%
- * @value `i18n-ally.delete-key`
+ * @value `i18n-ally.delete-key` identifier of the command 
  */
 export function useCommandDeleteKey(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.delete-key", callback)
@@ -154,7 +154,7 @@ export function useCommandDeleteKey(callback: (...args: any[]) => any) {
 
 /**
  * %command.rename_key%
- * @value `i18n-ally.rename-key`
+ * @value `i18n-ally.rename-key` identifier of the command 
  */
 export function useCommandRenameKey(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.rename-key", callback)
@@ -162,7 +162,7 @@ export function useCommandRenameKey(callback: (...args: any[]) => any) {
 
 /**
  * %refactor.extract_text%
- * @value `i18n-ally.extract-text`
+ * @value `i18n-ally.extract-text` identifier of the command 
  */
 export function useCommandExtractText(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.extract-text", callback)
@@ -170,7 +170,7 @@ export function useCommandExtractText(callback: (...args: any[]) => any) {
 
 /**
  * Extract all hard-coded strings (experimental)
- * @value `i18n-ally.extract-hard-strings-batch`
+ * @value `i18n-ally.extract-hard-strings-batch` identifier of the command 
  */
 export function useCommandExtractHardStringsBatch(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.extract-hard-strings-batch", callback)
@@ -178,7 +178,7 @@ export function useCommandExtractHardStringsBatch(callback: (...args: any[]) => 
 
 /**
  * Detect hard-coded strings in current file (experimental)
- * @value `i18n-ally.detect_hard_strings`
+ * @value `i18n-ally.detect_hard_strings` identifier of the command 
  */
 export function useCommandDetectHardStrings(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.detect_hard_strings", callback)
@@ -186,7 +186,7 @@ export function useCommandDetectHardStrings(callback: (...args: any[]) => any) {
 
 /**
  * %command.open_url%
- * @value `i18n-ally.open-url`
+ * @value `i18n-ally.open-url` identifier of the command 
  */
 export function useCommandOpenUrl(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.open-url", callback)
@@ -194,7 +194,7 @@ export function useCommandOpenUrl(callback: (...args: any[]) => any) {
 
 /**
  * %command.fulfill_keys%
- * @value `i18n-ally.fulfill-keys`
+ * @value `i18n-ally.fulfill-keys` identifier of the command 
  */
 export function useCommandFulfillKeys(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.fulfill-keys", callback)
@@ -202,7 +202,7 @@ export function useCommandFulfillKeys(callback: (...args: any[]) => any) {
 
 /**
  * %command.refresh_usage%
- * @value `i18n-ally.refresh-usage`
+ * @value `i18n-ally.refresh-usage` identifier of the command 
  */
 export function useCommandRefreshUsage(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.refresh-usage", callback)
@@ -210,7 +210,7 @@ export function useCommandRefreshUsage(callback: (...args: any[]) => any) {
 
 /**
  * %feedback.support%
- * @value `i18n-ally.support`
+ * @value `i18n-ally.support` identifier of the command 
  */
 export function useCommandSupport(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.support", callback)
@@ -218,7 +218,7 @@ export function useCommandSupport(callback: (...args: any[]) => any) {
 
 /**
  * %command.locale_visibility_show%
- * @value `i18n-ally.locale-visibility-show`
+ * @value `i18n-ally.locale-visibility-show` identifier of the command 
  */
 export function useCommandLocaleVisibilityShow(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.locale-visibility-show", callback)
@@ -226,7 +226,7 @@ export function useCommandLocaleVisibilityShow(callback: (...args: any[]) => any
 
 /**
  * %command.locale_visibility_hide%
- * @value `i18n-ally.locale-visibility-hide`
+ * @value `i18n-ally.locale-visibility-hide` identifier of the command 
  */
 export function useCommandLocaleVisibilityHide(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.locale-visibility-hide", callback)
@@ -234,7 +234,7 @@ export function useCommandLocaleVisibilityHide(callback: (...args: any[]) => any
 
 /**
  * %command.new_key%
- * @value `i18n-ally.new-key`
+ * @value `i18n-ally.new-key` identifier of the command 
  */
 export function useCommandNewKey(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.new-key", callback)
@@ -242,7 +242,7 @@ export function useCommandNewKey(callback: (...args: any[]) => any) {
 
 /**
  * %command.duplicate_key%
- * @value `i18n-ally.duplicate-key`
+ * @value `i18n-ally.duplicate-key` identifier of the command 
  */
 export function useCommandDuplicateKey(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.duplicate-key", callback)
@@ -250,7 +250,7 @@ export function useCommandDuplicateKey(callback: (...args: any[]) => any) {
 
 /**
  * %command.mark_key_as_in_use%
- * @value `i18n-ally.mark-key-as-in-use`
+ * @value `i18n-ally.mark-key-as-in-use` identifier of the command 
  */
 export function useCommandMarkKeyAsInUse(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.mark-key-as-in-use", callback)
@@ -258,7 +258,7 @@ export function useCommandMarkKeyAsInUse(callback: (...args: any[]) => any) {
 
 /**
  * %command.open_in_editor%
- * @value `i18n-ally.open-in-editor`
+ * @value `i18n-ally.open-in-editor` identifier of the command 
  */
 export function useCommandOpenInEditor(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.open-in-editor", callback)
@@ -266,7 +266,7 @@ export function useCommandOpenInEditor(callback: (...args: any[]) => any) {
 
 /**
  * %command.open_editor%
- * @value `i18n-ally.open-editor`
+ * @value `i18n-ally.open-editor` identifier of the command 
  */
 export function useCommandOpenEditor(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.open-editor", callback)
@@ -274,7 +274,7 @@ export function useCommandOpenEditor(callback: (...args: any[]) => any) {
 
 /**
  * %review.leave_comment%
- * @value `i18n-ally.review.comment`
+ * @value `i18n-ally.review.comment` identifier of the command 
  */
 export function useCommandReviewComment(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.review.comment", callback)
@@ -282,7 +282,7 @@ export function useCommandReviewComment(callback: (...args: any[]) => any) {
 
 /**
  * %review.approve%
- * @value `i18n-ally.review.approve`
+ * @value `i18n-ally.review.approve` identifier of the command 
  */
 export function useCommandReviewApprove(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.review.approve", callback)
@@ -290,7 +290,7 @@ export function useCommandReviewApprove(callback: (...args: any[]) => any) {
 
 /**
  * %review.request_change%
- * @value `i18n-ally.review.request-change`
+ * @value `i18n-ally.review.request-change` identifier of the command 
  */
 export function useCommandReviewRequestChange(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.review.request-change", callback)
@@ -298,7 +298,7 @@ export function useCommandReviewRequestChange(callback: (...args: any[]) => any)
 
 /**
  * %review.edit%
- * @value `i18n-ally.review.edit`
+ * @value `i18n-ally.review.edit` identifier of the command 
  */
 export function useCommandReviewEdit(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.review.edit", callback)
@@ -306,7 +306,7 @@ export function useCommandReviewEdit(callback: (...args: any[]) => any) {
 
 /**
  * %review.resolve%
- * @value `i18n-ally.review.resolve`
+ * @value `i18n-ally.review.resolve` identifier of the command 
  */
 export function useCommandReviewResolve(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.review.resolve", callback)
@@ -314,7 +314,7 @@ export function useCommandReviewResolve(callback: (...args: any[]) => any) {
 
 /**
  * %review.resolve_all%
- * @value `i18n-ally.review.resolve-thread`
+ * @value `i18n-ally.review.resolve-thread` identifier of the command 
  */
 export function useCommandReviewResolveThread(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.review.resolve-thread", callback)
@@ -322,7 +322,7 @@ export function useCommandReviewResolveThread(callback: (...args: any[]) => any)
 
 /**
  * %review.apply_translation_candidate%
- * @value `i18n-ally.review.apply-translation`
+ * @value `i18n-ally.review.apply-translation` identifier of the command 
  */
 export function useCommandReviewApplyTranslation(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.review.apply-translation", callback)
@@ -330,7 +330,7 @@ export function useCommandReviewApplyTranslation(callback: (...args: any[]) => a
 
 /**
  * %review.apply_suggestion%
- * @value `i18n-ally.review.apply-suggestion`
+ * @value `i18n-ally.review.apply-suggestion` identifier of the command 
  */
 export function useCommandReviewApplySuggestion(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.review.apply-suggestion", callback)
@@ -338,7 +338,7 @@ export function useCommandReviewApplySuggestion(callback: (...args: any[]) => an
 
 /**
  * %command.insert_key%
- * @value `i18n-ally.insert-key`
+ * @value `i18n-ally.insert-key` identifier of the command 
  */
 export function useCommandInsertKey(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.insert-key", callback)
@@ -346,7 +346,7 @@ export function useCommandInsertKey(callback: (...args: any[]) => any) {
 
 /**
  * %command.deepl_usage%
- * @value `i18n-ally.deepl-usage`
+ * @value `i18n-ally.deepl-usage` identifier of the command 
  */
 export function useCommandDeeplUsage(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.deepl-usage", callback)
@@ -354,7 +354,7 @@ export function useCommandDeeplUsage(callback: (...args: any[]) => any) {
 
 /**
  * %command.go_to_range%
- * @value `i18n-ally.go-to-range`
+ * @value `i18n-ally.go-to-range` identifier of the command 
  */
 export function useCommandGoToRange(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.go-to-range", callback)
@@ -362,7 +362,7 @@ export function useCommandGoToRange(callback: (...args: any[]) => any) {
 
 /**
  * %command.go_to_next_usage%
- * @value `i18n-ally.go-to-next-usage`
+ * @value `i18n-ally.go-to-next-usage` identifier of the command 
  */
 export function useCommandGoToNextUsage(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.go-to-next-usage", callback)
@@ -370,7 +370,7 @@ export function useCommandGoToNextUsage(callback: (...args: any[]) => any) {
 
 /**
  * %command.go_to_prev_usage%
- * @value `i18n-ally.go-to-prev-usage`
+ * @value `i18n-ally.go-to-prev-usage` identifier of the command 
  */
 export function useCommandGoToPrevUsage(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.go-to-prev-usage", callback)
@@ -378,7 +378,7 @@ export function useCommandGoToPrevUsage(callback: (...args: any[]) => any) {
 
 /**
  * %command.show_docs%
- * @value `i18n-ally.open-docs-hard-string`
+ * @value `i18n-ally.open-docs-hard-string` identifier of the command 
  */
 export function useCommandOpenDocsHardString(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.open-docs-hard-string", callback)
@@ -386,7 +386,7 @@ export function useCommandOpenDocsHardString(callback: (...args: any[]) => any) 
 
 /**
  * %command.extract.disable-auto-detect%
- * @value `i18n-ally.extract-disable-auto-detect`
+ * @value `i18n-ally.extract-disable-auto-detect` identifier of the command 
  */
 export function useCommandExtractDisableAutoDetect(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.extract-disable-auto-detect", callback)
@@ -394,7 +394,7 @@ export function useCommandExtractDisableAutoDetect(callback: (...args: any[]) =>
 
 /**
  * %command.extract.enable-auto-detect%
- * @value `i18n-ally.extract-enable-auto-detect`
+ * @value `i18n-ally.extract-enable-auto-detect` identifier of the command 
  */
 export function useCommandExtractEnableAutoDetect(callback: (...args: any[]) => any) {
   return useCommandBase("i18n-ally.extract-enable-auto-detect", callback)

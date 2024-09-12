@@ -27,7 +27,7 @@ export function useCommandBase(commandFullKey: CommandKey, callback: (...args: a
 
 /**
  * Toggle Annotations
- * @value `sample.toggle-annotations`
+ * @value `sample.toggle-annotations` identifier of the command 
  */
 export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
   return useCommandBase("sample.toggle-annotations", callback)
@@ -35,7 +35,7 @@ export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
 
 /**
  * Toggle In-place Mode
- * @value `sample.toggle-inplace`
+ * @value `sample.toggle-inplace` identifier of the command 
  */
 export function useCommandToggleInplace(callback: (...args: any[]) => any) {
   return useCommandBase("sample.toggle-inplace", callback)
@@ -43,7 +43,7 @@ export function useCommandToggleInplace(callback: (...args: any[]) => any) {
 
 /**
  * Clear icon cache
- * @value `sample.clear-cache`
+ * @value `sample.clear-cache` identifier of the command 
  */
 export function useCommandClearCache(callback: (...args: any[]) => any) {
   return useCommandBase("sample.clear-cache", callback)

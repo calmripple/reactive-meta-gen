@@ -47,6 +47,11 @@
       },
       {
         "category": "Project Config Updater",
+        "command": "remove-watch-dir",
+        "title": "remove watch dir"
+      },
+      {
+        "category": "Project Config Updater",
         "command": "project-config.add-watch-dir",
         "title": "add watch dir"
       },

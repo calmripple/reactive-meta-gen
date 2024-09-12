@@ -8,6 +8,7 @@
 | `manualUpdate`                           | Project Config Updater: Update config now |
 | `project-config.manualUpdate`            | Project Config Updater: Update config now |
 | `project-config.remove-watch-dir`        | Project Config Updater: remove watch dir  |
+| `remove-watch-dir`                       | Project Config Updater: remove watch dir  |
 | `project-config.add-watch-dir`           | Project Config Updater: add watch dir     |
 | `extension.emeraldwalk.enableRunOnSave`  | Run On Save: Enable                       |
 | `extension.emeraldwalk.disableRunOnSave` | Run On Save: Disable                      |

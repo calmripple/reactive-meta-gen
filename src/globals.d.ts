@@ -49,7 +49,18 @@ declare interface ConfigurationProperty {
 }
 
 declare interface CommandType {
+  /**
+   *  category string by which the command is grouped in the UI
+   */
   category?: string
+  /**
+   * identifier of the command to execute
+   */
   command: string
+  /**
+   * title which the command is represented in the UI
+   */
   title: string
+
+  // funcName: string | undefined
 }
