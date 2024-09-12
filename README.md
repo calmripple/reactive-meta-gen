@@ -110,23 +110,25 @@ export const configSample = useConfig('sample')
 On usage:
 
 ```ts
-import { defineExtension, useCommands, watchEffect } from 'reactive-vscode'
-
+import { defineExtension, watchEffect } from 'reactive-vscode'
 import { window } from 'vscode'
-import { commands, sampleConfigObject, sampleConfigs } from './output/sample'
+import { configObjectSample, useCommandUpdateDate } from './output/sample'
 
 const { activate, deactivate } = defineExtension(() => {
+  // another way to get the config value
+  const configValue = configObjectSample.date // get value
+
   watchEffect(() => {
     // watch value change
-    window.showInformationMessage(`sampleConfigs.annotations.value:${sampleConfigs.annotations.value}`)
+    window.showInformationMessage(`sampleConfigs.annotations.value:${configObjectSample.date}`)
   })
-  useCommands({
-    [commands.toggleAnnotations]: async () => {
-      // update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
-      sampleConfigs.inplace.update(!sampleConfigs.inplace.value)
-    }
+
+  useCommandUpdateDate(async () => {
+    // update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
+    configObjectSample.$update('date', Date.now().toLocaleString())
   })
-})
+},
+)
 
 export { activate, deactivate }
 ```

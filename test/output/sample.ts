@@ -20,6 +20,7 @@ export type CommandKey =
   | "sample.toggle-annotations"
   | "sample.toggle-inplace"
   | "sample.clear-cache"
+  | "sample.update-date"
 
 export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
@@ -54,11 +55,23 @@ export function useCommandClearCache(callback: (...args: any[]) => any) {
   return useCommandBase("sample.clear-cache", callback)
 }
 
+/**
+ * update current date
+ * @value `sample.update-date` identifier of the command 
+ */
+export function useCommandUpdateDate(callback: (...args: any[]) => any) {
+  return useCommandBase("sample.update-date", callback)
+}
+
 
 /**
  * Section Type of `sample`
  */
 export interface Sample {
+  /**
+   * Current time
+   */
+  "date": string,
   /**
    * Use icon graph to replace the icon name.
    */
@@ -127,6 +140,10 @@ const sampleConfig = {
    * Section defaults of `sample`
    */
   "sample": {
+    /**
+     * Current time
+     */
+    "date": "now",
     /**
      * Use icon graph to replace the icon name.
      */
@@ -203,14 +220,14 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
 /**
  * ConfigObject of `sample`
  * @example
- * const oldVal = configObjectSample.inplace //get value 
- * configObjectSample.$update("inplace", oldVal) //update value
+ * const oldVal = configObjectSample.date //get value 
+ * configObjectSample.$update("date", oldVal) //update value
  */
 export const configObjectSample = useConfigObject("sample")
 /**
  * ToConfigRefs of `sample`
  * @example
- * const oldVal:boolean =configSample.inplace.value //get value 
- * configSample.inplace.update(oldVal) //update value
+ * const oldVal:string =configSample.date.value //get value 
+ * configSample.date.update(oldVal) //update value
  */
 export const configSample = useConfig("sample")
