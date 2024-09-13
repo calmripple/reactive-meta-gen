@@ -3,7 +3,7 @@ import {
   upperFirst,
   getConfigInfo,
 } from './util'
-
+import * as ts from 'typescript'
 export function generateMarkdown(packageJson: any): { commandsTable: string, configsTable: string, configsJson: string } {
   const config = getConfigInfo(packageJson)
   const MAX_TABLE_COL_CHAR = 150
@@ -369,6 +369,13 @@ export function ${getSignature('useConfigObject')}<K extends ConfigKey>(section:
   return lines.join('\n')
 }
 
+const printer = ts.createPrinter({
+  newLine: ts.NewLineKind.CarriageReturnLineFeed,
+  removeComments: false,
+  omitTrailingSemicolon: true,
+  noEmitHelpers: false,
+})
+
 export function generate(packageJson: any, options: GenerateOptions = {}): {
   dts: string
   markdown: {
@@ -377,8 +384,11 @@ export function generate(packageJson: any, options: GenerateOptions = {}): {
     configsJson: string
   }
 } {
+  // 使用解析器生成AST
+  const sourceFile = ts.createSourceFile('abc.ts', generateDTS(packageJson, options), ts.ScriptTarget.Latest, true, ts.ScriptKind.TS)
+
   return {
-    dts: generateDTS(packageJson, options),
+    dts: printer.printFile(sourceFile), // generateDTS(packageJson, options),
     markdown: generateMarkdown(packageJson),
   }
 }
@@ -438,9 +448,6 @@ function typeFromSchema(schema: ConfigurationProperty, isSubType = false, subInd
       case 'object':
         if (schema.properties) {
           const propertyKeyValues = Object.entries(schema.properties).flatMap(([key, value]) => {
-            if (key === 'vscodeTask') {
-              console.log(value)
-            }
             const defaultValue = defaultValFromSchema(value)
             return [
               ...commentBlock([
