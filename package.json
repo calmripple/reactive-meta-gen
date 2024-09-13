@@ -61,19 +61,19 @@
   "devDependencies": {
     "@antfu/eslint-config": "^2.27.3",
     "@antfu/ni": "^0.23.0",
-    "@types/node": "^22.5.1",
-    "@types/vscode": "^1.92.0",
-    "bumpp": "^9.5.1",
-    "eslint": "^9.9.1",
+    "@types/node": "^22.5.4",
+    "@types/vscode": "^1.93.0",
+    "bumpp": "^9.5.2",
+    "eslint": "^9.10.0",
     "esno": "^4.7.0",
     "fast-glob": "^3.3.2",
-    "lint-staged": "^15.2.9",
+    "lint-staged": "^15.2.10",
     "reactive-vscode": "^0.2.2",
     "simple-git-hooks": "^2.11.1",
-    "taze": "^0.16.7",
-    "typescript": "^5.5.4",
+    "taze": "^0.16.8",
+    "typescript": "^5.6.2",
     "unbuild": "^2.0.0",
-    "vitest": "^2.0.5"
+    "vitest": "^2.1.0"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
