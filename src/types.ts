@@ -1,4 +1,4 @@
-declare interface GenerateOptions {
+export interface GenerateOptions {
   /**
    * The header of the generated file
    */
@@ -18,10 +18,9 @@ declare interface GenerateOptions {
   extensionSection?: string
 }
 
-declare interface ConfigurationProperty {
+export interface ConfigurationProperty {
   type?: string | string[]
   default?: any
-  anyOf?: ConfigurationProperty[]
   description?: string
   enum?: any[]
   enumDescriptions?: string[]
@@ -49,7 +48,7 @@ declare interface ConfigurationProperty {
   pattern?: string
 }
 
-declare interface CommandType {
+export interface CommandType {
   /**
    *  category string by which the command is grouped in the UI
    */

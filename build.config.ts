@@ -7,4 +7,6 @@ export default defineBuildConfig({
   ],
   declaration: true,
   clean: true,
+  externals: ['reactive-vscode', 'typescript', 'radash', 'cac', 'node:path', 'node:fs', 'node:fs/promises'],
+
 })

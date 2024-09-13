@@ -4,6 +4,9 @@ import {
   getConfigInfo,
 } from './util'
 import * as ts from 'typescript'
+
+import type { GenerateOptions, CommandType, ConfigurationProperty } from './types'
+
 export function generateMarkdown(packageJson: any): { commandsTable: string, configsTable: string, configsJson: string } {
   const config = getConfigInfo(packageJson)
   const MAX_TABLE_COL_CHAR = 150
