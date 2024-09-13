@@ -72,7 +72,17 @@ export type CommandKey =
   | 'sample.clear-cache'
 
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
-  return useCommand(commandFullKey, callback)
+  return useReactiveCommand(commandFullKey, callback)
+}
+export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
+  return useReactiveCommands(commands)
+}
+type NameType = typeof name | typeof displayName | typeof extensionId
+export function useLogger(name: NameType = displayName, getPrefix?: ((type: string) => string) | null) {
+  return useReactiveLogger(name, { getPrefix })
+}
+export function useOutputChannel(name: NameType = displayName) {
+  return useReactiveOutputChannel(name)
 }
 
 /**
