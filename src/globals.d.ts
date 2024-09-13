@@ -19,8 +19,9 @@ declare interface GenerateOptions {
 }
 
 declare interface ConfigurationProperty {
-  type: string | string[]
+  type?: string | string[]
   default?: any
+  anyOf?: ConfigurationProperty[]
   description?: string
   enum?: any[]
   enumDescriptions?: string[]

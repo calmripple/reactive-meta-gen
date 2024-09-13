@@ -403,6 +403,9 @@ function typeFromSchema(schema: ConfigurationProperty, isSubType = false, subInd
   if (!schema)
     return 'unknown'
   const indent = ' '.repeat(subIndent)
+  if (!schema.type && schema.anyOf) {
+    return `${schema.anyOf.map(v => typeFromSchema(v, true, subIndent + 2)).join(' | ')}`
+  }
   const schemaTypes = Array.isArray(schema.type) ? schema.type : [schema.type]
   const types: string[] = []
 
@@ -435,6 +438,9 @@ function typeFromSchema(schema: ConfigurationProperty, isSubType = false, subInd
       case 'object':
         if (schema.properties) {
           const propertyKeyValues = Object.entries(schema.properties).flatMap(([key, value]) => {
+            if (key === 'vscodeTask') {
+              console.log(value)
+            }
             const defaultValue = defaultValFromSchema(value)
             return [
               ...commentBlock([
