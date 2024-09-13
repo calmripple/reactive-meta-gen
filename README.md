@@ -71,7 +71,7 @@ export type CommandKey =
   | 'sample.toggle-inplace'
   | 'sample.clear-cache'
 
-export function useCommandBase(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(commandFullKey, callback)
 }
 
@@ -80,7 +80,7 @@ export function useCommandBase(commandFullKey: CommandKey, callback: (...args: a
  * @value `sample.toggle-annotations` identifier of the command
  */
 export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
-  return useCommandBase('sample.toggle-annotations', callback)
+  return useCommand('sample.toggle-annotations', callback)
 }
 
 export function useConfig<K extends ConfigKey>(section: K) {
