@@ -95,8 +95,14 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     signatures.add(signature)
     return signature
   }
-  function getSignatures(signatures: string[], ...builders: ((sign: string, idx: number) => string)[]): string[] {
+  function _getSignatures(signatures: string[], ...builders: ((sign: string, idx: number) => string)[]): string[] {
     return signatures.map(signature => getSignature(signature, ...builders))
+  }
+  function getSignatureObject(signatures: Record<string, string>, ...builders: ((sign: string, idx: number) => string)[]): Record<string, string> {
+    return Object.entries(signatures).reduce((pre, [key, value]) => {
+      pre[getSignature(key, ...builders)] = value
+      return pre
+    }, {} as Record<string, string>)
   }
   const config = getConfigInfo(packageJson)
   let {
@@ -108,21 +114,25 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   let lines: string[] = []
 
   lines.push('// Meta info')
-  lines.push('', `import { defineConfigObject, defineConfigs, useCommand, useCommands } from 'reactive-vscode'`, '')
-  const forwardKeys = getSignatures([
-    'publisher',
-    'name',
-    'version',
-    'displayName',
-    'description',
-  ])
-  for (const key of forwardKeys) {
-    lines.push(`export const ${key} = ${packageJson[key] ? JSON.stringify(packageJson[key]) : 'undefined'}`)
+  lines.push('', `import { defineConfigObject, defineConfigs, useCommand as useReactiveCommand, 
+    useCommands as useReactiveCommands,
+    useLogger as useReactiveLogger,
+    useOutputChannel as useReactiveOutputChannel,    
+    } from 'reactive-vscode'`, '')
+
+  const forwardKeys = getSignatureObject({
+    publisher: 'publisher',
+    name: 'name',
+    version: 'version',
+    displayName: 'displayName',
+    description: 'description',
+  })
+  for (const keyvalue of Object.entries(forwardKeys)) {
+    lines.push(`export const ${keyvalue[0]} = ${packageJson[keyvalue[1]] ? JSON.stringify(packageJson[keyvalue[1]]) : 'undefined'}`)
   }
-
+  const varextensionId = getSignature(`extensionId`)
   lines.push(
-
-    `export const ${getSignature('extensionId')} = "${packageJson.publisher}.${packageJson.name}"`,
+    `export const ${varextensionId} = "${packageJson.publisher}.${packageJson.name}"`,
   )
 
   const extensionSectionWithDot = `${extensionSection}.`
@@ -138,8 +148,9 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   }
 
   // ========== Commands ==========
-  const cmdFuncBaseName = getSignature(`useCommandBase`)
-  const cmdFunctionNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
+  const varUseCommand = getSignature(`useCommand`)
+  const varUseGenerateCommands = getSignature(`useCommands`)
+  const varUseGenerateCommandFunctionNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
     return {
       funcName: getSignature(`useCommand${upperFirst(convertCamelCase(withoutExtensionPrefix(c.command)))}`, (_s, _i) => `useCommand${upperFirst(convertCamelCase(c.command))}`),
       ...c,
@@ -169,38 +180,46 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     '',
     ...commentBlock('Type union of all commands'),
   )
-  if (!cmdFunctionNames?.length) {
+  if (!varUseGenerateCommandFunctionNames?.length) {
     lines.push('export type CommandKey = never')
   }
   else {
     lines.push(
       `export type ${getSignature('CommandKey')} = `,
-      ...cmdFunctionNames.map(c =>
+      ...varUseGenerateCommandFunctionNames.map(c =>
         `  | ${JSON.stringify(c.command)}`,
       ),
     )
   }
   // ========== Command Base ==========
-
+  const varNameType = `${getSignature('NameType')}`
   lines.push(`
-export function ${cmdFuncBaseName}(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
-  return useCommand(commandFullKey, callback)
+export function ${varUseCommand}(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+  return useReactiveCommand(commandFullKey, callback)
 }
 
-export function ${cmdFuncBaseName.slice(0, 10)}s${cmdFuncBaseName.slice(10)}(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
-  return useCommands(commands)
+export function ${varUseGenerateCommands}(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
+  return useReactiveCommands(commands)
+}
+type ${varNameType} = typeof ${forwardKeys.name} | typeof ${forwardKeys.displayName} | typeof ${varextensionId}
+export function ${getSignature('useLogger')}(name: ${varNameType} = ${forwardKeys.displayName}, getPrefix?: ((type: string) => string) | null) {
+    return useReactiveLogger(name, { 'getPrefix': getPrefix })
+}
+
+export function ${getSignature('useOutputChannel')}(name: ${varNameType} = ${forwardKeys.displayName}) {
+    return useReactiveOutputChannel(name)
 }
 `)
 
   lines.push(
-    ...cmdFunctionNames
+    ...varUseGenerateCommandFunctionNames
       .flatMap((c) => {
         return [
           ``,
           ...commentBlock(`${c.title}
 @value \`${c.command}\` identifier of the command `, 0),
           `export function ${c.funcName}(callback: (...args: any[]) => any) {`,
-          `  return ${cmdFuncBaseName}(${JSON.stringify(c.command)}, callback)`,
+          `  return ${varUseCommand}(${JSON.stringify(c.command)}, callback)`,
           `}`,
         ]
       }),
