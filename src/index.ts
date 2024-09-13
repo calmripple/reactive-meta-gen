@@ -385,11 +385,13 @@ export function generate(packageJson: any, options: GenerateOptions = {}): {
   }
 } {
   // 使用解析器生成AST
-  const sourceFile = ts.createSourceFile('abc.ts', generateDTS(packageJson, options), ts.ScriptTarget.Latest, true, ts.ScriptKind.TS)
-
+  const sourceFilets = ts.createSourceFile('abc.ts', generateDTS(packageJson, options), ts.ScriptTarget.Latest, true, ts.ScriptKind.TS)
+  const md = generateMarkdown(packageJson)
+  // const scourceFileMd = ts.createSourceFile('a.json', md.configsJson, ts.ScriptTarget.JSON, true, ts.ScriptKind.JSON)
+  // md.configsJson = printer.printFile(scourceFileMd)
   return {
-    dts: printer.printFile(sourceFile), // generateDTS(packageJson, options),
-    markdown: generateMarkdown(packageJson),
+    dts: printer.printFile(sourceFilets), // generateDTS(packageJson, options),
+    markdown: md,
   }
 }
 
