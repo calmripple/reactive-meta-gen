@@ -260,3 +260,27 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
 export function useCommandProjectConfig(cmd: CommandKey, callback: (...args: any[]) => any): void {
   return useCommand(cmd, callback)
 }
+
+function getRightDotSection(str: string, rightIdx: number): string {
+  if (typeof str !== 'string' || typeof rightIdx !== 'number') {
+    throw new TypeError('Invalid input')
+  }
+  const parts = str.split('.')
+  let indexFromRight = 0
+  if (rightIdx === 0)
+    rightIdx = -1
+  if (rightIdx < 0) {
+    indexFromRight = parts.length + rightIdx
+  }
+  else if (rightIdx > 0) {
+    indexFromRight = parts.length - rightIdx
+  }
+  if (indexFromRight < 0) {
+    return str
+  }
+  return parts.slice(indexFromRight).join('.')
+}
+
+console.log(getRightDotSection('example.com/path/to/file.txt', 2))
+console.log(getRightDotSection('example.com/path.to/file.txt', 3))
+console.log(getRightDotSection('example.com/path.to/file.txt', 5))

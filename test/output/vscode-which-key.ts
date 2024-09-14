@@ -13,6 +13,16 @@ export const extensionId = "VSpaceCode.whichkey";
  * Type union of all commands
  */
 export type CommandKey = "whichkey.show";
+/**
+ * Commands map registed by `VSpaceCode.whichkey`
+ */
+export const commands = {
+    /**
+     * Show Menu
+     * @value `whichkey.show`
+     */
+    show: "whichkey.show",
+} satisfies Record<string, CommandKey>;
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
@@ -31,7 +41,7 @@ export function useOutputChannel(name: NameType = displayName) {
  * @value `whichkey.show` identifier of the command
  */
 export function useCommandShow(callback: (...args: any[]) => any) {
-    return useCommand("whichkey.show", callback);
+    return useCommand(commands.show, callback);
 }
 /**
  * Section Type of `whichkey`

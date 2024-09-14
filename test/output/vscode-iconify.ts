@@ -13,6 +13,26 @@ export const extensionId = "antfu.iconify";
  * Type union of all commands
  */
 export type CommandKey = "iconify.toggle-annotations" | "iconify.toggle-inplace" | "iconify.clear-cache";
+/**
+ * Commands map registed by `antfu.iconify`
+ */
+export const commands = {
+    /**
+     * Toggle Annotations
+     * @value `iconify.toggle-annotations`
+     */
+    toggleAnnotations: "iconify.toggle-annotations",
+    /**
+     * Toggle In-place Mode
+     * @value `iconify.toggle-inplace`
+     */
+    toggleInplace: "iconify.toggle-inplace",
+    /**
+     * Clear icon cache
+     * @value `iconify.clear-cache`
+     */
+    clearCache: "iconify.clear-cache",
+} satisfies Record<string, CommandKey>;
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
@@ -31,21 +51,21 @@ export function useOutputChannel(name: NameType = displayName) {
  * @value `iconify.toggle-annotations` identifier of the command
  */
 export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
-    return useCommand("iconify.toggle-annotations", callback);
+    return useCommand(commands.toggleAnnotations, callback);
 }
 /**
  * Toggle In-place Mode
  * @value `iconify.toggle-inplace` identifier of the command
  */
 export function useCommandToggleInplace(callback: (...args: any[]) => any) {
-    return useCommand("iconify.toggle-inplace", callback);
+    return useCommand(commands.toggleInplace, callback);
 }
 /**
  * Clear icon cache
  * @value `iconify.clear-cache` identifier of the command
  */
 export function useCommandClearCache(callback: (...args: any[]) => any) {
-    return useCommand("iconify.clear-cache", callback);
+    return useCommand(commands.clearCache, callback);
 }
 /**
  * Section Type of `iconify`

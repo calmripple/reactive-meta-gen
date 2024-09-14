@@ -2,9 +2,10 @@ import {
   convertCamelCase,
   upperFirst,
   getConfigInfo,
+  getRightSection,
 } from './util'
 import * as ts from 'typescript'
-
+import { memo } from 'radash'
 import type { GenerateOptions, CommandType, ConfigurationProperty } from './types'
 
 export function generateMarkdown(packageJson: any): { commandsTable: string, configsTable: string, configsJson: string } {
@@ -80,27 +81,35 @@ export function generateMarkdown(packageJson: any): { commandsTable: string, con
 }
 
 export function generateDTS(packageJson: any, options: GenerateOptions = {}): string {
-  const signatures = new Set<string>()
-  function getSignature(signature: string, ...builders: ((sign: string, idx: number) => string)[]): string {
-    let i = 0
-    while (signatures.has(signature) && i < 100) {
-      if (builders.length > i) {
-        signature = builders[i](signature, i)
+  const extensionId = `${packageJson.publisher}.${packageJson.name}`
+  // const _publisher = packageJson.publisher
+  const name = packageJson.name as string
+  const signatures = memo((_domain: string) => new Set<string>())
+  function getSignature(signature: string, domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string | undefined): string {
+    let tryCount = 1
+
+    while (signatures(domain).has(signature) && tryCount < 100) {
+      let tempSign
+      if (builder) {
+        try {
+          tempSign = builder(signature, tryCount)
+        }
+        catch {
+          tempSign = undefined
+        }
       }
-      else {
-        signature = `${signature}_${i + 1}`
-      }
-      i++
+      signature = tempSign === undefined ? `${signature}_${tryCount}` : tempSign
+      tryCount++
     }
-    signatures.add(signature)
+    signatures(domain).add(signature)
     return signature
   }
-  function _getSignatures(signatures: string[], ...builders: ((sign: string, idx: number) => string)[]): string[] {
-    return signatures.map(signature => getSignature(signature, ...builders))
+  function _getSignatures(signatures: string[], domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): string[] {
+    return signatures.map(signature => getSignature(signature, domain, builder))
   }
-  function getSignatureObject(signatures: Record<string, string>, ...builders: ((sign: string, idx: number) => string)[]): Record<string, string> {
+  function getSignatureObject(signatures: Record<string, string>, domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): Record<string, string> {
     return Object.entries(signatures).reduce((pre, [key, value]) => {
-      pre[getSignature(key, ...builders)] = value
+      pre[getSignature(key, domain, builder)] = value
       return pre
     }, {} as Record<string, string>)
   }
@@ -136,9 +145,6 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   )
 
   const extensionSectionWithDot = `${extensionSection}.`
-  const extensionId = `${packageJson.publisher}.${packageJson.name}`
-  // const _publisher = packageJson.publisher
-  const name = packageJson.name as string
 
   function withoutExtensionPrefix(name: string): string {
     if (name.startsWith(extensionSectionWithDot)) {
@@ -148,53 +154,52 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   }
 
   // ========== Commands ==========
-  const varUseCommand = getSignature(`useCommand`)
+  // useCommand${upperFirst(convertCamelCase(getRightSection(c.command, -1)))}
+  const varGenerateUseCommand = getSignature(`useCommand`)
   const varUseGenerateCommands = getSignature(`useCommands`)
+  const varCommandKey = getSignature('CommandKey')
+  const varCommands = getSignature('commands')
   const varUseGenerateCommandFunctionNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
+    const f = getSignature(convertCamelCase(getRightSection(c.command, -1)), extensionId, (_pre, _count) => convertCamelCase(getRightSection(c.command, -_count)))
     return {
-      funcName: getSignature(`useCommand${upperFirst(convertCamelCase(withoutExtensionPrefix(c.command)))}`, (_s, _i) => `useCommand${upperFirst(convertCamelCase(c.command))}`),
+      funcName: f,
       ...c,
     }
   })
-
-  // function handleRepetitive() {
-  //   const funcNameCache = new Map<string, CommandType & { funcName: string }>()
-  //   for (const c of cmdFunctionNames) {
-  //     let i = 1
-  //     while (funcNameCache.has(c.funcName) && i++ < 20) {
-  //       const old = funcNameCache.get(c.funcName)
-  //       if (old)
-  //         old.funcName = `useCommand${upperFirst(convertCamelCase(old.command))}`
-  //       c.funcName = `useCommand${upperFirst(convertCamelCase(c.command))}`
-  //     }
-  //     funcNameCache.set(c.funcName, c)
-  //   }
-
-  //   while (funcNameCache.has(cmdFuncBaseName)) {
-  //     cmdFuncBaseName = `${cmdFuncBaseName}Base`
-  //   }
-  // }
-  // handleRepetitive()
-
   lines.push(
     '',
     ...commentBlock('Type union of all commands'),
   )
   if (!varUseGenerateCommandFunctionNames?.length) {
-    lines.push('export type CommandKey = never')
+    lines.push(`export type ${varCommandKey} = never`)
   }
   else {
     lines.push(
-      `export type ${getSignature('CommandKey')} = `,
+      `export type ${varCommandKey} = `,
       ...varUseGenerateCommandFunctionNames.map(c =>
         `  | ${JSON.stringify(c.command)}`,
       ),
     )
   }
+
+  lines.push(
+    '',
+    ...commentBlock(`Commands map registed by \`${extensionId}\``),
+    `export const ${varCommands} = {`,
+    ...varUseGenerateCommandFunctionNames
+      .flatMap((c) => {
+        return [
+          ...commentBlock(`${c.title}\n@value \`${c.command}\``, 2),
+          `  ${c.funcName}: ${JSON.stringify(c.command)},`,
+        ]
+      }),
+    '} satisfies Record<string, CommandKey>',
+  )
+
   // ========== Command Base ==========
   const varNameType = `${getSignature('NameType')}`
   lines.push(`
-export function ${varUseCommand}(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+export function ${varGenerateUseCommand}(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useReactiveCommand(commandFullKey, callback)
 }
 
@@ -218,8 +223,8 @@ export function ${getSignature('useOutputChannel')}(name: ${varNameType} = ${for
           ``,
           ...commentBlock(`${c.title}
 @value \`${c.command}\` identifier of the command `, 0),
-          `export function ${c.funcName}(callback: (...args: any[]) => any) {`,
-          `  return ${varUseCommand}(${JSON.stringify(c.command)}, callback)`,
+          `export function useCommand${upperFirst(c.funcName)}(callback: (...args: any[]) => any) {`,
+          `  return ${varGenerateUseCommand}(${varCommands}.${c.funcName}, callback)`,
           `}`,
         ]
       }),

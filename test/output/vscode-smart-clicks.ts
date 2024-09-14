@@ -13,6 +13,16 @@ export const extensionId = "antfu.smart-clicks";
  * Type union of all commands
  */
 export type CommandKey = "smartClicks.trigger";
+/**
+ * Commands map registed by `antfu.smart-clicks`
+ */
+export const commands = {
+    /**
+     * Smart Clicks: Trigger
+     * @value `smartClicks.trigger`
+     */
+    trigger: "smartClicks.trigger",
+} satisfies Record<string, CommandKey>;
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
@@ -31,7 +41,7 @@ export function useOutputChannel(name: NameType = displayName) {
  * @value `smartClicks.trigger` identifier of the command
  */
 export function useCommandTrigger(callback: (...args: any[]) => any) {
-    return useCommand("smartClicks.trigger", callback);
+    return useCommand(commands.trigger, callback);
 }
 /**
  * Section Type of `smartClicks`

@@ -13,6 +13,26 @@ export const extensionId = "appulate.filewatcher";
  * Type union of all commands
  */
 export type CommandKey = "extension.enableFileWatcher" | "extension.disableFileWatcher" | "extension.focusIntoOutput";
+/**
+ * Commands map registed by `appulate.filewatcher`
+ */
+export const commands = {
+    /**
+     * File Watcher: Enable
+     * @value `extension.enableFileWatcher`
+     */
+    enableFileWatcher: "extension.enableFileWatcher",
+    /**
+     * File Watcher: Disable
+     * @value `extension.disableFileWatcher`
+     */
+    disableFileWatcher: "extension.disableFileWatcher",
+    /**
+     * File Watcher: Focus Output
+     * @value `extension.focusIntoOutput`
+     */
+    focusIntoOutput: "extension.focusIntoOutput",
+} satisfies Record<string, CommandKey>;
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
@@ -30,22 +50,22 @@ export function useOutputChannel(name: NameType = displayName) {
  * File Watcher: Enable
  * @value `extension.enableFileWatcher` identifier of the command
  */
-export function useCommandExtensionEnableFileWatcher(callback: (...args: any[]) => any) {
-    return useCommand("extension.enableFileWatcher", callback);
+export function useCommandEnableFileWatcher(callback: (...args: any[]) => any) {
+    return useCommand(commands.enableFileWatcher, callback);
 }
 /**
  * File Watcher: Disable
  * @value `extension.disableFileWatcher` identifier of the command
  */
-export function useCommandExtensionDisableFileWatcher(callback: (...args: any[]) => any) {
-    return useCommand("extension.disableFileWatcher", callback);
+export function useCommandDisableFileWatcher(callback: (...args: any[]) => any) {
+    return useCommand(commands.disableFileWatcher, callback);
 }
 /**
  * File Watcher: Focus Output
  * @value `extension.focusIntoOutput` identifier of the command
  */
-export function useCommandExtensionFocusIntoOutput(callback: (...args: any[]) => any) {
-    return useCommand("extension.focusIntoOutput", callback);
+export function useCommandFocusIntoOutput(callback: (...args: any[]) => any) {
+    return useCommand(commands.focusIntoOutput, callback);
 }
 /**
  * Section Type of `filewatcher`

@@ -1,4 +1,5 @@
 import { assign, isArray, memo, camel } from 'radash'
+import type { ConfigurationProperty } from './types'
 
 export function isProperty(propterty: any): propterty is ConfigurationProperty {
   const typeName = typeof propterty?.type
@@ -82,4 +83,24 @@ export function randomString(length: number): string {
     text += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length))
   }
   return text
+}
+
+export function getRightSection(str: string, dotIndex: number): string {
+  if (typeof str !== 'string' || typeof dotIndex !== 'number') {
+    throw new TypeError('Invalid input')
+  }
+  const parts = str.split('.')
+
+  if (dotIndex < 0) {
+    const indexFromRight = parts.length + dotIndex
+    if (indexFromRight < 0) {
+      throw new Error('Invalid dot index, dotIndex:too small')
+    }
+    return parts.slice(indexFromRight).join('.')
+  }
+  else {
+    if (dotIndex > parts.length)
+      throw new Error('Invalid dot index, dotIndex:too large')
+    return parts.slice(dotIndex).join('.')
+  }
 }

@@ -13,6 +13,31 @@ export const extensionId = "calmripple.sample";
  * Type union of all commands
  */
 export type CommandKey = "sample.toggle-annotations" | "sample.toggle-inplace" | "sample.clear-cache" | "sample.update-date";
+/**
+ * Commands map registed by `calmripple.sample`
+ */
+export const commands = {
+    /**
+     * Toggle Annotations
+     * @value `sample.toggle-annotations`
+     */
+    toggleAnnotations: "sample.toggle-annotations",
+    /**
+     * Toggle In-place Mode
+     * @value `sample.toggle-inplace`
+     */
+    toggleInplace: "sample.toggle-inplace",
+    /**
+     * Clear icon cache
+     * @value `sample.clear-cache`
+     */
+    clearCache: "sample.clear-cache",
+    /**
+     * update current date
+     * @value `sample.update-date`
+     */
+    updateDate: "sample.update-date",
+} satisfies Record<string, CommandKey>;
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
@@ -31,28 +56,28 @@ export function useOutputChannel(name: NameType = displayName) {
  * @value `sample.toggle-annotations` identifier of the command
  */
 export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
-    return useCommand("sample.toggle-annotations", callback);
+    return useCommand(commands.toggleAnnotations, callback);
 }
 /**
  * Toggle In-place Mode
  * @value `sample.toggle-inplace` identifier of the command
  */
 export function useCommandToggleInplace(callback: (...args: any[]) => any) {
-    return useCommand("sample.toggle-inplace", callback);
+    return useCommand(commands.toggleInplace, callback);
 }
 /**
  * Clear icon cache
  * @value `sample.clear-cache` identifier of the command
  */
 export function useCommandClearCache(callback: (...args: any[]) => any) {
-    return useCommand("sample.clear-cache", callback);
+    return useCommand(commands.clearCache, callback);
 }
 /**
  * update current date
  * @value `sample.update-date` identifier of the command
  */
 export function useCommandUpdateDate(callback: (...args: any[]) => any) {
-    return useCommand("sample.update-date", callback);
+    return useCommand(commands.updateDate, callback);
 }
 /**
  * Section Type of `sample`
