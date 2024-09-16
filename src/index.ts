@@ -146,7 +146,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
 
   const extensionSectionWithDot = `${extensionSection}.`
 
-  function withoutExtensionPrefix(name: string): string {
+  function _withoutExtensionPrefix(name: string): string {
     if (name.startsWith(extensionSectionWithDot)) {
       return name.slice(extensionSectionWithDot.length)
     }
@@ -247,6 +247,7 @@ export function ${getSignature('useOutputChannel')}(name: ${varNameType} = ${for
 
   const sectionDefault: string[] = []
   const sectionExports: string[] = []
+  const varConfigsDefaults = getSignature(`${convertCamelCase(name)}Config`)
   // 遍历所有section
   config.sectionActivedConfigs.forEach((sectionConfig, section) => {
     function removeSection(name: string): string {
@@ -260,18 +261,17 @@ export function ${getSignature('useOutputChannel')}(name: ${varNameType} = ${for
     let sectionVar
     let sectionComment
     if (section) {
-      sectionVar = getSignature(`${convertCamelCase(withoutExtensionPrefix(section))}`)
+      sectionVar = getSignature(convertCamelCase(getRightSection(section, -1)), varConfigsDefaults, (_pre, _count) => convertCamelCase(getRightSection(section, -_count)))
       sectionComment = `${section}`
     }
     else {
       sectionVar = getSignature('root')
       sectionComment = `virtual(Keys in the root)`
     }
-
     const interfaceName = getSignature(`${upperFirst(sectionVar)}`)
     const varName = {
-      useConfig: getSignature(`config${interfaceName}`),
-      useConfigObject: getSignature(`configObject${interfaceName}`),
+      varConfig: getSignature(`config${interfaceName}`),
+      varConfigObject: getSignature(`configObject${interfaceName}`),
     }
     const example = sectionConfig[0]
     const exampleKey = removeSection(example[0])
@@ -287,25 +287,24 @@ export function ${getSignature('useOutputChannel')}(name: ${varNameType} = ${for
       ...commentBlock([
         `ConfigObject of \`${sectionComment}\``,
         `@example`,
-        `const oldVal = ${varName.useConfigObject}.${exampleKey} //get value `,
+        `const oldVal = ${varName.varConfigObject}.${exampleKey} //get value `,
         // `${varName.useConfigObject}.${exampleKey} = oldVal // set value`,
-        `${varName.useConfigObject}.$update("${exampleKey}", oldVal) //update value`,
+        `${varName.varConfigObject}.$update("${exampleKey}", oldVal) //update value`,
       ].join('\n'),
       ),
-      `export const ${varName.useConfigObject} = useConfigObject("${section}")`,
+      `export const ${varName.varConfigObject} = useConfigObject("${section}")`,
       ...commentBlock([
         `ToConfigRefs of \`${sectionComment}\``,
         `@example`,
-        `const oldVal:${example[1].type} =${varName.useConfig}.${exampleKey}.value //get value `,
+        `const oldVal:${example[1].type} =${varName.varConfig}.${exampleKey}.value //get value `,
         // `${varName.useConfig}.${exampleKey}.value = oldVal // set value`,
         // `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
-        `${varName.useConfig}.${exampleKey}.update(oldVal) //update value`,
+        `${varName.varConfig}.${exampleKey}.update(oldVal) //update value`,
       ].join('\n')),
-      `export const ${varName.useConfig} = useConfig("${section}")`,
+      `export const ${varName.varConfig} = useConfig("${section}")`,
     )
     // section 类型生成开始
-    lines.push(``, ...commentBlock(`Section Type of \`${sectionComment}\``), `export interface ${interfaceName} {`,
-    )
+    lines.push(``, ...commentBlock(`Section Type of \`${sectionComment}\``), `export interface ${interfaceName} {`)
     // 遍历section 下所有 短key的默认值
     sectionConfig.forEach(([fullKey, value]) => {
       const defaultValue = defaultValFromSchema(value)
@@ -338,22 +337,21 @@ export function ${getSignature('useOutputChannel')}(name: ${varNameType} = ${for
     )
   })
 
-  const configVar = getSignature(`${convertCamelCase(name)}Config`)
   const sectionNames = [...config.sectionActivedConfigs.keys()]
   lines.push(
     '',
-    `const ${configVar} = {`,
+    `const ${varConfigsDefaults} = {`,
     ...sectionDefault,
     `}`,
     // `export type ConfigKey = keyof typeof ${configVar}`,
     `export type ${getSignature('ConfigKey')} = ${sectionNames.map(v => `"${v}"`).join(' | ')}`,
     `
 export function ${getSignature('useConfig')}<K extends ConfigKey>(section: K) {
-  return defineConfigs<typeof ${configVar}[K]>(section, ${configVar}[section])
+  return defineConfigs<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section])
 }
 
 export function ${getSignature('useConfigObject')}<K extends ConfigKey>(section: K) {
-  return defineConfigObject<typeof ${configVar}[K]>(section, ${configVar}[section])
+  return defineConfigObject<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section])
 }
     `,
     ...sectionExports,

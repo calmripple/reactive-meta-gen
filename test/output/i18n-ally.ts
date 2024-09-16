@@ -1000,7 +1000,7 @@ export interface Translate {
 /**
  * Section Type of `i18n-ally.translate.google`
  */
-export interface TranslateGoogle {
+export interface Google {
     /**
      * %config.google_api_key%
      */
@@ -1009,7 +1009,7 @@ export interface TranslateGoogle {
 /**
  * Section Type of `i18n-ally.translate.deepl`
  */
-export interface TranslateDeepl {
+export interface Deepl {
     /**
      * %config.deepl_api_key%
      */
@@ -1026,7 +1026,7 @@ export interface TranslateDeepl {
 /**
  * Section Type of `i18n-ally.translate.baidu`
  */
-export interface TranslateBaidu {
+export interface Baidu {
     /**
      * %config.baidu_appid%
      */
@@ -1039,7 +1039,7 @@ export interface TranslateBaidu {
 /**
  * Section Type of `i18n-ally.translate.libre`
  */
-export interface TranslateLibre {
+export interface Libre {
     /**
      * %config.libretranslate_api_root%
      */
@@ -1048,7 +1048,7 @@ export interface TranslateLibre {
 /**
  * Section Type of `i18n-ally.translate.openai`
  */
-export interface TranslateOpenai {
+export interface Openai {
     /**
      * %config.openai_api_key%
      */
@@ -1084,7 +1084,7 @@ export interface Frameworks {
 /**
  * Section Type of `i18n-ally.frameworks.ruby-rails`
  */
-export interface FrameworksRubyRails {
+export interface RubyRails {
     "scopeRoot": string;
 }
 /**
@@ -1098,7 +1098,7 @@ export interface Parsers {
 /**
  * Section Type of `i18n-ally.parsers.typescript`
  */
-export interface ParsersTypescript {
+export interface Typescript {
     "tsNodePath": string;
     "compilerOptions": Record<string, unknown>;
 }
@@ -1130,7 +1130,7 @@ export interface Review {
 /**
  * Section Type of `i18n-ally.review.user`
  */
-export interface ReviewUser {
+export interface User {
     /**
      * %config.review_username%
      */
@@ -1622,7 +1622,7 @@ const i18nAllyConfig = {
          * %config.google_api_key%
          */
         "apiKey": null,
-    } satisfies TranslateGoogle as TranslateGoogle,
+    } satisfies Google as Google,
     /**
      * Section defaults of `i18n-ally.translate.deepl`
      */
@@ -1639,7 +1639,7 @@ const i18nAllyConfig = {
          * %config.deepl_use_free_api_entry%
          */
         "useFreeApiEntry": false,
-    } satisfies TranslateDeepl as TranslateDeepl,
+    } satisfies Deepl as Deepl,
     /**
      * Section defaults of `i18n-ally.translate.baidu`
      */
@@ -1652,7 +1652,7 @@ const i18nAllyConfig = {
          * %config.baidu_app_secret%
          */
         "apiSecret": null,
-    } satisfies TranslateBaidu as TranslateBaidu,
+    } satisfies Baidu as Baidu,
     /**
      * Section defaults of `i18n-ally.translate.libre`
      */
@@ -1661,7 +1661,7 @@ const i18nAllyConfig = {
          * %config.libretranslate_api_root%
          */
         "apiRoot": "http://localhost:5000",
-    } satisfies TranslateLibre as TranslateLibre,
+    } satisfies Libre as Libre,
     /**
      * Section defaults of `i18n-ally.translate.openai`
      */
@@ -1678,7 +1678,7 @@ const i18nAllyConfig = {
          * %config.openai_api_model%
          */
         "apiModel": "gpt-3.5-turbo",
-    } satisfies TranslateOpenai as TranslateOpenai,
+    } satisfies Openai as Openai,
     /**
      * Section defaults of `i18n-ally.usage`
      */
@@ -1703,7 +1703,7 @@ const i18nAllyConfig = {
      */
     "i18n-ally.frameworks.ruby-rails": {
         "scopeRoot": "app/views",
-    } satisfies FrameworksRubyRails as FrameworksRubyRails,
+    } satisfies RubyRails as RubyRails,
     /**
      * Section defaults of `i18n-ally.parsers`
      */
@@ -1718,7 +1718,7 @@ const i18nAllyConfig = {
     "i18n-ally.parsers.typescript": {
         "tsNodePath": "node_modules/ts-node/dist/bin.js",
         "compilerOptions": {},
-    } satisfies ParsersTypescript as ParsersTypescript,
+    } satisfies Typescript as Typescript,
     /**
      * Section defaults of `i18n-ally.review`
      */
@@ -1756,7 +1756,7 @@ const i18nAllyConfig = {
          * %config.review_email%
          */
         "email": undefined,
-    } satisfies ReviewUser as ReviewUser,
+    } satisfies User as User,
     /**
      * Section defaults of `i18n-ally.editor`
      */
@@ -1905,73 +1905,73 @@ export const configTranslate = useConfig("i18n-ally.translate");
 /**
  * ConfigObject of `i18n-ally.translate.google`
  * @example
- * const oldVal = configObjectTranslateGoogle.apiKey //get value
- * configObjectTranslateGoogle.$update("apiKey", oldVal) //update value
+ * const oldVal = configObjectGoogle.apiKey //get value
+ * configObjectGoogle.$update("apiKey", oldVal) //update value
  */
-export const configObjectTranslateGoogle = useConfigObject("i18n-ally.translate.google");
+export const configObjectGoogle = useConfigObject("i18n-ally.translate.google");
 /**
  * ToConfigRefs of `i18n-ally.translate.google`
  * @example
- * const oldVal:string =configTranslateGoogle.apiKey.value //get value
- * configTranslateGoogle.apiKey.update(oldVal) //update value
+ * const oldVal:string =configGoogle.apiKey.value //get value
+ * configGoogle.apiKey.update(oldVal) //update value
  */
-export const configTranslateGoogle = useConfig("i18n-ally.translate.google");
+export const configGoogle = useConfig("i18n-ally.translate.google");
 /**
  * ConfigObject of `i18n-ally.translate.deepl`
  * @example
- * const oldVal = configObjectTranslateDeepl.apiKey //get value
- * configObjectTranslateDeepl.$update("apiKey", oldVal) //update value
+ * const oldVal = configObjectDeepl.apiKey //get value
+ * configObjectDeepl.$update("apiKey", oldVal) //update value
  */
-export const configObjectTranslateDeepl = useConfigObject("i18n-ally.translate.deepl");
+export const configObjectDeepl = useConfigObject("i18n-ally.translate.deepl");
 /**
  * ToConfigRefs of `i18n-ally.translate.deepl`
  * @example
- * const oldVal:string =configTranslateDeepl.apiKey.value //get value
- * configTranslateDeepl.apiKey.update(oldVal) //update value
+ * const oldVal:string =configDeepl.apiKey.value //get value
+ * configDeepl.apiKey.update(oldVal) //update value
  */
-export const configTranslateDeepl = useConfig("i18n-ally.translate.deepl");
+export const configDeepl = useConfig("i18n-ally.translate.deepl");
 /**
  * ConfigObject of `i18n-ally.translate.baidu`
  * @example
- * const oldVal = configObjectTranslateBaidu.appid //get value
- * configObjectTranslateBaidu.$update("appid", oldVal) //update value
+ * const oldVal = configObjectBaidu.appid //get value
+ * configObjectBaidu.$update("appid", oldVal) //update value
  */
-export const configObjectTranslateBaidu = useConfigObject("i18n-ally.translate.baidu");
+export const configObjectBaidu = useConfigObject("i18n-ally.translate.baidu");
 /**
  * ToConfigRefs of `i18n-ally.translate.baidu`
  * @example
- * const oldVal:string =configTranslateBaidu.appid.value //get value
- * configTranslateBaidu.appid.update(oldVal) //update value
+ * const oldVal:string =configBaidu.appid.value //get value
+ * configBaidu.appid.update(oldVal) //update value
  */
-export const configTranslateBaidu = useConfig("i18n-ally.translate.baidu");
+export const configBaidu = useConfig("i18n-ally.translate.baidu");
 /**
  * ConfigObject of `i18n-ally.translate.libre`
  * @example
- * const oldVal = configObjectTranslateLibre.apiRoot //get value
- * configObjectTranslateLibre.$update("apiRoot", oldVal) //update value
+ * const oldVal = configObjectLibre.apiRoot //get value
+ * configObjectLibre.$update("apiRoot", oldVal) //update value
  */
-export const configObjectTranslateLibre = useConfigObject("i18n-ally.translate.libre");
+export const configObjectLibre = useConfigObject("i18n-ally.translate.libre");
 /**
  * ToConfigRefs of `i18n-ally.translate.libre`
  * @example
- * const oldVal:string =configTranslateLibre.apiRoot.value //get value
- * configTranslateLibre.apiRoot.update(oldVal) //update value
+ * const oldVal:string =configLibre.apiRoot.value //get value
+ * configLibre.apiRoot.update(oldVal) //update value
  */
-export const configTranslateLibre = useConfig("i18n-ally.translate.libre");
+export const configLibre = useConfig("i18n-ally.translate.libre");
 /**
  * ConfigObject of `i18n-ally.translate.openai`
  * @example
- * const oldVal = configObjectTranslateOpenai.apiKey //get value
- * configObjectTranslateOpenai.$update("apiKey", oldVal) //update value
+ * const oldVal = configObjectOpenai.apiKey //get value
+ * configObjectOpenai.$update("apiKey", oldVal) //update value
  */
-export const configObjectTranslateOpenai = useConfigObject("i18n-ally.translate.openai");
+export const configObjectOpenai = useConfigObject("i18n-ally.translate.openai");
 /**
  * ToConfigRefs of `i18n-ally.translate.openai`
  * @example
- * const oldVal:string =configTranslateOpenai.apiKey.value //get value
- * configTranslateOpenai.apiKey.update(oldVal) //update value
+ * const oldVal:string =configOpenai.apiKey.value //get value
+ * configOpenai.apiKey.update(oldVal) //update value
  */
-export const configTranslateOpenai = useConfig("i18n-ally.translate.openai");
+export const configOpenai = useConfig("i18n-ally.translate.openai");
 /**
  * ConfigObject of `i18n-ally.usage`
  * @example
@@ -2003,17 +2003,17 @@ export const configFrameworks = useConfig("i18n-ally.frameworks");
 /**
  * ConfigObject of `i18n-ally.frameworks.ruby-rails`
  * @example
- * const oldVal = configObjectFrameworksRubyRails.scopeRoot //get value
- * configObjectFrameworksRubyRails.$update("scopeRoot", oldVal) //update value
+ * const oldVal = configObjectRubyRails.scopeRoot //get value
+ * configObjectRubyRails.$update("scopeRoot", oldVal) //update value
  */
-export const configObjectFrameworksRubyRails = useConfigObject("i18n-ally.frameworks.ruby-rails");
+export const configObjectRubyRails = useConfigObject("i18n-ally.frameworks.ruby-rails");
 /**
  * ToConfigRefs of `i18n-ally.frameworks.ruby-rails`
  * @example
- * const oldVal:string =configFrameworksRubyRails.scopeRoot.value //get value
- * configFrameworksRubyRails.scopeRoot.update(oldVal) //update value
+ * const oldVal:string =configRubyRails.scopeRoot.value //get value
+ * configRubyRails.scopeRoot.update(oldVal) //update value
  */
-export const configFrameworksRubyRails = useConfig("i18n-ally.frameworks.ruby-rails");
+export const configRubyRails = useConfig("i18n-ally.frameworks.ruby-rails");
 /**
  * ConfigObject of `i18n-ally.parsers`
  * @example
@@ -2031,17 +2031,17 @@ export const configParsers = useConfig("i18n-ally.parsers");
 /**
  * ConfigObject of `i18n-ally.parsers.typescript`
  * @example
- * const oldVal = configObjectParsersTypescript.tsNodePath //get value
- * configObjectParsersTypescript.$update("tsNodePath", oldVal) //update value
+ * const oldVal = configObjectTypescript.tsNodePath //get value
+ * configObjectTypescript.$update("tsNodePath", oldVal) //update value
  */
-export const configObjectParsersTypescript = useConfigObject("i18n-ally.parsers.typescript");
+export const configObjectTypescript = useConfigObject("i18n-ally.parsers.typescript");
 /**
  * ToConfigRefs of `i18n-ally.parsers.typescript`
  * @example
- * const oldVal:string =configParsersTypescript.tsNodePath.value //get value
- * configParsersTypescript.tsNodePath.update(oldVal) //update value
+ * const oldVal:string =configTypescript.tsNodePath.value //get value
+ * configTypescript.tsNodePath.update(oldVal) //update value
  */
-export const configParsersTypescript = useConfig("i18n-ally.parsers.typescript");
+export const configTypescript = useConfig("i18n-ally.parsers.typescript");
 /**
  * ConfigObject of `i18n-ally.review`
  * @example
@@ -2059,17 +2059,17 @@ export const configReview = useConfig("i18n-ally.review");
 /**
  * ConfigObject of `i18n-ally.review.user`
  * @example
- * const oldVal = configObjectReviewUser.name //get value
- * configObjectReviewUser.$update("name", oldVal) //update value
+ * const oldVal = configObjectUser.name //get value
+ * configObjectUser.$update("name", oldVal) //update value
  */
-export const configObjectReviewUser = useConfigObject("i18n-ally.review.user");
+export const configObjectUser = useConfigObject("i18n-ally.review.user");
 /**
  * ToConfigRefs of `i18n-ally.review.user`
  * @example
- * const oldVal:string =configReviewUser.name.value //get value
- * configReviewUser.name.update(oldVal) //update value
+ * const oldVal:string =configUser.name.value //get value
+ * configUser.name.update(oldVal) //update value
  */
-export const configReviewUser = useConfig("i18n-ally.review.user");
+export const configUser = useConfig("i18n-ally.review.user");
 /**
  * ConfigObject of `i18n-ally.editor`
  * @example
