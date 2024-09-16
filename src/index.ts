@@ -107,7 +107,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   function _getSignatures(signatures: string[], domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): string[] {
     return signatures.map(signature => getSignature(signature, domain, builder))
   }
-  function getSignatureObject(signatures: Record<string, string>, domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): Record<string, string> {
+  function _getSignatureObject(signatures: Record<string, string>, domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): Record<string, string> {
     return Object.entries(signatures).reduce((pre, [key, value]) => {
       pre[getSignature(key, domain, builder)] = value
       return pre
@@ -129,16 +129,27 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     useOutputChannel as useReactiveOutputChannel,    
     } from 'reactive-vscode'`, '')
 
-  const forwardKeys = getSignatureObject({
-    publisher: 'publisher',
-    name: 'name',
-    version: 'version',
-    displayName: 'displayName',
-    description: 'description',
-  })
-  for (const keyvalue of Object.entries(forwardKeys)) {
-    lines.push(`export const ${keyvalue[0]} = ${packageJson[keyvalue[1]] ? JSON.stringify(packageJson[keyvalue[1]]) : 'undefined'}`)
-  }
+  const varPublisher = getSignature(`publisher`)
+  lines.push(
+    `export const ${varPublisher} = ${packageJson.publisher ? JSON.stringify(packageJson.publisher) : 'undefined'}`,
+  )
+  const varName = getSignature(`name`)
+  lines.push(
+    `export const ${varName} = ${packageJson.name ? JSON.stringify(packageJson.name) : 'undefined'}`,
+  )
+
+  const varversion = getSignature(`version`)
+  lines.push(
+    `export const ${varversion} = ${packageJson.version ? JSON.stringify(packageJson.version) : 'undefined'}`,
+  )
+  const vardisplayName = getSignature(`displayName`)
+  lines.push(
+    `export const ${vardisplayName} = ${packageJson.displayName ? JSON.stringify(packageJson.displayName) : 'undefined'}`,
+  )
+  const vardescription = getSignature(`description`)
+  lines.push(
+    `export const ${vardescription} = ${packageJson.description ? JSON.stringify(packageJson.description) : 'undefined'}`,
+  )
   const varextensionId = getSignature(`extensionId`)
   lines.push(
     `export const ${varextensionId} = "${packageJson.publisher}.${packageJson.name}"`,
@@ -197,6 +208,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   )
 
   // ========== Command Base ==========
+  const varLoggerDefault = `${vardisplayName}??${varName}??${varextensionId}`
   const varNameType = `${getSignature('NameType')}`
   lines.push(`
 export function ${varGenerateUseCommand}(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
@@ -206,13 +218,13 @@ export function ${varGenerateUseCommand}(commandFullKey: CommandKey, callback: (
 export function ${varUseGenerateCommands}(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
   return useReactiveCommands(commands)
 }
-type ${varNameType} = typeof ${forwardKeys.name} | typeof ${forwardKeys.displayName} | typeof ${varextensionId}
-export function ${getSignature('useLogger')}(name: ${varNameType} = ${forwardKeys.displayName}, getPrefix?: ((type: string) => string) | null) {
-    return useReactiveLogger(name, { 'getPrefix': getPrefix })
+type ${varNameType} = typeof ${varName} | typeof ${vardisplayName} | typeof ${varextensionId}
+export function ${getSignature('useLogger')}(loggerName: ${varNameType} = ${varLoggerDefault}, getPrefix?: ((type: string) => string) | null) {
+    return useReactiveLogger(loggerName, { 'getPrefix': getPrefix })
 }
 
-export function ${getSignature('useOutputChannel')}(name: ${varNameType} = ${forwardKeys.displayName}) {
-    return useReactiveOutputChannel(name)
+export function ${getSignature('useOutputChannel')}(outputName: ${varNameType} = ${varLoggerDefault}) {
+    return useReactiveOutputChannel(outputName)
 }
 `)
 

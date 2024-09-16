@@ -30,11 +30,11 @@ export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]
     return useReactiveCommands(commands);
 }
 type NameType = typeof name | typeof displayName | typeof extensionId;
-export function useLogger(name: NameType = displayName, getPrefix?: ((type: string) => string) | null) {
-    return useReactiveLogger(name, { 'getPrefix': getPrefix });
+export function useLogger(loggerName: NameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
+    return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 }
-export function useOutputChannel(name: NameType = displayName) {
-    return useReactiveOutputChannel(name);
+export function useOutputChannel(outputName: NameType = displayName ?? name ?? extensionId) {
+    return useReactiveOutputChannel(outputName);
 }
 /**
  * Show Menu
