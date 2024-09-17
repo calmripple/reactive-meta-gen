@@ -23,17 +23,20 @@ export const commands = {
      */
     trigger: "smartClicks.trigger",
 } satisfies Record<string, CommandKey>;
+/**
+ * Register a command. See `vscode::commands.registerCommand`.
+ */
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
 export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
     return useReactiveCommands(commands);
 }
-type NameType = typeof name | typeof displayName | typeof extensionId;
-export function useLogger(loggerName: NameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
+export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
+export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
     return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 }
-export function useOutputChannel(outputName: NameType = displayName ?? name ?? extensionId) {
+export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
     return useReactiveOutputChannel(outputName);
 }
 /**

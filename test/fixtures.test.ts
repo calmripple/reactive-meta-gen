@@ -24,7 +24,7 @@ describe('fixtures', async () => {
       }
       finally {
         const { dts, markdown } = generate(json, { extensionSection })
-        // await fs.writeFile(`./test/output/${basename(dir)}.ts`, dts)
+        await fs.writeFile(`./test/output/${basename(dir)}.ts`, dts)
         await expect(dts).toMatchFileSnapshot(`./output/${basename(dir)}.ts`)
 
         const readmeLines = [

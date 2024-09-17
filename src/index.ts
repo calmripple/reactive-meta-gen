@@ -117,7 +117,6 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   let {
     header = true,
     namespace = false,
-    extensionSection = packageJson.name,
   } = options
 
   let lines: string[] = []
@@ -142,38 +141,29 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   lines.push(
     `export const ${varversion} = ${packageJson.version ? JSON.stringify(packageJson.version) : 'undefined'}`,
   )
-  const vardisplayName = getSignature(`displayName`)
+  const varDisplayName = getSignature(`displayName`)
   lines.push(
-    `export const ${vardisplayName} = ${packageJson.displayName ? JSON.stringify(packageJson.displayName) : 'undefined'}`,
+    `export const ${varDisplayName} = ${packageJson.displayName ? JSON.stringify(packageJson.displayName) : 'undefined'}`,
   )
   const vardescription = getSignature(`description`)
   lines.push(
     `export const ${vardescription} = ${packageJson.description ? JSON.stringify(packageJson.description) : 'undefined'}`,
   )
-  const varextensionId = getSignature(`extensionId`)
+  const varExtensionId = getSignature(`extensionId`)
   lines.push(
-    `export const ${varextensionId} = "${packageJson.publisher}.${packageJson.name}"`,
+    `export const ${varExtensionId} = "${packageJson.publisher}.${packageJson.name}"`,
   )
-
-  const extensionSectionWithDot = `${extensionSection}.`
-
-  function _withoutExtensionPrefix(name: string): string {
-    if (name.startsWith(extensionSectionWithDot)) {
-      return name.slice(extensionSectionWithDot.length)
-    }
-    return name
-  }
 
   // ========== Commands ==========
   // useCommand${upperFirst(convertCamelCase(getRightSection(c.command, -1)))}
-  const varGenerateUseCommand = getSignature(`useCommand`)
-  const varUseGenerateCommands = getSignature(`useCommands`)
+  const varUseCommand = getSignature(`useCommand`)
+  const varUseCommands = getSignature(`useCommands`)
   const varCommandKey = getSignature('CommandKey')
   const varCommands = getSignature('commands')
-  const varUseGenerateCommandFunctionNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
+  const varUseCommandFunctionNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
     const f = getSignature(convertCamelCase(getRightSection(c.command, -1)), extensionId, (_pre, _count) => convertCamelCase(getRightSection(c.command, -_count)))
     return {
-      funcName: f,
+      varUseCommandFunctionName: f,
       ...c,
     }
   })
@@ -181,13 +171,13 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     '',
     ...commentBlock('Type union of all commands'),
   )
-  if (!varUseGenerateCommandFunctionNames?.length) {
+  if (!varUseCommandFunctionNames?.length) {
     lines.push(`export type ${varCommandKey} = never`)
   }
   else {
     lines.push(
       `export type ${varCommandKey} = `,
-      ...varUseGenerateCommandFunctionNames.map(c =>
+      ...varUseCommandFunctionNames.map(c =>
         `  | ${JSON.stringify(c.command)}`,
       ),
     )
@@ -197,46 +187,48 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     '',
     ...commentBlock(`Commands map registed by \`${extensionId}\``),
     `export const ${varCommands} = {`,
-    ...varUseGenerateCommandFunctionNames
+    ...varUseCommandFunctionNames
       .flatMap((c) => {
         return [
           ...commentBlock(`${c.title}\n@value \`${c.command}\``, 2),
-          `  ${c.funcName}: ${JSON.stringify(c.command)},`,
+          `  ${c.varUseCommandFunctionName}: ${JSON.stringify(c.command)},`,
         ]
       }),
     '} satisfies Record<string, CommandKey>',
   )
 
   // ========== Command Base ==========
-  const varLoggerDefault = `${vardisplayName}??${varName}??${varextensionId}`
-  const varNameType = `${getSignature('NameType')}`
-  lines.push(`
-export function ${varGenerateUseCommand}(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+  const varLoggerDefault = `${varDisplayName}??${varName}??${varExtensionId}`
+  const varLoggerNameType = `${getSignature('LoggerNameType')}`
+  lines.push(
+    commentBlock('Register a command. See `vscode::commands.registerCommand`.').join('\n'),
+    `export function ${varUseCommand}(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
   return useReactiveCommand(commandFullKey, callback)
 }
 
-export function ${varUseGenerateCommands}(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
+export function ${varUseCommands}(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
   return useReactiveCommands(commands)
 }
-type ${varNameType} = typeof ${varName} | typeof ${vardisplayName} | typeof ${varextensionId}
-export function ${getSignature('useLogger')}(loggerName: ${varNameType} = ${varLoggerDefault}, getPrefix?: ((type: string) => string) | null) {
+export type ${varLoggerNameType} = typeof ${varName} | typeof ${varDisplayName} | typeof ${varExtensionId}
+export function ${getSignature('useLogger')}(loggerName: ${varLoggerNameType} = ${varLoggerDefault}, getPrefix?: ((type: string) => string) | null) {
     return useReactiveLogger(loggerName, { 'getPrefix': getPrefix })
 }
 
-export function ${getSignature('useOutputChannel')}(outputName: ${varNameType} = ${varLoggerDefault}) {
+export function ${getSignature('useOutputChannel')}(outputName: ${varLoggerNameType} = ${varLoggerDefault}) {
     return useReactiveOutputChannel(outputName)
 }
-`)
+`,
+  )
 
   lines.push(
-    ...varUseGenerateCommandFunctionNames
+    ...varUseCommandFunctionNames
       .flatMap((c) => {
         return [
           ``,
           ...commentBlock(`${c.title}
 @value \`${c.command}\` identifier of the command `, 0),
-          `export function useCommand${upperFirst(c.funcName)}(callback: (...args: any[]) => any) {`,
-          `  return ${varGenerateUseCommand}(${varCommands}.${c.funcName}, callback)`,
+          `export function useCommand${upperFirst(c.varUseCommandFunctionName)}(callback: (...args: any[]) => any) {`,
+          `  return ${varUseCommand}(${varCommands}.${c.varUseCommandFunctionName}, callback)`,
           `}`,
         ]
       }),
