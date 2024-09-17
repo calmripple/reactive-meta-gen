@@ -147,6 +147,163 @@ export interface Sample {
      */
     "customAliasesOnly": boolean;
 }
+/**
+ * Section Type of `project-kit`
+ */
+export interface ProjectKit {
+    /**
+     * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
+     */
+    "emeraldwalk.runonsave.shell"?: (string | undefined);
+    "emeraldwalk.runonsave.commands": ({
+        /**
+     * Command to execute on save.
+     * @default `"echo ${file}"`
+     */
+        'cmd': string;
+        /**
+         * Regex for matching files to run commands on
+         *
+         * NOTE: This is a regex and not a file path spce, so backslashes have to be escaped. They also have to be escaped in json strings, so you may have to double escape them in certain cases such as targetting contents of folders.
+         *
+         * e.g.
+         * "match": "some\\\\directory\\\\.*"
+         * @default `".*"`
+         */
+        'match': string;
+        /**
+         * Run command asynchronously.
+         * @default `false`
+         */
+        'isAsync': boolean;
+        /**
+         * Regex for matching files *not* to run commands on.
+         * @default `".*"`
+         */
+        'notMatch': string;
+    }[] | undefined);
+    /**
+     * Automatically clear the console on each save before running commands.
+     */
+    "emeraldwalk.runonsave.autoClearConsole": boolean;
+    /**
+     * Command to execute on save.
+     */
+    "emeraldwalk.runonsave.innerObject.cmd": string;
+    /**
+     * R
+     */
+    "emeraldwalk.runonsave.innerObject.match": string;
+}
+/**
+ * Section Type of `project-kit.emeraldwalk`
+ */
+export interface Emeraldwalk {
+    /**
+     * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
+     */
+    "runonsave.shell"?: (string | undefined);
+    "runonsave.commands": ({
+        /**
+     * Command to execute on save.
+     * @default `"echo ${file}"`
+     */
+        'cmd': string;
+        /**
+         * Regex for matching files to run commands on
+         *
+         * NOTE: This is a regex and not a file path spce, so backslashes have to be escaped. They also have to be escaped in json strings, so you may have to double escape them in certain cases such as targetting contents of folders.
+         *
+         * e.g.
+         * "match": "some\\\\directory\\\\.*"
+         * @default `".*"`
+         */
+        'match': string;
+        /**
+         * Run command asynchronously.
+         * @default `false`
+         */
+        'isAsync': boolean;
+        /**
+         * Regex for matching files *not* to run commands on.
+         * @default `".*"`
+         */
+        'notMatch': string;
+    }[] | undefined);
+    /**
+     * Automatically clear the console on each save before running commands.
+     */
+    "runonsave.autoClearConsole": boolean;
+    /**
+     * Command to execute on save.
+     */
+    "runonsave.innerObject.cmd": string;
+    /**
+     * R
+     */
+    "runonsave.innerObject.match": string;
+}
+/**
+ * Section Type of `project-kit.emeraldwalk.runonsave`
+ */
+export interface Runonsave {
+    /**
+     * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
+     */
+    "shell"?: (string | undefined);
+    "commands": ({
+        /**
+     * Command to execute on save.
+     * @default `"echo ${file}"`
+     */
+        'cmd': string;
+        /**
+         * Regex for matching files to run commands on
+         *
+         * NOTE: This is a regex and not a file path spce, so backslashes have to be escaped. They also have to be escaped in json strings, so you may have to double escape them in certain cases such as targetting contents of folders.
+         *
+         * e.g.
+         * "match": "some\\\\directory\\\\.*"
+         * @default `".*"`
+         */
+        'match': string;
+        /**
+         * Run command asynchronously.
+         * @default `false`
+         */
+        'isAsync': boolean;
+        /**
+         * Regex for matching files *not* to run commands on.
+         * @default `".*"`
+         */
+        'notMatch': string;
+    }[] | undefined);
+    /**
+     * Automatically clear the console on each save before running commands.
+     */
+    "autoClearConsole": boolean;
+    /**
+     * Command to execute on save.
+     */
+    "innerObject.cmd": string;
+    /**
+     * R
+     */
+    "innerObject.match": string;
+}
+/**
+ * Section Type of `project-kit.emeraldwalk.runonsave.innerObject`
+ */
+export interface InnerObject {
+    /**
+     * Command to execute on save.
+     */
+    "cmd": string;
+    /**
+     * R
+     */
+    "match": string;
+}
 const sampleDefaults = {
     /**
      * Config defaults of `sample`
@@ -217,6 +374,85 @@ const sampleDefaults = {
          */
         "customAliasesOnly": false,
     } satisfies Sample as Sample,
+    /**
+     * Config defaults of `project-kit`
+     */
+    "project-kit": {
+        /**
+         * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
+         */
+        "emeraldwalk.runonsave.shell": undefined,
+        "emeraldwalk.runonsave.commands": [],
+        /**
+         * Automatically clear the console on each save before running commands.
+         */
+        "emeraldwalk.runonsave.autoClearConsole": false,
+        /**
+         * Command to execute on save.
+         */
+        "emeraldwalk.runonsave.innerObject.cmd": "echo ${file}",
+        /**
+         * R
+         */
+        "emeraldwalk.runonsave.innerObject.match": ".*",
+    } satisfies ProjectKit as ProjectKit,
+    /**
+     * Config defaults of `project-kit.emeraldwalk`
+     */
+    "project-kit.emeraldwalk": {
+        /**
+         * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
+         */
+        "runonsave.shell": undefined,
+        "runonsave.commands": [],
+        /**
+         * Automatically clear the console on each save before running commands.
+         */
+        "runonsave.autoClearConsole": false,
+        /**
+         * Command to execute on save.
+         */
+        "runonsave.innerObject.cmd": "echo ${file}",
+        /**
+         * R
+         */
+        "runonsave.innerObject.match": ".*",
+    } satisfies Emeraldwalk as Emeraldwalk,
+    /**
+     * Config defaults of `project-kit.emeraldwalk.runonsave`
+     */
+    "project-kit.emeraldwalk.runonsave": {
+        /**
+         * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
+         */
+        "shell": undefined,
+        "commands": [],
+        /**
+         * Automatically clear the console on each save before running commands.
+         */
+        "autoClearConsole": false,
+        /**
+         * Command to execute on save.
+         */
+        "innerObject.cmd": "echo ${file}",
+        /**
+         * R
+         */
+        "innerObject.match": ".*",
+    } satisfies Runonsave as Runonsave,
+    /**
+     * Config defaults of `project-kit.emeraldwalk.runonsave.innerObject`
+     */
+    "project-kit.emeraldwalk.runonsave.innerObject": {
+        /**
+         * Command to execute on save.
+         */
+        "cmd": "echo ${file}",
+        /**
+         * R
+         */
+        "match": ".*",
+    } satisfies InnerObject as InnerObject,
 };
 export type ConfigSecionKey = keyof typeof sampleDefaults;
 /**
@@ -224,6 +460,10 @@ export type ConfigSecionKey = keyof typeof sampleDefaults;
  */
 export const configs = {
     sample: "sample",
+    projectKit: "project-kit",
+    emeraldwalk: "project-kit.emeraldwalk",
+    runonsave: "project-kit.emeraldwalk.runonsave",
+    innerObject: "project-kit.emeraldwalk.runonsave.innerObject",
 } satisfies Record<string, ConfigSecionKey>;
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
@@ -249,3 +489,67 @@ export const useConfigObjectSample = () => useConfigObject(configs.sample);
  * sample.date.update(oldVal) //update value
  */
 export const useConfigSample = () => useConfig(configs.sample);
+/**
+ * ConfigObject of `project-kit`
+ * @example
+ * const projectKit = useConfigObjectProjectKit()
+ * const oldVal:string = projectKit.emeraldwalk.runonsave.shell //get value
+ * projectKit.$update("emeraldwalk.runonsave.shell", oldVal) //update value
+ */
+export const useConfigObjectProjectKit = () => useConfigObject(configs.projectKit);
+/**
+ * ToConfigRefs of `project-kit`
+ * @example
+ * const projectKit = useConfigProjectKit()
+ * const oldVal:string = projectKit.emeraldwalk.runonsave.shell.value //get value
+ * projectKit.emeraldwalk.runonsave.shell.update(oldVal) //update value
+ */
+export const useConfigProjectKit = () => useConfig(configs.projectKit);
+/**
+ * ConfigObject of `project-kit.emeraldwalk`
+ * @example
+ * const emeraldwalk = useConfigObjectEmeraldwalk()
+ * const oldVal:string = emeraldwalk.runonsave.shell //get value
+ * emeraldwalk.$update("runonsave.shell", oldVal) //update value
+ */
+export const useConfigObjectEmeraldwalk = () => useConfigObject(configs.emeraldwalk);
+/**
+ * ToConfigRefs of `project-kit.emeraldwalk`
+ * @example
+ * const emeraldwalk = useConfigEmeraldwalk()
+ * const oldVal:string = emeraldwalk.runonsave.shell.value //get value
+ * emeraldwalk.runonsave.shell.update(oldVal) //update value
+ */
+export const useConfigEmeraldwalk = () => useConfig(configs.emeraldwalk);
+/**
+ * ConfigObject of `project-kit.emeraldwalk.runonsave`
+ * @example
+ * const runonsave = useConfigObjectRunonsave()
+ * const oldVal:string = runonsave.shell //get value
+ * runonsave.$update("shell", oldVal) //update value
+ */
+export const useConfigObjectRunonsave = () => useConfigObject(configs.runonsave);
+/**
+ * ToConfigRefs of `project-kit.emeraldwalk.runonsave`
+ * @example
+ * const runonsave = useConfigRunonsave()
+ * const oldVal:string = runonsave.shell.value //get value
+ * runonsave.shell.update(oldVal) //update value
+ */
+export const useConfigRunonsave = () => useConfig(configs.runonsave);
+/**
+ * ConfigObject of `project-kit.emeraldwalk.runonsave.innerObject`
+ * @example
+ * const innerObject = useConfigObjectInnerObject()
+ * const oldVal:string = innerObject.cmd //get value
+ * innerObject.$update("cmd", oldVal) //update value
+ */
+export const useConfigObjectInnerObject = () => useConfigObject(configs.innerObject);
+/**
+ * ToConfigRefs of `project-kit.emeraldwalk.runonsave.innerObject`
+ * @example
+ * const innerObject = useConfigInnerObject()
+ * const oldVal:string = innerObject.cmd.value //get value
+ * innerObject.cmd.update(oldVal) //update value
+ */
+export const useConfigInnerObject = () => useConfig(configs.innerObject);

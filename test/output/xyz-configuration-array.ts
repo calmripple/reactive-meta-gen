@@ -182,59 +182,97 @@ export interface Root {
  * Section Type of `emeraldwalk`
  */
 export interface Emeraldwalk {
-    "runonsave": {
+    /**
+     * Automatically clear the console on each save before running commands.
+     */
+    "runonsave.autoClearConsole": boolean;
+    /**
+     * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
+     */
+    "runonsave.shell"?: (string | undefined);
+    /**
+     * Delimiters for separating between collection id and icon id
+     */
+    "runonsave.delimiters": string[];
+    /**
+     * Delimiters for separating between collection id and icon id
+     */
+    "runonsave.delimiters1": string[];
+    "runonsave.commands": ({
         /**
-       * Automatically clear the console on each save before running commands.
-       * @default `false`
-       */
-        'autoClearConsole': boolean;
+     * Regex for matching files to run commands on
+     *
+     * NOTE: This is a regex and not a file path spce, so backslashes have to be escaped. They also have to be escaped in json strings, so you may have to double escape them in certain cases such as targetting contents of folders.
+     *
+     * e.g.
+     * "match": "some\\\\directory\\\\.*"
+     * @default `".*"`
+     */
+        'match': string;
         /**
-         * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
-         * @default `undefined`
+         * Regex for matching files *not* to run commands on.
+         * @default `".*"`
          */
-        'shell'?: string;
+        'notMatch': string;
         /**
-         * Delimiters for separating between collection id and icon id
-         * @default `[":","--","-","/"]`
+         * Command to execute on save.
+         * @default `"echo ${file}"`
          */
-        'delimiters': string[];
+        'cmd': string;
         /**
-         * Delimiters for separating between collection id and icon id
-         * @default `[":","--","-","/"]`
+         * Run command asynchronously.
+         * @default `false`
          */
-        'delimiters1': string[];
+        'isAsync': boolean;
+    }[] | undefined);
+}
+/**
+ * Section Type of `emeraldwalk.runonsave`
+ */
+export interface Runonsave {
+    /**
+     * Automatically clear the console on each save before running commands.
+     */
+    "autoClearConsole": boolean;
+    /**
+     * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
+     */
+    "shell"?: (string | undefined);
+    /**
+     * Delimiters for separating between collection id and icon id
+     */
+    "delimiters": string[];
+    /**
+     * Delimiters for separating between collection id and icon id
+     */
+    "delimiters1": string[];
+    "commands": ({
         /**
-         *
-         * @default `undefined`
+     * Regex for matching files to run commands on
+     *
+     * NOTE: This is a regex and not a file path spce, so backslashes have to be escaped. They also have to be escaped in json strings, so you may have to double escape them in certain cases such as targetting contents of folders.
+     *
+     * e.g.
+     * "match": "some\\\\directory\\\\.*"
+     * @default `".*"`
+     */
+        'match': string;
+        /**
+         * Regex for matching files *not* to run commands on.
+         * @default `".*"`
          */
-        'commands'?: {
-            /**
-       * Regex for matching files to run commands on
-       *
-       * NOTE: This is a regex and not a file path spce, so backslashes have to be escaped. They also have to be escaped in json strings, so you may have to double escape them in certain cases such as targetting contents of folders.
-       *
-       * e.g.
-       * "match": "some\\\\directory\\\\.*"
-       * @default `".*"`
-       */
-            'match': string;
-            /**
-             * Regex for matching files *not* to run commands on.
-             * @default `".*"`
-             */
-            'notMatch': string;
-            /**
-             * Command to execute on save.
-             * @default `"echo ${file}"`
-             */
-            'cmd': string;
-            /**
-             * Run command asynchronously.
-             * @default `false`
-             */
-            'isAsync': boolean;
-        }[];
-    };
+        'notMatch': string;
+        /**
+         * Command to execute on save.
+         * @default `"echo ${file}"`
+         */
+        'cmd': string;
+        /**
+         * Run command asynchronously.
+         * @default `false`
+         */
+        'isAsync': boolean;
+    }[] | undefined);
 }
 const projectConfigDefaults = {
     /**
@@ -297,8 +335,46 @@ const projectConfigDefaults = {
      * Config defaults of `emeraldwalk`
      */
     "emeraldwalk": {
-        "runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":", "--", "-", "/"], "delimiters1": [":", "--", "-", "/"], "commands": undefined },
+        /**
+         * Automatically clear the console on each save before running commands.
+         */
+        "runonsave.autoClearConsole": false,
+        /**
+         * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
+         */
+        "runonsave.shell": undefined,
+        /**
+         * Delimiters for separating between collection id and icon id
+         */
+        "runonsave.delimiters": [":", "--", "-", "/"],
+        /**
+         * Delimiters for separating between collection id and icon id
+         */
+        "runonsave.delimiters1": [":", "--", "-", "/"],
+        "runonsave.commands": [],
     } satisfies Emeraldwalk as Emeraldwalk,
+    /**
+     * Config defaults of `emeraldwalk.runonsave`
+     */
+    "emeraldwalk.runonsave": {
+        /**
+         * Automatically clear the console on each save before running commands.
+         */
+        "autoClearConsole": false,
+        /**
+         * Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
+         */
+        "shell": undefined,
+        /**
+         * Delimiters for separating between collection id and icon id
+         */
+        "delimiters": [":", "--", "-", "/"],
+        /**
+         * Delimiters for separating between collection id and icon id
+         */
+        "delimiters1": [":", "--", "-", "/"],
+        "commands": [],
+    } satisfies Runonsave as Runonsave,
 };
 export type ConfigSecionKey = keyof typeof projectConfigDefaults;
 /**
@@ -310,6 +386,7 @@ export const configs = {
     test: "project-config.test",
     root: "",
     emeraldwalk: "emeraldwalk",
+    runonsave: "emeraldwalk.runonsave",
 } satisfies Record<string, ConfigSecionKey>;
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
@@ -387,15 +464,31 @@ export const useConfigRoot = () => useConfig(configs.root);
  * ConfigObject of `emeraldwalk`
  * @example
  * const emeraldwalk = useConfigObjectEmeraldwalk()
- * const oldVal:object = emeraldwalk.runonsave //get value
- * emeraldwalk.$update("runonsave", oldVal) //update value
+ * const oldVal:boolean = emeraldwalk.runonsave.autoClearConsole //get value
+ * emeraldwalk.$update("runonsave.autoClearConsole", oldVal) //update value
  */
 export const useConfigObjectEmeraldwalk = () => useConfigObject(configs.emeraldwalk);
 /**
  * ToConfigRefs of `emeraldwalk`
  * @example
  * const emeraldwalk = useConfigEmeraldwalk()
- * const oldVal:object = emeraldwalk.runonsave.value //get value
- * emeraldwalk.runonsave.update(oldVal) //update value
+ * const oldVal:boolean = emeraldwalk.runonsave.autoClearConsole.value //get value
+ * emeraldwalk.runonsave.autoClearConsole.update(oldVal) //update value
  */
 export const useConfigEmeraldwalk = () => useConfig(configs.emeraldwalk);
+/**
+ * ConfigObject of `emeraldwalk.runonsave`
+ * @example
+ * const runonsave = useConfigObjectRunonsave()
+ * const oldVal:boolean = runonsave.autoClearConsole //get value
+ * runonsave.$update("autoClearConsole", oldVal) //update value
+ */
+export const useConfigObjectRunonsave = () => useConfigObject(configs.runonsave);
+/**
+ * ToConfigRefs of `emeraldwalk.runonsave`
+ * @example
+ * const runonsave = useConfigRunonsave()
+ * const oldVal:boolean = runonsave.autoClearConsole.value //get value
+ * runonsave.autoClearConsole.update(oldVal) //update value
+ */
+export const useConfigRunonsave = () => useConfig(configs.runonsave);

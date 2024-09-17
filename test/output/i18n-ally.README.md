@@ -70,7 +70,7 @@
   "i18n-ally.displayLanguage": ,
 
   //%config.ignored_locales%
-  "i18n-ally.ignoredLocales": ,
+  "i18n-ally.ignoredLocales": [],
 
   //%config.keystyle%
   "i18n-ally.keystyle": ,
@@ -100,13 +100,13 @@
   "i18n-ally.showFlags": true,
 
   //%config.enabled_frameworks%
-  "i18n-ally.enabledFrameworks": ,
+  "i18n-ally.enabledFrameworks": [],
 
   //%config.enabled_parsers%
-  "i18n-ally.enabledParsers": ,
+  "i18n-ally.enabledParsers": [],
 
   //%config.keys_in_use%
-  "i18n-ally.keysInUse": ,
+  "i18n-ally.keysInUse": [],
 
   //%config.sort_keys%
   "i18n-ally.sortKeys": false,
@@ -148,7 +148,7 @@
   "i18n-ally.languageTagSystem": "bcp47",
 
   //%config.ignore_files%
-  "i18n-ally.ignoreFiles": ,
+  "i18n-ally.ignoreFiles": [],
 
   //
   "i18n-ally.theme.annotation": "rgba(153, 153, 153, .8)",
@@ -166,13 +166,13 @@
   "i18n-ally.regex.key": ,
 
   //%config.regex_usage_match%
-  "i18n-ally.regex.usageMatch": ,
+  "i18n-ally.regex.usageMatch": [],
 
   //%config.regex_usage_match_append%
-  "i18n-ally.regex.usageMatchAppend": ,
+  "i18n-ally.regex.usageMatchAppend": [],
 
   //%config.refactor_templates%
-  "i18n-ally.refactor.templates": ,
+  "i18n-ally.refactor.templates": [],
 
   //%config.translate_save_as_candidates%
   "i18n-ally.translate.saveAsCandidates": false,
@@ -223,7 +223,7 @@
   "i18n-ally.translate.openai.apiModel": "gpt-3.5-turbo",
 
   //%config.usage.scanning_ignore%
-  "i18n-ally.usage.scanningIgnore": ,
+  "i18n-ally.usage.scanningIgnore": [],
 
   //%config.derived_keys%
   "i18n-ally.usage.derivedKeyRules": null,
@@ -283,7 +283,7 @@
   "i18n-ally.extract.autoDetect": false,
 
   //Strings to be ignored on hard-coded strings detection
-  "i18n-ally.extract.ignored": ,
+  "i18n-ally.extract.ignored": [],
 
   //Strings to be ignored on hard-coded strings detection, by files
   "i18n-ally.extract.ignoredByFiles": {},
@@ -307,7 +307,7 @@
 | `i18n-ally.encoding`                           | %config.encoding%                                                                                                                    | `string`       | `"utf-8"`                            |
 | `i18n-ally.sourceLanguage`                     | %config.source_language%                                                                                                             | `string`       | ``                                   |
 | `i18n-ally.displayLanguage`                    | %config.display_language%                                                                                                            | `string`       | ``                                   |
-| `i18n-ally.ignoredLocales`                     | %config.ignored_locales%                                                                                                             | `array`        | ``                                   |
+| `i18n-ally.ignoredLocales`                     | %config.ignored_locales%                                                                                                             | `array`        | `[]`                                 |
 | `i18n-ally.keystyle`                           | %config.keystyle%                                                                                                                    | `string`       | ``                                   |
 | `i18n-ally.dirStructure`                       | %config.dir_structure%                                                                                                               | `string`       | ``                                   |
 | `i18n-ally.annotations`                        | %config.annotations%                                                                                                                 | `boolean`      | `true`                               |
@@ -317,9 +317,9 @@
 | `i18n-ally.includeSubfolders`                  | %config.include_subfolders%                                                                                                          | `boolean`      | `true`                               |
 | `i18n-ally.fullReloadOnChanged`                | %config.full_reload_on_changed%                                                                                                      | `boolean`      | `false`                              |
 | `i18n-ally.showFlags`                          | %config.show_flags%                                                                                                                  | `boolean`      | `true`                               |
-| `i18n-ally.enabledFrameworks`                  | %config.enabled_frameworks%                                                                                                          | `array`        | ``                                   |
-| `i18n-ally.enabledParsers`                     | %config.enabled_parsers%                                                                                                             | `array`        | ``                                   |
-| `i18n-ally.keysInUse`                          | %config.keys_in_use%                                                                                                                 | `array`        | ``                                   |
+| `i18n-ally.enabledFrameworks`                  | %config.enabled_frameworks%                                                                                                          | `array`        | `[]`                                 |
+| `i18n-ally.enabledParsers`                     | %config.enabled_parsers%                                                                                                             | `array`        | `[]`                                 |
+| `i18n-ally.keysInUse`                          | %config.keys_in_use%                                                                                                                 | `array`        | `[]`                                 |
 | `i18n-ally.sortKeys`                           | %config.sort_keys%                                                                                                                   | `boolean`      | `false`                              |
 | `i18n-ally.sortCompare`                        | %config.sort_compare%                                                                                                                | `string`       | `"binary"`                           |
 | `i18n-ally.sortLocale`                         | %config.sort_locale%                                                                                                                 | `string`       | ``                                   |
@@ -333,15 +333,15 @@
 | `i18n-ally.namespace`                          | %config.namespace%                                                                                                                   | `boolean`      | ``                                   |
 | `i18n-ally.pathMatcher`                        | %config.path_matcher%                                                                                                                | `string`       | ``                                   |
 | `i18n-ally.languageTagSystem`                  | %config.language_tag_system%                                                                                                         | `string`       | `"bcp47"`                            |
-| `i18n-ally.ignoreFiles`                        | %config.ignore_files%                                                                                                                | `array`        | ``                                   |
+| `i18n-ally.ignoreFiles`                        | %config.ignore_files%                                                                                                                | `array`        | `[]`                                 |
 | `i18n-ally.theme.annotation`                   |                                                                                                                                      | `string`       | `"rgba(153, 153, 153, .8)"`          |
 | `i18n-ally.theme.annotationMissing`            |                                                                                                                                      | `string`       | `"rgba(153, 153, 153, .3)"`          |
 | `i18n-ally.theme.annotationBorder`             |                                                                                                                                      | `string`       | `"rgba(153, 153, 153, .2)"`          |
 | `i18n-ally.theme.annotationMissingBorder`      |                                                                                                                                      | `string`       | `"rgba(153, 153, 153, .2)"`          |
 | `i18n-ally.regex.key`                          | %config.regex_key%                                                                                                                   | `string`       | ``                                   |
-| `i18n-ally.regex.usageMatch`                   | %config.regex_usage_match%                                                                                                           | `array`        | ``                                   |
-| `i18n-ally.regex.usageMatchAppend`             | %config.regex_usage_match_append%                                                                                                    | `array`        | ``                                   |
-| `i18n-ally.refactor.templates`                 | %config.refactor_templates%                                                                                                          | `array`        | ``                                   |
+| `i18n-ally.regex.usageMatch`                   | %config.regex_usage_match%                                                                                                           | `array`        | `[]`                                 |
+| `i18n-ally.regex.usageMatchAppend`             | %config.regex_usage_match_append%                                                                                                    | `array`        | `[]`                                 |
+| `i18n-ally.refactor.templates`                 | %config.refactor_templates%                                                                                                          | `array`        | `[]`                                 |
 | `i18n-ally.translate.saveAsCandidates`         | %config.translate_save_as_candidates%                                                                                                | `boolean`      | `false`                              |
 | `i18n-ally.translate.fallbackToKey`            | %config.translate.fallbackToKey%                                                                                                     | `boolean`      | `false`                              |
 | `i18n-ally.translate.engines`                  | %config.translate.engines%                                                                                                           | `array`        | `["google"]`                         |
@@ -358,7 +358,7 @@
 | `i18n-ally.translate.openai.apiKey`            | %config.openai_api_key%                                                                                                              | `string`       | `null`                               |
 | `i18n-ally.translate.openai.apiRoot`           | %config.openai_api_root%                                                                                                             | `string`       | `"https://api.openai.com"`           |
 | `i18n-ally.translate.openai.apiModel`          | %config.openai_api_model%                                                                                                            | `string`       | `"gpt-3.5-turbo"`                    |
-| `i18n-ally.usage.scanningIgnore`               | %config.usage.scanning_ignore%                                                                                                       | `array`        | ``                                   |
+| `i18n-ally.usage.scanningIgnore`               | %config.usage.scanning_ignore%                                                                                                       | `array`        | `[]`                                 |
 | `i18n-ally.usage.derivedKeyRules`              | %config.derived_keys%                                                                                                                | `array`        | `null`                               |
 | `i18n-ally.frameworks.ruby-rails.scopeRoot`    |                                                                                                                                      | `string`       | `"app/views"`                        |
 | `i18n-ally.parsers.typescript.tsNodePath`      |                                                                                                                                      | `string`       | `"node_modules/ts-node/dist/bin.js"` |
@@ -378,7 +378,7 @@
 | `i18n-ally.extract.parsers.html`               | Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts          | `object`       | `{}`                                 |
 | `i18n-ally.extract.parsers.babel`              | Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts | `object`       | `{}`                                 |
 | `i18n-ally.extract.autoDetect`                 | Enables hard-coded strings detection automatically whenever opening a supported file                                                 | `boolean`      | `false`                              |
-| `i18n-ally.extract.ignored`                    | Strings to be ignored on hard-coded strings detection                                                                                | `array`        | ``                                   |
+| `i18n-ally.extract.ignored`                    | Strings to be ignored on hard-coded strings detection                                                                                | `array`        | `[]`                                 |
 | `i18n-ally.extract.ignoredByFiles`             | Strings to be ignored on hard-coded strings detection, by files                                                                      | `object`       | `{}`                                 |
 | `i18n-ally.parserOptions`                      |                                                                                                                                      | `object`       | ``                                   |
 | `i18n-ally.defaultNamespace`                   | %config.default_namespace%                                                                                                           | `string`       | ``                                   |

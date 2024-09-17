@@ -1,19 +1,24 @@
 import { defineExtension, watchEffect } from 'reactive-vscode'
 import { window } from 'vscode'
-import { useConfigObjectSample, useCommandUpdateDate } from './output/sample'
+import {
+  useConfigObjectRunonsave,
+  useCommandUpdateDate,
+  useConfigObjectInnerObject,
+} from './output/sample'
 
 const { activate, deactivate } = defineExtension(() => {
-  const sample = useConfigObjectSample()
+  const sample = useConfigObjectRunonsave()
   // another way to get the config value
-  const _configValue = sample.date // get value
-
+  const _configValue = sample.shell // get value
+  const inner = useConfigObjectInnerObject()
   watchEffect(() => {
+    window.showErrorMessage(`sampleConfigs.shell.value:${inner.cmd}`)
     // watch value change
-    window.showInformationMessage(`sampleConfigs.annotations.value:${sample.date}`)
+    window.showInformationMessage(`sampleConfigs.annotations.value:${sample.shell}`)
   })
   useCommandUpdateDate(async () => {
     // update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
-    sample.$update('date', Date.now().toLocaleString())
+    sample.$update('shell', Date.now().toLocaleString())
   })
 },
 )

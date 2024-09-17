@@ -65,126 +65,222 @@ export interface SmartClicks {
      */
     "htmlLanguageIds": string[];
     /**
-     * Rule toggles
+     * Pair to inner content of brackets.
+     *
+     * ```js
+     * ▽
+     * (foo, bar)
+     *  └──────┘
+     * ```
      */
-    "rules": {
-        /**
-       * Pair to inner content of brackets.
-       *
-       * ```js
-       * ▽
-       * (foo, bar)
-       *  └──────┘
-       * ```
-       * @default `true`
-       */
-        'bracket-pair': boolean;
-        /**
-         * `-` to identifier.
-         *
-         * ```css
-         *    ▽
-         * foo-bar
-         * └─────┘
-         * ```
-         * @default `true`
-         */
-        'dash': boolean;
-        /**
-         * `=` to HTML attribute.
-         *
-         * ```html
-         *           ▽
-         * <div class="btn"></div>
-         *      └─────────┘
-         * ```
-         * @default `true`
-         */
-        'html-attr': boolean;
-        /**
-         * `<` to the entire element.
-         *
-         * ```html
-         * ▽
-         * <div><div></div></div>
-         * └────────────────────┘
-         * ```
-         * @default `true`
-         */
-        'html-element': boolean;
-        /**
-         * Open and close tags of a HTML element.
-         *
-         * ```html
-         *  ▽
-         * <div><div></div></div>
-         *  └─┘              └─┘
-         * ```
-         * @default `true`
-         */
-        'html-tag-pair': boolean;
-        /**
-         * `=>` to arrow function.
-         *
-         * ```js
-         *        ▽
-         * (a, b) => a + b
-         * └─────────────┘
-         * ```
-         * @default `true`
-         */
-        'js-arrow-fn': boolean;
-        /**
-         * `=` to assignment.
-         *
-         * ```js
-         *         ▽
-         * const a = []
-         * └──────────┘
-         * ```
-         * @default `true`
-         */
-        'js-assign': boolean;
-        /**
-         * Blocks like `if`, `for`, `while`, etc. in JavaScript.
-         *
-         * ```js
-         * ▽
-         * function () {     }
-         * └─────────────────┘
-         * ```
-         *
-         * ```js
-         * ▽
-         * import { ref } from 'vue'
-         * └───────────────────────┘
-         * ```
-         * @default `false`
-         */
-        'js-block': boolean;
-        /**
-         * `:` to the value.
-         *
-         * ```js
-         *      ▽
-         * { foo: { bar } }
-         *        └─────┘
-         * ```
-         * @default `true`
-         */
-        'js-colon': boolean;
-        /**
-         * Matches JSX elements' start and end tags.
-         *
-         * ```jsx
-         *   ▽
-         * (<Flex.Item>Hi</Flex.Item>)
-         *   └───────┘     └───────┘
-         * ```
-         * @default `true`
-         */
-        'jsx-tag-pair': boolean;
-    };
+    "rules.bracket-pair": boolean;
+    /**
+     * `-` to identifier.
+     *
+     * ```css
+     *    ▽
+     * foo-bar
+     * └─────┘
+     * ```
+     */
+    "rules.dash": boolean;
+    /**
+     * `=` to HTML attribute.
+     *
+     * ```html
+     *           ▽
+     * <div class="btn"></div>
+     *      └─────────┘
+     * ```
+     */
+    "rules.html-attr": boolean;
+    /**
+     * `<` to the entire element.
+     *
+     * ```html
+     * ▽
+     * <div><div></div></div>
+     * └────────────────────┘
+     * ```
+     */
+    "rules.html-element": boolean;
+    /**
+     * Open and close tags of a HTML element.
+     *
+     * ```html
+     *  ▽
+     * <div><div></div></div>
+     *  └─┘              └─┘
+     * ```
+     */
+    "rules.html-tag-pair": boolean;
+    /**
+     * `=>` to arrow function.
+     *
+     * ```js
+     *        ▽
+     * (a, b) => a + b
+     * └─────────────┘
+     * ```
+     */
+    "rules.js-arrow-fn": boolean;
+    /**
+     * `=` to assignment.
+     *
+     * ```js
+     *         ▽
+     * const a = []
+     * └──────────┘
+     * ```
+     */
+    "rules.js-assign": boolean;
+    /**
+     * Blocks like `if`, `for`, `while`, etc. in JavaScript.
+     *
+     * ```js
+     * ▽
+     * function () {     }
+     * └─────────────────┘
+     * ```
+     *
+     * ```js
+     * ▽
+     * import { ref } from 'vue'
+     * └───────────────────────┘
+     * ```
+     */
+    "rules.js-block": boolean;
+    /**
+     * `:` to the value.
+     *
+     * ```js
+     *      ▽
+     * { foo: { bar } }
+     *        └─────┘
+     * ```
+     */
+    "rules.js-colon": boolean;
+    /**
+     * Matches JSX elements' start and end tags.
+     *
+     * ```jsx
+     *   ▽
+     * (<Flex.Item>Hi</Flex.Item>)
+     *   └───────┘     └───────┘
+     * ```
+     */
+    "rules.jsx-tag-pair": boolean;
+}
+/**
+ * Section Type of `smartClicks.rules`
+ */
+export interface Rules {
+    /**
+     * Pair to inner content of brackets.
+     *
+     * ```js
+     * ▽
+     * (foo, bar)
+     *  └──────┘
+     * ```
+     */
+    "bracket-pair": boolean;
+    /**
+     * `-` to identifier.
+     *
+     * ```css
+     *    ▽
+     * foo-bar
+     * └─────┘
+     * ```
+     */
+    "dash": boolean;
+    /**
+     * `=` to HTML attribute.
+     *
+     * ```html
+     *           ▽
+     * <div class="btn"></div>
+     *      └─────────┘
+     * ```
+     */
+    "html-attr": boolean;
+    /**
+     * `<` to the entire element.
+     *
+     * ```html
+     * ▽
+     * <div><div></div></div>
+     * └────────────────────┘
+     * ```
+     */
+    "html-element": boolean;
+    /**
+     * Open and close tags of a HTML element.
+     *
+     * ```html
+     *  ▽
+     * <div><div></div></div>
+     *  └─┘              └─┘
+     * ```
+     */
+    "html-tag-pair": boolean;
+    /**
+     * `=>` to arrow function.
+     *
+     * ```js
+     *        ▽
+     * (a, b) => a + b
+     * └─────────────┘
+     * ```
+     */
+    "js-arrow-fn": boolean;
+    /**
+     * `=` to assignment.
+     *
+     * ```js
+     *         ▽
+     * const a = []
+     * └──────────┘
+     * ```
+     */
+    "js-assign": boolean;
+    /**
+     * Blocks like `if`, `for`, `while`, etc. in JavaScript.
+     *
+     * ```js
+     * ▽
+     * function () {     }
+     * └─────────────────┘
+     * ```
+     *
+     * ```js
+     * ▽
+     * import { ref } from 'vue'
+     * └───────────────────────┘
+     * ```
+     */
+    "js-block": boolean;
+    /**
+     * `:` to the value.
+     *
+     * ```js
+     *      ▽
+     * { foo: { bar } }
+     *        └─────┘
+     * ```
+     */
+    "js-colon": boolean;
+    /**
+     * Matches JSX elements' start and end tags.
+     *
+     * ```jsx
+     *   ▽
+     * (<Flex.Item>Hi</Flex.Item>)
+     *   └───────┘     └───────┘
+     * ```
+     */
+    "jsx-tag-pair": boolean;
 }
 const smartClicksDefaults = {
     /**
@@ -204,10 +300,223 @@ const smartClicksDefaults = {
          */
         "htmlLanguageIds": ["html", "vue", "svelte"],
         /**
-         * Rule toggles
+         * Pair to inner content of brackets.
+         *
+         * ```js
+         * ▽
+         * (foo, bar)
+         *  └──────┘
+         * ```
          */
-        "rules": { "bracket-pair": true, "dash": true, "html-attr": true, "html-element": true, "html-tag-pair": true, "js-arrow-fn": true, "js-assign": true, "js-block": false, "js-colon": true, "jsx-tag-pair": true },
+        "rules.bracket-pair": true,
+        /**
+         * `-` to identifier.
+         *
+         * ```css
+         *    ▽
+         * foo-bar
+         * └─────┘
+         * ```
+         */
+        "rules.dash": true,
+        /**
+         * `=` to HTML attribute.
+         *
+         * ```html
+         *           ▽
+         * <div class="btn"></div>
+         *      └─────────┘
+         * ```
+         */
+        "rules.html-attr": true,
+        /**
+         * `<` to the entire element.
+         *
+         * ```html
+         * ▽
+         * <div><div></div></div>
+         * └────────────────────┘
+         * ```
+         */
+        "rules.html-element": true,
+        /**
+         * Open and close tags of a HTML element.
+         *
+         * ```html
+         *  ▽
+         * <div><div></div></div>
+         *  └─┘              └─┘
+         * ```
+         */
+        "rules.html-tag-pair": true,
+        /**
+         * `=>` to arrow function.
+         *
+         * ```js
+         *        ▽
+         * (a, b) => a + b
+         * └─────────────┘
+         * ```
+         */
+        "rules.js-arrow-fn": true,
+        /**
+         * `=` to assignment.
+         *
+         * ```js
+         *         ▽
+         * const a = []
+         * └──────────┘
+         * ```
+         */
+        "rules.js-assign": true,
+        /**
+         * Blocks like `if`, `for`, `while`, etc. in JavaScript.
+         *
+         * ```js
+         * ▽
+         * function () {     }
+         * └─────────────────┘
+         * ```
+         *
+         * ```js
+         * ▽
+         * import { ref } from 'vue'
+         * └───────────────────────┘
+         * ```
+         */
+        "rules.js-block": false,
+        /**
+         * `:` to the value.
+         *
+         * ```js
+         *      ▽
+         * { foo: { bar } }
+         *        └─────┘
+         * ```
+         */
+        "rules.js-colon": true,
+        /**
+         * Matches JSX elements' start and end tags.
+         *
+         * ```jsx
+         *   ▽
+         * (<Flex.Item>Hi</Flex.Item>)
+         *   └───────┘     └───────┘
+         * ```
+         */
+        "rules.jsx-tag-pair": true,
     } satisfies SmartClicks as SmartClicks,
+    /**
+     * Config defaults of `smartClicks.rules`
+     */
+    "smartClicks.rules": {
+        /**
+         * Pair to inner content of brackets.
+         *
+         * ```js
+         * ▽
+         * (foo, bar)
+         *  └──────┘
+         * ```
+         */
+        "bracket-pair": true,
+        /**
+         * `-` to identifier.
+         *
+         * ```css
+         *    ▽
+         * foo-bar
+         * └─────┘
+         * ```
+         */
+        "dash": true,
+        /**
+         * `=` to HTML attribute.
+         *
+         * ```html
+         *           ▽
+         * <div class="btn"></div>
+         *      └─────────┘
+         * ```
+         */
+        "html-attr": true,
+        /**
+         * `<` to the entire element.
+         *
+         * ```html
+         * ▽
+         * <div><div></div></div>
+         * └────────────────────┘
+         * ```
+         */
+        "html-element": true,
+        /**
+         * Open and close tags of a HTML element.
+         *
+         * ```html
+         *  ▽
+         * <div><div></div></div>
+         *  └─┘              └─┘
+         * ```
+         */
+        "html-tag-pair": true,
+        /**
+         * `=>` to arrow function.
+         *
+         * ```js
+         *        ▽
+         * (a, b) => a + b
+         * └─────────────┘
+         * ```
+         */
+        "js-arrow-fn": true,
+        /**
+         * `=` to assignment.
+         *
+         * ```js
+         *         ▽
+         * const a = []
+         * └──────────┘
+         * ```
+         */
+        "js-assign": true,
+        /**
+         * Blocks like `if`, `for`, `while`, etc. in JavaScript.
+         *
+         * ```js
+         * ▽
+         * function () {     }
+         * └─────────────────┘
+         * ```
+         *
+         * ```js
+         * ▽
+         * import { ref } from 'vue'
+         * └───────────────────────┘
+         * ```
+         */
+        "js-block": false,
+        /**
+         * `:` to the value.
+         *
+         * ```js
+         *      ▽
+         * { foo: { bar } }
+         *        └─────┘
+         * ```
+         */
+        "js-colon": true,
+        /**
+         * Matches JSX elements' start and end tags.
+         *
+         * ```jsx
+         *   ▽
+         * (<Flex.Item>Hi</Flex.Item>)
+         *   └───────┘     └───────┘
+         * ```
+         */
+        "jsx-tag-pair": true,
+    } satisfies Rules as Rules,
 };
 export type ConfigSecionKey = keyof typeof smartClicksDefaults;
 /**
@@ -215,6 +524,7 @@ export type ConfigSecionKey = keyof typeof smartClicksDefaults;
  */
 export const configs = {
     smartClicks: "smartClicks",
+    rules: "smartClicks.rules",
 } satisfies Record<string, ConfigSecionKey>;
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
@@ -240,3 +550,19 @@ export const useConfigObjectSmartClicks = () => useConfigObject(configs.smartCli
  * smartClicks.clicksInterval.update(oldVal) //update value
  */
 export const useConfigSmartClicks = () => useConfig(configs.smartClicks);
+/**
+ * ConfigObject of `smartClicks.rules`
+ * @example
+ * const rules = useConfigObjectRules()
+ * const oldVal:boolean = rules.bracket-pair //get value
+ * rules.$update("bracket-pair", oldVal) //update value
+ */
+export const useConfigObjectRules = () => useConfigObject(configs.rules);
+/**
+ * ToConfigRefs of `smartClicks.rules`
+ * @example
+ * const rules = useConfigRules()
+ * const oldVal:boolean = rules.bracket-pair.value //get value
+ * rules.bracket-pair.update(oldVal) //update value
+ */
+export const useConfigRules = () => useConfig(configs.rules);

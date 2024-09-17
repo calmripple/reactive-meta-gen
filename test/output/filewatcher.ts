@@ -103,7 +103,7 @@ export interface Filewatcher {
     /**
      * array of commands
      */
-    "commands"?: ({
+    "commands": ({
         /**
      * Unique shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
      * @default `undefined`
@@ -182,7 +182,7 @@ const filewatcherDefaults = {
         /**
          * array of commands
          */
-        "commands": undefined,
+        "commands": [],
     } satisfies Filewatcher as Filewatcher,
 };
 export type ConfigSecionKey = keyof typeof filewatcherDefaults;

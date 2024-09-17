@@ -1,10 +1,16 @@
 import { assign, isArray, memo, camel } from 'radash'
 import type { ConfigurationProperty } from './types'
 
-export function isProperty(propterty: any): propterty is ConfigurationProperty {
-  const typeName = typeof propterty?.type
-  const ret = (typeName === 'string' || typeName === 'object')
-  return ret
+export function isProperty(propterty: ConfigurationProperty): propterty is ConfigurationProperty {
+  if (propterty.type) {
+    const typeName = typeof propterty?.type
+    return (typeName === 'string' || isArray(propterty.type))
+  }
+  if (propterty.anyOf) {
+    return propterty.anyOf.every(v => isProperty(v))
+  }
+
+  return false
 }
 
 export const convertCamelCase = memo((input: string) => {
@@ -35,29 +41,59 @@ export function addOrUpdate<T>(target: Map<string, T[]>, section: string, value:
   }
   return target
 }
-
+function getSectionFromObject(obj: ConfigurationProperty) {
+  if (isProperty(obj) && obj.type === 'object' && obj.properties) {
+    const list = new Map<string, ConfigurationProperty>()
+    for (const [key, value] of Object.entries(obj.properties)) {
+      if (isProperty(value) && value.type === 'object' && value.properties) {
+        const inner = getSectionFromObject(value)
+        if (inner !== undefined) {
+          [...inner.entries()].forEach(([innerKey, innerValue]) => {
+            list.set(`${key}.${innerKey}`, innerValue)
+          })
+        }
+      }
+      else {
+        list.set(key, value)
+      }
+    }
+    return list
+  }
+  return undefined
+}
 export const getConfigInfo = memo(
   (packageJson: any) => {
     const deprecatedConfigs = new Map<string, ConfigurationProperty>()
     const deprecatedKeys = new Array<string>()
     const activedConfigs = new Map<string, ConfigurationProperty>()
     const activedKeys = new Array<string>()
-
+    function ha(acc: Map<string, [string, ConfigurationProperty][]>, fullKey: string, value: ConfigurationProperty) {
+      activedConfigs.set(fullKey, value)
+      activedKeys.push(fullKey)
+      const parts = fullKey.split('.')
+      if (parts.length > 1) {
+        const sectionParts = parts.slice(0, -1)
+        for (let i = 0; i < sectionParts.length; i++) {
+          const section = (sectionParts.slice(0, i + 1).join('.'))
+          addOrUpdate(acc, section, [fullKey, value])
+        }
+      }
+      else {
+        const section = ('')
+        addOrUpdate(acc, section, [fullKey, value])
+      }
+    }
     const sectionActivedConfigs = Object.entries(getConfigObject(packageJson)).reduce((acc, [fullKey, value]) => {
       if (isProperty(value)) {
-        activedConfigs.set(fullKey, value)
-        activedKeys.push(fullKey)
-        const parts = fullKey.split('.')
-        if (parts.length > 1) {
-          const sectionParts = parts.slice(0, -1)
-          for (let i = 0; i < sectionParts.length; i++) {
-            const section = (sectionParts.slice(0, i + 1).join('.'))
-            addOrUpdate(acc, section, [fullKey, value])
-          }
+        const list = getSectionFromObject(value)
+        if (list === undefined) {
+          ha(acc, fullKey, value)
         }
         else {
-          const section = ('')
-          addOrUpdate(acc, section, [fullKey, value])
+          [...list.entries()].forEach(([innerKey, innerValue]) => {
+            const newfullKey = `${fullKey}.${innerKey}`
+            ha(acc, newfullKey, innerValue)
+          })
         }
       }
       else {

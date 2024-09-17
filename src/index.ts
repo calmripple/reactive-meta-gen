@@ -509,7 +509,7 @@ ${indent}}`)
     return `(${types.join(' | ')})`
 }
 
-export function defaultValFromSchema(schema: ConfigurationProperty): string | undefined {
+export function defaultValFromSchema(schema: ConfigurationProperty): string | undefined | Array<unknown> {
   // if (schema.type !== 'object')
   //   return JSON.stringify(schema.default)
 
@@ -533,7 +533,7 @@ export function defaultValFromSchema(schema: ConfigurationProperty): string | un
     //     return `${schema.items.type}[]`
     //   }
     // }
-    return undefined
+    return JSON.stringify([])// undefined
   }
 
   if (schema.type === 'object' && schema.properties) {

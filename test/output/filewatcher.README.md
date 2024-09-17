@@ -34,7 +34,7 @@
   "filewatcher.runTextColor": ,
 
   //array of commands
-  "filewatcher.commands": ,
+  "filewatcher.commands": [],
 
 }
 ```
@@ -50,4 +50,4 @@
 | `filewatcher.isSyncRunEvents`  | Launches event handlers of the same name with the appropriate pattern 'match' or 'notMatch' (e.g. onFileChange and onFolderChange) in synchronous or asynchronous mode. | `boolean` | `false` |
 | `filewatcher.successTextColor` | Color for success message in the status bar. Default: dark: '#25E028', light: '#18CE1B', highContrast: '#0DC610'                                                        | `string`  | ``      |
 | `filewatcher.runTextColor`     | Color for run message in the status bar. Default: dark: '#00FFFB', light: '#02D4D1', highContrast: '#03D2CE'                                                            | `string`  | ``      |
-| `filewatcher.commands`         | array of commands                                                                                                                                                       | `array`   | ``      |
+| `filewatcher.commands`         | array of commands                                                                                                                                                       | `array`   | `[]`    |
