@@ -254,6 +254,9 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   const varConfigsDefaults = getSignature(`${convertCamelCase(name)}Defaults`)
   const varShorthandConfigs = getSignature('configs')
   const shorthandConfigs: string[] = []
+  const varSectionConfigKey = getSignature('ConfigSecionKey')
+  const varUseConfig = getSignature('useConfig')
+  const varUseConfigObject = getSignature('useConfigObject')
   // 遍历所有section
   config.sectionActivedConfigs.forEach((sectionConfig, section) => {
     function removeSection(name: string): string {
@@ -276,9 +279,10 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     }
     shorthandConfigs.push(`${varSectionConfigName}:${JSON.stringify(section)},`)
     const varSectionConfigInterfaceName = getSignature(`${upperFirst(varSectionConfigName)}`)
+
     const varName = {
-      varSectionConfigExportConst: getSignature(`config${varSectionConfigInterfaceName}`),
-      varSectionConfigObjectExportConst: getSignature(`configObject${varSectionConfigInterfaceName}`),
+      varSectionConfigExportConst: getSignature(`${varUseConfig}${varSectionConfigInterfaceName}`),
+      varSectionConfigObjectExportConst: getSignature(`${varUseConfigObject}${varSectionConfigInterfaceName}`),
     }
     const example = sectionConfig[0]
     const exampleKey = removeSection(example[0])
@@ -299,7 +303,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
         `${varName.varSectionConfigObjectExportConst}.$update("${exampleKey}", oldVal) //update value`,
       ].join('\n'),
       ),
-      `export const ${varName.varSectionConfigObjectExportConst} = useConfigObject(${varShorthandConfigs}.${varSectionConfigName})`,
+      `export const ${varName.varSectionConfigObjectExportConst} =()=> ${varUseConfigObject}(${varShorthandConfigs}.${varSectionConfigName})`,
       ...commentBlock([
         `ToConfigRefs of \`${sectionComment}\``,
         `@example`,
@@ -308,7 +312,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
         // `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
         `${varName.varSectionConfigExportConst}.${exampleKey}.update(oldVal) //update value`,
       ].join('\n')),
-      `export const ${varName.varSectionConfigExportConst} = useConfig(${varShorthandConfigs}.${varSectionConfigName})`,
+      `export const ${varName.varSectionConfigExportConst} =()=> ${varUseConfig}(${varShorthandConfigs}.${varSectionConfigName})`,
     )
     // section 类型生成开始
     lines.push(``, ...commentBlock(`Section Type of \`${sectionComment}\``), `export interface ${varSectionConfigInterfaceName} {`)
@@ -343,7 +347,6 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     )
   })
 
-  const varSectionConfigKey = getSignature('ConfigSecionKey')
   // const sectionNames = [...config.sectionActivedConfigs.keys()]
   lines.push(
 
@@ -353,18 +356,18 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     `}`,
     '',
     `export type ${varSectionConfigKey} = keyof typeof ${varConfigsDefaults}`,
+    // `export type ${varSectionConfigKey} = ${sectionNames.map(s => JSON.stringify(s)).join('|')}`,
     '',
     `export const ${varShorthandConfigs} = {`,
     ...shorthandConfigs,
-    `}  satisfies Record<string, ${varSectionConfigKey}> as Record<string, ${varSectionConfigKey}>`,
-    // `export type ConfigKey = keyof typeof ${configVar}`,
+    `}  satisfies Record<string, ${varSectionConfigKey}>`,
 
     commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
-    `export function ${getSignature('useConfig')}<K extends ${varSectionConfigKey}>(section: K) {
+    `export function ${varUseConfig}<K extends ${varSectionConfigKey}>(section: K) {
   return defineConfigs<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section])
 }`,
     commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
-    `export function ${getSignature('useConfigObject')}<K extends ${varSectionConfigKey}>(section: K) {
+    `export function ${varUseConfigObject}<K extends ${varSectionConfigKey}>(section: K) {
   return defineConfigObject<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section])
 }
     `,

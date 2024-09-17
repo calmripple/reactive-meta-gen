@@ -219,7 +219,7 @@ const smartClicksDefaults = {
 export type ConfigSecionKey = keyof typeof smartClicksDefaults;
 export const configs = {
     smartClicks: "smartClicks",
-} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+} satisfies Record<string, ConfigSecionKey>;
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
@@ -235,14 +235,14 @@ export function useConfigObject<K extends ConfigSecionKey>(section: K) {
 /**
  * ConfigObject of `smartClicks`
  * @example
- * const oldVal = configObjectSmartClicks.clicksInterval //get value
- * configObjectSmartClicks.$update("clicksInterval", oldVal) //update value
+ * const oldVal = useConfigObjectSmartClicks.clicksInterval //get value
+ * useConfigObjectSmartClicks.$update("clicksInterval", oldVal) //update value
  */
-export const configObjectSmartClicks = useConfigObject(configs.smartClicks);
+export const useConfigObjectSmartClicks = () => useConfigObject(configs.smartClicks);
 /**
  * ToConfigRefs of `smartClicks`
  * @example
- * const oldVal:number =configSmartClicks.clicksInterval.value //get value
- * configSmartClicks.clicksInterval.update(oldVal) //update value
+ * const oldVal:number =useConfigSmartClicks.clicksInterval.value //get value
+ * useConfigSmartClicks.clicksInterval.update(oldVal) //update value
  */
-export const configSmartClicks = useConfig(configs.smartClicks);
+export const useConfigSmartClicks = () => useConfig(configs.smartClicks);

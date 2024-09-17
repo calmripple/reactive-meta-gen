@@ -107,7 +107,7 @@ const whichkeyDefaults = {
 export type ConfigSecionKey = keyof typeof whichkeyDefaults;
 export const configs = {
     whichkey: "whichkey",
-} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+} satisfies Record<string, ConfigSecionKey>;
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
@@ -123,14 +123,14 @@ export function useConfigObject<K extends ConfigSecionKey>(section: K) {
 /**
  * ConfigObject of `whichkey`
  * @example
- * const oldVal = configObjectWhichkey.transient //get value
- * configObjectWhichkey.$update("transient", oldVal) //update value
+ * const oldVal = useConfigObjectWhichkey.transient //get value
+ * useConfigObjectWhichkey.$update("transient", oldVal) //update value
  */
-export const configObjectWhichkey = useConfigObject(configs.whichkey);
+export const useConfigObjectWhichkey = () => useConfigObject(configs.whichkey);
 /**
  * ToConfigRefs of `whichkey`
  * @example
- * const oldVal:object =configWhichkey.transient.value //get value
- * configWhichkey.transient.update(oldVal) //update value
+ * const oldVal:object =useConfigWhichkey.transient.value //get value
+ * useConfigWhichkey.transient.update(oldVal) //update value
  */
-export const configWhichkey = useConfig(configs.whichkey);
+export const useConfigWhichkey = () => useConfig(configs.whichkey);

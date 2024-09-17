@@ -328,7 +328,7 @@ export const configs = {
     test: "project-config.test",
     root: "",
     emeraldwalk: "emeraldwalk",
-} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+} satisfies Record<string, ConfigSecionKey>;
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
@@ -344,70 +344,70 @@ export function useConfigObject<K extends ConfigSecionKey>(section: K) {
 /**
  * ConfigObject of `project-config`
  * @example
- * const oldVal = configObjectProjectConfig.fileNestingUpdater.upstreamBranch //get value
- * configObjectProjectConfig.$update("fileNestingUpdater.upstreamBranch", oldVal) //update value
+ * const oldVal = useConfigObjectProjectConfig.fileNestingUpdater.upstreamBranch //get value
+ * useConfigObjectProjectConfig.$update("fileNestingUpdater.upstreamBranch", oldVal) //update value
  */
-export const configObjectProjectConfig = useConfigObject(configs.projectConfig);
+export const useConfigObjectProjectConfig = () => useConfigObject(configs.projectConfig);
 /**
  * ToConfigRefs of `project-config`
  * @example
- * const oldVal:string =configProjectConfig.fileNestingUpdater.upstreamBranch.value //get value
- * configProjectConfig.fileNestingUpdater.upstreamBranch.update(oldVal) //update value
+ * const oldVal:string =useConfigProjectConfig.fileNestingUpdater.upstreamBranch.value //get value
+ * useConfigProjectConfig.fileNestingUpdater.upstreamBranch.update(oldVal) //update value
  */
-export const configProjectConfig = useConfig(configs.projectConfig);
+export const useConfigProjectConfig = () => useConfig(configs.projectConfig);
 /**
  * ConfigObject of `project-config.fileNestingUpdater`
  * @example
- * const oldVal = configObjectFileNestingUpdater.upstreamBranch //get value
- * configObjectFileNestingUpdater.$update("upstreamBranch", oldVal) //update value
+ * const oldVal = useConfigObjectFileNestingUpdater.upstreamBranch //get value
+ * useConfigObjectFileNestingUpdater.$update("upstreamBranch", oldVal) //update value
  */
-export const configObjectFileNestingUpdater = useConfigObject(configs.fileNestingUpdater);
+export const useConfigObjectFileNestingUpdater = () => useConfigObject(configs.fileNestingUpdater);
 /**
  * ToConfigRefs of `project-config.fileNestingUpdater`
  * @example
- * const oldVal:string =configFileNestingUpdater.upstreamBranch.value //get value
- * configFileNestingUpdater.upstreamBranch.update(oldVal) //update value
+ * const oldVal:string =useConfigFileNestingUpdater.upstreamBranch.value //get value
+ * useConfigFileNestingUpdater.upstreamBranch.update(oldVal) //update value
  */
-export const configFileNestingUpdater = useConfig(configs.fileNestingUpdater);
+export const useConfigFileNestingUpdater = () => useConfig(configs.fileNestingUpdater);
 /**
  * ConfigObject of `project-config.test`
  * @example
- * const oldVal = configObjectTest.annotations //get value
- * configObjectTest.$update("annotations", oldVal) //update value
+ * const oldVal = useConfigObjectTest.annotations //get value
+ * useConfigObjectTest.$update("annotations", oldVal) //update value
  */
-export const configObjectTest = useConfigObject(configs.test);
+export const useConfigObjectTest = () => useConfigObject(configs.test);
 /**
  * ToConfigRefs of `project-config.test`
  * @example
- * const oldVal:boolean =configTest.annotations.value //get value
- * configTest.annotations.update(oldVal) //update value
+ * const oldVal:boolean =useConfigTest.annotations.value //get value
+ * useConfigTest.annotations.update(oldVal) //update value
  */
-export const configTest = useConfig(configs.test);
+export const useConfigTest = () => useConfig(configs.test);
 /**
  * ConfigObject of `virtual(Keys in the root)`
  * @example
- * const oldVal = configObjectRoot.xxx //get value
- * configObjectRoot.$update("xxx", oldVal) //update value
+ * const oldVal = useConfigObjectRoot.xxx //get value
+ * useConfigObjectRoot.$update("xxx", oldVal) //update value
  */
-export const configObjectRoot = useConfigObject(configs.root);
+export const useConfigObjectRoot = () => useConfigObject(configs.root);
 /**
  * ToConfigRefs of `virtual(Keys in the root)`
  * @example
- * const oldVal:boolean =configRoot.xxx.value //get value
- * configRoot.xxx.update(oldVal) //update value
+ * const oldVal:boolean =useConfigRoot.xxx.value //get value
+ * useConfigRoot.xxx.update(oldVal) //update value
  */
-export const configRoot = useConfig(configs.root);
+export const useConfigRoot = () => useConfig(configs.root);
 /**
  * ConfigObject of `emeraldwalk`
  * @example
- * const oldVal = configObjectEmeraldwalk.runonsave //get value
- * configObjectEmeraldwalk.$update("runonsave", oldVal) //update value
+ * const oldVal = useConfigObjectEmeraldwalk.runonsave //get value
+ * useConfigObjectEmeraldwalk.$update("runonsave", oldVal) //update value
  */
-export const configObjectEmeraldwalk = useConfigObject(configs.emeraldwalk);
+export const useConfigObjectEmeraldwalk = () => useConfigObject(configs.emeraldwalk);
 /**
  * ToConfigRefs of `emeraldwalk`
  * @example
- * const oldVal:object =configEmeraldwalk.runonsave.value //get value
- * configEmeraldwalk.runonsave.update(oldVal) //update value
+ * const oldVal:object =useConfigEmeraldwalk.runonsave.value //get value
+ * useConfigEmeraldwalk.runonsave.update(oldVal) //update value
  */
-export const configEmeraldwalk = useConfig(configs.emeraldwalk);
+export const useConfigEmeraldwalk = () => useConfig(configs.emeraldwalk);

@@ -199,7 +199,7 @@ const filewatcherDefaults = {
 export type ConfigSecionKey = keyof typeof filewatcherDefaults;
 export const configs = {
     filewatcher: "filewatcher",
-} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+} satisfies Record<string, ConfigSecionKey>;
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
@@ -215,14 +215,14 @@ export function useConfigObject<K extends ConfigSecionKey>(section: K) {
 /**
  * ConfigObject of `filewatcher`
  * @example
- * const oldVal = configObjectFilewatcher.autoClearConsole //get value
- * configObjectFilewatcher.$update("autoClearConsole", oldVal) //update value
+ * const oldVal = useConfigObjectFilewatcher.autoClearConsole //get value
+ * useConfigObjectFilewatcher.$update("autoClearConsole", oldVal) //update value
  */
-export const configObjectFilewatcher = useConfigObject(configs.filewatcher);
+export const useConfigObjectFilewatcher = () => useConfigObject(configs.filewatcher);
 /**
  * ToConfigRefs of `filewatcher`
  * @example
- * const oldVal:boolean =configFilewatcher.autoClearConsole.value //get value
- * configFilewatcher.autoClearConsole.update(oldVal) //update value
+ * const oldVal:boolean =useConfigFilewatcher.autoClearConsole.value //get value
+ * useConfigFilewatcher.autoClearConsole.update(oldVal) //update value
  */
-export const configFilewatcher = useConfig(configs.filewatcher);
+export const useConfigFilewatcher = () => useConfig(configs.filewatcher);

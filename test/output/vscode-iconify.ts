@@ -214,7 +214,7 @@ const iconifyDefaults = {
 export type ConfigSecionKey = keyof typeof iconifyDefaults;
 export const configs = {
     iconify: "iconify",
-} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+} satisfies Record<string, ConfigSecionKey>;
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
@@ -230,14 +230,14 @@ export function useConfigObject<K extends ConfigSecionKey>(section: K) {
 /**
  * ConfigObject of `iconify`
  * @example
- * const oldVal = configObjectIconify.inplace //get value
- * configObjectIconify.$update("inplace", oldVal) //update value
+ * const oldVal = useConfigObjectIconify.inplace //get value
+ * useConfigObjectIconify.$update("inplace", oldVal) //update value
  */
-export const configObjectIconify = useConfigObject(configs.iconify);
+export const useConfigObjectIconify = () => useConfigObject(configs.iconify);
 /**
  * ToConfigRefs of `iconify`
  * @example
- * const oldVal:boolean =configIconify.inplace.value //get value
- * configIconify.inplace.update(oldVal) //update value
+ * const oldVal:boolean =useConfigIconify.inplace.value //get value
+ * useConfigIconify.inplace.update(oldVal) //update value
  */
-export const configIconify = useConfig(configs.iconify);
+export const useConfigIconify = () => useConfig(configs.iconify);

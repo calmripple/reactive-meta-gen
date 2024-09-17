@@ -234,7 +234,7 @@ const sampleDefaults = {
 export type ConfigSecionKey = keyof typeof sampleDefaults;
 export const configs = {
     sample: "sample",
-} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+} satisfies Record<string, ConfigSecionKey>;
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
@@ -250,14 +250,14 @@ export function useConfigObject<K extends ConfigSecionKey>(section: K) {
 /**
  * ConfigObject of `sample`
  * @example
- * const oldVal = configObjectSample.date //get value
- * configObjectSample.$update("date", oldVal) //update value
+ * const oldVal = useConfigObjectSample.date //get value
+ * useConfigObjectSample.$update("date", oldVal) //update value
  */
-export const configObjectSample = useConfigObject(configs.sample);
+export const useConfigObjectSample = () => useConfigObject(configs.sample);
 /**
  * ToConfigRefs of `sample`
  * @example
- * const oldVal:string =configSample.date.value //get value
- * configSample.date.update(oldVal) //update value
+ * const oldVal:string =useConfigSample.date.value //get value
+ * useConfigSample.date.update(oldVal) //update value
  */
-export const configSample = useConfig(configs.sample);
+export const useConfigSample = () => useConfig(configs.sample);
