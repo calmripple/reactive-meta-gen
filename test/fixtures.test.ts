@@ -13,38 +13,27 @@ describe('fixtures', async () => {
     it(basename(dir), async () => {
       const json = JSON.parse(await fs.readFile(`${dir}/package.json`, 'utf-8'))
 
-      let extensionSection: string | undefined
+      const { dts, markdown } = generate(json, { })
+      await fs.writeFile(`./test/output/${basename(dir)}.ts`, dts)
+      await expect(dts).toMatchFileSnapshot(`./output/${basename(dir)}.ts`)
 
-      try {
-        if (dir.includes('vscode-iconify-fork'))
-          return extensionSection = 'iconify'
-
-        if (dir.includes('vscode-smart-clicks'))
-          return extensionSection = 'smartClicks'
-      }
-      finally {
-        const { dts, markdown } = generate(json, { extensionSection })
-        await fs.writeFile(`./test/output/${basename(dir)}.ts`, dts)
-        await expect(dts).toMatchFileSnapshot(`./output/${basename(dir)}.ts`)
-
-        const readmeLines = [
-          `# ${basename(dir)}`,
-          '',
-          '## Commands',
-          '',
-          markdown.commandsTable,
-          '',
-          '## Configuration Json',
-          '',
-          markdown.configsJson,
-          '',
-          '## Configuration',
-          '',
-          markdown.configsTable,
-        ]
-        // await fs.writeFile(`./test/output/${basename(dir)}.README.md`, readmeLines.join('\n'))
-        await expect(readmeLines.join('\n')).toMatchFileSnapshot(`./output/${basename(dir)}.README.md`)
-      }
+      const readmeLines = [
+        `# ${basename(dir)}`,
+        '',
+        '## Commands',
+        '',
+        markdown.commandsTable,
+        '',
+        '## Configuration Json',
+        '',
+        markdown.configsJson,
+        '',
+        '## Configuration',
+        '',
+        markdown.configsTable,
+      ]
+      // await fs.writeFile(`./test/output/${basename(dir)}.README.md`, readmeLines.join('\n'))
+      await expect(readmeLines.join('\n')).toMatchFileSnapshot(`./output/${basename(dir)}.README.md`)
     })
   }
 })

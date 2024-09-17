@@ -11,7 +11,6 @@ const cli = cac()
 cli.command('[input]', 'Generate TypeScript files from package.json')
   .option('--output <output>', 'Output file', { default: 'src/generated-meta.ts' })
   .option('--namespace <namespace>', 'Generate with namespace')
-  .option('--section <section>', 'The extension section for commands and configs')
   .option('--readme <path>', 'The path to README.md', { default: 'README.md' })
   .action(async (input = 'package.json', options) => {
     const json = JSON.parse(await fs.readFile(input, 'utf-8'))
@@ -19,7 +18,6 @@ cli.command('[input]', 'Generate TypeScript files from package.json')
       throw new Error('This package.json does not seem to be a valid VSCode extension package.json')
     const { dts, markdown } = await generate(json, {
       namespace: options.namespace === 'false' ? false : options.namespace,
-      extensionSection: options.section,
     })
     if (existsSync(options.output) && await fs.readFile(options.output, 'utf-8') === dts) {
       console.log(`No changes of '${input}','${options.output}' is up to date.`)

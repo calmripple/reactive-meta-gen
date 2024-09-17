@@ -8,14 +8,7 @@ export interface GenerateOptions {
    * @default false
    */
   namespace?: string | boolean
-  /**
-   * The package section for commands and configs.
-   *
-   * Default to the package name.
-   *
-   * Useful when your extension name has different prefix from the package name.
-   */
-  extensionSection?: string
+
 }
 
 export interface ConfigurationProperty {
