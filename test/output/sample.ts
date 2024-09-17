@@ -21,68 +21,63 @@ export const commands = {
      * Toggle Annotations
      * @commandkey `sample.toggle-annotations`
      */
-    useCommandToggleAnnotations: "sample.toggle-annotations",
+    toggleAnnotations: "sample.toggle-annotations",
     /**
      * Toggle In-place Mode
      * @commandkey `sample.toggle-inplace`
      */
-    useCommandToggleInplace: "sample.toggle-inplace",
+    toggleInplace: "sample.toggle-inplace",
     /**
      * Clear icon cache
      * @commandkey `sample.clear-cache`
      */
-    useCommandClearCache: "sample.clear-cache",
+    clearCache: "sample.clear-cache",
     /**
      * update current date
      * @commandkey `sample.update-date`
      */
-    useCommandUpdateDate: "sample.update-date",
+    updateDate: "sample.update-date",
 } satisfies Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
-export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
-    return useReactiveCommand(commandFullKey, callback);
-}
+export const useCommand = (commandFullKey: CommandKey, callback: (...args: any[]) => any): void => useReactiveCommand(commandFullKey, callback);
 /**
  * Register multiple commands. See `vscode::commands.registerCommand`.
  */
-export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
-    return useReactiveCommands(commands);
-}
+export const useCommands = (commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void => useReactiveCommands(commands);
+/**
+ * name type of Logger and OutputChannel
+ */
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
 /**
  * Creates a logger that writes to the output channel.
  */
-export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
-    return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
-}
+export const useLogger = (loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) => useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 /**
  * @reactive `window.createOutputChannel`
  */
-export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
-    return useReactiveOutputChannel(outputName);
-}
+export const useOutputChannel = (outputName: LoggerNameType = displayName ?? name ?? extensionId) => useReactiveOutputChannel(outputName);
 /**
  * Toggle Annotations
  * @commandkey Register a command `sample.toggle-annotations`
  */
-export const useCommandToggleAnnotations = (callback: (...args: any[]) => any) => useCommand(commands.useCommandToggleAnnotations, callback);
+export const useCommandToggleAnnotations = (callback: (...args: any[]) => any) => useCommand(commands.toggleAnnotations, callback);
 /**
  * Toggle In-place Mode
  * @commandkey Register a command `sample.toggle-inplace`
  */
-export const useCommandToggleInplace = (callback: (...args: any[]) => any) => useCommand(commands.useCommandToggleInplace, callback);
+export const useCommandToggleInplace = (callback: (...args: any[]) => any) => useCommand(commands.toggleInplace, callback);
 /**
  * Clear icon cache
  * @commandkey Register a command `sample.clear-cache`
  */
-export const useCommandClearCache = (callback: (...args: any[]) => any) => useCommand(commands.useCommandClearCache, callback);
+export const useCommandClearCache = (callback: (...args: any[]) => any) => useCommand(commands.clearCache, callback);
 /**
  * update current date
  * @commandkey Register a command `sample.update-date`
  */
-export const useCommandUpdateDate = (callback: (...args: any[]) => any) => useCommand(commands.useCommandUpdateDate, callback);
+export const useCommandUpdateDate = (callback: (...args: any[]) => any) => useCommand(commands.updateDate, callback);
 /**
  * Section Type of `sample`
  */
@@ -154,7 +149,7 @@ export interface Sample {
 }
 const sampleDefaults = {
     /**
-     * Section defaults of `sample`
+     * Config defaults of `sample`
      */
     "sample": {
         /**
@@ -224,6 +219,9 @@ const sampleDefaults = {
     } satisfies Sample as Sample,
 };
 export type ConfigSecionKey = keyof typeof sampleDefaults;
+/**
+ * Shorthand of config section name.
+ */
 export const configs = {
     sample: "sample",
 } satisfies Record<string, ConfigSecionKey>;
@@ -242,14 +240,16 @@ export function useConfigObject<K extends ConfigSecionKey>(section: K) {
 /**
  * ConfigObject of `sample`
  * @example
- * const oldVal = useConfigObjectSample.date //get value
- * useConfigObjectSample.$update("date", oldVal) //update value
+ * const sample = useConfigObjectSample()
+ * const oldVal:string = sample.date //get value
+ * sample.$update("date", oldVal) //update value
  */
 export const useConfigObjectSample = () => useConfigObject(configs.sample);
 /**
  * ToConfigRefs of `sample`
  * @example
- * const oldVal:string =useConfigSample.date.value //get value
- * useConfigSample.date.update(oldVal) //update value
+ * const sample = useConfigSample()
+ * const oldVal:string = sample.date.value //get value
+ * sample.date.update(oldVal) //update value
  */
 export const useConfigSample = () => useConfig(configs.sample);

@@ -21,58 +21,53 @@ export const commands = {
      * File Watcher: Enable
      * @commandkey `extension.enableFileWatcher`
      */
-    useCommandEnableFileWatcher: "extension.enableFileWatcher",
+    enableFileWatcher: "extension.enableFileWatcher",
     /**
      * File Watcher: Disable
      * @commandkey `extension.disableFileWatcher`
      */
-    useCommandDisableFileWatcher: "extension.disableFileWatcher",
+    disableFileWatcher: "extension.disableFileWatcher",
     /**
      * File Watcher: Focus Output
      * @commandkey `extension.focusIntoOutput`
      */
-    useCommandFocusIntoOutput: "extension.focusIntoOutput",
+    focusIntoOutput: "extension.focusIntoOutput",
 } satisfies Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
-export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
-    return useReactiveCommand(commandFullKey, callback);
-}
+export const useCommand = (commandFullKey: CommandKey, callback: (...args: any[]) => any): void => useReactiveCommand(commandFullKey, callback);
 /**
  * Register multiple commands. See `vscode::commands.registerCommand`.
  */
-export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
-    return useReactiveCommands(commands);
-}
+export const useCommands = (commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void => useReactiveCommands(commands);
+/**
+ * name type of Logger and OutputChannel
+ */
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
 /**
  * Creates a logger that writes to the output channel.
  */
-export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
-    return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
-}
+export const useLogger = (loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) => useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 /**
  * @reactive `window.createOutputChannel`
  */
-export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
-    return useReactiveOutputChannel(outputName);
-}
+export const useOutputChannel = (outputName: LoggerNameType = displayName ?? name ?? extensionId) => useReactiveOutputChannel(outputName);
 /**
  * File Watcher: Enable
  * @commandkey Register a command `extension.enableFileWatcher`
  */
-export const useCommandEnableFileWatcher = (callback: (...args: any[]) => any) => useCommand(commands.useCommandEnableFileWatcher, callback);
+export const useCommandEnableFileWatcher = (callback: (...args: any[]) => any) => useCommand(commands.enableFileWatcher, callback);
 /**
  * File Watcher: Disable
  * @commandkey Register a command `extension.disableFileWatcher`
  */
-export const useCommandDisableFileWatcher = (callback: (...args: any[]) => any) => useCommand(commands.useCommandDisableFileWatcher, callback);
+export const useCommandDisableFileWatcher = (callback: (...args: any[]) => any) => useCommand(commands.disableFileWatcher, callback);
 /**
  * File Watcher: Focus Output
  * @commandkey Register a command `extension.focusIntoOutput`
  */
-export const useCommandFocusIntoOutput = (callback: (...args: any[]) => any) => useCommand(commands.useCommandFocusIntoOutput, callback);
+export const useCommandFocusIntoOutput = (callback: (...args: any[]) => any) => useCommand(commands.focusIntoOutput, callback);
 /**
  * Section Type of `filewatcher`
  */
@@ -153,7 +148,7 @@ export interface Filewatcher {
 }
 const filewatcherDefaults = {
     /**
-     * Section defaults of `filewatcher`
+     * Config defaults of `filewatcher`
      */
     "filewatcher": {
         /**
@@ -191,6 +186,9 @@ const filewatcherDefaults = {
     } satisfies Filewatcher as Filewatcher,
 };
 export type ConfigSecionKey = keyof typeof filewatcherDefaults;
+/**
+ * Shorthand of config section name.
+ */
 export const configs = {
     filewatcher: "filewatcher",
 } satisfies Record<string, ConfigSecionKey>;
@@ -209,14 +207,16 @@ export function useConfigObject<K extends ConfigSecionKey>(section: K) {
 /**
  * ConfigObject of `filewatcher`
  * @example
- * const oldVal = useConfigObjectFilewatcher.autoClearConsole //get value
- * useConfigObjectFilewatcher.$update("autoClearConsole", oldVal) //update value
+ * const filewatcher = useConfigObjectFilewatcher()
+ * const oldVal:boolean = filewatcher.autoClearConsole //get value
+ * filewatcher.$update("autoClearConsole", oldVal) //update value
  */
 export const useConfigObjectFilewatcher = () => useConfigObject(configs.filewatcher);
 /**
  * ToConfigRefs of `filewatcher`
  * @example
- * const oldVal:boolean =useConfigFilewatcher.autoClearConsole.value //get value
- * useConfigFilewatcher.autoClearConsole.update(oldVal) //update value
+ * const filewatcher = useConfigFilewatcher()
+ * const oldVal:boolean = filewatcher.autoClearConsole.value //get value
+ * filewatcher.autoClearConsole.update(oldVal) //update value
  */
 export const useConfigFilewatcher = () => useConfig(configs.filewatcher);

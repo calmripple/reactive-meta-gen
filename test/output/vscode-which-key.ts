@@ -21,38 +21,33 @@ export const commands = {
      * Show Menu
      * @commandkey `whichkey.show`
      */
-    useCommandShow: "whichkey.show",
+    show: "whichkey.show",
 } satisfies Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
-export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
-    return useReactiveCommand(commandFullKey, callback);
-}
+export const useCommand = (commandFullKey: CommandKey, callback: (...args: any[]) => any): void => useReactiveCommand(commandFullKey, callback);
 /**
  * Register multiple commands. See `vscode::commands.registerCommand`.
  */
-export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
-    return useReactiveCommands(commands);
-}
+export const useCommands = (commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void => useReactiveCommands(commands);
+/**
+ * name type of Logger and OutputChannel
+ */
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
 /**
  * Creates a logger that writes to the output channel.
  */
-export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
-    return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
-}
+export const useLogger = (loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) => useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 /**
  * @reactive `window.createOutputChannel`
  */
-export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
-    return useReactiveOutputChannel(outputName);
-}
+export const useOutputChannel = (outputName: LoggerNameType = displayName ?? name ?? extensionId) => useReactiveOutputChannel(outputName);
 /**
  * Show Menu
  * @commandkey Register a command `whichkey.show`
  */
-export const useCommandShow = (callback: (...args: any[]) => any) => useCommand(commands.useCommandShow, callback);
+export const useCommandShow = (callback: (...args: any[]) => any) => useCommand(commands.show, callback);
 /**
  * Section Type of `whichkey`
  */
@@ -89,7 +84,7 @@ export interface Whichkey {
 }
 const whichkeyDefaults = {
     /**
-     * Section defaults of `whichkey`
+     * Config defaults of `whichkey`
      */
     "whichkey": {
         "transient": { "error": { "title": "Error transient", "bindings": [{ "key": "N", "name": "Previous error", "command": "editor.action.marker.prev" }, { "key": "n", "name": "Next error", "command": "editor.action.marker.next" }, { "key": "p", "name": "Previous error", "command": "editor.action.marker.prev" }] }, "symbol": { "title": "Highlight symbol transient", "bindings": [{ "key": "p", "name": "Previous occurrence", "command": "editor.action.wordHighlight.prev" }, { "key": "N", "name": "Previous occurrence", "command": "editor.action.wordHighlight.prev" }, { "key": "n", "name": "Next occurrence", "command": "editor.action.wordHighlight.next" }, { "key": "/", "name": "Search in a project with a selection", "commands": ["editor.action.addSelectionToNextFindMatch", "workbench.action.findInFiles"] }] }, "lineMoving": { "title": "Line moving transient", "bindings": [{ "key": "J", "name": "Move lines down", "command": "editor.action.moveLinesDownAction" }, { "key": "K", "name": "Move lines up", "command": "editor.action.moveLinesUpAction" }] }, "frameZooming": { "title": "Frame zooming transient", "bindings": [{ "key": "=", "name": "Zoom in", "command": "workbench.action.zoomIn" }, { "key": "+", "name": "Zoom in", "command": "workbench.action.zoomIn" }, { "key": "-", "name": "Zoom out", "command": "workbench.action.zoomOut" }, { "key": "0", "name": "Reset zoom", "command": "workbench.action.zoomReset" }] }, "fontZooming": { "title": "Front zooming transient", "bindings": [{ "key": "=", "name": "Zoom in", "command": "editor.action.fontZoomIn" }, { "key": "+", "name": "Zoom in", "command": "editor.action.fontZoomIn" }, { "key": "-", "name": "Zoom out", "command": "editor.action.fontZoomOut" }, { "key": "0", "name": "Reset zoom", "command": "editor.action.fontZoomReset" }] }, "imageZooming": { "title": "Image zooming transient", "bindings": [{ "key": "=", "name": "Zoom in", "command": "imagePreview.zoomIn" }, { "key": "+", "name": "Zoom in", "command": "imagePreview.zoomIn" }, { "key": "-", "name": "Zoom out", "command": "imagePreview.zoomOut" }] }, "smartExpand": { "title": "Smart expand transient", "bindings": [{ "key": "v", "name": "Grow selection", "command": "editor.action.smartSelect.grow" }, { "key": "V", "name": "Shrink selection", "command": "editor.action.smartSelect.shrink" }] } },
@@ -103,6 +98,9 @@ const whichkeyDefaults = {
     } satisfies Whichkey as Whichkey,
 };
 export type ConfigSecionKey = keyof typeof whichkeyDefaults;
+/**
+ * Shorthand of config section name.
+ */
 export const configs = {
     whichkey: "whichkey",
 } satisfies Record<string, ConfigSecionKey>;
@@ -121,14 +119,16 @@ export function useConfigObject<K extends ConfigSecionKey>(section: K) {
 /**
  * ConfigObject of `whichkey`
  * @example
- * const oldVal = useConfigObjectWhichkey.transient //get value
- * useConfigObjectWhichkey.$update("transient", oldVal) //update value
+ * const whichkey = useConfigObjectWhichkey()
+ * const oldVal:object = whichkey.transient //get value
+ * whichkey.$update("transient", oldVal) //update value
  */
 export const useConfigObjectWhichkey = () => useConfigObject(configs.whichkey);
 /**
  * ToConfigRefs of `whichkey`
  * @example
- * const oldVal:object =useConfigWhichkey.transient.value //get value
- * useConfigWhichkey.transient.update(oldVal) //update value
+ * const whichkey = useConfigWhichkey()
+ * const oldVal:object = whichkey.transient.value //get value
+ * whichkey.transient.update(oldVal) //update value
  */
 export const useConfigWhichkey = () => useConfig(configs.whichkey);

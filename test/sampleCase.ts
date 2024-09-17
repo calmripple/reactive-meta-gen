@@ -4,20 +4,20 @@ import { useConfigObjectSample, useCommandUpdateDate } from './output/sample'
 import { useConfigObjectTest } from './output/xyz-configuration-array'
 
 const { activate, deactivate } = defineExtension(() => {
-  const configObjectSample = useConfigObjectSample()
-  const configObjectTest = useConfigObjectTest()
+  const sample = useConfigObjectSample()
+  const test = useConfigObjectTest()
   // another way to get the config value
-  const _configValue = configObjectSample.date // get value
+  const _configValue = sample.date // get value
 
   watchEffect(() => {
     // watch value change
-    window.showInformationMessage(`sampleConfigs.annotations.value:${configObjectSample.date}`)
-    window.showInformationMessage(`testConfigs.annotations.value:${configObjectTest.annotations}`)
+    window.showInformationMessage(`sampleConfigs.annotations.value:${sample.date}`)
+    window.showInformationMessage(`testConfigs.annotations.value:${test.annotations}`)
   })
 
   useCommandUpdateDate(async () => {
     // update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
-    configObjectSample.$update('date', Date.now().toLocaleString())
+    sample.$update('date', Date.now().toLocaleString())
   })
 },
 )

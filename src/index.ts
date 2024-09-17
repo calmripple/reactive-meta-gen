@@ -104,7 +104,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     signatures(domain).add(signature)
     return signature
   }
-  function _getSignatures(signatures: string[], domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): string[] {
+  function getSignatures(signatures: string[], domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): string[] {
     return signatures.map(signature => getSignature(signature, domain, builder))
   }
   function _getSignatureObject(signatures: Record<string, string>, domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): Record<string, string> {
@@ -128,29 +128,21 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     useOutputChannel as useReactiveOutputChannel,    
     } from 'reactive-vscode'`, '')
 
+  getSignatures(['defineConfigObject', 'defineConfigs', 'useReactiveCommand', 'useReactiveCommands', 'useReactiveLogger', 'useReactiveOutputChannel'])
   const varPublisher = getSignature(`publisher`)
   lines.push(
     `export const ${varPublisher} = ${packageJson.publisher ? JSON.stringify(packageJson.publisher) : 'undefined'}`,
   )
   const varName = getSignature(`name`)
-  lines.push(
-    `export const ${varName} = ${packageJson.name ? JSON.stringify(packageJson.name) : 'undefined'}`,
-  )
-
   const varversion = getSignature(`version`)
-  lines.push(
-    `export const ${varversion} = ${packageJson.version ? JSON.stringify(packageJson.version) : 'undefined'}`,
-  )
   const varDisplayName = getSignature(`displayName`)
-  lines.push(
-    `export const ${varDisplayName} = ${packageJson.displayName ? JSON.stringify(packageJson.displayName) : 'undefined'}`,
-  )
   const vardescription = getSignature(`description`)
-  lines.push(
-    `export const ${vardescription} = ${packageJson.description ? JSON.stringify(packageJson.description) : 'undefined'}`,
-  )
   const varExtensionId = getSignature(`extensionId`)
   lines.push(
+    `export const ${varName} = ${packageJson.name ? JSON.stringify(packageJson.name) : 'undefined'}`,
+    `export const ${varversion} = ${packageJson.version ? JSON.stringify(packageJson.version) : 'undefined'}`,
+    `export const ${varDisplayName} = ${packageJson.displayName ? JSON.stringify(packageJson.displayName) : 'undefined'}`,
+    `export const ${vardescription} = ${packageJson.description ? JSON.stringify(packageJson.description) : 'undefined'}`,
     `export const ${varExtensionId} = "${packageJson.publisher}.${packageJson.name}"`,
   )
 
@@ -160,10 +152,10 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   const varUseCommands = getSignature(`useCommands`)
   const varCommandKey = getSignature('CommandKey')
   const varShorthandCommands = getSignature('commands')
-  const varUseCommandFunctionNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
-    const f = getSignature(convertCamelCase(`${varUseCommand}.${getRightSection(c.command, -1)}`), extensionId, (_pre, count) => convertCamelCase(`${varUseCommand}.${getRightSection(c.command, -count)}`))
+  const varCommandShorthandNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
+    const f = getSignature(convertCamelCase(`${getRightSection(c.command, -1)}`), extensionId, (_pre, count) => convertCamelCase(`${getRightSection(c.command, -count)}`))
     return {
-      varUseCommandFunctionName: f,
+      varCommandShorthandName: f,
       ...c,
     }
   })
@@ -171,13 +163,13 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     '',
     ...commentBlock('Type union of all commands'),
   )
-  if (!varUseCommandFunctionNames?.length) {
+  if (!varCommandShorthandNames?.length) {
     lines.push(`export type ${varCommandKey} = never`)
   }
   else {
     lines.push(
       `export type ${varCommandKey} = `,
-      ...varUseCommandFunctionNames.map(c =>
+      ...varCommandShorthandNames.map(c =>
         `  | ${JSON.stringify(c.command)}`,
       ),
     )
@@ -187,11 +179,11 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     '',
     ...commentBlock(`Commands map registed by \`${extensionId}\``),
     `export const ${varShorthandCommands} = {`,
-    ...varUseCommandFunctionNames
+    ...varCommandShorthandNames
       .flatMap((c) => {
         return [
           ...commentBlock(`${c.title}\n@commandkey \`${c.command}\``, 2),
-          `  ${c.varUseCommandFunctionName}: ${JSON.stringify(c.command)},`,
+          `  ${c.varCommandShorthandName}: ${JSON.stringify(c.command)},`,
         ]
       }),
     `} satisfies Record<string, ${varCommandKey}> `,
@@ -202,32 +194,25 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   const varLoggerNameType = `${getSignature('LoggerNameType')}`
   lines.push(
     commentBlock('Register a command. See `vscode::commands.registerCommand`.').join('\n'),
-    `export function ${varUseCommand}(commandFullKey: ${varCommandKey}, callback: (...args: any[]) => any): void {
-  return useReactiveCommand(commandFullKey, callback)
-}`,
+    `export const ${varUseCommand} = (commandFullKey: ${varCommandKey}, callback: (...args: any[]) => any): void => useReactiveCommand(commandFullKey, callback)`,
     commentBlock('Register multiple commands. See `vscode::commands.registerCommand`.').join('\n'),
-    `export function ${varUseCommands}(commands: Partial<Record<${varCommandKey}, (...args: any[]) => any>>): void {
-  return useReactiveCommands(commands)
-}`,
+    `export const ${varUseCommands} = (commands: Partial<Record<${varCommandKey}, (...args: any[]) => any>>): void => useReactiveCommands(commands)`,
+    commentBlock('name type of Logger and OutputChannel').join('\n'),
     `export type ${varLoggerNameType} = typeof ${varName} | typeof ${varDisplayName} | typeof ${varExtensionId}`,
     commentBlock('Creates a logger that writes to the output channel.').join('\n'),
-    `export function ${getSignature('useLogger')}(loggerName: ${varLoggerNameType} = ${varLoggerDefault}, getPrefix?: ((type: string) => string) | null) {
-    return useReactiveLogger(loggerName, { 'getPrefix': getPrefix })
-}`,
+    `export const ${getSignature('useLogger')}=(loggerName: ${varLoggerNameType} = ${varLoggerDefault}, getPrefix?: ((type: string) => string) | null) =>useReactiveLogger(loggerName, { 'getPrefix': getPrefix })`,
     commentBlock('@reactive `window.createOutputChannel`').join('\n'),
-    `export function ${getSignature('useOutputChannel')}(outputName: ${varLoggerNameType} = ${varLoggerDefault}) {
-    return useReactiveOutputChannel(outputName)
-}`,
+    `export const ${getSignature('useOutputChannel')}=(outputName: ${varLoggerNameType} = ${varLoggerDefault}) =>useReactiveOutputChannel(outputName)`,
   )
 
   lines.push(
-    ...varUseCommandFunctionNames
+    ...varCommandShorthandNames
       .flatMap((c) => {
         return [
           ``,
           ...commentBlock(`${c.title}
 @commandkey Register a command \`${c.command}\``, 0),
-          `export const ${c.varUseCommandFunctionName}=(callback: (...args: any[]) => any) => ${varUseCommand}(${varShorthandCommands}.${c.varUseCommandFunctionName}, callback)`,
+          `export const ${convertCamelCase(`${varUseCommand}.${c.varCommandShorthandName}`)}=(callback: (...args: any[]) => any) => ${varUseCommand}(${varShorthandCommands}.${c.varCommandShorthandName}, callback)`,
         ]
       }),
     '',
@@ -265,29 +250,29 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
       return name
     }
 
-    let varSectionConfigName
+    let varConfigSectionName
     let sectionComment
     if (section) {
-      varSectionConfigName = getSignature(convertCamelCase(getRightSection(section, -1)), varConfigsDefaults, (_pre, count) => convertCamelCase(getRightSection(section, -count)))
+      varConfigSectionName = getSignature(convertCamelCase(getRightSection(section, -1)), varConfigsDefaults, (_pre, count) => convertCamelCase(getRightSection(section, -count)))
       sectionComment = `${section}`
     }
     else {
-      varSectionConfigName = getSignature('root')
+      varConfigSectionName = getSignature('root')
       sectionComment = `virtual(Keys in the root)`
     }
-    shorthandConfigs.push(`${varSectionConfigName}:${JSON.stringify(section)},`)
-    const varSectionConfigInterfaceName = getSignature(`${upperFirst(varSectionConfigName)}`)
+    shorthandConfigs.push(`${varConfigSectionName}:${JSON.stringify(section)},`)
+    const varSectionConfigInterfaceName = getSignature(`${upperFirst(varConfigSectionName)}`)
 
     const varName = {
-      varSectionConfigExportConst: getSignature(`${varUseConfig}${varSectionConfigInterfaceName}`),
-      varSectionConfigObjectExportConst: getSignature(`${varUseConfigObject}${varSectionConfigInterfaceName}`),
+      varSectionConstConfigExport: getSignature(`${varUseConfig}${varSectionConfigInterfaceName}`),
+      varSectionConstConfigObjectExport: getSignature(`${varUseConfigObject}${varSectionConfigInterfaceName}`),
     }
     const example = sectionConfig[0]
     const exampleKey = removeSection(example[0])
     // section 默认值
     sectionConfigDefaultKeyValue.push(
       '',
-      ...commentBlock(`Section defaults of \`${sectionComment}\``, 2),
+      ...commentBlock(`Config defaults of \`${sectionComment}\``, 2),
       `  ${JSON.stringify(section)}: {`,
     )
 
@@ -296,21 +281,22 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
       ...commentBlock([
         `ConfigObject of \`${sectionComment}\``,
         `@example`,
-        `const oldVal = ${varName.varSectionConfigObjectExportConst}.${exampleKey} //get value `,
+        `const ${varConfigSectionName} = ${varName.varSectionConstConfigObjectExport}()`,
+        `const oldVal:${example[1].type} = ${varConfigSectionName}.${exampleKey} //get value `,
         // `${varName.useConfigObject}.${exampleKey} = oldVal // set value`,
-        `${varName.varSectionConfigObjectExportConst}.$update("${exampleKey}", oldVal) //update value`,
-      ].join('\n'),
-      ),
-      `export const ${varName.varSectionConfigObjectExportConst} =()=> ${varUseConfigObject}(${varShorthandConfigs}.${varSectionConfigName})`,
+        `${varConfigSectionName}.$update("${exampleKey}", oldVal) //update value`,
+      ].join('\n')),
+      `export const ${varName.varSectionConstConfigObjectExport} =()=> ${varUseConfigObject}(${varShorthandConfigs}.${varConfigSectionName})`,
       ...commentBlock([
         `ToConfigRefs of \`${sectionComment}\``,
         `@example`,
-        `const oldVal:${example[1].type} =${varName.varSectionConfigExportConst}.${exampleKey}.value //get value `,
+        `const ${varConfigSectionName} = ${varName.varSectionConstConfigExport}()`,
+        `const oldVal:${example[1].type} = ${varConfigSectionName}.${exampleKey}.value //get value `,
         // `${varName.useConfig}.${exampleKey}.value = oldVal // set value`,
         // `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
-        `${varName.varSectionConfigExportConst}.${exampleKey}.update(oldVal) //update value`,
+        `${varConfigSectionName}.${exampleKey}.update(oldVal) //update value`,
       ].join('\n')),
-      `export const ${varName.varSectionConfigExportConst} =()=> ${varUseConfig}(${varShorthandConfigs}.${varSectionConfigName})`,
+      `export const ${varName.varSectionConstConfigExport} =()=> ${varUseConfig}(${varShorthandConfigs}.${varConfigSectionName})`,
     )
     // section 类型生成开始
     lines.push(``, ...commentBlock(`Section Type of \`${sectionComment}\``), `export interface ${varSectionConfigInterfaceName} {`)
@@ -355,7 +341,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     '',
     `export type ${varSectionConfigKey} = keyof typeof ${varConfigsDefaults}`,
     // `export type ${varSectionConfigKey} = ${sectionNames.map(s => JSON.stringify(s)).join('|')}`,
-    '',
+    commentBlock('Shorthand of config section name.').join('\n'),
     `export const ${varShorthandConfigs} = {`,
     ...shorthandConfigs,
     `}  satisfies Record<string, ${varSectionConfigKey}>`,

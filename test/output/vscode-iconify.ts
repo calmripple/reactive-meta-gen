@@ -21,58 +21,53 @@ export const commands = {
      * Toggle Annotations
      * @commandkey `iconify.toggle-annotations`
      */
-    useCommandToggleAnnotations: "iconify.toggle-annotations",
+    toggleAnnotations: "iconify.toggle-annotations",
     /**
      * Toggle In-place Mode
      * @commandkey `iconify.toggle-inplace`
      */
-    useCommandToggleInplace: "iconify.toggle-inplace",
+    toggleInplace: "iconify.toggle-inplace",
     /**
      * Clear icon cache
      * @commandkey `iconify.clear-cache`
      */
-    useCommandClearCache: "iconify.clear-cache",
+    clearCache: "iconify.clear-cache",
 } satisfies Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
-export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
-    return useReactiveCommand(commandFullKey, callback);
-}
+export const useCommand = (commandFullKey: CommandKey, callback: (...args: any[]) => any): void => useReactiveCommand(commandFullKey, callback);
 /**
  * Register multiple commands. See `vscode::commands.registerCommand`.
  */
-export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
-    return useReactiveCommands(commands);
-}
+export const useCommands = (commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void => useReactiveCommands(commands);
+/**
+ * name type of Logger and OutputChannel
+ */
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
 /**
  * Creates a logger that writes to the output channel.
  */
-export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
-    return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
-}
+export const useLogger = (loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) => useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 /**
  * @reactive `window.createOutputChannel`
  */
-export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
-    return useReactiveOutputChannel(outputName);
-}
+export const useOutputChannel = (outputName: LoggerNameType = displayName ?? name ?? extensionId) => useReactiveOutputChannel(outputName);
 /**
  * Toggle Annotations
  * @commandkey Register a command `iconify.toggle-annotations`
  */
-export const useCommandToggleAnnotations = (callback: (...args: any[]) => any) => useCommand(commands.useCommandToggleAnnotations, callback);
+export const useCommandToggleAnnotations = (callback: (...args: any[]) => any) => useCommand(commands.toggleAnnotations, callback);
 /**
  * Toggle In-place Mode
  * @commandkey Register a command `iconify.toggle-inplace`
  */
-export const useCommandToggleInplace = (callback: (...args: any[]) => any) => useCommand(commands.useCommandToggleInplace, callback);
+export const useCommandToggleInplace = (callback: (...args: any[]) => any) => useCommand(commands.toggleInplace, callback);
 /**
  * Clear icon cache
  * @commandkey Register a command `iconify.clear-cache`
  */
-export const useCommandClearCache = (callback: (...args: any[]) => any) => useCommand(commands.useCommandClearCache, callback);
+export const useCommandClearCache = (callback: (...args: any[]) => any) => useCommand(commands.clearCache, callback);
 /**
  * Section Type of `iconify`
  */
@@ -140,7 +135,7 @@ export interface Iconify {
 }
 const iconifyDefaults = {
     /**
-     * Section defaults of `iconify`
+     * Config defaults of `iconify`
      */
     "iconify": {
         /**
@@ -206,6 +201,9 @@ const iconifyDefaults = {
     } satisfies Iconify as Iconify,
 };
 export type ConfigSecionKey = keyof typeof iconifyDefaults;
+/**
+ * Shorthand of config section name.
+ */
 export const configs = {
     iconify: "iconify",
 } satisfies Record<string, ConfigSecionKey>;
@@ -224,14 +222,16 @@ export function useConfigObject<K extends ConfigSecionKey>(section: K) {
 /**
  * ConfigObject of `iconify`
  * @example
- * const oldVal = useConfigObjectIconify.inplace //get value
- * useConfigObjectIconify.$update("inplace", oldVal) //update value
+ * const iconify = useConfigObjectIconify()
+ * const oldVal:boolean = iconify.inplace //get value
+ * iconify.$update("inplace", oldVal) //update value
  */
 export const useConfigObjectIconify = () => useConfigObject(configs.iconify);
 /**
  * ToConfigRefs of `iconify`
  * @example
- * const oldVal:boolean =useConfigIconify.inplace.value //get value
- * useConfigIconify.inplace.update(oldVal) //update value
+ * const iconify = useConfigIconify()
+ * const oldVal:boolean = iconify.inplace.value //get value
+ * iconify.inplace.update(oldVal) //update value
  */
 export const useConfigIconify = () => useConfig(configs.iconify);

@@ -21,38 +21,33 @@ export const commands = {
      * Smart Clicks: Trigger
      * @commandkey `smartClicks.trigger`
      */
-    useCommandTrigger: "smartClicks.trigger",
+    trigger: "smartClicks.trigger",
 } satisfies Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
-export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
-    return useReactiveCommand(commandFullKey, callback);
-}
+export const useCommand = (commandFullKey: CommandKey, callback: (...args: any[]) => any): void => useReactiveCommand(commandFullKey, callback);
 /**
  * Register multiple commands. See `vscode::commands.registerCommand`.
  */
-export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
-    return useReactiveCommands(commands);
-}
+export const useCommands = (commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void => useReactiveCommands(commands);
+/**
+ * name type of Logger and OutputChannel
+ */
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
 /**
  * Creates a logger that writes to the output channel.
  */
-export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
-    return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
-}
+export const useLogger = (loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) => useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 /**
  * @reactive `window.createOutputChannel`
  */
-export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
-    return useReactiveOutputChannel(outputName);
-}
+export const useOutputChannel = (outputName: LoggerNameType = displayName ?? name ?? extensionId) => useReactiveOutputChannel(outputName);
 /**
  * Smart Clicks: Trigger
  * @commandkey Register a command `smartClicks.trigger`
  */
-export const useCommandTrigger = (callback: (...args: any[]) => any) => useCommand(commands.useCommandTrigger, callback);
+export const useCommandTrigger = (callback: (...args: any[]) => any) => useCommand(commands.trigger, callback);
 /**
  * Section Type of `smartClicks`
  */
@@ -193,7 +188,7 @@ export interface SmartClicks {
 }
 const smartClicksDefaults = {
     /**
-     * Section defaults of `smartClicks`
+     * Config defaults of `smartClicks`
      */
     "smartClicks": {
         /**
@@ -215,6 +210,9 @@ const smartClicksDefaults = {
     } satisfies SmartClicks as SmartClicks,
 };
 export type ConfigSecionKey = keyof typeof smartClicksDefaults;
+/**
+ * Shorthand of config section name.
+ */
 export const configs = {
     smartClicks: "smartClicks",
 } satisfies Record<string, ConfigSecionKey>;
@@ -233,14 +231,16 @@ export function useConfigObject<K extends ConfigSecionKey>(section: K) {
 /**
  * ConfigObject of `smartClicks`
  * @example
- * const oldVal = useConfigObjectSmartClicks.clicksInterval //get value
- * useConfigObjectSmartClicks.$update("clicksInterval", oldVal) //update value
+ * const smartClicks = useConfigObjectSmartClicks()
+ * const oldVal:number = smartClicks.clicksInterval //get value
+ * smartClicks.$update("clicksInterval", oldVal) //update value
  */
 export const useConfigObjectSmartClicks = () => useConfigObject(configs.smartClicks);
 /**
  * ToConfigRefs of `smartClicks`
  * @example
- * const oldVal:number =useConfigSmartClicks.clicksInterval.value //get value
- * useConfigSmartClicks.clicksInterval.update(oldVal) //update value
+ * const smartClicks = useConfigSmartClicks()
+ * const oldVal:number = smartClicks.clicksInterval.value //get value
+ * smartClicks.clicksInterval.update(oldVal) //update value
  */
 export const useConfigSmartClicks = () => useConfig(configs.smartClicks);
