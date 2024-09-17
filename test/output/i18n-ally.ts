@@ -19,521 +19,530 @@ export type CommandKey = "i18n-ally.config-locales" | "i18n-ally.config-locales-
 export const commands = {
     /**
      * %command.config_locales%
-     * @value `i18n-ally.config-locales`
+     * @commandkey `i18n-ally.config-locales`
      */
     configLocales: "i18n-ally.config-locales",
     /**
      * %command.config_locales_auto%
-     * @value `i18n-ally.config-locales-auto`
+     * @commandkey `i18n-ally.config-locales-auto`
      */
     configLocalesAuto: "i18n-ally.config-locales-auto",
     /**
      * %command.config_display_language%
-     * @value `i18n-ally.config-display-language`
+     * @commandkey `i18n-ally.config-display-language`
      */
     configDisplayLanguage: "i18n-ally.config-display-language",
     /**
      * %command.config_source_language%
-     * @value `i18n-ally.config-source-language`
+     * @commandkey `i18n-ally.config-source-language`
      */
     configSourceLanguage: "i18n-ally.config-source-language",
     /**
      * %command.set_display_language%
-     * @value `i18n-ally.set-display-language`
+     * @commandkey `i18n-ally.set-display-language`
      */
     setDisplayLanguage: "i18n-ally.set-display-language",
     /**
      * %command.set_source_language%
-     * @value `i18n-ally.set-source-language`
+     * @commandkey `i18n-ally.set-source-language`
      */
     setSourceLanguage: "i18n-ally.set-source-language",
     /**
      * %command.copy_key%
-     * @value `i18n-ally.copy-key`
+     * @commandkey `i18n-ally.copy-key`
      */
     copyKey: "i18n-ally.copy-key",
     /**
      * %command.translate_key%
-     * @value `i18n-ally.translate-key`
+     * @commandkey `i18n-ally.translate-key`
      */
     translateKey: "i18n-ally.translate-key",
     /**
      * %command.edit_key%
-     * @value `i18n-ally.edit-key`
+     * @commandkey `i18n-ally.edit-key`
      */
     editKey: "i18n-ally.edit-key",
     /**
      * %command.open_key%
-     * @value `i18n-ally.open-key`
+     * @commandkey `i18n-ally.open-key`
      */
     openKey: "i18n-ally.open-key",
     /**
      * %command.delete_key%
-     * @value `i18n-ally.delete-key`
+     * @commandkey `i18n-ally.delete-key`
      */
     deleteKey: "i18n-ally.delete-key",
     /**
      * %command.rename_key%
-     * @value `i18n-ally.rename-key`
+     * @commandkey `i18n-ally.rename-key`
      */
     renameKey: "i18n-ally.rename-key",
     /**
      * %refactor.extract_text%
-     * @value `i18n-ally.extract-text`
+     * @commandkey `i18n-ally.extract-text`
      */
     extractText: "i18n-ally.extract-text",
     /**
      * Extract all hard-coded strings (experimental)
-     * @value `i18n-ally.extract-hard-strings-batch`
+     * @commandkey `i18n-ally.extract-hard-strings-batch`
      */
     extractHardStringsBatch: "i18n-ally.extract-hard-strings-batch",
     /**
      * Detect hard-coded strings in current file (experimental)
-     * @value `i18n-ally.detect_hard_strings`
+     * @commandkey `i18n-ally.detect_hard_strings`
      */
     detectHardStrings: "i18n-ally.detect_hard_strings",
     /**
      * %command.open_url%
-     * @value `i18n-ally.open-url`
+     * @commandkey `i18n-ally.open-url`
      */
     openUrl: "i18n-ally.open-url",
     /**
      * %command.fulfill_keys%
-     * @value `i18n-ally.fulfill-keys`
+     * @commandkey `i18n-ally.fulfill-keys`
      */
     fulfillKeys: "i18n-ally.fulfill-keys",
     /**
      * %command.refresh_usage%
-     * @value `i18n-ally.refresh-usage`
+     * @commandkey `i18n-ally.refresh-usage`
      */
     refreshUsage: "i18n-ally.refresh-usage",
     /**
      * %feedback.support%
-     * @value `i18n-ally.support`
+     * @commandkey `i18n-ally.support`
      */
     support: "i18n-ally.support",
     /**
      * %command.locale_visibility_show%
-     * @value `i18n-ally.locale-visibility-show`
+     * @commandkey `i18n-ally.locale-visibility-show`
      */
     localeVisibilityShow: "i18n-ally.locale-visibility-show",
     /**
      * %command.locale_visibility_hide%
-     * @value `i18n-ally.locale-visibility-hide`
+     * @commandkey `i18n-ally.locale-visibility-hide`
      */
     localeVisibilityHide: "i18n-ally.locale-visibility-hide",
     /**
      * %command.new_key%
-     * @value `i18n-ally.new-key`
+     * @commandkey `i18n-ally.new-key`
      */
     newKey: "i18n-ally.new-key",
     /**
      * %command.duplicate_key%
-     * @value `i18n-ally.duplicate-key`
+     * @commandkey `i18n-ally.duplicate-key`
      */
     duplicateKey: "i18n-ally.duplicate-key",
     /**
      * %command.mark_key_as_in_use%
-     * @value `i18n-ally.mark-key-as-in-use`
+     * @commandkey `i18n-ally.mark-key-as-in-use`
      */
     markKeyAsInUse: "i18n-ally.mark-key-as-in-use",
     /**
      * %command.open_in_editor%
-     * @value `i18n-ally.open-in-editor`
+     * @commandkey `i18n-ally.open-in-editor`
      */
     openInEditor: "i18n-ally.open-in-editor",
     /**
      * %command.open_editor%
-     * @value `i18n-ally.open-editor`
+     * @commandkey `i18n-ally.open-editor`
      */
     openEditor: "i18n-ally.open-editor",
     /**
      * %review.leave_comment%
-     * @value `i18n-ally.review.comment`
+     * @commandkey `i18n-ally.review.comment`
      */
     comment: "i18n-ally.review.comment",
     /**
      * %review.approve%
-     * @value `i18n-ally.review.approve`
+     * @commandkey `i18n-ally.review.approve`
      */
     approve: "i18n-ally.review.approve",
     /**
      * %review.request_change%
-     * @value `i18n-ally.review.request-change`
+     * @commandkey `i18n-ally.review.request-change`
      */
     requestChange: "i18n-ally.review.request-change",
     /**
      * %review.edit%
-     * @value `i18n-ally.review.edit`
+     * @commandkey `i18n-ally.review.edit`
      */
     edit: "i18n-ally.review.edit",
     /**
      * %review.resolve%
-     * @value `i18n-ally.review.resolve`
+     * @commandkey `i18n-ally.review.resolve`
      */
     resolve: "i18n-ally.review.resolve",
     /**
      * %review.resolve_all%
-     * @value `i18n-ally.review.resolve-thread`
+     * @commandkey `i18n-ally.review.resolve-thread`
      */
     resolveThread: "i18n-ally.review.resolve-thread",
     /**
      * %review.apply_translation_candidate%
-     * @value `i18n-ally.review.apply-translation`
+     * @commandkey `i18n-ally.review.apply-translation`
      */
     applyTranslation: "i18n-ally.review.apply-translation",
     /**
      * %review.apply_suggestion%
-     * @value `i18n-ally.review.apply-suggestion`
+     * @commandkey `i18n-ally.review.apply-suggestion`
      */
     applySuggestion: "i18n-ally.review.apply-suggestion",
     /**
      * %command.insert_key%
-     * @value `i18n-ally.insert-key`
+     * @commandkey `i18n-ally.insert-key`
      */
     insertKey: "i18n-ally.insert-key",
     /**
      * %command.deepl_usage%
-     * @value `i18n-ally.deepl-usage`
+     * @commandkey `i18n-ally.deepl-usage`
      */
     deeplUsage: "i18n-ally.deepl-usage",
     /**
      * %command.go_to_range%
-     * @value `i18n-ally.go-to-range`
+     * @commandkey `i18n-ally.go-to-range`
      */
     goToRange: "i18n-ally.go-to-range",
     /**
      * %command.go_to_next_usage%
-     * @value `i18n-ally.go-to-next-usage`
+     * @commandkey `i18n-ally.go-to-next-usage`
      */
     goToNextUsage: "i18n-ally.go-to-next-usage",
     /**
      * %command.go_to_prev_usage%
-     * @value `i18n-ally.go-to-prev-usage`
+     * @commandkey `i18n-ally.go-to-prev-usage`
      */
     goToPrevUsage: "i18n-ally.go-to-prev-usage",
     /**
      * %command.show_docs%
-     * @value `i18n-ally.open-docs-hard-string`
+     * @commandkey `i18n-ally.open-docs-hard-string`
      */
     openDocsHardString: "i18n-ally.open-docs-hard-string",
     /**
      * %command.extract.disable-auto-detect%
-     * @value `i18n-ally.extract-disable-auto-detect`
+     * @commandkey `i18n-ally.extract-disable-auto-detect`
      */
     extractDisableAutoDetect: "i18n-ally.extract-disable-auto-detect",
     /**
      * %command.extract.enable-auto-detect%
-     * @value `i18n-ally.extract-enable-auto-detect`
+     * @commandkey `i18n-ally.extract-enable-auto-detect`
      */
     extractEnableAutoDetect: "i18n-ally.extract-enable-auto-detect",
-} satisfies Record<string, CommandKey>;
+} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
+/**
+ * Register multiple commands. See `vscode::commands.registerCommand`.
+ */
 export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
     return useReactiveCommands(commands);
 }
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
+/**
+ * Creates a logger that writes to the output channel.
+ */
 export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
     return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 }
+/**
+ * @reactive `window.createOutputChannel`
+ */
 export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
     return useReactiveOutputChannel(outputName);
 }
 /**
  * %command.config_locales%
- * @value `i18n-ally.config-locales` identifier of the command
+ * @commandkey `i18n-ally.config-locales`
  */
 export function useCommandConfigLocales(callback: (...args: any[]) => any) {
     return useCommand(commands.configLocales, callback);
 }
 /**
  * %command.config_locales_auto%
- * @value `i18n-ally.config-locales-auto` identifier of the command
+ * @commandkey `i18n-ally.config-locales-auto`
  */
 export function useCommandConfigLocalesAuto(callback: (...args: any[]) => any) {
     return useCommand(commands.configLocalesAuto, callback);
 }
 /**
  * %command.config_display_language%
- * @value `i18n-ally.config-display-language` identifier of the command
+ * @commandkey `i18n-ally.config-display-language`
  */
 export function useCommandConfigDisplayLanguage(callback: (...args: any[]) => any) {
     return useCommand(commands.configDisplayLanguage, callback);
 }
 /**
  * %command.config_source_language%
- * @value `i18n-ally.config-source-language` identifier of the command
+ * @commandkey `i18n-ally.config-source-language`
  */
 export function useCommandConfigSourceLanguage(callback: (...args: any[]) => any) {
     return useCommand(commands.configSourceLanguage, callback);
 }
 /**
  * %command.set_display_language%
- * @value `i18n-ally.set-display-language` identifier of the command
+ * @commandkey `i18n-ally.set-display-language`
  */
 export function useCommandSetDisplayLanguage(callback: (...args: any[]) => any) {
     return useCommand(commands.setDisplayLanguage, callback);
 }
 /**
  * %command.set_source_language%
- * @value `i18n-ally.set-source-language` identifier of the command
+ * @commandkey `i18n-ally.set-source-language`
  */
 export function useCommandSetSourceLanguage(callback: (...args: any[]) => any) {
     return useCommand(commands.setSourceLanguage, callback);
 }
 /**
  * %command.copy_key%
- * @value `i18n-ally.copy-key` identifier of the command
+ * @commandkey `i18n-ally.copy-key`
  */
 export function useCommandCopyKey(callback: (...args: any[]) => any) {
     return useCommand(commands.copyKey, callback);
 }
 /**
  * %command.translate_key%
- * @value `i18n-ally.translate-key` identifier of the command
+ * @commandkey `i18n-ally.translate-key`
  */
 export function useCommandTranslateKey(callback: (...args: any[]) => any) {
     return useCommand(commands.translateKey, callback);
 }
 /**
  * %command.edit_key%
- * @value `i18n-ally.edit-key` identifier of the command
+ * @commandkey `i18n-ally.edit-key`
  */
 export function useCommandEditKey(callback: (...args: any[]) => any) {
     return useCommand(commands.editKey, callback);
 }
 /**
  * %command.open_key%
- * @value `i18n-ally.open-key` identifier of the command
+ * @commandkey `i18n-ally.open-key`
  */
 export function useCommandOpenKey(callback: (...args: any[]) => any) {
     return useCommand(commands.openKey, callback);
 }
 /**
  * %command.delete_key%
- * @value `i18n-ally.delete-key` identifier of the command
+ * @commandkey `i18n-ally.delete-key`
  */
 export function useCommandDeleteKey(callback: (...args: any[]) => any) {
     return useCommand(commands.deleteKey, callback);
 }
 /**
  * %command.rename_key%
- * @value `i18n-ally.rename-key` identifier of the command
+ * @commandkey `i18n-ally.rename-key`
  */
 export function useCommandRenameKey(callback: (...args: any[]) => any) {
     return useCommand(commands.renameKey, callback);
 }
 /**
  * %refactor.extract_text%
- * @value `i18n-ally.extract-text` identifier of the command
+ * @commandkey `i18n-ally.extract-text`
  */
 export function useCommandExtractText(callback: (...args: any[]) => any) {
     return useCommand(commands.extractText, callback);
 }
 /**
  * Extract all hard-coded strings (experimental)
- * @value `i18n-ally.extract-hard-strings-batch` identifier of the command
+ * @commandkey `i18n-ally.extract-hard-strings-batch`
  */
 export function useCommandExtractHardStringsBatch(callback: (...args: any[]) => any) {
     return useCommand(commands.extractHardStringsBatch, callback);
 }
 /**
  * Detect hard-coded strings in current file (experimental)
- * @value `i18n-ally.detect_hard_strings` identifier of the command
+ * @commandkey `i18n-ally.detect_hard_strings`
  */
 export function useCommandDetectHardStrings(callback: (...args: any[]) => any) {
     return useCommand(commands.detectHardStrings, callback);
 }
 /**
  * %command.open_url%
- * @value `i18n-ally.open-url` identifier of the command
+ * @commandkey `i18n-ally.open-url`
  */
 export function useCommandOpenUrl(callback: (...args: any[]) => any) {
     return useCommand(commands.openUrl, callback);
 }
 /**
  * %command.fulfill_keys%
- * @value `i18n-ally.fulfill-keys` identifier of the command
+ * @commandkey `i18n-ally.fulfill-keys`
  */
 export function useCommandFulfillKeys(callback: (...args: any[]) => any) {
     return useCommand(commands.fulfillKeys, callback);
 }
 /**
  * %command.refresh_usage%
- * @value `i18n-ally.refresh-usage` identifier of the command
+ * @commandkey `i18n-ally.refresh-usage`
  */
 export function useCommandRefreshUsage(callback: (...args: any[]) => any) {
     return useCommand(commands.refreshUsage, callback);
 }
 /**
  * %feedback.support%
- * @value `i18n-ally.support` identifier of the command
+ * @commandkey `i18n-ally.support`
  */
 export function useCommandSupport(callback: (...args: any[]) => any) {
     return useCommand(commands.support, callback);
 }
 /**
  * %command.locale_visibility_show%
- * @value `i18n-ally.locale-visibility-show` identifier of the command
+ * @commandkey `i18n-ally.locale-visibility-show`
  */
 export function useCommandLocaleVisibilityShow(callback: (...args: any[]) => any) {
     return useCommand(commands.localeVisibilityShow, callback);
 }
 /**
  * %command.locale_visibility_hide%
- * @value `i18n-ally.locale-visibility-hide` identifier of the command
+ * @commandkey `i18n-ally.locale-visibility-hide`
  */
 export function useCommandLocaleVisibilityHide(callback: (...args: any[]) => any) {
     return useCommand(commands.localeVisibilityHide, callback);
 }
 /**
  * %command.new_key%
- * @value `i18n-ally.new-key` identifier of the command
+ * @commandkey `i18n-ally.new-key`
  */
 export function useCommandNewKey(callback: (...args: any[]) => any) {
     return useCommand(commands.newKey, callback);
 }
 /**
  * %command.duplicate_key%
- * @value `i18n-ally.duplicate-key` identifier of the command
+ * @commandkey `i18n-ally.duplicate-key`
  */
 export function useCommandDuplicateKey(callback: (...args: any[]) => any) {
     return useCommand(commands.duplicateKey, callback);
 }
 /**
  * %command.mark_key_as_in_use%
- * @value `i18n-ally.mark-key-as-in-use` identifier of the command
+ * @commandkey `i18n-ally.mark-key-as-in-use`
  */
 export function useCommandMarkKeyAsInUse(callback: (...args: any[]) => any) {
     return useCommand(commands.markKeyAsInUse, callback);
 }
 /**
  * %command.open_in_editor%
- * @value `i18n-ally.open-in-editor` identifier of the command
+ * @commandkey `i18n-ally.open-in-editor`
  */
 export function useCommandOpenInEditor(callback: (...args: any[]) => any) {
     return useCommand(commands.openInEditor, callback);
 }
 /**
  * %command.open_editor%
- * @value `i18n-ally.open-editor` identifier of the command
+ * @commandkey `i18n-ally.open-editor`
  */
 export function useCommandOpenEditor(callback: (...args: any[]) => any) {
     return useCommand(commands.openEditor, callback);
 }
 /**
  * %review.leave_comment%
- * @value `i18n-ally.review.comment` identifier of the command
+ * @commandkey `i18n-ally.review.comment`
  */
 export function useCommandComment(callback: (...args: any[]) => any) {
     return useCommand(commands.comment, callback);
 }
 /**
  * %review.approve%
- * @value `i18n-ally.review.approve` identifier of the command
+ * @commandkey `i18n-ally.review.approve`
  */
 export function useCommandApprove(callback: (...args: any[]) => any) {
     return useCommand(commands.approve, callback);
 }
 /**
  * %review.request_change%
- * @value `i18n-ally.review.request-change` identifier of the command
+ * @commandkey `i18n-ally.review.request-change`
  */
 export function useCommandRequestChange(callback: (...args: any[]) => any) {
     return useCommand(commands.requestChange, callback);
 }
 /**
  * %review.edit%
- * @value `i18n-ally.review.edit` identifier of the command
+ * @commandkey `i18n-ally.review.edit`
  */
 export function useCommandEdit(callback: (...args: any[]) => any) {
     return useCommand(commands.edit, callback);
 }
 /**
  * %review.resolve%
- * @value `i18n-ally.review.resolve` identifier of the command
+ * @commandkey `i18n-ally.review.resolve`
  */
 export function useCommandResolve(callback: (...args: any[]) => any) {
     return useCommand(commands.resolve, callback);
 }
 /**
  * %review.resolve_all%
- * @value `i18n-ally.review.resolve-thread` identifier of the command
+ * @commandkey `i18n-ally.review.resolve-thread`
  */
 export function useCommandResolveThread(callback: (...args: any[]) => any) {
     return useCommand(commands.resolveThread, callback);
 }
 /**
  * %review.apply_translation_candidate%
- * @value `i18n-ally.review.apply-translation` identifier of the command
+ * @commandkey `i18n-ally.review.apply-translation`
  */
 export function useCommandApplyTranslation(callback: (...args: any[]) => any) {
     return useCommand(commands.applyTranslation, callback);
 }
 /**
  * %review.apply_suggestion%
- * @value `i18n-ally.review.apply-suggestion` identifier of the command
+ * @commandkey `i18n-ally.review.apply-suggestion`
  */
 export function useCommandApplySuggestion(callback: (...args: any[]) => any) {
     return useCommand(commands.applySuggestion, callback);
 }
 /**
  * %command.insert_key%
- * @value `i18n-ally.insert-key` identifier of the command
+ * @commandkey `i18n-ally.insert-key`
  */
 export function useCommandInsertKey(callback: (...args: any[]) => any) {
     return useCommand(commands.insertKey, callback);
 }
 /**
  * %command.deepl_usage%
- * @value `i18n-ally.deepl-usage` identifier of the command
+ * @commandkey `i18n-ally.deepl-usage`
  */
 export function useCommandDeeplUsage(callback: (...args: any[]) => any) {
     return useCommand(commands.deeplUsage, callback);
 }
 /**
  * %command.go_to_range%
- * @value `i18n-ally.go-to-range` identifier of the command
+ * @commandkey `i18n-ally.go-to-range`
  */
 export function useCommandGoToRange(callback: (...args: any[]) => any) {
     return useCommand(commands.goToRange, callback);
 }
 /**
  * %command.go_to_next_usage%
- * @value `i18n-ally.go-to-next-usage` identifier of the command
+ * @commandkey `i18n-ally.go-to-next-usage`
  */
 export function useCommandGoToNextUsage(callback: (...args: any[]) => any) {
     return useCommand(commands.goToNextUsage, callback);
 }
 /**
  * %command.go_to_prev_usage%
- * @value `i18n-ally.go-to-prev-usage` identifier of the command
+ * @commandkey `i18n-ally.go-to-prev-usage`
  */
 export function useCommandGoToPrevUsage(callback: (...args: any[]) => any) {
     return useCommand(commands.goToPrevUsage, callback);
 }
 /**
  * %command.show_docs%
- * @value `i18n-ally.open-docs-hard-string` identifier of the command
+ * @commandkey `i18n-ally.open-docs-hard-string`
  */
 export function useCommandOpenDocsHardString(callback: (...args: any[]) => any) {
     return useCommand(commands.openDocsHardString, callback);
 }
 /**
  * %command.extract.disable-auto-detect%
- * @value `i18n-ally.extract-disable-auto-detect` identifier of the command
+ * @commandkey `i18n-ally.extract-disable-auto-detect`
  */
 export function useCommandExtractDisableAutoDetect(callback: (...args: any[]) => any) {
     return useCommand(commands.extractDisableAutoDetect, callback);
 }
 /**
  * %command.extract.enable-auto-detect%
- * @value `i18n-ally.extract-enable-auto-detect` identifier of the command
+ * @commandkey `i18n-ally.extract-enable-auto-detect`
  */
 export function useCommandExtractEnableAutoDetect(callback: (...args: any[]) => any) {
     return useCommand(commands.extractEnableAutoDetect, callback);
@@ -1210,7 +1219,7 @@ export interface ExtractParsers {
      */
     "babel": Record<string, unknown>;
 }
-const i18nAllyConfig = {
+const i18nAllyDefaults = {
     /**
      * Section defaults of `i18n-ally`
      */
@@ -1828,12 +1837,40 @@ const i18nAllyConfig = {
         "babel": {},
     } satisfies ExtractParsers as ExtractParsers,
 };
-export type ConfigKey = "i18n-ally" | "i18n-ally.theme" | "i18n-ally.regex" | "i18n-ally.refactor" | "i18n-ally.translate" | "i18n-ally.translate.google" | "i18n-ally.translate.deepl" | "i18n-ally.translate.baidu" | "i18n-ally.translate.libre" | "i18n-ally.translate.openai" | "i18n-ally.usage" | "i18n-ally.frameworks" | "i18n-ally.frameworks.ruby-rails" | "i18n-ally.parsers" | "i18n-ally.parsers.typescript" | "i18n-ally.review" | "i18n-ally.review.user" | "i18n-ally.editor" | "i18n-ally.extract" | "i18n-ally.extract.parsers";
-export function useConfig<K extends ConfigKey>(section: K) {
-    return defineConfigs<typeof i18nAllyConfig[K]>(section, i18nAllyConfig[section]);
+export type ConfigSecionKey = keyof typeof i18nAllyDefaults;
+export const configs = {
+    i18nAlly: "i18n-ally",
+    theme: "i18n-ally.theme",
+    regex: "i18n-ally.regex",
+    refactor: "i18n-ally.refactor",
+    translate: "i18n-ally.translate",
+    google: "i18n-ally.translate.google",
+    deepl: "i18n-ally.translate.deepl",
+    baidu: "i18n-ally.translate.baidu",
+    libre: "i18n-ally.translate.libre",
+    openai: "i18n-ally.translate.openai",
+    usage: "i18n-ally.usage",
+    frameworks: "i18n-ally.frameworks",
+    rubyRails: "i18n-ally.frameworks.ruby-rails",
+    parsers: "i18n-ally.parsers",
+    typescript: "i18n-ally.parsers.typescript",
+    review: "i18n-ally.review",
+    user: "i18n-ally.review.user",
+    editor: "i18n-ally.editor",
+    extract: "i18n-ally.extract",
+    extractParsers: "i18n-ally.extract.parsers",
+} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfig<K extends ConfigSecionKey>(section: K) {
+    return defineConfigs<typeof i18nAllyDefaults[K]>(section, i18nAllyDefaults[section]);
 }
-export function useConfigObject<K extends ConfigKey>(section: K) {
-    return defineConfigObject<typeof i18nAllyConfig[K]>(section, i18nAllyConfig[section]);
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfigObject<K extends ConfigSecionKey>(section: K) {
+    return defineConfigObject<typeof i18nAllyDefaults[K]>(section, i18nAllyDefaults[section]);
 }
 /**
  * ConfigObject of `i18n-ally`
@@ -1841,277 +1878,277 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
  * const oldVal = configObjectI18nAlly.disabled //get value
  * configObjectI18nAlly.$update("disabled", oldVal) //update value
  */
-export const configObjectI18nAlly = useConfigObject("i18n-ally");
+export const configObjectI18nAlly = useConfigObject(configs.i18nAlly);
 /**
  * ToConfigRefs of `i18n-ally`
  * @example
  * const oldVal:boolean =configI18nAlly.disabled.value //get value
  * configI18nAlly.disabled.update(oldVal) //update value
  */
-export const configI18nAlly = useConfig("i18n-ally");
+export const configI18nAlly = useConfig(configs.i18nAlly);
 /**
  * ConfigObject of `i18n-ally.theme`
  * @example
  * const oldVal = configObjectTheme.annotation //get value
  * configObjectTheme.$update("annotation", oldVal) //update value
  */
-export const configObjectTheme = useConfigObject("i18n-ally.theme");
+export const configObjectTheme = useConfigObject(configs.theme);
 /**
  * ToConfigRefs of `i18n-ally.theme`
  * @example
  * const oldVal:string =configTheme.annotation.value //get value
  * configTheme.annotation.update(oldVal) //update value
  */
-export const configTheme = useConfig("i18n-ally.theme");
+export const configTheme = useConfig(configs.theme);
 /**
  * ConfigObject of `i18n-ally.regex`
  * @example
  * const oldVal = configObjectRegex.key //get value
  * configObjectRegex.$update("key", oldVal) //update value
  */
-export const configObjectRegex = useConfigObject("i18n-ally.regex");
+export const configObjectRegex = useConfigObject(configs.regex);
 /**
  * ToConfigRefs of `i18n-ally.regex`
  * @example
  * const oldVal:string =configRegex.key.value //get value
  * configRegex.key.update(oldVal) //update value
  */
-export const configRegex = useConfig("i18n-ally.regex");
+export const configRegex = useConfig(configs.regex);
 /**
  * ConfigObject of `i18n-ally.refactor`
  * @example
  * const oldVal = configObjectRefactor.templates //get value
  * configObjectRefactor.$update("templates", oldVal) //update value
  */
-export const configObjectRefactor = useConfigObject("i18n-ally.refactor");
+export const configObjectRefactor = useConfigObject(configs.refactor);
 /**
  * ToConfigRefs of `i18n-ally.refactor`
  * @example
  * const oldVal:array =configRefactor.templates.value //get value
  * configRefactor.templates.update(oldVal) //update value
  */
-export const configRefactor = useConfig("i18n-ally.refactor");
+export const configRefactor = useConfig(configs.refactor);
 /**
  * ConfigObject of `i18n-ally.translate`
  * @example
  * const oldVal = configObjectTranslate.saveAsCandidates //get value
  * configObjectTranslate.$update("saveAsCandidates", oldVal) //update value
  */
-export const configObjectTranslate = useConfigObject("i18n-ally.translate");
+export const configObjectTranslate = useConfigObject(configs.translate);
 /**
  * ToConfigRefs of `i18n-ally.translate`
  * @example
  * const oldVal:boolean =configTranslate.saveAsCandidates.value //get value
  * configTranslate.saveAsCandidates.update(oldVal) //update value
  */
-export const configTranslate = useConfig("i18n-ally.translate");
+export const configTranslate = useConfig(configs.translate);
 /**
  * ConfigObject of `i18n-ally.translate.google`
  * @example
  * const oldVal = configObjectGoogle.apiKey //get value
  * configObjectGoogle.$update("apiKey", oldVal) //update value
  */
-export const configObjectGoogle = useConfigObject("i18n-ally.translate.google");
+export const configObjectGoogle = useConfigObject(configs.google);
 /**
  * ToConfigRefs of `i18n-ally.translate.google`
  * @example
  * const oldVal:string =configGoogle.apiKey.value //get value
  * configGoogle.apiKey.update(oldVal) //update value
  */
-export const configGoogle = useConfig("i18n-ally.translate.google");
+export const configGoogle = useConfig(configs.google);
 /**
  * ConfigObject of `i18n-ally.translate.deepl`
  * @example
  * const oldVal = configObjectDeepl.apiKey //get value
  * configObjectDeepl.$update("apiKey", oldVal) //update value
  */
-export const configObjectDeepl = useConfigObject("i18n-ally.translate.deepl");
+export const configObjectDeepl = useConfigObject(configs.deepl);
 /**
  * ToConfigRefs of `i18n-ally.translate.deepl`
  * @example
  * const oldVal:string =configDeepl.apiKey.value //get value
  * configDeepl.apiKey.update(oldVal) //update value
  */
-export const configDeepl = useConfig("i18n-ally.translate.deepl");
+export const configDeepl = useConfig(configs.deepl);
 /**
  * ConfigObject of `i18n-ally.translate.baidu`
  * @example
  * const oldVal = configObjectBaidu.appid //get value
  * configObjectBaidu.$update("appid", oldVal) //update value
  */
-export const configObjectBaidu = useConfigObject("i18n-ally.translate.baidu");
+export const configObjectBaidu = useConfigObject(configs.baidu);
 /**
  * ToConfigRefs of `i18n-ally.translate.baidu`
  * @example
  * const oldVal:string =configBaidu.appid.value //get value
  * configBaidu.appid.update(oldVal) //update value
  */
-export const configBaidu = useConfig("i18n-ally.translate.baidu");
+export const configBaidu = useConfig(configs.baidu);
 /**
  * ConfigObject of `i18n-ally.translate.libre`
  * @example
  * const oldVal = configObjectLibre.apiRoot //get value
  * configObjectLibre.$update("apiRoot", oldVal) //update value
  */
-export const configObjectLibre = useConfigObject("i18n-ally.translate.libre");
+export const configObjectLibre = useConfigObject(configs.libre);
 /**
  * ToConfigRefs of `i18n-ally.translate.libre`
  * @example
  * const oldVal:string =configLibre.apiRoot.value //get value
  * configLibre.apiRoot.update(oldVal) //update value
  */
-export const configLibre = useConfig("i18n-ally.translate.libre");
+export const configLibre = useConfig(configs.libre);
 /**
  * ConfigObject of `i18n-ally.translate.openai`
  * @example
  * const oldVal = configObjectOpenai.apiKey //get value
  * configObjectOpenai.$update("apiKey", oldVal) //update value
  */
-export const configObjectOpenai = useConfigObject("i18n-ally.translate.openai");
+export const configObjectOpenai = useConfigObject(configs.openai);
 /**
  * ToConfigRefs of `i18n-ally.translate.openai`
  * @example
  * const oldVal:string =configOpenai.apiKey.value //get value
  * configOpenai.apiKey.update(oldVal) //update value
  */
-export const configOpenai = useConfig("i18n-ally.translate.openai");
+export const configOpenai = useConfig(configs.openai);
 /**
  * ConfigObject of `i18n-ally.usage`
  * @example
  * const oldVal = configObjectUsage.scanningIgnore //get value
  * configObjectUsage.$update("scanningIgnore", oldVal) //update value
  */
-export const configObjectUsage = useConfigObject("i18n-ally.usage");
+export const configObjectUsage = useConfigObject(configs.usage);
 /**
  * ToConfigRefs of `i18n-ally.usage`
  * @example
  * const oldVal:array =configUsage.scanningIgnore.value //get value
  * configUsage.scanningIgnore.update(oldVal) //update value
  */
-export const configUsage = useConfig("i18n-ally.usage");
+export const configUsage = useConfig(configs.usage);
 /**
  * ConfigObject of `i18n-ally.frameworks`
  * @example
  * const oldVal = configObjectFrameworks.ruby-rails.scopeRoot //get value
  * configObjectFrameworks.$update("ruby-rails.scopeRoot", oldVal) //update value
  */
-export const configObjectFrameworks = useConfigObject("i18n-ally.frameworks");
+export const configObjectFrameworks = useConfigObject(configs.frameworks);
 /**
  * ToConfigRefs of `i18n-ally.frameworks`
  * @example
  * const oldVal:string =configFrameworks.ruby-rails.scopeRoot.value //get value
  * configFrameworks.ruby-rails.scopeRoot.update(oldVal) //update value
  */
-export const configFrameworks = useConfig("i18n-ally.frameworks");
+export const configFrameworks = useConfig(configs.frameworks);
 /**
  * ConfigObject of `i18n-ally.frameworks.ruby-rails`
  * @example
  * const oldVal = configObjectRubyRails.scopeRoot //get value
  * configObjectRubyRails.$update("scopeRoot", oldVal) //update value
  */
-export const configObjectRubyRails = useConfigObject("i18n-ally.frameworks.ruby-rails");
+export const configObjectRubyRails = useConfigObject(configs.rubyRails);
 /**
  * ToConfigRefs of `i18n-ally.frameworks.ruby-rails`
  * @example
  * const oldVal:string =configRubyRails.scopeRoot.value //get value
  * configRubyRails.scopeRoot.update(oldVal) //update value
  */
-export const configRubyRails = useConfig("i18n-ally.frameworks.ruby-rails");
+export const configRubyRails = useConfig(configs.rubyRails);
 /**
  * ConfigObject of `i18n-ally.parsers`
  * @example
  * const oldVal = configObjectParsers.typescript.tsNodePath //get value
  * configObjectParsers.$update("typescript.tsNodePath", oldVal) //update value
  */
-export const configObjectParsers = useConfigObject("i18n-ally.parsers");
+export const configObjectParsers = useConfigObject(configs.parsers);
 /**
  * ToConfigRefs of `i18n-ally.parsers`
  * @example
  * const oldVal:string =configParsers.typescript.tsNodePath.value //get value
  * configParsers.typescript.tsNodePath.update(oldVal) //update value
  */
-export const configParsers = useConfig("i18n-ally.parsers");
+export const configParsers = useConfig(configs.parsers);
 /**
  * ConfigObject of `i18n-ally.parsers.typescript`
  * @example
  * const oldVal = configObjectTypescript.tsNodePath //get value
  * configObjectTypescript.$update("tsNodePath", oldVal) //update value
  */
-export const configObjectTypescript = useConfigObject("i18n-ally.parsers.typescript");
+export const configObjectTypescript = useConfigObject(configs.typescript);
 /**
  * ToConfigRefs of `i18n-ally.parsers.typescript`
  * @example
  * const oldVal:string =configTypescript.tsNodePath.value //get value
  * configTypescript.tsNodePath.update(oldVal) //update value
  */
-export const configTypescript = useConfig("i18n-ally.parsers.typescript");
+export const configTypescript = useConfig(configs.typescript);
 /**
  * ConfigObject of `i18n-ally.review`
  * @example
  * const oldVal = configObjectReview.enabled //get value
  * configObjectReview.$update("enabled", oldVal) //update value
  */
-export const configObjectReview = useConfigObject("i18n-ally.review");
+export const configObjectReview = useConfigObject(configs.review);
 /**
  * ToConfigRefs of `i18n-ally.review`
  * @example
  * const oldVal:boolean =configReview.enabled.value //get value
  * configReview.enabled.update(oldVal) //update value
  */
-export const configReview = useConfig("i18n-ally.review");
+export const configReview = useConfig(configs.review);
 /**
  * ConfigObject of `i18n-ally.review.user`
  * @example
  * const oldVal = configObjectUser.name //get value
  * configObjectUser.$update("name", oldVal) //update value
  */
-export const configObjectUser = useConfigObject("i18n-ally.review.user");
+export const configObjectUser = useConfigObject(configs.user);
 /**
  * ToConfigRefs of `i18n-ally.review.user`
  * @example
  * const oldVal:string =configUser.name.value //get value
  * configUser.name.update(oldVal) //update value
  */
-export const configUser = useConfig("i18n-ally.review.user");
+export const configUser = useConfig(configs.user);
 /**
  * ConfigObject of `i18n-ally.editor`
  * @example
  * const oldVal = configObjectEditor.preferEditor //get value
  * configObjectEditor.$update("preferEditor", oldVal) //update value
  */
-export const configObjectEditor = useConfigObject("i18n-ally.editor");
+export const configObjectEditor = useConfigObject(configs.editor);
 /**
  * ToConfigRefs of `i18n-ally.editor`
  * @example
  * const oldVal:boolean =configEditor.preferEditor.value //get value
  * configEditor.preferEditor.update(oldVal) //update value
  */
-export const configEditor = useConfig("i18n-ally.editor");
+export const configEditor = useConfig(configs.editor);
 /**
  * ConfigObject of `i18n-ally.extract`
  * @example
  * const oldVal = configObjectExtract.keygenStrategy //get value
  * configObjectExtract.$update("keygenStrategy", oldVal) //update value
  */
-export const configObjectExtract = useConfigObject("i18n-ally.extract");
+export const configObjectExtract = useConfigObject(configs.extract);
 /**
  * ToConfigRefs of `i18n-ally.extract`
  * @example
  * const oldVal:string =configExtract.keygenStrategy.value //get value
  * configExtract.keygenStrategy.update(oldVal) //update value
  */
-export const configExtract = useConfig("i18n-ally.extract");
+export const configExtract = useConfig(configs.extract);
 /**
  * ConfigObject of `i18n-ally.extract.parsers`
  * @example
  * const oldVal = configObjectExtractParsers.html //get value
  * configObjectExtractParsers.$update("html", oldVal) //update value
  */
-export const configObjectExtractParsers = useConfigObject("i18n-ally.extract.parsers");
+export const configObjectExtractParsers = useConfigObject(configs.extractParsers);
 /**
  * ToConfigRefs of `i18n-ally.extract.parsers`
  * @example
  * const oldVal:object =configExtractParsers.html.value //get value
  * configExtractParsers.html.update(oldVal) //update value
  */
-export const configExtractParsers = useConfig("i18n-ally.extract.parsers");
+export const configExtractParsers = useConfig(configs.extractParsers);

@@ -19,29 +19,38 @@ export type CommandKey = "smartClicks.trigger";
 export const commands = {
     /**
      * Smart Clicks: Trigger
-     * @value `smartClicks.trigger`
+     * @commandkey `smartClicks.trigger`
      */
     trigger: "smartClicks.trigger",
-} satisfies Record<string, CommandKey>;
+} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
+/**
+ * Register multiple commands. See `vscode::commands.registerCommand`.
+ */
 export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
     return useReactiveCommands(commands);
 }
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
+/**
+ * Creates a logger that writes to the output channel.
+ */
 export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
     return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 }
+/**
+ * @reactive `window.createOutputChannel`
+ */
 export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
     return useReactiveOutputChannel(outputName);
 }
 /**
  * Smart Clicks: Trigger
- * @value `smartClicks.trigger` identifier of the command
+ * @commandkey `smartClicks.trigger`
  */
 export function useCommandTrigger(callback: (...args: any[]) => any) {
     return useCommand(commands.trigger, callback);
@@ -184,7 +193,7 @@ export interface SmartClicks {
         'jsx-tag-pair': boolean;
     };
 }
-const smartClicksConfig = {
+const smartClicksDefaults = {
     /**
      * Section defaults of `smartClicks`
      */
@@ -207,12 +216,21 @@ const smartClicksConfig = {
         "rules": { "bracket-pair": true, "dash": true, "html-attr": true, "html-element": true, "html-tag-pair": true, "js-arrow-fn": true, "js-assign": true, "js-block": false, "js-colon": true, "jsx-tag-pair": true },
     } satisfies SmartClicks as SmartClicks,
 };
-export type ConfigKey = "smartClicks";
-export function useConfig<K extends ConfigKey>(section: K) {
-    return defineConfigs<typeof smartClicksConfig[K]>(section, smartClicksConfig[section]);
+export type ConfigSecionKey = keyof typeof smartClicksDefaults;
+export const configs = {
+    smartClicks: "smartClicks",
+} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfig<K extends ConfigSecionKey>(section: K) {
+    return defineConfigs<typeof smartClicksDefaults[K]>(section, smartClicksDefaults[section]);
 }
-export function useConfigObject<K extends ConfigKey>(section: K) {
-    return defineConfigObject<typeof smartClicksConfig[K]>(section, smartClicksConfig[section]);
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfigObject<K extends ConfigSecionKey>(section: K) {
+    return defineConfigObject<typeof smartClicksDefaults[K]>(section, smartClicksDefaults[section]);
 }
 /**
  * ConfigObject of `smartClicks`
@@ -220,11 +238,11 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
  * const oldVal = configObjectSmartClicks.clicksInterval //get value
  * configObjectSmartClicks.$update("clicksInterval", oldVal) //update value
  */
-export const configObjectSmartClicks = useConfigObject("smartClicks");
+export const configObjectSmartClicks = useConfigObject(configs.smartClicks);
 /**
  * ToConfigRefs of `smartClicks`
  * @example
  * const oldVal:number =configSmartClicks.clicksInterval.value //get value
  * configSmartClicks.clicksInterval.update(oldVal) //update value
  */
-export const configSmartClicks = useConfig("smartClicks");
+export const configSmartClicks = useConfig(configs.smartClicks);

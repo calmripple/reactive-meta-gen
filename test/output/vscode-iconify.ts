@@ -19,53 +19,62 @@ export type CommandKey = "iconify.toggle-annotations" | "iconify.toggle-inplace"
 export const commands = {
     /**
      * Toggle Annotations
-     * @value `iconify.toggle-annotations`
+     * @commandkey `iconify.toggle-annotations`
      */
     toggleAnnotations: "iconify.toggle-annotations",
     /**
      * Toggle In-place Mode
-     * @value `iconify.toggle-inplace`
+     * @commandkey `iconify.toggle-inplace`
      */
     toggleInplace: "iconify.toggle-inplace",
     /**
      * Clear icon cache
-     * @value `iconify.clear-cache`
+     * @commandkey `iconify.clear-cache`
      */
     clearCache: "iconify.clear-cache",
-} satisfies Record<string, CommandKey>;
+} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
+/**
+ * Register multiple commands. See `vscode::commands.registerCommand`.
+ */
 export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
     return useReactiveCommands(commands);
 }
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
+/**
+ * Creates a logger that writes to the output channel.
+ */
 export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
     return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 }
+/**
+ * @reactive `window.createOutputChannel`
+ */
 export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
     return useReactiveOutputChannel(outputName);
 }
 /**
  * Toggle Annotations
- * @value `iconify.toggle-annotations` identifier of the command
+ * @commandkey `iconify.toggle-annotations`
  */
 export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
     return useCommand(commands.toggleAnnotations, callback);
 }
 /**
  * Toggle In-place Mode
- * @value `iconify.toggle-inplace` identifier of the command
+ * @commandkey `iconify.toggle-inplace`
  */
 export function useCommandToggleInplace(callback: (...args: any[]) => any) {
     return useCommand(commands.toggleInplace, callback);
 }
 /**
  * Clear icon cache
- * @value `iconify.clear-cache` identifier of the command
+ * @commandkey `iconify.clear-cache`
  */
 export function useCommandClearCache(callback: (...args: any[]) => any) {
     return useCommand(commands.clearCache, callback);
@@ -135,7 +144,7 @@ export interface Iconify {
      */
     "customAliasesOnly": boolean;
 }
-const iconifyConfig = {
+const iconifyDefaults = {
     /**
      * Section defaults of `iconify`
      */
@@ -202,12 +211,21 @@ const iconifyConfig = {
         "customAliasesOnly": false,
     } satisfies Iconify as Iconify,
 };
-export type ConfigKey = "iconify";
-export function useConfig<K extends ConfigKey>(section: K) {
-    return defineConfigs<typeof iconifyConfig[K]>(section, iconifyConfig[section]);
+export type ConfigSecionKey = keyof typeof iconifyDefaults;
+export const configs = {
+    iconify: "iconify",
+} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfig<K extends ConfigSecionKey>(section: K) {
+    return defineConfigs<typeof iconifyDefaults[K]>(section, iconifyDefaults[section]);
 }
-export function useConfigObject<K extends ConfigKey>(section: K) {
-    return defineConfigObject<typeof iconifyConfig[K]>(section, iconifyConfig[section]);
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfigObject<K extends ConfigSecionKey>(section: K) {
+    return defineConfigObject<typeof iconifyDefaults[K]>(section, iconifyDefaults[section]);
 }
 /**
  * ConfigObject of `iconify`
@@ -215,11 +233,11 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
  * const oldVal = configObjectIconify.inplace //get value
  * configObjectIconify.$update("inplace", oldVal) //update value
  */
-export const configObjectIconify = useConfigObject("iconify");
+export const configObjectIconify = useConfigObject(configs.iconify);
 /**
  * ToConfigRefs of `iconify`
  * @example
  * const oldVal:boolean =configIconify.inplace.value //get value
  * configIconify.inplace.update(oldVal) //update value
  */
-export const configIconify = useConfig("iconify");
+export const configIconify = useConfig(configs.iconify);

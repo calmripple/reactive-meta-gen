@@ -159,7 +159,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   const varUseCommand = getSignature(`useCommand`)
   const varUseCommands = getSignature(`useCommands`)
   const varCommandKey = getSignature('CommandKey')
-  const varCommands = getSignature('commands')
+  const varShorthandCommands = getSignature('commands')
   const varUseCommandFunctionNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
     const f = getSignature(convertCamelCase(getRightSection(c.command, -1)), extensionId, (_pre, _count) => convertCamelCase(getRightSection(c.command, -_count)))
     return {
@@ -186,15 +186,15 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   lines.push(
     '',
     ...commentBlock(`Commands map registed by \`${extensionId}\``),
-    `export const ${varCommands} = {`,
+    `export const ${varShorthandCommands} = {`,
     ...varUseCommandFunctionNames
       .flatMap((c) => {
         return [
-          ...commentBlock(`${c.title}\n@value \`${c.command}\``, 2),
+          ...commentBlock(`${c.title}\n@commandkey \`${c.command}\``, 2),
           `  ${c.varUseCommandFunctionName}: ${JSON.stringify(c.command)},`,
         ]
       }),
-    '} satisfies Record<string, CommandKey>',
+    `} satisfies Record<string, ${varCommandKey}> as Record<string, ${varCommandKey}>`,
   )
 
   // ========== Command Base ==========
@@ -202,22 +202,22 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   const varLoggerNameType = `${getSignature('LoggerNameType')}`
   lines.push(
     commentBlock('Register a command. See `vscode::commands.registerCommand`.').join('\n'),
-    `export function ${varUseCommand}(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
+    `export function ${varUseCommand}(commandFullKey: ${varCommandKey}, callback: (...args: any[]) => any): void {
   return useReactiveCommand(commandFullKey, callback)
-}
-
-export function ${varUseCommands}(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
+}`,
+    commentBlock('Register multiple commands. See `vscode::commands.registerCommand`.').join('\n'),
+    `export function ${varUseCommands}(commands: Partial<Record<${varCommandKey}, (...args: any[]) => any>>): void {
   return useReactiveCommands(commands)
-}
-export type ${varLoggerNameType} = typeof ${varName} | typeof ${varDisplayName} | typeof ${varExtensionId}
-export function ${getSignature('useLogger')}(loggerName: ${varLoggerNameType} = ${varLoggerDefault}, getPrefix?: ((type: string) => string) | null) {
+}`,
+    `export type ${varLoggerNameType} = typeof ${varName} | typeof ${varDisplayName} | typeof ${varExtensionId}`,
+    commentBlock('Creates a logger that writes to the output channel.').join('\n'),
+    `export function ${getSignature('useLogger')}(loggerName: ${varLoggerNameType} = ${varLoggerDefault}, getPrefix?: ((type: string) => string) | null) {
     return useReactiveLogger(loggerName, { 'getPrefix': getPrefix })
-}
-
-export function ${getSignature('useOutputChannel')}(outputName: ${varLoggerNameType} = ${varLoggerDefault}) {
+}`,
+    commentBlock('@reactive `window.createOutputChannel`').join('\n'),
+    `export function ${getSignature('useOutputChannel')}(outputName: ${varLoggerNameType} = ${varLoggerDefault}) {
     return useReactiveOutputChannel(outputName)
-}
-`,
+}`,
   )
 
   lines.push(
@@ -226,9 +226,9 @@ export function ${getSignature('useOutputChannel')}(outputName: ${varLoggerNameT
         return [
           ``,
           ...commentBlock(`${c.title}
-@value \`${c.command}\` identifier of the command `, 0),
+@commandkey \`${c.command}\``, 0),
           `export function useCommand${upperFirst(c.varUseCommandFunctionName)}(callback: (...args: any[]) => any) {`,
-          `  return ${varUseCommand}(${varCommands}.${c.varUseCommandFunctionName}, callback)`,
+          `  return ${varUseCommand}(${varShorthandCommands}.${c.varUseCommandFunctionName}, callback)`,
           `}`,
         ]
       }),
@@ -249,9 +249,11 @@ export function ${getSignature('useOutputChannel')}(outputName: ${varLoggerNameT
     )
   }
 
-  const sectionDefault: string[] = []
-  const sectionExports: string[] = []
-  const varConfigsDefaults = getSignature(`${convertCamelCase(name)}Config`)
+  const sectionConfigDefaultKeyValue: string[] = []
+  const sectionConfigConstExports: string[] = []
+  const varConfigsDefaults = getSignature(`${convertCamelCase(name)}Defaults`)
+  const varShorthandConfigs = getSignature('configs')
+  const shorthandConfigs: string[] = []
   // 遍历所有section
   config.sectionActivedConfigs.forEach((sectionConfig, section) => {
     function removeSection(name: string): string {
@@ -262,53 +264,54 @@ export function ${getSignature('useOutputChannel')}(outputName: ${varLoggerNameT
       return name
     }
 
-    let sectionVar
+    let varSectionConfigName
     let sectionComment
     if (section) {
-      sectionVar = getSignature(convertCamelCase(getRightSection(section, -1)), varConfigsDefaults, (_pre, _count) => convertCamelCase(getRightSection(section, -_count)))
+      varSectionConfigName = getSignature(convertCamelCase(getRightSection(section, -1)), varConfigsDefaults, (_pre, count) => convertCamelCase(getRightSection(section, -count)))
       sectionComment = `${section}`
     }
     else {
-      sectionVar = getSignature('root')
+      varSectionConfigName = getSignature('root')
       sectionComment = `virtual(Keys in the root)`
     }
-    const interfaceName = getSignature(`${upperFirst(sectionVar)}`)
+    shorthandConfigs.push(`${varSectionConfigName}:${JSON.stringify(section)},`)
+    const varSectionConfigInterfaceName = getSignature(`${upperFirst(varSectionConfigName)}`)
     const varName = {
-      varConfig: getSignature(`config${interfaceName}`),
-      varConfigObject: getSignature(`configObject${interfaceName}`),
+      varSectionConfigExportConst: getSignature(`config${varSectionConfigInterfaceName}`),
+      varSectionConfigObjectExportConst: getSignature(`configObject${varSectionConfigInterfaceName}`),
     }
     const example = sectionConfig[0]
     const exampleKey = removeSection(example[0])
     // section 默认值
-    sectionDefault.push(
+    sectionConfigDefaultKeyValue.push(
       '',
       ...commentBlock(`Section defaults of \`${sectionComment}\``, 2),
       `  ${JSON.stringify(section)}: {`,
     )
 
     // section 导出对象
-    sectionExports.push(
+    sectionConfigConstExports.push(
       ...commentBlock([
         `ConfigObject of \`${sectionComment}\``,
         `@example`,
-        `const oldVal = ${varName.varConfigObject}.${exampleKey} //get value `,
+        `const oldVal = ${varName.varSectionConfigObjectExportConst}.${exampleKey} //get value `,
         // `${varName.useConfigObject}.${exampleKey} = oldVal // set value`,
-        `${varName.varConfigObject}.$update("${exampleKey}", oldVal) //update value`,
+        `${varName.varSectionConfigObjectExportConst}.$update("${exampleKey}", oldVal) //update value`,
       ].join('\n'),
       ),
-      `export const ${varName.varConfigObject} = useConfigObject("${section}")`,
+      `export const ${varName.varSectionConfigObjectExportConst} = useConfigObject(${varShorthandConfigs}.${varSectionConfigName})`,
       ...commentBlock([
         `ToConfigRefs of \`${sectionComment}\``,
         `@example`,
-        `const oldVal:${example[1].type} =${varName.varConfig}.${exampleKey}.value //get value `,
+        `const oldVal:${example[1].type} =${varName.varSectionConfigExportConst}.${exampleKey}.value //get value `,
         // `${varName.useConfig}.${exampleKey}.value = oldVal // set value`,
         // `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
-        `${varName.varConfig}.${exampleKey}.update(oldVal) //update value`,
+        `${varName.varSectionConfigExportConst}.${exampleKey}.update(oldVal) //update value`,
       ].join('\n')),
-      `export const ${varName.varConfig} = useConfig("${section}")`,
+      `export const ${varName.varSectionConfigExportConst} = useConfig(${varShorthandConfigs}.${varSectionConfigName})`,
     )
     // section 类型生成开始
-    lines.push(``, ...commentBlock(`Section Type of \`${sectionComment}\``), `export interface ${interfaceName} {`)
+    lines.push(``, ...commentBlock(`Section Type of \`${sectionComment}\``), `export interface ${varSectionConfigInterfaceName} {`)
     // 遍历section 下所有 短key的默认值
     sectionConfig.forEach(([fullKey, value]) => {
       const defaultValue = defaultValFromSchema(value)
@@ -323,7 +326,7 @@ export function ${getSignature('useOutputChannel')}(outputName: ${varLoggerNameT
         `  ${JSON.stringify(removeSection(fullKey))}${defaultValue === undefined ? '?' : ''}: ${typeFromSchema(value, false)},`,
       )
       // 当前section下所有key的默认值
-      sectionDefault.push(
+      sectionConfigDefaultKeyValue.push(
         ...commentBlock([
           value.description,
         ].join('\n'), 4),
@@ -333,32 +336,39 @@ export function ${getSignature('useOutputChannel')}(outputName: ${varLoggerNameT
     // section 类型结束
     lines.push('}')
 
-    // sectionTypeMap.push(` ${JSON.stringify(section)}: ${interfaceName}`)
-    sectionDefault.push(
+    sectionConfigDefaultKeyValue.push(
       // `  } satisfies ${interfaceName},`,
-      `  } satisfies ${interfaceName} as ${interfaceName},`,
+      `  } satisfies ${varSectionConfigInterfaceName} as ${varSectionConfigInterfaceName},`,
       '',
     )
   })
 
-  const sectionNames = [...config.sectionActivedConfigs.keys()]
+  const varSectionConfigKey = getSignature('ConfigSecionKey')
+  // const sectionNames = [...config.sectionActivedConfigs.keys()]
   lines.push(
+
     '',
     `const ${varConfigsDefaults} = {`,
-    ...sectionDefault,
+    ...sectionConfigDefaultKeyValue,
     `}`,
+    '',
+    `export type ${varSectionConfigKey} = keyof typeof ${varConfigsDefaults}`,
+    '',
+    `export const ${varShorthandConfigs} = {`,
+    ...shorthandConfigs,
+    `}  satisfies Record<string, ${varSectionConfigKey}> as Record<string, ${varSectionConfigKey}>`,
     // `export type ConfigKey = keyof typeof ${configVar}`,
-    `export type ${getSignature('ConfigKey')} = ${sectionNames.map(v => `"${v}"`).join(' | ')}`,
-    `
-export function ${getSignature('useConfig')}<K extends ConfigKey>(section: K) {
-  return defineConfigs<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section])
-}
 
-export function ${getSignature('useConfigObject')}<K extends ConfigKey>(section: K) {
+    commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
+    `export function ${getSignature('useConfig')}<K extends ${varSectionConfigKey}>(section: K) {
+  return defineConfigs<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section])
+}`,
+    commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
+    `export function ${getSignature('useConfigObject')}<K extends ${varSectionConfigKey}>(section: K) {
   return defineConfigObject<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section])
 }
     `,
-    ...sectionExports,
+    ...sectionConfigConstExports,
   )
 
   // ========== Namespace ==========

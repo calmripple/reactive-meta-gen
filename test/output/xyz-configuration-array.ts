@@ -19,113 +19,122 @@ export type CommandKey = "base" | "manualUpdate" | "project-config.manualUpdate"
 export const commands = {
     /**
      * Update config now
-     * @value `base`
+     * @commandkey `base`
      */
     base: "base",
     /**
      * Update config now
-     * @value `manualUpdate`
+     * @commandkey `manualUpdate`
      */
     manualUpdate: "manualUpdate",
     /**
      * Update config now
-     * @value `project-config.manualUpdate`
+     * @commandkey `project-config.manualUpdate`
      */
     projectConfigManualUpdate: "project-config.manualUpdate",
     /**
      * remove watch dir
-     * @value `project-config.remove-watch-dir`
+     * @commandkey `project-config.remove-watch-dir`
      */
     removeWatchDir: "project-config.remove-watch-dir",
     /**
      * remove watch dir
-     * @value `remove-watch-dir`
+     * @commandkey `remove-watch-dir`
      */
     removeWatchDir_2: "remove-watch-dir",
     /**
      * add watch dir
-     * @value `project-config.add-watch-dir`
+     * @commandkey `project-config.add-watch-dir`
      */
     addWatchDir: "project-config.add-watch-dir",
     /**
      * Run On Save: Enable
-     * @value `extension.emeraldwalk.enableRunOnSave`
+     * @commandkey `extension.emeraldwalk.enableRunOnSave`
      */
     enableRunOnSave: "extension.emeraldwalk.enableRunOnSave",
     /**
      * Run On Save: Disable
-     * @value `extension.emeraldwalk.disableRunOnSave`
+     * @commandkey `extension.emeraldwalk.disableRunOnSave`
      */
     disableRunOnSave: "extension.emeraldwalk.disableRunOnSave",
-} satisfies Record<string, CommandKey>;
+} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
+/**
+ * Register multiple commands. See `vscode::commands.registerCommand`.
+ */
 export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
     return useReactiveCommands(commands);
 }
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
+/**
+ * Creates a logger that writes to the output channel.
+ */
 export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
     return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 }
+/**
+ * @reactive `window.createOutputChannel`
+ */
 export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
     return useReactiveOutputChannel(outputName);
 }
 /**
  * Update config now
- * @value `base` identifier of the command
+ * @commandkey `base`
  */
 export function useCommandBase(callback: (...args: any[]) => any) {
     return useCommand(commands.base, callback);
 }
 /**
  * Update config now
- * @value `manualUpdate` identifier of the command
+ * @commandkey `manualUpdate`
  */
 export function useCommandManualUpdate(callback: (...args: any[]) => any) {
     return useCommand(commands.manualUpdate, callback);
 }
 /**
  * Update config now
- * @value `project-config.manualUpdate` identifier of the command
+ * @commandkey `project-config.manualUpdate`
  */
 export function useCommandProjectConfigManualUpdate(callback: (...args: any[]) => any) {
     return useCommand(commands.projectConfigManualUpdate, callback);
 }
 /**
  * remove watch dir
- * @value `project-config.remove-watch-dir` identifier of the command
+ * @commandkey `project-config.remove-watch-dir`
  */
 export function useCommandRemoveWatchDir(callback: (...args: any[]) => any) {
     return useCommand(commands.removeWatchDir, callback);
 }
 /**
  * remove watch dir
- * @value `remove-watch-dir` identifier of the command
+ * @commandkey `remove-watch-dir`
  */
 export function useCommandRemoveWatchDir_2(callback: (...args: any[]) => any) {
     return useCommand(commands.removeWatchDir_2, callback);
 }
 /**
  * add watch dir
- * @value `project-config.add-watch-dir` identifier of the command
+ * @commandkey `project-config.add-watch-dir`
  */
 export function useCommandAddWatchDir(callback: (...args: any[]) => any) {
     return useCommand(commands.addWatchDir, callback);
 }
 /**
  * Run On Save: Enable
- * @value `extension.emeraldwalk.enableRunOnSave` identifier of the command
+ * @commandkey `extension.emeraldwalk.enableRunOnSave`
  */
 export function useCommandEnableRunOnSave(callback: (...args: any[]) => any) {
     return useCommand(commands.enableRunOnSave, callback);
 }
 /**
  * Run On Save: Disable
- * @value `extension.emeraldwalk.disableRunOnSave` identifier of the command
+ * @commandkey `extension.emeraldwalk.disableRunOnSave`
  */
 export function useCommandDisableRunOnSave(callback: (...args: any[]) => any) {
     return useCommand(commands.disableRunOnSave, callback);
@@ -248,7 +257,7 @@ export interface Emeraldwalk {
         }[];
     };
 }
-const projectConfigConfig = {
+const projectConfigDefaults = {
     /**
      * Section defaults of `project-config`
      */
@@ -312,12 +321,25 @@ const projectConfigConfig = {
         "runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":", "--", "-", "/"], "delimiters1": [":", "--", "-", "/"], "commands": undefined },
     } satisfies Emeraldwalk as Emeraldwalk,
 };
-export type ConfigKey = "project-config" | "project-config.fileNestingUpdater" | "project-config.test" | "" | "emeraldwalk";
-export function useConfig<K extends ConfigKey>(section: K) {
-    return defineConfigs<typeof projectConfigConfig[K]>(section, projectConfigConfig[section]);
+export type ConfigSecionKey = keyof typeof projectConfigDefaults;
+export const configs = {
+    projectConfig: "project-config",
+    fileNestingUpdater: "project-config.fileNestingUpdater",
+    test: "project-config.test",
+    root: "",
+    emeraldwalk: "emeraldwalk",
+} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfig<K extends ConfigSecionKey>(section: K) {
+    return defineConfigs<typeof projectConfigDefaults[K]>(section, projectConfigDefaults[section]);
 }
-export function useConfigObject<K extends ConfigKey>(section: K) {
-    return defineConfigObject<typeof projectConfigConfig[K]>(section, projectConfigConfig[section]);
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfigObject<K extends ConfigSecionKey>(section: K) {
+    return defineConfigObject<typeof projectConfigDefaults[K]>(section, projectConfigDefaults[section]);
 }
 /**
  * ConfigObject of `project-config`
@@ -325,67 +347,67 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
  * const oldVal = configObjectProjectConfig.fileNestingUpdater.upstreamBranch //get value
  * configObjectProjectConfig.$update("fileNestingUpdater.upstreamBranch", oldVal) //update value
  */
-export const configObjectProjectConfig = useConfigObject("project-config");
+export const configObjectProjectConfig = useConfigObject(configs.projectConfig);
 /**
  * ToConfigRefs of `project-config`
  * @example
  * const oldVal:string =configProjectConfig.fileNestingUpdater.upstreamBranch.value //get value
  * configProjectConfig.fileNestingUpdater.upstreamBranch.update(oldVal) //update value
  */
-export const configProjectConfig = useConfig("project-config");
+export const configProjectConfig = useConfig(configs.projectConfig);
 /**
  * ConfigObject of `project-config.fileNestingUpdater`
  * @example
  * const oldVal = configObjectFileNestingUpdater.upstreamBranch //get value
  * configObjectFileNestingUpdater.$update("upstreamBranch", oldVal) //update value
  */
-export const configObjectFileNestingUpdater = useConfigObject("project-config.fileNestingUpdater");
+export const configObjectFileNestingUpdater = useConfigObject(configs.fileNestingUpdater);
 /**
  * ToConfigRefs of `project-config.fileNestingUpdater`
  * @example
  * const oldVal:string =configFileNestingUpdater.upstreamBranch.value //get value
  * configFileNestingUpdater.upstreamBranch.update(oldVal) //update value
  */
-export const configFileNestingUpdater = useConfig("project-config.fileNestingUpdater");
+export const configFileNestingUpdater = useConfig(configs.fileNestingUpdater);
 /**
  * ConfigObject of `project-config.test`
  * @example
  * const oldVal = configObjectTest.annotations //get value
  * configObjectTest.$update("annotations", oldVal) //update value
  */
-export const configObjectTest = useConfigObject("project-config.test");
+export const configObjectTest = useConfigObject(configs.test);
 /**
  * ToConfigRefs of `project-config.test`
  * @example
  * const oldVal:boolean =configTest.annotations.value //get value
  * configTest.annotations.update(oldVal) //update value
  */
-export const configTest = useConfig("project-config.test");
+export const configTest = useConfig(configs.test);
 /**
  * ConfigObject of `virtual(Keys in the root)`
  * @example
  * const oldVal = configObjectRoot.xxx //get value
  * configObjectRoot.$update("xxx", oldVal) //update value
  */
-export const configObjectRoot = useConfigObject("");
+export const configObjectRoot = useConfigObject(configs.root);
 /**
  * ToConfigRefs of `virtual(Keys in the root)`
  * @example
  * const oldVal:boolean =configRoot.xxx.value //get value
  * configRoot.xxx.update(oldVal) //update value
  */
-export const configRoot = useConfig("");
+export const configRoot = useConfig(configs.root);
 /**
  * ConfigObject of `emeraldwalk`
  * @example
  * const oldVal = configObjectEmeraldwalk.runonsave //get value
  * configObjectEmeraldwalk.$update("runonsave", oldVal) //update value
  */
-export const configObjectEmeraldwalk = useConfigObject("emeraldwalk");
+export const configObjectEmeraldwalk = useConfigObject(configs.emeraldwalk);
 /**
  * ToConfigRefs of `emeraldwalk`
  * @example
  * const oldVal:object =configEmeraldwalk.runonsave.value //get value
  * configEmeraldwalk.runonsave.update(oldVal) //update value
  */
-export const configEmeraldwalk = useConfig("emeraldwalk");
+export const configEmeraldwalk = useConfig(configs.emeraldwalk);

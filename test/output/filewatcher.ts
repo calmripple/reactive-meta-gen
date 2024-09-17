@@ -19,53 +19,62 @@ export type CommandKey = "extension.enableFileWatcher" | "extension.disableFileW
 export const commands = {
     /**
      * File Watcher: Enable
-     * @value `extension.enableFileWatcher`
+     * @commandkey `extension.enableFileWatcher`
      */
     enableFileWatcher: "extension.enableFileWatcher",
     /**
      * File Watcher: Disable
-     * @value `extension.disableFileWatcher`
+     * @commandkey `extension.disableFileWatcher`
      */
     disableFileWatcher: "extension.disableFileWatcher",
     /**
      * File Watcher: Focus Output
-     * @value `extension.focusIntoOutput`
+     * @commandkey `extension.focusIntoOutput`
      */
     focusIntoOutput: "extension.focusIntoOutput",
-} satisfies Record<string, CommandKey>;
+} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
+/**
+ * Register multiple commands. See `vscode::commands.registerCommand`.
+ */
 export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
     return useReactiveCommands(commands);
 }
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
+/**
+ * Creates a logger that writes to the output channel.
+ */
 export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
     return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 }
+/**
+ * @reactive `window.createOutputChannel`
+ */
 export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
     return useReactiveOutputChannel(outputName);
 }
 /**
  * File Watcher: Enable
- * @value `extension.enableFileWatcher` identifier of the command
+ * @commandkey `extension.enableFileWatcher`
  */
 export function useCommandEnableFileWatcher(callback: (...args: any[]) => any) {
     return useCommand(commands.enableFileWatcher, callback);
 }
 /**
  * File Watcher: Disable
- * @value `extension.disableFileWatcher` identifier of the command
+ * @commandkey `extension.disableFileWatcher`
  */
 export function useCommandDisableFileWatcher(callback: (...args: any[]) => any) {
     return useCommand(commands.disableFileWatcher, callback);
 }
 /**
  * File Watcher: Focus Output
- * @value `extension.focusIntoOutput` identifier of the command
+ * @commandkey `extension.focusIntoOutput`
  */
 export function useCommandFocusIntoOutput(callback: (...args: any[]) => any) {
     return useCommand(commands.focusIntoOutput, callback);
@@ -148,7 +157,7 @@ export interface Filewatcher {
         'event'?: ("onFileChange" | "onFileChangeImmediate" | "onFolderChange" | "onFileDelete" | "onFileRename" | "onFileCreate" | "onFolderCreate" | "onFolderDelete");
     }[] | undefined);
 }
-const filewatcherConfig = {
+const filewatcherDefaults = {
     /**
      * Section defaults of `filewatcher`
      */
@@ -187,12 +196,21 @@ const filewatcherConfig = {
         "commands": undefined,
     } satisfies Filewatcher as Filewatcher,
 };
-export type ConfigKey = "filewatcher";
-export function useConfig<K extends ConfigKey>(section: K) {
-    return defineConfigs<typeof filewatcherConfig[K]>(section, filewatcherConfig[section]);
+export type ConfigSecionKey = keyof typeof filewatcherDefaults;
+export const configs = {
+    filewatcher: "filewatcher",
+} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfig<K extends ConfigSecionKey>(section: K) {
+    return defineConfigs<typeof filewatcherDefaults[K]>(section, filewatcherDefaults[section]);
 }
-export function useConfigObject<K extends ConfigKey>(section: K) {
-    return defineConfigObject<typeof filewatcherConfig[K]>(section, filewatcherConfig[section]);
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfigObject<K extends ConfigSecionKey>(section: K) {
+    return defineConfigObject<typeof filewatcherDefaults[K]>(section, filewatcherDefaults[section]);
 }
 /**
  * ConfigObject of `filewatcher`
@@ -200,11 +218,11 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
  * const oldVal = configObjectFilewatcher.autoClearConsole //get value
  * configObjectFilewatcher.$update("autoClearConsole", oldVal) //update value
  */
-export const configObjectFilewatcher = useConfigObject("filewatcher");
+export const configObjectFilewatcher = useConfigObject(configs.filewatcher);
 /**
  * ToConfigRefs of `filewatcher`
  * @example
  * const oldVal:boolean =configFilewatcher.autoClearConsole.value //get value
  * configFilewatcher.autoClearConsole.update(oldVal) //update value
  */
-export const configFilewatcher = useConfig("filewatcher");
+export const configFilewatcher = useConfig(configs.filewatcher);

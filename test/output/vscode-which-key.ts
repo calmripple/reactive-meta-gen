@@ -19,29 +19,38 @@ export type CommandKey = "whichkey.show";
 export const commands = {
     /**
      * Show Menu
-     * @value `whichkey.show`
+     * @commandkey `whichkey.show`
      */
     show: "whichkey.show",
-} satisfies Record<string, CommandKey>;
+} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
+/**
+ * Register multiple commands. See `vscode::commands.registerCommand`.
+ */
 export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
     return useReactiveCommands(commands);
 }
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
+/**
+ * Creates a logger that writes to the output channel.
+ */
 export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
     return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 }
+/**
+ * @reactive `window.createOutputChannel`
+ */
 export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
     return useReactiveOutputChannel(outputName);
 }
 /**
  * Show Menu
- * @value `whichkey.show` identifier of the command
+ * @commandkey `whichkey.show`
  */
 export function useCommandShow(callback: (...args: any[]) => any) {
     return useCommand(commands.show, callback);
@@ -80,7 +89,7 @@ export interface Whichkey {
      */
     "bindingOverrides"?: (unknown[] | undefined);
 }
-const whichkeyConfig = {
+const whichkeyDefaults = {
     /**
      * Section defaults of `whichkey`
      */
@@ -95,12 +104,21 @@ const whichkeyConfig = {
         "bindingOverrides": undefined,
     } satisfies Whichkey as Whichkey,
 };
-export type ConfigKey = "whichkey";
-export function useConfig<K extends ConfigKey>(section: K) {
-    return defineConfigs<typeof whichkeyConfig[K]>(section, whichkeyConfig[section]);
+export type ConfigSecionKey = keyof typeof whichkeyDefaults;
+export const configs = {
+    whichkey: "whichkey",
+} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfig<K extends ConfigSecionKey>(section: K) {
+    return defineConfigs<typeof whichkeyDefaults[K]>(section, whichkeyDefaults[section]);
 }
-export function useConfigObject<K extends ConfigKey>(section: K) {
-    return defineConfigObject<typeof whichkeyConfig[K]>(section, whichkeyConfig[section]);
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfigObject<K extends ConfigSecionKey>(section: K) {
+    return defineConfigObject<typeof whichkeyDefaults[K]>(section, whichkeyDefaults[section]);
 }
 /**
  * ConfigObject of `whichkey`
@@ -108,11 +126,11 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
  * const oldVal = configObjectWhichkey.transient //get value
  * configObjectWhichkey.$update("transient", oldVal) //update value
  */
-export const configObjectWhichkey = useConfigObject("whichkey");
+export const configObjectWhichkey = useConfigObject(configs.whichkey);
 /**
  * ToConfigRefs of `whichkey`
  * @example
  * const oldVal:object =configWhichkey.transient.value //get value
  * configWhichkey.transient.update(oldVal) //update value
  */
-export const configWhichkey = useConfig("whichkey");
+export const configWhichkey = useConfig(configs.whichkey);

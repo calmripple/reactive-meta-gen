@@ -19,65 +19,74 @@ export type CommandKey = "sample.toggle-annotations" | "sample.toggle-inplace" |
 export const commands = {
     /**
      * Toggle Annotations
-     * @value `sample.toggle-annotations`
+     * @commandkey `sample.toggle-annotations`
      */
     toggleAnnotations: "sample.toggle-annotations",
     /**
      * Toggle In-place Mode
-     * @value `sample.toggle-inplace`
+     * @commandkey `sample.toggle-inplace`
      */
     toggleInplace: "sample.toggle-inplace",
     /**
      * Clear icon cache
-     * @value `sample.clear-cache`
+     * @commandkey `sample.clear-cache`
      */
     clearCache: "sample.clear-cache",
     /**
      * update current date
-     * @value `sample.update-date`
+     * @commandkey `sample.update-date`
      */
     updateDate: "sample.update-date",
-} satisfies Record<string, CommandKey>;
+} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
 export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
     return useReactiveCommand(commandFullKey, callback);
 }
+/**
+ * Register multiple commands. See `vscode::commands.registerCommand`.
+ */
 export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
     return useReactiveCommands(commands);
 }
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
+/**
+ * Creates a logger that writes to the output channel.
+ */
 export function useLogger(loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) {
     return useReactiveLogger(loggerName, { 'getPrefix': getPrefix });
 }
+/**
+ * @reactive `window.createOutputChannel`
+ */
 export function useOutputChannel(outputName: LoggerNameType = displayName ?? name ?? extensionId) {
     return useReactiveOutputChannel(outputName);
 }
 /**
  * Toggle Annotations
- * @value `sample.toggle-annotations` identifier of the command
+ * @commandkey `sample.toggle-annotations`
  */
 export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
     return useCommand(commands.toggleAnnotations, callback);
 }
 /**
  * Toggle In-place Mode
- * @value `sample.toggle-inplace` identifier of the command
+ * @commandkey `sample.toggle-inplace`
  */
 export function useCommandToggleInplace(callback: (...args: any[]) => any) {
     return useCommand(commands.toggleInplace, callback);
 }
 /**
  * Clear icon cache
- * @value `sample.clear-cache` identifier of the command
+ * @commandkey `sample.clear-cache`
  */
 export function useCommandClearCache(callback: (...args: any[]) => any) {
     return useCommand(commands.clearCache, callback);
 }
 /**
  * update current date
- * @value `sample.update-date` identifier of the command
+ * @commandkey `sample.update-date`
  */
 export function useCommandUpdateDate(callback: (...args: any[]) => any) {
     return useCommand(commands.updateDate, callback);
@@ -151,7 +160,7 @@ export interface Sample {
      */
     "customAliasesOnly": boolean;
 }
-const sampleConfig = {
+const sampleDefaults = {
     /**
      * Section defaults of `sample`
      */
@@ -222,12 +231,21 @@ const sampleConfig = {
         "customAliasesOnly": false,
     } satisfies Sample as Sample,
 };
-export type ConfigKey = "sample";
-export function useConfig<K extends ConfigKey>(section: K) {
-    return defineConfigs<typeof sampleConfig[K]>(section, sampleConfig[section]);
+export type ConfigSecionKey = keyof typeof sampleDefaults;
+export const configs = {
+    sample: "sample",
+} satisfies Record<string, ConfigSecionKey> as Record<string, ConfigSecionKey>;
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfig<K extends ConfigSecionKey>(section: K) {
+    return defineConfigs<typeof sampleDefaults[K]>(section, sampleDefaults[section]);
 }
-export function useConfigObject<K extends ConfigKey>(section: K) {
-    return defineConfigObject<typeof sampleConfig[K]>(section, sampleConfig[section]);
+/**
+ * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
+ */
+export function useConfigObject<K extends ConfigSecionKey>(section: K) {
+    return defineConfigObject<typeof sampleDefaults[K]>(section, sampleDefaults[section]);
 }
 /**
  * ConfigObject of `sample`
@@ -235,11 +253,11 @@ export function useConfigObject<K extends ConfigKey>(section: K) {
  * const oldVal = configObjectSample.date //get value
  * configObjectSample.$update("date", oldVal) //update value
  */
-export const configObjectSample = useConfigObject("sample");
+export const configObjectSample = useConfigObject(configs.sample);
 /**
  * ToConfigRefs of `sample`
  * @example
  * const oldVal:string =configSample.date.value //get value
  * configSample.date.update(oldVal) //update value
  */
-export const configSample = useConfig("sample");
+export const configSample = useConfig(configs.sample);
