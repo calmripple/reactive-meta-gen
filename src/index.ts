@@ -299,7 +299,11 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
       `export const ${varName.varSectionConstConfigExport} =()=> ${varUseConfig}(${varShorthandConfigs}.${varConfigSectionName})`,
     )
     // section 类型生成开始
-    lines.push(``, ...commentBlock(`Section Type of \`${sectionComment}\``), `export interface ${varSectionConfigInterfaceName} {`)
+    lines.push(
+      ``,
+      ...commentBlock(`Section Type of \`${sectionComment}\``),
+      `export interface ${varSectionConfigInterfaceName} {`,
+    )
     // 遍历section 下所有 短key的默认值
     sectionConfig.forEach(([fullKey, value]) => {
       const defaultValue = defaultValFromSchema(value)
