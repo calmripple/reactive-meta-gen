@@ -347,14 +347,9 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     `}  satisfies Record<string, ${varSectionConfigKey}>`,
 
     commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
-    `export function ${varUseConfig}<K extends ${varSectionConfigKey}>(section: K) {
-  return defineConfigs<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section])
-}`,
+    `export const ${varUseConfig} =<K extends ${varSectionConfigKey}>(section: K)=>  defineConfigs<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section])`,
     commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
-    `export function ${varUseConfigObject}<K extends ${varSectionConfigKey}>(section: K) {
-  return defineConfigObject<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section])
-}
-    `,
+    `export const ${varUseConfigObject}=<K extends ${varSectionConfigKey}>(section: K)=>defineConfigObject<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section]) `,
     ...sectionConfigConstExports,
   )
 

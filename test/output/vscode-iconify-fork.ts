@@ -210,15 +210,11 @@ export const configs = {
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export function useConfig<K extends ConfigSecionKey>(section: K) {
-    return defineConfigs<typeof iconifyForkDefaults[K]>(section, iconifyForkDefaults[section]);
-}
+export const useConfig = <K extends ConfigSecionKey>(section: K) => defineConfigs<typeof iconifyForkDefaults[K]>(section, iconifyForkDefaults[section]);
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export function useConfigObject<K extends ConfigSecionKey>(section: K) {
-    return defineConfigObject<typeof iconifyForkDefaults[K]>(section, iconifyForkDefaults[section]);
-}
+export const useConfigObject = <K extends ConfigSecionKey>(section: K) => defineConfigObject<typeof iconifyForkDefaults[K]>(section, iconifyForkDefaults[section]);
 /**
  * ConfigObject of `iconify`
  * @example

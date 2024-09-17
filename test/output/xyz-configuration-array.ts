@@ -314,15 +314,11 @@ export const configs = {
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export function useConfig<K extends ConfigSecionKey>(section: K) {
-    return defineConfigs<typeof projectConfigDefaults[K]>(section, projectConfigDefaults[section]);
-}
+export const useConfig = <K extends ConfigSecionKey>(section: K) => defineConfigs<typeof projectConfigDefaults[K]>(section, projectConfigDefaults[section]);
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export function useConfigObject<K extends ConfigSecionKey>(section: K) {
-    return defineConfigObject<typeof projectConfigDefaults[K]>(section, projectConfigDefaults[section]);
-}
+export const useConfigObject = <K extends ConfigSecionKey>(section: K) => defineConfigObject<typeof projectConfigDefaults[K]>(section, projectConfigDefaults[section]);
 /**
  * ConfigObject of `project-config`
  * @example

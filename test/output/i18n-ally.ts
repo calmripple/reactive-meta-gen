@@ -1777,15 +1777,11 @@ export const configs = {
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export function useConfig<K extends ConfigSecionKey>(section: K) {
-    return defineConfigs<typeof i18nAllyDefaults[K]>(section, i18nAllyDefaults[section]);
-}
+export const useConfig = <K extends ConfigSecionKey>(section: K) => defineConfigs<typeof i18nAllyDefaults[K]>(section, i18nAllyDefaults[section]);
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export function useConfigObject<K extends ConfigSecionKey>(section: K) {
-    return defineConfigObject<typeof i18nAllyDefaults[K]>(section, i18nAllyDefaults[section]);
-}
+export const useConfigObject = <K extends ConfigSecionKey>(section: K) => defineConfigObject<typeof i18nAllyDefaults[K]>(section, i18nAllyDefaults[section]);
 /**
  * ConfigObject of `i18n-ally`
  * @example

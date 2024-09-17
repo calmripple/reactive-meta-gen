@@ -219,15 +219,11 @@ export const configs = {
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export function useConfig<K extends ConfigSecionKey>(section: K) {
-    return defineConfigs<typeof smartClicksDefaults[K]>(section, smartClicksDefaults[section]);
-}
+export const useConfig = <K extends ConfigSecionKey>(section: K) => defineConfigs<typeof smartClicksDefaults[K]>(section, smartClicksDefaults[section]);
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export function useConfigObject<K extends ConfigSecionKey>(section: K) {
-    return defineConfigObject<typeof smartClicksDefaults[K]>(section, smartClicksDefaults[section]);
-}
+export const useConfigObject = <K extends ConfigSecionKey>(section: K) => defineConfigObject<typeof smartClicksDefaults[K]>(section, smartClicksDefaults[section]);
 /**
  * ConfigObject of `smartClicks`
  * @example

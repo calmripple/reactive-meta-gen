@@ -107,15 +107,11 @@ export const configs = {
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export function useConfig<K extends ConfigSecionKey>(section: K) {
-    return defineConfigs<typeof whichkeyDefaults[K]>(section, whichkeyDefaults[section]);
-}
+export const useConfig = <K extends ConfigSecionKey>(section: K) => defineConfigs<typeof whichkeyDefaults[K]>(section, whichkeyDefaults[section]);
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export function useConfigObject<K extends ConfigSecionKey>(section: K) {
-    return defineConfigObject<typeof whichkeyDefaults[K]>(section, whichkeyDefaults[section]);
-}
+export const useConfigObject = <K extends ConfigSecionKey>(section: K) => defineConfigObject<typeof whichkeyDefaults[K]>(section, whichkeyDefaults[section]);
 /**
  * ConfigObject of `whichkey`
  * @example

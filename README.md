@@ -63,58 +63,25 @@ npx reactive-meta-gen
 Generates `src/generated-meta.ts` file with the following content which syncs with your `package.json`:
 
 ```ts
-/**
- * Type union of all commands
- */
-export type CommandKey =
-  | 'sample.toggle-annotations'
-  | 'sample.toggle-inplace'
-  | 'sample.clear-cache'
+export type CommandKey = 'sample.toggle-annotations' | 'sample.toggle-inplace' | 'sample.clear-cache' | 'sample.update-date'
 
-export function useCommand(commandFullKey: CommandKey, callback: (...args: any[]) => any): void {
-  return useReactiveCommand(commandFullKey, callback)
-}
-export function useCommands(commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void {
-  return useReactiveCommands(commands)
-}
-type NameType = typeof name | typeof displayName | typeof extensionId
-export function useLogger(name: NameType = displayName, getPrefix?: ((type: string) => string) | null) {
-  return useReactiveLogger(name, { getPrefix })
-}
-export function useOutputChannel(name: NameType = displayName) {
-  return useReactiveOutputChannel(name)
-}
+export const useCommand = (commandFullKey: CommandKey, callback: (...args: any[]) => any): void => useReactiveCommand(commandFullKey, callback)
 
-/**
- * Toggle Annotations
- * @value `sample.toggle-annotations` identifier of the command
- */
-export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
-  return useCommand('sample.toggle-annotations', callback)
-}
+export const useCommands = (commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void => useReactiveCommands(commands)
 
-export function useConfig<K extends ConfigKey>(section: K) {
-  return defineConfigs<typeof sampleConfig[K]>(section, sampleConfig[section])
-}
+export type LoggerNameType = typeof name | typeof displayName | typeof extensionId
 
-export function useConfigObject<K extends ConfigKey>(section: K) {
-  return defineConfigObject<typeof sampleConfig[K]>(section, sampleConfig[section])
-}
+export const useLogger = (loggerName: LoggerNameType = displayName ?? name ?? extensionId, getPrefix?: ((type: string) => string) | null) => useReactiveLogger(loggerName, { getPrefix })
 
-/**
- * ConfigObject of `sample`
- * @example
- * const oldVal = configObjectSample.inplace //get value
- * configObjectSample.$update("inplace", oldVal) //update value
- */
-export const configObjectSample = useConfigObject('sample')
-/**
- * ToConfigRefs of `sample`
- * @example
- * const oldVal:boolean =configSample.inplace.value //get value
- * configSample.inplace.update(oldVal) //update value
- */
-export const configSample = useConfig('sample')
+export const useCommandToggleAnnotations = (callback: (...args: any[]) => any) => useCommand(commands.toggleAnnotations, callback)
+
+export const useConfig = <K extends ConfigSecionKey>(section: K) => defineConfigs<typeof sampleDefaults[K]>(section, sampleDefaults[section])
+
+export const useConfigObject = <K extends ConfigSecionKey>(section: K) => defineConfigObject<typeof sampleDefaults[K]>(section, sampleDefaults[section])
+
+export const useConfigObjectSample = () => useConfigObject(configs.sample)
+
+export const useConfigSample = () => useConfig(configs.sample)
 ```
 
 On usage:
@@ -122,24 +89,23 @@ On usage:
 ```ts
 import { defineExtension, watchEffect } from 'reactive-vscode'
 import { window } from 'vscode'
-import { configObjectSample, useCommandUpdateDate } from './output/sample'
+import { useConfigObjectSample, useCommandUpdateDate } from './generated-meta'
 
 const { activate, deactivate } = defineExtension(() => {
+  const sample = useConfigObjectSample()
   // another way to get the config value
-  const configValue = configObjectSample.date // get value
+  const _configValue = sample.date // get value
 
   watchEffect(() => {
     // watch value change
-    window.showInformationMessage(`sampleConfigs.annotations.value:${configObjectSample.date}`)
+    window.showInformationMessage(`sampleConfigs.annotations.value:${sample.date}`)
   })
-
   useCommandUpdateDate(async () => {
     // update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder
-    configObjectSample.$update('date', Date.now().toLocaleString())
+    sample.$update('date', Date.now().toLocaleString())
   })
 },
 )
-
 export { activate, deactivate }
 ```
 
