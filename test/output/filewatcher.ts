@@ -21,18 +21,18 @@ export const commands = {
      * File Watcher: Enable
      * @commandkey `extension.enableFileWatcher`
      */
-    enableFileWatcher: "extension.enableFileWatcher",
+    useCommandEnableFileWatcher: "extension.enableFileWatcher",
     /**
      * File Watcher: Disable
      * @commandkey `extension.disableFileWatcher`
      */
-    disableFileWatcher: "extension.disableFileWatcher",
+    useCommandDisableFileWatcher: "extension.disableFileWatcher",
     /**
      * File Watcher: Focus Output
      * @commandkey `extension.focusIntoOutput`
      */
-    focusIntoOutput: "extension.focusIntoOutput",
-} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
+    useCommandFocusIntoOutput: "extension.focusIntoOutput",
+} satisfies Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
@@ -60,25 +60,19 @@ export function useOutputChannel(outputName: LoggerNameType = displayName ?? nam
 }
 /**
  * File Watcher: Enable
- * @commandkey `extension.enableFileWatcher`
+ * @commandkey Register a command `extension.enableFileWatcher`
  */
-export function useCommandEnableFileWatcher(callback: (...args: any[]) => any) {
-    return useCommand(commands.enableFileWatcher, callback);
-}
+export const useCommandEnableFileWatcher = (callback: (...args: any[]) => any) => useCommand(commands.useCommandEnableFileWatcher, callback);
 /**
  * File Watcher: Disable
- * @commandkey `extension.disableFileWatcher`
+ * @commandkey Register a command `extension.disableFileWatcher`
  */
-export function useCommandDisableFileWatcher(callback: (...args: any[]) => any) {
-    return useCommand(commands.disableFileWatcher, callback);
-}
+export const useCommandDisableFileWatcher = (callback: (...args: any[]) => any) => useCommand(commands.useCommandDisableFileWatcher, callback);
 /**
  * File Watcher: Focus Output
- * @commandkey `extension.focusIntoOutput`
+ * @commandkey Register a command `extension.focusIntoOutput`
  */
-export function useCommandFocusIntoOutput(callback: (...args: any[]) => any) {
-    return useCommand(commands.focusIntoOutput, callback);
-}
+export const useCommandFocusIntoOutput = (callback: (...args: any[]) => any) => useCommand(commands.useCommandFocusIntoOutput, callback);
 /**
  * Section Type of `filewatcher`
  */

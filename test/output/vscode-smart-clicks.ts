@@ -21,8 +21,8 @@ export const commands = {
      * Smart Clicks: Trigger
      * @commandkey `smartClicks.trigger`
      */
-    trigger: "smartClicks.trigger",
-} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
+    useCommandTrigger: "smartClicks.trigger",
+} satisfies Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
@@ -50,11 +50,9 @@ export function useOutputChannel(outputName: LoggerNameType = displayName ?? nam
 }
 /**
  * Smart Clicks: Trigger
- * @commandkey `smartClicks.trigger`
+ * @commandkey Register a command `smartClicks.trigger`
  */
-export function useCommandTrigger(callback: (...args: any[]) => any) {
-    return useCommand(commands.trigger, callback);
-}
+export const useCommandTrigger = (callback: (...args: any[]) => any) => useCommand(commands.useCommandTrigger, callback);
 /**
  * Section Type of `smartClicks`
  */

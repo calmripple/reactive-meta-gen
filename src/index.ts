@@ -161,7 +161,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   const varCommandKey = getSignature('CommandKey')
   const varShorthandCommands = getSignature('commands')
   const varUseCommandFunctionNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
-    const f = getSignature(convertCamelCase(getRightSection(c.command, -1)), extensionId, (_pre, _count) => convertCamelCase(getRightSection(c.command, -_count)))
+    const f = getSignature(convertCamelCase(`${varUseCommand}.${getRightSection(c.command, -1)}`), extensionId, (_pre, count) => convertCamelCase(`${varUseCommand}.${getRightSection(c.command, -count)}`))
     return {
       varUseCommandFunctionName: f,
       ...c,
@@ -194,7 +194,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
           `  ${c.varUseCommandFunctionName}: ${JSON.stringify(c.command)},`,
         ]
       }),
-    `} satisfies Record<string, ${varCommandKey}> as Record<string, ${varCommandKey}>`,
+    `} satisfies Record<string, ${varCommandKey}> `,
   )
 
   // ========== Command Base ==========
@@ -226,10 +226,8 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
         return [
           ``,
           ...commentBlock(`${c.title}
-@commandkey \`${c.command}\``, 0),
-          `export function useCommand${upperFirst(c.varUseCommandFunctionName)}(callback: (...args: any[]) => any) {`,
-          `  return ${varUseCommand}(${varShorthandCommands}.${c.varUseCommandFunctionName}, callback)`,
-          `}`,
+@commandkey Register a command \`${c.command}\``, 0),
+          `export const ${c.varUseCommandFunctionName}=(callback: (...args: any[]) => any) => ${varUseCommand}(${varShorthandCommands}.${c.varUseCommandFunctionName}, callback)`,
         ]
       }),
     '',

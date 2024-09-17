@@ -21,8 +21,8 @@ export const commands = {
      * Show Menu
      * @commandkey `whichkey.show`
      */
-    show: "whichkey.show",
-} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
+    useCommandShow: "whichkey.show",
+} satisfies Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
@@ -50,11 +50,9 @@ export function useOutputChannel(outputName: LoggerNameType = displayName ?? nam
 }
 /**
  * Show Menu
- * @commandkey `whichkey.show`
+ * @commandkey Register a command `whichkey.show`
  */
-export function useCommandShow(callback: (...args: any[]) => any) {
-    return useCommand(commands.show, callback);
-}
+export const useCommandShow = (callback: (...args: any[]) => any) => useCommand(commands.useCommandShow, callback);
 /**
  * Section Type of `whichkey`
  */

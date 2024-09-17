@@ -21,23 +21,23 @@ export const commands = {
      * Toggle Annotations
      * @commandkey `sample.toggle-annotations`
      */
-    toggleAnnotations: "sample.toggle-annotations",
+    useCommandToggleAnnotations: "sample.toggle-annotations",
     /**
      * Toggle In-place Mode
      * @commandkey `sample.toggle-inplace`
      */
-    toggleInplace: "sample.toggle-inplace",
+    useCommandToggleInplace: "sample.toggle-inplace",
     /**
      * Clear icon cache
      * @commandkey `sample.clear-cache`
      */
-    clearCache: "sample.clear-cache",
+    useCommandClearCache: "sample.clear-cache",
     /**
      * update current date
      * @commandkey `sample.update-date`
      */
-    updateDate: "sample.update-date",
-} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
+    useCommandUpdateDate: "sample.update-date",
+} satisfies Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
@@ -65,32 +65,24 @@ export function useOutputChannel(outputName: LoggerNameType = displayName ?? nam
 }
 /**
  * Toggle Annotations
- * @commandkey `sample.toggle-annotations`
+ * @commandkey Register a command `sample.toggle-annotations`
  */
-export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
-    return useCommand(commands.toggleAnnotations, callback);
-}
+export const useCommandToggleAnnotations = (callback: (...args: any[]) => any) => useCommand(commands.useCommandToggleAnnotations, callback);
 /**
  * Toggle In-place Mode
- * @commandkey `sample.toggle-inplace`
+ * @commandkey Register a command `sample.toggle-inplace`
  */
-export function useCommandToggleInplace(callback: (...args: any[]) => any) {
-    return useCommand(commands.toggleInplace, callback);
-}
+export const useCommandToggleInplace = (callback: (...args: any[]) => any) => useCommand(commands.useCommandToggleInplace, callback);
 /**
  * Clear icon cache
- * @commandkey `sample.clear-cache`
+ * @commandkey Register a command `sample.clear-cache`
  */
-export function useCommandClearCache(callback: (...args: any[]) => any) {
-    return useCommand(commands.clearCache, callback);
-}
+export const useCommandClearCache = (callback: (...args: any[]) => any) => useCommand(commands.useCommandClearCache, callback);
 /**
  * update current date
- * @commandkey `sample.update-date`
+ * @commandkey Register a command `sample.update-date`
  */
-export function useCommandUpdateDate(callback: (...args: any[]) => any) {
-    return useCommand(commands.updateDate, callback);
-}
+export const useCommandUpdateDate = (callback: (...args: any[]) => any) => useCommand(commands.useCommandUpdateDate, callback);
 /**
  * Section Type of `sample`
  */

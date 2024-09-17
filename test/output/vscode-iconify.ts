@@ -21,18 +21,18 @@ export const commands = {
      * Toggle Annotations
      * @commandkey `iconify.toggle-annotations`
      */
-    toggleAnnotations: "iconify.toggle-annotations",
+    useCommandToggleAnnotations: "iconify.toggle-annotations",
     /**
      * Toggle In-place Mode
      * @commandkey `iconify.toggle-inplace`
      */
-    toggleInplace: "iconify.toggle-inplace",
+    useCommandToggleInplace: "iconify.toggle-inplace",
     /**
      * Clear icon cache
      * @commandkey `iconify.clear-cache`
      */
-    clearCache: "iconify.clear-cache",
-} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
+    useCommandClearCache: "iconify.clear-cache",
+} satisfies Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
@@ -60,25 +60,19 @@ export function useOutputChannel(outputName: LoggerNameType = displayName ?? nam
 }
 /**
  * Toggle Annotations
- * @commandkey `iconify.toggle-annotations`
+ * @commandkey Register a command `iconify.toggle-annotations`
  */
-export function useCommandToggleAnnotations(callback: (...args: any[]) => any) {
-    return useCommand(commands.toggleAnnotations, callback);
-}
+export const useCommandToggleAnnotations = (callback: (...args: any[]) => any) => useCommand(commands.useCommandToggleAnnotations, callback);
 /**
  * Toggle In-place Mode
- * @commandkey `iconify.toggle-inplace`
+ * @commandkey Register a command `iconify.toggle-inplace`
  */
-export function useCommandToggleInplace(callback: (...args: any[]) => any) {
-    return useCommand(commands.toggleInplace, callback);
-}
+export const useCommandToggleInplace = (callback: (...args: any[]) => any) => useCommand(commands.useCommandToggleInplace, callback);
 /**
  * Clear icon cache
- * @commandkey `iconify.clear-cache`
+ * @commandkey Register a command `iconify.clear-cache`
  */
-export function useCommandClearCache(callback: (...args: any[]) => any) {
-    return useCommand(commands.clearCache, callback);
-}
+export const useCommandClearCache = (callback: (...args: any[]) => any) => useCommand(commands.useCommandClearCache, callback);
 /**
  * Section Type of `iconify`
  */

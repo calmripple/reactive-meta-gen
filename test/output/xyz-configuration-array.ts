@@ -21,43 +21,43 @@ export const commands = {
      * Update config now
      * @commandkey `base`
      */
-    base: "base",
+    useCommandBase: "base",
     /**
      * Update config now
      * @commandkey `manualUpdate`
      */
-    manualUpdate: "manualUpdate",
+    useCommandManualUpdate: "manualUpdate",
     /**
      * Update config now
      * @commandkey `project-config.manualUpdate`
      */
-    projectConfigManualUpdate: "project-config.manualUpdate",
+    useCommandProjectConfigManualUpdate: "project-config.manualUpdate",
     /**
      * remove watch dir
      * @commandkey `project-config.remove-watch-dir`
      */
-    removeWatchDir: "project-config.remove-watch-dir",
+    useCommandRemoveWatchDir: "project-config.remove-watch-dir",
     /**
      * remove watch dir
      * @commandkey `remove-watch-dir`
      */
-    removeWatchDir_2: "remove-watch-dir",
+    useCommandRemoveWatchDir_2: "remove-watch-dir",
     /**
      * add watch dir
      * @commandkey `project-config.add-watch-dir`
      */
-    addWatchDir: "project-config.add-watch-dir",
+    useCommandAddWatchDir: "project-config.add-watch-dir",
     /**
      * Run On Save: Enable
      * @commandkey `extension.emeraldwalk.enableRunOnSave`
      */
-    enableRunOnSave: "extension.emeraldwalk.enableRunOnSave",
+    useCommandEnableRunOnSave: "extension.emeraldwalk.enableRunOnSave",
     /**
      * Run On Save: Disable
      * @commandkey `extension.emeraldwalk.disableRunOnSave`
      */
-    disableRunOnSave: "extension.emeraldwalk.disableRunOnSave",
-} satisfies Record<string, CommandKey> as Record<string, CommandKey>;
+    useCommandDisableRunOnSave: "extension.emeraldwalk.disableRunOnSave",
+} satisfies Record<string, CommandKey>;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
@@ -85,60 +85,44 @@ export function useOutputChannel(outputName: LoggerNameType = displayName ?? nam
 }
 /**
  * Update config now
- * @commandkey `base`
+ * @commandkey Register a command `base`
  */
-export function useCommandBase(callback: (...args: any[]) => any) {
-    return useCommand(commands.base, callback);
-}
+export const useCommandBase = (callback: (...args: any[]) => any) => useCommand(commands.useCommandBase, callback);
 /**
  * Update config now
- * @commandkey `manualUpdate`
+ * @commandkey Register a command `manualUpdate`
  */
-export function useCommandManualUpdate(callback: (...args: any[]) => any) {
-    return useCommand(commands.manualUpdate, callback);
-}
+export const useCommandManualUpdate = (callback: (...args: any[]) => any) => useCommand(commands.useCommandManualUpdate, callback);
 /**
  * Update config now
- * @commandkey `project-config.manualUpdate`
+ * @commandkey Register a command `project-config.manualUpdate`
  */
-export function useCommandProjectConfigManualUpdate(callback: (...args: any[]) => any) {
-    return useCommand(commands.projectConfigManualUpdate, callback);
-}
+export const useCommandProjectConfigManualUpdate = (callback: (...args: any[]) => any) => useCommand(commands.useCommandProjectConfigManualUpdate, callback);
 /**
  * remove watch dir
- * @commandkey `project-config.remove-watch-dir`
+ * @commandkey Register a command `project-config.remove-watch-dir`
  */
-export function useCommandRemoveWatchDir(callback: (...args: any[]) => any) {
-    return useCommand(commands.removeWatchDir, callback);
-}
+export const useCommandRemoveWatchDir = (callback: (...args: any[]) => any) => useCommand(commands.useCommandRemoveWatchDir, callback);
 /**
  * remove watch dir
- * @commandkey `remove-watch-dir`
+ * @commandkey Register a command `remove-watch-dir`
  */
-export function useCommandRemoveWatchDir_2(callback: (...args: any[]) => any) {
-    return useCommand(commands.removeWatchDir_2, callback);
-}
+export const useCommandRemoveWatchDir_2 = (callback: (...args: any[]) => any) => useCommand(commands.useCommandRemoveWatchDir_2, callback);
 /**
  * add watch dir
- * @commandkey `project-config.add-watch-dir`
+ * @commandkey Register a command `project-config.add-watch-dir`
  */
-export function useCommandAddWatchDir(callback: (...args: any[]) => any) {
-    return useCommand(commands.addWatchDir, callback);
-}
+export const useCommandAddWatchDir = (callback: (...args: any[]) => any) => useCommand(commands.useCommandAddWatchDir, callback);
 /**
  * Run On Save: Enable
- * @commandkey `extension.emeraldwalk.enableRunOnSave`
+ * @commandkey Register a command `extension.emeraldwalk.enableRunOnSave`
  */
-export function useCommandEnableRunOnSave(callback: (...args: any[]) => any) {
-    return useCommand(commands.enableRunOnSave, callback);
-}
+export const useCommandEnableRunOnSave = (callback: (...args: any[]) => any) => useCommand(commands.useCommandEnableRunOnSave, callback);
 /**
  * Run On Save: Disable
- * @commandkey `extension.emeraldwalk.disableRunOnSave`
+ * @commandkey Register a command `extension.emeraldwalk.disableRunOnSave`
  */
-export function useCommandDisableRunOnSave(callback: (...args: any[]) => any) {
-    return useCommand(commands.disableRunOnSave, callback);
-}
+export const useCommandDisableRunOnSave = (callback: (...args: any[]) => any) => useCommand(commands.useCommandDisableRunOnSave, callback);
 /**
  * Type union of Deprecated all configs
  */
