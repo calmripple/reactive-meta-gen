@@ -32,35 +32,19 @@
   //Enabled project-config inline annotations
   "xxx": true,
 
-  //Automatically clear the console on each save before running commands.
-  "emeraldwalk.runonsave.autoClearConsole": false,
-
-  //Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }).
-  "emeraldwalk.runonsave.shell": ,
-
-  //Delimiters for separating between collection id and icon id
-  "emeraldwalk.runonsave.delimiters": [":","--","-","/"],
-
-  //Delimiters for separating between collection id and icon id
-  "emeraldwalk.runonsave.delimiters1": [":","--","-","/"],
-
   //
-  "emeraldwalk.runonsave.commands": [],
+  "emeraldwalk.runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": [] },
 
 }
 ```
 
 ## Configuration
 
-| Key                                                | Description                                                                                                                 | Type      | Default                              |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------- | ------------------------------------ |
-| `project-config.fileNestingUpdater.upstreamBranch` | The branch name of upstream repo                                                                                            | `string`  | `"main"`                             |
-| `project-config.fileNestingUpdater.upstreamRepo`   | The upstream repo you want to update from                                                                                   | `string`  | `"antfu/vscode-file-nesting-config"` |
-| `project-config.test.annotations`                  | Enabled project-config inline annotations                                                                                   | `boolean` | `true`                               |
-| `project-config.test.position`                     | Position the icon before or after the icon name                                                                             | `string`  | `"before"`                           |
-| `xxx`                                              | Enabled project-config inline annotations                                                                                   | `boolean` | `true`                               |
-| `emeraldwalk.runonsave.autoClearConsole`           | Automatically clear the console on each save before running commands.                                                       | `boolean` | `false`                              |
-| `emeraldwalk.runonsave.shell`                      | Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell }). | `string`  | ``                                   |
-| `emeraldwalk.runonsave.delimiters`                 | Delimiters for separating between collection id and icon id                                                                 | `array`   | `[":","--","-","/"]`                 |
-| `emeraldwalk.runonsave.delimiters1`                | Delimiters for separating between collection id and icon id                                                                 | `array`   | `[":","--","-","/"]`                 |
-| `emeraldwalk.runonsave.commands`                   |                                                                                                                             | `array`   | `[]`                                 |
+| Key                                                | Description                                     | Type      | Default                                                                                                                                  |
+| -------------------------------------------------- | ----------------------------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `project-config.fileNestingUpdater.upstreamBranch` | The branch name of upstream repo                | `string`  | `"main"`                                                                                                                                 |
+| `project-config.fileNestingUpdater.upstreamRepo`   | The upstream repo you want to update from       | `string`  | `"antfu/vscode-file-nesting-config"`                                                                                                     |
+| `project-config.test.annotations`                  | Enabled project-config inline annotations       | `boolean` | `true`                                                                                                                                   |
+| `project-config.test.position`                     | Position the icon before or after the icon name | `string`  | `"before"`                                                                                                                               |
+| `xxx`                                              | Enabled project-config inline annotations       | `boolean` | `true`                                                                                                                                   |
+| `emeraldwalk.runonsave`                            |                                                 | `object`  | `{ "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": [] }` |

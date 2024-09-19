@@ -41,26 +41,26 @@ export function addOrUpdate<T>(target: Map<string, T[]>, section: string, value:
   }
   return target
 }
-function getSectionFromObject(obj: ConfigurationProperty) {
-  if (isProperty(obj) && obj.type === 'object' && obj.properties) {
-    const list = new Map<string, ConfigurationProperty>()
-    for (const [key, value] of Object.entries(obj.properties)) {
-      if (isProperty(value) && value.type === 'object' && value.properties) {
-        const inner = getSectionFromObject(value)
-        if (inner !== undefined) {
-          [...inner.entries()].forEach(([innerKey, innerValue]) => {
-            list.set(`${key}.${innerKey}`, innerValue)
-          })
-        }
-      }
-      else {
-        list.set(key, value)
-      }
-    }
-    return list
-  }
-  return undefined
-}
+// function getSectionFromObject(obj: ConfigurationProperty) {
+//   if (isProperty(obj) && obj.type === 'object' && obj.properties) {
+//     const list = new Map<string, ConfigurationProperty>()
+//     for (const [key, value] of Object.entries(obj.properties)) {
+//       if (isProperty(value) && value.type === 'object' && value.properties) {
+//         const inner = getSectionFromObject(value)
+//         if (inner !== undefined) {
+//           [...inner.entries()].forEach(([innerKey, innerValue]) => {
+//             list.set(`${key}.${innerKey}`, innerValue)
+//           })
+//         }
+//       }
+//       else {
+//         list.set(key, value)
+//       }
+//     }
+//     return list
+//   }
+//   return undefined
+// }
 export const getConfigInfo = memo(
   (packageJson: any) => {
     const deprecatedConfigs = new Map<string, ConfigurationProperty>()
@@ -85,16 +85,16 @@ export const getConfigInfo = memo(
     }
     const sectionActivedConfigs = Object.entries(getConfigObject(packageJson)).reduce((acc, [fullKey, value]) => {
       if (isProperty(value)) {
-        const list = getSectionFromObject(value)
-        if (list === undefined) {
-          ha(acc, fullKey, value)
-        }
-        else {
-          [...list.entries()].forEach(([innerKey, innerValue]) => {
-            const newfullKey = `${fullKey}.${innerKey}`
-            ha(acc, newfullKey, innerValue)
-          })
-        }
+        // const list = getSectionFromObject(value)
+        // if (list === undefined) {
+        ha(acc, fullKey, value)
+        // }
+        // else {
+        //   [...list.entries()].forEach(([innerKey, innerValue]) => {
+        //     const newfullKey = `${fullKey}.${innerKey}`
+        //     ha(acc, newfullKey, innerValue)
+        //   })
+        // }
       }
       else {
         deprecatedConfigs.set(fullKey, value)

@@ -30,5 +30,8 @@
   "eslint.lintTask.enable": true,
   "eslint.ignoreUntitled": true,
   "eslint.codeActionsOnSave.mode": "problems",
-  "code-runner.clearPreviousOutput": true
+  "code-runner.clearPreviousOutput": true,
+  "conventionalCommits.scopes": [
+    "base"
+  ]
 }
