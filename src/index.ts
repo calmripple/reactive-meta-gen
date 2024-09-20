@@ -122,13 +122,13 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   let lines: string[] = []
 
   lines.push('// Meta info')
-  lines.push('', `import { defineConfigObject, defineConfigs, useCommand as useReactiveCommand, 
+  lines.push('', `import { defineConfigObject, defineConfigs, useCommand as useReactiveCommand,
     useCommands as useReactiveCommands,
     useLogger as useReactiveLogger,
     useOutputChannel as useReactiveOutputChannel,    
     } from 'reactive-vscode'`, '')
-
   getSignatures(['defineConfigObject', 'defineConfigs', 'useReactiveCommand', 'useReactiveCommands', 'useReactiveLogger', 'useReactiveOutputChannel'])
+
   const varPublisher = getSignature(`publisher`)
   lines.push(
     `export const ${varPublisher} = ${packageJson.publisher ? JSON.stringify(packageJson.publisher) : 'undefined'}`,
@@ -235,8 +235,8 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   const sectionConfigDefaultKeyValue: string[] = []
   const sectionConfigConstExports: string[] = []
   const varConfigsDefaults = getSignature(`${convertCamelCase(name)}Defaults`)
-  const varShorthandConfigs = getSignature('configs')
-  const shorthandConfigs: string[] = []
+  const varSectionShorthandRawValuePairs = getSignature('configs')
+  const sectionShorthandRawValuePairs: string[] = []
   const varSectionConfigKey = getSignature('ConfigSecionKey')
   const varUseConfig = getSignature('useConfig')
   const varUseConfigObject = getSignature('useConfigObject')
@@ -260,12 +260,12 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
       varConfigSectionName = getSignature('root')
       sectionComment = `virtual(Keys in the root)`
     }
-    shorthandConfigs.push(`${varConfigSectionName}:${JSON.stringify(section)},`)
-    const varSectionConfigInterfaceName = getSignature(`${upperFirst(varConfigSectionName)}`)
+    sectionShorthandRawValuePairs.push(`${varConfigSectionName}:${JSON.stringify(section)},`)
+    const varSectionInterfaceName = getSignature(`${upperFirst(varConfigSectionName)}`)
 
     const varName = {
-      varSectionConstConfigExport: getSignature(`${varUseConfig}${varSectionConfigInterfaceName}`),
-      varSectionConstConfigObjectExport: getSignature(`${varUseConfigObject}${varSectionConfigInterfaceName}`),
+      varSectionConfigExportFunctionName: getSignature(`${varUseConfig}${varSectionInterfaceName}`),
+      varSectionConfigObjectExportFunctionName: getSignature(`${varUseConfigObject}${varSectionInterfaceName}`),
     }
     const example = sectionConfig[0]
     const exampleKey = removeSection(example[0])
@@ -281,28 +281,28 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
       ...commentBlock([
         `ConfigObject of \`${sectionComment}\``,
         `@example`,
-        `const ${varConfigSectionName} = ${varName.varSectionConstConfigObjectExport}()`,
+        `const ${varConfigSectionName} = ${varName.varSectionConfigObjectExportFunctionName}()`,
         `const oldVal:${example[1].type} = ${varConfigSectionName}.${exampleKey} //get value `,
         // `${varName.useConfigObject}.${exampleKey} = oldVal // set value`,
         `${varConfigSectionName}.$update("${exampleKey}", oldVal) //update value`,
       ].join('\n')),
-      `export const ${varName.varSectionConstConfigObjectExport} =()=> ${varUseConfigObject}(${varShorthandConfigs}.${varConfigSectionName})`,
+      `export const ${varName.varSectionConfigObjectExportFunctionName} =()=> ${varUseConfigObject}(${varSectionShorthandRawValuePairs}.${varConfigSectionName})`,
       ...commentBlock([
         `ToConfigRefs of \`${sectionComment}\``,
         `@example`,
-        `const ${varConfigSectionName} = ${varName.varSectionConstConfigExport}()`,
+        `const ${varConfigSectionName} = ${varName.varSectionConfigExportFunctionName}()`,
         `const oldVal:${example[1].type} = ${varConfigSectionName}.${exampleKey}.value //get value `,
         // `${varName.useConfig}.${exampleKey}.value = oldVal // set value`,
         // `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
         `${varConfigSectionName}.${exampleKey}.update(oldVal) //update value`,
       ].join('\n')),
-      `export const ${varName.varSectionConstConfigExport} =()=> ${varUseConfig}(${varShorthandConfigs}.${varConfigSectionName})`,
+      `export const ${varName.varSectionConfigExportFunctionName} =()=> ${varUseConfig}(${varSectionShorthandRawValuePairs}.${varConfigSectionName})`,
     )
     // section 类型生成开始
     lines.push(
       ``,
       ...commentBlock(`Section Type of \`${sectionComment}\``),
-      `export interface ${varSectionConfigInterfaceName} {`,
+      `export interface ${varSectionInterfaceName} {`,
     )
     // 遍历section 下所有 短key的默认值
     sectionConfig.forEach(([fullKey, value]) => {
@@ -330,7 +330,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
 
     sectionConfigDefaultKeyValue.push(
       // `  } satisfies ${interfaceName},`,
-      `  } satisfies ${varSectionConfigInterfaceName} as ${varSectionConfigInterfaceName},`,
+      `  } satisfies ${varSectionInterfaceName} as ${varSectionInterfaceName},`,
       '',
     )
   })
@@ -346,8 +346,8 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     `export type ${varSectionConfigKey} = keyof typeof ${varConfigsDefaults}`,
     // `export type ${varSectionConfigKey} = ${sectionNames.map(s => JSON.stringify(s)).join('|')}`,
     commentBlock('Shorthand of config section name.').join('\n'),
-    `export const ${varShorthandConfigs} = {`,
-    ...shorthandConfigs,
+    `export const ${varSectionShorthandRawValuePairs} = {`,
+    ...sectionShorthandRawValuePairs,
     `}  satisfies Record<string, ${varSectionConfigKey}>`,
 
     commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
