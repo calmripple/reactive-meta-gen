@@ -41,33 +41,55 @@ export function addOrUpdate<T>(target: Map<string, T[]>, section: string, value:
   }
   return target
 }
-// function getSectionFromObject(obj: ConfigurationProperty) {
-//   if (isProperty(obj) && obj.type === 'object' && obj.properties) {
-//     const list = new Map<string, ConfigurationProperty>()
-//     for (const [key, value] of Object.entries(obj.properties)) {
-//       if (isProperty(value) && value.type === 'object' && value.properties) {
-//         const inner = getSectionFromObject(value)
-//         if (inner !== undefined) {
-//           [...inner.entries()].forEach(([innerKey, innerValue]) => {
-//             list.set(`${key}.${innerKey}`, innerValue)
-//           })
-//         }
-//       }
-//       else {
-//         list.set(key, value)
-//       }
-//     }
-//     return list
-//   }
-//   return undefined
-// }
+function getSectionFromObject(obj: ConfigurationProperty) {
+  if (isProperty(obj) && obj.type === 'object' && obj.properties) {
+    const list = new Map<string, ConfigurationProperty>()
+    for (const [key, value] of Object.entries(obj.properties)) {
+      if (isProperty(value) && value.type === 'object' && value.properties) {
+        const inner = getSectionFromObject(value)
+        if (inner !== undefined) {
+          [...inner.entries()].forEach(([innerKey, innerValue]) => {
+            list.set(`${key}.${innerKey}`, innerValue)
+          })
+        }
+      }
+      else {
+        list.set(key, value)
+      }
+    }
+    return list
+  }
+  return undefined
+}
 export const getConfigInfo = memo(
   (packageJson: any) => {
     const deprecatedConfigs = new Map<string, ConfigurationProperty>()
     const deprecatedKeys = new Array<string>()
     const activedConfigs = new Map<string, ConfigurationProperty>()
     const activedKeys = new Array<string>()
-    function ha(acc: Map<string, [string, ConfigurationProperty][]>, fullKey: string, value: ConfigurationProperty) {
+    const activedSectionConfigs = new Map<string, [string, ConfigurationProperty][]>()
+
+    const virtualActivedConfigs = new Map<string, ConfigurationProperty>()
+    const virtualActivedKeys = new Array<string>()
+    const virtualActivedSectionConfigs = new Map<string, [string, ConfigurationProperty][]>()
+
+    function handleVirtualSection(fullKey: string, value: ConfigurationProperty) {
+      virtualActivedConfigs.set(fullKey, value)
+      virtualActivedKeys.push(fullKey)
+      const parts = fullKey.split('.')
+      if (parts.length > 1) {
+        const sectionParts = parts.slice(0, -1)
+        for (let i = 0; i < sectionParts.length; i++) {
+          const section = (sectionParts.slice(0, i + 1).join('.'))
+          addOrUpdate(virtualActivedSectionConfigs, section, [fullKey, value])
+        }
+      }
+      else {
+        const section = ('')
+        addOrUpdate(virtualActivedSectionConfigs, section, [fullKey, value])
+      }
+    }
+    function handleRealSection(fullKey: string, value: ConfigurationProperty) {
       activedConfigs.set(fullKey, value)
       activedKeys.push(fullKey)
       const parts = fullKey.split('.')
@@ -75,39 +97,41 @@ export const getConfigInfo = memo(
         const sectionParts = parts.slice(0, -1)
         for (let i = 0; i < sectionParts.length; i++) {
           const section = (sectionParts.slice(0, i + 1).join('.'))
-          addOrUpdate(acc, section, [fullKey, value])
+          addOrUpdate(activedSectionConfigs, section, [fullKey, value])
         }
       }
       else {
         const section = ('')
-        addOrUpdate(acc, section, [fullKey, value])
+        addOrUpdate(activedSectionConfigs, section, [fullKey, value])
       }
     }
-    const sectionActivedConfigs = Object.entries(getConfigObject(packageJson)).reduce((acc, [fullKey, value]) => {
+    Object.entries(getConfigObject(packageJson)).forEach(([fullKey, value]) => {
       if (isProperty(value)) {
-        // const list = getSectionFromObject(value)
-        // if (list === undefined) {
-        ha(acc, fullKey, value)
-        // }
-        // else {
-        //   [...list.entries()].forEach(([innerKey, innerValue]) => {
-        //     const newfullKey = `${fullKey}.${innerKey}`
-        //     ha(acc, newfullKey, innerValue)
-        //   })
-        // }
+        handleRealSection(fullKey, value)
+        const list = getSectionFromObject(value)
+        if (list !== undefined) {
+          [...list.entries()].forEach(([innerKey, innerValue]) => {
+            const newfullKey = `${fullKey}.${innerKey}`
+            handleVirtualSection(newfullKey, innerValue)
+          })
+        }
       }
       else {
         deprecatedConfigs.set(fullKey, value)
         deprecatedKeys.push(fullKey)
       }
-      return acc
-    }, new Map<string, [string, ConfigurationProperty][]>())
+    })
     return {
       deprecatedConfigs,
       deprecatedKeys,
+
       activedConfigs,
       activedKeys,
-      sectionActivedConfigs,
+      activedSectionConfigs,
+
+      virtualActivedKeys,
+      virtualActivedConfigs,
+      virtualActivedSectionConfigs,
     }
   },
 )

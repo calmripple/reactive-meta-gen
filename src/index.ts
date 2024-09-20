@@ -241,7 +241,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   const varUseConfig = getSignature('useConfig')
   const varUseConfigObject = getSignature('useConfigObject')
   // 遍历所有section
-  config.sectionActivedConfigs.forEach((sectionConfig, section) => {
+  config.activedSectionConfigs.forEach((sectionConfig, section) => {
     function removeSection(name: string): string {
       const sectionWithDot = `${section}.`
       if (name.startsWith(sectionWithDot)) {
