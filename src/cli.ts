@@ -34,11 +34,10 @@ cli.command('[input]', 'Generate TypeScript files from package.json')
         .replace(/<!-- commands -->[\s\S]*<!-- commands -->/, `<!-- commands -->\n\n${markdown.commandsTable}\n\n<!-- commands -->`)
         .replace(/<!-- configs -->[\s\S]*<!-- configs -->/, `<!-- configs -->\n\n${markdown.configsTable}\n\n<!-- configs -->`)
         .replace(/<!-- configsJson -->[\s\S]*<!-- configsJson -->/, `<!-- configsJson -->\n\n${markdown.configsJson}\n\n<!-- configsJson -->`)
-
-      if (raw === content && !raw.includes('<!-- commands -->') && !raw.includes('<!-- configs -->') && !raw.includes('<!-- configsJson -->')) {
+      if (!raw.includes('<!-- commands -->') && !raw.includes('<!-- configs -->') && !raw.includes('<!-- configsJson -->')) {
         console.log('Add `<!-- commands --><!-- commands -->` and `<!-- configs --><!-- configs -->`  and `<!-- configsJson --><!-- configsJson -->` to your README.md to insert commands and configurations table')
       }
-      else {
+      if (raw !== content && (raw.includes('<!-- commands -->') || raw.includes('<!-- configs -->') || raw.includes('<!-- configsJson -->'))) {
         await fs.writeFile(options.readme, content, 'utf-8')
       }
     }
