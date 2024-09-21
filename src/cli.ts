@@ -13,23 +13,27 @@ cli.command('[input]', 'Generate TypeScript files from package.json')
   .option('--namespace <namespace>', 'Generate with namespace')
   .option('--readme <path>', 'The path to README.md', { default: 'README.md' })
   .action(async (input = 'package.json', options) => {
+    input = path.resolve(input)
+    console.log(`Generating from '${input}'`)
     const json = JSON.parse(await fs.readFile(input, 'utf-8'))
     if (!json.publisher)
       throw new Error('This package.json does not seem to be a valid VSCode extension package.json')
     const { dts, markdown } = await generate(json, {
       namespace: options.namespace === 'false' ? false : options.namespace,
     })
-    if (existsSync(options.output) && await fs.readFile(options.output, 'utf-8') === dts) {
-      console.log(`No changes of '${input}','${options.output}' is up to date.`)
+    const dtsfile = path.resolve(options.output)
+    if (existsSync(dtsfile) && await fs.readFile(dtsfile, 'utf-8') === dts) {
+      console.log(`Up to date:'${dtsfile}'.`)
     }
     else {
-      const outputDir = path.dirname(options.output)
+      const outputDir = path.dirname(dtsfile)
       await fs.mkdir(outputDir, { recursive: true })
-      await fs.writeFile(options.output, dts, 'utf-8')
+      await fs.writeFile(dtsfile, dts, 'utf-8')
+      console.log(`Generate success. '${dtsfile}'.`)
     }
-
-    if (options.readme && options.readme !== 'false') {
-      const raw = await fs.readFile(options.readme, 'utf-8')
+    const readme = path.resolve(options.readme)
+    if (readme && existsSync(readme) === true) {
+      const raw = await fs.readFile(readme, 'utf-8')
       const content = raw
         .replace(/<!-- commands -->[\s\S]*<!-- commands -->/, `<!-- commands -->\n\n${markdown.commandsTable}\n\n<!-- commands -->`)
         .replace(/<!-- configs -->[\s\S]*<!-- configs -->/, `<!-- configs -->\n\n${markdown.configsTable}\n\n<!-- configs -->`)
@@ -38,7 +42,11 @@ cli.command('[input]', 'Generate TypeScript files from package.json')
         console.log('Add `<!-- commands --><!-- commands -->` and `<!-- configs --><!-- configs -->`  and `<!-- configsJson --><!-- configsJson -->` to your README.md to insert commands and configurations table')
       }
       if (raw !== content && (raw.includes('<!-- commands -->') || raw.includes('<!-- configs -->') || raw.includes('<!-- configsJson -->'))) {
-        await fs.writeFile(options.readme, content, 'utf-8')
+        await fs.writeFile(readme, content, 'utf-8')
+        console.log(`Generate success. '${readme}'.`)
+      }
+      else {
+        console.log(`Up to date:'${readme}'.`)
       }
     }
   })
