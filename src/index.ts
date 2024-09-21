@@ -356,6 +356,14 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     `export const ${varUseConfigObject}=<K extends ${varSectionConfigKey}>(section: K)=>defineConfigObject<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section]) `,
     ...sectionConfigConstExports,
   )
+  config.virtualActivedSectionConfigs.forEach((values, section) => {
+    lines.push(
+      '',
+      `export type ${convertCamelCase(section)}= ${values.map(v => '"'.concat(v[0]).concat('"')).join('|')}  ;
+      `,
+
+    )
+  })
 
   // ========== Namespace ==========
 
@@ -363,7 +371,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     if (namespace === true)
       namespace = 'ExtensionMeta'
 
-    lines = lines.map(line => line ? `  ${line}` : line)
+    lines = lines.map(line => line ? `  ${line} ` : line)
     lines.unshift(
       ...commentBlock(`Extension Meta for \`${extensionId}\``, 0),
       `export namespace ${namespace} {`,

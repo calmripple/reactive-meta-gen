@@ -423,3 +423,4 @@ export const useConfigObjectEmeraldwalk = () => useConfigObject(configs.emeraldw
  * emeraldwalk.runonsave.update(oldVal) //update value
  */
 export const useConfigEmeraldwalk = () => useConfig(configs.emeraldwalk);
+export type projectKitEmeraldwalkRunonsave = "shell" | "commands" | "autoClearConsole" | "innerObject.cmd" | "innerObject.match";

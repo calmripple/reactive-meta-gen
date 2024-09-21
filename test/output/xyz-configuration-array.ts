@@ -399,3 +399,4 @@ export const useConfigObjectEmeraldwalk = () => useConfigObject(configs.emeraldw
  * emeraldwalk.runonsave.update(oldVal) //update value
  */
 export const useConfigEmeraldwalk = () => useConfig(configs.emeraldwalk);
+export type emeraldwalkRunonsave = "autoClearConsole" | "shell" | "delimiters" | "delimiters1" | "commands";

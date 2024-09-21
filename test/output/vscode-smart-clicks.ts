@@ -240,3 +240,4 @@ export const useConfigObjectSmartClicks = () => useConfigObject(configs.smartCli
  * smartClicks.clicksInterval.update(oldVal) //update value
  */
 export const useConfigSmartClicks = () => useConfig(configs.smartClicks);
+export type smartClicksRules = "bracket-pair" | "dash" | "html-attr" | "html-element" | "html-tag-pair" | "js-arrow-fn" | "js-assign" | "js-block" | "js-colon" | "jsx-tag-pair";

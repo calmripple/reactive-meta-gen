@@ -69,24 +69,16 @@ export const getConfigInfo = memo(
     const activedKeys = new Array<string>()
     const activedSectionConfigs = new Map<string, [string, ConfigurationProperty][]>()
 
-    const virtualActivedConfigs = new Map<string, ConfigurationProperty>()
-    const virtualActivedKeys = new Array<string>()
+    // const virtualActivedConfigs = new Map<string, ConfigurationProperty>()
+    // const virtualActivedKeys = new Array<string>()
     const virtualActivedSectionConfigs = new Map<string, [string, ConfigurationProperty][]>()
 
-    function handleVirtualSection(fullKey: string, value: ConfigurationProperty) {
-      virtualActivedConfigs.set(fullKey, value)
-      virtualActivedKeys.push(fullKey)
-      const parts = fullKey.split('.')
-      if (parts.length > 1) {
-        const sectionParts = parts.slice(0, -1)
-        for (let i = 0; i < sectionParts.length; i++) {
-          const section = (sectionParts.slice(0, i + 1).join('.'))
-          addOrUpdate(virtualActivedSectionConfigs, section, [fullKey, value])
-        }
-      }
-      else {
-        const section = ('')
-        addOrUpdate(virtualActivedSectionConfigs, section, [fullKey, value])
+    function handleVirtualSection(section: string, value: ConfigurationProperty) {
+      const virtualSections = getSectionFromObject(value)
+      if (virtualSections !== undefined) {
+        [...virtualSections.entries()].forEach(([key, value]) => {
+          addOrUpdate(virtualActivedSectionConfigs, section, [key, value])
+        })
       }
     }
     function handleRealSection(fullKey: string, value: ConfigurationProperty) {
@@ -108,12 +100,9 @@ export const getConfigInfo = memo(
     Object.entries(getConfigObject(packageJson)).forEach(([fullKey, value]) => {
       if (isProperty(value)) {
         handleRealSection(fullKey, value)
-        const list = getSectionFromObject(value)
-        if (list !== undefined) {
-          [...list.entries()].forEach(([innerKey, innerValue]) => {
-            const newfullKey = `${fullKey}.${innerKey}`
-            handleVirtualSection(newfullKey, innerValue)
-          })
+
+        if (isProperty(value) && value.type === 'object' && value.properties) {
+          handleVirtualSection(fullKey, value)
         }
       }
       else {
@@ -129,8 +118,6 @@ export const getConfigInfo = memo(
       activedKeys,
       activedSectionConfigs,
 
-      virtualActivedKeys,
-      virtualActivedConfigs,
       virtualActivedSectionConfigs,
     }
   },
