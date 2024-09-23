@@ -42,7 +42,7 @@
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild --stub",
-    "lint": "eslint . --fix-dry-run",
+    "lint": "eslint . --fix",
     "prepublishOnly": "nr build",
     "release": "bumpp && npm publish --registry=https://registry.npmjs.org",
     "start": "esno src/index.ts",

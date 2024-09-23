@@ -35,7 +35,8 @@ export default antfu(
       'import/newline-after-import': 'off',
       'sort-imports': 'off',
       'ts/explicit-function-retrun-type': 'off',
-      "@typescript-eslint/explicit-function-return-type": "off"
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "eslint-comments/no-unlimited-disable": 'off'
     },
   }
 )
