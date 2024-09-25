@@ -13,28 +13,21 @@
 | `extension.emeraldwalk.enableRunOnSave`  | Run On Save: Enable                       |
 | `extension.emeraldwalk.disableRunOnSave` | Run On Save: Disable                      |
 
-## Configuration Json
+## Configuration JSON in .vscode/settings.json
 
 ```json
 {
   //The branch name of upstream repo
   "project-config.fileNestingUpdater.upstreamBranch": "main",
-
   //The upstream repo you want to update from
   "project-config.fileNestingUpdater.upstreamRepo": "antfu/vscode-file-nesting-config",
-
   //Enabled project-config inline annotations
   "project-config.test.annotations": true,
-
   //Position the icon before or after the icon name
   "project-config.test.position": "before",
-
   //Enabled project-config inline annotations
   "xxx": true,
-
-  //
   "emeraldwalk.runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": [] },
-
 }
 ```
 

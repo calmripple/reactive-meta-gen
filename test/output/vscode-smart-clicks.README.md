@@ -6,22 +6,18 @@
 | --------------------- | --------------------- |
 | `smartClicks.trigger` | Smart Clicks: Trigger |
 
-## Configuration Json
+## Configuration JSON in .vscode/settings.json
 
 ```json
 {
   //The interval between clicks in milliseconds.
   "smartClicks.clicksInterval": 600,
-
   //The delay after triggering the selection. To prevent conflicting with normal selection.
   "smartClicks.triggerDelay": 150,
-
   //Array of language IDs to enable html smartClicks
   "smartClicks.htmlLanguageIds": ["html","vue","svelte"],
-
   //Rule toggles
   "smartClicks.rules": See package.json,
-
 }
 ```
 

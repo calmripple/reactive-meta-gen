@@ -57,13 +57,12 @@ export function generateMarkdown(packageJson: any): { commandsTable: string, con
         .flatMap(([key, value]) => {
           const defaultVal = defaultValFromSchema(value) || ''
           const _type = typeFromSchema(value)
+          let jsonComment = value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(',') ?? undefined
+          jsonComment = jsonComment ? `  //${jsonComment}` : undefined
           return [
-            // commentBlock([
-            `  //${value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(',') ?? ''}`,
-            // ].join('\n'), 2).join("\n"),
+            jsonComment,
             `  "${key}": ${defaultVal.length < MAX_TABLE_COL_CHAR ? `${defaultVal}` : 'See package.json'},`,
-            '',
-          ]
+          ].filter(v => v !== undefined && v !== null)
         }),
       `}`,
       String('```'),

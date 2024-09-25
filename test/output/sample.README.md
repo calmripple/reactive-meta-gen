@@ -9,61 +9,43 @@
 | `sample.clear-cache`        | sample: Clear icon cache     |
 | `sample.update-date`        | sample: update current date  |
 
-## Configuration Json
+## Configuration JSON in .vscode/settings.json
 
 ```json
 {
   //Current time
   "sample.date": "now",
-
   //Use icon graph to replace the icon name.
   "sample.inplace": true,
-
   //Enabled sample inline annotations
   "sample.annotations": true,
-
   //Position the icon before or after the icon name
   "sample.position": "before",
-
   //Icon color hex for inline displaying
   "sample.color": "auto",
-
   //Delimiters for separating between collection id and icon id
   "sample.delimiters": [":","--","-","/"],
-
   //Prefixes for matching
   "sample.prefixes": ["","i-","~icons/"],
-
   //Suffixes for matching
   "sample.suffixes": ["","i-"],
-
   //Array of language IDs to enable annotations
   "sample.languageIds": ["javascript","javascriptreact","typescript","typescriptreact","vue","svelte","html","pug","json","yaml"],
-
   //Collection IDs to be included for detection
   "sample.includes": null,
-
   //Collection IDs to be excluded for detection
   "sample.excludes": null,
-
   //CDN entry of sample icon-sets
   "sample.cdnEntry": "https://icones.js.org/collections",
-
   //JSON paths for custom collection
   "sample.customCollectionJsonPaths": [],
-
   //Collection IDs Map for collection name alias, e.g. { 'mc': 'mingcute' }
   "sample.customCollectionIdsMap": {},
-
   //JSON paths for custom aliases
   "sample.customAliasesJsonPaths": [],
-
   //Only use the icon aliases. Non aliased icons will be ignored.
   "sample.customAliasesOnly": false,
-
-  //
   "project-kit.emeraldwalk.runonsave": { "shell": undefined, "commands": [], "autoClearConsole": false, "innerObject": { "cmd": "echo ${file}", "match": ".*" } },
-
 }
 ```
 

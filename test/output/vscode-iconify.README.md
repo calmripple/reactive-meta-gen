@@ -8,55 +8,40 @@
 | `iconify.toggle-inplace`     | Iconify: Toggle In-place Mode |
 | `iconify.clear-cache`        | Iconify: Clear icon cache     |
 
-## Configuration Json
+## Configuration JSON in .vscode/settings.json
 
 ```json
 {
   //Use icon graph to replace the icon name.
   "iconify.inplace": true,
-
   //Enabled Iconify inline annotations
   "iconify.annotations": true,
-
   //Position the icon before or after the icon name
   "iconify.position": "before",
-
   //Icon color hex for inline displaying
   "iconify.color": "auto",
-
   //Delimiters for separating between collection id and icon id
   "iconify.delimiters": [":","--","-","/"],
-
   //Prefixes for matching
   "iconify.prefixes": ["","i-","~icons/"],
-
   //Suffixes for matching
   "iconify.suffixes": ["","i-"],
-
   //Array of language IDs to enable annotations
   "iconify.languageIds": ["javascript","javascriptreact","typescript","typescriptreact","vue","svelte","html","pug","json","yaml","markdown","mdx"],
-
   //Collection IDs to be included for detection
   "iconify.includes": null,
-
   //Collection IDs to be excluded for detection
   "iconify.excludes": null,
-
   //CDN entry of iconify icon-sets
   "iconify.cdnEntry": "https://icones.js.org/collections",
-
   //JSON paths for custom collection
   "iconify.customCollectionJsonPaths": [],
-
   //Collection IDs Map for collection name alias, e.g. { 'mc': 'mingcute' }
   "iconify.customCollectionIdsMap": {},
-
   //JSON paths for custom aliases
   "iconify.customAliasesJsonPaths": [],
-
   //Only use the icon aliases. Non aliased icons will be ignored.
   "iconify.customAliasesOnly": false,
-
 }
 ```
 

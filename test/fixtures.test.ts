@@ -24,7 +24,7 @@ describe('fixtures', async () => {
         '',
         markdown.commandsTable,
         '',
-        '## Configuration Json',
+        '## Configuration JSON in .vscode/settings.json',
         '',
         markdown.configsJson,
         '',
