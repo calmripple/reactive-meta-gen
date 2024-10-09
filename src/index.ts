@@ -58,7 +58,7 @@ export function generateMarkdown(packageJson: any): { commandsTable: string, con
           const defaultVal = defaultValFromSchema(value) || ''
           const _type = typeFromSchema(value)
           let jsonComment = value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(',') ?? undefined
-          jsonComment = jsonComment ? `  //${jsonComment}` : undefined
+          jsonComment = jsonComment ? `  //${upperFirst(jsonComment)}` : undefined
           return [
             jsonComment,
             `  "${key}": ${defaultVal.length < MAX_TABLE_COL_CHAR ? `${defaultVal}` : 'See package.json'},`,

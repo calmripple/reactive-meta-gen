@@ -26,7 +26,7 @@
   "filewatcher.successTextColor": ,
   //Color for run message in the status bar. Default: dark: '#00FFFB', light: '#02D4D1', highContrast: '#03D2CE'
   "filewatcher.runTextColor": ,
-  //array of commands
+  //Array of commands
   "filewatcher.commands": [],
 }
 ```
