@@ -32,6 +32,7 @@
   "eslint.codeActionsOnSave.mode": "problems",
   "code-runner.clearPreviousOutput": true,
   "conventionalCommits.scopes": [
-    "base"
+    "base",
+    "generateDTS"
   ]
 }

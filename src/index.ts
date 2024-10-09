@@ -147,7 +147,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   const varCacheType = getSignature('Cache')
   const varMemoize = getSignature('memoize')
   const varMemo = getSignature('memo')
-  const memoCode = `
+  const memoCode = ` 
 type ${varCacheType}<T> = Record<string, { exp: number | null; value: T }>
 
 const ${varMemoize} = <TArgs extends any[], TResult>(
