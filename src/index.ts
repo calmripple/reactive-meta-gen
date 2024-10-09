@@ -434,7 +434,7 @@ function commentBlock(text?: string, padding = 0): string[] {
   }
 
   // Avoid premature closure of the comment block due to the presence of "*/" in the text
-  const _text = text.replace(/\*\//g, '*\\/')
+  const _text = upperFirst(text.replace(/\*\//g, '*\\/'))
 
   return [
     `${indent}/**`,

@@ -33,17 +33,17 @@ export const commands = {
      */
     projectConfigManualUpdate: "project-config.manualUpdate",
     /**
-     * remove watch dir
+     * Remove watch dir
      * @commandkey `project-config.remove-watch-dir`
      */
     removeWatchDir: "project-config.remove-watch-dir",
     /**
-     * remove watch dir
+     * Remove watch dir
      * @commandkey `remove-watch-dir`
      */
     removeWatchDir_2: "remove-watch-dir",
     /**
-     * add watch dir
+     * Add watch dir
      * @commandkey `project-config.add-watch-dir`
      */
     addWatchDir: "project-config.add-watch-dir",
@@ -67,7 +67,7 @@ export const useCommand = (commandFullKey: CommandKey, callback: (...args: any[]
  */
 export const useCommands = (commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void => useReactiveCommands(commands);
 /**
- * name type of Logger and OutputChannel
+ * Name type of Logger and OutputChannel
  */
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
 /**
@@ -94,17 +94,17 @@ export const useCommandManualUpdate = (callback: (...args: any[]) => any) => use
  */
 export const useCommandProjectConfigManualUpdate = (callback: (...args: any[]) => any) => useCommand(commands.projectConfigManualUpdate, callback);
 /**
- * remove watch dir
+ * Remove watch dir
  * @commandkey Register a command `project-config.remove-watch-dir`
  */
 export const useCommandRemoveWatchDir = (callback: (...args: any[]) => any) => useCommand(commands.removeWatchDir, callback);
 /**
- * remove watch dir
+ * Remove watch dir
  * @commandkey Register a command `remove-watch-dir`
  */
 export const useCommandRemoveWatchDir2 = (callback: (...args: any[]) => any) => useCommand(commands.removeWatchDir_2, callback);
 /**
- * add watch dir
+ * Add watch dir
  * @commandkey Register a command `project-config.add-watch-dir`
  */
 export const useCommandAddWatchDir = (callback: (...args: any[]) => any) => useCommand(commands.addWatchDir, callback);

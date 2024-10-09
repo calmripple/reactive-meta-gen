@@ -32,7 +32,7 @@ export const useCommand = (commandFullKey: CommandKey, callback: (...args: any[]
  */
 export const useCommands = (commands: Partial<Record<CommandKey, (...args: any[]) => any>>): void => useReactiveCommands(commands);
 /**
- * name type of Logger and OutputChannel
+ * Name type of Logger and OutputChannel
  */
 export type LoggerNameType = typeof name | typeof displayName | typeof extensionId;
 /**
