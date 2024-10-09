@@ -144,7 +144,56 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     `export const ${vardescription} = ${packageJson.description ? JSON.stringify(packageJson.description) : 'undefined'}`,
     `export const ${varExtensionId} = "${packageJson.publisher}.${packageJson.name}"`,
   )
+  const varCacheType = getSignature('Cache')
+  const varMemoize = getSignature('memoize')
+  const varMemo = getSignature('memo')
+  const memoCode = `
+type ${varCacheType}<T> = Record<string, { exp: number | null; value: T }>
 
+const ${varMemoize} = <TArgs extends any[], TResult>(
+    cache: ${varCacheType}<TResult>,
+    func: (...args: TArgs) => TResult,
+    keyFunc: ((...args: TArgs) => string) | null,
+    ttl: number | null
+) => {
+    return function callWithMemo(...args: any): TResult {
+        const key = keyFunc ? keyFunc(...args) : JSON.stringify({ args })
+        const existing = cache[key]
+        if (existing !== undefined) {
+            if (!existing.exp) return existing.value
+            if (existing.exp > new Date().getTime()) {
+                return existing.value
+            }
+        }
+        const result = func(...args)
+        cache[key] = {
+            exp: ttl ? new Date().getTime() + ttl : null,
+            value: result
+        }
+        return result
+    }
+}
+
+/**
+ * Creates a memoized function. The returned function
+ * will only execute the source function when no value
+ * has previously been computed. If a ttl (milliseconds)
+ * is given previously computed values will be checked
+ * for expiration before being returned.
+ */
+export const ${varMemo} = <TArgs extends any[], TResult>(
+    func: (...args: TArgs) => TResult,
+    options: {
+        key?: (...args: TArgs) => string
+        ttl?: number
+    } = {}
+) => {
+    return ${varMemoize}({}, func, options.key ?? null, options.ttl ?? null) as (
+        ...args: TArgs
+    ) => TResult
+} `
+
+  lines.push(memoCode)
   // ========== Commands ==========
   // useCommand${upperFirst(convertCamelCase(getRightSection(c.command, -1)))}
   const varUseCommand = getSignature(`useCommand`)
@@ -350,9 +399,9 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     `}  satisfies Record<string, ${varSectionConfigKey}>`,
 
     commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
-    `export const ${varUseConfig} =<K extends ${varSectionConfigKey}>(section: K)=>  defineConfigs<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section])`,
+    `export const ${varUseConfig} =${varMemo}(<K extends ${varSectionConfigKey}>(section: K)=>  defineConfigs<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section]))`,
     commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
-    `export const ${varUseConfigObject}=<K extends ${varSectionConfigKey}>(section: K)=>defineConfigObject<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section]) `,
+    `export const ${varUseConfigObject}=${varMemo}(<K extends ${varSectionConfigKey}>(section: K)=>defineConfigObject<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section]))`,
     ...sectionConfigConstExports,
   )
   config.virtualActivedSectionConfigs.forEach((values, section) => {
