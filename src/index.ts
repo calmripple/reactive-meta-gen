@@ -318,8 +318,8 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
     const varSectionInterfaceName = getSignature(`${upperFirst(varConfigSectionName)}`)
 
     const varName = {
-      varSectionConfigExportFunctionName: getSignature(`${varUseConfig}${varSectionInterfaceName}`),
-      varSectionConfigObjectExportFunctionName: getSignature(`${varUseConfigObject}${varSectionInterfaceName}`),
+      varUseConfigSection: getSignature(`${varUseConfig}${varSectionInterfaceName}`),
+      varUseConfigObjectSection: getSignature(`${varUseConfigObject}${varSectionInterfaceName}`),
     }
     const example = sectionConfig[0]
     const exampleKey = removeSection(example[0])
@@ -335,22 +335,22 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
       ...commentBlock([
         `ConfigObject of \`${sectionComment}\``,
         `@example`,
-        `const ${varConfigSectionName} = ${varName.varSectionConfigObjectExportFunctionName}()`,
+        `const ${varConfigSectionName} = ${varName.varUseConfigObjectSection}()`,
         `const oldVal:${example[1].type} = ${varConfigSectionName}.${exampleKey} //get value `,
         // `${varName.useConfigObject}.${exampleKey} = oldVal // set value`,
         `${varConfigSectionName}.$update("${exampleKey}", oldVal) //update value`,
       ].join('\n')),
-      `export const ${varName.varSectionConfigObjectExportFunctionName} =()=> ${varUseConfigObject}(${varSectionShorthandRawValuePairs}.${varConfigSectionName})`,
+      `export const ${varName.varUseConfigObjectSection} =()=> ${varUseConfigObject}(${varSectionShorthandRawValuePairs}.${varConfigSectionName})`,
       ...commentBlock([
         `ToConfigRefs of \`${sectionComment}\``,
         `@example`,
-        `const ${varConfigSectionName} = ${varName.varSectionConfigExportFunctionName}()`,
+        `const ${varConfigSectionName} = ${varName.varUseConfigSection}()`,
         `const oldVal:${example[1].type} = ${varConfigSectionName}.${exampleKey}.value //get value `,
         // `${varName.useConfig}.${exampleKey}.value = oldVal // set value`,
         // `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
         `${varConfigSectionName}.${exampleKey}.update(oldVal) //update value`,
       ].join('\n')),
-      `export const ${varName.varSectionConfigExportFunctionName} =()=> ${varUseConfig}(${varSectionShorthandRawValuePairs}.${varConfigSectionName})`,
+      `export const ${varName.varUseConfigSection} =()=> ${varUseConfig}(${varSectionShorthandRawValuePairs}.${varConfigSectionName})`,
     )
     // section 类型生成开始
     lines.push(
