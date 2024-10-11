@@ -52,7 +52,7 @@ export type CommandKey = "sample.toggle-annotations" | "sample.toggle-inplace" |
 /**
  * Commands map registed by `calmripple.sample`
  */
-export const commands = {
+export const commandKeys = {
     /**
      * Toggle Annotations
      * @commandkey `sample.toggle-annotations`
@@ -74,6 +74,10 @@ export const commands = {
      */
     updateDate: "sample.update-date",
 } satisfies Record<string, CommandKey>;
+/**
+ * @deprecated Use commandKeys instead.this api will be removed in v0.4
+ */
+export const commands = commandKeys;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
@@ -98,22 +102,22 @@ export const useOutputChannel = (outputName: LoggerNameType = displayName ?? nam
  * Toggle Annotations
  * @commandkey Register a command `sample.toggle-annotations`
  */
-export const useCommandToggleAnnotations = (callback: (...args: any[]) => any) => useCommand(commands.toggleAnnotations, callback);
+export const useCommandToggleAnnotations = (callback: (...args: any[]) => any) => useCommand(commandKeys.toggleAnnotations, callback);
 /**
  * Toggle In-place Mode
  * @commandkey Register a command `sample.toggle-inplace`
  */
-export const useCommandToggleInplace = (callback: (...args: any[]) => any) => useCommand(commands.toggleInplace, callback);
+export const useCommandToggleInplace = (callback: (...args: any[]) => any) => useCommand(commandKeys.toggleInplace, callback);
 /**
  * Clear icon cache
  * @commandkey Register a command `sample.clear-cache`
  */
-export const useCommandClearCache = (callback: (...args: any[]) => any) => useCommand(commands.clearCache, callback);
+export const useCommandClearCache = (callback: (...args: any[]) => any) => useCommand(commandKeys.clearCache, callback);
 /**
  * Update current date
  * @commandkey Register a command `sample.update-date`
  */
-export const useCommandUpdateDate = (callback: (...args: any[]) => any) => useCommand(commands.updateDate, callback);
+export const useCommandUpdateDate = (callback: (...args: any[]) => any) => useCommand(commandKeys.updateDate, callback);
 /**
  * Section Type of `sample`
  */

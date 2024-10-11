@@ -52,13 +52,17 @@ export type CommandKey = "whichkey.show";
 /**
  * Commands map registed by `VSpaceCode.whichkey`
  */
-export const commands = {
+export const commandKeys = {
     /**
      * Show Menu
      * @commandkey `whichkey.show`
      */
     show: "whichkey.show",
 } satisfies Record<string, CommandKey>;
+/**
+ * @deprecated Use commandKeys instead.this api will be removed in v0.4
+ */
+export const commands = commandKeys;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
@@ -83,7 +87,7 @@ export const useOutputChannel = (outputName: LoggerNameType = displayName ?? nam
  * Show Menu
  * @commandkey Register a command `whichkey.show`
  */
-export const useCommandShow = (callback: (...args: any[]) => any) => useCommand(commands.show, callback);
+export const useCommandShow = (callback: (...args: any[]) => any) => useCommand(commandKeys.show, callback);
 /**
  * Section Type of `whichkey`
  */

@@ -52,7 +52,7 @@ export type CommandKey = "iconify.toggle-annotations" | "iconify.toggle-inplace"
 /**
  * Commands map registed by `antfu.iconify`
  */
-export const commands = {
+export const commandKeys = {
     /**
      * Toggle Annotations
      * @commandkey `iconify.toggle-annotations`
@@ -69,6 +69,10 @@ export const commands = {
      */
     clearCache: "iconify.clear-cache",
 } satisfies Record<string, CommandKey>;
+/**
+ * @deprecated Use commandKeys instead.this api will be removed in v0.4
+ */
+export const commands = commandKeys;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
@@ -93,17 +97,17 @@ export const useOutputChannel = (outputName: LoggerNameType = displayName ?? nam
  * Toggle Annotations
  * @commandkey Register a command `iconify.toggle-annotations`
  */
-export const useCommandToggleAnnotations = (callback: (...args: any[]) => any) => useCommand(commands.toggleAnnotations, callback);
+export const useCommandToggleAnnotations = (callback: (...args: any[]) => any) => useCommand(commandKeys.toggleAnnotations, callback);
 /**
  * Toggle In-place Mode
  * @commandkey Register a command `iconify.toggle-inplace`
  */
-export const useCommandToggleInplace = (callback: (...args: any[]) => any) => useCommand(commands.toggleInplace, callback);
+export const useCommandToggleInplace = (callback: (...args: any[]) => any) => useCommand(commandKeys.toggleInplace, callback);
 /**
  * Clear icon cache
  * @commandkey Register a command `iconify.clear-cache`
  */
-export const useCommandClearCache = (callback: (...args: any[]) => any) => useCommand(commands.clearCache, callback);
+export const useCommandClearCache = (callback: (...args: any[]) => any) => useCommand(commandKeys.clearCache, callback);
 /**
  * Section Type of `iconify`
  */

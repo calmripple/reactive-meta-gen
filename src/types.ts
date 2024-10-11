@@ -10,7 +10,14 @@ export interface GenerateOptions {
   namespace?: string | boolean
 
 }
-
+export interface Command {
+  title: string
+  command: string
+  category?: string
+  enablement?: string
+  icon?: string
+  shortTitle?: string
+}
 export interface ConfigurationProperty {
   type?: string | string[]
   default?: any

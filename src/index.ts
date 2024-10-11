@@ -120,13 +120,14 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
 
   let lines: string[] = []
 
+  getSignatures(['defineConfigObject', 'defineConfigs', 'useReactiveCommand', 'useReactiveCommands', 'useReactiveLogger', 'useReactiveOutputChannel'])
+
   lines.push('// Meta info')
   lines.push('', `import { defineConfigObject, defineConfigs, useCommand as useReactiveCommand,
     useCommands as useReactiveCommands,
     useLogger as useReactiveLogger,
     useOutputChannel as useReactiveOutputChannel,    
     } from 'reactive-vscode'`, '')
-  getSignatures(['defineConfigObject', 'defineConfigs', 'useReactiveCommand', 'useReactiveCommands', 'useReactiveLogger', 'useReactiveOutputChannel'])
 
   const varPublisher = getSignature(`publisher`)
   lines.push(
@@ -144,14 +145,14 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     `export const ${vardescription} = ${packageJson.description ? JSON.stringify(packageJson.description) : 'undefined'}`,
     `export const ${varExtensionId} = "${packageJson.publisher}.${packageJson.name}"`,
   )
-  const varCacheType = getSignature('Cache')
+  const varTypeCache = getSignature('Cache')
   const varMemoize = getSignature('memoize')
   const varMemo = getSignature('memo')
   const memoCode = ` 
-type ${varCacheType}<T> = Record<string, { exp: number | null; value: T }>
+type ${varTypeCache}<T> = Record<string, { exp: number | null; value: T }>
 
 const ${varMemoize} = <TArgs extends any[], TResult>(
-    cache: ${varCacheType}<TResult>,
+    cache: ${varTypeCache}<TResult>,
     func: (...args: TArgs) => TResult,
     keyFunc: ((...args: TArgs) => string) | null,
     ttl: number | null
@@ -195,11 +196,13 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
 
   lines.push(memoCode)
   // ========== Commands ==========
-  // useCommand${upperFirst(convertCamelCase(getRightSection(c.command, -1)))}
   const varUseCommand = getSignature(`useCommand`)
   const varUseCommands = getSignature(`useCommands`)
-  const varCommandKey = getSignature('CommandKey')
+  const varCommandKeyType = getSignature('CommandKey')
+  const varShorthandCommandKeys = getSignature('commandKeys')
+
   const varShorthandCommands = getSignature('commands')
+
   const varCommandShorthandNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
     const f = getSignature(convertCamelCase(`${getRightSection(c.command, -1)}`), extensionId, (_pre, count) => convertCamelCase(`${getRightSection(c.command, -count)}`))
     return {
@@ -208,15 +211,14 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
     }
   })
   lines.push(
-    '',
     ...commentBlock('Type union of all commands'),
   )
   if (!varCommandShorthandNames?.length) {
-    lines.push(`export type ${varCommandKey} = never`)
+    lines.push(`export type ${varCommandKeyType} = never`)
   }
   else {
     lines.push(
-      `export type ${varCommandKey} = `,
+      `export type ${varCommandKeyType} = `,
       ...varCommandShorthandNames.map(c =>
         `  | ${JSON.stringify(c.command)}`,
       ),
@@ -224,9 +226,8 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
   }
 
   lines.push(
-    '',
     ...commentBlock(`Commands map registed by \`${extensionId}\``),
-    `export const ${varShorthandCommands} = {`,
+    `export const ${varShorthandCommandKeys} = {`,
     ...varCommandShorthandNames
       .flatMap((c) => {
         return [
@@ -234,7 +235,12 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
           `  ${c.varCommandShorthandName}: ${JSON.stringify(c.command)},`,
         ]
       }),
-    `} satisfies Record<string, ${varCommandKey}> `,
+    `} satisfies Record<string, ${varCommandKeyType}> `,
+  )
+
+  lines.push(
+    ...commentBlock(`@deprecated Use commandKeys instead.this api will be removed in v0.4`),
+    `export const ${varShorthandCommands} = ${varShorthandCommandKeys}`,
   )
 
   // ========== Command Base ==========
@@ -242,9 +248,9 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
   const varLoggerNameType = `${getSignature('LoggerNameType')}`
   lines.push(
     commentBlock('Register a command. See `vscode::commands.registerCommand`.').join('\n'),
-    `export const ${varUseCommand} = (commandFullKey: ${varCommandKey}, callback: (...args: any[]) => any): void => useReactiveCommand(commandFullKey, callback)`,
+    `export const ${varUseCommand} = (commandFullKey: ${varCommandKeyType}, callback: (...args: any[]) => any): void => useReactiveCommand(commandFullKey, callback)`,
     commentBlock('Register multiple commands. See `vscode::commands.registerCommand`.').join('\n'),
-    `export const ${varUseCommands} = (commands: Partial<Record<${varCommandKey}, (...args: any[]) => any>>): void => useReactiveCommands(commands)`,
+    `export const ${varUseCommands} = (commands: Partial<Record<${varCommandKeyType}, (...args: any[]) => any>>): void => useReactiveCommands(commands)`,
     commentBlock('name type of Logger and OutputChannel').join('\n'),
     `export type ${varLoggerNameType} = typeof ${varName} | typeof ${varDisplayName} | typeof ${varExtensionId}`,
     commentBlock('Creates a logger that writes to the output channel.').join('\n'),
@@ -260,7 +266,7 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
           ``,
           ...commentBlock(`${c.title}
 @commandkey Register a command \`${c.command}\``, 0),
-          `export const ${convertCamelCase(`${varUseCommand}.${c.varCommandShorthandName}`)}=(callback: (...args: any[]) => any) => ${varUseCommand}(${varShorthandCommands}.${c.varCommandShorthandName}, callback)`,
+          `export const ${convertCamelCase(`${varUseCommand}.${c.varCommandShorthandName}`)}=(callback: (...args: any[]) => any) => ${varUseCommand}(${varShorthandCommandKeys}.${c.varCommandShorthandName}, callback)`,
         ]
       }),
     '',

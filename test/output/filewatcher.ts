@@ -52,7 +52,7 @@ export type CommandKey = "extension.enableFileWatcher" | "extension.disableFileW
 /**
  * Commands map registed by `appulate.filewatcher`
  */
-export const commands = {
+export const commandKeys = {
     /**
      * File Watcher: Enable
      * @commandkey `extension.enableFileWatcher`
@@ -69,6 +69,10 @@ export const commands = {
      */
     focusIntoOutput: "extension.focusIntoOutput",
 } satisfies Record<string, CommandKey>;
+/**
+ * @deprecated Use commandKeys instead.this api will be removed in v0.4
+ */
+export const commands = commandKeys;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
@@ -93,17 +97,17 @@ export const useOutputChannel = (outputName: LoggerNameType = displayName ?? nam
  * File Watcher: Enable
  * @commandkey Register a command `extension.enableFileWatcher`
  */
-export const useCommandEnableFileWatcher = (callback: (...args: any[]) => any) => useCommand(commands.enableFileWatcher, callback);
+export const useCommandEnableFileWatcher = (callback: (...args: any[]) => any) => useCommand(commandKeys.enableFileWatcher, callback);
 /**
  * File Watcher: Disable
  * @commandkey Register a command `extension.disableFileWatcher`
  */
-export const useCommandDisableFileWatcher = (callback: (...args: any[]) => any) => useCommand(commands.disableFileWatcher, callback);
+export const useCommandDisableFileWatcher = (callback: (...args: any[]) => any) => useCommand(commandKeys.disableFileWatcher, callback);
 /**
  * File Watcher: Focus Output
  * @commandkey Register a command `extension.focusIntoOutput`
  */
-export const useCommandFocusIntoOutput = (callback: (...args: any[]) => any) => useCommand(commands.focusIntoOutput, callback);
+export const useCommandFocusIntoOutput = (callback: (...args: any[]) => any) => useCommand(commandKeys.focusIntoOutput, callback);
 /**
  * Section Type of `filewatcher`
  */

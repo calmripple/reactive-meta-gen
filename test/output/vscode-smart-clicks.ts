@@ -52,13 +52,17 @@ export type CommandKey = "smartClicks.trigger";
 /**
  * Commands map registed by `antfu.smart-clicks`
  */
-export const commands = {
+export const commandKeys = {
     /**
      * Smart Clicks: Trigger
      * @commandkey `smartClicks.trigger`
      */
     trigger: "smartClicks.trigger",
 } satisfies Record<string, CommandKey>;
+/**
+ * @deprecated Use commandKeys instead.this api will be removed in v0.4
+ */
+export const commands = commandKeys;
 /**
  * Register a command. See `vscode::commands.registerCommand`.
  */
@@ -83,7 +87,7 @@ export const useOutputChannel = (outputName: LoggerNameType = displayName ?? nam
  * Smart Clicks: Trigger
  * @commandkey Register a command `smartClicks.trigger`
  */
-export const useCommandTrigger = (callback: (...args: any[]) => any) => useCommand(commands.trigger, callback);
+export const useCommandTrigger = (callback: (...args: any[]) => any) => useCommand(commandKeys.trigger, callback);
 /**
  * Section Type of `smartClicks`
  */

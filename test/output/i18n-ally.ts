@@ -52,7 +52,7 @@ export type CommandKey = "i18n-ally.config-locales" | "i18n-ally.config-locales-
 /**
  * Commands map registed by `lokalise.i18n-ally`
  */
-export const commands = {
+export const commandKeys = {
     /**
      * %command.config_locales%
      * @commandkey `i18n-ally.config-locales`
@@ -265,6 +265,10 @@ export const commands = {
     extractEnableAutoDetect: "i18n-ally.extract-enable-auto-detect",
 } satisfies Record<string, CommandKey>;
 /**
+ * @deprecated Use commandKeys instead.this api will be removed in v0.4
+ */
+export const commands = commandKeys;
+/**
  * Register a command. See `vscode::commands.registerCommand`.
  */
 export const useCommand = (commandFullKey: CommandKey, callback: (...args: any[]) => any): void => useReactiveCommand(commandFullKey, callback);
@@ -288,212 +292,212 @@ export const useOutputChannel = (outputName: LoggerNameType = displayName ?? nam
  * %command.config_locales%
  * @commandkey Register a command `i18n-ally.config-locales`
  */
-export const useCommandConfigLocales = (callback: (...args: any[]) => any) => useCommand(commands.configLocales, callback);
+export const useCommandConfigLocales = (callback: (...args: any[]) => any) => useCommand(commandKeys.configLocales, callback);
 /**
  * %command.config_locales_auto%
  * @commandkey Register a command `i18n-ally.config-locales-auto`
  */
-export const useCommandConfigLocalesAuto = (callback: (...args: any[]) => any) => useCommand(commands.configLocalesAuto, callback);
+export const useCommandConfigLocalesAuto = (callback: (...args: any[]) => any) => useCommand(commandKeys.configLocalesAuto, callback);
 /**
  * %command.config_display_language%
  * @commandkey Register a command `i18n-ally.config-display-language`
  */
-export const useCommandConfigDisplayLanguage = (callback: (...args: any[]) => any) => useCommand(commands.configDisplayLanguage, callback);
+export const useCommandConfigDisplayLanguage = (callback: (...args: any[]) => any) => useCommand(commandKeys.configDisplayLanguage, callback);
 /**
  * %command.config_source_language%
  * @commandkey Register a command `i18n-ally.config-source-language`
  */
-export const useCommandConfigSourceLanguage = (callback: (...args: any[]) => any) => useCommand(commands.configSourceLanguage, callback);
+export const useCommandConfigSourceLanguage = (callback: (...args: any[]) => any) => useCommand(commandKeys.configSourceLanguage, callback);
 /**
  * %command.set_display_language%
  * @commandkey Register a command `i18n-ally.set-display-language`
  */
-export const useCommandSetDisplayLanguage = (callback: (...args: any[]) => any) => useCommand(commands.setDisplayLanguage, callback);
+export const useCommandSetDisplayLanguage = (callback: (...args: any[]) => any) => useCommand(commandKeys.setDisplayLanguage, callback);
 /**
  * %command.set_source_language%
  * @commandkey Register a command `i18n-ally.set-source-language`
  */
-export const useCommandSetSourceLanguage = (callback: (...args: any[]) => any) => useCommand(commands.setSourceLanguage, callback);
+export const useCommandSetSourceLanguage = (callback: (...args: any[]) => any) => useCommand(commandKeys.setSourceLanguage, callback);
 /**
  * %command.copy_key%
  * @commandkey Register a command `i18n-ally.copy-key`
  */
-export const useCommandCopyKey = (callback: (...args: any[]) => any) => useCommand(commands.copyKey, callback);
+export const useCommandCopyKey = (callback: (...args: any[]) => any) => useCommand(commandKeys.copyKey, callback);
 /**
  * %command.translate_key%
  * @commandkey Register a command `i18n-ally.translate-key`
  */
-export const useCommandTranslateKey = (callback: (...args: any[]) => any) => useCommand(commands.translateKey, callback);
+export const useCommandTranslateKey = (callback: (...args: any[]) => any) => useCommand(commandKeys.translateKey, callback);
 /**
  * %command.edit_key%
  * @commandkey Register a command `i18n-ally.edit-key`
  */
-export const useCommandEditKey = (callback: (...args: any[]) => any) => useCommand(commands.editKey, callback);
+export const useCommandEditKey = (callback: (...args: any[]) => any) => useCommand(commandKeys.editKey, callback);
 /**
  * %command.open_key%
  * @commandkey Register a command `i18n-ally.open-key`
  */
-export const useCommandOpenKey = (callback: (...args: any[]) => any) => useCommand(commands.openKey, callback);
+export const useCommandOpenKey = (callback: (...args: any[]) => any) => useCommand(commandKeys.openKey, callback);
 /**
  * %command.delete_key%
  * @commandkey Register a command `i18n-ally.delete-key`
  */
-export const useCommandDeleteKey = (callback: (...args: any[]) => any) => useCommand(commands.deleteKey, callback);
+export const useCommandDeleteKey = (callback: (...args: any[]) => any) => useCommand(commandKeys.deleteKey, callback);
 /**
  * %command.rename_key%
  * @commandkey Register a command `i18n-ally.rename-key`
  */
-export const useCommandRenameKey = (callback: (...args: any[]) => any) => useCommand(commands.renameKey, callback);
+export const useCommandRenameKey = (callback: (...args: any[]) => any) => useCommand(commandKeys.renameKey, callback);
 /**
  * %refactor.extract_text%
  * @commandkey Register a command `i18n-ally.extract-text`
  */
-export const useCommandExtractText = (callback: (...args: any[]) => any) => useCommand(commands.extractText, callback);
+export const useCommandExtractText = (callback: (...args: any[]) => any) => useCommand(commandKeys.extractText, callback);
 /**
  * Extract all hard-coded strings (experimental)
  * @commandkey Register a command `i18n-ally.extract-hard-strings-batch`
  */
-export const useCommandExtractHardStringsBatch = (callback: (...args: any[]) => any) => useCommand(commands.extractHardStringsBatch, callback);
+export const useCommandExtractHardStringsBatch = (callback: (...args: any[]) => any) => useCommand(commandKeys.extractHardStringsBatch, callback);
 /**
  * Detect hard-coded strings in current file (experimental)
  * @commandkey Register a command `i18n-ally.detect_hard_strings`
  */
-export const useCommandDetectHardStrings = (callback: (...args: any[]) => any) => useCommand(commands.detectHardStrings, callback);
+export const useCommandDetectHardStrings = (callback: (...args: any[]) => any) => useCommand(commandKeys.detectHardStrings, callback);
 /**
  * %command.open_url%
  * @commandkey Register a command `i18n-ally.open-url`
  */
-export const useCommandOpenUrl = (callback: (...args: any[]) => any) => useCommand(commands.openUrl, callback);
+export const useCommandOpenUrl = (callback: (...args: any[]) => any) => useCommand(commandKeys.openUrl, callback);
 /**
  * %command.fulfill_keys%
  * @commandkey Register a command `i18n-ally.fulfill-keys`
  */
-export const useCommandFulfillKeys = (callback: (...args: any[]) => any) => useCommand(commands.fulfillKeys, callback);
+export const useCommandFulfillKeys = (callback: (...args: any[]) => any) => useCommand(commandKeys.fulfillKeys, callback);
 /**
  * %command.refresh_usage%
  * @commandkey Register a command `i18n-ally.refresh-usage`
  */
-export const useCommandRefreshUsage = (callback: (...args: any[]) => any) => useCommand(commands.refreshUsage, callback);
+export const useCommandRefreshUsage = (callback: (...args: any[]) => any) => useCommand(commandKeys.refreshUsage, callback);
 /**
  * %feedback.support%
  * @commandkey Register a command `i18n-ally.support`
  */
-export const useCommandSupport = (callback: (...args: any[]) => any) => useCommand(commands.support, callback);
+export const useCommandSupport = (callback: (...args: any[]) => any) => useCommand(commandKeys.support, callback);
 /**
  * %command.locale_visibility_show%
  * @commandkey Register a command `i18n-ally.locale-visibility-show`
  */
-export const useCommandLocaleVisibilityShow = (callback: (...args: any[]) => any) => useCommand(commands.localeVisibilityShow, callback);
+export const useCommandLocaleVisibilityShow = (callback: (...args: any[]) => any) => useCommand(commandKeys.localeVisibilityShow, callback);
 /**
  * %command.locale_visibility_hide%
  * @commandkey Register a command `i18n-ally.locale-visibility-hide`
  */
-export const useCommandLocaleVisibilityHide = (callback: (...args: any[]) => any) => useCommand(commands.localeVisibilityHide, callback);
+export const useCommandLocaleVisibilityHide = (callback: (...args: any[]) => any) => useCommand(commandKeys.localeVisibilityHide, callback);
 /**
  * %command.new_key%
  * @commandkey Register a command `i18n-ally.new-key`
  */
-export const useCommandNewKey = (callback: (...args: any[]) => any) => useCommand(commands.newKey, callback);
+export const useCommandNewKey = (callback: (...args: any[]) => any) => useCommand(commandKeys.newKey, callback);
 /**
  * %command.duplicate_key%
  * @commandkey Register a command `i18n-ally.duplicate-key`
  */
-export const useCommandDuplicateKey = (callback: (...args: any[]) => any) => useCommand(commands.duplicateKey, callback);
+export const useCommandDuplicateKey = (callback: (...args: any[]) => any) => useCommand(commandKeys.duplicateKey, callback);
 /**
  * %command.mark_key_as_in_use%
  * @commandkey Register a command `i18n-ally.mark-key-as-in-use`
  */
-export const useCommandMarkKeyAsInUse = (callback: (...args: any[]) => any) => useCommand(commands.markKeyAsInUse, callback);
+export const useCommandMarkKeyAsInUse = (callback: (...args: any[]) => any) => useCommand(commandKeys.markKeyAsInUse, callback);
 /**
  * %command.open_in_editor%
  * @commandkey Register a command `i18n-ally.open-in-editor`
  */
-export const useCommandOpenInEditor = (callback: (...args: any[]) => any) => useCommand(commands.openInEditor, callback);
+export const useCommandOpenInEditor = (callback: (...args: any[]) => any) => useCommand(commandKeys.openInEditor, callback);
 /**
  * %command.open_editor%
  * @commandkey Register a command `i18n-ally.open-editor`
  */
-export const useCommandOpenEditor = (callback: (...args: any[]) => any) => useCommand(commands.openEditor, callback);
+export const useCommandOpenEditor = (callback: (...args: any[]) => any) => useCommand(commandKeys.openEditor, callback);
 /**
  * %review.leave_comment%
  * @commandkey Register a command `i18n-ally.review.comment`
  */
-export const useCommandComment = (callback: (...args: any[]) => any) => useCommand(commands.comment, callback);
+export const useCommandComment = (callback: (...args: any[]) => any) => useCommand(commandKeys.comment, callback);
 /**
  * %review.approve%
  * @commandkey Register a command `i18n-ally.review.approve`
  */
-export const useCommandApprove = (callback: (...args: any[]) => any) => useCommand(commands.approve, callback);
+export const useCommandApprove = (callback: (...args: any[]) => any) => useCommand(commandKeys.approve, callback);
 /**
  * %review.request_change%
  * @commandkey Register a command `i18n-ally.review.request-change`
  */
-export const useCommandRequestChange = (callback: (...args: any[]) => any) => useCommand(commands.requestChange, callback);
+export const useCommandRequestChange = (callback: (...args: any[]) => any) => useCommand(commandKeys.requestChange, callback);
 /**
  * %review.edit%
  * @commandkey Register a command `i18n-ally.review.edit`
  */
-export const useCommandEdit = (callback: (...args: any[]) => any) => useCommand(commands.edit, callback);
+export const useCommandEdit = (callback: (...args: any[]) => any) => useCommand(commandKeys.edit, callback);
 /**
  * %review.resolve%
  * @commandkey Register a command `i18n-ally.review.resolve`
  */
-export const useCommandResolve = (callback: (...args: any[]) => any) => useCommand(commands.resolve, callback);
+export const useCommandResolve = (callback: (...args: any[]) => any) => useCommand(commandKeys.resolve, callback);
 /**
  * %review.resolve_all%
  * @commandkey Register a command `i18n-ally.review.resolve-thread`
  */
-export const useCommandResolveThread = (callback: (...args: any[]) => any) => useCommand(commands.resolveThread, callback);
+export const useCommandResolveThread = (callback: (...args: any[]) => any) => useCommand(commandKeys.resolveThread, callback);
 /**
  * %review.apply_translation_candidate%
  * @commandkey Register a command `i18n-ally.review.apply-translation`
  */
-export const useCommandApplyTranslation = (callback: (...args: any[]) => any) => useCommand(commands.applyTranslation, callback);
+export const useCommandApplyTranslation = (callback: (...args: any[]) => any) => useCommand(commandKeys.applyTranslation, callback);
 /**
  * %review.apply_suggestion%
  * @commandkey Register a command `i18n-ally.review.apply-suggestion`
  */
-export const useCommandApplySuggestion = (callback: (...args: any[]) => any) => useCommand(commands.applySuggestion, callback);
+export const useCommandApplySuggestion = (callback: (...args: any[]) => any) => useCommand(commandKeys.applySuggestion, callback);
 /**
  * %command.insert_key%
  * @commandkey Register a command `i18n-ally.insert-key`
  */
-export const useCommandInsertKey = (callback: (...args: any[]) => any) => useCommand(commands.insertKey, callback);
+export const useCommandInsertKey = (callback: (...args: any[]) => any) => useCommand(commandKeys.insertKey, callback);
 /**
  * %command.deepl_usage%
  * @commandkey Register a command `i18n-ally.deepl-usage`
  */
-export const useCommandDeeplUsage = (callback: (...args: any[]) => any) => useCommand(commands.deeplUsage, callback);
+export const useCommandDeeplUsage = (callback: (...args: any[]) => any) => useCommand(commandKeys.deeplUsage, callback);
 /**
  * %command.go_to_range%
  * @commandkey Register a command `i18n-ally.go-to-range`
  */
-export const useCommandGoToRange = (callback: (...args: any[]) => any) => useCommand(commands.goToRange, callback);
+export const useCommandGoToRange = (callback: (...args: any[]) => any) => useCommand(commandKeys.goToRange, callback);
 /**
  * %command.go_to_next_usage%
  * @commandkey Register a command `i18n-ally.go-to-next-usage`
  */
-export const useCommandGoToNextUsage = (callback: (...args: any[]) => any) => useCommand(commands.goToNextUsage, callback);
+export const useCommandGoToNextUsage = (callback: (...args: any[]) => any) => useCommand(commandKeys.goToNextUsage, callback);
 /**
  * %command.go_to_prev_usage%
  * @commandkey Register a command `i18n-ally.go-to-prev-usage`
  */
-export const useCommandGoToPrevUsage = (callback: (...args: any[]) => any) => useCommand(commands.goToPrevUsage, callback);
+export const useCommandGoToPrevUsage = (callback: (...args: any[]) => any) => useCommand(commandKeys.goToPrevUsage, callback);
 /**
  * %command.show_docs%
  * @commandkey Register a command `i18n-ally.open-docs-hard-string`
  */
-export const useCommandOpenDocsHardString = (callback: (...args: any[]) => any) => useCommand(commands.openDocsHardString, callback);
+export const useCommandOpenDocsHardString = (callback: (...args: any[]) => any) => useCommand(commandKeys.openDocsHardString, callback);
 /**
  * %command.extract.disable-auto-detect%
  * @commandkey Register a command `i18n-ally.extract-disable-auto-detect`
  */
-export const useCommandExtractDisableAutoDetect = (callback: (...args: any[]) => any) => useCommand(commands.extractDisableAutoDetect, callback);
+export const useCommandExtractDisableAutoDetect = (callback: (...args: any[]) => any) => useCommand(commandKeys.extractDisableAutoDetect, callback);
 /**
  * %command.extract.enable-auto-detect%
  * @commandkey Register a command `i18n-ally.extract-enable-auto-detect`
  */
-export const useCommandExtractEnableAutoDetect = (callback: (...args: any[]) => any) => useCommand(commands.extractEnableAutoDetect, callback);
+export const useCommandExtractEnableAutoDetect = (callback: (...args: any[]) => any) => useCommand(commandKeys.extractEnableAutoDetect, callback);
 /**
  * Type union of Deprecated all configs
  */
