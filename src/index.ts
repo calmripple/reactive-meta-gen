@@ -84,7 +84,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
   // const _publisher = packageJson.publisher
   const name = packageJson.name as string
   const signatures = memo((_domain: string) => new Set<string>())
-  function getSignature(signature: string, domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string | undefined): string {
+  function getIdentifier(signature: string, domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string | undefined): string {
     let tryCount = 1
 
     while (signatures(domain).has(signature) && tryCount < 100) {
@@ -103,12 +103,12 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     signatures(domain).add(signature)
     return signature
   }
-  function getSignatures(signatures: string[], domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): string[] {
-    return signatures.map(signature => getSignature(signature, domain, builder))
+  function getIdentifiers(signatures: string[], domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): string[] {
+    return signatures.map(signature => getIdentifier(signature, domain, builder))
   }
-  function _getSignatureObject(signatures: Record<string, string>, domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): Record<string, string> {
+  function _getIdentifierObject(signatures: Record<string, string>, domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): Record<string, string> {
     return Object.entries(signatures).reduce((pre, [key, value]) => {
-      pre[getSignature(key, domain, builder)] = value
+      pre[getIdentifier(key, domain, builder)] = value
       return pre
     }, {} as Record<string, string>)
   }
@@ -120,24 +120,28 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
 
   let lines: string[] = []
 
-  getSignatures(['defineConfigObject', 'defineConfigs', 'useReactiveCommand', 'useReactiveCommands', 'useReactiveLogger', 'useReactiveOutputChannel'])
+  getIdentifiers(['defineConfigObject', 'defineConfigs', 'useReactiveCommand', 'useReactiveCommands', 'useReactiveLogger', 'useReactiveOutputChannel', 'useStatusBarItem', 'useDisposable'])
 
   lines.push('// Meta info')
-  lines.push('', `import { defineConfigObject, defineConfigs, useCommand as useReactiveCommand,
+  lines.push(`import { defineConfigObject,
+    defineConfigs,
+    useCommand as useReactiveCommand,
     useCommands as useReactiveCommands,
     useLogger as useReactiveLogger,
     useOutputChannel as useReactiveOutputChannel,    
-    } from 'reactive-vscode'`, '')
+    useStatusBarItem,
+    useDisposable,
+    } from 'reactive-vscode'`)
 
-  const varPublisher = getSignature(`publisher`)
+  const varPublisher = getIdentifier(`publisher`)
   lines.push(
     `export const ${varPublisher} = ${packageJson.publisher ? JSON.stringify(packageJson.publisher) : 'undefined'}`,
   )
-  const varName = getSignature(`name`)
-  const varversion = getSignature(`version`)
-  const varDisplayName = getSignature(`displayName`)
-  const vardescription = getSignature(`description`)
-  const varExtensionId = getSignature(`extensionId`)
+  const varName = getIdentifier(`name`)
+  const varversion = getIdentifier(`version`)
+  const varDisplayName = getIdentifier(`displayName`)
+  const vardescription = getIdentifier(`description`)
+  const varExtensionId = getIdentifier(`extensionId`)
   lines.push(
     `export const ${varName} = ${packageJson.name ? JSON.stringify(packageJson.name) : 'undefined'}`,
     `export const ${varversion} = ${packageJson.version ? JSON.stringify(packageJson.version) : 'undefined'}`,
@@ -145,11 +149,12 @@ export function generateDTS(packageJson: any, options: GenerateOptions = {}): st
     `export const ${vardescription} = ${packageJson.description ? JSON.stringify(packageJson.description) : 'undefined'}`,
     `export const ${varExtensionId} = "${packageJson.publisher}.${packageJson.name}"`,
   )
-  const varTypeCache = getSignature('Cache')
-  const varMemoize = getSignature('memoize')
-  const varMemo = getSignature('memo')
-  const memoCode = ` 
-type ${varTypeCache}<T> = Record<string, { exp: number | null; value: T }>
+  const varTypeCache = getIdentifier('Cache')
+  const varMemoize = getIdentifier('memoize')
+  const varMemo = getIdentifier('memo')
+  const varTypeCommandsInformation = getIdentifier('CommandsInformation')
+  const staticCode = ` 
+type ${varTypeCache}<T> = Record<string, { exp: number | null; value: T;  dispose: () => void }>
 
 const ${varMemoize} = <TArgs extends any[], TResult>(
     cache: ${varTypeCache}<TResult>,
@@ -170,7 +175,11 @@ const ${varMemoize} = <TArgs extends any[], TResult>(
         cache[key] = {
             exp: ttl ? new Date().getTime() + ttl : null,
             value: result
+            dispose: () => {
+              delete cache[key]
+            }
         }
+        useDisposable(cache[key])
         return result
     }
 }
@@ -192,33 +201,52 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
     return ${varMemoize}({}, func, options.key ?? null, options.ttl ?? null) as (
         ...args: TArgs
     ) => TResult
-} `
+}
+    
+export interface ${varTypeCommandsInformation} {
+  /**
+   *  category string by which the command is grouped in the UI
+   */
+  category?: string
+  /**
+   * identifier of the command to execute
+   */
+  command: string
+  /**
+   * title which the command is represented in the UI
+   */
+  title: string,
+  enablement?: string,
+  icon?: string,
+  shortTitle?: string,
+  commandShorthandName?: string
+}
+`
 
-  lines.push(memoCode)
+  lines.push(staticCode)
   // ========== Commands ==========
-  const varUseCommand = getSignature(`useCommand`)
-  const varUseCommands = getSignature(`useCommands`)
-  const varCommandKeyType = getSignature('CommandKey')
-  const varShorthandCommandKeys = getSignature('commandKeys')
+  const varUseCommand = getIdentifier(`useCommand`)
+  const varUseCommands = getIdentifier(`useCommands`)
+  const varTypeCommand = getIdentifier('Command')
 
-  const varShorthandCommands = getSignature('commands')
+  const varShorthandCommands = getIdentifier('commands')
 
   const varCommandShorthandNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
-    const f = getSignature(convertCamelCase(`${getRightSection(c.command, -1)}`), extensionId, (_pre, count) => convertCamelCase(`${getRightSection(c.command, -count)}`))
+    const f = getIdentifier(convertCamelCase(`${getRightSection(c.command, -1)}`), extensionId, (_pre, count) => convertCamelCase(`${getRightSection(c.command, -count)}`))
     return {
-      varCommandShorthandName: f,
+      commandShorthandName: f,
       ...c,
-    }
+    } as CommandType
   })
   lines.push(
     ...commentBlock('Type union of all commands'),
   )
   if (!varCommandShorthandNames?.length) {
-    lines.push(`export type ${varCommandKeyType} = never`)
+    lines.push(`export type ${varTypeCommand} = never`)
   }
   else {
     lines.push(
-      `export type ${varCommandKeyType} = `,
+      `export type ${varTypeCommand} = `,
       ...varCommandShorthandNames.map(c =>
         `  | ${JSON.stringify(c.command)}`,
       ),
@@ -227,59 +255,80 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
 
   lines.push(
     ...commentBlock(`Commands map registed by \`${extensionId}\``),
-    `export const ${varShorthandCommandKeys} = {`,
+    `export const ${varShorthandCommands} = {`,
     ...varCommandShorthandNames
       .flatMap((c) => {
         return [
-          ...commentBlock(`${c.title}\n@commandkey \`${c.command}\``, 2),
-          `  ${c.varCommandShorthandName}: ${JSON.stringify(c.command)},`,
+          ...commentBlock(`${c.title}\n@command \`${c.command}\``, 2),
+          `  ${c.commandShorthandName}: ${JSON.stringify(c.command)},`,
         ]
       }),
-    `} satisfies Record<string, ${varCommandKeyType}> `,
+    `} satisfies Record<string, ${varTypeCommand}> as Record<string, ${varTypeCommand}>`,
   )
 
+  const varCommandsInformation = getIdentifier('commandsInformation')
   lines.push(
-    ...commentBlock(`@deprecated Use commandKeys instead.this api will be removed in v0.4`),
-    `export const ${varShorthandCommands} = ${varShorthandCommandKeys}`,
+    ...commentBlock(`Commands map registed by \`${extensionId}\``),
+    `export const ${varCommandsInformation} = {`,
+    ...varCommandShorthandNames
+      .flatMap((c) => {
+        const propName = c.command
+        const val = c
+        return [
+          ...commentBlock(`${c.title}\n@command \`${c.command}\``, 2),
+          `  "${propName}": ${JSON.stringify(val)},`,
+        ]
+      }),
+    `} satisfies Record<${varTypeCommand}, ${varTypeCommandsInformation}> as Record<${varTypeCommand}, ${varTypeCommandsInformation}> `,
   )
 
   // ========== Command Base ==========
   const varLoggerDefault = `${varDisplayName}??${varName}??${varExtensionId}`
-  const varLoggerNameType = `${getSignature('LoggerNameType')}`
+  const varTypeLoggerName = `${getIdentifier('LoggerName')}`
+  const varUseStatusBarItemFromCommand = getIdentifier('useStatusBarItemFromCommand')
   lines.push(
     commentBlock('Register a command. See `vscode::commands.registerCommand`.').join('\n'),
-    `export const ${varUseCommand} = (commandFullKey: ${varCommandKeyType}, callback: (...args: any[]) => any): void => useReactiveCommand(commandFullKey, callback)`,
+    `export const ${varUseCommand} = (commandFullKey: ${varTypeCommand}, callback: (...args: any[]) => any): void => useReactiveCommand(commandFullKey, callback)`,
     commentBlock('Register multiple commands. See `vscode::commands.registerCommand`.').join('\n'),
-    `export const ${varUseCommands} = (commands: Partial<Record<${varCommandKeyType}, (...args: any[]) => any>>): void => useReactiveCommands(commands)`,
+    `export const ${varUseCommands} = (commands: Partial<Record<${varTypeCommand}, (...args: any[]) => any>>): void => useReactiveCommands(commands)`,
     commentBlock('name type of Logger and OutputChannel').join('\n'),
-    `export type ${varLoggerNameType} = typeof ${varName} | typeof ${varDisplayName} | typeof ${varExtensionId}`,
+    `export type ${varTypeLoggerName} = typeof ${varName} | typeof ${varDisplayName} | typeof ${varExtensionId}`,
     commentBlock('Creates a logger that writes to the output channel.').join('\n'),
-    `export const ${getSignature('useLogger')}=(loggerName: ${varLoggerNameType} = ${varLoggerDefault}, getPrefix?: ((type: string) => string) | null) =>useReactiveLogger(loggerName, { 'getPrefix': getPrefix })`,
+    `export const ${getIdentifier('useLogger')}=(loggerName: ${varTypeLoggerName} = ${varLoggerDefault}, getPrefix?: ((type: string) => string) | null) =>useReactiveLogger(loggerName, { 'getPrefix': getPrefix })`,
     commentBlock('@reactive `window.createOutputChannel`').join('\n'),
-    `export const ${getSignature('useOutputChannel')}=(outputName: ${varLoggerNameType} = ${varLoggerDefault}) =>useReactiveOutputChannel(outputName)`,
+    `export const ${getIdentifier('useOutputChannel')}=(outputName: ${varTypeLoggerName} = ${varLoggerDefault}) =>useReactiveOutputChannel(outputName)`,
+    commentBlock('Create a statusBarItem with a commmand id').join('\n'),
+    `export const ${varUseStatusBarItemFromCommand} = (commandKey: ${varTypeCommand}) => {
+      let cmd = ${varCommandsInformation}[commandKey]
+      return useStatusBarItem({
+        id: cmd.command,
+        command: cmd.command,
+        name: cmd.command,
+        text: cmd.shortTitle ?? cmd.title,
+        tooltip: cmd.title
+      })
+    }`,
   )
 
   lines.push(
     ...varCommandShorthandNames
       .flatMap((c) => {
+        const varUseCommandShorthandName = convertCamelCase(`${varUseCommand}.${c.commandShorthandName}`)
         return [
-          ``,
           ...commentBlock(`${c.title}
-@commandkey Register a command \`${c.command}\``, 0),
-          `export const ${convertCamelCase(`${varUseCommand}.${c.varCommandShorthandName}`)}=(callback: (...args: any[]) => any) => ${varUseCommand}(${varShorthandCommandKeys}.${c.varCommandShorthandName}, callback)`,
+@command Register a command \`${c.command}\``, 0),
+          `export const ${varUseCommandShorthandName}=(callback: (...args: any[]) => any) => ${varUseCommand}(${varShorthandCommands}.${c.commandShorthandName}, callback)`,
         ]
       }),
-    '',
   )
   // ========== Configs ==========
 
   if (config.deprecatedKeys.length) {
     lines.push(
-      '',
       ...commentBlock('Type union of Deprecated all configs'),
     )
     lines.push(
-      `export type ${getSignature('DeprecatedConfigKey')} = `,
+      `export type ${getIdentifier('DeprecatedConfigKey')} = `,
       ...config.deprecatedKeys.map(c =>
         `  | "${c}"`,
       ),
@@ -288,12 +337,12 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
 
   const sectionConfigDefaultKeyValue: string[] = []
   const sectionConfigConstExports: string[] = []
-  const varConfigsDefaults = getSignature(`${convertCamelCase(name)}Defaults`)
-  const varSectionShorthandRawValuePairs = getSignature('configs')
+  const varConfigsDefaults = getIdentifier(`${convertCamelCase(name)}Defaults`)
+  const varSectionShorthandRawValuePairs = getIdentifier('configs')
   const sectionShorthandRawValuePairs: string[] = []
-  const varSectionConfigKey = getSignature('ConfigSecionKey')
-  const varUseConfig = getSignature('useConfig')
-  const varUseConfigObject = getSignature('useConfigObject')
+  const varTypeSectionConfig = getIdentifier('ConfigurationSection')
+  const varUseConfig = getIdentifier('useConfig')
+  const varUseConfigObject = getIdentifier('useConfigObject')
   // 遍历所有section
   config.activedSectionConfigs.forEach((sectionConfig, section) => {
     function removeSection(name: string): string {
@@ -304,28 +353,27 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
       return name
     }
 
-    let varConfigSectionName
+    let varConfigurationSectionName
     let sectionComment
     if (section) {
-      varConfigSectionName = getSignature(convertCamelCase(getRightSection(section, -1)), varConfigsDefaults, (_pre, count) => convertCamelCase(getRightSection(section, -count)))
+      varConfigurationSectionName = getIdentifier(convertCamelCase(getRightSection(section, -1)), varConfigsDefaults, (_pre, count) => convertCamelCase(getRightSection(section, -count)))
       sectionComment = `${section}`
     }
     else {
-      varConfigSectionName = getSignature('root')
+      varConfigurationSectionName = getIdentifier('root')
       sectionComment = `virtual(Keys in the root)`
     }
-    sectionShorthandRawValuePairs.push(`${varConfigSectionName}:${JSON.stringify(section)},`)
-    const varSectionInterfaceName = getSignature(`${upperFirst(varConfigSectionName)}`)
+    sectionShorthandRawValuePairs.push(`${varConfigurationSectionName}:${JSON.stringify(section)},`)
+    const varSectionInterfaceName = getIdentifier(`${upperFirst(varConfigurationSectionName)}`)
 
     const varName = {
-      varUseConfigSection: getSignature(`${varUseConfig}${varSectionInterfaceName}`),
-      varUseConfigObjectSection: getSignature(`${varUseConfigObject}${varSectionInterfaceName}`),
+      varUseConfigSection: getIdentifier(`${varUseConfig}${varSectionInterfaceName}`),
+      varUseConfigObjectSection: getIdentifier(`${varUseConfigObject}${varSectionInterfaceName}`),
     }
     const example = sectionConfig[0]
     const exampleKey = removeSection(example[0])
     // section 默认值
     sectionConfigDefaultKeyValue.push(
-      '',
       ...commentBlock(`Config defaults of \`${sectionComment}\``, 2),
       `  ${JSON.stringify(section)}: {`,
     )
@@ -335,26 +383,25 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
       ...commentBlock([
         `ConfigObject of \`${sectionComment}\``,
         `@example`,
-        `const ${varConfigSectionName} = ${varName.varUseConfigObjectSection}()`,
-        `const oldVal:${example[1].type} = ${varConfigSectionName}.${exampleKey} //get value `,
+        `const ${varConfigurationSectionName} = ${varName.varUseConfigObjectSection}()`,
+        `const oldVal:${example[1].type} = ${varConfigurationSectionName}.${exampleKey} //get value `,
         // `${varName.useConfigObject}.${exampleKey} = oldVal // set value`,
-        `${varConfigSectionName}.$update("${exampleKey}", oldVal) //update value`,
+        `${varConfigurationSectionName}.$update("${exampleKey}", oldVal) //update value`,
       ].join('\n')),
-      `export const ${varName.varUseConfigObjectSection} =()=> ${varUseConfigObject}(${varSectionShorthandRawValuePairs}.${varConfigSectionName})`,
+      `export const ${varName.varUseConfigObjectSection} =()=> ${varUseConfigObject}(${varSectionShorthandRawValuePairs}.${varConfigurationSectionName})`,
       ...commentBlock([
         `ToConfigRefs of \`${sectionComment}\``,
         `@example`,
-        `const ${varConfigSectionName} = ${varName.varUseConfigSection}()`,
-        `const oldVal:${example[1].type} = ${varConfigSectionName}.${exampleKey}.value //get value `,
+        `const ${varConfigurationSectionName} = ${varName.varUseConfigSection}()`,
+        `const oldVal:${example[1].type} = ${varConfigurationSectionName}.${exampleKey}.value //get value `,
         // `${varName.useConfig}.${exampleKey}.value = oldVal // set value`,
         // `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
-        `${varConfigSectionName}.${exampleKey}.update(oldVal) //update value`,
+        `${varConfigurationSectionName}.${exampleKey}.update(oldVal) //update value`,
       ].join('\n')),
-      `export const ${varName.varUseConfigSection} =()=> ${varUseConfig}(${varSectionShorthandRawValuePairs}.${varConfigSectionName})`,
+      `export const ${varName.varUseConfigSection} =()=> ${varUseConfig}(${varSectionShorthandRawValuePairs}.${varConfigurationSectionName})`,
     )
     // section 类型生成开始
     lines.push(
-      ``,
       ...commentBlock(`Section Type of \`${sectionComment}\``),
       `export interface ${varSectionInterfaceName} {`,
     )
@@ -385,37 +432,32 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
     sectionConfigDefaultKeyValue.push(
       // `  } satisfies ${interfaceName},`,
       `  } satisfies ${varSectionInterfaceName} as ${varSectionInterfaceName},`,
-      '',
+
     )
   })
 
   // const sectionNames = [...config.sectionActivedConfigs.keys()]
   lines.push(
-
-    '',
     `const ${varConfigsDefaults} = {`,
     ...sectionConfigDefaultKeyValue,
     `}`,
-    '',
-    `export type ${varSectionConfigKey} = keyof typeof ${varConfigsDefaults}`,
+    `export type ${varTypeSectionConfig} = keyof typeof ${varConfigsDefaults}`,
     // `export type ${varSectionConfigKey} = ${sectionNames.map(s => JSON.stringify(s)).join('|')}`,
     commentBlock('Shorthand of config section name.').join('\n'),
     `export const ${varSectionShorthandRawValuePairs} = {`,
     ...sectionShorthandRawValuePairs,
-    `}  satisfies Record<string, ${varSectionConfigKey}>`,
+    `}  satisfies Record<string, ${varTypeSectionConfig}>`,
 
     commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
-    `export const ${varUseConfig} =${varMemo}(<K extends ${varSectionConfigKey}>(section: K)=>  defineConfigs<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section]))`,
+    `export const ${varUseConfig} =${varMemo}(<K extends ${varTypeSectionConfig}>(section: K)=>  defineConfigs<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section]))`,
     commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
-    `export const ${varUseConfigObject}=${varMemo}(<K extends ${varSectionConfigKey}>(section: K)=>defineConfigObject<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section]))`,
+    `export const ${varUseConfigObject}=${varMemo}(<K extends ${varTypeSectionConfig}>(section: K)=>defineConfigObject<typeof ${varConfigsDefaults}[K]>(section, ${varConfigsDefaults}[section]))`,
     ...sectionConfigConstExports,
   )
   config.virtualActivedSectionConfigs.forEach((values, section) => {
     lines.push(
-      '',
-      `export type ${convertCamelCase(section)}= ${values.map(v => '"'.concat(v[0]).concat('"')).join('|')}  ;
+      `export type ${getIdentifier(upperFirst(convertCamelCase(section)))}= ${values.map(v => '"'.concat(v[0]).concat('"')).join('|')}  ;
       `,
-
     )
   })
 
@@ -432,7 +474,7 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
     )
     lines.push(
       '}',
-      '',
+
       `export default ${namespace}`,
     )
   }
@@ -446,7 +488,6 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
         '/* eslint-disable */',
         '// This file is generated by `reactive-meta-gen`. Do not modify manually.',
         '// @see https://github.com/calmripple/reactive-meta-gen',
-        '',
       )
     }
   }

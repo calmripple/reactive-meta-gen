@@ -61,6 +61,8 @@ export interface CommandType {
    * title which the command is represented in the UI
    */
   title: string
-
-  // funcName: string | undefined
+  enablement?: string
+  icon?: string
+  shortTitle?: string
+  commandShorthandName?: string
 }
