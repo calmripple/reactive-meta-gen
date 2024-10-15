@@ -135,16 +135,16 @@ export const useOutputChannel = (outputName: LoggerName = displayName ?? name ??
 /**
  * Create a statusBarItem with a commmand id
  */
-export const useStatusBarItemFromCommand = (commandKey: Command) => {
+export const useStatusBarItemFromCommand = memo((commandKey: Command) => {
     let cmd = commandsInformation[commandKey];
     return useStatusBarItem({
-        id: cmd.command,
+        id: cmd.commandShorthandName,
         command: cmd.command,
         name: cmd.command,
         text: cmd.shortTitle ?? cmd.title,
         tooltip: cmd.title
     });
-};
+});
 /**
  * File Watcher: Enable
  * @command Register a command `extension.enableFileWatcher`
@@ -294,17 +294,9 @@ export const useConfig = memo(<K extends ConfigurationSection>(section: K) => de
 export const useConfigObject = memo(<K extends ConfigurationSection>(section: K) => defineConfigObject<typeof filewatcherDefaults[K]>(section, filewatcherDefaults[section]));
 /**
  * ConfigObject of `filewatcher`
- * @example
- * const filewatcher = useConfigObjectFilewatcher()
- * const oldVal:boolean = filewatcher.autoClearConsole //get value
- * filewatcher.$update("autoClearConsole", oldVal) //update value
  */
 export const useConfigObjectFilewatcher = () => useConfigObject(configs.filewatcher);
 /**
  * ToConfigRefs of `filewatcher`
- * @example
- * const filewatcher = useConfigFilewatcher()
- * const oldVal:boolean = filewatcher.autoClearConsole.value //get value
- * filewatcher.autoClearConsole.update(oldVal) //update value
  */
 export const useConfigFilewatcher = () => useConfig(configs.filewatcher);

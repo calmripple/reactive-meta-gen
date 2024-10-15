@@ -185,16 +185,16 @@ export const useOutputChannel = (outputName: LoggerName = displayName ?? name ??
 /**
  * Create a statusBarItem with a commmand id
  */
-export const useStatusBarItemFromCommand = (commandKey: Command) => {
+export const useStatusBarItemFromCommand = memo((commandKey: Command) => {
     let cmd = commandsInformation[commandKey];
     return useStatusBarItem({
-        id: cmd.command,
+        id: cmd.commandShorthandName,
         command: cmd.command,
         name: cmd.command,
         text: cmd.shortTitle ?? cmd.title,
         tooltip: cmd.title
     });
-};
+});
 /**
  * Update config now
  * @command Register a command `base`
@@ -438,82 +438,41 @@ export const useConfig = memo(<K extends ConfigurationSection>(section: K) => de
 export const useConfigObject = memo(<K extends ConfigurationSection>(section: K) => defineConfigObject<typeof projectConfigDefaults[K]>(section, projectConfigDefaults[section]));
 /**
  * ConfigObject of `project-config`
- * @example
- * const projectConfig = useConfigObjectProjectConfig()
- * const oldVal:string = projectConfig.fileNestingUpdater.upstreamBranch //get value
- * projectConfig.$update("fileNestingUpdater.upstreamBranch", oldVal) //update value
  */
 export const useConfigObjectProjectConfig = () => useConfigObject(configs.projectConfig);
 /**
  * ToConfigRefs of `project-config`
- * @example
- * const projectConfig = useConfigProjectConfig()
- * const oldVal:string = projectConfig.fileNestingUpdater.upstreamBranch.value //get value
- * projectConfig.fileNestingUpdater.upstreamBranch.update(oldVal) //update value
  */
 export const useConfigProjectConfig = () => useConfig(configs.projectConfig);
 /**
  * ConfigObject of `project-config.fileNestingUpdater`
- * @example
- * const fileNestingUpdater = useConfigObjectFileNestingUpdater()
- * const oldVal:string = fileNestingUpdater.upstreamBranch //get value
- * fileNestingUpdater.$update("upstreamBranch", oldVal) //update value
  */
 export const useConfigObjectFileNestingUpdater = () => useConfigObject(configs.fileNestingUpdater);
 /**
  * ToConfigRefs of `project-config.fileNestingUpdater`
- * @example
- * const fileNestingUpdater = useConfigFileNestingUpdater()
- * const oldVal:string = fileNestingUpdater.upstreamBranch.value //get value
- * fileNestingUpdater.upstreamBranch.update(oldVal) //update value
  */
 export const useConfigFileNestingUpdater = () => useConfig(configs.fileNestingUpdater);
 /**
  * ConfigObject of `project-config.test`
- * @example
- * const test = useConfigObjectTest()
- * const oldVal:boolean = test.annotations //get value
- * test.$update("annotations", oldVal) //update value
  */
 export const useConfigObjectTest = () => useConfigObject(configs.test);
 /**
  * ToConfigRefs of `project-config.test`
- * @example
- * const test = useConfigTest()
- * const oldVal:boolean = test.annotations.value //get value
- * test.annotations.update(oldVal) //update value
  */
 export const useConfigTest = () => useConfig(configs.test);
 /**
  * ConfigObject of `virtual(Keys in the root)`
- * @example
- * const root = useConfigObjectRoot()
- * const oldVal:boolean = root.xxx //get value
- * root.$update("xxx", oldVal) //update value
  */
 export const useConfigObjectRoot = () => useConfigObject(configs.root);
 /**
  * ToConfigRefs of `virtual(Keys in the root)`
- * @example
- * const root = useConfigRoot()
- * const oldVal:boolean = root.xxx.value //get value
- * root.xxx.update(oldVal) //update value
  */
 export const useConfigRoot = () => useConfig(configs.root);
 /**
  * ConfigObject of `emeraldwalk`
- * @example
- * const emeraldwalk = useConfigObjectEmeraldwalk()
- * const oldVal:object = emeraldwalk.runonsave //get value
- * emeraldwalk.$update("runonsave", oldVal) //update value
  */
 export const useConfigObjectEmeraldwalk = () => useConfigObject(configs.emeraldwalk);
 /**
  * ToConfigRefs of `emeraldwalk`
- * @example
- * const emeraldwalk = useConfigEmeraldwalk()
- * const oldVal:object = emeraldwalk.runonsave.value //get value
- * emeraldwalk.runonsave.update(oldVal) //update value
  */
 export const useConfigEmeraldwalk = () => useConfig(configs.emeraldwalk);
-export type EmeraldwalkRunonsave = "autoClearConsole" | "shell" | "delimiters" | "delimiters1" | "commands";

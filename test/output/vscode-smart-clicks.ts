@@ -115,16 +115,16 @@ export const useOutputChannel = (outputName: LoggerName = displayName ?? name ??
 /**
  * Create a statusBarItem with a commmand id
  */
-export const useStatusBarItemFromCommand = (commandKey: Command) => {
+export const useStatusBarItemFromCommand = memo((commandKey: Command) => {
     let cmd = commandsInformation[commandKey];
     return useStatusBarItem({
-        id: cmd.command,
+        id: cmd.commandShorthandName,
         command: cmd.command,
         name: cmd.command,
         text: cmd.shortTitle ?? cmd.title,
         tooltip: cmd.title
     });
-};
+});
 /**
  * Smart Clicks: Trigger
  * @command Register a command `smartClicks.trigger`
@@ -308,18 +308,9 @@ export const useConfig = memo(<K extends ConfigurationSection>(section: K) => de
 export const useConfigObject = memo(<K extends ConfigurationSection>(section: K) => defineConfigObject<typeof smartClicksDefaults[K]>(section, smartClicksDefaults[section]));
 /**
  * ConfigObject of `smartClicks`
- * @example
- * const smartClicks = useConfigObjectSmartClicks()
- * const oldVal:number = smartClicks.clicksInterval //get value
- * smartClicks.$update("clicksInterval", oldVal) //update value
  */
 export const useConfigObjectSmartClicks = () => useConfigObject(configs.smartClicks);
 /**
  * ToConfigRefs of `smartClicks`
- * @example
- * const smartClicks = useConfigSmartClicks()
- * const oldVal:number = smartClicks.clicksInterval.value //get value
- * smartClicks.clicksInterval.update(oldVal) //update value
  */
 export const useConfigSmartClicks = () => useConfig(configs.smartClicks);
-export type SmartClicksRules = "bracket-pair" | "dash" | "html-attr" | "html-element" | "html-tag-pair" | "js-arrow-fn" | "js-assign" | "js-block" | "js-colon" | "jsx-tag-pair";

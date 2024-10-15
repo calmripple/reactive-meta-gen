@@ -525,16 +525,16 @@ export const useOutputChannel = (outputName: LoggerName = displayName ?? name ??
 /**
  * Create a statusBarItem with a commmand id
  */
-export const useStatusBarItemFromCommand = (commandKey: Command) => {
+export const useStatusBarItemFromCommand = memo((commandKey: Command) => {
     let cmd = commandsInformation[commandKey];
     return useStatusBarItem({
-        id: cmd.command,
+        id: cmd.commandShorthandName,
         command: cmd.command,
         name: cmd.command,
         text: cmd.shortTitle ?? cmd.title,
         tooltip: cmd.title
     });
-};
+});
 /**
  * %command.config_locales%
  * @command Register a command `i18n-ally.config-locales`
@@ -2071,321 +2071,161 @@ export const useConfig = memo(<K extends ConfigurationSection>(section: K) => de
 export const useConfigObject = memo(<K extends ConfigurationSection>(section: K) => defineConfigObject<typeof i18nAllyDefaults[K]>(section, i18nAllyDefaults[section]));
 /**
  * ConfigObject of `i18n-ally`
- * @example
- * const i18nAlly = useConfigObjectI18nAlly()
- * const oldVal:boolean = i18nAlly.disabled //get value
- * i18nAlly.$update("disabled", oldVal) //update value
  */
 export const useConfigObjectI18nAlly = () => useConfigObject(configs.i18nAlly);
 /**
  * ToConfigRefs of `i18n-ally`
- * @example
- * const i18nAlly = useConfigI18nAlly()
- * const oldVal:boolean = i18nAlly.disabled.value //get value
- * i18nAlly.disabled.update(oldVal) //update value
  */
 export const useConfigI18nAlly = () => useConfig(configs.i18nAlly);
 /**
  * ConfigObject of `i18n-ally.theme`
- * @example
- * const theme = useConfigObjectTheme()
- * const oldVal:string = theme.annotation //get value
- * theme.$update("annotation", oldVal) //update value
  */
 export const useConfigObjectTheme = () => useConfigObject(configs.theme);
 /**
  * ToConfigRefs of `i18n-ally.theme`
- * @example
- * const theme = useConfigTheme()
- * const oldVal:string = theme.annotation.value //get value
- * theme.annotation.update(oldVal) //update value
  */
 export const useConfigTheme = () => useConfig(configs.theme);
 /**
  * ConfigObject of `i18n-ally.regex`
- * @example
- * const regex = useConfigObjectRegex()
- * const oldVal:string = regex.key //get value
- * regex.$update("key", oldVal) //update value
  */
 export const useConfigObjectRegex = () => useConfigObject(configs.regex);
 /**
  * ToConfigRefs of `i18n-ally.regex`
- * @example
- * const regex = useConfigRegex()
- * const oldVal:string = regex.key.value //get value
- * regex.key.update(oldVal) //update value
  */
 export const useConfigRegex = () => useConfig(configs.regex);
 /**
  * ConfigObject of `i18n-ally.refactor`
- * @example
- * const refactor = useConfigObjectRefactor()
- * const oldVal:array = refactor.templates //get value
- * refactor.$update("templates", oldVal) //update value
  */
 export const useConfigObjectRefactor = () => useConfigObject(configs.refactor);
 /**
  * ToConfigRefs of `i18n-ally.refactor`
- * @example
- * const refactor = useConfigRefactor()
- * const oldVal:array = refactor.templates.value //get value
- * refactor.templates.update(oldVal) //update value
  */
 export const useConfigRefactor = () => useConfig(configs.refactor);
 /**
  * ConfigObject of `i18n-ally.translate`
- * @example
- * const translate = useConfigObjectTranslate()
- * const oldVal:boolean = translate.saveAsCandidates //get value
- * translate.$update("saveAsCandidates", oldVal) //update value
  */
 export const useConfigObjectTranslate = () => useConfigObject(configs.translate);
 /**
  * ToConfigRefs of `i18n-ally.translate`
- * @example
- * const translate = useConfigTranslate()
- * const oldVal:boolean = translate.saveAsCandidates.value //get value
- * translate.saveAsCandidates.update(oldVal) //update value
  */
 export const useConfigTranslate = () => useConfig(configs.translate);
 /**
  * ConfigObject of `i18n-ally.translate.google`
- * @example
- * const google = useConfigObjectGoogle()
- * const oldVal:string = google.apiKey //get value
- * google.$update("apiKey", oldVal) //update value
  */
 export const useConfigObjectGoogle = () => useConfigObject(configs.google);
 /**
  * ToConfigRefs of `i18n-ally.translate.google`
- * @example
- * const google = useConfigGoogle()
- * const oldVal:string = google.apiKey.value //get value
- * google.apiKey.update(oldVal) //update value
  */
 export const useConfigGoogle = () => useConfig(configs.google);
 /**
  * ConfigObject of `i18n-ally.translate.deepl`
- * @example
- * const deepl = useConfigObjectDeepl()
- * const oldVal:string = deepl.apiKey //get value
- * deepl.$update("apiKey", oldVal) //update value
  */
 export const useConfigObjectDeepl = () => useConfigObject(configs.deepl);
 /**
  * ToConfigRefs of `i18n-ally.translate.deepl`
- * @example
- * const deepl = useConfigDeepl()
- * const oldVal:string = deepl.apiKey.value //get value
- * deepl.apiKey.update(oldVal) //update value
  */
 export const useConfigDeepl = () => useConfig(configs.deepl);
 /**
  * ConfigObject of `i18n-ally.translate.baidu`
- * @example
- * const baidu = useConfigObjectBaidu()
- * const oldVal:string = baidu.appid //get value
- * baidu.$update("appid", oldVal) //update value
  */
 export const useConfigObjectBaidu = () => useConfigObject(configs.baidu);
 /**
  * ToConfigRefs of `i18n-ally.translate.baidu`
- * @example
- * const baidu = useConfigBaidu()
- * const oldVal:string = baidu.appid.value //get value
- * baidu.appid.update(oldVal) //update value
  */
 export const useConfigBaidu = () => useConfig(configs.baidu);
 /**
  * ConfigObject of `i18n-ally.translate.libre`
- * @example
- * const libre = useConfigObjectLibre()
- * const oldVal:string = libre.apiRoot //get value
- * libre.$update("apiRoot", oldVal) //update value
  */
 export const useConfigObjectLibre = () => useConfigObject(configs.libre);
 /**
  * ToConfigRefs of `i18n-ally.translate.libre`
- * @example
- * const libre = useConfigLibre()
- * const oldVal:string = libre.apiRoot.value //get value
- * libre.apiRoot.update(oldVal) //update value
  */
 export const useConfigLibre = () => useConfig(configs.libre);
 /**
  * ConfigObject of `i18n-ally.translate.openai`
- * @example
- * const openai = useConfigObjectOpenai()
- * const oldVal:string = openai.apiKey //get value
- * openai.$update("apiKey", oldVal) //update value
  */
 export const useConfigObjectOpenai = () => useConfigObject(configs.openai);
 /**
  * ToConfigRefs of `i18n-ally.translate.openai`
- * @example
- * const openai = useConfigOpenai()
- * const oldVal:string = openai.apiKey.value //get value
- * openai.apiKey.update(oldVal) //update value
  */
 export const useConfigOpenai = () => useConfig(configs.openai);
 /**
  * ConfigObject of `i18n-ally.usage`
- * @example
- * const usage = useConfigObjectUsage()
- * const oldVal:array = usage.scanningIgnore //get value
- * usage.$update("scanningIgnore", oldVal) //update value
  */
 export const useConfigObjectUsage = () => useConfigObject(configs.usage);
 /**
  * ToConfigRefs of `i18n-ally.usage`
- * @example
- * const usage = useConfigUsage()
- * const oldVal:array = usage.scanningIgnore.value //get value
- * usage.scanningIgnore.update(oldVal) //update value
  */
 export const useConfigUsage = () => useConfig(configs.usage);
 /**
  * ConfigObject of `i18n-ally.frameworks`
- * @example
- * const frameworks = useConfigObjectFrameworks()
- * const oldVal:string = frameworks.ruby-rails.scopeRoot //get value
- * frameworks.$update("ruby-rails.scopeRoot", oldVal) //update value
  */
 export const useConfigObjectFrameworks = () => useConfigObject(configs.frameworks);
 /**
  * ToConfigRefs of `i18n-ally.frameworks`
- * @example
- * const frameworks = useConfigFrameworks()
- * const oldVal:string = frameworks.ruby-rails.scopeRoot.value //get value
- * frameworks.ruby-rails.scopeRoot.update(oldVal) //update value
  */
 export const useConfigFrameworks = () => useConfig(configs.frameworks);
 /**
  * ConfigObject of `i18n-ally.frameworks.ruby-rails`
- * @example
- * const rubyRails = useConfigObjectRubyRails()
- * const oldVal:string = rubyRails.scopeRoot //get value
- * rubyRails.$update("scopeRoot", oldVal) //update value
  */
 export const useConfigObjectRubyRails = () => useConfigObject(configs.rubyRails);
 /**
  * ToConfigRefs of `i18n-ally.frameworks.ruby-rails`
- * @example
- * const rubyRails = useConfigRubyRails()
- * const oldVal:string = rubyRails.scopeRoot.value //get value
- * rubyRails.scopeRoot.update(oldVal) //update value
  */
 export const useConfigRubyRails = () => useConfig(configs.rubyRails);
 /**
  * ConfigObject of `i18n-ally.parsers`
- * @example
- * const parsers = useConfigObjectParsers()
- * const oldVal:string = parsers.typescript.tsNodePath //get value
- * parsers.$update("typescript.tsNodePath", oldVal) //update value
  */
 export const useConfigObjectParsers = () => useConfigObject(configs.parsers);
 /**
  * ToConfigRefs of `i18n-ally.parsers`
- * @example
- * const parsers = useConfigParsers()
- * const oldVal:string = parsers.typescript.tsNodePath.value //get value
- * parsers.typescript.tsNodePath.update(oldVal) //update value
  */
 export const useConfigParsers = () => useConfig(configs.parsers);
 /**
  * ConfigObject of `i18n-ally.parsers.typescript`
- * @example
- * const typescript = useConfigObjectTypescript()
- * const oldVal:string = typescript.tsNodePath //get value
- * typescript.$update("tsNodePath", oldVal) //update value
  */
 export const useConfigObjectTypescript = () => useConfigObject(configs.typescript);
 /**
  * ToConfigRefs of `i18n-ally.parsers.typescript`
- * @example
- * const typescript = useConfigTypescript()
- * const oldVal:string = typescript.tsNodePath.value //get value
- * typescript.tsNodePath.update(oldVal) //update value
  */
 export const useConfigTypescript = () => useConfig(configs.typescript);
 /**
  * ConfigObject of `i18n-ally.review`
- * @example
- * const review = useConfigObjectReview()
- * const oldVal:boolean = review.enabled //get value
- * review.$update("enabled", oldVal) //update value
  */
 export const useConfigObjectReview = () => useConfigObject(configs.review);
 /**
  * ToConfigRefs of `i18n-ally.review`
- * @example
- * const review = useConfigReview()
- * const oldVal:boolean = review.enabled.value //get value
- * review.enabled.update(oldVal) //update value
  */
 export const useConfigReview = () => useConfig(configs.review);
 /**
  * ConfigObject of `i18n-ally.review.user`
- * @example
- * const user = useConfigObjectUser()
- * const oldVal:string = user.name //get value
- * user.$update("name", oldVal) //update value
  */
 export const useConfigObjectUser = () => useConfigObject(configs.user);
 /**
  * ToConfigRefs of `i18n-ally.review.user`
- * @example
- * const user = useConfigUser()
- * const oldVal:string = user.name.value //get value
- * user.name.update(oldVal) //update value
  */
 export const useConfigUser = () => useConfig(configs.user);
 /**
  * ConfigObject of `i18n-ally.editor`
- * @example
- * const editor = useConfigObjectEditor()
- * const oldVal:boolean = editor.preferEditor //get value
- * editor.$update("preferEditor", oldVal) //update value
  */
 export const useConfigObjectEditor = () => useConfigObject(configs.editor);
 /**
  * ToConfigRefs of `i18n-ally.editor`
- * @example
- * const editor = useConfigEditor()
- * const oldVal:boolean = editor.preferEditor.value //get value
- * editor.preferEditor.update(oldVal) //update value
  */
 export const useConfigEditor = () => useConfig(configs.editor);
 /**
  * ConfigObject of `i18n-ally.extract`
- * @example
- * const extract = useConfigObjectExtract()
- * const oldVal:string = extract.keygenStrategy //get value
- * extract.$update("keygenStrategy", oldVal) //update value
  */
 export const useConfigObjectExtract = () => useConfigObject(configs.extract);
 /**
  * ToConfigRefs of `i18n-ally.extract`
- * @example
- * const extract = useConfigExtract()
- * const oldVal:string = extract.keygenStrategy.value //get value
- * extract.keygenStrategy.update(oldVal) //update value
  */
 export const useConfigExtract = () => useConfig(configs.extract);
 /**
  * ConfigObject of `i18n-ally.extract.parsers`
- * @example
- * const extractParsers = useConfigObjectExtractParsers()
- * const oldVal:object = extractParsers.html //get value
- * extractParsers.$update("html", oldVal) //update value
  */
 export const useConfigObjectExtractParsers = () => useConfigObject(configs.extractParsers);
 /**
  * ToConfigRefs of `i18n-ally.extract.parsers`
- * @example
- * const extractParsers = useConfigExtractParsers()
- * const oldVal:object = extractParsers.html.value //get value
- * extractParsers.html.update(oldVal) //update value
  */
 export const useConfigExtractParsers = () => useConfig(configs.extractParsers);

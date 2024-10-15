@@ -115,16 +115,16 @@ export const useOutputChannel = (outputName: LoggerName = displayName ?? name ??
 /**
  * Create a statusBarItem with a commmand id
  */
-export const useStatusBarItemFromCommand = (commandKey: Command) => {
+export const useStatusBarItemFromCommand = memo((commandKey: Command) => {
     let cmd = commandsInformation[commandKey];
     return useStatusBarItem({
-        id: cmd.command,
+        id: cmd.commandShorthandName,
         command: cmd.command,
         name: cmd.command,
         text: cmd.shortTitle ?? cmd.title,
         tooltip: cmd.title
     });
-};
+});
 /**
  * Show Menu
  * @command Register a command `whichkey.show`
@@ -196,17 +196,9 @@ export const useConfig = memo(<K extends ConfigurationSection>(section: K) => de
 export const useConfigObject = memo(<K extends ConfigurationSection>(section: K) => defineConfigObject<typeof whichkeyDefaults[K]>(section, whichkeyDefaults[section]));
 /**
  * ConfigObject of `whichkey`
- * @example
- * const whichkey = useConfigObjectWhichkey()
- * const oldVal:object = whichkey.transient //get value
- * whichkey.$update("transient", oldVal) //update value
  */
 export const useConfigObjectWhichkey = () => useConfigObject(configs.whichkey);
 /**
  * ToConfigRefs of `whichkey`
- * @example
- * const whichkey = useConfigWhichkey()
- * const oldVal:object = whichkey.transient.value //get value
- * whichkey.transient.update(oldVal) //update value
  */
 export const useConfigWhichkey = () => useConfig(configs.whichkey);

@@ -145,16 +145,16 @@ export const useOutputChannel = (outputName: LoggerName = displayName ?? name ??
 /**
  * Create a statusBarItem with a commmand id
  */
-export const useStatusBarItemFromCommand = (commandKey: Command) => {
+export const useStatusBarItemFromCommand = memo((commandKey: Command) => {
     let cmd = commandsInformation[commandKey];
     return useStatusBarItem({
-        id: cmd.command,
+        id: cmd.commandShorthandName,
         command: cmd.command,
         name: cmd.command,
         text: cmd.shortTitle ?? cmd.title,
         tooltip: cmd.title
     });
-};
+});
 /**
  * Toggle Annotations
  * @command Register a command `sample.toggle-annotations`
@@ -474,50 +474,25 @@ export const useConfig = memo(<K extends ConfigurationSection>(section: K) => de
 export const useConfigObject = memo(<K extends ConfigurationSection>(section: K) => defineConfigObject<typeof sampleDefaults[K]>(section, sampleDefaults[section]));
 /**
  * ConfigObject of `sample`
- * @example
- * const sample = useConfigObjectSample()
- * const oldVal:string = sample.date //get value
- * sample.$update("date", oldVal) //update value
  */
 export const useConfigObjectSample = () => useConfigObject(configs.sample);
 /**
  * ToConfigRefs of `sample`
- * @example
- * const sample = useConfigSample()
- * const oldVal:string = sample.date.value //get value
- * sample.date.update(oldVal) //update value
  */
 export const useConfigSample = () => useConfig(configs.sample);
 /**
  * ConfigObject of `project-kit`
- * @example
- * const projectKit = useConfigObjectProjectKit()
- * const oldVal:object = projectKit.emeraldwalk.runonsave //get value
- * projectKit.$update("emeraldwalk.runonsave", oldVal) //update value
  */
 export const useConfigObjectProjectKit = () => useConfigObject(configs.projectKit);
 /**
  * ToConfigRefs of `project-kit`
- * @example
- * const projectKit = useConfigProjectKit()
- * const oldVal:object = projectKit.emeraldwalk.runonsave.value //get value
- * projectKit.emeraldwalk.runonsave.update(oldVal) //update value
  */
 export const useConfigProjectKit = () => useConfig(configs.projectKit);
 /**
  * ConfigObject of `project-kit.emeraldwalk`
- * @example
- * const emeraldwalk = useConfigObjectEmeraldwalk()
- * const oldVal:object = emeraldwalk.runonsave //get value
- * emeraldwalk.$update("runonsave", oldVal) //update value
  */
 export const useConfigObjectEmeraldwalk = () => useConfigObject(configs.emeraldwalk);
 /**
  * ToConfigRefs of `project-kit.emeraldwalk`
- * @example
- * const emeraldwalk = useConfigEmeraldwalk()
- * const oldVal:object = emeraldwalk.runonsave.value //get value
- * emeraldwalk.runonsave.update(oldVal) //update value
  */
 export const useConfigEmeraldwalk = () => useConfig(configs.emeraldwalk);
-export type ProjectKitEmeraldwalkRunonsave = "shell" | "commands" | "autoClearConsole" | "innerObject.cmd" | "innerObject.match";
