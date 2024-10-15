@@ -2,13 +2,14 @@ export interface GenerateOptions {
   /**
    * The header of the generated file
    */
-  header?: string | boolean
+  header: string | boolean
   /**
    * Use namespace for generated types
    * @default false
    */
-  namespace?: string | boolean
+  namespace: string | boolean
 
+  redundant: boolean
 }
 export interface Command {
   title: string

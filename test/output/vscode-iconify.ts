@@ -3,6 +3,7 @@
 // @see https://github.com/calmripple/reactive-meta-gen
 // Meta info
 import { defineConfigObject, defineConfigs, useCommand as useReactiveCommand, useCommands as useReactiveCommands, useLogger as useReactiveLogger, useOutputChannel as useReactiveOutputChannel, useStatusBarItem, useDisposable, } from 'reactive-vscode';
+import type { Nullable } from 'reactive-vscode';
 export const publisher = "antfu";
 export const name = "iconify";
 export const version = "0.9.3";
@@ -132,17 +133,19 @@ export const useLogger = (loggerName: LoggerName = displayName ?? name ?? extens
  * @reactive `window.createOutputChannel`
  */
 export const useOutputChannel = (outputName: LoggerName = displayName ?? name ?? extensionId) => useReactiveOutputChannel(outputName);
+export const putRight = (target: Nullable<string>, curr: string) => target ? ''.concat(curr).concat(target) : curr;
+export const putLeft = (target: Nullable<string>, curr: string) => target ? ''.concat(target).concat(curr) : curr;
 /**
  * Create a statusBarItem with a commmand id
  */
 export const useStatusBarItemFromCommand = memo((commandKey: Command) => {
-    let cmd = commandsInformation[commandKey];
+    const cmd = commandsInformation[commandKey];
     return useStatusBarItem({
         id: cmd.commandShorthandName,
         command: cmd.command,
         name: cmd.command,
-        text: cmd.shortTitle ?? cmd.title,
-        tooltip: cmd.title
+        text: putLeft(cmd.icon, cmd.shortTitle ?? cmd.title ?? cmd.commandShorthandName),
+        tooltip: putLeft(cmd.category, ":").concat(cmd.title ?? cmd.shortTitle ?? cmd.commandShorthandName)
     });
 });
 /**
@@ -302,11 +305,11 @@ export const configs = {
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export const useConfig = memo(<K extends ConfigurationSection>(section: K) => defineConfigs<typeof iconifyDefaults[K]>(section, iconifyDefaults[section]));
+export const useConfig = memo(<Section extends ConfigurationSection>(section: Section) => defineConfigs<typeof iconifyDefaults[Section]>(section, iconifyDefaults[section]));
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export const useConfigObject = memo(<K extends ConfigurationSection>(section: K) => defineConfigObject<typeof iconifyDefaults[K]>(section, iconifyDefaults[section]));
+export const useConfigObject = memo(<Section extends ConfigurationSection>(section: Section) => defineConfigObject<typeof iconifyDefaults[Section]>(section, iconifyDefaults[section]));
 /**
  * ConfigObject of `iconify`
  */

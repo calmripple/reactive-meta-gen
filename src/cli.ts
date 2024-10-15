@@ -9,9 +9,10 @@ const cli = cac()
   .version(version)
 
 cli.command('[input]', 'Generate TypeScript files from package.json')
-  .option('--output <output>', 'Output file', { default: 'src/generated-meta.ts' })
-  .option('--namespace <namespace>', 'Generate with namespace')
-  .option('--readme <path>', 'The path to README.md', { default: 'README.md' })
+  .option('-o, --output <output>', 'Output file', { default: 'src/generated-meta.ts' })
+  .option('-n, --namespace <namespace>', 'Generate with namespace')
+  .option('-md, --readme <path>', 'The path to README.md', { default: 'README.md' })
+  .option('-r, --redundant', 'Render redundant sectons ')
   .action(async (input = 'package.json', options) => {
     input = path.resolve(input)
     const rootPath = path.resolve('.')
@@ -20,9 +21,7 @@ cli.command('[input]', 'Generate TypeScript files from package.json')
     const json = JSON.parse(await fs.readFile(input, 'utf-8'))
     if (!json.publisher)
       throw new Error('This package.json does not seem to be a valid VSCode extension package.json')
-    const { dts, markdown } = await generate(json, {
-      namespace: options.namespace === 'false' ? false : options.namespace,
-    })
+    const { dts, markdown } = await generate(json, options)
     const dtsfile = path.resolve(options.output)
     if (existsSync(dtsfile) && await fs.readFile(dtsfile, 'utf-8') === dts) {
       console.log(`Up to date:'${dtsfile.replace(rootPath, '')}'.`)

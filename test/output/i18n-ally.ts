@@ -3,6 +3,7 @@
 // @see https://github.com/calmripple/reactive-meta-gen
 // Meta info
 import { defineConfigObject, defineConfigs, useCommand as useReactiveCommand, useCommands as useReactiveCommands, useLogger as useReactiveLogger, useOutputChannel as useReactiveOutputChannel, useStatusBarItem, useDisposable, } from 'reactive-vscode';
+import type { Nullable } from 'reactive-vscode';
 export const publisher = "lokalise";
 export const name = "i18n-ally";
 export const version = "2.12.0";
@@ -522,17 +523,19 @@ export const useLogger = (loggerName: LoggerName = displayName ?? name ?? extens
  * @reactive `window.createOutputChannel`
  */
 export const useOutputChannel = (outputName: LoggerName = displayName ?? name ?? extensionId) => useReactiveOutputChannel(outputName);
+export const putRight = (target: Nullable<string>, curr: string) => target ? ''.concat(curr).concat(target) : curr;
+export const putLeft = (target: Nullable<string>, curr: string) => target ? ''.concat(target).concat(curr) : curr;
 /**
  * Create a statusBarItem with a commmand id
  */
 export const useStatusBarItemFromCommand = memo((commandKey: Command) => {
-    let cmd = commandsInformation[commandKey];
+    const cmd = commandsInformation[commandKey];
     return useStatusBarItem({
         id: cmd.commandShorthandName,
         command: cmd.command,
         name: cmd.command,
-        text: cmd.shortTitle ?? cmd.title,
-        tooltip: cmd.title
+        text: putLeft(cmd.icon, cmd.shortTitle ?? cmd.title ?? cmd.commandShorthandName),
+        tooltip: putLeft(cmd.category, ":").concat(cmd.title ?? cmd.shortTitle ?? cmd.commandShorthandName)
     });
 });
 /**
@@ -885,192 +888,6 @@ export interface I18nAlly {
      * %config.ignore_files%
      */
     "ignoreFiles": (string[] | undefined);
-    "theme.annotation": string;
-    "theme.annotationMissing": string;
-    "theme.annotationBorder": string;
-    "theme.annotationMissingBorder": string;
-    /**
-     * %config.regex_key%
-     */
-    "regex.key"?: (string | undefined);
-    /**
-     * %config.regex_usage_match%
-     */
-    "regex.usageMatch": (string[] | undefined);
-    /**
-     * %config.regex_usage_match_append%
-     */
-    "regex.usageMatchAppend": (string[] | undefined);
-    /**
-     * %config.refactor_templates%
-     */
-    "refactor.templates": ({
-        /**
-     *
-     * @default `undefined`
-     */
-        'source'?: ("html-attribute" | "html-inline" | "js-string" | "js-template" | "jsx-text");
-        /**
-         *
-         * @default `undefined`
-         */
-        'template'?: string;
-        /**
-         *
-         * @default `[]`
-         */
-        'templates': string[];
-        /**
-         *
-         * @default `[]`
-         */
-        'include': string[];
-        /**
-         *
-         * @default `[]`
-         */
-        'exclude': string[];
-    }[] | undefined);
-    /**
-     * %config.translate_save_as_candidates%
-     */
-    "translate.saveAsCandidates": boolean;
-    /**
-     * %config.translate.fallbackToKey%
-     */
-    "translate.fallbackToKey": boolean;
-    /**
-     * %config.translate.engines%
-     */
-    "translate.engines": ("google" | "google-cn" | "deepl" | "libretranslate" | "baidu" | "openai")[];
-    /**
-     * %config.translate.parallels%
-     */
-    "translate.parallels": number;
-    /**
-     * %config.prompt_translating_source%
-     */
-    "translate.promptSource": boolean;
-    /**
-     * %config.translate_override_existing%
-     */
-    "translate.overrideExisting": boolean;
-    /**
-     * %config.google_api_key%
-     */
-    "translate.google.apiKey": (string | null);
-    /**
-     * %config.deepl_api_key%
-     */
-    "translate.deepl.apiKey": (string | null);
-    /**
-     * %config.baidu_appid%
-     */
-    "translate.baidu.appid": (string | null);
-    /**
-     * %config.baidu_app_secret%
-     */
-    "translate.baidu.apiSecret": (string | null);
-    /**
-     * %config.deepl_log%
-     */
-    "translate.deepl.enableLog": boolean;
-    /**
-     * %config.deepl_use_free_api_entry%
-     */
-    "translate.deepl.useFreeApiEntry": boolean;
-    /**
-     * %config.libretranslate_api_root%
-     */
-    "translate.libre.apiRoot": string;
-    /**
-     * %config.openai_api_key%
-     */
-    "translate.openai.apiKey": (string | null);
-    /**
-     * %config.openai_api_root%
-     */
-    "translate.openai.apiRoot": string;
-    /**
-     * %config.openai_api_model%
-     */
-    "translate.openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613");
-    /**
-     * %config.usage.scanning_ignore%
-     */
-    "usage.scanningIgnore": (string[] | undefined);
-    /**
-     * %config.derived_keys%
-     */
-    "usage.derivedKeyRules": (string[] | null);
-    "frameworks.ruby-rails.scopeRoot": string;
-    "parsers.typescript.tsNodePath": string;
-    "parsers.typescript.compilerOptions": Record<string, unknown>;
-    "parsers.extendFileExtensions": Record<string, unknown>;
-    /**
-     * %config.review_enabled%
-     */
-    "review.enabled": boolean;
-    /**
-     * %config.review_gutters%
-     */
-    "review.gutters": boolean;
-    /**
-     * %config.review_username%
-     */
-    "review.user.name"?: (string | undefined);
-    /**
-     * %config.review_email%
-     */
-    "review.user.email"?: (string | undefined);
-    /**
-     * %config.review_remove_on_resolved%
-     */
-    "review.removeCommentOnResolved": boolean;
-    /**
-     * %config.editor_prefer_editor%
-     */
-    "editor.preferEditor": boolean;
-    /**
-     * %config.keygen_strategy%
-     */
-    "extract.keygenStrategy": ("slug" | "random" | "empty" | "source");
-    /**
-     * %config.keygen_style%
-     */
-    "extract.keygenStyle": ("default" | "kebab-case" | "snake_case" | "camelCase" | "PascalCase" | "ALL_CAPS");
-    /**
-     * %config.key_prefix%
-     */
-    "extract.keyPrefix": string;
-    /**
-     * %config.key_max_length%
-     */
-    "extract.keyMaxLength": (number | null);
-    /**
-     * %config.target_picking_strategy%
-     */
-    "extract.targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous");
-    /**
-     * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-     */
-    "extract.parsers.html": Record<string, unknown>;
-    /**
-     * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-     */
-    "extract.parsers.babel": Record<string, unknown>;
-    /**
-     * Enables hard-coded strings detection automatically whenever opening a supported file
-     */
-    "extract.autoDetect": boolean;
-    /**
-     * Strings to be ignored on hard-coded strings detection
-     */
-    "extract.ignored": (string[] | undefined);
-    /**
-     * Strings to be ignored on hard-coded strings detection, by files
-     */
-    "extract.ignoredByFiles": Record<string, unknown>;
     "parserOptions"?: Record<string, unknown>;
     /**
      * %config.default_namespace%
@@ -1166,46 +983,6 @@ export interface Translate {
      * %config.translate_override_existing%
      */
     "overrideExisting": boolean;
-    /**
-     * %config.google_api_key%
-     */
-    "google.apiKey": (string | null);
-    /**
-     * %config.deepl_api_key%
-     */
-    "deepl.apiKey": (string | null);
-    /**
-     * %config.baidu_appid%
-     */
-    "baidu.appid": (string | null);
-    /**
-     * %config.baidu_app_secret%
-     */
-    "baidu.apiSecret": (string | null);
-    /**
-     * %config.deepl_log%
-     */
-    "deepl.enableLog": boolean;
-    /**
-     * %config.deepl_use_free_api_entry%
-     */
-    "deepl.useFreeApiEntry": boolean;
-    /**
-     * %config.libretranslate_api_root%
-     */
-    "libre.apiRoot": string;
-    /**
-     * %config.openai_api_key%
-     */
-    "openai.apiKey": (string | null);
-    /**
-     * %config.openai_api_root%
-     */
-    "openai.apiRoot": string;
-    /**
-     * %config.openai_api_model%
-     */
-    "openai.apiModel": ("gpt-3.5-turbo" | "gpt-3.5-turbo-16k" | "gpt-3.5-turbo-0301" | "gpt-3.5-turbo-0613" | "gpt-4" | "gpt-4-0314" | "gpt-4-0613" | "gpt-4-32k" | "gpt-4-32k-0314" | "gpt-4-32k-0613");
 }
 /**
  * Section Type of `i18n-ally.translate.google`
@@ -1286,24 +1063,10 @@ export interface Usage {
     "derivedKeyRules": (string[] | null);
 }
 /**
- * Section Type of `i18n-ally.frameworks`
- */
-export interface Frameworks {
-    "ruby-rails.scopeRoot": string;
-}
-/**
  * Section Type of `i18n-ally.frameworks.ruby-rails`
  */
 export interface RubyRails {
     "scopeRoot": string;
-}
-/**
- * Section Type of `i18n-ally.parsers`
- */
-export interface Parsers {
-    "typescript.tsNodePath": string;
-    "typescript.compilerOptions": Record<string, unknown>;
-    "extendFileExtensions": Record<string, unknown>;
 }
 /**
  * Section Type of `i18n-ally.parsers.typescript`
@@ -1311,6 +1074,12 @@ export interface Parsers {
 export interface Typescript {
     "tsNodePath": string;
     "compilerOptions": Record<string, unknown>;
+}
+/**
+ * Section Type of `i18n-ally.parsers`
+ */
+export interface Parsers {
+    "extendFileExtensions": Record<string, unknown>;
 }
 /**
  * Section Type of `i18n-ally.review`
@@ -1324,14 +1093,6 @@ export interface Review {
      * %config.review_gutters%
      */
     "gutters": boolean;
-    /**
-     * %config.review_username%
-     */
-    "user.name"?: (string | undefined);
-    /**
-     * %config.review_email%
-     */
-    "user.email"?: (string | undefined);
     /**
      * %config.review_remove_on_resolved%
      */
@@ -1383,14 +1144,6 @@ export interface Extract {
      * %config.target_picking_strategy%
      */
     "targetPickingStrategy": ("none" | "most-similar" | "most-similar-by-key" | "file-previous" | "global-previous");
-    /**
-     * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-     */
-    "parsers.html": Record<string, unknown>;
-    /**
-     * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-     */
-    "parsers.babel": Record<string, unknown>;
     /**
      * Enables hard-coded strings detection automatically whenever opening a supported file
      */
@@ -1554,166 +1307,6 @@ const i18nAllyDefaults = {
          * %config.ignore_files%
          */
         "ignoreFiles": [],
-        "theme.annotation": "rgba(153, 153, 153, .8)",
-        "theme.annotationMissing": "rgba(153, 153, 153, .3)",
-        "theme.annotationBorder": "rgba(153, 153, 153, .2)",
-        "theme.annotationMissingBorder": "rgba(153, 153, 153, .2)",
-        /**
-         * %config.regex_key%
-         */
-        "regex.key": undefined,
-        /**
-         * %config.regex_usage_match%
-         */
-        "regex.usageMatch": [],
-        /**
-         * %config.regex_usage_match_append%
-         */
-        "regex.usageMatchAppend": [],
-        /**
-         * %config.refactor_templates%
-         */
-        "refactor.templates": [],
-        /**
-         * %config.translate_save_as_candidates%
-         */
-        "translate.saveAsCandidates": false,
-        /**
-         * %config.translate.fallbackToKey%
-         */
-        "translate.fallbackToKey": false,
-        /**
-         * %config.translate.engines%
-         */
-        "translate.engines": ["google"],
-        /**
-         * %config.translate.parallels%
-         */
-        "translate.parallels": 5,
-        /**
-         * %config.prompt_translating_source%
-         */
-        "translate.promptSource": false,
-        /**
-         * %config.translate_override_existing%
-         */
-        "translate.overrideExisting": false,
-        /**
-         * %config.google_api_key%
-         */
-        "translate.google.apiKey": null,
-        /**
-         * %config.deepl_api_key%
-         */
-        "translate.deepl.apiKey": null,
-        /**
-         * %config.baidu_appid%
-         */
-        "translate.baidu.appid": null,
-        /**
-         * %config.baidu_app_secret%
-         */
-        "translate.baidu.apiSecret": null,
-        /**
-         * %config.deepl_log%
-         */
-        "translate.deepl.enableLog": false,
-        /**
-         * %config.deepl_use_free_api_entry%
-         */
-        "translate.deepl.useFreeApiEntry": false,
-        /**
-         * %config.libretranslate_api_root%
-         */
-        "translate.libre.apiRoot": "http://localhost:5000",
-        /**
-         * %config.openai_api_key%
-         */
-        "translate.openai.apiKey": null,
-        /**
-         * %config.openai_api_root%
-         */
-        "translate.openai.apiRoot": "https://api.openai.com",
-        /**
-         * %config.openai_api_model%
-         */
-        "translate.openai.apiModel": "gpt-3.5-turbo",
-        /**
-         * %config.usage.scanning_ignore%
-         */
-        "usage.scanningIgnore": [],
-        /**
-         * %config.derived_keys%
-         */
-        "usage.derivedKeyRules": null,
-        "frameworks.ruby-rails.scopeRoot": "app/views",
-        "parsers.typescript.tsNodePath": "node_modules/ts-node/dist/bin.js",
-        "parsers.typescript.compilerOptions": {},
-        "parsers.extendFileExtensions": {},
-        /**
-         * %config.review_enabled%
-         */
-        "review.enabled": true,
-        /**
-         * %config.review_gutters%
-         */
-        "review.gutters": true,
-        /**
-         * %config.review_username%
-         */
-        "review.user.name": undefined,
-        /**
-         * %config.review_email%
-         */
-        "review.user.email": undefined,
-        /**
-         * %config.review_remove_on_resolved%
-         */
-        "review.removeCommentOnResolved": false,
-        /**
-         * %config.editor_prefer_editor%
-         */
-        "editor.preferEditor": false,
-        /**
-         * %config.keygen_strategy%
-         */
-        "extract.keygenStrategy": "slug",
-        /**
-         * %config.keygen_style%
-         */
-        "extract.keygenStyle": "default",
-        /**
-         * %config.key_prefix%
-         */
-        "extract.keyPrefix": "",
-        /**
-         * %config.key_max_length%
-         */
-        "extract.keyMaxLength": null,
-        /**
-         * %config.target_picking_strategy%
-         */
-        "extract.targetPickingStrategy": "none",
-        /**
-         * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-         */
-        "extract.parsers.html": {},
-        /**
-         * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-         */
-        "extract.parsers.babel": {},
-        /**
-         * Enables hard-coded strings detection automatically whenever opening a supported file
-         */
-        "extract.autoDetect": false,
-        /**
-         * Strings to be ignored on hard-coded strings detection
-         */
-        "extract.ignored": [],
-        /**
-         * Strings to be ignored on hard-coded strings detection, by files
-         */
-        "extract.ignoredByFiles": {},
         "parserOptions": undefined,
         /**
          * %config.default_namespace%
@@ -1783,46 +1376,6 @@ const i18nAllyDefaults = {
          * %config.translate_override_existing%
          */
         "overrideExisting": false,
-        /**
-         * %config.google_api_key%
-         */
-        "google.apiKey": null,
-        /**
-         * %config.deepl_api_key%
-         */
-        "deepl.apiKey": null,
-        /**
-         * %config.baidu_appid%
-         */
-        "baidu.appid": null,
-        /**
-         * %config.baidu_app_secret%
-         */
-        "baidu.apiSecret": null,
-        /**
-         * %config.deepl_log%
-         */
-        "deepl.enableLog": false,
-        /**
-         * %config.deepl_use_free_api_entry%
-         */
-        "deepl.useFreeApiEntry": false,
-        /**
-         * %config.libretranslate_api_root%
-         */
-        "libre.apiRoot": "http://localhost:5000",
-        /**
-         * %config.openai_api_key%
-         */
-        "openai.apiKey": null,
-        /**
-         * %config.openai_api_root%
-         */
-        "openai.apiRoot": "https://api.openai.com",
-        /**
-         * %config.openai_api_model%
-         */
-        "openai.apiModel": "gpt-3.5-turbo",
     } satisfies Translate as Translate,
     /**
      * Config defaults of `i18n-ally.translate.google`
@@ -1903,25 +1456,11 @@ const i18nAllyDefaults = {
         "derivedKeyRules": null,
     } satisfies Usage as Usage,
     /**
-     * Config defaults of `i18n-ally.frameworks`
-     */
-    "i18n-ally.frameworks": {
-        "ruby-rails.scopeRoot": "app/views",
-    } satisfies Frameworks as Frameworks,
-    /**
      * Config defaults of `i18n-ally.frameworks.ruby-rails`
      */
     "i18n-ally.frameworks.ruby-rails": {
         "scopeRoot": "app/views",
     } satisfies RubyRails as RubyRails,
-    /**
-     * Config defaults of `i18n-ally.parsers`
-     */
-    "i18n-ally.parsers": {
-        "typescript.tsNodePath": "node_modules/ts-node/dist/bin.js",
-        "typescript.compilerOptions": {},
-        "extendFileExtensions": {},
-    } satisfies Parsers as Parsers,
     /**
      * Config defaults of `i18n-ally.parsers.typescript`
      */
@@ -1929,6 +1468,12 @@ const i18nAllyDefaults = {
         "tsNodePath": "node_modules/ts-node/dist/bin.js",
         "compilerOptions": {},
     } satisfies Typescript as Typescript,
+    /**
+     * Config defaults of `i18n-ally.parsers`
+     */
+    "i18n-ally.parsers": {
+        "extendFileExtensions": {},
+    } satisfies Parsers as Parsers,
     /**
      * Config defaults of `i18n-ally.review`
      */
@@ -1941,14 +1486,6 @@ const i18nAllyDefaults = {
          * %config.review_gutters%
          */
         "gutters": true,
-        /**
-         * %config.review_username%
-         */
-        "user.name": undefined,
-        /**
-         * %config.review_email%
-         */
-        "user.email": undefined,
         /**
          * %config.review_remove_on_resolved%
          */
@@ -2001,14 +1538,6 @@ const i18nAllyDefaults = {
          */
         "targetPickingStrategy": "none",
         /**
-         * Parser options for extracting HTML, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-         */
-        "parsers.html": {},
-        /**
-         * Parser options for extracting JS/TS/JSX/TSX, see https://github.com/lokalise/i18n-ally/blob/master/src/extraction/parsers/options.ts
-         */
-        "parsers.babel": {},
-        /**
          * Enables hard-coded strings detection automatically whenever opening a supported file
          */
         "autoDetect": false,
@@ -2051,10 +1580,9 @@ export const configs = {
     libre: "i18n-ally.translate.libre",
     openai: "i18n-ally.translate.openai",
     usage: "i18n-ally.usage",
-    frameworks: "i18n-ally.frameworks",
     rubyRails: "i18n-ally.frameworks.ruby-rails",
-    parsers: "i18n-ally.parsers",
     typescript: "i18n-ally.parsers.typescript",
+    parsers: "i18n-ally.parsers",
     review: "i18n-ally.review",
     user: "i18n-ally.review.user",
     editor: "i18n-ally.editor",
@@ -2064,11 +1592,11 @@ export const configs = {
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export const useConfig = memo(<K extends ConfigurationSection>(section: K) => defineConfigs<typeof i18nAllyDefaults[K]>(section, i18nAllyDefaults[section]));
+export const useConfig = memo(<Section extends ConfigurationSection>(section: Section) => defineConfigs<typeof i18nAllyDefaults[Section]>(section, i18nAllyDefaults[section]));
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export const useConfigObject = memo(<K extends ConfigurationSection>(section: K) => defineConfigObject<typeof i18nAllyDefaults[K]>(section, i18nAllyDefaults[section]));
+export const useConfigObject = memo(<Section extends ConfigurationSection>(section: Section) => defineConfigObject<typeof i18nAllyDefaults[Section]>(section, i18nAllyDefaults[section]));
 /**
  * ConfigObject of `i18n-ally`
  */
@@ -2158,14 +1686,6 @@ export const useConfigObjectUsage = () => useConfigObject(configs.usage);
  */
 export const useConfigUsage = () => useConfig(configs.usage);
 /**
- * ConfigObject of `i18n-ally.frameworks`
- */
-export const useConfigObjectFrameworks = () => useConfigObject(configs.frameworks);
-/**
- * ToConfigRefs of `i18n-ally.frameworks`
- */
-export const useConfigFrameworks = () => useConfig(configs.frameworks);
-/**
  * ConfigObject of `i18n-ally.frameworks.ruby-rails`
  */
 export const useConfigObjectRubyRails = () => useConfigObject(configs.rubyRails);
@@ -2174,14 +1694,6 @@ export const useConfigObjectRubyRails = () => useConfigObject(configs.rubyRails)
  */
 export const useConfigRubyRails = () => useConfig(configs.rubyRails);
 /**
- * ConfigObject of `i18n-ally.parsers`
- */
-export const useConfigObjectParsers = () => useConfigObject(configs.parsers);
-/**
- * ToConfigRefs of `i18n-ally.parsers`
- */
-export const useConfigParsers = () => useConfig(configs.parsers);
-/**
  * ConfigObject of `i18n-ally.parsers.typescript`
  */
 export const useConfigObjectTypescript = () => useConfigObject(configs.typescript);
@@ -2189,6 +1701,14 @@ export const useConfigObjectTypescript = () => useConfigObject(configs.typescrip
  * ToConfigRefs of `i18n-ally.parsers.typescript`
  */
 export const useConfigTypescript = () => useConfig(configs.typescript);
+/**
+ * ConfigObject of `i18n-ally.parsers`
+ */
+export const useConfigObjectParsers = () => useConfigObject(configs.parsers);
+/**
+ * ToConfigRefs of `i18n-ally.parsers`
+ */
+export const useConfigParsers = () => useConfig(configs.parsers);
 /**
  * ConfigObject of `i18n-ally.review`
  */

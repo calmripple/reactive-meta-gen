@@ -34,5 +34,9 @@
   "conventionalCommits.scopes": [
     "base",
     "generateDTS"
-  ]
+  ],
+  "editor.tokenColorCustomizations": {
+    "comments": "",
+    "textMateRules": []
+  }
 }

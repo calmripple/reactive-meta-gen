@@ -3,6 +3,7 @@
 // @see https://github.com/calmripple/reactive-meta-gen
 // Meta info
 import { defineConfigObject, defineConfigs, useCommand as useReactiveCommand, useCommands as useReactiveCommands, useLogger as useReactiveLogger, useOutputChannel as useReactiveOutputChannel, useStatusBarItem, useDisposable, } from 'reactive-vscode';
+import type { Nullable } from 'reactive-vscode';
 export const publisher = "cnjimbo";
 export const name = "project-config";
 export const version = "1.1.2";
@@ -182,17 +183,19 @@ export const useLogger = (loggerName: LoggerName = displayName ?? name ?? extens
  * @reactive `window.createOutputChannel`
  */
 export const useOutputChannel = (outputName: LoggerName = displayName ?? name ?? extensionId) => useReactiveOutputChannel(outputName);
+export const putRight = (target: Nullable<string>, curr: string) => target ? ''.concat(curr).concat(target) : curr;
+export const putLeft = (target: Nullable<string>, curr: string) => target ? ''.concat(target).concat(curr) : curr;
 /**
  * Create a statusBarItem with a commmand id
  */
 export const useStatusBarItemFromCommand = memo((commandKey: Command) => {
-    let cmd = commandsInformation[commandKey];
+    const cmd = commandsInformation[commandKey];
     return useStatusBarItem({
         id: cmd.commandShorthandName,
         command: cmd.command,
         name: cmd.command,
-        text: cmd.shortTitle ?? cmd.title,
-        tooltip: cmd.title
+        text: putLeft(cmd.icon, cmd.shortTitle ?? cmd.title ?? cmd.commandShorthandName),
+        tooltip: putLeft(cmd.category, ":").concat(cmd.title ?? cmd.shortTitle ?? cmd.commandShorthandName)
     });
 });
 /**
@@ -239,27 +242,6 @@ export const useCommandDisableRunOnSave = (callback: (...args: any[]) => any) =>
  * Type union of Deprecated all configs
  */
 export type DeprecatedConfigKey = "ww_should_not_show_up";
-/**
- * Section Type of `project-config`
- */
-export interface ProjectConfig {
-    /**
-     * The branch name of upstream repo
-     */
-    "fileNestingUpdater.upstreamBranch": string;
-    /**
-     * The upstream repo you want to update from
-     */
-    "fileNestingUpdater.upstreamRepo": string;
-    /**
-     * Enabled project-config inline annotations
-     */
-    "test.annotations": boolean;
-    /**
-     * Position the icon before or after the icon name
-     */
-    "test.position": ("after" | "before");
-}
 /**
  * Section Type of `project-config.fileNestingUpdater`
  */
@@ -355,27 +337,6 @@ export interface Emeraldwalk {
 }
 const projectConfigDefaults = {
     /**
-     * Config defaults of `project-config`
-     */
-    "project-config": {
-        /**
-         * The branch name of upstream repo
-         */
-        "fileNestingUpdater.upstreamBranch": "main",
-        /**
-         * The upstream repo you want to update from
-         */
-        "fileNestingUpdater.upstreamRepo": "antfu/vscode-file-nesting-config",
-        /**
-         * Enabled project-config inline annotations
-         */
-        "test.annotations": true,
-        /**
-         * Position the icon before or after the icon name
-         */
-        "test.position": "before",
-    } satisfies ProjectConfig as ProjectConfig,
-    /**
      * Config defaults of `project-config.fileNestingUpdater`
      */
     "project-config.fileNestingUpdater": {
@@ -422,7 +383,6 @@ export type ConfigurationSection = keyof typeof projectConfigDefaults;
  * Shorthand of config section name.
  */
 export const configs = {
-    projectConfig: "project-config",
     fileNestingUpdater: "project-config.fileNestingUpdater",
     test: "project-config.test",
     root: "",
@@ -431,19 +391,11 @@ export const configs = {
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export const useConfig = memo(<K extends ConfigurationSection>(section: K) => defineConfigs<typeof projectConfigDefaults[K]>(section, projectConfigDefaults[section]));
+export const useConfig = memo(<Section extends ConfigurationSection>(section: Section) => defineConfigs<typeof projectConfigDefaults[Section]>(section, projectConfigDefaults[section]));
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export const useConfigObject = memo(<K extends ConfigurationSection>(section: K) => defineConfigObject<typeof projectConfigDefaults[K]>(section, projectConfigDefaults[section]));
-/**
- * ConfigObject of `project-config`
- */
-export const useConfigObjectProjectConfig = () => useConfigObject(configs.projectConfig);
-/**
- * ToConfigRefs of `project-config`
- */
-export const useConfigProjectConfig = () => useConfig(configs.projectConfig);
+export const useConfigObject = memo(<Section extends ConfigurationSection>(section: Section) => defineConfigObject<typeof projectConfigDefaults[Section]>(section, projectConfigDefaults[section]));
 /**
  * ConfigObject of `project-config.fileNestingUpdater`
  */
