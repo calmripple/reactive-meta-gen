@@ -2,15 +2,23 @@ export interface GenerateOptions {
   /**
    * The header of the generated file
    */
-  header?: string | boolean
+  header: string | boolean
   /**
    * Use namespace for generated types
    * @default false
    */
-  namespace?: string | boolean
+  namespace: string | boolean
 
+  redundant: boolean
 }
-
+export interface Command {
+  title: string
+  command: string
+  category?: string
+  enablement?: string
+  icon?: string
+  shortTitle?: string
+}
 export interface ConfigurationProperty {
   type?: string | string[]
   default?: any
@@ -54,6 +62,8 @@ export interface CommandType {
    * title which the command is represented in the UI
    */
   title: string
-
-  // funcName: string | undefined
+  enablement?: string
+  icon?: string
+  shortTitle?: string
+  commandShorthandName?: string
 }

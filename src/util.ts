@@ -1,5 +1,5 @@
-import { assign, isArray, memo, camel } from 'radash'
 import type { ConfigurationProperty } from './types'
+import { assign, camel, isArray, memo } from 'radash'
 
 export function isProperty(propterty: ConfigurationProperty): propterty is ConfigurationProperty {
   if (propterty.type) {
@@ -62,7 +62,7 @@ function getSectionFromObject(obj: ConfigurationProperty) {
   return undefined
 }
 export const getConfigInfo = memo(
-  (packageJson: any) => {
+  (packageJson: any, allSections?: boolean) => {
     const deprecatedConfigs = new Map<string, ConfigurationProperty>()
     const deprecatedKeys = new Array<string>()
     const activedConfigs = new Map<string, ConfigurationProperty>()
@@ -85,11 +85,16 @@ export const getConfigInfo = memo(
       activedConfigs.set(fullKey, value)
       activedKeys.push(fullKey)
       const parts = fullKey.split('.')
-      if (parts.length > 1) {
-        const sectionParts = parts.slice(0, -1)
-        for (let i = 0; i < sectionParts.length; i++) {
-          const section = (sectionParts.slice(0, i + 1).join('.'))
-          addOrUpdate(activedSectionConfigs, section, [fullKey, value])
+      if (parts.length >= 2) {
+        if (allSections) {
+          const sectionParts = parts.slice(0, -1)
+          for (let i = 0; i < sectionParts.length; i++) {
+            const section = (sectionParts.slice(0, i + 1).join('.'))
+            addOrUpdate(activedSectionConfigs, section, [fullKey, value])
+          }
+        }
+        else {
+          addOrUpdate(activedSectionConfigs, parts.slice(0, -1).join('.'), [fullKey, value])
         }
       }
       else {
