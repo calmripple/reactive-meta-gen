@@ -1,1 +1,1 @@
-Please refer to https://github.com/calmripple/contribute
+Please refer to https://github.com/open-dmsrs/contribute
