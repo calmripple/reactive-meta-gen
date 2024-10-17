@@ -521,14 +521,7 @@ const printer = ts.createPrinter({
   noEmitHelpers: false,
 })
 
-export function generate(packageJson: any, options: GenerateOptions): {
-  dts: string
-  markdown: {
-    commandsTable: string
-    configsTable: string
-    configsJson: string
-  }
-} {
+export function generate(packageJson: any, options: GenerateOptions) {
   // 使用解析器生成AST
   const sourceFilets = ts.createSourceFile('abc.ts', generateDTS(packageJson, options), ts.ScriptTarget.Latest, true, ts.ScriptKind.TS)
   const md = generateMarkdown(packageJson)
