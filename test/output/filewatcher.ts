@@ -3,7 +3,7 @@
 // @see https://github.com/open-dmsrs/reactive-meta-gen
 // Meta info
 import { defineConfigObject, defineConfigs, useCommand as useReactiveCommand, useCommands as useReactiveCommands, useLogger as useReactiveLogger, useOutputChannel as useReactiveOutputChannel, useStatusBarItem, useDisposable, } from 'reactive-vscode';
-import type { Nullable } from 'reactive-vscode';
+import type { Nullable, UseStatusBarItemOptions } from 'reactive-vscode';
 export const publisher = "appulate";
 export const name = "filewatcher";
 export const version = "2.0.0";
@@ -138,8 +138,8 @@ export const putLeft = (target: Nullable<string>, curr: string) => target ? ''.c
 /**
  * Create a statusBarItem with a commmand id
  */
-export const useStatusBarItemFromCommand = memo((commandKey: Command) => {
-    const cmd = commandsInformation[commandKey];
+export const useStatusBarItemFromCommand = memo((command: Command) => {
+    const cmd = commandsInformation[command];
     return useStatusBarItem({
         id: cmd.commandShorthandName,
         command: cmd.command,
@@ -148,6 +148,19 @@ export const useStatusBarItemFromCommand = memo((commandKey: Command) => {
         tooltip: putLeft(cmd.category, ":").concat(cmd.title ?? cmd.shortTitle ?? cmd.commandShorthandName)
     });
 });
+/**
+ * Create a option of statusBarItem with a commmand id
+ */
+export const getStatusBarItemOption = (command: Command): UseStatusBarItemOptions => {
+    const cmd = commandsInformation[command];
+    return {
+        id: cmd.commandShorthandName,
+        command: cmd.command,
+        name: cmd.command,
+        text: putLeft(cmd.icon, cmd.shortTitle ?? cmd.title ?? cmd.commandShorthandName),
+        tooltip: putLeft(cmd.category, ":").concat(cmd.title ?? cmd.shortTitle ?? cmd.commandShorthandName)
+    };
+};
 /**
  * File Watcher: Enable
  * @command Register a command `extension.enableFileWatcher`

@@ -121,7 +121,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions): string 
   const config = getConfigInfo(packageJson, redundant)
   let lines: string[] = []
   const examples: string[] = []
-  getIdentifiers(['defineConfigObject', 'defineConfigs', 'useStatusBarItem', 'useDisposable', 'Nullable'])
+  getIdentifiers(['defineConfigObject', 'defineConfigs', 'useStatusBarItem', 'useDisposable', 'Nullable', 'UseStatusBarItemOptions'])
   const varUseInternalCommands = getIdentifier('useReactiveCommands')
   const varUseInternalCommand = getIdentifier('useReactiveCommand')
   const varUseInternalLogger = getIdentifier('useReactiveLogger')
@@ -138,7 +138,7 @@ export function generateDTS(packageJson: any, options: GenerateOptions): string 
     useStatusBarItem,
     useDisposable,
     } from 'reactive-vscode'`,
-    `import type { Nullable } from 'reactive-vscode'`,
+    `import type { Nullable,UseStatusBarItemOptions } from 'reactive-vscode'`,
   )
 
   const varPublisher = getIdentifier(`publisher`)
@@ -182,7 +182,7 @@ const ${varMemoize} = <TArgs extends any[], TResult>(
         const result = func(...args)
         cache[key] = {
             exp: ttl ? new Date().getTime() + ttl : null,
-            value: result
+            value: result,
             dispose: () => {
               delete cache[key]
             }
@@ -294,30 +294,44 @@ export interface ${varTypeCommandsInformation} {
   const varLoggerDefault = `${varDisplayName}??${varName}??${varExtensionId}`
   const varTypeLoggerName = getIdentifier('LoggerName')
   const varUseStatusBarItemFromCommand = getIdentifier('useStatusBarItemFromCommand')
+  const varGetStatusBarItemOption = getIdentifier('getStatusBarItemOption')
   lines.push(
-    commentBlock('Register a command. See `vscode::commands.registerCommand`.').join('\n'),
+    ...commentBlock('Register a command. See `vscode::commands.registerCommand`.'),
     `export const ${varUseCommand} = (commandFullKey: ${varTypeCommand}, callback: (...args: any[]) => any): void => ${varUseInternalCommand}(commandFullKey, callback)`,
-    commentBlock('Register multiple commands. See `vscode::commands.registerCommand`.').join('\n'),
+    ...commentBlock('Register multiple commands. See `vscode::commands.registerCommand`.'),
     `export const ${varUseCommands} = (commands: Partial<Record<${varTypeCommand}, (...args: any[]) => any>>): void => ${varUseInternalCommands}(commands)`,
-    commentBlock('name type of Logger and OutputChannel').join('\n'),
+    ...commentBlock('name type of Logger and OutputChannel'),
     `export type ${varTypeLoggerName} = typeof ${varName} | typeof ${varDisplayName} | typeof ${varExtensionId}`,
-    commentBlock('Creates a logger that writes to the output channel.').join('\n'),
+    ...commentBlock('Creates a logger that writes to the output channel.'),
     `export const ${getIdentifier('useLogger')}=(loggerName: ${varTypeLoggerName} = ${varLoggerDefault}, getPrefix?: ((type: string) => string) | null) =>${varUseInternalLogger}(loggerName, { 'getPrefix': getPrefix })`,
-    commentBlock('@reactive `window.createOutputChannel`').join('\n'),
+    ...commentBlock('@reactive `window.createOutputChannel`'),
     `export const ${getIdentifier('useOutputChannel')}=(outputName: ${varTypeLoggerName} = ${varLoggerDefault}) =>${varUseInternalOutputChannel}(outputName)`,
     `export const putRight = (target: Nullable<string>, curr: string) => target ? ''.concat(curr).concat(target) : curr`,
     `export const putLeft = (target: Nullable<string>, curr: string) => target ? ''.concat(target).concat(curr) : curr`,
-    commentBlock('Create a statusBarItem with a commmand id').join('\n'),
-    `export const ${varUseStatusBarItemFromCommand} = ${varMemo}((commandKey: ${varTypeCommand}) => {
-      const cmd = ${varCommandsInformation}[commandKey]
-     return useStatusBarItem({
-        id: cmd.commandShorthandName,
-        command: cmd.command,
-        name: cmd.command,
-        text: putLeft(cmd.icon, cmd.shortTitle ?? cmd.title ?? cmd.commandShorthandName),
-        tooltip: putLeft(cmd.category, ":").concat(cmd.title ?? cmd.shortTitle ?? cmd.commandShorthandName)
-    });
-  })`,
+    ...commentBlock('Create a statusBarItem with a commmand id'),
+    `export const ${varUseStatusBarItemFromCommand} = ${varMemo}((command: ${varTypeCommand}) => {
+      const cmd = ${varCommandsInformation}[command]
+      return useStatusBarItem({
+          id: cmd.commandShorthandName,
+          command: cmd.command,
+          name: cmd.command,
+          text: putLeft(cmd.icon, cmd.shortTitle ?? cmd.title ?? cmd.commandShorthandName),
+          tooltip: putLeft(cmd.category, ":").concat(cmd.title ?? cmd.shortTitle ?? cmd.commandShorthandName)
+      });
+    })`,
+    ...commentBlock('Create a option of statusBarItem with a commmand id'),
+    `
+    export const ${varGetStatusBarItemOption} = (command: Command):UseStatusBarItemOptions => {
+        const cmd = commandsInformation[command];
+        return {
+            id: cmd.commandShorthandName,
+            command: cmd.command,
+            name: cmd.command,
+            text: putLeft(cmd.icon, cmd.shortTitle ?? cmd.title ?? cmd.commandShorthandName),
+            tooltip: putLeft(cmd.category, ":").concat(cmd.title ?? cmd.shortTitle ?? cmd.commandShorthandName)
+        }  ;
+    };
+    `,
   )
 
   lines.push(
@@ -462,14 +476,14 @@ export interface ${varTypeCommandsInformation} {
     `}`,
     `export type ${varTypeSectionConfig} = keyof typeof ${varConfigsDefaults}`,
     // `export type ${varSectionConfigKey} = ${sectionNames.map(s => JSON.stringify(s)).join('|')}`,
-    commentBlock('Shorthand of config section name.').join('\n'),
+    ...commentBlock('Shorthand of config section name.'),
     `export const ${varSectionShorthandRawValuePairs} = {`,
     ...sectionShorthandRawValuePairs,
     `}  satisfies Record<string, ${varTypeSectionConfig}>`,
 
-    commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
+    ...commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.'),
     `export const ${varUseConfig} =${varMemo}(<Section extends ${varTypeSectionConfig}>(section: Section)=>  defineConfigs<typeof ${varConfigsDefaults}[Section]>(section, ${varConfigsDefaults}[section]))`,
-    commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.').join('\n'),
+    ...commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.'),
     `export const ${varUseConfigObject}=${varMemo}(<Section extends ${varTypeSectionConfig}>(section: Section)=>defineConfigObject<typeof ${varConfigsDefaults}[Section]>(section, ${varConfigsDefaults}[section]))`,
     ...sectionConfigConstExports,
   )
@@ -523,12 +537,13 @@ const printer = ts.createPrinter({
 
 export function generate(packageJson: any, options: GenerateOptions) {
   // 使用解析器生成AST
-  const sourceFilets = ts.createSourceFile('abc.ts', generateDTS(packageJson, options), ts.ScriptTarget.Latest, true, ts.ScriptKind.TS)
+  const sourceFileTS = generateDTS(packageJson, options)
+  const formatedSourceFileTS = ts.createSourceFile('abc.ts', sourceFileTS, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS)
   const md = generateMarkdown(packageJson)
   // const scourceFileMd = ts.createSourceFile('a.json', md.configsJson, ts.ScriptTarget.JSON, true, ts.ScriptKind.JSON)
   // md.configsJson = printer.printFile(scourceFileMd)
   return {
-    dts: printer.printFile(sourceFilets), // generateDTS(packageJson, options),
+    dts: printer.printFile(formatedSourceFileTS), // sourceFileTS,// generateDTS(packageJson, options),
     markdown: md,
   }
 }
