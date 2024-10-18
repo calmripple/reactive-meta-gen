@@ -131,7 +131,7 @@ export const useStatusBarItemFromCommand = memo((command: Command) => {
 /**
  * Create a option of statusBarItem with a commmand id
  */
-export const getStatusBarItemOption = (command: Command): UseStatusBarItemOptions => {
+export const statusBarItemOption = (command: Command): UseStatusBarItemOptions => {
     const cmd = commandsInformation[command];
     return {
         id: cmd.commandShorthandName,

@@ -294,7 +294,7 @@ export interface ${varTypeCommandsInformation} {
   const varLoggerDefault = `${varDisplayName}??${varName}??${varExtensionId}`
   const varTypeLoggerName = getIdentifier('LoggerName')
   const varUseStatusBarItemFromCommand = getIdentifier('useStatusBarItemFromCommand')
-  const varGetStatusBarItemOption = getIdentifier('getStatusBarItemOption')
+  const varStatusBarItemOption = getIdentifier('statusBarItemOption')
   lines.push(
     ...commentBlock('Register a command. See `vscode::commands.registerCommand`.'),
     `export const ${varUseCommand} = (commandFullKey: ${varTypeCommand}, callback: (...args: any[]) => any): void => ${varUseInternalCommand}(commandFullKey, callback)`,
@@ -321,7 +321,7 @@ export interface ${varTypeCommandsInformation} {
     })`,
     ...commentBlock('Create a option of statusBarItem with a commmand id'),
     `
-    export const ${varGetStatusBarItemOption} = (command: Command):UseStatusBarItemOptions => {
+    export const ${varStatusBarItemOption} = (command: Command):UseStatusBarItemOptions => {
         const cmd = commandsInformation[command];
         return {
             id: cmd.commandShorthandName,
