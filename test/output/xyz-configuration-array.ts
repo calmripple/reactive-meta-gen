@@ -294,6 +294,9 @@ export interface Root {
  * Section Type of `emeraldwalk`
  */
 export interface Emeraldwalk {
+    /**
+     * Description of emeraldwalk.runonsave.
+     */
     "runonsave": {
         /**
        * Automatically clear the console on each save before running commands.
@@ -388,6 +391,9 @@ const projectConfigDefaults = {
      * Config defaults of `emeraldwalk`
      */
     "emeraldwalk": {
+        /**
+         * Description of emeraldwalk.runonsave.
+         */
         "runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":", "--", "-", "/"], "delimiters1": [":", "--", "-", "/"], "commands": [] },
     } satisfies Emeraldwalk as Emeraldwalk,
 };
