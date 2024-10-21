@@ -35,11 +35,20 @@
     "base",
     "generateDTS"
   ],
-  "editor.tokenColorCustomizations": { 
+  "editor.tokenColorCustomizations": {
     "textMateRules": []
   },
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "eslint.useESLintClass": true,
   "eslint.useFlatConfig": true,
-
+  "docthis.enableHungarianNotationEvaluation": true,
+  "docthis.includeAuthorTag": true,
+  "docthis.includeDateTag": true,
+  "docthis.includeDescriptionTag": true,
+  "docthis.inferTypesFromNames": true,
+  "docthis.returnsTag": true,
+  "eslint.workingDirectories": [
+    "./src",
+    "./test"
+  ],
 }

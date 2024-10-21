@@ -287,7 +287,7 @@ export interface SmartClicks {
         'jsx-tag-pair': boolean;
     };
 }
-const configsDefaults = {
+const defaults = {
     /**
      * Config defaults of `smartClicks`
      */
@@ -313,7 +313,7 @@ const configsDefaults = {
 /**
  * List of section names.
  */
-export type SectionName = keyof typeof configsDefaults;
+export type SectionName = keyof typeof defaults;
 /**
  * Shorthand of config section name.
  */
@@ -323,11 +323,11 @@ export const configs = {
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export const useConfig = memo(<Section extends SectionName>(section: Section) => defineConfigs<typeof configsDefaults[Section]>(section, configsDefaults[section]));
+export const useConfig = memo(<Section extends SectionName>(section: Section) => defineConfigs<typeof defaults[Section]>(section, defaults[section]));
 /**
  * Define configurations of an extension. See `vscode::workspace.getConfiguration`.
  */
-export const useConfigObject = memo(<Section extends SectionName>(section: Section) => defineConfigObject<typeof configsDefaults[Section]>(section, configsDefaults[section]));
+export const useConfigObject = memo(<Section extends SectionName>(section: Section) => defineConfigObject<typeof defaults[Section]>(section, defaults[section]));
 /**
  * ConfigObject<SmartClicks> of `smartClicks`
  */
