@@ -1,13 +1,7 @@
 import type { CommandType, ConfigurationProperty, GenerateOptions } from './types'
 import * as _ from 'radash'
 import * as ts from 'typescript'
-import {
-  convertCamelCase,
-  getConfigInfo,
-  getRightSection,
-  upperFirst,
-} from './util'
-
+import { convertCamelCase, getConfigInfo, upperFirst } from './util'
 export function generateMarkdown(packageJson: any): { commandsTable: string, configsTable: string, configsJson: string } {
   const config = getConfigInfo(packageJson)
   const MAX_TABLE_COL_CHAR = 150
@@ -82,35 +76,48 @@ export function generateMarkdown(packageJson: any): { commandsTable: string, con
 export function generateDTS(packageJson: any, options: GenerateOptions): string {
   const extensionId = `${packageJson.publisher}.${packageJson.name}`
   // const _publisher = packageJson.publisher
-  // const name = packageJson.name as string
   const signatures = _.memo((_domain: string) => new Set<string>())
-  function getIdentifier(signature: string, domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string | undefined): string {
-    let tryCount = 1
-
-    while (signatures(domain).has(signature) && tryCount < 100) {
-      let tempSign
-      if (builder) {
-        try {
-          tempSign = builder(signature, tryCount)
-        }
-        catch {
-          tempSign = undefined
-        }
+  function claimUpperCamelCase(signature: string, domain: string = extensionId) {
+    return claimIdentifier(signature, domain, v => upperFirst(_.camel(v)))
+  }
+  function claimLowerCamelCase(signature: string, domain: string = extensionId): string {
+    return claimIdentifier(signature, domain, v => _.camel(v))
+  }
+  function claimIdentifier(signature: string, domain: string = extensionId, converter: (preSignature: string) => string, autoFindAvailable = true): string {
+    let tempSign
+    if (!autoFindAvailable) {
+      tempSign = converter(signature)
+      if (!signatures(domain).has(tempSign)) {
+        signatures(domain).add(tempSign)
+        return tempSign
       }
-      signature = tempSign === undefined ? `${signature}_${tryCount}` : tempSign
-      tryCount++
+      throw new Error(`Can't found available signature related '${signature}' with disable 'autoFindAvailable'' , make sure claim it only onece.`)
     }
-    signatures(domain).add(signature)
-    return signature
+
+    const parts = signature.split('.').filter(l => l)
+    let tryCount = parts.length - 1
+    while (tryCount > -1) {
+      tempSign = converter(parts.slice(tryCount, parts.length).join('.'))
+      if (!signatures(domain).has(tempSign)) {
+        signatures(domain).add(tempSign)
+        return tempSign
+      }
+      tryCount--
+    }
+
+    tryCount = 0
+    while (tryCount++ < 100) {
+      tempSign = converter(`${signature}_${tryCount}`)
+      if (!signatures(domain).has(tempSign)) {
+        signatures(domain).add(tempSign)
+        return tempSign
+      }
+    }
+
+    throw new Error(`Can't found available signature related '${signature}' after trying ${tryCount} times.`)
   }
-  function getIdentifiers(signatures: string[], domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): string[] {
-    return signatures.map(signature => getIdentifier(signature, domain, builder))
-  }
-  function _getIdentifierObject(signatures: Record<string, string>, domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string): Record<string, string> {
-    return Object.entries(signatures).reduce((pre, [key, value]) => {
-      pre[getIdentifier(key, domain, builder)] = value
-      return pre
-    }, {} as Record<string, string>)
+  function claimIdentifiers(signatures: string[], domain: string = extensionId): string[] {
+    return signatures.map(signature => claimIdentifier(signature, domain, v => v))
   }
 
   let {
@@ -121,11 +128,11 @@ export function generateDTS(packageJson: any, options: GenerateOptions): string 
   const config = getConfigInfo(packageJson, redundant)
   let lines: string[] = []
   const examples: string[] = []
-  getIdentifiers(['defineConfigObject', 'defineConfigs', 'useStatusBarItem', 'useDisposable', 'Nullable', 'UseStatusBarItemOptions'])
-  const varUseInternalCommands = getIdentifier('useReactiveCommands')
-  const varUseInternalCommand = getIdentifier('useReactiveCommand')
-  const varUseInternalLogger = getIdentifier('useReactiveLogger')
-  const varUseInternalOutputChannel = getIdentifier('useReactiveOutputChannel')
+  claimIdentifiers(['defineConfigObject', 'defineConfigs', 'useStatusBarItem', 'useDisposable', 'Nullable', 'UseStatusBarItemOptions'])
+  const varUseInternalCommands = claimLowerCamelCase('useReactiveCommands')
+  const varUseInternalCommand = claimLowerCamelCase('useReactiveCommand')
+  const varUseInternalLogger = claimLowerCamelCase('useReactiveLogger')
+  const varUseInternalOutputChannel = claimLowerCamelCase('useReactiveOutputChannel')
 
   lines.push('// Meta info')
   lines.push(
@@ -141,26 +148,26 @@ export function generateDTS(packageJson: any, options: GenerateOptions): string 
     `import type { Nullable,UseStatusBarItemOptions } from 'reactive-vscode'`,
   )
 
-  const varPublisher = getIdentifier(`publisher`)
+  const varPublisher = claimLowerCamelCase(`publisher`)
   lines.push(
     `export const ${varPublisher} = ${packageJson.publisher ? JSON.stringify(packageJson.publisher) : 'undefined'}`,
   )
-  const varName = getIdentifier(`name`)
-  const varversion = getIdentifier(`version`)
-  const varDisplayName = getIdentifier(`displayName`)
-  const vardescription = getIdentifier(`description`)
-  const varExtensionId = getIdentifier(`extensionId`)
+  const varName = claimLowerCamelCase(`name`)
+  const varversion = claimLowerCamelCase(`version`)
+  const varDisplayName = claimLowerCamelCase(`displayName`)
+  const vardescription = claimLowerCamelCase(`description`)
+  const varExtensionId = claimLowerCamelCase(`extensionId`)
   lines.push(
     `export const ${varName} = ${packageJson.name ? JSON.stringify(packageJson.name) : 'undefined'}`,
     `export const ${varversion} = ${packageJson.version ? JSON.stringify(packageJson.version) : 'undefined'}`,
     `export const ${varDisplayName} = ${packageJson.displayName ? JSON.stringify(packageJson.displayName) : 'undefined'}`,
     `export const ${vardescription} = ${packageJson.description ? JSON.stringify(packageJson.description) : 'undefined'}`,
-    `export const ${varExtensionId} = "${packageJson.publisher}.${packageJson.name}"`,
+    `export const ${varExtensionId} = "${extensionId}"`,
   )
-  const varTypeCache = getIdentifier('Cache')
-  const varMemoize = getIdentifier('memoize')
-  const varMemo = getIdentifier('memo')
-  const varTypeCommandsInformation = getIdentifier('CommandsInformation')
+  const varTypeCache = claimUpperCamelCase('Cache')
+  const varMemoize = claimLowerCamelCase('memoize')
+  const varMemo = claimLowerCamelCase('memo')
+  const varTypeCommandsInformation = claimUpperCamelCase('CommandsInformation')
   const staticCode = ` 
 type ${varTypeCache}<T> = Record<string, { exp: number | null; value: T;  dispose: () => void }>
 
@@ -233,14 +240,14 @@ export interface ${varTypeCommandsInformation} {
 
   lines.push(staticCode)
   // ========== Commands ==========
-  const varUseCommand = getIdentifier(`useCommand`)
-  const varUseCommands = getIdentifier(`useCommands`)
-  const varTypeCommand = getIdentifier('Command')
+  const varUseCommand = claimLowerCamelCase(`useCommand`)
+  const varUseCommands = claimLowerCamelCase(`useCommands`)
+  const varTypeCommand = claimUpperCamelCase('Command')
 
-  const varShorthandCommands = getIdentifier('commands')
+  const varShorthandCommands = claimLowerCamelCase('commands')
 
   const varCommandShorthandNames = ((packageJson.contributes?.commands || []) as CommandType[]).map((c) => {
-    const f = getIdentifier(convertCamelCase(`${getRightSection(c.command, -1)}`), extensionId, (_pre, count) => convertCamelCase(`${getRightSection(c.command, -count)}`))
+    const f = claimLowerCamelCase(c.command, extensionId)
     return {
       commandShorthandName: f,
       ...c,
@@ -274,7 +281,7 @@ export interface ${varTypeCommandsInformation} {
     `} satisfies Record<string, ${varTypeCommand}> as Record<string, ${varTypeCommand}>`,
   )
 
-  const varCommandsInformation = getIdentifier('commandsInformation')
+  const varCommandsInformation = claimLowerCamelCase('commandsInformation')
   lines.push(
     ...commentBlock(`Commands map registed by \`${extensionId}\``),
     `export const ${varCommandsInformation} = {`,
@@ -292,9 +299,9 @@ export interface ${varTypeCommandsInformation} {
 
   // ========== Command Base ==========
   const varLoggerDefault = `${varDisplayName}??${varName}??${varExtensionId}`
-  const varTypeLoggerName = getIdentifier('LoggerName')
-  const varUseStatusBarItemFromCommand = getIdentifier('useStatusBarItemFromCommand')
-  const varStatusBarItemOption = getIdentifier('statusBarItemOption')
+  const varTypeLoggerName = claimUpperCamelCase('LoggerName')
+  const varUseStatusBarItemFromCommand = claimLowerCamelCase('useStatusBarItemFromCommand')
+  const varStatusBarItemOption = claimLowerCamelCase('statusBarItemOption')
   lines.push(
     ...commentBlock('Register a command. See `vscode::commands.registerCommand`.'),
     `export const ${varUseCommand} = (commandFullKey: ${varTypeCommand}, callback: (...args: any[]) => any): void => ${varUseInternalCommand}(commandFullKey, callback)`,
@@ -303,9 +310,9 @@ export interface ${varTypeCommandsInformation} {
     ...commentBlock('name type of Logger and OutputChannel'),
     `export type ${varTypeLoggerName} = typeof ${varName} | typeof ${varDisplayName} | typeof ${varExtensionId}`,
     ...commentBlock('Creates a logger that writes to the output channel.'),
-    `export const ${getIdentifier('useLogger')}=(loggerName: ${varTypeLoggerName} = ${varLoggerDefault}, getPrefix?: ((type: string) => string) | null) =>${varUseInternalLogger}(loggerName, { 'getPrefix': getPrefix })`,
+    `export const ${claimLowerCamelCase('useLogger')}=(loggerName: ${varTypeLoggerName} = ${varLoggerDefault}, getPrefix?: ((type: string) => string) | null) =>${varUseInternalLogger}(loggerName, { 'getPrefix': getPrefix })`,
     ...commentBlock('@reactive `window.createOutputChannel`'),
-    `export const ${getIdentifier('useOutputChannel')}=(outputName: ${varTypeLoggerName} = ${varLoggerDefault}) =>${varUseInternalOutputChannel}(outputName)`,
+    `export const ${claimLowerCamelCase('useOutputChannel')}=(outputName: ${varTypeLoggerName} = ${varLoggerDefault}) =>${varUseInternalOutputChannel}(outputName)`,
     `export const putRight = (target: Nullable<string>, curr: string) => target ? ''.concat(curr).concat(target) : curr`,
     `export const putLeft = (target: Nullable<string>, curr: string) => target ? ''.concat(target).concat(curr) : curr`,
     ...commentBlock('Create a statusBarItem with a commmand id'),
@@ -321,7 +328,7 @@ export interface ${varTypeCommandsInformation} {
     })`,
     ...commentBlock('Create a option of statusBarItem with a commmand id'),
     `
-    export const ${varStatusBarItemOption} = (command: Command):UseStatusBarItemOptions => {
+    export const ${varStatusBarItemOption} = (command: ${varTypeCommand}):UseStatusBarItemOptions => {
         const cmd = commandsInformation[command];
         return {
             id: cmd.commandShorthandName,
@@ -352,7 +359,7 @@ export interface ${varTypeCommandsInformation} {
       ...commentBlock('Type union of Deprecated all configs'),
     )
     lines.push(
-      `export type ${getIdentifier('DeprecatedConfigKey')} = `,
+      `export type ${claimUpperCamelCase('DeprecatedConfigKey')} = `,
       ...config.deprecatedKeys.map(c =>
         `  | "${c}"`,
       ),
@@ -361,12 +368,12 @@ export interface ${varTypeCommandsInformation} {
 
   const configurationDefaults_KeyValue: string[] = []
   const sectionConfigConstExports: string[] = []
-  const varConfigsDefaults = getIdentifier(`configsDefaults`)
-  const varConfigs = getIdentifier('configs')
+  const varConfigsDefaults = claimLowerCamelCase(`configsDefaults`) // ${extensionId}
+  const varConfigs = claimLowerCamelCase('configs')
   const varConfigs_KeyValue: string[] = []
-  const varTypeSectionames = getIdentifier('SectionName')
-  const varUseConfig = getIdentifier('useConfig')
-  const varUseConfigObject = getIdentifier('useConfigObject')
+  const varTypeSectionames = claimUpperCamelCase('SectionName')
+  const varUseConfig = claimLowerCamelCase('useConfig')
+  const varUseConfigObject = claimLowerCamelCase('useConfigObject')
   // 遍历所有section
   config.activedSectionConfigs.forEach((sectionConfig, section) => {
     function removeSection(name: string): string {
@@ -380,19 +387,19 @@ export interface ${varTypeCommandsInformation} {
     let varSectionShorthand
     let sectionComment
     if (section) {
-      varSectionShorthand = getIdentifier(convertCamelCase(getRightSection(section, -1)), varConfigsDefaults, (_pre, count) => convertCamelCase(getRightSection(section, -count)))
+      varSectionShorthand = claimLowerCamelCase(section, varConfigsDefaults)
       sectionComment = `${section}`
     }
     else {
-      varSectionShorthand = getIdentifier('root')
+      varSectionShorthand = claimLowerCamelCase('root')
       sectionComment = `virtual(Keys in the root)`
     }
     varConfigs_KeyValue.push(`${varSectionShorthand}:${JSON.stringify(section)},`)
-    const varTypeSectionName = getIdentifier(`${upperFirst(varSectionShorthand)}`)
+    const varTypeSectionName = claimUpperCamelCase(`${varSectionShorthand}`)
 
     const varName = {
-      varUseConfigSection: getIdentifier(`${varUseConfig}${varTypeSectionName}`),
-      varUseConfigObjectSection: getIdentifier(`${varUseConfigObject}${varTypeSectionName}`),
+      varUseConfigSection: claimLowerCamelCase(`${varUseConfig}${varTypeSectionName}`),
+      varUseConfigObjectSection: claimLowerCamelCase(`${varUseConfigObject}${varTypeSectionName}`),
     }
     const example = sectionConfig[0]
     const exampleKey = removeSection(example[0])

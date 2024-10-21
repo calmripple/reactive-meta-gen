@@ -157,7 +157,7 @@ export const commands = {
      * Remove watch dir
      * @command `remove-watch-dir`
      */
-    removeWatchDir_2: "remove-watch-dir",
+    removeWatchDir1: "remove-watch-dir",
     /**
      * Add watch dir
      * @command `project-config.add-watch-dir`
@@ -202,7 +202,7 @@ export const commandsInformation = {
      * Remove watch dir
      * @command `remove-watch-dir`
      */
-    "remove-watch-dir": { "commandShorthandName": "removeWatchDir_2", "category": "Project Config Updater", "command": "remove-watch-dir", "title": "remove watch dir" },
+    "remove-watch-dir": { "commandShorthandName": "removeWatchDir1", "category": "Project Config Updater", "command": "remove-watch-dir", "title": "remove watch dir" },
     /**
      * Add watch dir
      * @command `project-config.add-watch-dir`
@@ -291,7 +291,7 @@ export const useCommandRemoveWatchDir = (callback: (...args: any[]) => any) => u
  * Remove watch dir
  * @command Register a command `remove-watch-dir`
  */
-export const useCommandRemoveWatchDir2 = (callback: (...args: any[]) => any) => useCommand(commands.removeWatchDir_2, callback);
+export const useCommandRemoveWatchDir1 = (callback: (...args: any[]) => any) => useCommand(commands.removeWatchDir1, callback);
 /**
  * Add watch dir
  * @command Register a command `project-config.add-watch-dir`
