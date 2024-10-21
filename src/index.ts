@@ -57,7 +57,7 @@ export function generateMarkdown(packageJson: any): { commandsTable: string, con
         .flatMap(([key, value]) => {
           const defaultVal = defaultValFromSchema(value) || ''
           const _type = typeFromSchema(value)
-          let jsonComment = value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(',') ?? undefined
+          let jsonComment: string | undefined = description(value) // value.description ?? value.markdownDescription ?? value.markdownEnumDescriptions?.join(',') ?? undefined
           jsonComment = jsonComment ? `  //${upperFirst(jsonComment)}` : undefined
           return [
             jsonComment,
@@ -82,7 +82,7 @@ export function generateMarkdown(packageJson: any): { commandsTable: string, con
 export function generateDTS(packageJson: any, options: GenerateOptions): string {
   const extensionId = `${packageJson.publisher}.${packageJson.name}`
   // const _publisher = packageJson.publisher
-  const name = packageJson.name as string
+  // const name = packageJson.name as string
   const signatures = _.memo((_domain: string) => new Set<string>())
   function getIdentifier(signature: string, domain: string = extensionId, builder?: (preSignature: string, tryCount: number) => string | undefined): string {
     let tryCount = 1
@@ -359,12 +359,12 @@ export interface ${varTypeCommandsInformation} {
     )
   }
 
-  const sectionConfigDefaultKeyValue: string[] = []
+  const configurationDefaults_KeyValue: string[] = []
   const sectionConfigConstExports: string[] = []
-  const varConfigsDefaults = getIdentifier(`${convertCamelCase(name)}Defaults`)
-  const varSectionShorthandRawValuePairs = getIdentifier('configs')
-  const sectionShorthandRawValuePairs: string[] = []
-  const varTypeSectionConfig = getIdentifier('ConfigurationSection')
+  const varConfigsDefaults = getIdentifier(`configsDefaults`)
+  const varConfigs = getIdentifier('configs')
+  const varConfigs_KeyValue: string[] = []
+  const varTypeSectionames = getIdentifier('SectionName')
   const varUseConfig = getIdentifier('useConfig')
   const varUseConfigObject = getIdentifier('useConfigObject')
   // 遍历所有section
@@ -377,114 +377,108 @@ export interface ${varTypeCommandsInformation} {
       return name
     }
 
-    let varConfigurationSectionName
+    let varSectionShorthand
     let sectionComment
     if (section) {
-      varConfigurationSectionName = getIdentifier(convertCamelCase(getRightSection(section, -1)), varConfigsDefaults, (_pre, count) => convertCamelCase(getRightSection(section, -count)))
+      varSectionShorthand = getIdentifier(convertCamelCase(getRightSection(section, -1)), varConfigsDefaults, (_pre, count) => convertCamelCase(getRightSection(section, -count)))
       sectionComment = `${section}`
     }
     else {
-      varConfigurationSectionName = getIdentifier('root')
+      varSectionShorthand = getIdentifier('root')
       sectionComment = `virtual(Keys in the root)`
     }
-    sectionShorthandRawValuePairs.push(`${varConfigurationSectionName}:${JSON.stringify(section)},`)
-    const varSectionInterfaceName = getIdentifier(`${upperFirst(varConfigurationSectionName)}`)
+    varConfigs_KeyValue.push(`${varSectionShorthand}:${JSON.stringify(section)},`)
+    const varTypeSectionName = getIdentifier(`${upperFirst(varSectionShorthand)}`)
 
     const varName = {
-      varUseConfigSection: getIdentifier(`${varUseConfig}${varSectionInterfaceName}`),
-      varUseConfigObjectSection: getIdentifier(`${varUseConfigObject}${varSectionInterfaceName}`),
+      varUseConfigSection: getIdentifier(`${varUseConfig}${varTypeSectionName}`),
+      varUseConfigObjectSection: getIdentifier(`${varUseConfigObject}${varTypeSectionName}`),
     }
     const example = sectionConfig[0]
     const exampleKey = removeSection(example[0])
     // section 默认值
-    sectionConfigDefaultKeyValue.push(
+    configurationDefaults_KeyValue.push(
       ...commentBlock(`Config defaults of \`${sectionComment}\``, 2),
       `  ${JSON.stringify(section)}: {`,
     )
 
     // section 导出对象
     sectionConfigConstExports.push(
-      ...commentBlock([
-        `ConfigObject of \`${sectionComment}\``,
-      ].join('\n')),
-      `export const ${varName.varUseConfigObjectSection} =()=> ${varUseConfigObject}(${varSectionShorthandRawValuePairs}.${varConfigurationSectionName})`,
-      ...commentBlock([
-        `ToConfigRefs of \`${sectionComment}\``,
-      ].join('\n')),
-      `export const ${varName.varUseConfigSection} =()=> ${varUseConfig}(${varSectionShorthandRawValuePairs}.${varConfigurationSectionName})`,
+      ...commentBlock([`ConfigObject<${varTypeSectionName}> of \`${sectionComment}\``]),
+      `export const ${varName.varUseConfigObjectSection} =()=> ${varUseConfigObject}(${varConfigs}.${varSectionShorthand})`,
+      ...commentBlock(`ToConfigRefs<${varTypeSectionName}> of \`${sectionComment}\``,
+      ),
+      `export const ${varName.varUseConfigSection} =()=> ${varUseConfig}(${varConfigs}.${varSectionShorthand})`,
     )
 
     examples.push(
       ...exampleBlock([
-        `//ConfigObject<${varSectionInterfaceName}> of \`${sectionComment}\``,
-        `//@example ${varConfigurationSectionName}`,
-        `const ${varConfigurationSectionName} = ${varName.varUseConfigObjectSection}()`,
-        `const oldVal:${example[1].type} = ${varConfigurationSectionName}.${exampleKey} //get value `,
+        `//ConfigObject<${varTypeSectionName}> of \`${sectionComment}\``,
+        `//@example ${varSectionShorthand}`,
+        `const ${varSectionShorthand} = ${varName.varUseConfigObjectSection}()`,
+        `const oldVal:${example[1].type} = ${varSectionShorthand}.${exampleKey} //get value `,
         // `${varName.useConfigObject}.${exampleKey} = oldVal // set value`,
-        `${varConfigurationSectionName}.$update("${exampleKey}", oldVal) //update value`,
+        `${varSectionShorthand}.$update("${exampleKey}", oldVal) //update value`,
       ]),
       ...exampleBlock([
-        `//ToConfigRefs<${varSectionInterfaceName}> of \`${sectionComment}\``,
-        `//@example ${varConfigurationSectionName}`,
-        `const ${varConfigurationSectionName} = ${varName.varUseConfigSection}()`,
-        `const oldVal:${example[1].type} = ${varConfigurationSectionName}.${exampleKey}.value //get value `,
+        `//ToConfigRefs<${varTypeSectionName}> of \`${sectionComment}\``,
+        `//@example ${varSectionShorthand}`,
+        `const ${varSectionShorthand} = ${varName.varUseConfigSection}()`,
+        `const oldVal:${example[1].type} = ${varSectionShorthand}.${exampleKey}.value //get value `,
         // `${varName.useConfig}.${exampleKey}.value = oldVal // set value`,
         // `//update value to ConfigurationTarget.Workspace/ConfigurationTarget.Global/ConfigurationTarget.WorkspaceFolder`,
-        `${varConfigurationSectionName}.${exampleKey}.update(oldVal) //update value`,
+        `${varSectionShorthand}.${exampleKey}.update(oldVal) //update value`,
       ]),
     )
     // section 类型生成开始
     lines.push(
       ...commentBlock(`Section Type of \`${sectionComment}\``),
-      `export interface ${varSectionInterfaceName} {`,
+      `export interface ${varTypeSectionName} {`,
     )
     // 遍历section 下所有 短key的默认值
     sectionConfig.forEach(([fullKey, value]) => {
       const defaultValue = defaultValFromSchema(value)
+      const sectionKeyComments = commentBlock([
+        description(value),
+        // `@key \`${fullKey}\``,
+        // `@default ${defaultValue}`,
+        // `@type \`${value.type}\``,
+      ], 2)
       // 生成当前section所有key类型
       lines.push(
-        ...commentBlock([
-          value.description ?? value.markdownDescription,
-          // `@key \`${key}\``,
-          // `@default ${defaultValue}`,
-          // `@type \`${value.type}\``,
-        ].join('\n'), 2),
+        ...sectionKeyComments,
         `  ${JSON.stringify(removeSection(fullKey))}${defaultValue === undefined ? '?' : ''}: ${typeFromSchema(value, false)},`,
       )
       // 当前section下所有key的默认值
-      sectionConfigDefaultKeyValue.push(
-        ...commentBlock([
-          value.description,
-        ].join('\n'), 4),
-        `    ${JSON.stringify(removeSection(fullKey))}: ${defaultValFromSchema(value)},`,
+      configurationDefaults_KeyValue.push(
+        ...sectionKeyComments,
+        `  ${JSON.stringify(removeSection(fullKey))}: ${defaultValFromSchema(value)},`,
       )
     })
     // section 类型结束
     lines.push('}')
 
-    sectionConfigDefaultKeyValue.push(
-      // `  } satisfies ${interfaceName},`,
-      `  } satisfies ${varSectionInterfaceName} as ${varSectionInterfaceName},`,
+    configurationDefaults_KeyValue.push(
+      `  } satisfies ${varTypeSectionName} as ${varTypeSectionName},`,
 
     )
   })
 
-  // const sectionNames = [...config.sectionActivedConfigs.keys()]
   lines.push(
     `const ${varConfigsDefaults} = {`,
-    ...sectionConfigDefaultKeyValue,
+    ...configurationDefaults_KeyValue,
     `}`,
-    `export type ${varTypeSectionConfig} = keyof typeof ${varConfigsDefaults}`,
-    // `export type ${varSectionConfigKey} = ${sectionNames.map(s => JSON.stringify(s)).join('|')}`,
+    ...commentBlock('List of section names.'),
+    `export type ${varTypeSectionames} = keyof typeof ${varConfigsDefaults}`,
     ...commentBlock('Shorthand of config section name.'),
-    `export const ${varSectionShorthandRawValuePairs} = {`,
-    ...sectionShorthandRawValuePairs,
-    `}  satisfies Record<string, ${varTypeSectionConfig}>`,
+    `export const ${varConfigs} = {`,
+    ...varConfigs_KeyValue,
+    `}  satisfies Record<string, ${varTypeSectionames}>`,
 
     ...commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.'),
-    `export const ${varUseConfig} =${varMemo}(<Section extends ${varTypeSectionConfig}>(section: Section)=>  defineConfigs<typeof ${varConfigsDefaults}[Section]>(section, ${varConfigsDefaults}[section]))`,
+    `export const ${varUseConfig} =${varMemo}(<Section extends ${varTypeSectionames}>(section: Section)=>  defineConfigs<typeof ${varConfigsDefaults}[Section]>(section, ${varConfigsDefaults}[section]))`,
     ...commentBlock('Define configurations of an extension. See `vscode::workspace.getConfiguration`.'),
-    `export const ${varUseConfigObject}=${varMemo}(<Section extends ${varTypeSectionConfig}>(section: Section)=>defineConfigObject<typeof ${varConfigsDefaults}[Section]>(section, ${varConfigsDefaults}[section]))`,
+    `export const ${varUseConfigObject}=${varMemo}(<Section extends ${varTypeSectionames}>(section: Section)=>defineConfigObject<typeof ${varConfigsDefaults}[Section]>(section, ${varConfigsDefaults}[section]))`,
     ...sectionConfigConstExports,
   )
   // config.virtualActivedSectionConfigs.forEach((values, section) => {
@@ -521,7 +515,7 @@ export interface ${varTypeCommandsInformation} {
         '/* eslint-disable */',
         '// This file is generated by `reactive-meta-gen`. Do not modify manually.',
         '// @see https://github.com/open-dmsrs/reactive-meta-gen',
-        // ...examples
+        ...examples,
       )
     }
   }
@@ -540,16 +534,43 @@ export function generate(packageJson: any, options: GenerateOptions) {
   const sourceFileTS = generateDTS(packageJson, options)
   const formatedSourceFileTS = ts.createSourceFile('abc.ts', sourceFileTS, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS)
   const md = generateMarkdown(packageJson)
-  // const scourceFileMd = ts.createSourceFile('a.json', md.configsJson, ts.ScriptTarget.JSON, true, ts.ScriptKind.JSON)
-  // md.configsJson = printer.printFile(scourceFileMd)
   return {
     dts: printer.printFile(formatedSourceFileTS), // sourceFileTS,// generateDTS(packageJson, options),
     markdown: md,
   }
 }
 
+function description(value: ConfigurationProperty) {
+  return value.description
+    ?? value.markdownDescription
+    ?? value.enumDescriptions?.join('\n')
+    ?? value.markdownEnumDescriptions?.join('\n')
+    ?? value.deprecationMessage
+    ?? value.markdownDeprecationMessage ?? ''
+}
 function commentBlock(text?: string | string[], padding = 0): string[] {
-  // Avoid premature closure of the comment block due to the presence of "*/" in the text
+  const _text = block(text)
+  if (_text?.length === 0)
+    return []
+  const indent = ' '.repeat(padding)
+  return [
+    `${indent}/**`,
+    ..._text.map(l => `${indent} * ${l}`),
+    `${indent} */`,
+  ]
+}
+function exampleBlock(text?: string | string[], padding = 0): string[] {
+  const _text = block(text)
+  if (_text?.length === 0)
+    return []
+  const indent = ' '.repeat(padding)
+  return [
+    `${indent}/**`,
+    ..._text.map(l => `${indent}  ${l}`),
+    `${indent} */`,
+  ]
+}
+function block(text?: string | string[]) {
   let _text: string[]
   if (!text) {
     return []
@@ -560,31 +581,9 @@ function commentBlock(text?: string | string[], padding = 0): string[] {
   else {
     _text = upperFirst(text).split(/\n/g)
   }
-  const indent = ' '.repeat(padding)
-  return [
-    `${indent}/**`,
-    ..._text.map(l => `${indent} * ${l}`),
-    `${indent} */`,
-  ]
-}
-function exampleBlock(text?: string | string[], padding = 0): string[] {
-  // Avoid premature closure of the comment block due to the presence of "*/" in the text
-  let _text: string[]
-  if (!text) {
-    return []
-  }
-  else if (_.isArray(text)) {
-    _text = text
-  }
-  else {
-    _text = text.split(/\n/g)
-  }
-  const indent = ' '.repeat(padding)
-  return [
-    `${indent}/**`,
-    ..._text.map(l => `${indent} ${l}`),
-    `${indent} */`,
-  ]
+  _text = _text.filter(l => l)
+  _text[0] = upperFirst(_text[0])
+  return _text
 }
 function typeFromSchema(schema: ConfigurationProperty, isSubType = false, subIndent = 2): string {
   if (!schema)
@@ -628,7 +627,7 @@ function typeFromSchema(schema: ConfigurationProperty, isSubType = false, subInd
             const defaultValue = defaultValFromSchema(value)
             return [
               ...commentBlock([
-                value.description ?? value.markdownDescription ?? value.enumDescriptions?.join('\n'),
+                description(value),
                 // `@key \`${key}\``,
                 `@default \`${defaultValue}\``,
                 // `@type \`${value.type}\``,

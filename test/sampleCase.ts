@@ -1,8 +1,8 @@
 import { defineExtension, watchEffect } from 'reactive-vscode'
 import { window } from 'vscode'
 import {
-  useConfigObjectEmeraldwalk,
   useCommandUpdateDate,
+  useConfigObjectEmeraldwalk,
 } from './output/sample'
 
 const { activate, deactivate } = defineExtension(() => {

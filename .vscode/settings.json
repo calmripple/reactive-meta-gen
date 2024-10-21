@@ -29,15 +29,17 @@
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
   "eslint.ignoreUntitled": true,
-  "eslint.codeActionsOnSave.mode": "problems",
+  "eslint.codeActionsOnSave.mode": "all",
   "code-runner.clearPreviousOutput": true,
   "conventionalCommits.scopes": [
     "base",
     "generateDTS"
   ],
-  "editor.tokenColorCustomizations": {
-    "comments": "",
+  "editor.tokenColorCustomizations": { 
     "textMateRules": []
   },
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "eslint.useESLintClass": true,
+  "eslint.useFlatConfig": true,
+
 }

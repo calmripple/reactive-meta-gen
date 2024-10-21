@@ -1,5 +1,5 @@
-import { useConfig, useCommand, useCommandAddWatchDir } from './output/xyz-configuration-array'
 import { defineExtension } from 'reactive-vscode'
+import { useCommand, useCommandAddWatchDir, useConfig } from './output/xyz-configuration-array'
 
 const { activate, deactivate } = defineExtension(() => {
   const test = useConfig('project-config.fileNestingUpdater')
