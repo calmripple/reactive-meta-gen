@@ -10,15 +10,15 @@ export const version = "1.1.2";
 export const displayName = "Project Config Updater";
 export const description = "Export current settings to workspace config file ";
 export const extensionId = "cnjimbo.project-config";
-type Cache<T> = Record<string, {
+type Cache<T> = {
     exp: number | null;
     value: T;
     dispose: () => void;
-}>;
-const memoize = <TArgs extends any[], TResult>(cache: Cache<TResult>, func: (...args: TArgs) => TResult, keyFunc: ((...args: TArgs) => string) | null, ttl: number | null) => {
+};
+const memoize = <TArgs extends any[], TResult>(cache: Map<string, Cache<TResult>>, func: (...args: TArgs) => TResult, keyFunc: ((...args: TArgs) => string) | null, ttl: number | null) => {
     return function callWithMemo(...args: any): TResult {
         const key = keyFunc ? keyFunc(...args) : JSON.stringify({ args });
-        const existing = cache[key];
+        const existing = cache.get(key);
         if (existing !== undefined) {
             if (!existing.exp)
                 return existing.value;
@@ -27,14 +27,15 @@ const memoize = <TArgs extends any[], TResult>(cache: Cache<TResult>, func: (...
             }
         }
         const result = func(...args);
-        cache[key] = {
+        const target: Cache<TResult> = {
             exp: ttl ? new Date().getTime() + ttl : null,
             value: result,
             dispose: () => {
-                delete cache[key];
+                cache.delete(key);
             }
         };
-        useDisposable(cache[key]);
+        cache.set(key, target);
+        useDisposable(target);
         return result;
     };
 };
@@ -49,7 +50,7 @@ export const memo = <TArgs extends any[], TResult>(func: (...args: TArgs) => TRe
     key?: (...args: TArgs) => string;
     ttl?: number;
 } = {}) => {
-    return memoize({}, func, options.key ?? null, options.ttl ?? null) as (...args: TArgs) => TResult;
+    return memoize(new Map<string, Cache<TResult>>(), func, options.key ?? null, options.ttl ?? null) as (...args: TArgs) => TResult;
 };
 export interface CommandsInformation {
     /**

@@ -170,34 +170,41 @@ export function generateDTS(packageJson: any, options: GenerateOptions): string 
   const [varTypeCache, varMemoize, varMemo, varTypeCommandsInformation] = defineOrigin(['Cache', 'memoize', 'memo', 'CommandsInformation'])
 
   const staticCode = ` 
-type ${varTypeCache}<T> = Record<string, { exp: number | null; value: T;  dispose: () => void }>
+
+type ${varTypeCache}<T> = {
+    exp: number | null;
+    value: T;
+    dispose: () => void;
+}
 
 const ${varMemoize} = <TArgs extends any[], TResult>(
-    cache: ${varTypeCache}<TResult>,
+    cache: Map<string, ${varTypeCache}<TResult>>,
     func: (...args: TArgs) => TResult,
     keyFunc: ((...args: TArgs) => string) | null,
     ttl: number | null
 ) => {
     return function callWithMemo(...args: any): TResult {
-        const key = keyFunc ? keyFunc(...args) : JSON.stringify({ args })
-        const existing = cache[key]
+        const key = keyFunc ? keyFunc(...args) : JSON.stringify({ args });
+        const existing = cache.get(key);
         if (existing !== undefined) {
-            if (!existing.exp) return existing.value
+            if (!existing.exp)
+                return existing.value;
             if (existing.exp > new Date().getTime()) {
-                return existing.value
+                return existing.value;
             }
         }
-        const result = func(...args)
-        cache[key] = {
+        const result = func(...args);
+        const target: ${varTypeCache}<TResult> = {
             exp: ttl ? new Date().getTime() + ttl : null,
             value: result,
             dispose: () => {
-              delete cache[key]
+                cache.delete(key)
             }
         }
-        useDisposable(cache[key])
-        return result
-    }
+        cache.set(key, target);
+        useDisposable(target);
+        return result;
+    };
 }
 
 /**
@@ -214,7 +221,7 @@ export const ${varMemo} = <TArgs extends any[], TResult>(
         ttl?: number
     } = {}
 ) => {
-    return ${varMemoize}({}, func, options.key ?? null, options.ttl ?? null) as (
+    return ${varMemoize}(new Map<string, ${varTypeCache}<TResult>>(), func, options.key ?? null, options.ttl ?? null) as (
         ...args: TArgs
     ) => TResult
 }
