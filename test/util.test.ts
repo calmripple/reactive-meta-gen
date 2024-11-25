@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
-  getRightSection,
   convertCamelCase,
+  getRightSection,
   upperFirst,
 } from '../src/util'
 

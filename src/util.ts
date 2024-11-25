@@ -141,7 +141,7 @@ export function getRightSection(str: string, dotIndex: number): string {
   if (typeof str !== 'string' || typeof dotIndex !== 'number') {
     throw new TypeError('Invalid input')
   }
-  const parts = str.split('.')
+  const parts = str.split(/[.\n\r ]/g)
 
   if (dotIndex < 0) {
     const indexFromRight = parts.length + dotIndex

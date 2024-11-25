@@ -27,6 +27,7 @@
   "project-config.test.position": "before",
   //Enabled project-config inline annotations
   "xxx": true,
+  //Description of emeraldwalk.runonsave.
   "emeraldwalk.runonsave": { "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": [] },
 }
 ```
@@ -40,4 +41,4 @@
 | `project-config.test.annotations`                  | Enabled project-config inline annotations       | `boolean` | `true`                                                                                                                                   |
 | `project-config.test.position`                     | Position the icon before or after the icon name | `string`  | `"before"`                                                                                                                               |
 | `xxx`                                              | Enabled project-config inline annotations       | `boolean` | `true`                                                                                                                                   |
-| `emeraldwalk.runonsave`                            |                                                 | `object`  | `{ "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": [] }` |
+| `emeraldwalk.runonsave`                            | description of emeraldwalk.runonsave.           | `object`  | `{ "autoClearConsole": false, "shell": undefined, "delimiters": [":","--","-","/"], "delimiters1": [":","--","-","/"], "commands": [] }` |

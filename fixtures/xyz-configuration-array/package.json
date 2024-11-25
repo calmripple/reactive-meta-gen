@@ -113,6 +113,7 @@
               "autoClearConsole"
             ],
             "type": "object",
+            "description": "description of emeraldwalk.runonsave.",
             "properties": {
               "autoClearConsole": {
                 "type": "boolean",
