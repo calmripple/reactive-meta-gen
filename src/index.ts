@@ -537,7 +537,7 @@ export interface ${varTypeCommandsInformation} {
 }
 
 const printer = ts.createPrinter({
-  newLine: ts.NewLineKind.CarriageReturnLineFeed,
+  newLine: ts.NewLineKind.LineFeed,
   removeComments: false,
   omitTrailingSemicolon: true,
   noEmitHelpers: false,
