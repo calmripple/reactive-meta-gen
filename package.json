@@ -6,13 +6,13 @@
   "description": "Generate TypeScript meta with `reactive-vscode` info for VS Code extension from package.json",
   "author": "dmsrs <ripple@dmsrs.xyz>",
   "license": "MIT",
-  "funding": "https://github.com/sponsors/open-dmsrs",
-  "homepage": "https://github.com/open-dmsrs/reactive-meta-gen#readme",
+  "funding": "https://github.com/sponsors/calmripple",
+  "homepage": "https://github.com/calmripple/reactive-meta-gen#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/open-dmsrs/reactive-meta-gen.git"
+    "url": "git+https://github.com/calmripple/reactive-meta-gen.git"
   },
-  "bugs": "https://github.com/open-dmsrs/reactive-meta-gen/issues",
+  "bugs": "https://github.com/calmripple/reactive-meta-gen/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {

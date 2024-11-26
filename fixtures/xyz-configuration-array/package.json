@@ -10,7 +10,7 @@
   "repository": {
     "directory": "extension",
     "type": "git",
-    "url": "https://github.com/open-dmsrs/vscode-project-config-updater"
+    "url": "https://github.com/calmripple/vscode-project-config-updater"
   },
   "categories": [
     "Other"

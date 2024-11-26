@@ -148,7 +148,7 @@ They will be replaced with the generated tables when you run `npx reactive-meta-
 
 ## License
 
-[MIT](./LICENSE) License © 2023-PRESENT [Calm Ripple](https://github.com/open-dmsrs)
+[MIT](./LICENSE) License © 2023-PRESENT [Calm Ripple](https://github.com/calmripple)
 
 <!-- Badges -->
 
@@ -159,6 +159,6 @@ They will be replaced with the generated tables when you run `npx reactive-meta-
 [bundle-src]: https://img.shields.io/bundlephobia/minzip/reactive-meta-gen?style=flat&colorA=080f12&colorB=1fa669&label=minzip
 [bundle-href]: https://bundlephobia.com/result?p=reactive-meta-gen
 [license-src]: https://img.shields.io/npm/l/reactive-meta-gen?style=flat&colorA=080f12&colorB=1fa669
-[license-href]: https://github.com/open-dmsrs/reactive-meta-gen/blob/main/LICENSE
+[license-href]: https://github.com/calmripple/reactive-meta-gen/blob/main/LICENSE
 [jsdocs-src]: https://img.shields.io/badge/jsdocs-reference-080f12?style=flat&colorA=080f12&colorB=1fa669
 [jsdocs-href]: https://www.jsdocs.io/package/reactive-meta-gen
